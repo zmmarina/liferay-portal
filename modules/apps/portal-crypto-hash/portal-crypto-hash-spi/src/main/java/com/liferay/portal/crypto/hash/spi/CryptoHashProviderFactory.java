@@ -14,25 +14,23 @@
 
 package com.liferay.portal.crypto.hash.spi;
 
-import com.liferay.portal.crypto.hash.exception.CryptoHashException;
-import com.liferay.portal.kernel.security.SecureRandomUtil;
+import java.util.Map;
 
 /**
  * @author Arthur Chan
  */
-public interface CryptoHashProvider {
+public interface CryptoHashProviderFactory {
 
-	public CryptoHashProviderResponse generate(byte[] salt, byte[] input)
-		throws CryptoHashException;
+	/**
+	 * Construct a {@link CryptoHashProvider} from given hash provider meta information.
+	 *
+	 * @param cryptoHashProviderProperties A map of meta info required by some providers
+	 * @return An instance of CryptoHashProvider
+	 */
+	public CryptoHashProvider create(
+			Map<String, ?> cryptoHashProviderProperties)
+		throws Exception;
 
-	public default byte[] generateSalt() {
-		byte[] salt = new byte[16];
-
-		for (int i = 0; i < 16; ++i) {
-			salt[i] = SecureRandomUtil.nextByte();
-		}
-
-		return salt;
-	}
+	public String getCryptoHashProviderFactoryName();
 
 }
