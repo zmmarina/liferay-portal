@@ -208,6 +208,12 @@
 	<td></td>
 </tr>
 
+<tr>
+	<td>PROPAGATE_CHANGES</td>
+	<td>//button[contains(@class,'btn-primary') and contains(text(),'Propagate')]</td>
+	<td></td>
+</tr>
+
 <!--FIELDS_AT_DEPLOYED_APP-->
 
 <tr>
