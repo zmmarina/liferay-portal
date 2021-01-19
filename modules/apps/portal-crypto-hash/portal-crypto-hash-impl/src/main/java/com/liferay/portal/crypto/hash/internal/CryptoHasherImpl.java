@@ -101,6 +101,40 @@ public class CryptoHasherImpl implements CryptoHasher {
 	private final MessageDigestCryptoHashProvider
 		_messageDigestCryptoHashProvider;
 
+	private static final class CryptoHashProviderResponse {
+
+		public CryptoHashProviderResponse(
+			byte[] hash, byte[] salt, String name, Map<String, ?> properties) {
+
+			_hash = hash;
+			_salt = salt;
+			_name = name;
+			_properties = properties;
+		}
+
+		public String getCryptoHashProviderName() {
+			return _name;
+		}
+
+		public Map<String, ?> getCryptoHashProviderProperties() {
+			return _properties;
+		}
+
+		public byte[] getHash() {
+			return _hash;
+		}
+
+		public byte[] getSalt() {
+			return _salt;
+		}
+
+		private final byte[] _hash;
+		private final String _name;
+		private final Map<String, ?> _properties;
+		private final byte[] _salt;
+
+	}
+
 	private static class MessageDigestCryptoHashProvider {
 
 		public MessageDigestCryptoHashProvider(
