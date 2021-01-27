@@ -219,18 +219,19 @@ public class DataLayoutUtil {
 
 		ddmFormFields.forEach(
 			ddmFormField -> {
+				Map<String, Object> properties = new HashMap<>();
+
 				Map<String, DDMFormField> settingsDDMFormFieldsMap =
 					SettingsDDMFormFieldsUtil.getSettingsDDMFormFields(
 						ddmFormFieldTypeServicesTracker,
 						ddmFormField.getType());
 
-				List<DDMFormField> visualProperties = ListUtil.filter(
-					new ArrayList<>(settingsDDMFormFieldsMap.values()),
-					DDMFormField::isVisualProperty);
+				List<DDMFormField> visualPropertiesDDMFormFields =
+					ListUtil.filter(
+						new ArrayList<>(settingsDDMFormFieldsMap.values()),
+						DDMFormField::isVisualProperty);
 
-				Map<String, Object> properties = new HashMap<>();
-
-				visualProperties.forEach(
+				visualPropertiesDDMFormFields.forEach(
 					visualProperty -> {
 						if (visualProperty.isLocalizable()) {
 							properties.put(
@@ -381,15 +382,15 @@ public class DataLayoutUtil {
 
 				Map<String, Object> properties = ddmFormField.getProperties();
 
-				Map<String, Object> dataLayoutField =
-					(Map<String, Object>)value;
-
 				DDMFormField ddmFormDDMFormField = ddmFormFieldsMap.get(key);
 
 				Map<String, DDMFormField> settingsDDMFormFieldsMap =
 					SettingsDDMFormFieldsUtil.getSettingsDDMFormFields(
 						ddmFormFieldTypeServicesTracker,
 						ddmFormDDMFormField.getType());
+
+				Map<String, Object> dataLayoutField =
+					(Map<String, Object>)value;
 
 				dataLayoutField.forEach(
 					(keyProperty, valueProperty) -> {
