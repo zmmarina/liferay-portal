@@ -6,23 +6,22 @@ definition {
 	property testray.main.component.name = "Web Content Administration";
 
 	setUp {
-        TestCase.setUpPortalInstance();
-        User.firstLoginPG();
+		TestCase.setUpPortalInstance();
+		User.firstLoginPG();
 		JSONGroup.addGroup(groupName = "Test Site Name");
 		WebContentNavigator.openWebContentAdmin(siteURLKey = "test-site-name");
 		NavItem.gotoStructures();
-		WebContentStructures.addCP(
-        structureName = "Test"
-		);
-    }
-    tearDown {
-        var testPortalInstance = PropsUtil.get("test.portal.instance");
-        
-        if ("${testPortalInstance}" == "true") {
-            PortalInstances.tearDownCP();
-        }
-        else {
-            JSONGroup.deleteGroupByName(groupName = "Test Site Name");
+		WebContentStructures.addCP(structureName = "Test");
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if ("${testPortalInstance}" == "true") {
+			PortalInstances.tearDownCP();
+		}
+		else {
+			JSONGroup.deleteGroupByName(groupName = "Test Site Name");
 		}
 	}
 
@@ -109,34 +108,18 @@ definition {
 	}
 
 	@description = "This is a test for LPS-98081. As a Developer, I want to use separators"
-	@ignore = "true"
-	@priority = "4"
-	test SetSeparatorRepeatable {
-		property portal.acceptance = "false";
-
-		// TODO LPS-98081 SetSeparatorRepeatable pending implementation
-	}
-
-	@description = "This is a test for LPS-98081. As a Developer, I want to use separators"
-	@ignore = "true"
-	@priority = "3"
-	test ShowAndHideSeparatorLabel {
-		property portal.acceptance = "false";
-
-		// TODO LPS-98081 ShowAndHideSeparatorLabel pending implementation
-	}
-
-	@description = "This is a test for LPS-98081. As a Developer, I want to use separators"
 	@priority = "5"
 	test RepeatSeparatorOnWebContent {
 		property portal.acceptance = "false";
 
-		DataEngine.addField(fieldName = "Separator", fieldFieldLabel = "Test");
-        
+		DataEngine.addField(
+			fieldFieldLabel = "Test",
+			fieldName = "Separator");
+
 		DataEngine.editFieldRepeatable(fieldFieldLabel = "Test");
-       
-	    Button.clickSave();
-        
+
+		Button.clickSave();
+
 		Navigator.gotoNavItem(navItem = "Web Content");
 
 		LexiconEntry.gotoAdd();
@@ -152,7 +135,24 @@ definition {
 		WebContentNavigator.gotoEditCP(webContentTitle = "My Web Content Name 1");
 
 		AssertElementPresent(locator1 = "FormFields#FIELD_ADD_REMOVE");
-        
+	}
+
+	@description = "This is a test for LPS-98081. As a Developer, I want to use separators"
+	@ignore = "true"
+	@priority = "4"
+	test SetSeparatorRepeatable {
+		property portal.acceptance = "false";
+
+		// TODO LPS-98081 SetSeparatorRepeatable pending implementation
+	}
+
+	@description = "This is a test for LPS-98081. As a Developer, I want to use separators"
+	@ignore = "true"
+	@priority = "3"
+	test ShowAndHideSeparatorLabel {
+		property portal.acceptance = "false";
+
+		// TODO LPS-98081 ShowAndHideSeparatorLabel pending implementation
 	}
 
 }
