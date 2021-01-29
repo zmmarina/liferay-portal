@@ -62,9 +62,11 @@ class Analytics {
 		}
 
 		instance.delay = config.flushInterval || FLUSH_INTERVAL;
+		instance.projectId = config.projectId;
 
 		const client = new Client({
 			delay: instance.delay,
+			projectId: instance.projectId,
 		});
 
 		const endpointUrl = (config.endpointUrl || '').replace(/\/$/, '');

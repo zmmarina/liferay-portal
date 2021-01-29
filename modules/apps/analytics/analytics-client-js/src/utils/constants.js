@@ -16,6 +16,10 @@ export const DEBOUNCE = 1500;
 
 export const FLUSH_INTERVAL = 2000;
 
+//Custom Headers
+
+export const HEADER_PROJECT_ID = 'OSB-Asah-Project-ID';
+
 // Limit of a queue localStorage size in kilobytes.
 
 export const QUEUE_STORAGE_LIMIT = 512;

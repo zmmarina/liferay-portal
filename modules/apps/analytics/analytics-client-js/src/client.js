@@ -14,6 +14,7 @@
 
 import {
 	FLUSH_INTERVAL,
+	HEADER_PROJECT_ID,
 	LIMIT_FAILED_ATTEMPTS,
 	QUEUE_PRIORITY_DEFAULT,
 	REQUEST_TIMEOUT,
@@ -38,9 +39,10 @@ import {getRetryDelay} from './utils/delay';
 class Client {
 	constructor(config = {}) {
 		this.attemptNumber = 1;
-		this.initialDelay = config.delay || FLUSH_INTERVAL;
 		this.delay = this.initialDelay;
+		this.initialDelay = config.delay || FLUSH_INTERVAL;
 		this.processing = false;
+		this.projectId = config.projectId;
 		this.queues = [];
 
 		this._startsFlushLoop();
@@ -56,6 +58,10 @@ class Client {
 	 */
 	_getRequestParameters() {
 		const headers = {'Content-Type': 'application/json'};
+
+		if (this.projectId) {
+			Object.assign(headers, {[HEADER_PROJECT_ID]: this.projectId});
+		}
 
 		return {
 			cache: 'default',
