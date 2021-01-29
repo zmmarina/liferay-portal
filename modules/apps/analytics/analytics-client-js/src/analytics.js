@@ -150,11 +150,12 @@ class Analytics {
 	 * @example
 	 * Analytics.create(
 	 *   {
-	 *     endpointUrl: 'https://osbasahpublisher-projectid.lfr.cloud'
-	 *     flushInterval: 2000,
-	 *     userId: 'id-s7uatimmxgo',
 	 *     channelId: '123456789',
 	 *     dataSourceId: 'MyDataSourceId',
+	 *     endpointUrl: 'https://osbasahpublisher-projectid.lfr.cloud'
+	 *     flushInterval: 2000,
+	 *     projectId: '123456'
+	 *     userId: 'id-s7uatimmxgo',
 	 *   }
 	 * );
 	 */
