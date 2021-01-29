@@ -28,14 +28,6 @@ import {
 
 jest.mock('../src/plugins/timing');
 
-jest.mock('../src/messageQueue', () => {
-	return jest.fn().mockImplementation(() => {
-		return {
-			addItem: () => Promise.resolve(true),
-		};
-	});
-});
-
 const FLUSH_INTERVAL = 100;
 
 const INITIAL_CONFIG = {
