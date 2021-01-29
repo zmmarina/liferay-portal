@@ -16,7 +16,7 @@ export const DEBOUNCE = 1500;
 
 export const FLUSH_INTERVAL = 2000;
 
-//Custom Headers
+// Custom Headers
 
 export const HEADER_PROJECT_ID = 'OSB-Asah-Project-ID';
 
@@ -24,7 +24,7 @@ export const HEADER_PROJECT_ID = 'OSB-Asah-Project-ID';
 
 export const QUEUE_STORAGE_LIMIT = 512;
 
-//Queue priority
+// Queue priority
 
 export const QUEUE_PRIORITY_DEFAULT = 1;
 
@@ -52,7 +52,7 @@ export const LIMIT_FAILED_ATTEMPTS = 7;
 
 export const REQUEST_TIMEOUT = 5000;
 
-//DXP Timing
+// DXP Timing
 
 export const MARK_LOAD_EVENT_START = 'loadEventStartSPA';
 
