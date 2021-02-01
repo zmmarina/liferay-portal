@@ -574,7 +574,7 @@
 
 <tr>
 	<td>FORM_FIELD_FIRST_ITEM</td>
-	<td>//div[contains(@class,"form-group") and contains(.,'${key_fieldLabel}')]</td>
+	<td>//div[contains(@class,"form-group") and contains(.,'${key_fieldLabel}')]//label</td>
 	<td></td>
 </tr>
 
