@@ -216,7 +216,7 @@ public class DataDefinitionResourceImpl
 						deDataDefinitionFieldLink.getFieldName())));
 
 			_removeFieldsFromDataLayoutsAndDataListViews(
-				dataDefinition, deDataDefinitionFieldLink.getClassPK(),
+				deDataDefinitionFieldLink.getClassPK(),
 				_getRemovedFieldNames(dataDefinition, dataDefinition.getId()));
 
 			_updateDataDefinition(
@@ -618,7 +618,7 @@ public class DataDefinitionResourceImpl
 		}
 
 		_removeFieldsFromDataLayoutsAndDataListViews(
-			dataDefinition, dataDefinitionId,
+			dataDefinitionId,
 			_getRemovedFieldNames(dataDefinition, dataDefinitionId));
 
 		_deDataDefinitionFieldLinkLocalService.deleteDEDataDefinitionFieldLinks(
@@ -1069,8 +1069,7 @@ public class DataDefinitionResourceImpl
 	}
 
 	private void _removeFieldsFromDataLayouts(
-			DataDefinition dataDefinition, Set<Long> ddmStructureLayoutIds,
-			String[] fieldNames)
+			Set<Long> ddmStructureLayoutIds, String[] fieldNames)
 		throws Exception {
 
 		for (Long ddmStructureLayoutId : ddmStructureLayoutIds) {
@@ -1090,10 +1089,10 @@ public class DataDefinitionResourceImpl
 			String definitionSchemaVersion =
 				ddmFormLayout.getDefinitionSchemaVersion();
 
+			DDMStructure ddmStructure = ddmStructureLayout.getDDMStructure();
+
 			ddmFormLayout = DataLayoutUtil.toDDMFormLayout(
-				dataLayout,
-				DataDefinitionDDMFormUtil.toDDMForm(
-					dataDefinition, _ddmFormFieldTypeServicesTracker),
+				dataLayout, ddmStructure.getDDMForm(),
 				_ddmFormFieldTypeServicesTracker, _ddmFormRuleDeserializer);
 
 			ddmFormLayout.setDefinitionSchemaVersion(definitionSchemaVersion);
@@ -1115,8 +1114,7 @@ public class DataDefinitionResourceImpl
 	}
 
 	private void _removeFieldsFromDataLayoutsAndDataListViews(
-			DataDefinition dataDefinition, long dataDefinitionId,
-			String[] fieldNames)
+			long dataDefinitionId, String[] fieldNames)
 		throws Exception {
 
 		Set<Long> ddmStructureLayoutIds = new HashSet<>();
@@ -1144,8 +1142,7 @@ public class DataDefinitionResourceImpl
 			_portal.getClassNameId(DEDataListView.class), dataDefinitionId,
 			fieldNames);
 
-		_removeFieldsFromDataLayouts(
-			dataDefinition, ddmStructureLayoutIds, fieldNames);
+		_removeFieldsFromDataLayouts(ddmStructureLayoutIds, fieldNames);
 		_removeFieldsFromDataListViews(deDataListViewIds, fieldNames);
 	}
 
