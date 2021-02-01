@@ -262,7 +262,7 @@ public class PortalLog4jTest {
 			"The log output should have at least 1 line",
 			outputLines.length > 0);
 
-		// log4j:event
+		// <log4j:event />
 
 		String log4JEventLine = outputLines[0];
 
@@ -270,7 +270,7 @@ public class PortalLog4jTest {
 			log4JEventLine.indexOf(StringPool.SPACE),
 			log4JEventLine.indexOf(StringPool.GREATER_THAN));
 
-		// log4j:event logger
+		// <log4j:event logger="..." />
 
 		String expectedLog4JEventLogger = StringBundler.concat(
 			StringPool.SPACE, "logger=", StringPool.QUOTE,
@@ -281,7 +281,7 @@ public class PortalLog4jTest {
 			expectedLog4JEventLogger,
 			log4JEvent.substring(0, expectedLog4JEventLogger.length()));
 
-		// log4j:event timestamp
+		// <log4j:event timestamp="..." />
 
 		log4JEvent = log4JEvent.substring(expectedLog4JEventLogger.length());
 
@@ -291,7 +291,7 @@ public class PortalLog4jTest {
 
 		Long.valueOf(actualLog4JEventTimestamp);
 
-		// log4j:event level
+		// <log4j:event level="..." />
 
 		log4JEvent = log4JEvent.substring(
 			"timestamp=".length() + actualLog4JEventTimestamp.length() + 2);
@@ -304,7 +304,7 @@ public class PortalLog4jTest {
 			expectedLog4JEventLevel,
 			log4JEvent.substring(0, expectedLog4JEventLevel.length()));
 
-		// log4j:event thread
+		// <log4j:event thread="..." />
 
 		log4JEvent = log4JEvent.substring(expectedLog4JEventLevel.length());
 
@@ -318,7 +318,7 @@ public class PortalLog4jTest {
 			expectedLog4JEventThread,
 			log4JEvent.substring(0, expectedLog4JEventThread.length()));
 
-		// log4j:message
+		// <log4j:message>...</log4j:message>
 
 		if (expectedThrowable != null) {
 			if (expectedMessage == null) {
@@ -332,7 +332,7 @@ public class PortalLog4jTest {
 				outputLines[1]);
 		}
 
-		// log4j:throwable
+		// <log4j:throwable>...</log4j:throwable>
 
 		if (expectedThrowable != null) {
 			Class<?> expectedThrowableClass = expectedThrowable.getClass();
@@ -352,7 +352,7 @@ public class PortalLog4jTest {
 					"at " + PortalLog4jTest.class.getName()));
 		}
 
-		// log4j:locationInfo
+		// <log4j:locationInfo />
 
 		String log4JLocationInfoLine = outputLines[outputLines.length - 2];
 
@@ -360,7 +360,7 @@ public class PortalLog4jTest {
 			log4JLocationInfoLine.indexOf(StringPool.SPACE),
 			log4JLocationInfoLine.indexOf(StringPool.FORWARD_SLASH));
 
-		// log4j:locationInfo class name
+		// <log4j:locationInfo class="..." />
 
 		String expectedLog4JLocationInfoClassName = StringBundler.concat(
 			StringPool.SPACE, "class=", StringPool.QUOTE,
@@ -372,7 +372,7 @@ public class PortalLog4jTest {
 			log4JLocationInfo.substring(
 				0, expectedLog4JLocationInfoClassName.length()));
 
-		// log4j:locationInfo file
+		// <log4j:locationInfo file="..." />
 
 		log4JLocationInfo = log4JLocationInfo.substring(
 			expectedLog4JLocationInfoClassName.length());
