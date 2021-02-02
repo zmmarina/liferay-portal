@@ -155,13 +155,13 @@ public class PullRequest {
 	}
 
 	public String getCIMergeSHA() {
-		getFilenames();
+		getFileNames();
 
 		return _ciMergeSHA;
 	}
 
 	public String getCIMergeSubrepo() {
-		for (String fileName : getFilenames()) {
+		for (String fileName : getFileNames()) {
 			if (fileName.endsWith("/ci-merge")) {
 				return fileName.replace("/ci-merge", "");
 			}
@@ -207,9 +207,9 @@ public class PullRequest {
 		return _commonParentSHA;
 	}
 
-	public List<String> getFilenames() {
-		if (!_filenames.isEmpty()) {
-			return _filenames;
+	public List<String> getFileNames() {
+		if (!_fileNames.isEmpty()) {
+			return _fileNames;
 		}
 
 		_ciMergeSHA = "";
@@ -228,7 +228,7 @@ public class PullRequest {
 
 				String fileName = fileJSONObject.getString("filename");
 
-				_filenames.add(fileName);
+				_fileNames.add(fileName);
 
 				if (fileName.endsWith("/ci-merge")) {
 					String patch = fileJSONObject.getString("patch");
@@ -245,7 +245,7 @@ public class PullRequest {
 				}
 			}
 
-			return _filenames;
+			return _fileNames;
 		}
 		catch (IOException ioException) {
 			throw new RuntimeException(
@@ -459,7 +459,7 @@ public class PullRequest {
 	}
 
 	public boolean isMergeSubrepoRequest() {
-		for (String filename : getFilenames()) {
+		for (String filename : getFileNames()) {
 			if (filename.endsWith("/ci-merge")) {
 				return true;
 			}
@@ -469,7 +469,7 @@ public class PullRequest {
 	}
 
 	public boolean isValidCIMergeFile() {
-		List<String> filenames = getFilenames();
+		List<String> filenames = getFileNames();
 
 		if ((filenames.size() == 1) && isMergeSubrepoRequest()) {
 			return true;
@@ -846,7 +846,7 @@ public class PullRequest {
 	private Boolean _autoCloseCommentAvailable;
 	private String _ciMergeSHA = "";
 	private String _commonParentSHA;
-	private List<String> _filenames = new ArrayList<>();
+	private List<String> _fileNames = new ArrayList<>();
 	private List<GitHubRemoteGitCommit> _gitHubRemoteGitCommits;
 	private GitHubRemoteGitRepository _gitHubRemoteGitRepository;
 	private final String _gitHubRemoteGitRepositoryName;
