@@ -3430,10 +3430,6 @@ definition {
 			fieldLabel = "Upload Field",
 			fieldName = "${fieldUploadField}");
 
-		AssertNotEditable(
-			key_fieldName = "${fieldUploadField}",
-			locator1 = "FormFields#UPLOAD_FIELD");
-
 		ItemSelector.gotoItemSelectorViaSelectButton();
 
 		ItemSelector.uploadFile(
@@ -4465,10 +4461,6 @@ definition {
 		FormFields.viewUploadField(
 			fieldLabel = "Upload Field",
 			fieldName = "${fieldUploadField}");
-
-		AssertNotEditable(
-			key_fieldName = "${fieldUploadField}",
-			locator1 = "FormFields#UPLOAD_FIELD");
 
 		ItemSelector.gotoItemSelectorViaSelectButton();
 
