@@ -119,9 +119,9 @@ public class AuthVerifierPipeline {
 
 	private void _buildURLPatternMapper() {
 		Map<String, List<AuthVerifierConfiguration>>
-			excludeAuthVerifierConfigurations = new HashMap<>();
+			excludeAuthVerifierConfigurationsMap = new HashMap<>();
 		Map<String, List<AuthVerifierConfiguration>>
-			includeAuthVerifierConfigurations = new HashMap<>();
+			includeAuthVerifierConfigurationsMap = new HashMap<>();
 
 		for (AuthVerifierConfiguration authVerifierConfiguration :
 				_authVerifierConfigurations) {
@@ -135,11 +135,11 @@ public class AuthVerifierPipeline {
 				urlsExclude = _contextPath + _fixLegacyURLPattern(urlsExclude);
 
 				List<AuthVerifierConfiguration>
-					excludeAuthVerifierConfigurationList =
-						excludeAuthVerifierConfigurations.computeIfAbsent(
+					excludeAuthVerifierConfigurations =
+						excludeAuthVerifierConfigurationsMap.computeIfAbsent(
 							urlsExclude, key -> new ArrayList<>());
 
-				excludeAuthVerifierConfigurationList.add(
+				excludeAuthVerifierConfigurations.add(
 					authVerifierConfiguration);
 			}
 
@@ -150,19 +150,19 @@ public class AuthVerifierPipeline {
 				urlsInclude = _contextPath + _fixLegacyURLPattern(urlsInclude);
 
 				List<AuthVerifierConfiguration>
-					includeAuthVerifierConfigurationList =
-						includeAuthVerifierConfigurations.computeIfAbsent(
+					includeAuthVerifierConfigurations =
+						includeAuthVerifierConfigurationsMap.computeIfAbsent(
 							urlsInclude, key -> new ArrayList<>());
 
-				includeAuthVerifierConfigurationList.add(
+				includeAuthVerifierConfigurations.add(
 					authVerifierConfiguration);
 			}
 		}
 
 		_excludeURLPatternMapper = URLPatternMapperFactory.create(
-			excludeAuthVerifierConfigurations);
+			excludeAuthVerifierConfigurationsMap);
 		_includeURLPatternMapper = URLPatternMapperFactory.create(
-			includeAuthVerifierConfigurations);
+			includeAuthVerifierConfigurationsMap);
 	}
 
 	private AuthVerifierResult _createGuestVerificationResult(
