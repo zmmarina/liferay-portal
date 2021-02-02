@@ -90,11 +90,11 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 
 		File tempFile = FileUtil.createTempFile(jobFileURL.openStream());
 
-		String contentType = MimeTypesUtil.getContentType(jobFileURL.getFile());
-
 		_dispatchFileRepository.addFileEntry(
 			userId, dispatchTrigger.getDispatchTriggerId(), fileName,
-			tempFile.length(), contentType, jobFileURL.openStream());
+			tempFile.length(),
+			MimeTypesUtil.getContentType(jobFileURL.getFile()),
+			jobFileURL.openStream());
 	}
 
 	private UnicodeProperties _getDefaultTypeSettingsUnicodeProperties(
