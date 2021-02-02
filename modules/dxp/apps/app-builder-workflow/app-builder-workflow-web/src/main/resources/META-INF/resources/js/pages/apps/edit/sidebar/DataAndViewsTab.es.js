@@ -15,7 +15,6 @@ import {ClayRadio, ClayRadioGroup} from '@clayui/form';
 import ClayIcon from '@clayui/icon';
 import {ClayTooltipProvider} from '@clayui/tooltip';
 import {AppContext} from 'app-builder-web/js/AppContext.es';
-import Button from 'app-builder-web/js/components/button/Button.es';
 import SelectObjects from 'app-builder-web/js/components/select-objects/SelectObjects.es';
 import EditAppContext, {
 	UPDATE_APP,
@@ -65,7 +64,7 @@ const NoObjectEmptyState = () => (
 
 export const OpenButton = (props) => (
 	<ClayTooltipProvider>
-		<Button
+		<ClayButtonWithIcon
 			className="ml-2 px-2 tap-ahead-icon-wrapper"
 			data-tooltip-align="bottom-right"
 			data-tooltip-delay="0"
@@ -316,7 +315,7 @@ export default function DataAndViewsTab({
 
 	const AddButton = (props) => (
 		<ClayTooltipProvider>
-			<Button
+			<ClayButtonWithIcon
 				className="btn btn-monospaced btn-secondary mr-2 nav-btn nav-btn-monospaced"
 				data-tooltip-align="bottom-right"
 				data-tooltip-delay="0"

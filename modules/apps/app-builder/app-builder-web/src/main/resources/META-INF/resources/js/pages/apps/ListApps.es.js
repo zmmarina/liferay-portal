@@ -12,13 +12,13 @@
  * details.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import ClayLabel from '@clayui/label';
 import {compile} from 'path-to-regexp';
 import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 
 import {AppContext} from '../../AppContext.es';
-import Button from '../../components/button/Button.es';
 import ListView from '../../components/list-view/ListView.es';
 import useBackUrl from '../../hooks/useBackUrl.es';
 import useDataDefinition from '../../hooks/useDataDefinition.es';
@@ -90,19 +90,22 @@ export default ({
 	const newAppLink = compile(editPath[0])({dataDefinitionId, objectType});
 
 	const ADD_BUTTON = () => (
-		<Button
-			className="nav-btn nav-btn-monospaced"
-			href={newAppLink}
-			symbol="plus"
-			tooltip={Liferay.Language.get('new-app')}
-		/>
+		<Link to={newAppLink}>
+			<ClayButtonWithIcon
+				className="nav-btn nav-btn-monospaced"
+				data-title={Liferay.Language.get('new-app')}
+				symbol="plus"
+			/>
+		</Link>
 	);
 
 	const EMPTY_STATE = {
 		button: () => (
-			<Button displayType="secondary" href={newAppLink}>
-				{Liferay.Language.get('new-app')}
-			</Button>
+			<Link to={newAppLink}>
+				<ClayButton displayType="secondary">
+					{Liferay.Language.get('new-app')}
+				</ClayButton>
+			</Link>
 		),
 		description: Liferay.Language.get(
 			'select-the-form-and-table-view-you-want-and-deploy-your-app-as-a-widget-standalone-or-place-it-in-the-product-menu'

@@ -12,12 +12,12 @@
  * details.
  */
 
+import ClayButton from '@clayui/button';
 import ClayLayout from '@clayui/layout';
 import React, {useContext, useState} from 'react';
 import {withRouter} from 'react-router-dom';
 
 import {AppContext} from '../../../AppContext.es';
-import Button from '../../../components/button/Button.es';
 import {addItem, updateItem} from '../../../utils/client.es';
 import {errorToast, successToast} from '../../../utils/toast.es';
 import {normalizeNames} from '../../../utils/utils.es';
@@ -125,13 +125,13 @@ export default withRouter(
 			<div className="bg-transparent card-footer">
 				<ClayLayout.ContentRow>
 					<ClayLayout.Col md="4">
-						<Button displayType="secondary" onClick={onCancel}>
+						<ClayButton displayType="secondary" onClick={onCancel}>
 							{Liferay.Language.get('cancel')}
-						</Button>
+						</ClayButton>
 					</ClayLayout.Col>
 					<ClayLayout.Col className="offset-md-4 text-right" md="4">
 						{currentStep > 0 && (
-							<Button
+							<ClayButton
 								className="mr-3"
 								displayType="secondary"
 								onClick={() =>
@@ -139,10 +139,10 @@ export default withRouter(
 								}
 							>
 								{Liferay.Language.get('previous')}
-							</Button>
+							</ClayButton>
 						)}
 						{currentStep < 3 && (
-							<Button
+							<ClayButton
 								disabled={
 									(currentStep === 0 && !dataLayoutId) ||
 									(currentStep === 1 && !dataListViewId)
@@ -153,10 +153,10 @@ export default withRouter(
 								}
 							>
 								{Liferay.Language.get('next')}
-							</Button>
+							</ClayButton>
 						)}
 						{currentStep === 3 && (
-							<Button
+							<ClayButton
 								disabled={
 									appDeployments.length === 0 ||
 									!name[editingLanguageId]?.trim() ||
@@ -169,7 +169,7 @@ export default withRouter(
 								{app.id
 									? Liferay.Language.get('save')
 									: Liferay.Language.get('deploy')}
-							</Button>
+							</ClayButton>
 						)}
 					</ClayLayout.Col>
 				</ClayLayout.ContentRow>

@@ -9,9 +9,9 @@
  * distribution rights of the Software.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import ClayPopover from '@clayui/popover';
 import {AppContext} from 'app-builder-web/js/AppContext.es';
-import Button from 'app-builder-web/js/components/button/Button.es';
 import useDeployApp from 'app-builder-web/js/hooks/useDeployApp.es';
 import ListApps, {Actions} from 'app-builder-web/js/pages/apps/ListApps.es';
 import {COLUMNS, FILTERS} from 'app-builder-web/js/pages/apps/constants.es';
@@ -20,10 +20,17 @@ import {errorToast, successToast} from 'app-builder-web/js/utils/toast.es';
 import {createResourceURL, fetch} from 'frontend-js-web';
 import {compile} from 'path-to-regexp';
 import React, {useContext, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import MissingFieldsModal from './edit/MissingFieldsModal.es';
 import {getDataDefinition, getFormViews} from './edit/actions.es';
 import {checkRequiredFields} from './edit/utils.es';
+
+const Button = ({href, ...props}) => (
+	<Link to={href}>
+		<ClayButtonWithIcon {...props} />
+	</Link>
+);
 
 export default ({scope, ...props}) => {
 	const {userId} = useContext(AppContext);
@@ -57,9 +64,11 @@ export default ({scope, ...props}) => {
 
 	const emptyState = {
 		button: () => (
-			<Button displayType="secondary" href={newAppLink}>
-				{Liferay.Language.get('create-new-app')}
-			</Button>
+			<Link to={newAppLink}>
+				<ClayButton displayType="secondary">
+					{Liferay.Language.get('create-new-app')}
+				</ClayButton>
+			</Link>
 		),
 		description: Liferay.Language.get(
 			'integrate-the-data-collection-and-management-of-an-object-with-a-step-driven-workflow-process'

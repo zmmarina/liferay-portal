@@ -12,10 +12,10 @@
  * details.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import React, {useContext} from 'react';
 
 import {AppContext} from '../../AppContext.es';
-import Button from '../../components/button/Button.es';
 import ListView from '../../components/list-view/ListView.es';
 import useDataDefinition from '../../hooks/useDataDefinition.es';
 import {confirmDelete} from '../../utils/client.es';
@@ -84,22 +84,22 @@ export default ({
 				},
 			]}
 			addButton={() => (
-				<Button
+				<ClayButtonWithIcon
 					className="nav-btn nav-btn-monospaced"
+					data-title={Liferay.Language.get('new-form-view')}
 					onClick={() => Liferay.Util.navigate(addURL)}
 					symbol="plus"
-					tooltip={Liferay.Language.get('new-form-view')}
 				/>
 			)}
 			columns={COLUMNS}
 			emptyState={{
 				button: () => (
-					<Button
+					<ClayButton
 						displayType="secondary"
 						onClick={() => Liferay.Util.navigate(addURL)}
 					>
 						{Liferay.Language.get('new-form-view')}
-					</Button>
+					</ClayButton>
 				),
 				description: Liferay.Language.get(
 					'create-one-or-more-forms-to-display-the-data-held-in-your-data-object'

@@ -9,9 +9,9 @@
  * distribution rights of the Software.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import ClayLabel from '@clayui/label';
 import {AppContext} from 'app-builder-web/js/AppContext.es';
-import Button from 'app-builder-web/js/components/button/Button.es';
 import NoPermissionState from 'app-builder-web/js/components/empty-state/NoPermissionState.es';
 import ManagementToolbar from 'app-builder-web/js/components/management-toolbar/ManagementToolbar.es';
 import ManagementToolbarResultsBar from 'app-builder-web/js/components/management-toolbar/ManagementToolbarResultsBar.es';
@@ -363,11 +363,11 @@ export default function ListEntries({history}) {
 				<ManagementToolbar
 					addButton={() =>
 						showAddButton && (
-							<Button
+							<ClayButtonWithIcon
 								className="nav-btn nav-btn-monospaced"
+								data-title={Liferay.Language.get('new-entry')}
 								onClick={onClickAddButton}
 								symbol="plus"
-								tooltip={Liferay.Language.get('new-entry')}
 							/>
 						)
 					}
@@ -387,12 +387,12 @@ export default function ListEntries({history}) {
 					emptyState={{
 						button: () =>
 							showAddButton && (
-								<Button
+								<ClayButton
 									displayType="secondary"
 									onClick={onClickAddButton}
 								>
 									{Liferay.Language.get('new-entry')}
-								</Button>
+								</ClayButton>
 							),
 						title: Liferay.Language.get('there-are-no-entries-yet'),
 					}}

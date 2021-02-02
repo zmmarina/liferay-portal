@@ -12,11 +12,11 @@
  * details.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import {createResourceURL, fetch} from 'frontend-js-web';
 import React, {useContext, useEffect, useRef, useState} from 'react';
 
 import {AppContext} from '../../AppContext.es';
-import Button from '../../components/button/Button.es';
 import {useKeyDown} from '../../hooks/index.es';
 import useQuery from '../../hooks/useQuery.es';
 import isClickOutside from '../../utils/clickOutside.es';
@@ -226,27 +226,26 @@ export default ({history}) => {
 						},
 					],
 					addButton: () => (
-						<div ref={addButtonRef}>
-							<Button
-								className="nav-btn nav-btn-monospaced"
-								onClick={onClickAddButton}
-								symbol="plus"
-								tooltip={Liferay.Language.get(
-									'new-custom-object'
-								)}
-							/>
-						</div>
+						<ClayButtonWithIcon
+							className="nav-btn nav-btn-monospaced"
+							data-title={Liferay.Language.get(
+								'new-custom-object'
+							)}
+							onClick={onClickAddButton}
+							ref={addButtonRef}
+							symbol="plus"
+						/>
 					),
 					editMode,
 					emptyState: {
 						button: () => (
-							<Button
+							<ClayButton
 								displayType="secondary"
 								onClick={onClickAddButton}
 								ref={emptyStateButtonRef}
 							>
 								{Liferay.Language.get('new-custom-object')}
-							</Button>
+							</ClayButton>
 						),
 						description: Liferay.Language.get(
 							'custom-objects-define-the-types-of-data-your-business-application-needs'

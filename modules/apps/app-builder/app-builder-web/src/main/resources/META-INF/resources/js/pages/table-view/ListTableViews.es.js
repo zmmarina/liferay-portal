@@ -12,10 +12,10 @@
  * details.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Button from '../../components/button/Button.es';
 import ListView from '../../components/list-view/ListView.es';
 import useDataDefinition from '../../hooks/useDataDefinition.es';
 import {confirmDelete} from '../../utils/client.es';
@@ -66,19 +66,22 @@ export default ({
 				},
 			]}
 			addButton={() => (
-				<Button
-					className="nav-btn nav-btn-monospaced"
-					href={`${url}/add`}
-					symbol="plus"
-					tooltip={Liferay.Language.get('new-table-view')}
-				/>
+				<Link to={`${url}/add`}>
+					<ClayButtonWithIcon
+						className="nav-btn nav-btn-monospaced"
+						data-title={Liferay.Language.get('new-table-view')}
+						symbol="plus"
+					/>
+				</Link>
 			)}
 			columns={COLUMNS}
 			emptyState={{
 				button: () => (
-					<Button displayType="secondary" href={`${url}/add`}>
-						{Liferay.Language.get('new-table-view')}
-					</Button>
+					<Link to={`${url}/add`}>
+						<ClayButton displayType="secondary">
+							{Liferay.Language.get('new-table-view')}
+						</ClayButton>
+					</Link>
 				),
 				description: Liferay.Language.get(
 					'create-one-or-more-tables-to-display-the-data-held-in-your-data-object'

@@ -12,11 +12,11 @@
  * details.
  */
 
+import {ClayButtonWithIcon} from '@clayui/button';
 import classNames from 'classnames';
 import {useEventListener} from 'frontend-js-react-web';
 import React, {useContext, useLayoutEffect, useState} from 'react';
 
-import Button from '../../components/button/Button.es';
 import {useKeyDown} from '../../hooks/index.es';
 import isClickOutside from '../../utils/clickOutside.es';
 import EditTableViewContext, {
@@ -82,12 +82,12 @@ const Overlay = ({
 			<header>
 				<label className="text-truncate">{fieldTypeLabel}</label>
 
-				<Button
+				<ClayButtonWithIcon
 					borderless
+					data-title={Liferay.Language.get('remove')}
 					displayType="secondary"
 					onClick={() => onRemoveFieldName(name)}
 					symbol="trash"
-					tooltip={Liferay.Language.get('remove')}
 				/>
 			</header>
 		</div>

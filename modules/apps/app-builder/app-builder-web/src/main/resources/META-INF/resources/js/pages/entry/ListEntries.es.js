@@ -12,11 +12,11 @@
  * details.
  */
 
+import ClayButton, {ClayButtonWithIcon} from '@clayui/button';
 import Loading from 'data-engine-js-components-web/js/components/loading/Loading.es';
 import React, {useContext} from 'react';
 
 import {AppContext} from '../../AppContext.es';
-import Button from '../../components/button/Button.es';
 import ListView from '../../components/list-view/ListView.es';
 import useDataListView from '../../hooks/useDataListView.es';
 import useEntriesActions from '../../hooks/useEntriesActions.es';
@@ -84,11 +84,11 @@ export default function ListEntries({history}) {
 				addButton={() =>
 					showFormView &&
 					permissions.add && (
-						<Button
+						<ClayButtonWithIcon
 							className="nav-btn nav-btn-monospaced"
+							data-title={Liferay.Language.get('new-entry')}
 							onClick={onClickEditPage}
 							symbol="plus"
-							tooltip={Liferay.Language.get('new-entry')}
 						/>
 					)
 				}
@@ -97,12 +97,12 @@ export default function ListEntries({history}) {
 					button: () =>
 						showFormView &&
 						permissions.add && (
-							<Button
+							<ClayButton
 								displayType="secondary"
 								onClick={onClickEditPage}
 							>
 								{Liferay.Language.get('new-entry')}
-							</Button>
+							</ClayButton>
 						),
 					title: Liferay.Language.get('there-are-no-entries-yet'),
 				}}

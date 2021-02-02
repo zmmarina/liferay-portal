@@ -17,7 +17,6 @@ import {createResourceURL, fetch} from 'frontend-js-web';
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 
 import {AppContext} from '../../AppContext.es';
-import Button from '../../components/button/Button.es';
 import {ControlMenuBase} from '../../components/control-menu/ControlMenu.es';
 import useDataDefinition from '../../hooks/useDataDefinition.es';
 import withDDMForm, {
@@ -170,14 +169,14 @@ export const EditEntry = ({
 			/>
 
 			<ClayButton.Group className="app-builder-form-buttons" spaced>
-				<Button disabled={submitting} onClick={onSubmit}>
+				<ClayButton disabled={submitting} onClick={onSubmit}>
 					{Liferay.Language.get('save')}
-				</Button>
+				</ClayButton>
 
 				{!isFormViewOnly && (
-					<Button displayType="secondary" onClick={onCancel}>
+					<ClayButton displayType="secondary" onClick={onCancel}>
 						{Liferay.Language.get('cancel')}
-					</Button>
+					</ClayButton>
 				)}
 			</ClayButton.Group>
 		</>

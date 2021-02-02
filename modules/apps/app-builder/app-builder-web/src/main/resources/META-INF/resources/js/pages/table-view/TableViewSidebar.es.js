@@ -12,6 +12,7 @@
  * details.
  */
 
+import {ClayButtonWithIcon} from '@clayui/button';
 import ClayForm from '@clayui/form';
 import ClayLayout from '@clayui/layout';
 import {
@@ -23,7 +24,6 @@ import {
 } from 'data-engine-taglib';
 import React, {useContext, useState} from 'react';
 
-import Button from '../../components/button/Button.es';
 import EditTableViewContext, {
 	UPDATE_FOCUSED_COLUMN,
 } from './EditTableViewContext.es';
@@ -31,7 +31,7 @@ import TableViewFiltersList from './TableViewFilters.es';
 import {getFieldLabel, getFieldTypeLabel} from './utils.es';
 
 const BtnAction = ({angle = 'left', className, onClick}) => (
-	<Button
+	<ClayButtonWithIcon
 		className={className}
 		displayType="secondary"
 		onClick={onClick}

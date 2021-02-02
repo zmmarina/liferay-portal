@@ -279,7 +279,7 @@ exports[`ListApps renders 1`] = `
                   class="dropdown dropdown-action"
                 >
                   <button
-                    class="dropdown-toggle page-link btn btn-unstyled"
+                    class="dropdown-toggle page-link btn btn-monospaced btn-unstyled"
                     type="button"
                   >
                     <svg
