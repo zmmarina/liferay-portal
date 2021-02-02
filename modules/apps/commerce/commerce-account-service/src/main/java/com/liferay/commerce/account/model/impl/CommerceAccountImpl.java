@@ -117,17 +117,17 @@ public class CommerceAccountImpl extends CommerceAccountBaseImpl {
 	}
 
 	public static String[] toAccountEntryTypes(int commerceSiteType) {
-		if (commerceSiteType == CommerceAccountConstants.SITE_TYPE_B2X) {
-			return new String[] {
-				AccountConstants.ACCOUNT_ENTRY_TYPE_BUSINESS,
-				AccountConstants.ACCOUNT_ENTRY_TYPE_PERSON
-			};
-		}
-		else if (commerceSiteType == CommerceAccountConstants.SITE_TYPE_B2B) {
+		if (commerceSiteType == CommerceAccountConstants.SITE_TYPE_B2B) {
 			return new String[] {AccountConstants.ACCOUNT_ENTRY_TYPE_BUSINESS};
 		}
 		else if (commerceSiteType == CommerceAccountConstants.SITE_TYPE_B2C) {
 			return new String[] {AccountConstants.ACCOUNT_ENTRY_TYPE_PERSON};
+		}
+		else if (commerceSiteType == CommerceAccountConstants.SITE_TYPE_B2X) {
+			return new String[] {
+				AccountConstants.ACCOUNT_ENTRY_TYPE_BUSINESS,
+				AccountConstants.ACCOUNT_ENTRY_TYPE_PERSON
+			};
 		}
 
 		return null;
