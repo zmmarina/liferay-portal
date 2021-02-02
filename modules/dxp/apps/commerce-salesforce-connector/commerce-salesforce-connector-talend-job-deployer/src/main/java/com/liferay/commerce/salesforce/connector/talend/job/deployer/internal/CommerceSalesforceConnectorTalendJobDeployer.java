@@ -90,8 +90,7 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 				}
 			}
 			catch (Exception exception) {
-				_log.error("Failed to deploy job " + fileName);
-				_log.error(exception, exception);
+				_log.error("Unable to deploy job " + fileName, exception);
 			}
 		}
 	}
