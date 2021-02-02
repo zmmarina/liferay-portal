@@ -27,70 +27,56 @@ public class OASExtensionTest {
 		OASExtensions oasExtensions = new OASExtensions();
 
 		Assert.assertEquals(
+			"test_i18n",
+			oasExtensions.getI18nFieldName("parent_nestedParent_test_i18n"));
+		Assert.assertEquals(
 			"test_i18n", oasExtensions.getI18nFieldName("test_i18n"));
 
 		Assert.assertEquals(
-			"test_i18n",
-			oasExtensions.getI18nFieldName("parent_nestedParent_test_i18n"));
-
+			OASException.class, _getI18nFieldNameExceptionClass("notAllowed"));
 		Assert.assertEquals(
 			OASException.class,
 			_getI18nFieldNameExceptionClass("parent_test_i18n_notAllowed"));
-
-		Assert.assertEquals(
-			OASException.class, _getI18nFieldNameExceptionClass("notAllowed"));
 	}
 
 	@Test
 	public void testIsI18nFieldName() {
-		OASExtensions oasExtensions = new OASExtensions();
-
-		Assert.assertTrue(oasExtensions.isI18nFieldName("test_i18n"));
-
-		Assert.assertTrue(oasExtensions.isI18nFieldName("parent_test_i18n"));
-
-		Assert.assertTrue(
-			oasExtensions.isI18nFieldName("parent_parent2_test_i18n"));
-
-		Assert.assertFalse(oasExtensions.isI18nFieldName("test"));
-
+		Assert.assertEquals(
+			OASException.class, _isI18nFieldNameExceptionClass("_i18n"));
+		Assert.assertEquals(
+			OASException.class, _isI18nFieldNameExceptionClass("_i18n_test"));
+		Assert.assertEquals(
+			OASException.class, _isI18nFieldNameExceptionClass("_i18ntest"));
+		Assert.assertEquals(
+			OASException.class,
+			_isI18nFieldNameExceptionClass("test_i18n_test"));
 		Assert.assertEquals(
 			OASException.class,
 			_isI18nFieldNameExceptionClass("parent_test_i18n_notAllowed"));
 
-		Assert.assertEquals(
-			OASException.class, _isI18nFieldNameExceptionClass("_i18n"));
+		OASExtensions oasExtensions = new OASExtensions();
 
-		Assert.assertEquals(
-			OASException.class, _isI18nFieldNameExceptionClass("_i18n_test"));
-
-		Assert.assertEquals(
-			OASException.class, _isI18nFieldNameExceptionClass("_i18ntest"));
-
-		Assert.assertEquals(
-			OASException.class,
-			_isI18nFieldNameExceptionClass("test_i18n_test"));
+		Assert.assertFalse(oasExtensions.isI18nFieldName("test"));
+		Assert.assertTrue(
+			oasExtensions.isI18nFieldName("parent_parent2_test_i18n"));
+		Assert.assertTrue(oasExtensions.isI18nFieldName("parent_test_i18n"));
+		Assert.assertTrue(oasExtensions.isI18nFieldName("test_i18n"));
 	}
 
 	@Test
 	public void testIsI18nFieldNameNested() {
 		OASExtensions oasExtensions = new OASExtensions();
 
+		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("_i18nest"));
+		Assert.assertFalse(
+			oasExtensions.isI18nFieldNameNested("nestedParent_attribute"));
+		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("test"));
+		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("test_i18n"));
 		Assert.assertTrue(
 			oasExtensions.isI18nFieldNameNested(
 				"nestedParent_nestedParent2_test_i18n"));
-
 		Assert.assertTrue(
 			oasExtensions.isI18nFieldNameNested("nestedParent_test_i18n"));
-
-		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("test_i18n"));
-
-		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("test"));
-
-		Assert.assertFalse(oasExtensions.isI18nFieldNameNested("_i18nest"));
-
-		Assert.assertFalse(
-			oasExtensions.isI18nFieldNameNested("nestedParent_attribute"));
 	}
 
 	private Class<? extends Exception> _getI18nFieldNameExceptionClass(
