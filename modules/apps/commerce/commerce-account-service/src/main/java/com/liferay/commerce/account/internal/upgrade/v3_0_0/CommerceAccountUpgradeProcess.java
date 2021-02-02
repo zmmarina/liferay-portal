@@ -60,6 +60,9 @@ public class CommerceAccountUpgradeProcess extends UpgradeProcess {
 					AccountEntryLocalServiceUtil.createAccountEntry(
 						accountEntryId);
 
+				accountEntry.setExternalReferenceCode(
+					rs.getString("externalReferenceCode"));
+
 				long companyId = rs.getLong("companyId");
 
 				accountEntry.setCompanyId(companyId);
@@ -86,9 +89,6 @@ public class CommerceAccountUpgradeProcess extends UpgradeProcess {
 				accountEntry.setStatus(
 					CommerceAccountImpl.toAccountEntryStatus(
 						rs.getBoolean("active_")));
-
-				accountEntry.setExternalReferenceCode(
-					rs.getString("externalReferenceCode"));
 
 				AccountEntryLocalServiceUtil.addAccountEntry(accountEntry);
 
