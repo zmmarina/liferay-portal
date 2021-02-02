@@ -244,7 +244,8 @@ public class JsonObjectIndexedRecordConverter {
 			return _oasExtensions.isI18nFieldName(name);
 		}
 		catch (OASException oasException) {
-			throw new ConverterException("Unable to check name", oasException);
+			throw new ConverterException(
+				"Unable to check il8n filed name", oasException);
 		}
 	}
 
