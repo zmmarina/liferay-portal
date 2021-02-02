@@ -98,6 +98,13 @@ definition {
 		Click(locator1 = "FormViewBuilder#RULE_ADD_BUTTON");
 	}
 
+	macro assertHelpTextPresent {
+		AssertTextEquals(
+			key_fieldName = "${fieldName}",
+			locator1 = "FormViewBuilder#HELP_TEXT_AT_APP_DEPLOYED",
+			value1 = "${fieldValue}");
+	}
+
 	macro assertTextPresent {
 		AssertTextEquals(
 			key_fieldName = "${fieldName}",

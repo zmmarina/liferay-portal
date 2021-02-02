@@ -3238,6 +3238,69 @@ definition {
 		App.saveApp();
 	}
 
+	@description = "Automate LRQA-64721 upload field scenarios during its creation and validate help text in the App Deployed."
+	@priority = "5"
+	test UploadFieldEditProperties {
+		property portal.acceptance = "true";
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "My Form View with an upload field");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Upload");
+
+		FormViewBuilder.setFieldLabel(fieldLabel = "Photo");
+
+		FormViewBuilder.setFieldHelpText(fieldLabel = "Upload field help text");
+
+		FormViewBuilder.setFieldRequired();
+
+		FormViewBuilder.switchToAdvancedTab();
+
+		FormViewBuilder.setFieldRepeatable();
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.add();
+
+		TableViewBuilder.setName(tableViewName = "My Table View");
+
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Photo");
+
+		TableViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Apps");
+
+		AppBuilderAdmin.add();
+
+		AppBuilderAdmin.setName(title = "My First App");
+
+		App.selectFormView(formViewName = "My Form View");
+
+		App.selectTableView(tableViewName = "My Table View");
+
+		Button.clickNext();
+
+		App.toggleDeploy(deployOption = "Standalone");
+
+		App.clickDeploy();
+
+		AppBuilderAdmin.openStandAloneApp(itemName = "My First App");
+
+		SelectWindow.selectPopUp(locator1 = "null");
+
+		AppBuilderAdmin.addEntry();
+
+		FormViewBuilder.assertHelpTextPresent(
+			fieldName = "Photo",
+			fieldValue = "Upload field help text");
+	}
+
 	@description = "Usecase for LPS-107630 As n App Adm,I want to use an existing fieldset"
 	@priority = "5"
 	test UseExistingFieldSet {
