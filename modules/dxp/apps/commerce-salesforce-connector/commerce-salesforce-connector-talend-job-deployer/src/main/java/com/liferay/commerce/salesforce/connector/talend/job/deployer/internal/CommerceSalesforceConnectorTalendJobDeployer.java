@@ -60,39 +60,41 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 				long[] companyIds = _portal.getCompanyIds();
 
 				for (long companyId : companyIds) {
-					long userId = _userLocalService.getDefaultUserId(companyId);
-
-					DispatchTrigger dispatchTrigger =
-						_dispatchTriggerLocalService.fetchDispatchTrigger(
-							companyId, fileName);
-
-					if (dispatchTrigger == null) {
-						UnicodeProperties typeSettingsUnicodeProperties =
-							_getDefaultTypeSettingsUnicodeProperties(
-								jobFileURL.openStream());
-
-						dispatchTrigger =
-							_dispatchTriggerLocalService.addDispatchTrigger(
-								userId, "talend", typeSettingsUnicodeProperties,
-								fileName, false);
-					}
-
-					File tempFile = FileUtil.createTempFile(
-						jobFileURL.openStream());
-
-					String contentType = MimeTypesUtil.getContentType(
-						jobFileURL.getFile());
-
-					_dispatchFileRepository.addFileEntry(
-						userId, dispatchTrigger.getDispatchTriggerId(),
-						fileName, tempFile.length(), contentType,
-						jobFileURL.openStream());
+					_activate(companyId, fileName, jobFileURL);
 				}
 			}
 			catch (Exception exception) {
 				_log.error("Unable to deploy job " + fileName, exception);
 			}
 		}
+	}
+
+	private void _activate(long companyId, String fileName, URL jobFileURL)
+		throws Exception {
+
+		long userId = _userLocalService.getDefaultUserId(companyId);
+
+		DispatchTrigger dispatchTrigger =
+			_dispatchTriggerLocalService.fetchDispatchTrigger(
+				companyId, fileName);
+
+		if (dispatchTrigger == null) {
+			UnicodeProperties typeSettingsUnicodeProperties =
+				_getDefaultTypeSettingsUnicodeProperties(
+					jobFileURL.openStream());
+
+			dispatchTrigger = _dispatchTriggerLocalService.addDispatchTrigger(
+				userId, "talend", typeSettingsUnicodeProperties, fileName,
+				false);
+		}
+
+		File tempFile = FileUtil.createTempFile(jobFileURL.openStream());
+
+		String contentType = MimeTypesUtil.getContentType(jobFileURL.getFile());
+
+		_dispatchFileRepository.addFileEntry(
+			userId, dispatchTrigger.getDispatchTriggerId(), fileName,
+			tempFile.length(), contentType, jobFileURL.openStream());
 	}
 
 	private UnicodeProperties _getDefaultTypeSettingsUnicodeProperties(
