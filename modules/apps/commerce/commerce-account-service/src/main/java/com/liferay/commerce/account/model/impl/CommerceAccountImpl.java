@@ -46,11 +46,11 @@ public class CommerceAccountImpl extends CommerceAccountBaseImpl {
 
 		CommerceAccount commerceAccount = new CommerceAccountImpl();
 
-		Map<String, Object> modelAttributes = accountEntry.getModelAttributes();
-
 		Map<String, BiConsumer<CommerceAccount, Object>>
 			attributeSetterBiConsumers =
 				commerceAccount.getAttributeSetterBiConsumers();
+
+		Map<String, Object> modelAttributes = accountEntry.getModelAttributes();
 
 		for (Map.Entry<String, Object> entry : modelAttributes.entrySet()) {
 			String key = entry.getKey();
