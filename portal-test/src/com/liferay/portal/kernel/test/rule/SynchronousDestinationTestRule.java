@@ -380,8 +380,7 @@ public class SynchronousDestinationTestRule
 
 				while (true) {
 					try {
-						Object service = serviceTracker.waitForService(
-							_SLEEP_TIME);
+						Object service = serviceTracker.waitForService(2000);
 
 						if (service != null) {
 							serviceTracker.close();
@@ -403,8 +402,6 @@ public class SynchronousDestinationTestRule
 				}
 			}
 		}
-
-		private static final int _SLEEP_TIME = 2000;
 
 		private final List<String> _absentDestinationNames = new ArrayList<>();
 		private final List<Destination> _asyncServiceDestinations =
