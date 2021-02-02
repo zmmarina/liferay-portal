@@ -60,7 +60,7 @@ public class AccountEntryImpl extends AccountEntryBaseImpl {
 	}
 
 	@Override
-	public String[] getDomainsStringArray() {
+	public String[] getDomainsArray() {
 		return StringUtil.split(getDomains());
 	}
 

@@ -600,7 +600,7 @@ public class CommerceAccountLocalServiceImpl
 			accountEntry.getAccountEntryId(),
 			accountEntry.getParentAccountEntryId(), name,
 			accountEntry.getDescription(), !logo,
-			accountEntry.getDomainsStringArray(), email, logoBytes, taxId,
+			accountEntry.getDomainsArray(), email, logoBytes, taxId,
 			CommerceAccountImpl.toAccountEntryStatus(active), serviceContext);
 
 		accountEntry.setDefaultBillingAddressId(defaultBillingAddressId);
