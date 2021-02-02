@@ -59,7 +59,6 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 					RestrictionsFactoryUtil.ne(
 						"fileEntryTypeKey", "BASIC-DOCUMENT"));
 			});
-
 		actionableDynamicQuery.setPerformActionMethod(
 			(DLFileEntryType dlFileEntryType) -> {
 				try {
