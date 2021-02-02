@@ -83,10 +83,11 @@ public class SegmentsExperimentLocalServiceTest {
 	public void setUp() throws Exception {
 		UserTestUtil.setUser(TestPropsValues.getUser());
 
-		_group = GroupTestUtil.addGroup();
-
 		_classNameId = _classNameLocalService.getClassNameId(
 			Layout.class.getName());
+
+		_group = GroupTestUtil.addGroup();
+
 		_layout = LayoutTestUtil.addLayout(_group);
 
 		ServiceContextThreadLocal.pushServiceContext(new ServiceContext());
