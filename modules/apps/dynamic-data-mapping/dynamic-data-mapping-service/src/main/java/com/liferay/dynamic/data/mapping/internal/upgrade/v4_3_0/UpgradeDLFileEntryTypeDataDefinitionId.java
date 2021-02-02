@@ -24,6 +24,8 @@ import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONUtil;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.security.permission.ResourceActionsUtil;
 import com.liferay.portal.kernel.service.ResourceLocalServiceUtil;
 import com.liferay.portal.kernel.upgrade.UpgradeProcess;
@@ -98,7 +100,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 						dlFileEntryType);
 				}
 				catch (Exception exception) {
-					exception.printStackTrace();
+					_log.error(exception, exception);
 				}
 			});
 
@@ -284,6 +286,9 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 	).put(
 		"paginationMode", "single-page"
 	).toString();
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		UpgradeDLFileEntryTypeDataDefinitionId.class);
 
 	private final DLFileEntryTypeLocalService _dlFileEntryTypeLocalService;
 
