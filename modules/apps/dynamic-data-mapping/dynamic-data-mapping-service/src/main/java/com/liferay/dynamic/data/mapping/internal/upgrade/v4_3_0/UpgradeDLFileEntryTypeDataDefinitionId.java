@@ -155,7 +155,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 
 			ps.setString(12, String.valueOf(ddmStructureId));
 			ps.setString(13, name);
-			ps.setString(14, _DDM_STRUCTURE_DEFINITION);
+			ps.setString(14, _DEFINITION_DDM_STRUCTURE);
 
 			ps.executeUpdate();
 
@@ -197,7 +197,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 			ps.setString(10, String.valueOf(ddmStructureId));
 			ps.setLong(11, ddmStructureVersionId);
 			ps.setString(12, name);
-			ps.setString(13, _DDM_STRUCTURE_LAYOUT_DEFINITION);
+			ps.setString(13, _DEFINITION_DDM_STRUCTURE_LAYOUT);
 
 			ps.executeUpdate();
 		}
@@ -234,7 +234,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 
 			ps.setLong(7, ddmStructureId);
 			ps.setString(8, name);
-			ps.setString(9, _DDM_STRUCTURE_DEFINITION);
+			ps.setString(9, _DEFINITION_DDM_STRUCTURE);
 
 			ps.setLong(10, userId);
 			ps.setString(11, userName);
@@ -246,7 +246,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 		}
 	}
 
-	private static final String _DDM_STRUCTURE_DEFINITION = JSONUtil.put(
+	private static final String _DEFINITION_DDM_STRUCTURE = JSONUtil.put(
 		"availableLanguageIds", JSONUtil.putAll("en_US")
 	).put(
 		"defaultLanguageId", "en_US"
@@ -265,7 +265,7 @@ public class UpgradeDLFileEntryTypeDataDefinitionId extends UpgradeProcess {
 		)
 	).toString();
 
-	private static final String _DDM_STRUCTURE_LAYOUT_DEFINITION = JSONUtil.put(
+	private static final String _DEFINITION_DDM_STRUCTURE_LAYOUT = JSONUtil.put(
 		"defaultLanguageId", "en_US"
 	).put(
 		"definitionSchemaVersion", "2.0"
