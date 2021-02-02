@@ -106,7 +106,7 @@ public class CommerceAccountUpgradeProcess extends UpgradeProcess {
 						CommerceAccount.class.getName(), accountEntryId);
 			}
 
-			runSQL("truncate table CommerceAccount");
+			runSQL("drop table CommerceAccount");
 		}
 
 		long accountEntryClassNameId = ClassNameLocalServiceUtil.getClassNameId(
