@@ -239,7 +239,8 @@ public class CommerceAccountLocalServiceImpl
 
 		// Resources
 
-		//		@todo check permissions
+		//	TODO Check permissions
+
 		resourceLocalService.deleteResource(
 			commerceAccount, ResourceConstants.SCOPE_INDIVIDUAL);
 
@@ -754,7 +755,7 @@ public class CommerceAccountLocalServiceImpl
 	private AccountEntry _fetchUserAccountEntry(
 		long userId, long accountEntryId) {
 
-		// @todo remove when other services are bridged
+		// TODO Remove when other services are bridged
 
 		JoinStep joinStep = DSLQueryFactoryUtil.selectDistinct(
 			AccountEntryTable.INSTANCE
@@ -766,7 +767,7 @@ public class CommerceAccountLocalServiceImpl
 				UserTable.INSTANCE.userId)
 		);
 
-		// @todo remove when CommerceAccountUserRelTable is bridged
+		// TODO Remove when CommerceAccountUserRelTable is bridged
 
 		joinStep = joinStep.leftJoinOn(
 			CommerceAccountUserRelTable.INSTANCE,
@@ -780,7 +781,7 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryTable.INSTANCE.userId.eq(UserTable.INSTANCE.userId)
 			);
 
-		// @todo remove when CommerceAccountUserRelTable is bridged
+		// TODO Remove when CommerceAccountUserRelTable is bridged
 
 		accountEntryTablePredicate = accountEntryTablePredicate.or(
 			AccountEntryTable.INSTANCE.accountEntryId.eq(
@@ -794,7 +795,7 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryOrganizationRelTable.INSTANCE.organizationId.in(
 					organizationIds));
 
-			// @todo remove when CommerceAccountOrganizationRelTable is bridged
+			// TODO Remove when CommerceAccountOrganizationRelTable is bridged
 
 			joinStep = joinStep.leftJoinOn(
 				CommerceAccountOrganizationRelTable.INSTANCE,
@@ -805,7 +806,7 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryTable.INSTANCE.accountEntryId.eq(
 					AccountEntryOrganizationRelTable.INSTANCE.accountEntryId));
 
-			// @todo remove when CommerceAccountOrganizationRelTable is bridged
+			// TODO Remove when CommerceAccountOrganizationRelTable is bridged
 
 			accountEntryTablePredicate = accountEntryTablePredicate.or(
 				AccountEntryTable.INSTANCE.accountEntryId.eq(
@@ -852,7 +853,7 @@ public class CommerceAccountLocalServiceImpl
 				UserTable.INSTANCE.userId)
 		);
 
-		// @todo remove after bridging CommerceAccountUserRel service
+		// TODO Remove after bridging CommerceAccountUserRel service
 
 		joinStep = joinStep.leftJoinOn(
 			CommerceAccountUserRelTable.INSTANCE,
@@ -867,8 +868,8 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryOrganizationRelTable.INSTANCE.organizationId.in(
 					organizationIds));
 
-			// @todo remove after bridging CommerceAccountOrganizationRel
-			//  service
+			// TODO Remove after bridging CommerceAccountOrganizationRel
+			// service
 
 			joinStep = joinStep.leftJoinOn(
 				CommerceAccountOrganizationRelTable.INSTANCE,
@@ -883,7 +884,7 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryTable.INSTANCE.userId.eq(userId)
 			);
 
-		// @todo remove after bridging CommerceAccountUserRel service
+		// TODO Remove after bridging CommerceAccountUserRel service
 
 		accountEntryPredicate = accountEntryPredicate.or(
 			AccountEntryTable.INSTANCE.accountEntryId.eq(
@@ -894,8 +895,8 @@ public class CommerceAccountLocalServiceImpl
 				AccountEntryTable.INSTANCE.accountEntryId.eq(
 					AccountEntryOrganizationRelTable.INSTANCE.accountEntryId));
 
-			// @todo remove after bridging CommerceAccountOrganizationRel
-			//  serviceCommerceAccountPersistenceTest
+			// TODO Remove after bridging CommerceAccountOrganizationRel
+			// serviceCommerceAccountPersistenceTest
 
 			accountEntryPredicate = accountEntryPredicate.or(
 				AccountEntryTable.INSTANCE.accountEntryId.eq(
