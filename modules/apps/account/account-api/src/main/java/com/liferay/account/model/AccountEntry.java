@@ -64,6 +64,6 @@ public interface AccountEntry extends AccountEntryModel, PersistedModel {
 
 	public com.liferay.portal.kernel.model.Address getDefaultShippingAddress();
 
-	public String[] getDomainsStringArray();
+	public String[] getDomainsArray();
 
 }

@@ -285,8 +285,8 @@ public class AccountEntryWrapper
 	}
 
 	@Override
-	public String[] getDomainsStringArray() {
-		return model.getDomainsStringArray();
+	public String[] getDomainsArray() {
+		return model.getDomainsArray();
 	}
 
 	/**
