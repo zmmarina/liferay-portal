@@ -249,7 +249,7 @@ public class PullRequest {
 		}
 		catch (IOException ioException) {
 			throw new RuntimeException(
-				"Unable to get pull request filenames", ioException);
+				"Unable to get pull request file names", ioException);
 		}
 	}
 
@@ -469,9 +469,9 @@ public class PullRequest {
 	}
 
 	public boolean isValidCIMergeFile() {
-		List<String> filenames = getFileNames();
+		List<String> fileNames = getFileNames();
 
-		if ((filenames.size() == 1) && isMergeSubrepoRequest()) {
+		if ((fileNames.size() == 1) && isMergeSubrepoRequest()) {
 			return true;
 		}
 
