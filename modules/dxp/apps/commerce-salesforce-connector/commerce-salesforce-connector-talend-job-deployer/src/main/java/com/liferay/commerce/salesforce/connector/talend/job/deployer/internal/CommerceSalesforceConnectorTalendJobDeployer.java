@@ -73,7 +73,7 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 
 						dispatchTrigger =
 							_dispatchTriggerLocalService.addDispatchTrigger(
-								userId, _TALEND, typeSettingsUnicodeProperties,
+								userId, "talend", typeSettingsUnicodeProperties,
 								fileName, false);
 					}
 
@@ -102,13 +102,12 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 		UnicodeProperties unicodeProperties = new UnicodeProperties(true);
 
 		File tempFile = FileUtil.createTempFile(inputStream);
-
 		File tempFolder = FileUtil.createTempFolder();
 
 		FileUtil.unzip(tempFile, tempFolder);
 
 		String[] defaultProperties = FileUtil.find(
-			tempFolder.getAbsolutePath(), _DEFAULT_PROPERTIES, null);
+			tempFolder.getAbsolutePath(), "**\\Default.properties", null);
 
 		if (defaultProperties.length > 0) {
 			unicodeProperties.fastLoad(FileUtil.read(defaultProperties[0]));
@@ -116,10 +115,6 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 
 		return unicodeProperties;
 	}
-
-	private static final String _DEFAULT_PROPERTIES = "**\\Default.properties";
-
-	private static final String _TALEND = "talend";
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		CommerceSalesforceConnectorTalendJobDeployer.class);
