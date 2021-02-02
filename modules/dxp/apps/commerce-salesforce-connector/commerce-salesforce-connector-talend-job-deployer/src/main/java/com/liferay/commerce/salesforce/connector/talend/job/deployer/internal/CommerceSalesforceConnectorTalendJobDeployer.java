@@ -60,7 +60,7 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 				long[] companyIds = _portal.getCompanyIds();
 
 				for (long companyId : companyIds) {
-					_activate(companyId, fileName, jobFileURL);
+					_deployJob(companyId, fileName, jobFileURL);
 				}
 			}
 			catch (Exception exception) {
@@ -69,7 +69,7 @@ public class CommerceSalesforceConnectorTalendJobDeployer {
 		}
 	}
 
-	private void _activate(long companyId, String fileName, URL jobFileURL)
+	private void _deployJob(long companyId, String fileName, URL jobFileURL)
 		throws Exception {
 
 		long userId = _userLocalService.getDefaultUserId(companyId);
