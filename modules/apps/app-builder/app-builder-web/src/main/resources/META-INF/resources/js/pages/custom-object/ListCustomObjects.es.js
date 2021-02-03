@@ -231,9 +231,7 @@ export default ({history}) => {
 							onClick={onClickAddButton}
 							ref={addButtonRef}
 							symbol="plus"
-							title={Liferay.Language.get(
-								'new-custom-object'
-							)}
+							title={Liferay.Language.get('new-custom-object')}
 						/>
 					),
 					editMode,
