@@ -162,9 +162,9 @@ public class LocalizableTextDDMFormFieldTemplateContextContributor
 
 		Set<Locale> availableLocales = language.getAvailableLocales();
 
-		Stream<Locale> availableLocaleStream = availableLocales.stream();
+		Stream<Locale> stream = availableLocales.stream();
 
-		availableLocaleStream.map(
+		stream.map(
 			this::getPlaceholdersSubmitLabelJSONObject
 		).forEach(
 			placeholdersSubmitLabelJSONArray::put
