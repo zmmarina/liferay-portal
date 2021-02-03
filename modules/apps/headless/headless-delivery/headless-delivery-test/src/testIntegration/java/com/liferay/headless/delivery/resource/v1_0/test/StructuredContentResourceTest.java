@@ -157,6 +157,87 @@ public class StructuredContentResourceTest
 
 		super.testGetStructuredContent();
 
+		// Complete structured content with all types of content fields
+
+		StructuredContent completeStructuredContent =
+			structuredContentResource.postSiteStructuredContent(
+				testGroup.getGroupId(), _randomCompleteStructuredContent());
+
+		structuredContent = structuredContentResource.getStructuredContent(
+			completeStructuredContent.getId());
+
+		assertEquals(completeStructuredContent, structuredContent);
+		assertValid(structuredContent);
+
+		// Different locale
+
+		StructuredContent structuredContent =
+			structuredContentResource.postSiteStructuredContent(
+				testGroup.getGroupId(), randomStructuredContent());
+
+		String title = structuredContent.getTitle();
+
+		StructuredContentResource frenchStructuredContentResource =
+			builder.authentication(
+				"test@liferay.com", "test"
+			).locale(
+				LocaleUtil.FRANCE
+			).build();
+
+		String frenchTitle = RandomTestUtil.randomString();
+
+		structuredContent.setTitle(frenchTitle);
+
+		frenchStructuredContentResource.putStructuredContent(
+			structuredContent.getId(), structuredContent);
+
+		structuredContent =
+			frenchStructuredContentResource.getStructuredContent(
+				structuredContent.getId());
+
+		Assert.assertEquals(frenchTitle, structuredContent.getTitle());
+
+		structuredContent = structuredContentResource.getStructuredContent(
+			structuredContent.getId());
+
+		Assert.assertEquals(title, structuredContent.getTitle());
+
+		// Extension
+
+		Bundle bundle = FrameworkUtil.getBundle(
+			StructuredContentResourceTest.class);
+
+		BundleContext bundleContext = bundle.getBundleContext();
+
+		Dictionary<String, String> properties = new HashMapDictionary<>();
+
+		properties.put(
+			"osgi.jaxrs.application.select",
+			"(osgi.jaxrs.name=Liferay.Headless.Delivery)");
+		properties.put("osgi.jaxrs.extension", "true");
+
+		ServiceRegistration<?> serviceRegistration =
+			bundleContext.registerService(
+				ContextResolver.class, new ExtensionContextResolver(),
+				properties);
+
+		structuredContent = structuredContentResource.postSiteStructuredContent(
+			testGroup.getGroupId(), randomStructuredContent());
+
+		HttpInvoker.HttpResponse httpResponse =
+			structuredContentResource.getStructuredContentHttpResponse(
+				structuredContent.getId());
+
+		String content = httpResponse.getContent();
+
+		Assert.assertTrue(content.contains("version"));
+
+		structuredContent = StructuredContentSerDes.toDTO(content);
+
+		Assert.assertNull(structuredContent.getTitle());
+
+		serviceRegistration.unregister();
+
 		// Role admin user
 
 		StructuredContent postStructuredContent =
@@ -289,87 +370,6 @@ public class StructuredContentResourceTest
 			_userLocalService.deleteUser(regularUser);
 			_userLocalService.deleteUser(ownerUser);
 		}
-
-		// Complete structured content with all types of content fields
-
-		StructuredContent completeStructuredContent =
-			structuredContentResource.postSiteStructuredContent(
-				testGroup.getGroupId(), _randomCompleteStructuredContent());
-
-		structuredContent = structuredContentResource.getStructuredContent(
-			completeStructuredContent.getId());
-
-		assertEquals(completeStructuredContent, structuredContent);
-		assertValid(structuredContent);
-
-		// Different locale
-
-		StructuredContent structuredContent =
-			structuredContentResource.postSiteStructuredContent(
-				testGroup.getGroupId(), randomStructuredContent());
-
-		String title = structuredContent.getTitle();
-
-		StructuredContentResource frenchStructuredContentResource =
-			builder.authentication(
-				"test@liferay.com", "test"
-			).locale(
-				LocaleUtil.FRANCE
-			).build();
-
-		String frenchTitle = RandomTestUtil.randomString();
-
-		structuredContent.setTitle(frenchTitle);
-
-		frenchStructuredContentResource.putStructuredContent(
-			structuredContent.getId(), structuredContent);
-
-		structuredContent =
-			frenchStructuredContentResource.getStructuredContent(
-				structuredContent.getId());
-
-		Assert.assertEquals(frenchTitle, structuredContent.getTitle());
-
-		structuredContent = structuredContentResource.getStructuredContent(
-			structuredContent.getId());
-
-		Assert.assertEquals(title, structuredContent.getTitle());
-
-		// Extension
-
-		Bundle bundle = FrameworkUtil.getBundle(
-			StructuredContentResourceTest.class);
-
-		BundleContext bundleContext = bundle.getBundleContext();
-
-		Dictionary<String, String> properties = new HashMapDictionary<>();
-
-		properties.put(
-			"osgi.jaxrs.application.select",
-			"(osgi.jaxrs.name=Liferay.Headless.Delivery)");
-		properties.put("osgi.jaxrs.extension", "true");
-
-		ServiceRegistration<?> serviceRegistration =
-			bundleContext.registerService(
-				ContextResolver.class, new ExtensionContextResolver(),
-				properties);
-
-		structuredContent = structuredContentResource.postSiteStructuredContent(
-			testGroup.getGroupId(), randomStructuredContent());
-
-		HttpInvoker.HttpResponse httpResponse =
-			structuredContentResource.getStructuredContentHttpResponse(
-				structuredContent.getId());
-
-		String content = httpResponse.getContent();
-
-		Assert.assertTrue(content.contains("version"));
-
-		structuredContent = StructuredContentSerDes.toDTO(content);
-
-		Assert.assertNull(structuredContent.getTitle());
-
-		serviceRegistration.unregister();
 	}
 
 	@Override
