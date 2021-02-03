@@ -9,6 +9,11 @@
 </thead>
 <tbody>
 <tr>
+	<td>FORM_FIELD_NESTED</td>
+	<td>//label[normalize-space(text())='${key_fieldsGroupLabel}']/following::div//label[normalize-space(text())='${key_fieldFieldLabel}'] | //label[normalize-space(text())='${key_fieldsGroupLabel}']/following::div//legend[normalize-space(text())='${key_fieldFieldLabel}']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>FIELDS_GROUP_LOCATOR</td>
 	<td>//div[contains(@class,'ddm-field-types')]//label[contains(text(),'${key_FieldGroupLabel}')]</td>
 	<td></td>
