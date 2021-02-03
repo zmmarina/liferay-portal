@@ -163,19 +163,22 @@ public class StructuredContentResourceTest
 			structuredContentResource.postSiteStructuredContent(
 				testGroup.getGroupId(), _randomCompleteStructuredContent());
 
-		structuredContent = structuredContentResource.getStructuredContent(
-			completeStructuredContent.getId());
+		StructuredContent structuredContent =
+			structuredContentResource.getStructuredContent(
+				completeStructuredContent.getId());
 
 		assertEquals(completeStructuredContent, structuredContent);
 		assertValid(structuredContent);
 
 		// Different locale
 
-		StructuredContent structuredContent =
-			structuredContentResource.postSiteStructuredContent(
-				testGroup.getGroupId(), randomStructuredContent());
+		structuredContent = structuredContentResource.postSiteStructuredContent(
+			testGroup.getGroupId(), randomStructuredContent());
 
 		String title = structuredContent.getTitle();
+
+		StructuredContentResource.Builder builder =
+			StructuredContentResource.builder();
 
 		StructuredContentResource frenchStructuredContentResource =
 			builder.authentication(
@@ -283,9 +286,6 @@ public class StructuredContentResourceTest
 		UserGroupRoleLocalServiceUtil.addUserGroupRoles(
 			new long[] {ownerUser.getUserId()}, testGroup.getGroupId(),
 			role.getRoleId());
-
-		StructuredContentResource.Builder builder =
-			StructuredContentResource.builder();
 
 		StructuredContentResource ownerUserStructuredContentResource =
 			builder.authentication(
