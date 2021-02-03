@@ -106,28 +106,30 @@ public class ProductResourceImpl
 			Pagination pagination, Sort[] sorts)
 		throws Exception {
 
-		long companyId = contextCompany.getCompanyId();
 		SearchContext searchContext = new SearchContext();
 
 		CommerceChannel commerceChannel =
 			_commerceChannelLocalService.getCommerceChannel(channelId);
 
-		long[] commerceAccountGroupIds =
-			_commerceAccountHelper.getCommerceAccountGroupIds(
-				_getAccountId(accountId, commerceChannel));
-
 		Map<String, Serializable> attributes =
 			HashMapBuilder.<String, Serializable>put(
 				Field.STATUS, WorkflowConstants.STATUS_APPROVED
 			).put(
-				"commerceAccountGroupIds", commerceAccountGroupIds
+				"commerceAccountGroupIds",
+				_commerceAccountHelper.getCommerceAccountGroupIds(
+					_getAccountId(accountId, commerceChannel))
 			).put(
 				"commerceChannelGroupId", commerceChannel.getGroupId()
 			).build();
 
 		searchContext.setAttributes(attributes);
 
-		searchContext.setCompanyId(companyId);
+		searchContext.setBooleanClauses(
+			new BooleanClause[] {
+				_getBooleanClause(
+					booleanQuery -> booleanQuery.getPreBooleanFilter(), filter)
+			});
+		searchContext.setCompanyId(contextCompany.getCompanyId());
 
 		CPQuery cpQuery = new CPQuery();
 
@@ -136,20 +138,15 @@ public class ProductResourceImpl
 		cpQuery.setOrderByType1("ASC");
 		cpQuery.setOrderByType2("DESC");
 
-		BooleanClause<Query> booleanClause = _getBooleanClause(
-			booleanQuery -> booleanQuery.getPreBooleanFilter(), filter);
-
-		searchContext.setBooleanClauses(new BooleanClause[] {booleanClause});
-
-		CPDataSourceResult cpDataSourceResult = _cpDefinitionHelper.search(
-			commerceChannel.getGroupId(), searchContext, cpQuery,
-			pagination.getStartPosition(), pagination.getEndPosition());
-
-		long cpDataSourceCount = _cpDefinitionHelper.searchCount(
-			commerceChannel.getGroupId(), searchContext, cpQuery);
-
 		return Page.of(
-			_toProducts(cpDataSourceResult), pagination, cpDataSourceCount);
+			_toProducts(
+				_cpDefinitionHelper.search(
+					commerceChannel.getGroupId(), searchContext, cpQuery,
+					pagination.getStartPosition(),
+					pagination.getEndPosition())),
+			pagination,
+			_cpDefinitionHelper.searchCount(
+				commerceChannel.getGroupId(), searchContext, cpQuery));
 	}
 
 	@Override
