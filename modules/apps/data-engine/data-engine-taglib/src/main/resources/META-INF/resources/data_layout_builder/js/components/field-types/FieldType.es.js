@@ -12,18 +12,17 @@
  * details.
  */
 
+import {ClayButtonWithIcon} from '@clayui/button';
 import ClayIcon from '@clayui/icon';
 import ClayLayout from '@clayui/layout';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 import ClaySticker from '@clayui/sticker';
-import {ClayTooltipProvider} from '@clayui/tooltip';
 import classnames from 'classnames';
 import React, {useEffect, useState} from 'react';
 import {useDrag} from 'react-dnd';
 import {getEmptyImage} from 'react-dnd-html5-backend';
 
 import {DRAG_FIELD_TYPE} from '../../drag-and-drop/dragTypes.es';
-import Button from '../button/Button.es';
 import DropDown from '../drop-down/DropDown.es';
 import FieldTypeDragPreview from './FieldTypeDragPreview.es';
 
@@ -153,29 +152,27 @@ export default (props) => {
 					{loading ? (
 						<ClayLoadingIndicator />
 					) : (
-						<ClayTooltipProvider>
-							<Button
-								borderless
-								data-tooltip-align="right"
-								data-tooltip-delay="200"
-								displayType="secondary"
-								onClick={(event) => {
-									event.stopPropagation();
+						<ClayButtonWithIcon
+							borderless
+							data-tooltip-align="right"
+							data-tooltip-delay="200"
+							displayType="secondary"
+							onClick={(event) => {
+								event.stopPropagation();
 
-									setLoading(true);
+								setLoading(true);
 
-									onDelete(name)
-										.then(() => setLoading(false))
-										.catch((error) => {
-											setLoading(false);
+								onDelete(name)
+									.then(() => setLoading(false))
+									.catch((error) => {
+										setLoading(false);
 
-											throw error;
-										});
-								}}
-								symbol="times-circle"
-								title={deleteLabel}
-							/>
-						</ClayTooltipProvider>
+										throw error;
+									});
+							}}
+							symbol="times-circle"
+							title={deleteLabel}
+						/>
 					)}
 				</div>
 			)}
