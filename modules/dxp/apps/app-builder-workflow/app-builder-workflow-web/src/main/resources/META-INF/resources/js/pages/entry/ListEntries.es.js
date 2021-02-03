@@ -365,9 +365,9 @@ export default function ListEntries({history}) {
 						showAddButton && (
 							<ClayButtonWithIcon
 								className="nav-btn nav-btn-monospaced"
-								data-title={Liferay.Language.get('new-entry')}
 								onClick={onClickAddButton}
 								symbol="plus"
+								title={Liferay.Language.get('new-entry')}
 							/>
 						)
 					}

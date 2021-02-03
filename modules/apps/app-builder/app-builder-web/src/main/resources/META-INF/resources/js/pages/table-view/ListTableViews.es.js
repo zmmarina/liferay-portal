@@ -69,8 +69,8 @@ export default ({
 				<Link to={`${url}/add`}>
 					<ClayButtonWithIcon
 						className="nav-btn nav-btn-monospaced"
-						data-title={Liferay.Language.get('new-table-view')}
 						symbol="plus"
+						title={Liferay.Language.get('new-table-view')}
 					/>
 				</Link>
 			)}

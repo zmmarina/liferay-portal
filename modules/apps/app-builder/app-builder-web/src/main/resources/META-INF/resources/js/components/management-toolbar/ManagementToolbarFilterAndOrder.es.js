@@ -220,13 +220,13 @@ export default ({columns = [], disabled, filters = []}) => {
 									'order-arrow-up-active': asc,
 								}
 							)}
-							data-title={Liferay.Language.get(
-								'reverse-sort-direction'
-							)}
 							disabled={disabled}
 							displayType="unstyled"
 							onClick={() => onSortButtonClick(!asc, column)}
 							symbol="order-arrow"
+							title={Liferay.Language.get(
+								'reverse-sort-direction'
+							)}
 						/>
 					</ClayManagementToolbar.Item>
 				</ClayManagementToolbar.ItemList>

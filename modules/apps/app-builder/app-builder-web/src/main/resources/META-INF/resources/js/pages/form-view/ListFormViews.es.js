@@ -86,9 +86,9 @@ export default ({
 			addButton={() => (
 				<ClayButtonWithIcon
 					className="nav-btn nav-btn-monospaced"
-					data-title={Liferay.Language.get('new-form-view')}
 					onClick={() => Liferay.Util.navigate(addURL)}
 					symbol="plus"
+					title={Liferay.Language.get('new-form-view')}
 				/>
 			)}
 			columns={COLUMNS}

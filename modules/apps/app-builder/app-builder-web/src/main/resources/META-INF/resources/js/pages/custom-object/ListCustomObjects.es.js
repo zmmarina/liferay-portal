@@ -228,12 +228,12 @@ export default ({history}) => {
 					addButton: () => (
 						<ClayButtonWithIcon
 							className="nav-btn nav-btn-monospaced"
-							data-title={Liferay.Language.get(
-								'new-custom-object'
-							)}
 							onClick={onClickAddButton}
 							ref={addButtonRef}
 							symbol="plus"
+							title={Liferay.Language.get(
+								'new-custom-object'
+							)}
 						/>
 					),
 					editMode,

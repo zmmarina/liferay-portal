@@ -93,8 +93,8 @@ export default ({
 		<Link to={newAppLink}>
 			<ClayButtonWithIcon
 				className="nav-btn nav-btn-monospaced"
-				data-title={Liferay.Language.get('new-app')}
 				symbol="plus"
+				title={Liferay.Language.get('new-app')}
 			/>
 		</Link>
 	);

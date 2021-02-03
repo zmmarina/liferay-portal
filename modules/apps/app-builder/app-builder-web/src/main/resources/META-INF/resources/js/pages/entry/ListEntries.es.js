@@ -86,9 +86,9 @@ export default function ListEntries({history}) {
 					permissions.add && (
 						<ClayButtonWithIcon
 							className="nav-btn nav-btn-monospaced"
-							data-title={Liferay.Language.get('new-entry')}
 							onClick={onClickEditPage}
 							symbol="plus"
+							title={Liferay.Language.get('new-entry')}
 						/>
 					)
 				}

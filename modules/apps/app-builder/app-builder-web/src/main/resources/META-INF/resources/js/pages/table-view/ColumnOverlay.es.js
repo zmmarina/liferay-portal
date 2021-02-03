@@ -84,10 +84,10 @@ const Overlay = ({
 
 				<ClayButtonWithIcon
 					borderless
-					data-title={Liferay.Language.get('remove')}
 					displayType="secondary"
 					onClick={() => onRemoveFieldName(name)}
 					symbol="trash"
+					title={Liferay.Language.get('remove')}
 				/>
 			</header>
 		</div>
