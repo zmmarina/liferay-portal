@@ -45,7 +45,6 @@ public class TalendProcessCallable
 	@Override
 	public TalendProcessOutput call() throws ProcessException {
 		PrintStream errPrintStream = System.err;
-		PrintStream outPrintStream = System.out;
 
 		UnsyncByteArrayOutputStream errUnsyncByteArrayOutputStream =
 			new UnsyncByteArrayOutputStream();
@@ -56,12 +55,13 @@ public class TalendProcessCallable
 		UnsyncByteArrayOutputStream outUnsyncByteArrayOutputStream =
 			new UnsyncByteArrayOutputStream();
 
+		PrintStream outPrintStream = System.out;
+
 		System.setOut(
 			new TeePrintStream(outUnsyncByteArrayOutputStream, outPrintStream));
 
-		RuntimeException runtimeException = new RuntimeException();
-
 		AtomicInteger exitStatusAtomicInteger = new AtomicInteger();
+		RuntimeException runtimeException = new RuntimeException();
 
 		System.setSecurityManager(
 			new SecurityManager() {
@@ -111,7 +111,7 @@ public class TalendProcessCallable
 			System.setOut(outPrintStream);
 		}
 
-		throw new ProcessException("Talend process did not trigger jvm exit");
+		throw new ProcessException("Talend process did not trigger JVM exit");
 	}
 
 	private static final long serialVersionUID = 1L;
