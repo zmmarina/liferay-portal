@@ -623,182 +623,180 @@ public class StructuredContentResourceTest
 		StructuredContent structuredContent = super.randomStructuredContent();
 
 		structuredContent.setContentFields(
-			new ContentField[] {
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = RandomTestUtil.randomString(10);
-							}
-						};
-						name = "Text";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = _COMPLETE_STRUCTURED_CONTENT_OPTIONS
-									[RandomTestUtil.randomInt(0, 2)];
-							}
-						};
-						name = "SelectFromList";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = _COMPLETE_STRUCTURED_CONTENT_OPTIONS
-									[RandomTestUtil.randomInt(0, 2)];
-							}
-						};
-						name = "SingleSelection";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data =
-									"[" +
-										_COMPLETE_STRUCTURED_CONTENT_OPTIONS
-											[RandomTestUtil.randomInt(0, 2)] +
-												"]";
-							}
-						};
-						name = "MultipleSelection";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = _randomGrid();
-							}
-						};
-						name = "Grid";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = _randomDate();
-							}
-						};
-						name = "Date";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = String.valueOf(
-									RandomTestUtil.randomInt());
-							}
-						};
-						name = "Numeric";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								image = new ContentDocument() {
-									{
-										id = _dlFileEntry.getPrimaryKey();
-									}
-								};
-							}
-						};
-						name = "Image";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = RandomTestUtil.randomString(500);
-							}
-						};
-						name = "RichText";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								document = new ContentDocument() {
-									{
-										id = _dlFileEntry.getPrimaryKey();
-									}
-								};
-							}
-						};
-						name = "Upload";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								data = _randomColor();
-							}
-						};
-						name = "Color";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								structuredContentLink =
-									new StructuredContentLink() {
-										{
-											id =
-												journalArticle.
-													getResourcePrimKey();
-										}
-									};
-							}
-						};
-						name = "WebContent";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								geo = new Geo() {
-									{
-										latitude =
-											RandomTestUtil.randomDouble();
-										longitude =
-											RandomTestUtil.randomDouble();
-									}
-								};
-							}
-						};
-						name = "Geolocation";
-					}
-				},
-				new ContentField() {
-					{
-						contentFieldValue = new ContentFieldValue() {
-							{
-								link = _layout.getFriendlyURL();
-							}
-						};
-						name = "LinkToPage";
-					}
-				}
-			});
-
+			_randomContentFields(journalArticle));
 		structuredContent.setContentStructureId(
 			_ddmComplexStructure.getStructureId());
 
 		return structuredContent;
+	}
+
+	private ContentField[] _randomContentFields(JournalArticle journalArticle) {
+		return new ContentField[] {
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = RandomTestUtil.randomString(10);
+						}
+					};
+					name = "Text";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = _COMPLETE_STRUCTURED_CONTENT_OPTIONS
+								[RandomTestUtil.randomInt(0, 2)];
+						}
+					};
+					name = "SelectFromList";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = _COMPLETE_STRUCTURED_CONTENT_OPTIONS
+								[RandomTestUtil.randomInt(0, 2)];
+						}
+					};
+					name = "SingleSelection";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data =
+								"[" +
+									_COMPLETE_STRUCTURED_CONTENT_OPTIONS
+										[RandomTestUtil.randomInt(0, 2)] + "]";
+						}
+					};
+					name = "MultipleSelection";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = _randomGrid();
+						}
+					};
+					name = "Grid";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = _randomDate();
+						}
+					};
+					name = "Date";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = String.valueOf(RandomTestUtil.randomInt());
+						}
+					};
+					name = "Numeric";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							image = new ContentDocument() {
+								{
+									id = _dlFileEntry.getPrimaryKey();
+								}
+							};
+						}
+					};
+					name = "Image";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = RandomTestUtil.randomString(500);
+						}
+					};
+					name = "RichText";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							document = new ContentDocument() {
+								{
+									id = _dlFileEntry.getPrimaryKey();
+								}
+							};
+						}
+					};
+					name = "Upload";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							data = _randomColor();
+						}
+					};
+					name = "Color";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							structuredContentLink =
+								new StructuredContentLink() {
+									{
+										id =
+											journalArticle.getResourcePrimKey();
+									}
+								};
+						}
+					};
+					name = "WebContent";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							geo = new Geo() {
+								{
+									latitude = RandomTestUtil.randomDouble();
+									longitude = RandomTestUtil.randomDouble();
+								}
+							};
+						}
+					};
+					name = "Geolocation";
+				}
+			},
+			new ContentField() {
+				{
+					contentFieldValue = new ContentFieldValue() {
+						{
+							link = _layout.getFriendlyURL();
+						}
+					};
+					name = "LinkToPage";
+				}
+			}
+		};
 	}
 
 	private String _randomDate() {
