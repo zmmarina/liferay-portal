@@ -157,7 +157,7 @@ public class StructuredContentResourceTest
 
 		super.testGetStructuredContent();
 
-		// Admin user
+		// Role admin user
 
 		StructuredContent postStructuredContent =
 			testGetStructuredContent_addStructuredContent();
@@ -177,7 +177,7 @@ public class StructuredContentResourceTest
 		Assert.assertTrue(actions.containsKey("unsubscribe"));
 		Assert.assertTrue(actions.containsKey("update"));
 
-		// Owner
+		// Role owner
 
 		Role role = RoleTestUtil.addRole(RoleConstants.TYPE_SITE);
 
@@ -236,7 +236,7 @@ public class StructuredContentResourceTest
 			_roleLocalService.deleteRole(role);
 		}
 
-		// Regular user
+		// Role regular user
 
 		role = RoleTestUtil.addRole(RoleConstants.TYPE_SITE);
 
@@ -289,6 +289,18 @@ public class StructuredContentResourceTest
 			_userLocalService.deleteUser(regularUser);
 			_userLocalService.deleteUser(ownerUser);
 		}
+
+		// Complete structured content with all types of content fields
+
+		StructuredContent completeStructuredContent =
+			structuredContentResource.postSiteStructuredContent(
+				testGroup.getGroupId(), _randomCompleteStructuredContent());
+
+		structuredContent = structuredContentResource.getStructuredContent(
+			completeStructuredContent.getId());
+
+		assertEquals(completeStructuredContent, structuredContent);
+		assertValid(structuredContent);
 
 		// Different locale
 
@@ -358,18 +370,6 @@ public class StructuredContentResourceTest
 		Assert.assertNull(structuredContent.getTitle());
 
 		serviceRegistration.unregister();
-
-		// Complete structured content with all types of content fields
-
-		StructuredContent completeStructuredContent =
-			structuredContentResource.postSiteStructuredContent(
-				testGroup.getGroupId(), _randomCompleteStructuredContent());
-
-		structuredContent = structuredContentResource.getStructuredContent(
-			completeStructuredContent.getId());
-
-		assertEquals(completeStructuredContent, structuredContent);
-		assertValid(structuredContent);
 	}
 
 	@Override
