@@ -137,7 +137,6 @@ public class StructuredContentResourceTest
 
 		_irrelevantJournalFolder = JournalTestUtil.addFolder(
 			irrelevantGroup.getGroupId(), RandomTestUtil.randomString());
-
 		_journalFolder = JournalTestUtil.addFolder(
 			testGroup.getGroupId(), RandomTestUtil.randomString());
 
@@ -360,7 +359,7 @@ public class StructuredContentResourceTest
 
 		serviceRegistration.unregister();
 
-		// Complete structure with all type of content fields
+		// Complete structured content with all types of content fields
 
 		StructuredContent completeStructuredContent =
 			structuredContentResource.postSiteStructuredContent(
@@ -615,11 +614,11 @@ public class StructuredContentResourceTest
 	private StructuredContent _randomCompleteStructuredContent()
 		throws Exception {
 
-		JournalFolder randomJournalFolder = JournalTestUtil.addFolder(
+		JournalFolder journalFolder = JournalTestUtil.addFolder(
 			testGroup.getGroupId(), RandomTestUtil.randomString());
 
-		JournalArticle randomJournalArticle = JournalTestUtil.addArticle(
-			testGroup.getGroupId(), randomJournalFolder.getFolderId());
+		JournalArticle journalArticle = JournalTestUtil.addArticle(
+			testGroup.getGroupId(), journalFolder.getFolderId());
 
 		StructuredContent structuredContent = super.randomStructuredContent();
 
@@ -758,7 +757,7 @@ public class StructuredContentResourceTest
 									new StructuredContentLink() {
 										{
 											id =
-												randomJournalArticle.
+												journalArticle.
 													getResourcePrimKey();
 										}
 									};
