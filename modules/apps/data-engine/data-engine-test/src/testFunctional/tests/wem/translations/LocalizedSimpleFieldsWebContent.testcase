@@ -76,7 +76,6 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "5"
 	test CheckStructureTranslationsOnWebContent {
-		WebContentNavigator.openWebContentAdmin(siteURLKey = "test-site-name");
 
 		NavItem.gotoStructures();
 
@@ -139,8 +138,6 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "4"
 	test DefaultTitlePersistsAfterTranslatingForAnotherLocale {
-		property portal.acceptance = "false";
-
 		WebContentNavigator.gotoAddCP();
 
 		WebContent.addCP(webContentTitle = "Test");
@@ -178,8 +175,6 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "4"
 	test DefaultValuesDisplayedForNonTranslatedWebContent {
-		WebContentNavigator.openWebContentAdmin(siteURLKey = "test-site-name");
-
 		NavItem.gotoStructures();
 
 		WebContentStructures.addCP(structureName = "WC Structure Name");
@@ -248,10 +243,6 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "5"
 	test TranslationPersistsAfterEditingAnother {
-		property portal.acceptance = "false";
-
-		WebContentNavigator.openWebContentAdmin(siteURLKey = "test-site-name");
-
 		NavItem.gotoStructures();
 
 		WebContentStructures.addCP(
@@ -380,8 +371,6 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "4"
 	test VerifyDefaultLanguageIsFirstShown {
-		property portal.acceptance = "false";
-
 		NavItem.gotoStructures();
 
 		WebContentStructures.addCP(
