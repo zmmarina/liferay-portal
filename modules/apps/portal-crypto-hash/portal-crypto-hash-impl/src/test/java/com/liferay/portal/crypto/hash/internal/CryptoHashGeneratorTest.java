@@ -16,6 +16,7 @@ package com.liferay.portal.crypto.hash.internal;
 
 import com.liferay.portal.crypto.hash.CryptoHashGenerator;
 import com.liferay.portal.crypto.hash.CryptoHashResponse;
+import com.liferay.portal.kernel.test.util.RandomTestUtil;
 import com.liferay.portal.kernel.util.UnicodeFormatter;
 
 import org.junit.Assert;
@@ -58,10 +59,7 @@ public class CryptoHashGeneratorTest {
 	private static final String _PASSWORD = "password";
 
 	private static final byte[] _PASSWORD_HASH_WITH_SALT =
-		UnicodeFormatter.hexToBytes(
-			"ee765094649dcc6b5e89a91663cbeb80ecceed035e13201da471a97d30534f57" +
-				"1dd8974729feb4e1696485b1e054672d91c9e774514921c067028a46bcb6" +
-					"f1c5");
+		UnicodeFormatter.hexToBytes(RandomTestUtil.randomString(128));
 
 	private static final String _SALT_1 = "salt1";
 
