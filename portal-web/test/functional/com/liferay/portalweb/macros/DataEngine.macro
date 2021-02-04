@@ -823,12 +823,6 @@ definition {
 			locator1 = "Sidebar#FIELDSET_ITEM_ELLIPSIS");
 	}
 
-	macro validateDuplicateButton {
-		AssertElementPresent(
-			locator1 = "DDMField#FIELD_DUPLICATE",
-			value1 = "${key_fieldName}");
-	}
-
 	macro viewField {
 		var key_fieldFieldLabel = "${fieldFieldLabel}";
 		var key_text = "${fieldName}";
