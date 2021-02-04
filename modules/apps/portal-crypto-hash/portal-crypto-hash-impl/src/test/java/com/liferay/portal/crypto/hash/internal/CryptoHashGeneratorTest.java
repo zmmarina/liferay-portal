@@ -37,21 +37,21 @@ public class CryptoHashGeneratorTest {
 	@Test
 	public void testGenerate() throws Exception {
 		CryptoHashResponse cryptoHashResponse = _cryptoHashGenerator.generate(
-			_INPUT_1);
+			_INPUT);
 
 		Assert.assertFalse(
 			_cryptoHashGenerator.verify(
-				_INPUT_2, cryptoHashResponse.getHash(),
+				_randomBytes(), cryptoHashResponse.getHash(),
 				cryptoHashResponse.getSalt()));
 		Assert.assertTrue(
 			_cryptoHashGenerator.verify(
-				_INPUT_1, cryptoHashResponse.getHash(),
+				_INPUT, cryptoHashResponse.getHash(),
 				cryptoHashResponse.getSalt()));
 	}
 
 	@Test
 	public void testVerify() throws Exception {
-		_cryptoHashGenerator.verify(_INPUT_1, _HASH, _SALT);
+		_cryptoHashGenerator.verify(_INPUT, _HASH, _SALT);
 	}
 
 	private static byte[] _randomBytes() {
@@ -63,9 +63,7 @@ public class CryptoHashGeneratorTest {
 	private static final byte[] _HASH = UnicodeFormatter.hexToBytes(
 		RandomTestUtil.randomString(128));
 
-	private static final byte[] _INPUT_1 = _randomBytes();
-
-	private static final byte[] _INPUT_2 = _randomBytes();
+	private static final byte[] _INPUT = _randomBytes();
 
 	private static final byte[] _SALT = _randomBytes();
 
