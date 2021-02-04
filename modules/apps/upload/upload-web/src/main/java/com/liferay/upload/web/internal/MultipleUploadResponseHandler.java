@@ -93,8 +93,7 @@ public class MultipleUploadResponseHandler implements UploadResponseHandler {
 
 			if (portalException instanceof DLStorageQuotaExceededException) {
 				errorMessage = themeDisplay.translate(
-					"please-remove-some-file.-you-have-exceeded-the-x-" +
-						"storage-quota-for-this-instance",
+					"you-have-exceeded-the-x-storage-quota-for-this-instance",
 					_language.formatStorageSize(
 						PropsValues.DATA_LIMIT_MAX_DL_STORAGE_SIZE,
 						themeDisplay.getLocale()));
