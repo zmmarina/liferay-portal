@@ -129,7 +129,7 @@ const useGetFieldValue = () => {
 				onNetworkStatus: () => {},
 			}).then((response) => {
 				if (!response || !Object.keys(response).length) {
-					throw new Error('Field value not found');
+					throw new Error('Field value does not exist');
 				}
 
 				const {fieldValue = ''} = response;
