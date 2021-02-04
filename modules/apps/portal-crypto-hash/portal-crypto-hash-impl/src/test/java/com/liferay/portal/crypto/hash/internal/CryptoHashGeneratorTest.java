@@ -39,14 +39,13 @@ public class CryptoHashGeneratorTest {
 		CryptoHashResponse cryptoHashResponse = _cryptoHashGenerator.generate(
 			_INPUT_1);
 
-		Assert.assertTrue(
-			_cryptoHashGenerator.verify(
-				_INPUT_1, cryptoHashResponse.getHash(),
-				cryptoHashResponse.getSalt()));
-
 		Assert.assertFalse(
 			_cryptoHashGenerator.verify(
 				_INPUT_2, cryptoHashResponse.getHash(),
+				cryptoHashResponse.getSalt()));
+		Assert.assertTrue(
+			_cryptoHashGenerator.verify(
+				_INPUT_1, cryptoHashResponse.getHash(),
 				cryptoHashResponse.getSalt()));
 	}
 
