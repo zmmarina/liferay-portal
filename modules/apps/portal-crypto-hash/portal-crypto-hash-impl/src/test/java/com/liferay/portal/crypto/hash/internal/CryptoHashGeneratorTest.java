@@ -36,7 +36,7 @@ public class CryptoHashGeneratorTest {
 
 	@Test
 	public void testGenerationAndVerification() throws Exception {
-		final CryptoHashResponse cryptoHashResponse =
+		CryptoHashResponse cryptoHashResponse =
 			_cryptoHashGenerator.generate(_INPUT_1);
 
 		Assert.assertTrue(
