@@ -55,7 +55,7 @@ public class CryptoHashGeneratorImpl implements CryptoHashGenerator {
 	public boolean verify(byte[] input, byte[] hash, byte[] salt)
 		throws CryptoHashException {
 
-		return Objects.equals(_digest(salt, input), hash);
+		return MessageDigest.isEqual(_digest(salt, input), hash);
 	}
 
 	private byte[] _digest(byte[] salt, byte[] input) {
