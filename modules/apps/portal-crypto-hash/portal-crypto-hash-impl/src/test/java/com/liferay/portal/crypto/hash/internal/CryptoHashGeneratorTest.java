@@ -35,7 +35,7 @@ public class CryptoHashGeneratorTest {
 	}
 
 	@Test
-	public void testGenerationAndVerification() throws Exception {
+	public void testGenerate() throws Exception {
 		CryptoHashResponse cryptoHashResponse =
 			_cryptoHashGenerator.generate(_INPUT_1);
 
@@ -51,7 +51,7 @@ public class CryptoHashGeneratorTest {
 	}
 
 	@Test
-	public void testVerificationWithFixedHashAndSalt() throws Exception {
+	public void testVerify() throws Exception {
 		_cryptoHashGenerator.verify(
 			_INPUT_1, _HASH, _SALT);
 	}
