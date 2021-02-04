@@ -39,11 +39,12 @@ import {getRetryDelay} from './utils/delay';
 class Client {
 	constructor(config = {}) {
 		this.attemptNumber = 1;
-		this.delay = this.initialDelay;
 		this.initialDelay = config.delay || FLUSH_INTERVAL;
 		this.processing = false;
 		this.projectId = config.projectId;
 		this.queues = [];
+
+		this.delay = this.initialDelay;
 
 		this._startsFlushLoop();
 	}
