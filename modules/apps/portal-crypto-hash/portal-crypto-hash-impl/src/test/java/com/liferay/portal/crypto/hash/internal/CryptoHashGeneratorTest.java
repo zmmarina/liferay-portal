@@ -53,15 +53,15 @@ public class CryptoHashGeneratorTest {
 	@Test
 	public void testVerificationWithFixedHashAndSalt() throws Exception {
 		_cryptoHashGenerator.verify(
-			_PASSWORD.getBytes(), _PASSWORD_HASH_WITH_SALT, _SALT_1.getBytes());
+			_PASSWORD.getBytes(), _HASH, _SALT.getBytes());
 	}
 
 	private static final String _PASSWORD = RandomTestUtil.randomString();
 
-	private static final byte[] _PASSWORD_HASH_WITH_SALT =
+	private static final byte[] _HASH =
 		UnicodeFormatter.hexToBytes(RandomTestUtil.randomString(128));
 
-	private static final String _SALT_1 = RandomTestUtil.randomString();
+	private static final String _SALT = RandomTestUtil.randomString();
 
 	private static final String _WRONG_PASSWORD = RandomTestUtil.randomString();
 
