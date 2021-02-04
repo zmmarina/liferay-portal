@@ -37,33 +37,39 @@ public class CryptoHashGeneratorTest {
 	@Test
 	public void testGenerationAndVerification() throws Exception {
 		final CryptoHashResponse cryptoHashResponse =
-			_cryptoHashGenerator.generate(_PASSWORD.getBytes());
+			_cryptoHashGenerator.generate(_INPUT_1);
 
 		Assert.assertTrue(
 			_cryptoHashGenerator.verify(
-				_PASSWORD.getBytes(), cryptoHashResponse.getHash(),
+				_INPUT_1, cryptoHashResponse.getHash(),
 				cryptoHashResponse.getSalt()));
 
 		Assert.assertFalse(
 			_cryptoHashGenerator.verify(
-				_WRONG_PASSWORD.getBytes(), cryptoHashResponse.getHash(),
+				_INPUT_2, cryptoHashResponse.getHash(),
 				cryptoHashResponse.getSalt()));
 	}
 
 	@Test
 	public void testVerificationWithFixedHashAndSalt() throws Exception {
 		_cryptoHashGenerator.verify(
-			_PASSWORD.getBytes(), _HASH, _SALT.getBytes());
+			_INPUT_1, _HASH, _SALT);
 	}
 
-	private static final String _PASSWORD = RandomTestUtil.randomString();
+	private static byte[] _randomBytes() {
+		String string = RandomTestUtil.randomString();
+
+		return string.getBytes();
+	}
+
+	private static final byte[] _INPUT_1 = _randomBytes();
+
+	private static final byte[] _INPUT_2 = _randomBytes();
 
 	private static final byte[] _HASH =
 		UnicodeFormatter.hexToBytes(RandomTestUtil.randomString(128));
 
-	private static final String _SALT = RandomTestUtil.randomString();
-
-	private static final String _WRONG_PASSWORD = RandomTestUtil.randomString();
+	private static final byte[] _SALT = _randomBytes();
 
 	private CryptoHashGenerator _cryptoHashGenerator;
 
