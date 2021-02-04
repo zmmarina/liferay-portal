@@ -23,8 +23,6 @@ import com.liferay.portal.kernel.util.ArrayUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import java.util.Objects;
-
 import org.osgi.service.component.annotations.Component;
 
 /**

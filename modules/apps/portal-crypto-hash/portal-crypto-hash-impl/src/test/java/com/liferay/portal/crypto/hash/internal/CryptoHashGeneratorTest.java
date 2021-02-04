@@ -36,8 +36,8 @@ public class CryptoHashGeneratorTest {
 
 	@Test
 	public void testGenerate() throws Exception {
-		CryptoHashResponse cryptoHashResponse =
-			_cryptoHashGenerator.generate(_INPUT_1);
+		CryptoHashResponse cryptoHashResponse = _cryptoHashGenerator.generate(
+			_INPUT_1);
 
 		Assert.assertTrue(
 			_cryptoHashGenerator.verify(
@@ -52,8 +52,7 @@ public class CryptoHashGeneratorTest {
 
 	@Test
 	public void testVerify() throws Exception {
-		_cryptoHashGenerator.verify(
-			_INPUT_1, _HASH, _SALT);
+		_cryptoHashGenerator.verify(_INPUT_1, _HASH, _SALT);
 	}
 
 	private static byte[] _randomBytes() {
@@ -62,12 +61,12 @@ public class CryptoHashGeneratorTest {
 		return string.getBytes();
 	}
 
+	private static final byte[] _HASH = UnicodeFormatter.hexToBytes(
+		RandomTestUtil.randomString(128));
+
 	private static final byte[] _INPUT_1 = _randomBytes();
 
 	private static final byte[] _INPUT_2 = _randomBytes();
-
-	private static final byte[] _HASH =
-		UnicodeFormatter.hexToBytes(RandomTestUtil.randomString(128));
 
 	private static final byte[] _SALT = _randomBytes();
 
