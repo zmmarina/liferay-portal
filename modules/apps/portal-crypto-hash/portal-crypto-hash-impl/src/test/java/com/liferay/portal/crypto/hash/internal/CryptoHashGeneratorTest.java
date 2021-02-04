@@ -56,14 +56,14 @@ public class CryptoHashGeneratorTest {
 			_PASSWORD.getBytes(), _PASSWORD_HASH_WITH_SALT, _SALT_1.getBytes());
 	}
 
-	private static final String _PASSWORD = "password";
+	private static final String _PASSWORD = RandomTestUtil.randomString();
 
 	private static final byte[] _PASSWORD_HASH_WITH_SALT =
 		UnicodeFormatter.hexToBytes(RandomTestUtil.randomString(128));
 
-	private static final String _SALT_1 = "salt1";
+	private static final String _SALT_1 = RandomTestUtil.randomString();
 
-	private static final String _WRONG_PASSWORD = "wrongPassword";
+	private static final String _WRONG_PASSWORD = RandomTestUtil.randomString();
 
 	private CryptoHashGenerator _cryptoHashGenerator;
 
