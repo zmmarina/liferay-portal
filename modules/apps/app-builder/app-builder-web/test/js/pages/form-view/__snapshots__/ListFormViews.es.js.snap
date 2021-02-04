@@ -62,7 +62,7 @@ exports[`ListFormViews renders 1`] = `
         >
           <button
             class="nav-link nav-link-monospaced order-arrow-down-active btn btn-monospaced btn-unstyled"
-            data-title="reverse-sort-direction"
+            title="reverse-sort-direction"
             type="button"
           >
             <svg
@@ -158,7 +158,7 @@ exports[`ListFormViews renders 1`] = `
         >
           <button
             class="nav-btn nav-btn-monospaced btn btn-monospaced btn-primary"
-            data-title="new-form-view"
+            title="new-form-view"
             type="button"
           >
             <svg

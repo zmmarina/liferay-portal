@@ -62,7 +62,7 @@ exports[`ListTableViews renders 1`] = `
         >
           <button
             class="nav-link nav-link-monospaced order-arrow-down-active btn btn-monospaced btn-unstyled"
-            data-title="reverse-sort-direction"
+            title="reverse-sort-direction"
             type="button"
           >
             <svg
@@ -161,7 +161,7 @@ exports[`ListTableViews renders 1`] = `
           >
             <button
               class="nav-btn nav-btn-monospaced btn btn-monospaced btn-primary"
-              data-title="new-table-view"
+              title="new-table-view"
               type="button"
             >
               <svg
