@@ -187,10 +187,10 @@ class Client {
 			return;
 		}
 
-		this.queues.reduce(
-			(previousPromise, {endpointUrl, instance: queue}) => {
-				return previousPromise.then(
-					() => {
+		this.queues
+			.reduce((previousPromise, {endpointUrl, instance: queue}) => {
+				return previousPromise
+					.then(() => {
 						if (!queue.hasMessages()) {
 							return Promise.resolve();
 						}
@@ -236,14 +236,14 @@ class Client {
 									return Promise.reject();
 								});
 						});
-					},
-					() => {
+					})
+					.catch(() => {
 						this.onRequestFail();
-					}
-				);
-			},
-			Promise.resolve()
-		);
+
+						return Promise.reject();
+					});
+			}, Promise.resolve())
+			.catch(() => {});
 	}
 
 	/**
