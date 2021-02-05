@@ -227,7 +227,6 @@ public abstract class BaseSegmentsEntryProvider
 
 		Criteria.Conjunction contextConjunction = getConjunction(
 			segmentsEntry, Criteria.Type.CONTEXT);
-
 		String modelFilterString = getFilterString(
 			segmentsEntry, Criteria.Type.MODEL);
 
