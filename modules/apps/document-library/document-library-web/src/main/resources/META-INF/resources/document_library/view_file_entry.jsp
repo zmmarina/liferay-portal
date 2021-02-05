@@ -100,7 +100,7 @@ if (portletTitleBasedNavigation) {
 				<div class="file-entry-actions">
 					<liferay-frontend:management-bar-sidenav-toggler-button
 						label="info"
-						sidenavId='<%= liferayPortletResponse.getNamespace() + "infoPanelId" + StringPool.UNDERLINE + fileEntry.getFileEntryId() %>'
+						sidenavId='<%= liferayPortletResponse.getNamespace() + "infoPanelId_" + fileEntry.getFileEntryId() %>'
 					/>
 
 					<%
