@@ -83,7 +83,7 @@ long assetClassPK = DLAssetHelperUtil.getAssetClassPK(fileEntry, fileVersion);
 	<liferay-ui:tabs
 		cssClass="navbar-no-collapse"
 		names="<%= tabsNames %>"
-		param='<%= "tabs" + StringPool.UNDERLINE + fileEntry.getFileEntryId() %>'
+		param='<%= "tabs_" + fileEntry.getFileEntryId() %>'
 		refresh="<%= false %>"
 	>
 		<liferay-ui:section>
