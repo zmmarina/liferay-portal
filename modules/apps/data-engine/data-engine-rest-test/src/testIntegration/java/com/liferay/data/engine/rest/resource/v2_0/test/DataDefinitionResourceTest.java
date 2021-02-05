@@ -44,7 +44,6 @@ import com.liferay.portal.test.rule.Inject;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -270,29 +269,9 @@ public class DataDefinitionResourceTest
 
 		// Allow invalid field languages for app builder
 
-		DataDefinition fieldsetDataDefinition =
-			dataDefinitionResource.postSiteDataDefinitionByContentType(
-				testGroup.getGroupId(), _CONTENT_TYPE,
-				DataDefinition.toDTO(
-					DataDefinitionTestUtil.read("data-definition-basic.json")));
-
-		DataDefinition dataDefinition = DataDefinition.toDTO(
-			DataDefinitionTestUtil.read(
-				"data-definition-with-invalid-field-languages.json"));
-
-		for (DataDefinitionField dataDefinitionField :
-				dataDefinition.getDataDefinitionFields()) {
-
-			Map<String, Object> customProperties =
-				dataDefinitionField.getCustomProperties();
-
-			customProperties.put(
-				"ddmStructureId", fieldsetDataDefinition.getId());
-		}
-
 		assertValid(
-			dataDefinitionResource.postSiteDataDefinitionByContentType(
-				testGroup.getGroupId(), "app-builder", dataDefinition));
+			DataDefinitionTestUtil.addDataDefinitionWithFieldSet(
+				testGroup.getGroupId()));
 
 		// MustNotDuplicateFieldName
 
@@ -514,7 +493,7 @@ public class DataDefinitionResourceTest
 
 		// Provide default layout name when none is informed
 
-		dataDefinition =
+		DataDefinition dataDefinition =
 			dataDefinitionResource.postSiteDataDefinitionByContentType(
 				testGroup.getGroupId(), _CONTENT_TYPE,
 				DataDefinition.toDTO(
