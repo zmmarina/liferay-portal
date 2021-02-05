@@ -44,8 +44,8 @@ public class LinkTag extends BaseContainerTag {
 
 		Map<String, Object> dynamicAttributes = getDynamicAttributes();
 
-		if ((dynamicAttributes.get("target") != null) &&
-			(dynamicAttributes.get("rel") == null)) {
+		if ((dynamicAttributes.get("rel") == null) &&
+			(dynamicAttributes.get("target") != null)) {
 
 			setDynamicAttribute(StringPool.BLANK, "rel", "noreferrer noopener");
 		}
