@@ -17,9 +17,9 @@
 <%@ include file="/init.jsp" %>
 
 <%
-Map<String, Object> componentContext = journalDisplayContext.getComponentContext();
-
 String referringPortletResource = ParamUtil.getString(request, "referringPortletResource");
+
+Map<String, Object> componentContext = journalDisplayContext.getComponentContext();
 %>
 
 <liferay-ui:search-container
