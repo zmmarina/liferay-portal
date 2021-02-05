@@ -39,75 +39,121 @@ definition {
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
 	@priority = "5"
 	test CheckDuplicatedRepeatableStructureOnWebContent {
-		property portal.acceptance = "false";
-
 		NavItem.gotoStructures();
 
-		WebContentStructures.addCP(
-			structureDescription = "Structure Description Test",
-			structureName = "Structure Name Test");
+		WebContentStructures.addCP(structureName = "WC Structure Name");
 
 		DataEngine.addField(
-			fieldFieldLabel = "Test Text",
+			fieldFieldLabel = "Text",
 			fieldName = "Text");
 
 		DataEngine.editFieldTip(
-			fieldFieldLabel = "Test Text",
-			fieldHelp = "Test Help");
+			fieldFieldLabel = "Text",
+			fieldHelp = "Text Field Help Text");
 
-		DataEngine.editFieldRepeatable(fieldFieldLabel = "Test Text");
+		DataEngine.editFieldRepeatable(fieldFieldLabel = "Text");
 
 		PortletEntry.changeLocale(locale = "pt-BR");
 
 		DataEngine.editFieldLabel(
-			fieldFieldLabel = "Test Text",
-			fieldFieldLabelEdit = "Texto de Teste");
+			fieldFieldLabel = "Text",
+			fieldFieldLabelEdit = "Texto");
 
 		DataEngine.editFieldTip(
-			fieldFieldLabel = "Texto de Teste",
-			fieldHelp = "Campo de ajuda do Teste");
+			fieldFieldLabel = "Texto",
+			fieldHelp = "Texto de ajuda do campo de texto");
 
 		WebContentStructures.saveCP();
 
 		NavItem.click(navItem = "Web Content");
 
-		WebContentNavigator.gotoAddWithStructureCP(structureName = "Structure Name Test");
+		WebContentNavigator.gotoAddWithStructureCP(structureName = "WC Structure Name");
 
-		WebContent.addWithStructureCP(webContentTitle = "Test Title");
+		WebContent.addWithStructureCP(webContentTitle = "Web Content Title");
+
+		DataEngine.addRepeatableField(fieldName = "Text");
+
+		Type(
+			index = "1",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "This is a Text field");
+
+		Type(
+			index = "2",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "This is a duplicated Text field");
 
 		PortletEntry.changeLocale(locale = "pt-BR");
 
-		WebContent.addWithStructureCP(webContentTitle = "Titulo do Teste");
+		WebContent.addWithStructureCP(webContentTitle = "Título do conteúdo da web");
 
-		WebContent.duplicateField(fieldFieldLabel = "Texto de Teste");
+		Type(
+			index = "1",
+			key_fieldFieldLabel = "Texto",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "Este é um campo de texto");
+
+		Type(
+			index = "2",
+			key_fieldFieldLabel = "Texto",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "Este é um campo de texto duplicado");
 
 		PortletEntry.publish();
 
-		WebContentNavigator.gotoEditCP(webContentTitle = "Test Title");
+		WebContentNavigator.gotoEditCP(webContentTitle = "Web Content Title");
+
+		AssertTextEquals(
+			locator1 = "TextInput#TITLE",
+			value1 = "Web Content Title");
+
+		AssertTextEquals.assertValue(
+			index = "1",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "This is a Text field");
+
+		AssertTextEquals.assertValue(
+			index = "2",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "This is a duplicated Text field");
+
+		for (var n : list "1,2") {
+			AssertTextEquals(
+				key_fieldFieldLabel = "Text",
+				key_index = "${n}",
+				locator1 = "DDMEditStructure#SETTINGS_TEXT_ANY",
+				value1 = "Text Field Help Text");
+		}
 
 		PortletEntry.changeLocale(locale = "pt-BR");
 
-		AssertElementPresent(
-			key_fieldFieldLabel = "Texto de Teste",
-			key_index = "1",
-			locator1 = "WCEditWebContent#FIELD_LABEL");
+		AssertTextEquals(
+			locator1 = "TextInput#TITLE",
+			value1 = "Título do conteúdo da web");
 
-		AssertElementPresent(
-			key_fieldFieldLabel = "Texto de Teste",
-			key_index = "2",
-			locator1 = "WCEditWebContent#FIELD_LABEL");
+		AssertTextEquals.assertValue(
+			index = "1",
+			key_fieldFieldLabel = "Texto",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "Este é um campo de texto");
 
-		AssertElementPresent(
-			key_fieldFieldLabel = "Texto de Teste",
-			key_fieldFieldHelp = "Campo de ajuda do Teste",
-			key_index = "1",
-			locator1 = "WCEditWebContent#FIELD_HELP");
+		AssertTextEquals.assertValue(
+			index = "2",
+			key_fieldFieldLabel = "Texto",
+			locator1 = "WCEditWebContent#ANY_TEXT_INPUT",
+			value1 = "Este é um campo de texto duplicado");
 
-		AssertElementPresent(
-			key_fieldFieldLabel = "Texto de Teste",
-			key_fieldFieldHelp = "Campo de ajuda do Teste",
-			key_index = "2",
-			locator1 = "WCEditWebContent#FIELD_HELP");
+		for (var n : list "1,2") {
+			AssertTextEquals(
+				key_fieldFieldLabel = "Texto",
+				key_index = "${n}",
+				locator1 = "DDMEditStructure#SETTINGS_TEXT_ANY",
+				value1 = "Texto de ajuda do campo de texto");
+		}
 	}
 
 	@description = "This is a test for LPS-122317. As Content Creator, I want to leverage the structures' translations without nested fields or fieldsets when creating a new Web Content"
