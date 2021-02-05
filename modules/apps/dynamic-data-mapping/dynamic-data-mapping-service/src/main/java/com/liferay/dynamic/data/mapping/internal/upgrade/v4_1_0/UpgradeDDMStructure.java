@@ -104,8 +104,8 @@ public class UpgradeDDMStructure extends UpgradeProcess {
 							convertDDMFormDataDefinition(
 								rs.getString("definition"), parentStructureId,
 								parentStructureLayoutId));
-
 					ps2.setLong(2, rs.getLong("structureId"));
+
 					ps2.addBatch();
 				}
 
