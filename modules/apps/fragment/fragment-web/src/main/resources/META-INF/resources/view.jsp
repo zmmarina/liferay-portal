@@ -70,26 +70,20 @@ List<FragmentCollectionContributor> fragmentCollectionContributors = fragmentDis
 
 												<%
 												Map<String, Object> fragmentCollectionsViewContext = fragmentDisplayContext.getFragmentCollectionsViewContext();
-
-												String deleteFragmentCollectionURL = (String)fragmentCollectionsViewContext.get("deleteFragmentCollectionURL");
-												String exportFragmentCollectionsURL = (String)fragmentCollectionsViewContext.get("exportFragmentCollectionsURL");
-												String viewDeleteFragmentCollectionsURL = (String)fragmentCollectionsViewContext.get("viewDeleteFragmentCollectionsURL");
-												String viewExportFragmentCollectionsURL = (String)fragmentCollectionsViewContext.get("viewExportFragmentCollectionsURL");
-												String viewImportURL = (String)fragmentCollectionsViewContext.get("viewImportURL");
 												%>
 
 												<clay:dropdown-actions
 													additionalProps='<%=
 														HashMapBuilder.<String, Object>put(
-															"deleteFragmentCollectionURL", deleteFragmentCollectionURL
+															"deleteFragmentCollectionURL", fragmentCollectionsViewContext.get("deleteFragmentCollectionURL")
 														).put(
-															"exportFragmentCollectionsURL", exportFragmentCollectionsURL
+															"exportFragmentCollectionsURL", fragmentCollectionsViewContext.get("exportFragmentCollectionsURL")
 														).put(
-															"viewDeleteFragmentCollectionsURL", viewDeleteFragmentCollectionsURL
+															"viewDeleteFragmentCollectionsURL", fragmentCollectionsViewContext.get("viewDeleteFragmentCollectionsURL")
 														).put(
-															"viewExportFragmentCollectionsURL", viewExportFragmentCollectionsURL
+															"viewExportFragmentCollectionsURL", fragmentCollectionsViewContext.get("viewExportFragmentCollectionsURL")
 														).put(
-															"viewImportURL", viewImportURL
+															"viewImportURL", fragmentCollectionsViewContext.get("viewImportURL")
 														).build()
 													%>'
 													dropdownItems="<%= fragmentDisplayContext.getCollectionsDropdownItems() %>"
