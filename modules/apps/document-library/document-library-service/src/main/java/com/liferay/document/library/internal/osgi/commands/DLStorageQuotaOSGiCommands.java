@@ -17,13 +17,8 @@ package com.liferay.document.library.internal.osgi.commands;
 import com.liferay.document.library.service.DLStorageQuotaLocalService;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.service.CompanyLocalService;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.liferay.portal.kernel.util.GetterUtil;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -40,13 +35,15 @@ import org.osgi.service.component.annotations.Reference;
 public class DLStorageQuotaOSGiCommands {
 
 	public void update(String... companyIds) {
-		for (long companyId : _getCompanyIds(companyIds)) {
+		for (String companyId : companyIds) {
 			try {
-				_dlStorageQuotaLocalService.updateStorageSize(companyId);
+				_dlStorageQuotaLocalService.updateStorageSize(
+					GetterUtil.getLong(companyId));
 
 				System.out.printf(
 					"Successfully updated document library storage quota for " +
-						"company %d%n", companyId);
+						"company %d%n",
+					companyId);
 			}
 			catch (Exception exception) {
 				_log.error(exception, exception);
@@ -57,28 +54,6 @@ public class DLStorageQuotaOSGiCommands {
 					companyId);
 			}
 		}
-	}
-
-	private Iterable<Long> _getCompanyIds(String... companyIds) {
-		if (companyIds.length == 0) {
-			List<Company> companies = _companyLocalService.getCompanies();
-
-			Stream<Company> companiesStream = companies.stream();
-
-			return companiesStream.map(
-				Company::getCompanyId
-			).collect(
-				Collectors.toList()
-			);
-		}
-
-		Stream<String> companyIdsStream = Arrays.stream(companyIds);
-
-		return companyIdsStream.map(
-			Long::parseLong
-		).collect(
-			Collectors.toList()
-		);
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
