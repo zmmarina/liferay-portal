@@ -10,7 +10,7 @@
 <tbody>
 <tr>
 	<td>ANY_TEXT_INPUT</td>
-	<td>xpath=(//label[normalize-space(text())='${key_fieldFieldLabel}']//following-sibling::input)[${index}]</td>
+	<td>xpath=(//label[normalize-space(text())='${key_fieldFieldLabel}']//following-sibling::input[not(contains(@type,'hidden'))])[${index}]</td>
 	<td></td>
 </tr>
 <tr>
