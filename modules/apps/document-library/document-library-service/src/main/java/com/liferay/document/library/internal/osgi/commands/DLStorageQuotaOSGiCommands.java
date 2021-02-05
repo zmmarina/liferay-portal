@@ -45,15 +45,15 @@ public class DLStorageQuotaOSGiCommands {
 				_dlStorageQuotaLocalService.updateStorageSize(companyId);
 
 				System.out.printf(
-					"Successfully updated storage quota for company %d%n",
-					companyId);
+					"Successfully updated document library storage quota for " +
+						"company %d%n", companyId);
 			}
 			catch (Exception exception) {
 				_log.error(exception, exception);
 
 				System.out.printf(
-					"Error while updating storage quota for company %d. See " +
-						"server log for more details.%n",
+					"Unable to update document library storage quota for " +
+						"company %d. See server log for more details.%n",
 					companyId);
 			}
 		}
