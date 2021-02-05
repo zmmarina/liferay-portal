@@ -63,18 +63,18 @@ public class DLStorageQuotaOSGiCommands {
 		if (companyIds.length == 0) {
 			List<Company> companies = _companyLocalService.getCompanies();
 
-			Stream<Company> companyStream = companies.stream();
+			Stream<Company> companiesStream = companies.stream();
 
-			return companyStream.map(
+			return companiesStream.map(
 				Company::getCompanyId
 			).collect(
 				Collectors.toList()
 			);
 		}
 
-		Stream<String> companyIdStream = Arrays.stream(companyIds);
+		Stream<String> companyIdsStream = Arrays.stream(companyIds);
 
-		return companyIdStream.map(
+		return companyIdsStream.map(
 			Long::parseLong
 		).collect(
 			Collectors.toList()
