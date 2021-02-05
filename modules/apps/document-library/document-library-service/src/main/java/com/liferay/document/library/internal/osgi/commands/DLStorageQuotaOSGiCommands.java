@@ -28,7 +28,7 @@ import org.osgi.service.component.annotations.Reference;
  */
 @Component(
 	property = {
-		"osgi.command.function=update", "osgi.command.scope=dl-storage-quota"
+		"osgi.command.function=update", "osgi.command.scope=documentLibrary"
 	},
 	service = DLStorageQuotaOSGiCommands.class
 )
