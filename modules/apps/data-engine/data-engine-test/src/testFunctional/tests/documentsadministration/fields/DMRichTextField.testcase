@@ -264,7 +264,7 @@ definition {
 	test SetRichTextAsRepeatable {
 		property portal.acceptance = "false";
 
-		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "test-site-name");
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
 
 		DMNavigator.gotoDocumentType();
 
