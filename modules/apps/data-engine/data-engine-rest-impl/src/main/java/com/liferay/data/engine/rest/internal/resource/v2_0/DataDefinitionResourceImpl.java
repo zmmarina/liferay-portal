@@ -1084,12 +1084,12 @@ public class DataDefinitionResourceImpl
 
 			_removeFieldsFromDataLayout(dataLayout, fieldNames);
 
+			DDMStructure ddmStructure = ddmStructureLayout.getDDMStructure();
+
 			DDMFormLayout ddmFormLayout = ddmStructureLayout.getDDMFormLayout();
 
 			String definitionSchemaVersion =
 				ddmFormLayout.getDefinitionSchemaVersion();
-
-			DDMStructure ddmStructure = ddmStructureLayout.getDDMStructure();
 
 			ddmFormLayout = DataLayoutUtil.toDDMFormLayout(
 				dataLayout, ddmStructure.getDDMForm(),
