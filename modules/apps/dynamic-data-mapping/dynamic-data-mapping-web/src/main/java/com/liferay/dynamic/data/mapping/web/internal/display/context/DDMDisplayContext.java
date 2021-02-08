@@ -1008,9 +1008,9 @@ public class DDMDisplayContext {
 			groupIds = PortalUtil.getCurrentAndAncestorSiteGroupIds(groupIds);
 		}
 
-		Layout layout = _ddmWebRequestHelper.getLayout();
-
 		Group group = null;
+
+		Layout layout = _ddmWebRequestHelper.getLayout();
 
 		if (layout != null) {
 			group = layout.getGroup();
