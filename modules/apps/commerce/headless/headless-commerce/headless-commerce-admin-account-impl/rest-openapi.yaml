@@ -136,6 +136,18 @@ components:
                 customFields:
                     additionalProperties: true
                     type: object
+                dateCreated:
+                    description:
+                        The date the section was created.
+                    format: date-time
+                    readOnly: true
+                    type: string
+                dateModified:
+                    description:
+                        The last time the section was changed.
+                    format: date-time
+                    readOnly: true
+                    type: string
                 emailAddresses:
                     example:
                         - joe.1@commerce.com
