@@ -438,12 +438,15 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 
 		_commerceOrderUuidThreadLocal.set(userCommerceOrder);
 
-		_commerceOrderLocalService.mergeGuestCommerceOrder(
-			commerceOrder.getCommerceOrderId(),
-			userCommerceOrder.getCommerceOrderId(),
-			_getCommerceContext(httpServletRequest), serviceContext);
-
-		_commerceOrderUuidThreadLocal.remove();
+		try {
+			_commerceOrderLocalService.mergeGuestCommerceOrder(
+				commerceOrder.getCommerceOrderId(),
+				userCommerceOrder.getCommerceOrderId(),
+				_getCommerceContext(httpServletRequest), serviceContext);
+		}
+		finally {
+			_commerceOrderUuidThreadLocal.remove();
+		}
 
 		httpSession.removeAttribute(commerceOrderUuidWebKey);
 
