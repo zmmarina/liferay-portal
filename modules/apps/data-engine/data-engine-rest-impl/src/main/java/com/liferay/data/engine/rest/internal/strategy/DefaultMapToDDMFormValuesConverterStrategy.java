@@ -72,10 +72,7 @@ public class DefaultMapToDDMFormValuesConverterStrategy
 		Locale locale, String parentDataRecordValueKey) {
 
 		DDMFormFieldValue ddmFormFieldValue = null;
-
 		boolean hasDataRecordValue = false;
-
-		String ddmFormFieldName = ddmFormField.getName();
 
 		for (Map.Entry<String, Object> entry : dataRecordValues.entrySet()) {
 			String dataRecordValueKey = entry.getKey();
@@ -89,9 +86,7 @@ public class DefaultMapToDDMFormValuesConverterStrategy
 
 			if (_isDataRecordValueFromDDMFormField(
 					dataRecordValueFieldName, dataRecordValueKey,
-					ddmFormFieldName, parentDataRecordValueKey)) {
-
-				hasDataRecordValue = true;
+					ddmFormField.getName(), parentDataRecordValueKey)) {
 
 				String instanceId = dataRecordValueKeyParts
 					[DDMFormFieldParameterNameUtil.
@@ -156,19 +151,21 @@ public class DefaultMapToDDMFormValuesConverterStrategy
 						ddmFormFieldValues, defaultLocale, locale,
 						dataRecordValueKey);
 				}
+
+				hasDataRecordValue = true;
 			}
 		}
 
 		if (!hasDataRecordValue) {
 			ddmFormFieldValue = new DDMFormFieldValue() {
 				{
-					setName(ddmFormFieldName);
+					setName(ddmFormField.getName());
 				}
 			};
 
 			String dataRecordValueKey =
 				DataRecordValueKeyUtil.createDataRecordValueKey(
-					ddmFormFieldName, ddmFormFieldValue.getInstanceId(),
+					ddmFormField.getName(), ddmFormFieldValue.getInstanceId(),
 					parentDataRecordValueKey, 0);
 
 			ddmFormFieldValues.put(dataRecordValueKey, ddmFormFieldValue);
