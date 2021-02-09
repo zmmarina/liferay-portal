@@ -443,6 +443,8 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 			userCommerceOrder.getCommerceOrderId(),
 			_getCommerceContext(httpServletRequest), serviceContext);
 
+		_commerceOrderUuidThreadLocal.remove();
+
 		httpSession.removeAttribute(commerceOrderUuidWebKey);
 
 		return userCommerceOrder;
