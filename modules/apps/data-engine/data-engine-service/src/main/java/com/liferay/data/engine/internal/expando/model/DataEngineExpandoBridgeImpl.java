@@ -70,7 +70,6 @@ public class DataEngineExpandoBridgeImpl implements ExpandoBridge {
 		_className = className;
 		_classPK = classPK;
 		_companyId = companyId;
-
 		_ddmFormFieldTypeServicesTracker = ddmFormFieldTypeServicesTracker;
 
 		Group group = groupLocalService.fetchCompanyGroup(companyId);
