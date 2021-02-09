@@ -19,6 +19,7 @@ import com.liferay.headless.commerce.admin.account.client.serdes.v1_0.AccountSer
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
@@ -123,6 +124,48 @@ public class Account implements Cloneable, Serializable {
 	}
 
 	protected Map<String, ?> customFields;
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public void setDateCreated(
+		UnsafeSupplier<Date, Exception> dateCreatedUnsafeSupplier) {
+
+		try {
+			dateCreated = dateCreatedUnsafeSupplier.get();
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	protected Date dateCreated;
+
+	public Date getDateModified() {
+		return dateModified;
+	}
+
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
+	}
+
+	public void setDateModified(
+		UnsafeSupplier<Date, Exception> dateModifiedUnsafeSupplier) {
+
+		try {
+			dateModified = dateModifiedUnsafeSupplier.get();
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	protected Date dateModified;
 
 	public String[] getEmailAddresses() {
 		return emailAddresses;

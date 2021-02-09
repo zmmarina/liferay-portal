@@ -28,6 +28,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -177,6 +181,62 @@ public class Account implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Map<String, ?> customFields;
+
+	@Schema(description = "The date the section was created.")
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	@JsonIgnore
+	public void setDateCreated(
+		UnsafeSupplier<Date, Exception> dateCreatedUnsafeSupplier) {
+
+		try {
+			dateCreated = dateCreatedUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField(description = "The date the section was created.")
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	protected Date dateCreated;
+
+	@Schema(description = "The last time the section was changed.")
+	public Date getDateModified() {
+		return dateModified;
+	}
+
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
+	}
+
+	@JsonIgnore
+	public void setDateModified(
+		UnsafeSupplier<Date, Exception> dateModifiedUnsafeSupplier) {
+
+		try {
+			dateModified = dateModifiedUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField(description = "The last time the section was changed.")
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	protected Date dateModified;
 
 	@Schema
 	public String[] getEmailAddresses() {
@@ -455,6 +515,9 @@ public class Account implements Serializable {
 
 		sb.append("{");
 
+		DateFormat liferayToJSONDateFormat = new SimpleDateFormat(
+			"yyyy-MM-dd'T'HH:mm:ss'Z'");
+
 		if (accountAddresses != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -523,6 +586,34 @@ public class Account implements Serializable {
 			sb.append("\"customFields\": ");
 
 			sb.append(_toJSON(customFields));
+		}
+
+		if (dateCreated != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"dateCreated\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(dateCreated));
+
+			sb.append("\"");
+		}
+
+		if (dateModified != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"dateModified\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(dateModified));
+
+			sb.append("\"");
 		}
 
 		if (emailAddresses != null) {
