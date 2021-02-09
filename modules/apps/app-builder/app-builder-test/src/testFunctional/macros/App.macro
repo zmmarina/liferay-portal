@@ -126,6 +126,12 @@ definition {
 		Button.clickNext();
 	}
 
+	macro selectTableViewWithoutClickNext {
+		Click(
+			key_itemName = "${tableViewName}",
+			locator1 = "AppBuilder#ITEM_ON_THE_TABLE_CLICK");
+	}
+
 	macro selectWorkflow {
 		Click(
 			key_itemName = "${workflowName}",

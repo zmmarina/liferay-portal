@@ -369,6 +369,18 @@
 	<td></td>
 </tr>
 
+<tr>
+	<td>FIELD_ELLIPSIS_FIELDSET</td>
+	<td>//div[@class='modal-body']//button[@data-title='Actions']</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>FIELD_ELLIPSIS_ACTION_FIELDSET</td>
+	<td>//div[@class='dropdown-menu show']//button[@class='dropdown-item'][contains(text(),'${key_selectAction}')]</td>
+	<td></td>
+</tr>
+
 <!--OBJECT_SIDEBAR-->
 
 <tr>
@@ -537,6 +549,12 @@
 </tr>
 
 <tr>
+	<td>FIELD_FROM_FIELDSET</td>
+	<td>//div[@class='modal-body']//label[text()='${fieldLabel}'] | //div[@class='modal-body']//legend[text()='${fieldLabel}']</td>
+	<td></td>
+</tr>
+
+<tr>
 	<td>FIELD_SETS_TAB</td>
 	<td>//button[contains(@class,'btn btn-unstyled') and contains(.,'Fieldsets')]</td>
 	<td></td>
@@ -593,6 +611,18 @@
 <tr>
 	<td>FORM_FIELD_REQUIRED_ITEM</td>
 	<td>//div[contains(@class, 'ddm-field')]//label[contains(., 'Rich Text')]//span[contains(@class, 'ddm-label-required')]</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>FIELD_IN_FORM_BUILDER</td>
+	<td>//legend[text()='${fieldLabel}']</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>OPTIONS_PLACED_IN_FORM_BUILDER</td>
+	<td>//div[@class='ddm-radio']//span[text()='${optionLabel}']</td>
 	<td></td>
 </tr>
 

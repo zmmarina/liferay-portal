@@ -109,11 +109,23 @@ definition {
 		Click(locator1 = "FormViewBuilder#RULE_ADD_BUTTON");
 	}
 
+	macro assertFieldIsNotPresentInFormBuilder {
+		AssertElementNotPresent(
+			locator1 = "FormViewBuilder#FIELD_IN_FORM_BUILDER",
+			value1 = "${key_fieldLabel}");
+	}
+
 	macro assertHelpTextPresent {
 		AssertTextEquals(
 			key_fieldName = "${fieldName}",
 			locator1 = "FormViewBuilder#HELP_TEXT_AT_APP_DEPLOYED",
 			value1 = "${fieldValue}");
+	}
+
+	macro assertOptionIsPresentInFormBuilder {
+		AssertElementPresent(
+			locator1 = "FormViewBuilder#OPTIONS_PLACED_IN_FORM_BUILDER",
+			value1 = "${key_optionLabel}");
 	}
 
 	macro assertTextPresent {
@@ -141,10 +153,26 @@ definition {
 			locator1 = "FormViewBuilder#SWITCHER_OPTION");
 	}
 
+	macro clickActionMenuFieldset {
+		Click(locator1 = "FormViewBuilder#FIELD_ELLIPSIS");
+	}
+
+	macro clickActionMenuFieldsetEdit {
+		Click(
+			key_selectAction = "${selectAction}",
+			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION_FIELDSET");
+	}
+
 	macro clickFieldLabel {
 		Click(
 			locator1 = "FormViewBuilder#FIELD_LABEL",
 			value1 = "${fieldLabel}");
+	}
+
+	macro clickFieldLabelFromFieldset {
+		Click(
+			locator1 = "FormViewBuilder#FIELD_FROM_FIELDSET",
+			value1 = "${key_fieldLabel}");
 	}
 
 	macro closeSidebar() {
@@ -374,6 +402,22 @@ definition {
 			value1 = "${key_fieldLabel}");
 	}
 
+	macro fieldEllipsisActionFieldset {
+		Click(
+			locator1 = "FormViewBuilder#FIELD_FROM_FIELDSET",
+			value1 = "${key_fieldLabel}");
+
+		Click(locator1 = "FormViewBuilder#FIELD_ELLIPSIS_FIELDSET");
+
+		Click(
+			key_selectAction = "${selectAction}",
+			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION_FIELDSET");
+
+		AssertElementNotPresent(
+			locator1 = "FormViewBuilder#FIELD_FROM_FIELDSET",
+			value1 = "${key_fieldLabel}");
+	}
+
 	macro fieldEllipsisDelete {
 		Click(
 			locator1 = "FormViewBuilder#FIELD_LABEL",
@@ -410,6 +454,12 @@ definition {
 		AppBuilderAdmin.openItem(itemName = "${formViewName}");
 	}
 
+	macro openFormViewFromFormList {
+		Click(
+			key_itemName = "${formViewName}",
+			locator1 = "AppBuilder#ITEM_ON_THE_TABLE_CLICK");
+	}
+
 	macro openSidebar() {
 		Click(locator1 = "FormViewBuilder#OPEN_SIDEBAR");
 	}
@@ -424,6 +474,10 @@ definition {
 
 	macro save {
 		AppBuilderAdmin.save();
+	}
+
+	macro saveButtonFieldset {
+		Click(locator1 = "FormViewBuilder#FIELD_SET_SAVE_BUTTON");
 	}
 
 	macro searchObjectField {
@@ -594,7 +648,7 @@ definition {
 
 		Click(locator1 = "FormViewBuilder#RULE_BUILDER_GO_BACK");
 
-		FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType2}");
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType3}");
 
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(

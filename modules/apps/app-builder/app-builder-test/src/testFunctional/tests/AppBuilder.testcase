@@ -1826,6 +1826,107 @@ definition {
 		FormViewBuilder.validateObjectFieldName(fieldName = "Field Set Brazil");
 	}
 
+	@description = "This is a use case for LPS-107631 - As an App Adm, I want to propagate changes made in an existing fieldset"
+	@priority = "5"
+	test PropagateChangesInFieldset {
+		property portal.acceptance = "true";
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object 1",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "Form 1");
+
+		FormViewBuilder.goToFieldsetsTab();
+
+		FormViewBuilder.setUpFieldSetOptions(
+			fieldSetName = "Fieldset 1",
+			fieldType1 = "Select from List",
+			fieldType2 = "Single Selection",
+			fieldType3 = "Multiple Selection");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Fieldset 1");
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.gotoBack();
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object 2",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "Form 2");
+
+		FormViewBuilder.goToFieldsetsTab();
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Fieldset 1");
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.add();
+
+		TableViewBuilder.setName(tableViewName = "Table 2");
+
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Select from List");
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Single Selection");
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Multiple Selection");
+
+		TableViewBuilder.save();
+
+		AppBuilderAdmin.gotoBack();
+
+		AppBuilderAdmin.openItem(itemName = "my custom object 1");
+
+		FormViewBuilder.openFormViewFromFormList(formViewName = "Form 1");
+
+		FormViewBuilder.goToFieldsetsTab();
+
+		FormViewBuilder.clickActionMenuFieldset();
+
+		FormViewBuilder.clickActionMenuFieldsetEdit(selectAction = "Edit");
+
+		FormViewBuilder.fieldEllipsisActionFieldset(
+			fieldLabel = "Select from List",
+			selectAction = "Delete");
+
+		FormViewBuilder.clickFieldLabelFromFieldset(fieldLabel = "Single Selection");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Option${number}",
+				optionValue = "Option ${number} edit",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.saveButtonFieldset();
+
+		FormViewBuilder.propagateChange();
+
+		FormViewBuilder.assertFieldIsNotPresentInFormBuilder(fieldLabel = "Select from List");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.assertOptionIsPresentInFormBuilder(optionLabel = "Option ${number} edit");
+		}
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.gotoBack();
+
+		AppBuilderAdmin.openItem(itemName = "my custom object 2");
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		App.selectTableViewWithoutClickNext(tableViewName = "Table 2");
+
+		TableViewBuilder.validateNoColumnLabelAtSidebar(columnLabel = "Select from List");
+
+		TableViewBuilder.save();
+	}
+
 	@description = "Publish my app as a widget and submit entry"
 	@priority = "5"
 	test PublishAppAsWidgetAndSubmitEntry {
