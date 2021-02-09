@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.events.Action;
 import com.liferay.portal.kernel.events.LifecycleAction;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.util.CookieKeys;
 import com.liferay.portal.kernel.util.Portal;
 
 import javax.servlet.http.Cookie;
@@ -52,8 +51,6 @@ public class LoginPostAction extends Action {
 				return;
 			}
 
-			String domain = CookieKeys.getDomain(httpServletRequest);
-
 			for (Cookie cookie : cookies) {
 				String name = cookie.getName();
 
@@ -67,9 +64,6 @@ public class LoginPostAction extends Action {
 						originalHttpServletRequest.getSession();
 
 					httpSession.setAttribute(name, cookie.getValue());
-
-					CookieKeys.deleteCookies(
-						httpServletRequest, httpServletResponse, domain, name);
 
 					break;
 				}
