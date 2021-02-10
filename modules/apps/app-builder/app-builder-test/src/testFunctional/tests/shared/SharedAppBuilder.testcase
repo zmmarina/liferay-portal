@@ -94,12 +94,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Occupation");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Select${number}",
 				optionValue = "Select ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Date");
@@ -109,12 +111,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Hobbies");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Multiple${number}",
 				optionValue = "Multiple ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.setName(formViewName = "${myFormViewName}");
@@ -347,12 +351,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Occupation");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Select${number}",
 				optionValue = "Select ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Date");
@@ -362,12 +368,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Hobbies");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Multiple${number}",
 				optionValue = "Multiple ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.setName(formViewName = "${myFormViewName}");
@@ -602,12 +610,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Occupation");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Select${number}",
 				optionValue = "Select ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Date");
@@ -617,12 +627,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Hobbies");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Multiple${number}",
 				optionValue = "Multiple ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.setName(formViewName = "${myFormViewName}");
@@ -1060,12 +1072,14 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Text");
 		FormViewBuilder.closeSidebar();
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Select${number}",
 				optionValue = "Select ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.save();
 
 		AppBuilderAdmin.switchTab(tabName = "Table Views");
@@ -1126,6 +1140,7 @@ definition {
 		FormViewBuilder.validateNoObjectFieldName(fieldName = "Numeric");
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Multiple${number}",
@@ -1154,12 +1169,14 @@ definition {
 		FormViewBuilder.validateNoObjectFieldName(fieldName = "Multiple Selection");
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Single${number}",
 				optionValue = "Single ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.save();
 
 		AppBuilderAdmin.openItem(itemName = "My Form View 2");
@@ -1260,24 +1277,28 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Occupation");
 		FormViewBuilder.setFieldRequired();
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Select ${number}",
 				optionValue = "Occupation ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Occupation");
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Marital Status");
 		FormViewBuilder.setFieldRequired();
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Option ${number}",
 				optionValue = "Marital Status ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.closeSidebar();
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Marital Status");
 
@@ -1289,12 +1310,14 @@ definition {
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
 		FormViewBuilder.setFieldLabel(fieldLabel = "Hobbies");
+
 		for (var number : list "1,2,3") {
 			FormViewBuilder.editOptionsRow(
 				optionName = "Multiple ${number}",
 				optionValue = "Hobby ${number}",
 				rowNumber = "${number}");
 		}
+
 		FormViewBuilder.setFieldRequired();
 		FormViewBuilder.closeSidebar();
 		FormViewBuilder.validateFieldLabelRequired(fieldLabel = "Hobbies");
