@@ -77,6 +77,13 @@ export const sendDummyEvents = (analyticsInstance, eventsNumber) => {
 		);
 	});
 };
+export const trackDummyEvents = (analyticsInstance, eventsNumber) => {
+	const events = getDummyEvents(eventsNumber);
+
+	events.forEach((event) => {
+		analyticsInstance.track(event.eventId, event.properties);
+	});
+};
 
 /**
  * Wait during a test. Cannot use with jest.useFakeTimers()
