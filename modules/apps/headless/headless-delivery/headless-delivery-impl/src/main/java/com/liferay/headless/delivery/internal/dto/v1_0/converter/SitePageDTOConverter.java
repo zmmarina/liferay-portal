@@ -185,22 +185,18 @@ public class SitePageDTOConverter implements DTOConverter<Layout, SitePage> {
 						return _pageDefinitionDTOConverter.toDTO(
 							dtoConverterContext, layoutStructure);
 					});
-
 				setPageType(
 					() -> {
 						LayoutTypeController layoutTypeController =
 							LayoutTypeControllerTracker.getLayoutTypeController(
 								layout.getType());
 
-						ResourceBundle layoutTypeResourceBundle =
+						return LanguageUtil.get(
+							dtoConverterContext.getHttpServletRequest(),
 							ResourceBundleUtil.getBundle(
 								"content.Language",
 								dtoConverterContext.getLocale(),
-								layoutTypeController.getClass());
-
-						return LanguageUtil.get(
-							dtoConverterContext.getHttpServletRequest(),
-							layoutTypeResourceBundle,
+								layoutTypeController.getClass()),
 							"layout.types." + layout.getType());
 					});
 			}
