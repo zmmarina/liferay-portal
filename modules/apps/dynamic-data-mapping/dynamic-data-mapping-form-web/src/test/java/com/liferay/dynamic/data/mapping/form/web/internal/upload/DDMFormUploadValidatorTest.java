@@ -43,9 +43,9 @@ public class DDMFormUploadValidatorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		setUpProps();
 		setUpDDMFormWebConfigurationActivator();
 		setUpFileUtil();
+		setUpProps();
 	}
 
 	@Test(expected = InvalidFileException.class)
