@@ -70,7 +70,7 @@ public class JournalArticleContentDashboardItemFactory
 
 		if (assetEntry == null) {
 			throw new NoSuchModelException(
-				"Unable to find a asset entry for the journal article " +
+				"Unable to find an asset entry for journal article " +
 					journalArticle.getPrimaryKey());
 		}
 
