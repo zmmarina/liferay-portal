@@ -45,7 +45,7 @@ public class DDMFormUploadValidatorTest {
 	public void setUp() throws Exception {
 		setUpDDMFormWebConfigurationActivator();
 		setUpFileUtil();
-		setUpProps();
+		setUpPropsUtil();
 	}
 
 	@Test(expected = InvalidFileException.class)
@@ -112,7 +112,7 @@ public class DDMFormUploadValidatorTest {
 		fileUtil.setFile(FileImpl.getInstance());
 	}
 
-	protected void setUpProps() {
+	protected void setUpPropsUtil() {
 		PropsUtil.setProps(new PropsImpl());
 	}
 

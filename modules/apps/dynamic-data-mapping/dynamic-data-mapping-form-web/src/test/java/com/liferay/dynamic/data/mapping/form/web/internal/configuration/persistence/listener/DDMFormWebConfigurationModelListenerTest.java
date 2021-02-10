@@ -43,7 +43,7 @@ public class DDMFormWebConfigurationModelListenerTest extends PowerMockito {
 	@Before
 	public void setUp() {
 		_setUpDDMFormWebConfigurationModelListener();
-		_setUpProps();
+		_setUpPropsUtil();
 		_setUpResourceBundleUtil();
 	}
 
@@ -63,7 +63,7 @@ public class DDMFormWebConfigurationModelListenerTest extends PowerMockito {
 			new DDMFormWebConfigurationModelListener();
 	}
 
-	private void _setUpProps() {
+	private void _setUpPropsUtil() {
 		PropsUtil.setProps(new PropsImpl());
 	}
 
