@@ -49,10 +49,10 @@ public class JournalImageDDMFormFieldItemSelectorCriterionContributor
 		HttpServletRequest httpServletRequest =
 			ddmFormFieldRenderingContext.getHttpServletRequest();
 
-		String articleId = ParamUtil.getString(httpServletRequest, "articleId");
 		long groupId = ParamUtil.getLong(httpServletRequest, "groupId");
+		String articleId = ParamUtil.getString(httpServletRequest, "articleId");
 
-		long resourcePrimaryKey = _getResourcePrimaryKey(articleId, groupId);
+		long resourcePrimaryKey = _getResourcePrimaryKey(groupId, articleId);
 
 		long folderId = ParamUtil.getLong(httpServletRequest, "folderId");
 
@@ -79,7 +79,7 @@ public class JournalImageDDMFormFieldItemSelectorCriterionContributor
 		return false;
 	}
 
-	private long _getResourcePrimaryKey(String articleId, long groupId) {
+	private long _getResourcePrimaryKey(long groupId, String articleId) {
 		JournalArticle journalArticle =
 			_journalArticleLocalService.fetchArticle(groupId, articleId);
 
