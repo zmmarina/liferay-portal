@@ -25,7 +25,7 @@
 
 <tr>
 	<td>DELETE_COLUMN_BY_NAME</td>
-	<td>//header[contains(*, '${columnLabel}')]//button[(@data-title='Remove')]</td>
+	<td>//header[contains(*, '${columnLabel}')]//button[(@title='Remove')]</td>
 	<td></td>
 </tr>
 
