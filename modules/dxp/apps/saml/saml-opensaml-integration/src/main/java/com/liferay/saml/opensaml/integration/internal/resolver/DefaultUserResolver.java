@@ -388,10 +388,6 @@ public class DefaultUserResolver implements UserResolver {
 		Map<String, List<Serializable>> attributesMap = getAttributesMap(
 			userResolverSAMLContext);
 
-		if (attributesMap.containsKey(authType)) {
-			subjectNameIdentifier = getValueAsString(authType, attributesMap);
-		}
-
 		User user = getUser(companyId, subjectNameIdentifier, authType);
 
 		if (user != null) {
