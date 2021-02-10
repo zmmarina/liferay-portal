@@ -95,13 +95,13 @@ public class XugglerImpl implements Xuggler {
 			return _nativeLibraryInstalled;
 		}
 
-		Map<String, String> logLevelStrings = Log4JUtil.getLogLevelStrings();
+		Map<String, String> priorities = Log4JUtil.getPriorities();
 
-		String logLevelString = logLevelStrings.get(
+		String priority = priorities.get(
 			JNILibraryLoader.class.getName());
 
-		if (Validator.isNull(logLevelString)) {
-			logLevelString = "ALL";
+		if (Validator.isNull(priority)) {
+			priority = "ALL";
 		}
 
 		try {
@@ -119,7 +119,7 @@ public class XugglerImpl implements Xuggler {
 		}
 		finally {
 			Log4JUtil.setLevel(
-				JNILibraryLoader.class.getName(), logLevelString, false);
+				JNILibraryLoader.class.getName(), priority, false);
 		}
 
 		return _nativeLibraryInstalled;

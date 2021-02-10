@@ -155,7 +155,23 @@ public class Log4JUtil {
 		return new HashMap<>(_customLogSettings);
 	}
 
-	public static Map<String, String> getLogLevelStrings() {
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), with no direct replacement
+	 */
+	@Deprecated
+	public static String getOriginalLevel(String className) {
+		Map<String, String> priorities = getPriorities();
+
+		String logLevelString = priorities.get(className);
+
+		if (Validator.isNull(logLevelString)) {
+			return String.valueOf(Level.ALL);
+		}
+
+		return logLevelString;
+	}
+
+	public static Map<String, String> getPriorities() {
 		Map<String, String> priorities = new HashMap<>();
 
 		Enumeration<Logger> enumeration = LogManager.getCurrentLoggers();
@@ -171,22 +187,6 @@ public class Log4JUtil {
 		}
 
 		return priorities;
-	}
-
-	/**
-	 * @deprecated As of Cavanaugh (7.4.x), with no direct replacement
-	 */
-	@Deprecated
-	public static String getOriginalLevel(String className) {
-		Map<String, String> priorities = getLogLevelStrings();
-
-		String logLevelString = priorities.get(className);
-
-		if (Validator.isNull(logLevelString)) {
-			return String.valueOf(Level.ALL);
-		}
-
-		return logLevelString;
 	}
 
 	public static void initLog4J(

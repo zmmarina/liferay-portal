@@ -33,22 +33,22 @@ clearResultsURL.setParameter("keywords", StringPool.BLANK);
 
 SearchContainer<Map.Entry<String, String>> loggerSearchContainer = new SearchContainer(liferayPortletRequest, searchURL, null, null);
 
-Map<String, String> currentLogLevelStrings = new TreeMap<>();
+Map<String, String> currentPriorities = new TreeMap<>();
 
-Map<String, String> logLevelStrings = Log4JUtil.getLogLevelStrings();
+Map<String, String> priorities = Log4JUtil.getPriorities();
 
-for (Map.Entry<String, String> entry : logLevelStrings.entrySet()) {
+for (Map.Entry<String, String> entry : priorities.entrySet()) {
 	String loggerName = entry.getKey();
 
 	if (Validator.isNull(keywords) || loggerName.contains(keywords)) {
-		currentLogLevelStrings.put(loggerName, entry.getValue());
+		currentPriorities.put(loggerName, entry.getValue());
 	}
 }
 
-List<Map.Entry<String, String>> currentLogLevelStringsList = ListUtil.fromCollection(currentLogLevelStrings.entrySet());
+List<Map.Entry<String, String>> currentPrioritiesList = ListUtil.fromCollection(currentPriorities.entrySet());
 
-loggerSearchContainer.setResults(ListUtil.subList(currentLogLevelStringsList, loggerSearchContainer.getStart(), loggerSearchContainer.getEnd()));
-loggerSearchContainer.setTotal(currentLogLevelStringsList.size());
+loggerSearchContainer.setResults(ListUtil.subList(currentPrioritiesList, loggerSearchContainer.getStart(), loggerSearchContainer.getEnd()));
+loggerSearchContainer.setTotal(currentPrioritiesList.size());
 
 PortletURL addLogCategoryURL = renderResponse.createRenderURL();
 
