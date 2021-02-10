@@ -1060,6 +1060,12 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Text");
 		FormViewBuilder.closeSidebar();
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Select${number}",
+				optionValue = "Select ${number}",
+				rowNumber = "${number}");
+		}
 		FormViewBuilder.save();
 
 		AppBuilderAdmin.switchTab(tabName = "Table Views");
@@ -1120,6 +1126,14 @@ definition {
 		FormViewBuilder.validateNoObjectFieldName(fieldName = "Numeric");
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Multiple${number}",
+				optionValue = "Multiple ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.closeSidebar();
 
 		FormViewBuilder.deleteFromObjectViaX(fieldName = "Multiple Selection");
 
@@ -1140,7 +1154,12 @@ definition {
 		FormViewBuilder.validateNoObjectFieldName(fieldName = "Multiple Selection");
 
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
-
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Single${number}",
+				optionValue = "Single ${number}",
+				rowNumber = "${number}");
+		}
 		FormViewBuilder.save();
 
 		AppBuilderAdmin.openItem(itemName = "My Form View 2");
