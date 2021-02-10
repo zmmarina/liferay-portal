@@ -71,7 +71,6 @@ public class SitePageResourceTest extends BaseSitePageResourceTestCase {
 			testGroup.getGroupId(), friendlyURL.substring(1));
 
 		Assert.assertNotNull(sitePage);
-
 		Assert.assertEquals(
 			layout.getName(LocaleUtil.getDefault()), sitePage.getTitle());
 	}
@@ -90,7 +89,6 @@ public class SitePageResourceTest extends BaseSitePageResourceTestCase {
 				String.valueOf(SegmentsEntryConstants.ID_DEFAULT));
 
 		Assert.assertNotNull(sitePage);
-
 		Assert.assertNotNull(sitePage.getExperience());
 	}
 
