@@ -125,18 +125,13 @@ public class SitePageResourceImpl extends BaseSitePageResourceImpl {
 			Long siteId, String friendlyUrlPath)
 		throws Exception {
 
-		boolean embeddedPageDefinition = _isEmbeddedPageDefinition();
-
 		Layout layout = _getLayout(siteId, friendlyUrlPath);
-
-		List<SegmentsExperience> segmentsExperiences = _getSegmentsExperiences(
-			layout);
 
 		return Page.of(
 			TransformUtil.transform(
-				segmentsExperiences,
+				_getSegmentsExperiences(layout),
 				segmentsExperience -> _toSitePage(
-					embeddedPageDefinition, layout,
+					_isEmbeddedPageDefinition(), layout,
 					segmentsExperience.getSegmentsExperienceKey())));
 	}
 
@@ -153,8 +148,6 @@ public class SitePageResourceImpl extends BaseSitePageResourceImpl {
 			Long siteId, String search, Aggregation aggregation, Filter filter,
 			Pagination pagination, Sort[] sorts)
 		throws Exception {
-
-		boolean embeddedPageDefinition = _isEmbeddedPageDefinition();
 
 		return SearchUtil.search(
 			HashMapBuilder.put(
@@ -176,7 +169,6 @@ public class SitePageResourceImpl extends BaseSitePageResourceImpl {
 				Field.ENTRY_CLASS_PK),
 			searchContext -> {
 				searchContext.addVulcanAggregation(aggregation);
-
 				searchContext.setAttribute(Field.TITLE, search);
 				searchContext.setAttribute(
 					Field.TYPE,
@@ -189,10 +181,8 @@ public class SitePageResourceImpl extends BaseSitePageResourceImpl {
 						LayoutConstants.TYPE_PANEL,
 						LayoutConstants.TYPE_PORTLET, LayoutConstants.TYPE_URL
 					});
-
 				searchContext.setAttribute(
 					"privateLayout", Boolean.FALSE.toString());
-
 				searchContext.setCompanyId(contextCompany.getCompanyId());
 				searchContext.setGroupIds(new long[] {siteId});
 				searchContext.setKeywords(search);
@@ -203,8 +193,8 @@ public class SitePageResourceImpl extends BaseSitePageResourceImpl {
 					document.get(Field.ENTRY_CLASS_PK));
 
 				return _toSitePage(
-					embeddedPageDefinition, _layoutLocalService.getLayout(plid),
-					null);
+					_isEmbeddedPageDefinition(),
+					_layoutLocalService.getLayout(plid), null);
 			});
 	}
 
