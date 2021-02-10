@@ -409,14 +409,14 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 		// Remove thread local order when used
 
 		CommerceOrder threadLocalCommerceOrder =
-			_commerceOrderUuidThreadLocal.get();
+			_commerceOrderThreadLocal.get();
 
 		if ((threadLocalCommerceOrder != null) &&
 			threadLocalCommerceOrder.isGuestOrder()) {
 
 			httpSession.removeAttribute(commerceOrderUuidWebKey);
 
-			_commerceOrderUuidThreadLocal.remove();
+			_commerceOrderThreadLocal.remove();
 		}
 
 		CommerceOrder userCommerceOrder =
@@ -436,7 +436,7 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 			httpServletRequest);
 
-		_commerceOrderUuidThreadLocal.set(userCommerceOrder);
+		_commerceOrderThreadLocal.set(userCommerceOrder);
 
 		try {
 			_commerceOrderLocalService.mergeGuestCommerceOrder(
@@ -445,7 +445,7 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 				_getCommerceContext(httpServletRequest), serviceContext);
 		}
 		finally {
-			_commerceOrderUuidThreadLocal.remove();
+			_commerceOrderThreadLocal.remove();
 		}
 
 		httpSession.removeAttribute(commerceOrderUuidWebKey);
@@ -465,7 +465,7 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 			HttpServletRequest httpServletRequest)
 		throws PortalException {
 
-		CommerceOrder commerceOrder = _commerceOrderUuidThreadLocal.get();
+		CommerceOrder commerceOrder = _commerceOrderThreadLocal.get();
 
 		if (commerceOrder != null) {
 			return commerceOrder;
@@ -518,7 +518,7 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 				_validateCommerceOrderItemVersions(
 					commerceOrder, _portal.getLocale(httpServletRequest));
 
-				_commerceOrderUuidThreadLocal.set(commerceOrder);
+				_commerceOrderThreadLocal.set(commerceOrder);
 
 				return commerceOrder;
 			}
@@ -530,7 +530,7 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 					commerceOrderUuid, commerceChannel.getGroupId());
 
 			if (commerceOrder != null) {
-				_commerceOrderUuidThreadLocal.set(commerceOrder);
+				_commerceOrderThreadLocal.set(commerceOrder);
 			}
 		}
 
@@ -631,8 +631,8 @@ public class CommerceOrderHttpHelperImpl implements CommerceOrderHttpHelper {
 
 	private static ModelResourcePermission<CommerceOrder>
 		_commerceOrderModelResourcePermission;
-	private static final ThreadLocal<CommerceOrder>
-		_commerceOrderUuidThreadLocal = new CentralizedThreadLocal<>(
+	private static final ThreadLocal<CommerceOrder> _commerceOrderThreadLocal =
+		new CentralizedThreadLocal<>(
 			CommerceOrderHttpHelperImpl.class.getName());
 
 	@Reference
