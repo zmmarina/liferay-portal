@@ -28,6 +28,7 @@ import {
 	STORAGE_KEY_IDENTITY,
 	STORAGE_KEY_MESSAGE_IDENTITY,
 	STORAGE_KEY_USER_ID,
+	TRACK_DEFAULT_OPTIONS,
 } from './utils/constants';
 import {getContexts, setContexts} from './utils/contexts';
 import {normalizeEvent} from './utils/events';
@@ -241,6 +242,32 @@ class Analytics {
 	/**
 	 * Registers an event that is to be sent to Analytics Cloud
 	 * @param {string} eventId Id of the event
+	 * @param {Object} eventProps Complementary information about the event
+	 * @param {Object} options Complementary information about the request
+	 */
+	track(eventId, eventProps, options = {}) {
+		if (this._isTrackingDisabled() || instance._disposed) {
+			return;
+		}
+
+		//eslint-disable-next-line
+		const mergedOptions = Object.assign({}, TRACK_DEFAULT_OPTIONS, options);
+
+		const currentContextHash = this._getCurrentContextHash();
+
+		instance._eventQueue.addItem(
+			normalizeEvent(
+				eventId,
+				mergedOptions.applicationId,
+				eventProps,
+				currentContextHash
+			)
+		);
+	}
+
+	/**
+	 * Registers an event that is to be sent to Analytics Cloud
+	 * @param {string} eventId Id of the event
 	 * @param {string} applicationId ID of the application that triggered the event
 	 * @param {Object} eventProps Complementary information about the event
 	 */
@@ -253,16 +280,7 @@ class Analytics {
 			return;
 		}
 
-		const currentContextHash = this._getCurrentContextHash();
-
-		instance._eventQueue.addItem(
-			normalizeEvent(
-				eventId,
-				applicationId,
-				eventProps,
-				currentContextHash
-			)
-		);
+		this.track(eventId, eventProps, {applicationId});
 	}
 
 	/**

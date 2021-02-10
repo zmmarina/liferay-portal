@@ -73,3 +73,9 @@ export const READ_MINIMUM_SCROLL_DEPTH = 75;
 export const READ_TIME_FACTOR = 0.75;
 
 export const READ_WORDS_PER_MIN = 265;
+
+// Track method
+
+export const TRACK_DEFAULT_OPTIONS = {
+	applicationId: 'CustomEvent',
+};
