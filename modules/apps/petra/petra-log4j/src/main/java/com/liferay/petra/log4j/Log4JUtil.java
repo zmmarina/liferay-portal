@@ -114,7 +114,7 @@ public class Log4JUtil {
 			return;
 		}
 
-		Map<String, String> logLevels = new HashMap<>();
+		Map<String, String> priorities = new HashMap<>();
 
 		Element rootElement = document.getRootElement();
 
@@ -127,7 +127,7 @@ public class Log4JUtil {
 			if (Objects.equals("category", element.getName())) {
 				Element priorityElement = element.element("priority");
 
-				logLevels.put(
+				priorities.put(
 					element.attributeValue("name"),
 					priorityElement.attributeValue("value"));
 			}
@@ -143,7 +143,7 @@ public class Log4JUtil {
 					document.asXML(), "@liferay.home@", _getLiferayHome())),
 			LogManager.getLoggerRepository());
 
-		for (Map.Entry<String, String> entry : logLevels.entrySet()) {
+		for (Map.Entry<String, String> entry : priorities.entrySet()) {
 			java.util.logging.Logger jdkLogger =
 				java.util.logging.Logger.getLogger(entry.getKey());
 
@@ -156,7 +156,7 @@ public class Log4JUtil {
 	}
 
 	public static Map<String, String> getLogLevelStrings() {
-		Map<String, String> logLevelStrings = new HashMap<>();
+		Map<String, String> priorities = new HashMap<>();
 
 		Enumeration<Logger> enumeration = LogManager.getCurrentLoggers();
 
@@ -166,11 +166,11 @@ public class Log4JUtil {
 			Level level = logger.getLevel();
 
 			if (level != null) {
-				logLevelStrings.put(logger.getName(), level.toString());
+				priorities.put(logger.getName(), level.toString());
 			}
 		}
 
-		return logLevelStrings;
+		return priorities;
 	}
 
 	/**
@@ -178,9 +178,9 @@ public class Log4JUtil {
 	 */
 	@Deprecated
 	public static String getOriginalLevel(String className) {
-		Map<String, String> logLevelStrings = getLogLevelStrings();
+		Map<String, String> priorities = getLogLevelStrings();
 
-		String logLevelString = logLevelStrings.get(className);
+		String logLevelString = priorities.get(className);
 
 		if (Validator.isNull(logLevelString)) {
 			return String.valueOf(Level.ALL);
