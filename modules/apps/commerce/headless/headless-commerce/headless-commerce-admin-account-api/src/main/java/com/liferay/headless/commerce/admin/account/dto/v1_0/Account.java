@@ -182,7 +182,7 @@ public class Account implements Serializable {
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Map<String, ?> customFields;
 
-	@Schema(description = "The date the section was created.")
+	@Schema(description = "The account's creation date.")
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -206,11 +206,11 @@ public class Account implements Serializable {
 		}
 	}
 
-	@GraphQLField(description = "The date the section was created.")
+	@GraphQLField(description = "The account's creation date.")
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	protected Date dateCreated;
 
-	@Schema(description = "The last time the section was changed.")
+	@Schema(description = "The account's most recent modification date.")
 	public Date getDateModified() {
 		return dateModified;
 	}
@@ -234,7 +234,7 @@ public class Account implements Serializable {
 		}
 	}
 
-	@GraphQLField(description = "The last time the section was changed.")
+	@GraphQLField(description = "The account's most recent modification date.")
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	protected Date dateModified;
 
