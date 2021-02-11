@@ -140,12 +140,12 @@ public class CommerceCheckoutPortlet extends MVCPortlet {
 					CookieKeys.deleteCookies(
 						httpServletRequest, httpServletResponse,
 						CookieKeys.getDomain(httpServletRequest),
-						"continueAsGuest");
+						CommerceOrder.class.getName() + StringPool.POUND +
+							commerceOrder.getGroupId());
 					CookieKeys.deleteCookies(
 						httpServletRequest, httpServletResponse,
 						CookieKeys.getDomain(httpServletRequest),
-						CommerceOrder.class.getName() + StringPool.POUND +
-							commerceOrder.getGroupId());
+						"continueAsGuest");
 				}
 
 				renderRequest.setAttribute(
