@@ -138,13 +138,13 @@ components:
                     type: object
                 dateCreated:
                     description:
-                        The date the section was created.
+                        The account's creation date.
                     format: date-time
                     readOnly: true
                     type: string
                 dateModified:
                     description:
-                        The last time the section was changed.
+                        The account's most recent modification date.
                     format: date-time
                     readOnly: true
                     type: string
