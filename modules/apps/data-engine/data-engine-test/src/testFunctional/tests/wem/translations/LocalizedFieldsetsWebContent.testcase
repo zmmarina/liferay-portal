@@ -73,7 +73,7 @@ definition {
 			structureName = "Structure FieldSet Test");
 
 		DataEngine.addField(
-			fieldFieldLabel = "Text Test",
+			fieldFieldLabel = "Text",
 			fieldName = "Text");
 
 		WebContentStructures.saveCP(structureName = "Structure Name Test");
@@ -102,13 +102,29 @@ definition {
 
 		PortletEntry.viewLocale(locale = "pt-BR");
 
-		Pause(locator1 = "5000");
+		PortletEntry.inputText(
+				fieldLabel = "Text",
+				text = "Text test BR");
 
-		PortletEntry.changeLocale(locale = "es_ES");
+		PortletEntry.changeLocaleSummary(locale = "en-US");
 
-		PortletEntry.viewLocale(locale = "es-ES");
+		PortletEntry.publish();
 
-		Pause(locator1 = "5000");
+		WebContentNavigator.gotoEditCP(webContentTitle = "WC Title Test");
+
+		AssertAttributeValue(
+				attribute1 = "value",
+				key_fieldFieldLabel = "Text",
+				locator1 = "WCEditWebContent#TEXT_INPUT",
+				value1 = "Text test");
+
+		PortletEntry.changeLocaleSummary(locale = "pt_BR");
+
+		AssertAttributeValue(
+				attribute1 = "value",
+				key_fieldFieldLabel = "Text",
+				locator1 = "WCEditWebContent#TEXT_INPUT",
+				value1 = "Text test BR");
 	}
 
 	@description = "This is a test for LPS-123539. As Content Creator, I want to leverage the structures’ translations with fildset when creating a new Web Content"
