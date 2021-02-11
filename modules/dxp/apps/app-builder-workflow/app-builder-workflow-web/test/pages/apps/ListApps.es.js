@@ -114,18 +114,18 @@ describe('ListApps', () => {
 		});
 
 		it('with empty state', async () => {
+			const history = {push: jest.fn()};
 			const {container, queryByText} = render(
-				<ListApps {...routeProps} />,
-				{
-					wrapper: AppContextProviderWrapper,
-				}
+				<AppContextProviderWrapper history={history}>
+					<ListApps {...routeProps} />
+				</AppContextProviderWrapper>
 			);
 
 			await waitForElementToBeRemoved(() =>
 				container.querySelector('span.loading-animation')
 			);
 
-			const {parentElement} = queryByText('create-new-app');
+			const button = queryByText('create-new-app');
 
 			expect(
 				container.querySelector('.taglib-empty-result-message')
@@ -133,9 +133,12 @@ describe('ListApps', () => {
 			).toContain(
 				'there-are-no-apps-yetintegrate-the-data-collection-and-management-of-an-object-with-a-step-driven-workflow-process'
 			);
-			expect(parentElement.getAttribute('href')).toBe(
-				'#/workflow/deploy'
-			);
+
+			expect(history.push).toBeCalledTimes(0);
+
+			fireEvent.click(button);
+
+			expect(history.push).toBeCalledWith('/workflow/deploy');
 		});
 	});
 

@@ -20,19 +20,12 @@ import {errorToast, successToast} from 'app-builder-web/js/utils/toast.es';
 import {createResourceURL, fetch} from 'frontend-js-web';
 import {compile} from 'path-to-regexp';
 import React, {useContext, useState} from 'react';
-import {Link} from 'react-router-dom';
 
 import MissingFieldsModal from './edit/MissingFieldsModal.es';
 import {getDataDefinition, getFormViews} from './edit/actions.es';
 import {checkRequiredFields} from './edit/utils.es';
 
-const Button = ({href, ...props}) => (
-	<Link to={href}>
-		<ClayButtonWithIcon {...props} />
-	</Link>
-);
-
-export default ({scope, ...props}) => {
+export default ({history, scope, ...props}) => {
 	const {userId} = useContext(AppContext);
 	const {deployApp} = useDeployApp();
 	const [currentApp, setCurrentApp] = useState({dataDefinitionName: ''});
@@ -64,11 +57,12 @@ export default ({scope, ...props}) => {
 
 	const emptyState = {
 		button: () => (
-			<Link to={newAppLink}>
-				<ClayButton displayType="secondary">
-					{Liferay.Language.get('create-new-app')}
-				</ClayButton>
-			</Link>
+			<ClayButton
+				displayType="secondary"
+				onClick={() => history.push(newAppLink)}
+			>
+				{Liferay.Language.get('create-new-app')}
+			</ClayButton>
 		),
 		description: Liferay.Language.get(
 			'integrate-the-data-collection-and-management-of-an-object-with-a-step-driven-workflow-process'
@@ -187,9 +181,9 @@ export default ({scope, ...props}) => {
 							)}
 							show={showTooltip}
 							trigger={
-								<Button
+								<ClayButtonWithIcon
 									className="nav-btn nav-btn-monospaced"
-									href={newAppLink}
+									onClick={() => history.push(newAppLink)}
 									onMouseOut={() => setShowTooltip(false)}
 									onMouseOver={() => setShowTooltip(true)}
 									symbol="plus"
