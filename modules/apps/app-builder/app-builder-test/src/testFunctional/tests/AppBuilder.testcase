@@ -127,7 +127,7 @@ definition {
 			isCreatingFormView = "false",
 			isCreatingViaPlusIcon = "true");
 
-		var fieldList = "Text,Select from List,Single Selection,Multiple Selection,Date,Numeric,Upload";
+		var fieldList = "Text,Date,Numeric,Upload";
 
 		for (var field : list "${fieldList}") {
 			AppBuilderAdmin.add();
@@ -275,14 +275,34 @@ definition {
 	test AddSimpleFormViewWithMultipleSelectionField {
 		property portal.acceptance = "true";
 
+		var fieldType = "Multiple Selection";
+		var formViewName = "Form 1";
+
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "my custom object",
 			isCreatingFormView = "true",
 			isCreatingViaPlusIcon = "true");
 
-		FormViewBuilder.addFormViewAndValidateFieldLabel(
-			fieldType = "Multiple Selection",
-			formViewName = "My Form View");
+		FormViewBuilder.setName(formViewName = "${formViewName}");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType}");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Multiple${number}",
+				optionValue = "Multiple ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.validateItemNameOnTable(itemName = "${formViewName}");
+
+		AppBuilderAdmin.openItem(itemName = "${formViewName}");
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "${fieldType}");
+
+		AppBuilderAdmin.gotoBack();
 	}
 
 	@description = "Add a Form View with a Numeric field"
@@ -306,14 +326,34 @@ definition {
 		property portal.acceptance = "true";
 		property test.name.skip.portal.instance = "AppBuilder#AddSimpleFormViewWithSelectFromListField";
 
+		var fieldType = "Select from List";
+		var formViewName = "Form 1";
+
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "my custom object",
 			isCreatingFormView = "true",
 			isCreatingViaPlusIcon = "true");
 
-		FormViewBuilder.addFormViewAndValidateFieldLabel(
-			fieldType = "Select from List",
-			formViewName = "My Form View");
+		FormViewBuilder.setName(formViewName = "${formViewName}");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType}");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Select${number}",
+				optionValue = "Select ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.validateItemNameOnTable(itemName = "${formViewName}");
+
+		AppBuilderAdmin.openItem(itemName = "${formViewName}");
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "${fieldType}");
+
+		AppBuilderAdmin.gotoBack();
 	}
 
 	@description = "Add a Form View with a Single Selection field"
@@ -321,14 +361,34 @@ definition {
 	test AddSimpleFormViewWithSingleSelectionField {
 		property portal.acceptance = "true";
 
+		var fieldType = "Single Selection";
+		var formViewName = "Form 1";
+
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "my custom object",
 			isCreatingFormView = "true",
 			isCreatingViaPlusIcon = "true");
 
-		FormViewBuilder.addFormViewAndValidateFieldLabel(
-			fieldType = "Single Selection",
-			formViewName = "My Form View");
+		FormViewBuilder.setName(formViewName = "${formViewName}");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType}");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Single${number}",
+				optionValue = "Single ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.validateItemNameOnTable(itemName = "${formViewName}");
+
+		AppBuilderAdmin.openItem(itemName = "${formViewName}");
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "${fieldType}");
+
+		AppBuilderAdmin.gotoBack();
 	}
 
 	@description = "Add a Form View with a Text Field"
