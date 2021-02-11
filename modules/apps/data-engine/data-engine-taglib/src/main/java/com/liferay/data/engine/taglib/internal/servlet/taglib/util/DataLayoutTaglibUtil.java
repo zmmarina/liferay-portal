@@ -167,6 +167,9 @@ public class DataLayoutTaglibUtil {
 			dataLayoutBuilderDefinition.getDisabledProperties()
 		).put(
 			"disabledTabs", dataLayoutBuilderDefinition.getDisabledTabs()
+		).put(
+			"visibleProperties",
+			dataLayoutBuilderDefinition.getVisibleProperties()
 		);
 
 		if (dataLayoutBuilderDefinition.allowRules()) {
