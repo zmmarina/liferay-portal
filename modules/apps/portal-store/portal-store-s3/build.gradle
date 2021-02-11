@@ -5,16 +5,16 @@ buildIBMS3Store {
 		delete "src/main/java/com/liferay/portal/store/s3/IBMS3store.java"
 	}
 	filter {
-		line -> line.replace "com.amazonaws", "com.ibm.cloud.objectstorage"
-	}
-	filter {
 		line -> line.replace "S3Store.class", "IBMS3Store.class"
 	}
 	filter {
-		line -> line.replace "public class S3Store", "@Generated(\"\")\npublic class IBMS3Store"
+		line -> line.replace "com.amazonaws", "com.ibm.cloud.objectstorage"
 	}
 	filter {
 		line -> line.replace "com.liferay.portal.store.s3.S3Store", "com.liferay.portal.store.s3.IBMS3Store"
+	}
+	filter {
+		line -> line.replace "public class S3Store", "@Generated(\"\")\npublic class IBMS3Store"
 	}
 	from new File("src/main/java/com/liferay/portal/store/s3/S3Store.java")
 	into "src/main/java/com/liferay/portal/store/s3"
