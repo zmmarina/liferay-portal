@@ -103,8 +103,8 @@ definition {
 		PortletEntry.viewLocale(locale = "pt-BR");
 
 		PortletEntry.inputText(
-				fieldLabel = "Text",
-				text = "Text test BR");
+			fieldLabel = "Text",
+			text = "Text test BR");
 
 		PortletEntry.changeLocaleSummary(locale = "en-US");
 
@@ -113,18 +113,18 @@ definition {
 		WebContentNavigator.gotoEditCP(webContentTitle = "WC Title Test");
 
 		AssertAttributeValue(
-				attribute1 = "value",
-				key_fieldFieldLabel = "Text",
-				locator1 = "WCEditWebContent#TEXT_INPUT",
-				value1 = "Text test");
+			attribute1 = "value",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#TEXT_INPUT",
+			value1 = "Text test");
 
 		PortletEntry.changeLocaleSummary(locale = "pt_BR");
 
 		AssertAttributeValue(
-				attribute1 = "value",
-				key_fieldFieldLabel = "Text",
-				locator1 = "WCEditWebContent#TEXT_INPUT",
-				value1 = "Text test BR");
+			attribute1 = "value",
+			key_fieldFieldLabel = "Text",
+			locator1 = "WCEditWebContent#TEXT_INPUT",
+			value1 = "Text test BR");
 	}
 
 	@description = "This is a test for LPS-123539. As Content Creator, I want to leverage the structures’ translations with fildset when creating a new Web Content"
