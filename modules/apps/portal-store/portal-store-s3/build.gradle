@@ -14,6 +14,9 @@ buildIBMS3Store {
 		line -> line.replace "com.liferay.portal.store.s3.S3Store", "com.liferay.portal.store.s3.IBMS3Store"
 	}
 	filter {
+		line -> line.replace "import org.osgi.service.component.annotations.Activate;", "import javax.annotation.Generated;\n\nimport org.osgi.service.component.annotations.Activate;"
+	}
+	filter {
 		line -> line.replace "public class S3Store", "@Generated(\"\")\npublic class IBMS3Store"
 	}
 	from new File("src/main/java/com/liferay/portal/store/s3/S3Store.java")
