@@ -16,8 +16,6 @@
 
 <%@ include file="/init.jsp" %>
 
-<%@ include file="/propagation_alert.jspf" %>
-
 <%
 String redirect = ParamUtil.getString(request, "redirect");
 
@@ -66,6 +64,8 @@ if (!group.isLayoutSetPrototype()) {
 request.setAttribute("edit_layout_set_prototype.jsp-layoutSetPrototype", layoutSetPrototype);
 request.setAttribute("edit_layout_set_prototype.jsp-redirect", currentURL);
 %>
+
+<%@ include file="/propagation_alert.jspf" %>
 
 <liferay-ui:success key='<%= LayoutSetPrototypePortletKeys.SITE_TEMPLATE_SETTINGS + "requestProcessed" %>' message="site-template-was-added" />
 
