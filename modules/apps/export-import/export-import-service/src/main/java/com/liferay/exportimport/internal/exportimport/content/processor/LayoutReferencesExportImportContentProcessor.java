@@ -773,8 +773,8 @@ public class LayoutReferencesExportImportContentProcessor
 
 		Group group = _groupLocalService.getGroup(groupId);
 
-		String[] patterns = {"href=", "[[", "{{"};
 		String[] friendlyURLSeparators = {"/-/", "/b/", "/d/", "/w/"};
+		String[] patterns = {"href=", "[[", "{{"};
 
 		int beginPos = -1;
 		int endPos = content.length();
