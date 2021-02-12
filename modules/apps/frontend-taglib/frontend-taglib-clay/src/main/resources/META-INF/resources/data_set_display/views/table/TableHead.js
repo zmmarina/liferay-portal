@@ -13,14 +13,15 @@
  */
 
 import {ClayCheckbox} from '@clayui/form';
-import ClayTable from '@clayui/table';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import FieldsSelectorDropdown from './FieldsSelectorDropdown';
 import TableHeadCell from './TableHeadCell';
+import DndTable from './dnd_table/index';
 
-function TableHeadRow({
+function TableHead({
+	fields,
 	items,
 	schema,
 	selectItems,
@@ -30,9 +31,8 @@ function TableHeadRow({
 	selectionType,
 	sorting,
 	updateSorting,
-	visibleFields,
 }) {
-	const expandableColumns = visibleFields.some((field) => field.expand);
+	const expandableColumns = fields.some((field) => field.expand);
 
 	function handleCheckboxClick() {
 		if (selectedItemsValue.length === items.length) {
@@ -43,10 +43,14 @@ function TableHeadRow({
 	}
 
 	return (
-		<ClayTable.Head>
-			<ClayTable.Row>
+		<DndTable.Head>
+			<DndTable.Row>
 				{selectable && (
-					<ClayTable.Cell headingCell>
+					<DndTable.Cell
+						className="item-selector"
+						columnName="item-selector"
+						heading
+					>
 						{items.length && selectionType === 'multiple' ? (
 							<ClayCheckbox
 								checked={!!selectedItemsValue.length}
@@ -58,9 +62,9 @@ function TableHeadRow({
 								onChange={handleCheckboxClick}
 							/>
 						) : null}
-					</ClayTable.Cell>
+					</DndTable.Cell>
 				)}
-				{visibleFields.map((field) => (
+				{fields.map((field) => (
 					<TableHeadCell
 						{...field}
 						expandableColumns={expandableColumns}
@@ -69,15 +73,24 @@ function TableHeadRow({
 						updateSorting={updateSorting}
 					/>
 				))}
-				<ClayTable.Cell className="text-right" headingCell>
+				<DndTable.Cell
+					className="item-actions"
+					columnName="item-actions"
+					heading
+				>
 					<FieldsSelectorDropdown fields={schema.fields} />
-				</ClayTable.Cell>
-			</ClayTable.Row>
-		</ClayTable.Head>
+				</DndTable.Cell>
+			</DndTable.Row>
+		</DndTable.Head>
 	);
 }
 
-TableHeadRow.propTypes = {
+TableHead.propTypes = {
+	fields: PropTypes.arrayOf(
+		PropTypes.shape({
+			expand: PropTypes.bool,
+		})
+	),
 	items: PropTypes.array,
 	schema: PropTypes.shape({
 		fields: PropTypes.any,
@@ -91,11 +104,6 @@ TableHeadRow.propTypes = {
 	selectionType: PropTypes.oneOf(['single', 'multiple']),
 	sorting: PropTypes.any,
 	updateSorting: PropTypes.func.isRequired,
-	visibleFields: PropTypes.arrayOf(
-		PropTypes.shape({
-			expand: PropTypes.bool,
-		})
-	),
 };
 
-export default TableHeadRow;
+export default TableHead;

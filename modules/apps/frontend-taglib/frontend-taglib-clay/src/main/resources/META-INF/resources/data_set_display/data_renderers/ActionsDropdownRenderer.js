@@ -352,7 +352,7 @@ function ActionsDropdownRenderer({actions, itemData, itemId}) {
 		});
 
 	return (
-		<div className="d-flex justify-content-end">
+		<div className="d-flex justify-content-end ml-auto">
 			{inlineEditingAlwaysOn && inlineEditingActions}
 			<ClayDropDown
 				active={menuActive}

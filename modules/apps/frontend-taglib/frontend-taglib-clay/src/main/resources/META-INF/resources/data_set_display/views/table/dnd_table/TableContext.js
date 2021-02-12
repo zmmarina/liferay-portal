@@ -12,26 +12,8 @@
  * details.
  */
 
-import ClayList from '@clayui/list';
-import PropTypes from 'prop-types';
-import React from 'react';
+import {createContext} from 'react';
 
-function Example({items}) {
-	return (
-		<ClayList className="bg-white mb-0 p-3">
-			<pre className="mb-0 text-wrap">{JSON.stringify(items)}</pre>
-		</ClayList>
-	);
-}
+const Context = createContext(null);
 
-Example.propTypes = {
-	dataRenderers: PropTypes.object,
-	dataSetDisplayContext: PropTypes.any,
-	items: PropTypes.array,
-};
-
-Example.defaultProps = {
-	items: [],
-};
-
-export default Example;
+export default Context;
