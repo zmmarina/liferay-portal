@@ -15,8 +15,6 @@
 package com.liferay.account.admin.web.internal.portlet.action;
 
 import com.liferay.account.constants.AccountPortletKeys;
-import com.liferay.petra.lang.SafeClosable;
-import com.liferay.portal.kernel.messaging.proxy.ProxyModeThreadLocal;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.service.AddressLocalService;
@@ -52,11 +50,7 @@ public class DeleteAccountEntryAddressesMVCActionCommand
 			actionRequest, "accountEntryAddressIds");
 
 		for (long accountEntryAddressId : accountEntryAddressIds) {
-			try (SafeClosable safeClosable =
-					ProxyModeThreadLocal.setWithSafeClosable(true)) {
-
-				_addressLocalService.deleteAddress(accountEntryAddressId);
-			}
+			_addressLocalService.deleteAddress(accountEntryAddressId);
 		}
 
 		String redirect = ParamUtil.getString(actionRequest, "redirect");
