@@ -272,11 +272,7 @@ class Analytics {
 	 * @param {Object} eventProps Complementary information about the event
 	 */
 	send(eventId, applicationId, eventProps) {
-		if (
-			this._isTrackingDisabled() ||
-			!applicationId ||
-			instance._disposed
-		) {
+		if (!applicationId) {
 			return;
 		}
 
