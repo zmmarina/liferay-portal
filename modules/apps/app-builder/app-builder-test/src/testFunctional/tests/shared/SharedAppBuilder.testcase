@@ -1215,17 +1215,50 @@ definition {
 
 		FormViewBuilder.setName(formViewName = "Form View Title 1");
 
-		for (var fieldType : list "Text,Select from List,Single Selection,Multiple Selection,Date,Numeric,Upload") {
+		for (var fieldType : list "Text,Date,Numeric,Upload") {
 			FormViewBuilder.addFieldByDoubleClick(fieldType = "${fieldType}");
 
 			FormViewBuilder.closeSidebar();
 		}
 
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Select${number}",
+				optionValue = "Select ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.closeSidebar();
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Single${number}",
+				optionValue = "Single ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.closeSidebar();
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Multiple${number}",
+				optionValue = "Multiple ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.closeSidebar();
+
 		FormViewBuilder.save();
 
 		FormViewBuilder.openFormView(formViewName = "Form View Title 1");
 
-		for (var fieldLabel : list "Text,Select from List,Single Selection,Multiple Selection,Date,Numeric,Upload") {
+		for (var fieldLabel : list "Text,Date,Numeric,Upload,Select from List,Single Selection,Multiple Selection") {
 			FormViewBuilder.fieldEllipsisAction(
 				fieldLabel = "${fieldLabel}",
 				selectAction = "Remove");
@@ -1237,7 +1270,7 @@ definition {
 
 		FormViewBuilder.openFormView(formViewName = "Form View Title 1");
 
-		for (var fieldType : list "Select from List,Single Selection,Multiple Selection,Date,Numeric,Upload") {
+		for (var fieldType : list "Date,Numeric,Upload,Select from List,Single Selection,Multiple Selection") {
 			FormViewBuilder.validateNoFieldLabel(fieldLabel = "${fieldType}");
 
 			FormViewBuilder.validateObjectFieldName(fieldName = "${fieldType}");
