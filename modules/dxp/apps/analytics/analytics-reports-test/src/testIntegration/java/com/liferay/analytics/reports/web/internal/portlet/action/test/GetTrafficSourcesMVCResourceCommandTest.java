@@ -246,7 +246,6 @@ public class GetTrafficSourcesMVCResourceCommandTest {
 
 					Assert.assertEquals(
 						"facebook", referringSocialMediaJSONObject.get("name"));
-
 					Assert.assertEquals(
 						385,
 						referringSocialMediaJSONObject.get("trafficAmount"));
