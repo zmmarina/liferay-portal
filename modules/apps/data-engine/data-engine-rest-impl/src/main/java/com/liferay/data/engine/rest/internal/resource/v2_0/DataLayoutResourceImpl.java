@@ -252,6 +252,7 @@ public class DataLayoutResourceImpl
 			MapToDDMFormValuesConverterUtil.toDDMFormValues(
 				dataLayoutRenderingContext.getDataRecordValues(), ddmForm,
 				null));
+		ddmFormRenderingContext.setEditOnlyInDefaultLanguage(true);
 		ddmFormRenderingContext.setHttpServletRequest(
 			contextHttpServletRequest);
 		ddmFormRenderingContext.setHttpServletResponse(
@@ -262,7 +263,6 @@ public class DataLayoutResourceImpl
 			dataLayoutRenderingContext.getNamespace());
 		ddmFormRenderingContext.setReadOnly(
 			dataLayoutRenderingContext.getReadOnly());
-		ddmFormRenderingContext.setEditOnlyInDefaultLanguage(true);
 		ddmFormRenderingContext.setShowSubmitButton(false);
 		ddmFormRenderingContext.setViewMode(true);
 

@@ -822,6 +822,9 @@ public class DDMFormFieldTemplateContextFactory {
 		Map<String, Object> changedProperties, DDMFormField ddmFormField,
 		DDMFormFieldValue ddmFormFieldValue) {
 
+		setDDMFormFieldTemplateContextEditOnlyInDefaultLanguage(
+			ddmFormFieldTemplateContext,
+			_ddmFormRenderingContext.isEditOnlyInDefaultLanguage());
 		setDDMFormFieldTemplateContextEnabled(
 			ddmFormFieldTemplateContext, changedProperties, true);
 		setDDMFormFieldTemplateContextEvaluable(
@@ -848,10 +851,6 @@ public class DDMFormFieldTemplateContextFactory {
 			ddmFormField.getDDMFormFieldValidation());
 		setDDMFormFieldTemplateContextVisible(
 			ddmFormFieldTemplateContext, changedProperties, true);
-
-		setDDMFormFieldTemplateContextEditOnlyInDefaultLanguage(
-			ddmFormFieldTemplateContext,
-			_ddmFormRenderingContext.isEditOnlyInDefaultLanguage());
 	}
 
 	private Stream<Map<String, Object>> _getColumnsStream(

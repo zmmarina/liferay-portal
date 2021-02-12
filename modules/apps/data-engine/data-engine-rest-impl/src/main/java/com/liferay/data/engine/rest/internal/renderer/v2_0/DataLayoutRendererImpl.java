@@ -91,11 +91,11 @@ public class DataLayoutRendererImpl implements DataLayoutRenderer {
 				null));
 		ddmFormRenderingContext.setDDMStructureLayoutId(dataLayoutId);
 		ddmFormRenderingContext.setGroupId(groupId);
+		ddmFormRenderingContext.setEditOnlyInDefaultLanguage(true);
 		ddmFormRenderingContext.setHttpServletRequest(
 			dataLayoutRendererContext.getHttpServletRequest());
 		ddmFormRenderingContext.setHttpServletResponse(
 			dataLayoutRendererContext.getHttpServletResponse());
-		ddmFormRenderingContext.setEditOnlyInDefaultLanguage(true);
 
 		Locale locale = null;
 
