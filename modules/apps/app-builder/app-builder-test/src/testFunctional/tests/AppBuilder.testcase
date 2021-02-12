@@ -578,10 +578,28 @@ definition {
 			isCreatingFormView = "true",
 			isCreatingViaPlusIcon = "true");
 
-		AppBuilderAdmin.createFormViewAndTableView(
-			fieldType = "Single Selection",
-			formViewName = "Single Selection Field - Form View Title",
-			tableViewName = "Single Selection Field - Table View Title");
+		FormViewBuilder.setName(formViewName = "Single Selection Field - Form View Title");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
+
+		for (var number : list "1,2,3") {
+			FormViewBuilder.editOptionsRow(
+				optionName = "Single${number}",
+				optionValue = "Single ${number}",
+				rowNumber = "${number}");
+		}
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.add();
+
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "Single Selection");
+
+		TableViewBuilder.setName(tableViewName = "Single Selection Field - Table View Title");
+
+		TableViewBuilder.save();
 
 		FormViewBuilder.switchToFormViewTab();
 
