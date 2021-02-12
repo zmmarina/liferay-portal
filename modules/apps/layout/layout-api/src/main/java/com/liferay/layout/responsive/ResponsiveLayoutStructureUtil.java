@@ -57,14 +57,6 @@ public class ResponsiveLayoutStructureUtil {
 
 		StringBundler sb = new StringBundler();
 
-		if ((rowStyledLayoutStructureItem != null) &&
-			Objects.equals(
-				rowStyledLayoutStructureItem.getVerticalAlignment(),
-				"middle")) {
-
-			sb.append("d-flex flex-column ");
-		}
-
 		sb.append("col-lg-");
 		sb.append(columnLayoutStructureItem.getSize());
 
@@ -85,6 +77,14 @@ public class ResponsiveLayoutStructureUtil {
 			sb.append("col");
 			sb.append(viewportSize.getCssClassPrefix());
 			sb.append(columnSize);
+		}
+
+		if ((rowStyledLayoutStructureItem != null) &&
+			Objects.equals(
+				rowStyledLayoutStructureItem.getVerticalAlignment(),
+				"middle")) {
+
+			sb.append("d-flex flex-column ");
 		}
 
 		return sb.toString();
