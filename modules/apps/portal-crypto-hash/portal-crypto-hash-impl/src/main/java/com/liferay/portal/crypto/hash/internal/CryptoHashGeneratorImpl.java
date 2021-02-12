@@ -57,7 +57,7 @@ public class CryptoHashGeneratorImpl implements CryptoHashGenerator {
 
 	private final CryptoHashProvider _messageDigestCryptoHashProvider;
 
-	private static class MessageDigestCryptoHashProvider
+	private class MessageDigestCryptoHashProvider
 		implements CryptoHashProvider {
 
 		public MessageDigestCryptoHashProvider()
