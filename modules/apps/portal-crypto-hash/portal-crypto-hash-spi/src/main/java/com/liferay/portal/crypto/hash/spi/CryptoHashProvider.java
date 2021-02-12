@@ -17,12 +17,9 @@ package com.liferay.portal.crypto.hash.spi;
 import com.liferay.portal.crypto.hash.exception.CryptoHashException;
 import com.liferay.portal.kernel.security.SecureRandomUtil;
 
-import org.osgi.annotation.versioning.ConsumerType;
-
 /**
  * @author Arthur Chan
  */
-@ConsumerType
 public interface CryptoHashProvider {
 
 	public byte[] generate(byte[] salt, byte[] input)
