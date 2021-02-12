@@ -232,8 +232,8 @@ public class DefaultUserResolverTest extends BaseSamlTestCase {
 			true
 		);
 
-		_initMessageContext(false);
 		_initMatchingUserHandling();
+		_initMessageContext(false);
 
 		User existingUser = _defaultUserResolver.importUser(
 			1L, _samlSpIdpConnection, _SUBJECT_NAME_IDENTIFIER_SCREEN_NAME,
