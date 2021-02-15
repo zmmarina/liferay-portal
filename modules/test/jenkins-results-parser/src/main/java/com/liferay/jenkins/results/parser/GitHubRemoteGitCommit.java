@@ -16,8 +16,8 @@ package com.liferay.jenkins.results.parser;
 
 import java.io.IOException;
 
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -159,7 +159,7 @@ public class GitHubRemoteGitCommit extends BaseGitCommit {
 			}
 
 			try {
-				SimpleDateFormat gitHubDateFormat =
+				DateFormat gitHubDateFormat =
 					JenkinsResultsParserUtil.getGitHubDateFormat();
 
 				Date commitDate = gitHubDateFormat.parse(
