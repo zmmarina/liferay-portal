@@ -26,7 +26,6 @@ import com.liferay.portal.kernel.util.GroupThreadLocal;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
-import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.segments.constants.SegmentsExperienceConstants;
 import com.liferay.segments.exception.LockedSegmentsExperimentException;
@@ -65,19 +64,6 @@ public class SegmentsExperienceLocalServiceImpl
 			ServiceContext serviceContext)
 		throws PortalException {
 
-		return addSegmentsExperience(
-			segmentsEntryId, classNameId, classPK, nameMap, active,
-			new UnicodeProperties(true), serviceContext);
-	}
-
-	@Override
-	public SegmentsExperience addSegmentsExperience(
-			long segmentsEntryId, long classNameId, long classPK,
-			Map<Locale, String> nameMap, boolean active,
-			UnicodeProperties typeSettingsUnicodeProperties,
-			ServiceContext serviceContext)
-		throws PortalException {
-
 		int lowestPriority = _getLowestPriority(
 			serviceContext.getScopeGroupId(), classNameId,
 			_getPublishedLayoutClassPK(classPK));
@@ -90,26 +76,13 @@ public class SegmentsExperienceLocalServiceImpl
 
 		return addSegmentsExperience(
 			segmentsEntryId, classNameId, classPK, nameMap, lowestPriority - 1,
-			active, typeSettingsUnicodeProperties, serviceContext);
+			active, serviceContext);
 	}
 
 	@Override
 	public SegmentsExperience addSegmentsExperience(
 			long segmentsEntryId, long classNameId, long classPK,
 			Map<Locale, String> nameMap, int priority, boolean active,
-			ServiceContext serviceContext)
-		throws PortalException {
-
-		return addSegmentsExperience(
-			segmentsEntryId, classNameId, classPK, nameMap, priority, active,
-			new UnicodeProperties(true), serviceContext);
-	}
-
-	@Override
-	public SegmentsExperience addSegmentsExperience(
-			long segmentsEntryId, long classNameId, long classPK,
-			Map<Locale, String> nameMap, int priority, boolean active,
-			UnicodeProperties typeSettingsUnicodeProperties,
 			ServiceContext serviceContext)
 		throws PortalException {
 
@@ -145,8 +118,6 @@ public class SegmentsExperienceLocalServiceImpl
 		segmentsExperience.setNameMap(nameMap);
 		segmentsExperience.setPriority(priority);
 		segmentsExperience.setActive(active);
-		segmentsExperience.setTypeSettingsUnicodeProperties(
-			typeSettingsUnicodeProperties);
 
 		segmentsExperience = segmentsExperiencePersistence.update(
 			segmentsExperience);
@@ -166,19 +137,6 @@ public class SegmentsExperienceLocalServiceImpl
 			ServiceContext serviceContext)
 		throws PortalException {
 
-		return appendSegmentsExperience(
-			segmentsEntryId, classNameId, classPK, nameMap, active,
-			new UnicodeProperties(true), serviceContext);
-	}
-
-	@Override
-	public SegmentsExperience appendSegmentsExperience(
-			long segmentsEntryId, long classNameId, long classPK,
-			Map<Locale, String> nameMap, boolean active,
-			UnicodeProperties typeSettingsUnicodeProperties,
-			ServiceContext serviceContext)
-		throws PortalException {
-
 		int highestPriority = _getHighestPriority(
 			serviceContext.getScopeGroupId(), classNameId,
 			_getPublishedLayoutClassPK(classPK));
@@ -191,7 +149,7 @@ public class SegmentsExperienceLocalServiceImpl
 
 		return addSegmentsExperience(
 			segmentsEntryId, classNameId, classPK, nameMap, highestPriority + 1,
-			active, typeSettingsUnicodeProperties, serviceContext);
+			active, serviceContext);
 	}
 
 	@Override
