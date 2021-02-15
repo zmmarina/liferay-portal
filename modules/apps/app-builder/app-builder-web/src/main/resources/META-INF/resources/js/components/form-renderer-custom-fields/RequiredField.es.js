@@ -213,7 +213,6 @@ export default ({AppContext, dataLayoutBuilder}) => {
 						setToggle(toggle);
 
 						dataLayoutBuilder.dispatch('fieldEdited', {
-							fieldName: state.focusedField.fieldName,
 							propertyName: 'required',
 							propertyValue: toggle,
 						});
