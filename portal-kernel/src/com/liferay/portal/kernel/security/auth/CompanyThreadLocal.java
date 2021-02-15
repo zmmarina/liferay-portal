@@ -60,7 +60,8 @@ public class CompanyThreadLocal {
 
 			if (defaultUser == null) {
 				if (_log.isWarnEnabled()) {
-					_log.warn("No default user found for company " + companyId);
+					_log.warn(
+						"No default user was found for company " + companyId);
 				}
 			}
 			else {

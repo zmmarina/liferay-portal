@@ -233,7 +233,7 @@
 			<matches></matches>
 		</ignore-error>
 		<ignore-error description="LPS-123610">
-			<contains>No default user found for company</contains>
+			<contains>No default user was found for company</contains>
 			<matches></matches>
 		</ignore-error>
 		<ignore-error description="LPS-127275 - temporarily ignore until fixed">
