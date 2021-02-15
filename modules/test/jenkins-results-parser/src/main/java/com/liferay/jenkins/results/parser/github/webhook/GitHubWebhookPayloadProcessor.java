@@ -1626,15 +1626,14 @@ public class GitHubWebhookPayloadProcessor {
 
 		addTestPullRequestQueryString(pullRequestTesterQueryString);
 
-		String masterURL;
-
-		String blacklistString = _jenkinsBuildProperties.getProperty(
-			"jenkins.load.balancer.blacklist", "");
+		String masterURL = "http://test-1.liferay.com";
 
 		try {
 			masterURL = JenkinsResultsParserUtil.getMostAvailableMasterURL(
-				"http://test-1.liferay.com", blacklistString, 1,
-				JenkinsMaster.getSlaveRAMMinimumDefault(),
+				"http://test-1.liferay.com",
+				_jenkinsBuildProperties.getProperty(
+					"jenkins.load.balancer.blacklist", ""),
+				1, JenkinsMaster.getSlaveRAMMinimumDefault(),
 				JenkinsMaster.getSlavesPerHostDefault());
 		}
 		catch (Exception exception) {
@@ -1644,8 +1643,6 @@ public class GitHubWebhookPayloadProcessor {
 						"http://test-1.liferay.com because load balancer " +
 							"threw an exception");
 			}
-
-			masterURL = "http://test-1.liferay.com";
 		}
 
 		invokePullRequestTester(masterURL, pullRequestTesterParameters);
