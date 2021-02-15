@@ -242,7 +242,6 @@ public class StructuredContentDTOConverter
 		HttpServletRequest httpServletRequest =
 			dtoConverterContext.getHttpServletRequest();
 		Locale locale = dtoConverterContext.getLocale();
-
 		UriInfo uriInfo = uriInfoOptional.get();
 
 		RenderedContent[] renderedContents = TransformUtil.transformToArray(
@@ -271,7 +270,6 @@ public class StructuredContentDTOConverter
 
 							return false;
 						});
-
 					setRenderedContentValue(
 						() -> {
 							if (!uriInfoOptional.map(
