@@ -12,18 +12,19 @@
  * details.
  */
 
+import PropTypes from 'prop-types';
 import React, {useCallback, useMemo, useState} from 'react';
 
 import Context from './TableContext';
 
-function ContextProvider({children, columnsNames}) {
+function ContextProvider({children, columnNames}) {
 	const [tableWidth, updateTableWidth] = useState(null);
-	const [columnsDefinitions, updateColumnsDefinitions] = useState(new Map());
+	const [columnDefinitions, updateColumnDefinitions] = useState(new Map());
 	const [draggingColumnName, updateDraggingColumnName] = useState(null);
 	const [draggingAllowed, updateDraggingAllowed] = useState(true);
 
 	const registerColumn = (name, width, resizable) => {
-		updateColumnsDefinitions((definitions) => {
+		updateColumnDefinitions((definitions) => {
 			const updatedDefinitions = new Map(definitions);
 
 			updatedDefinitions.set(name, {
@@ -36,35 +37,32 @@ function ContextProvider({children, columnsNames}) {
 	};
 
 	const isFixed = useMemo(() => {
-		const columnsAreAllRegistered = columnsNames.reduce(
-			(registered, name) => {
-				return registered && !!columnsDefinitions.get(name);
-			},
-			true
+		const allRegistered = columnNames.every((name) =>
+			columnDefinitions.has(name)
 		);
 
-		return columnsAreAllRegistered;
-	}, [columnsDefinitions, columnsNames]);
+		return allRegistered;
+	}, [columnDefinitions, columnNames]);
 
 	const resizeColumn = useCallback(
 		(name, width) => {
 			if (isFixed) {
-				updateColumnsDefinitions((definitions) => {
+				updateColumnDefinitions((definitions) => {
 					const resizedColumn = definitions.get(name);
 
 					const isColumnReducing = resizedColumn.width > width;
 
-					let totalColsWidth = 0;
+					let totalWidth = 0;
 
 					definitions.forEach((definition) => {
-						totalColsWidth += definition.width;
+						totalWidth += definition.width;
 					});
 
 					const nextColumnName =
-						columnsNames[columnsNames.indexOf(name) + 1];
+						columnNames[columnNames.indexOf(name) + 1];
 					const nextColumn = definitions.get(nextColumnName);
 					const columnsAreShorterThanContainer =
-						totalColsWidth < tableWidth;
+						totalWidth < tableWidth;
 
 					if (
 						(isColumnReducing &&
@@ -98,14 +96,14 @@ function ContextProvider({children, columnsNames}) {
 				});
 			}
 		},
-		[columnsNames, tableWidth, isFixed]
+		[columnNames, tableWidth, isFixed]
 	);
 
 	return (
 		<Context.Provider
 			value={{
-				columnsDefinitions,
-				columnsNames,
+				columnDefinitions,
+				columnNames,
 				draggingAllowed,
 				draggingColumnName,
 				isFixed,
@@ -121,5 +119,13 @@ function ContextProvider({children, columnsNames}) {
 		</Context.Provider>
 	);
 }
+
+ContextProvider.defaultProps = {
+	columnNames: [],
+};
+
+ContextProvider.propTypes = {
+	columnNames: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default ContextProvider;

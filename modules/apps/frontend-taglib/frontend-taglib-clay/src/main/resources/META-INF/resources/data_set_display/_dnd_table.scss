@@ -1,8 +1,3 @@
-.dnd-th {
-	font-weight: 600;
-	position: relative;
-}
-
 .dnd-thead {
 	display: table-header-group;
 
@@ -19,15 +14,15 @@
 	}
 }
 
-.dnd-th,
-.dnd-td {
-	border-right: 1px solid $border-color;
+.dnd-td,
+.dnd-th {
+	border-right: 1px solid $table-list-border-color;
 	display: table-cell;
-	padding: $spacer * 0.75;
-	white-space: normal;
-	overflow: hidden;
 	opacity: 0;
+	overflow: hidden;
+	padding: $table-cell-padding;
 	transition: opacity 0.1s ease-in;
+	white-space: normal;
 
 	.fixed & {
 		opacity: 1;
@@ -48,28 +43,33 @@
 	}
 
 	.fixed & {
+		align-items: center;
 		display: flex;
 		min-width: auto;
-		align-items: center;
 	}
 }
 
-.dnd-tr {
-	border-bottom: 1px solid $border-color;
+.dnd-th {
+	font-weight: 600;
 	position: relative;
+}
+
+.dnd-tr {
+	border-bottom: 1px solid $table-list-border-color;
 	display: table-row;
 	min-width: 100%;
+	position: relative;
 
 	.dnd-tbody &:last-child {
 		border-bottom: none;
 	}
 
 	&.with-bg {
-		background-color: $gray-100;
+		background-color: $table-accent-bg;
 	}
 
 	&::before {
-		background: var(--primary);
+		background: $primary;
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -90,19 +90,19 @@
 	}
 
 	&.nested + &.dnd-tr:not(.nested) {
-		border-top: 1px solid $border-color;
+		border-top: 1px solid $table-list-border-color;
 	}
 
 	&.nested {
+		border-bottom: 1px solid $table-bg;
 		border-width: 0;
 		margin: 0;
 		overflow: hidden;
 		position: relative;
-		border-bottom: 1px solid var(--white);
 
 		&.last {
-			border-radius: 0 0 10px 10px;
 			border-bottom: none;
+			border-radius: 0 0 10px 10px;
 			margin-bottom: 8px;
 
 			.dnd-td:first-child {
@@ -115,11 +115,11 @@
 		}
 
 		.dnd-td {
-			border-color: var(--white);
-			background-color: #f0f5ff;
+			background-color: $table-list-active-bg;
+			border-color: $table-bg;
+			overflow: hidden;
 			padding-bottom: $spacer * 0.5;
 			padding-top: $spacer * 0.5;
-			overflow: hidden;
 		}
 
 		.sticker {
@@ -130,16 +130,16 @@
 }
 
 .dnd-table {
-	background-color: var(--white);
+	background-color: $table-bg;
+	border: 1px solid $table-list-border-color;
+	border-radius: 2px;
+	color: $table-list-color;
+	display: table;
+	font-size: 0.875rem;
 	overflow-x: scroll;
-	border: 1px solid $border-color;
+	transition: opacity 0.1s ease-in;
 	white-space: nowrap;
 	width: 100%;
-	display: table;
-	transition: opacity 0.1s ease-in;
-	color: $table-text;
-	font-size: 0.875rem;
-	border-radius: 2px;
 
 	&.fixed {
 		display: block;
@@ -153,28 +153,28 @@
 }
 
 .dnd-th-resizer {
+	background: $info;
 	cursor: col-resize;
 	display: block;
-	position: absolute;
-	width: 4px;
 	height: 100%;
-	background: var(--info);
 	opacity: 0;
+	position: absolute;
 	right: 0;
 	top: 0;
-	z-index: 1;
 	transition: background-color 0.1s ease-in;
+	width: 4px;
+	z-index: 1;
 
 	&:hover {
 		opacity: 1;
 	}
 
 	&.is-active {
-		background: var(--danger);
+		background: $danger;
 		opacity: 1;
 
 		&.is-allowed {
-			background: var(--primary);
+			background: $primary;
 		}
 	}
 }

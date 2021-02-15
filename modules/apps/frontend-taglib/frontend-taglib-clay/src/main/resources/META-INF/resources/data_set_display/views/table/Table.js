@@ -259,19 +259,19 @@ function Table({dataLoading, items, itemsActions, schema, style}) {
 		);
 	}
 
-	const columnsNames = [];
+	const columnNames = [];
 
 	if (selectable) {
-		columnsNames.push('item-selector');
+		columnNames.push('item-selector');
 	}
 
-	columnsNames.push(
+	columnNames.push(
 		...visibleFields.map((field) => String(field.fieldName)),
 		'item-actions'
 	);
 
 	return (
-		<DndTable.ContextProvider columnsNames={columnsNames}>
+		<DndTable.ContextProvider columnNames={columnNames}>
 			{viewContent}
 		</DndTable.ContextProvider>
 	);

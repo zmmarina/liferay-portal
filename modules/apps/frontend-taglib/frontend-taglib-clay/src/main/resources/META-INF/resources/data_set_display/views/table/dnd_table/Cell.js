@@ -15,7 +15,7 @@
 import classNames from 'classnames';
 import {throttle} from 'frontend-js-web';
 import PropTypes from 'prop-types';
-import React, {useContext, useEffect, useMemo, useRef} from 'react';
+import React, {useContext, useLayoutEffect, useMemo, useRef} from 'react';
 
 import Context from './TableContext';
 
@@ -24,7 +24,7 @@ function Cell({children, className, columnName, expand, heading, resizable}) {
 	const clientX = useRef({current: null});
 
 	const {
-		columnsDefinitions,
+		columnDefinitions,
 		draggingAllowed,
 		draggingColumnName,
 		isFixed,
@@ -34,7 +34,7 @@ function Cell({children, className, columnName, expand, heading, resizable}) {
 		updateDraggingColumnName,
 	} = useContext(Context);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (columnName && heading && !isFixed) {
 			const {width} = cellRef.current.getClientRects()[0];
 
@@ -42,7 +42,7 @@ function Cell({children, className, columnName, expand, heading, resizable}) {
 		}
 	}, [columnName, isFixed, registerColumn, heading, resizable]);
 
-	const resizeCol = useMemo(() => {
+	const handleDrag = useMemo(() => {
 		return throttle((event) => {
 			if (event.clientX === clientX.current || !cellRef.current) {
 				return;
@@ -60,23 +60,23 @@ function Cell({children, className, columnName, expand, heading, resizable}) {
 	}, [columnName, resizable, resizeColumn, updateDraggingColumnName]);
 
 	function initializeDrag() {
-		window.addEventListener('mousemove', resizeCol);
+		window.addEventListener('mousemove', handleDrag);
 		window.addEventListener(
 			'mouseup',
 			() => {
 				updateDraggingAllowed(true);
 				updateDraggingColumnName(null);
-				window.removeEventListener('mousemove', resizeCol);
+				window.removeEventListener('mousemove', handleDrag);
 			},
 			{once: true}
 		);
 	}
 
 	const width = useMemo(() => {
-		const columnDetails = columnsDefinitions.get(columnName);
+		const columnDetails = columnDefinitions.get(columnName);
 
 		return columnDetails && isFixed && columnDetails.width;
-	}, [isFixed, columnsDefinitions, columnName]);
+	}, [isFixed, columnDefinitions, columnName]);
 
 	return (
 		<div

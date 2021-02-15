@@ -20,21 +20,19 @@ import Cell from './Cell';
 import TableContext from './TableContext';
 
 function Row({children, className, paddingLeftCells}) {
-	const {columnsDefinitions, columnsNames, isFixed} = useContext(
-		TableContext
-	);
+	const {columnDefinitions, columnNames, isFixed} = useContext(TableContext);
 
 	const marginLeft = useMemo(() => {
 		let margin = 0;
 
 		if (isFixed) {
 			for (let i = 0; i < paddingLeftCells; i++) {
-				margin += columnsDefinitions.get(columnsNames[i]).width;
+				margin += columnDefinitions.get(columnNames[i]).width;
 			}
 		}
 
 		return margin;
-	}, [columnsDefinitions, columnsNames, isFixed, paddingLeftCells]);
+	}, [columnDefinitions, columnNames, isFixed, paddingLeftCells]);
 
 	const style = marginLeft
 		? {
@@ -43,10 +41,13 @@ function Row({children, className, paddingLeftCells}) {
 		  }
 		: {};
 
-	let counter = 0;
-	const placeholderPaddingCells = !isFixed
-		? new Array(paddingLeftCells).fill(<Cell key={counter++} />)
-		: null;
+	const placeholderPaddingCells = [];
+
+	if (!isFixed) {
+		for (let i = 0; i < paddingLeftCells; i++) {
+			placeholderPaddingCells.push(<Cell key={i} />);
+		}
+	}
 
 	return (
 		<div className={classNames('dnd-tr', className)} style={style}>

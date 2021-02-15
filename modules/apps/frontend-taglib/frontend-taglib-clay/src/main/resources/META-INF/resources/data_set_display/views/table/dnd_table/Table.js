@@ -13,7 +13,7 @@
  */
 
 import classNames from 'classnames';
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useLayoutEffect, useRef} from 'react';
 
 import TableContext from './TableContext';
 
@@ -23,7 +23,7 @@ function Table({children, className}) {
 	);
 	const dndTableRef = useRef(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const tableWidth = dndTableRef.current.getBoundingClientRect().width;
 		updateTableWidth(tableWidth);
 	}, [updateTableWidth]);
