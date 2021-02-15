@@ -62,7 +62,6 @@ public class SegmentsExperienceWrapper
 		attributes.put("name", getName());
 		attributes.put("priority", getPriority());
 		attributes.put("active", isActive());
-		attributes.put("typeSettings", getTypeSettings());
 		attributes.put("lastPublishDate", getLastPublishDate());
 
 		return attributes;
@@ -172,12 +171,6 @@ public class SegmentsExperienceWrapper
 
 		if (active != null) {
 			setActive(active);
-		}
-
-		String typeSettings = (String)attributes.get("typeSettings");
-
-		if (typeSettings != null) {
-			setTypeSettings(typeSettings);
 		}
 
 		Date lastPublishDate = (Date)attributes.get("lastPublishDate");
@@ -431,23 +424,6 @@ public class SegmentsExperienceWrapper
 	@Override
 	public String getSegmentsExperienceKey() {
 		return model.getSegmentsExperienceKey();
-	}
-
-	/**
-	 * Returns the type settings of this segments experience.
-	 *
-	 * @return the type settings of this segments experience
-	 */
-	@Override
-	public String getTypeSettings() {
-		return model.getTypeSettings();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.util.UnicodeProperties
-		getTypeSettingsUnicodeProperties() {
-
-		return model.getTypeSettingsUnicodeProperties();
 	}
 
 	/**
@@ -741,24 +717,6 @@ public class SegmentsExperienceWrapper
 	@Override
 	public void setSegmentsExperienceKey(String segmentsExperienceKey) {
 		model.setSegmentsExperienceKey(segmentsExperienceKey);
-	}
-
-	/**
-	 * Sets the type settings of this segments experience.
-	 *
-	 * @param typeSettings the type settings of this segments experience
-	 */
-	@Override
-	public void setTypeSettings(String typeSettings) {
-		model.setTypeSettings(typeSettings);
-	}
-
-	@Override
-	public void setTypeSettingsUnicodeProperties(
-		com.liferay.portal.kernel.util.UnicodeProperties
-			typeSettingsUnicodeProperties) {
-
-		model.setTypeSettingsUnicodeProperties(typeSettingsUnicodeProperties);
 	}
 
 	/**
