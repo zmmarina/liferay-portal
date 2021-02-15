@@ -45,15 +45,15 @@ public class ReferralTrafficChannelImpl implements TrafficChannel {
 	}
 
 	public ReferralTrafficChannelImpl(
-		List<ReferringURL> domainReferringURL,
-		List<ReferringURL> pageReferringURL, long trafficAmount,
+		List<ReferringURL> domainReferringURLs,
+		List<ReferringURL> pageReferringURLs, long trafficAmount,
 		double trafficShare) {
 
 		_trafficAmount = trafficAmount;
 		_trafficShare = trafficShare;
 
-		_domainReferringURLs = domainReferringURL;
-		_pageReferringURLs = pageReferringURL;
+		_domainReferringURLs = domainReferringURLs;
+		_pageReferringURLs = pageReferringURLs;
 
 		_error = false;
 	}
