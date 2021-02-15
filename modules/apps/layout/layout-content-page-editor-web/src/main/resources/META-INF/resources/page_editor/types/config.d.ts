@@ -125,6 +125,7 @@ export interface Config {
 	getIframeContentURL: string;
 	getInfoItemFieldValueURL: string;
 	getInfoItemMappingFieldsURL: string;
+	getLayoutFriendlyURL: string;
 	getPageContentsURL: string;
 	imageSelectorURL: string;
 	infoItemSelectorURL: string;
