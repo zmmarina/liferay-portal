@@ -36,7 +36,7 @@ public class UpgradeDDMTemplate extends UpgradeProcess {
 
 	private void _upgradeDDMTemplate() throws Exception {
 		try (PreparedStatement ps1 = connection.prepareStatement(
-				"select script, templateId FROM DDMTemplate where " +
+				"select templateId, script FROM DDMTemplate where " +
 					"classNameId = ?");
 			PreparedStatement ps2 =
 				AutoBatchPreparedStatementUtil.concurrentAutoBatch(
@@ -51,7 +51,6 @@ public class UpgradeDDMTemplate extends UpgradeProcess {
 						1,
 						StringUtil.replace(
 							rs.getString("script"), "randomizer.", "random."));
-
 					ps2.setLong(2, rs.getLong("templateId"));
 
 					ps2.addBatch();
@@ -64,7 +63,7 @@ public class UpgradeDDMTemplate extends UpgradeProcess {
 
 	private void _upgradeDDMTemplateVersion() throws Exception {
 		try (PreparedStatement ps1 = connection.prepareStatement(
-				"select script, templateVersionId FROM DDMTemplateVersion " +
+				"select templateVersionId, script FROM DDMTemplateVersion " +
 					"where classNameId = ?");
 			PreparedStatement ps2 =
 				AutoBatchPreparedStatementUtil.concurrentAutoBatch(
@@ -80,7 +79,6 @@ public class UpgradeDDMTemplate extends UpgradeProcess {
 						1,
 						StringUtil.replace(
 							rs.getString("script"), "randomizer.", "random."));
-
 					ps2.setLong(2, rs.getLong("templateVersionId"));
 
 					ps2.addBatch();
