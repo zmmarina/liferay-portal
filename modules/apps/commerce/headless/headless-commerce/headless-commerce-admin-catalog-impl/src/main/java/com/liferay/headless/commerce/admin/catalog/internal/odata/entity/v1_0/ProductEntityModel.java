@@ -41,7 +41,6 @@ public class ProductEntityModel implements EntityModel {
 			new CollectionEntityField(
 				new StringEntityField(
 					"categoryIds", locale -> "assetCategoryIds")),
-			new IntegerEntityField("catalogId", locale -> "commerceCatalogId"),
 			new CollectionEntityField(
 				new EntityField(
 					"channelId", EntityField.Type.INTEGER,
@@ -49,6 +48,8 @@ public class ProductEntityModel implements EntityModel {
 						CPField.CHANNEL_GROUP_IDS),
 					locale -> CPField.CHANNEL_GROUP_IDS,
 					object -> _getChannelGroupId(object))),
+			new CollectionEntityField(
+				new IntegerEntityField("statusCode", locale -> Field.STATUS)),
 			new DateTimeEntityField(
 				"createDate",
 				locale -> Field.getSortableFieldName(Field.CREATE_DATE),
@@ -57,11 +58,10 @@ public class ProductEntityModel implements EntityModel {
 				"modifiedDate",
 				locale -> Field.getSortableFieldName(Field.MODIFIED_DATE),
 				locale -> Field.MODIFIED_DATE),
+			new IntegerEntityField("catalogId", locale -> "commerceCatalogId"),
 			new StringEntityField(
 				"name", locale -> Field.getSortableFieldName("name")),
-			new StringEntityField("productType", locale -> "productTypeName"),
-			new CollectionEntityField(
-				new IntegerEntityField("statusCode", locale -> Field.STATUS))
+			new StringEntityField("productType", locale -> "productTypeName")
 		).collect(
 			Collectors.toMap(EntityField::getName, Function.identity())
 		);
