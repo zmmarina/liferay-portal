@@ -28,6 +28,7 @@ import com.liferay.data.engine.rest.resource.v2_0.test.util.DataRecordCollection
 import com.liferay.data.engine.rest.strategy.util.DataRecordValueKeyUtil;
 import com.liferay.dynamic.data.lists.model.DDLRecordSet;
 import com.liferay.dynamic.data.mapping.model.DDMStructure;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.service.ResourceLocalService;
 import com.liferay.portal.kernel.test.rule.DataGuard;
@@ -504,36 +505,32 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 			DataDefinitionTestUtil.addDataDefinitionWithFieldSet(
 				testGroup.getGroupId());
 
+		String fieldsetKey = StringBundler.concat(
+			"FieldsGroup4Test$", RandomTestUtil.randomString(), "$0");
+
 		DataRecord dataRecord = new DataRecord() {
 			{
 				dataRecordValues = HashMapBuilder.<String, Object>put(
-					"Text",
+					fieldsetKey, ""
+				).put(
+					StringBundler.concat(
+						fieldsetKey, "#Text4Test$",
+						RandomTestUtil.randomString(), "$0"),
 					HashMapBuilder.<String, Object>put(
 						"en_US", "Text Value"
-					).build()
-				).put(
-					"fieldset1",
-					HashMapBuilder.<String, Object>put(
-						RandomTestUtil.randomString(),
-						HashMapBuilder.<String, Object>put(
-							"Text",
-							HashMapBuilder.<String, Object>put(
-								"en_US", "Text Value"
-							).build()
-						).build()
 					).build()
 				).build();
 			}
 		};
 
-		DataRecord postedDataRecord =
+		DataRecord postDataRecord =
 			dataRecordResource.postDataDefinitionDataRecord(
 				dataDefinition.getId(), dataRecord);
 
 		Assert.assertEquals(
 			dataRecord.getDataRecordValues(),
-			postedDataRecord.getDataRecordValues());
-		assertValid(postedDataRecord);
+			postDataRecord.getDataRecordValues());
+		assertValid(postDataRecord);
 	}
 
 	@Override

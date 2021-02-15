@@ -84,6 +84,9 @@ public class DataDefinitionTestUtil {
 	public static DataDefinition addDataDefinitionWithFieldSet(long groupId)
 		throws Exception {
 
+		DataDefinition dataDefinition = DataDefinition.toDTO(
+			read("data-definition-object-structure-with-fieldset.json"));
+
 		DataDefinitionResource.Builder builder =
 			DataDefinitionResource.builder();
 
@@ -96,10 +99,8 @@ public class DataDefinitionTestUtil {
 		DataDefinition fieldsetDataDefinition =
 			dataDefinitionResource.postSiteDataDefinitionByContentType(
 				groupId, "app-builder-fieldset",
-				DataDefinition.toDTO(read("data-definition-basic.json")));
-
-		DataDefinition dataDefinition = DataDefinition.toDTO(
-			read("data-definition-with-invalid-field-languages.json"));
+				DataDefinition.toDTO(
+					read("data-definition-fieldset-structure.json")));
 
 		for (DataDefinitionField dataDefinitionField :
 				dataDefinition.getDataDefinitionFields()) {
