@@ -252,7 +252,7 @@ public class GitHubWebhookPayloadProcessor {
 		}
 		else {
 			if (_log.isInfoEnabled()) {
-				_log.info("Pull request test URL: " + invocationURL);
+				_log.info("Pull request test URL " + invocationURL);
 			}
 		}
 	}
@@ -394,7 +394,7 @@ public class GitHubWebhookPayloadProcessor {
 		}
 		catch (IOException ioException) {
 			throw new RuntimeException(
-				"Unable to retrieve url " + url, ioException);
+				"Unable to retrieve URL " + url, ioException);
 		}
 	}
 
@@ -443,7 +443,7 @@ public class GitHubWebhookPayloadProcessor {
 					currentSHA + "..." + mergeSHA;
 
 			if (_log.isInfoEnabled()) {
-				_log.info("Subrepo compare URL: " + compareURL);
+				_log.info("Subrepo compare URL " + compareURL);
 			}
 
 			String message =
@@ -541,12 +541,9 @@ public class GitHubWebhookPayloadProcessor {
 			return _jiraProjectKeys;
 		}
 
-		String branchName = pullRequest.getUpstreamRemoteGitBranchName();
-
-		String repositoryName = pullRequest.getGitRepositoryName();
-
 		String jiraProjectKeysProperty = JenkinsResultsParserUtil.getCIProperty(
-			branchName, "jira.project.keys", repositoryName);
+			pullRequest.getUpstreamRemoteGitBranchName(), "jira.project.keys",
+			pullRequest.getGitRepositoryName());
 
 		if ((jiraProjectKeysProperty != null) &&
 			jiraProjectKeysProperty.isEmpty()) {
@@ -605,13 +602,15 @@ public class GitHubWebhookPayloadProcessor {
 	}
 
 	protected long getTestPullRequestQueryStringExpiredTime() {
-		//return System.currentTimeMillis() - 3600000; // 1 hour
+
+		// return System.currentTimeMillis() - 3600000; // 1 hour
 
 		return System.currentTimeMillis() - 21600000; // 6 hours
 	}
 
 	protected long getTestPullRequestURLExpiredTime() {
-		//return System.currentTimeMillis() - 3600000; // 1 hour
+
+		// return System.currentTimeMillis() - 3600000; // 1 hour
 
 		return System.currentTimeMillis() - 21600000; // 6 hours
 	}
@@ -732,7 +731,7 @@ public class GitHubWebhookPayloadProcessor {
 
 			if (organizationLogin.equals("liferay")) {
 				if (_log.isInfoEnabled()) {
-					_log.info("Valid Liferay member: " + gitHubUsername);
+					_log.info("Valid Liferay member " + gitHubUsername);
 				}
 
 				_validLiferayUsers.add(gitHubUsername);
@@ -742,7 +741,7 @@ public class GitHubWebhookPayloadProcessor {
 		}
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Invalid Liferay member: " + gitHubUsername);
+			_log.info("Invalid Liferay member " + gitHubUsername);
 		}
 
 		return false;
@@ -1028,7 +1027,7 @@ public class GitHubWebhookPayloadProcessor {
 		// valid via https://issues.liferay.com/rest/api/2/issue/LPS-5331. Make
 		// sure sender is a team member of the component via
 		// https://api.github.com/search/users?q=brian.chan@liferay.com+in%3A
-		// email&type=Users
+		// email&type=Users.
 
 		return true;
 	}
@@ -1146,7 +1145,7 @@ public class GitHubWebhookPayloadProcessor {
 		}
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Merge subrepo sha: " + sha);
+			_log.info("Merge subrepo SHA " + sha);
 		}
 
 		jsonObject.put("sha", sha);
@@ -1154,7 +1153,7 @@ public class GitHubWebhookPayloadProcessor {
 		String subrepo = pullRequest.getCIMergeSubrepo();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Merge subrepo name: " + subrepo);
+			_log.info("Merge subrepo name " + subrepo);
 		}
 
 		jsonObject.put("subrepo", subrepo);
@@ -1200,7 +1199,7 @@ public class GitHubWebhookPayloadProcessor {
 		}
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Merge subrepo force: " + force);
+			_log.info("Merge subrepo force " + force);
 		}
 
 		if (!force) {
@@ -1381,7 +1380,7 @@ public class GitHubWebhookPayloadProcessor {
 			}
 			catch (Exception exception) {
 				throw new RuntimeException(
-					"Unable to stop build: " + buildURL, exception);
+					"Unable to stop build " + buildURL, exception);
 			}
 		}
 	}
@@ -1397,7 +1396,7 @@ public class GitHubWebhookPayloadProcessor {
 		String branchName = pusherRemoteGitBranch.getName();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync autopull branch: " + branchName);
+			_log.info("Sync autopull branch " + branchName);
 		}
 
 		GitHubRemoteGitRepository gitHubRemoteGitRepository =
@@ -1406,7 +1405,7 @@ public class GitHubWebhookPayloadProcessor {
 		String ownerName = gitHubRemoteGitRepository.getUsername();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync autopull owner: " + ownerName);
+			_log.info("Sync autopull owner " + ownerName);
 		}
 
 		if (!ownerName.equals("liferay")) {
@@ -1422,7 +1421,7 @@ public class GitHubWebhookPayloadProcessor {
 		String repositoryName = gitHubRemoteGitRepository.getName();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync autopull repo: " + repositoryName);
+			_log.info("Sync autopull repo " + repositoryName);
 		}
 
 		if (!isValidAutopull(repositoryName)) {
@@ -1460,7 +1459,7 @@ public class GitHubWebhookPayloadProcessor {
 				}
 			}
 			else if (_log.isInfoEnabled()) {
-				_log.info("Sync autopull URL: " + url);
+				_log.info("Sync autopull URL " + url);
 			}
 		}
 	}
@@ -1488,7 +1487,7 @@ public class GitHubWebhookPayloadProcessor {
 		String repositoryName = gitHubRemoteGitRepository.getName();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync repo: " + repositoryName);
+			_log.info("Sync repo " + repositoryName);
 		}
 
 		JSONObject jsonObject = new JSONObject();
@@ -1498,7 +1497,7 @@ public class GitHubWebhookPayloadProcessor {
 		String sha = pushEventPayload.getAfterSHA();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync sha: " + sha);
+			_log.info("Sync SHA " + sha);
 		}
 
 		jsonObject.put("sha", sha);
@@ -1533,7 +1532,7 @@ public class GitHubWebhookPayloadProcessor {
 		String branchName = pusherRemoteGitBranch.getName();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync subrepo branch: " + branchName);
+			_log.info("Sync subrepo branch " + branchName);
 		}
 
 		JSONObject jsonObject = new JSONObject();
@@ -1558,7 +1557,7 @@ public class GitHubWebhookPayloadProcessor {
 		String repositoryName = _payload.get("repository/name");
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync subrepo repo: " + repositoryName);
+			_log.info("Sync subrepo repo " + repositoryName);
 		}
 
 		jsonObject.put("repo", repositoryName);
@@ -1566,7 +1565,7 @@ public class GitHubWebhookPayloadProcessor {
 		String sha = pushEventPayload.getAfterSHA();
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync subrepo sha: " + sha);
+			_log.info("Sync subrepo sha " + sha);
 		}
 
 		jsonObject.put("sha", sha);
@@ -1588,13 +1587,13 @@ public class GitHubWebhookPayloadProcessor {
 		jsonObject.put("command", command);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync subrepo command: " + command);
+			_log.info("Sync subrepo command " + command);
 		}
 
 		jsonObject.put("subrepo", subrepo);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Sync subrepo argument: " + subrepo);
+			_log.info("Sync subrepo argument " + subrepo);
 		}
 
 		String gitHubWebSubrepoHostname = _jenkinsBuildProperties.getProperty(
