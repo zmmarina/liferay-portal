@@ -79,8 +79,8 @@ public class AccountEntryUserRelLocalServiceImpl
 			if (_log.isDebugEnabled()) {
 				_log.debug(
 					StringBundler.concat(
-						"Skipping add. AccountEntryUserRel already exists for ",
-						"accountEntryId: ", accountEntryId, "and userId: ",
+						"Account entry user relationship already exists for ",
+						"account entry ", accountEntryId, " and user ",
 						accountUserId));
 			}
 
