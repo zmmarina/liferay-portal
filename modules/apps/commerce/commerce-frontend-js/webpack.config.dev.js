@@ -69,7 +69,26 @@ module.exports = {
 				use: [
 					{loader: 'style-loader'},
 					{loader: 'css-loader'},
-					{loader: 'sass-loader'},
+					{
+						loader: 'sass-loader',
+						options: {
+							sassOptions: {
+								importer: (url, _, done) => {
+									if (url.includes('atlas-variables')) {
+										done({
+											file: path.resolve(
+												__dirname,
+												'../../../node_modules/@clayui/css/src/scss/atlas-variables.scss'
+											),
+										});
+									}
+									else {
+										done({file: url});
+									}
+								},
+							},
+						},
+					},
 				],
 			},
 			{
