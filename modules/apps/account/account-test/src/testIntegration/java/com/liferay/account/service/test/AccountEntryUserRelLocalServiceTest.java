@@ -107,7 +107,6 @@ public class AccountEntryUserRelLocalServiceTest {
 		AccountEntryUserRel accountEntryUserRel1 =
 			_accountEntryUserRelLocalService.addAccountEntryUserRel(
 				_accountEntry.getAccountEntryId(), _user.getUserId());
-
 		AccountEntryUserRel accountEntryUserRel2 =
 			_accountEntryUserRelLocalService.addAccountEntryUserRel(
 				_accountEntry.getAccountEntryId(), _user.getUserId());
