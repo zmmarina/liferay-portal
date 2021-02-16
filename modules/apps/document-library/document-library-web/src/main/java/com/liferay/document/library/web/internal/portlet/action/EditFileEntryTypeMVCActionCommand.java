@@ -33,7 +33,7 @@ import com.liferay.dynamic.data.mapping.kernel.StructureDefinitionException;
 import com.liferay.dynamic.data.mapping.kernel.StructureDuplicateElementException;
 import com.liferay.dynamic.data.mapping.kernel.StructureNameException;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
+import com.liferay.portal.kernel.portlet.bridges.mvc.BaseTransactionalMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.security.auth.PrincipalException;
 import com.liferay.portal.kernel.service.ServiceContext;
@@ -41,9 +41,6 @@ import com.liferay.portal.kernel.service.ServiceContextFactory;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
-import com.liferay.portal.kernel.transaction.Propagation;
-import com.liferay.portal.kernel.transaction.TransactionConfig;
-import com.liferay.portal.kernel.transaction.TransactionInvokerUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -78,37 +75,32 @@ import org.osgi.service.component.annotations.Reference;
 	},
 	service = MVCActionCommand.class
 )
-public class EditFileEntryTypeMVCActionCommand extends BaseMVCActionCommand {
+public class EditFileEntryTypeMVCActionCommand
+	extends BaseTransactionalMVCActionCommand {
 
 	@Override
-	protected void doProcessAction(
+	protected void doTransactionalCommand(
 			ActionRequest actionRequest, ActionResponse actionResponse)
 		throws Exception {
 
 		String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
 		try {
-			TransactionInvokerUtil.invoke(
-				_transactionConfig,
-				() -> {
-					if (cmd.equals(Constants.ADD)) {
-						_addFileEntryType(actionRequest);
-					}
-					else if (cmd.equals(Constants.UPDATE)) {
-						_updateFileEntryType(actionRequest);
-					}
-					else if (cmd.equals(Constants.DELETE)) {
-						_deleteFileEntryType(actionRequest);
-					}
-					else if (cmd.equals(Constants.SUBSCRIBE)) {
-						_subscribeFileEntryType(actionRequest);
-					}
-					else if (cmd.equals(Constants.UNSUBSCRIBE)) {
-						_unsubscribeFileEntryType(actionRequest);
-					}
-
-					return null;
-				});
+			if (cmd.equals(Constants.ADD)) {
+				_addFileEntryType(actionRequest);
+			}
+			else if (cmd.equals(Constants.UPDATE)) {
+				_updateFileEntryType(actionRequest);
+			}
+			else if (cmd.equals(Constants.DELETE)) {
+				_deleteFileEntryType(actionRequest);
+			}
+			else if (cmd.equals(Constants.SUBSCRIBE)) {
+				_subscribeFileEntryType(actionRequest);
+			}
+			else if (cmd.equals(Constants.UNSUBSCRIBE)) {
+				_unsubscribeFileEntryType(actionRequest);
+			}
 
 			if (SessionErrors.isEmpty(actionRequest)) {
 				SessionMessages.add(
@@ -146,9 +138,6 @@ public class EditFileEntryTypeMVCActionCommand extends BaseMVCActionCommand {
 
 			actionResponse.setRenderParameter(
 				"mvcPath", "/document_library/error.jsp");
-		}
-		catch (Throwable throwable) {
-			throw new Exception(throwable);
 		}
 	}
 
@@ -319,10 +308,6 @@ public class EditFileEntryTypeMVCActionCommand extends BaseMVCActionCommand {
 				fileEntryTypeId, SetUtil.fromArray(ddmStructureIds));
 		}
 	}
-
-	private static final TransactionConfig _transactionConfig =
-		TransactionConfig.Factory.create(
-			Propagation.REQUIRED, new Class<?>[] {Exception.class});
 
 	@Reference
 	private DLAppService _dlAppService;
