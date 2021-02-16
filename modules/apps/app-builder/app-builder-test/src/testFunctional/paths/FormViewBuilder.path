@@ -483,6 +483,12 @@
 </tr>
 
 <tr>
+	<td>RULE_BUILDER_SAVE_BUTTON_DISABLED</td>
+	<td>//div[@class='modal-content']//button[@disabled='' and contains(text(),'Save')]</td>
+	<td></td>
+</tr>
+
+<tr>
 	<td>RULE_OR_FIELD_SET_BUILDER_CANCEL_BUTTON</td>
 	<td>xpath=(//div[contains(@class, 'modal-item-last')]//button[contains(@class,'btn-secondary')][contains(text(),'Cancel')])</td>
 	<td></td>
@@ -490,7 +496,7 @@
 
 <tr>
 	<td>RULE_BUILDER_DEFAULT_EDIT</td>
-	<td>//div[contains(@class, 'collapse-icon-options')]//button[contains(@class, 'dropdown-toggle')]</td>
+	<td>//div[@class='rule-list__panel']//div[contains(@class,'dropdown-action')]</td>
 	<td></td>
 </tr>
 

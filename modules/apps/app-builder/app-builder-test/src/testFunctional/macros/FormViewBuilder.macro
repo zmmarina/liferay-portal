@@ -128,6 +128,10 @@ definition {
 			value1 = "${key_optionLabel}");
 	}
 
+	macro assertRuleSaveButtonIsDisabled {
+		AssertElementPresent(locator1 = "FormViewBuilder#RULE_BUILDER_SAVE_BUTTON_DISABLED");
+	}
+
 	macro assertTextPresent {
 		AssertTextEquals(
 			key_fieldName = "${fieldName}",
