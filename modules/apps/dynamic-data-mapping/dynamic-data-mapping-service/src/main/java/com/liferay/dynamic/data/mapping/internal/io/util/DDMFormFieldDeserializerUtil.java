@@ -132,15 +132,11 @@ public class DDMFormFieldDeserializerUtil {
 		JSONObject jsonObject = jsonFactory.createJSONObject(
 			serializedDDMFormFieldProperty);
 
-		ddmFormFieldValidation.setErrorMessageLocalizedValue(
-			_deserializeLocalizedValue(
-				jsonFactory, jsonObject.getString("errorMessage")));
+		DDMFormFieldValidationExpression ddmFormFieldValidationExpression =
+			new DDMFormFieldValidationExpression();
 
 		JSONObject expressionJSONObject = jsonObject.getJSONObject(
 			"expression");
-
-		DDMFormFieldValidationExpression ddmFormFieldValidationExpression =
-			new DDMFormFieldValidationExpression();
 
 		if (expressionJSONObject != null) {
 			ddmFormFieldValidationExpression.setName(
@@ -156,6 +152,9 @@ public class DDMFormFieldDeserializerUtil {
 		ddmFormFieldValidation.setDDMFormFieldValidationExpression(
 			ddmFormFieldValidationExpression);
 
+		ddmFormFieldValidation.setErrorMessageLocalizedValue(
+			_deserializeLocalizedValue(
+				jsonFactory, jsonObject.getString("errorMessage")));
 		ddmFormFieldValidation.setParameterLocalizedValue(
 			_deserializeLocalizedValue(
 				jsonFactory, jsonObject.getString("parameter")));
