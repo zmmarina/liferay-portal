@@ -1061,7 +1061,6 @@ definition {
 	@priority = "5"
 	test DeleteFormViewFieldFromObject {
 		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
 		property test.name.skip.portal.instance = "AppBuilder#DeleteFormViewFieldFromObject";
 
 		AppBuilderAdmin.addCustomObject(
@@ -1075,7 +1074,7 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Select from List");
 
 		for (var number : list "1,2,3") {
-			FormViewBuilder.editOptionsRow(
+			FormViewBuilder.addSelectTypeFieldOptions(
 				optionName = "Select${number}",
 				optionValue = "Select ${number}",
 				rowNumber = "${number}");
@@ -1143,7 +1142,7 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Multiple Selection");
 
 		for (var number : list "1,2,3") {
-			FormViewBuilder.editOptionsRow(
+			FormViewBuilder.addSelectTypeFieldOptions(
 				optionName = "Multiple${number}",
 				optionValue = "Multiple ${number}",
 				rowNumber = "${number}");
@@ -1172,7 +1171,7 @@ definition {
 		FormViewBuilder.addFieldByDoubleClick(fieldType = "Single Selection");
 
 		for (var number : list "1,2,3") {
-			FormViewBuilder.editOptionsRow(
+			FormViewBuilder.addSelectTypeFieldOptions(
 				optionName = "Single${number}",
 				optionValue = "Single ${number}",
 				rowNumber = "${number}");
