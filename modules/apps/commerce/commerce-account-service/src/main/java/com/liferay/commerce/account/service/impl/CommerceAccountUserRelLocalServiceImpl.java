@@ -357,13 +357,9 @@ public class CommerceAccountUserRelLocalServiceImpl
 
 	@Override
 	public int getCommerceAccountUserRelsCount(long commerceAccountId) {
-		Long count =
-			(Long)
-				accountEntryUserRelLocalService.
-					getAccountEntryUserRelsCountByAccountEntryId(
-						commerceAccountId);
-
-		return count.intValue();
+		return (int)
+			accountEntryUserRelLocalService.
+				getAccountEntryUserRelsCountByAccountEntryId(commerceAccountId);
 	}
 
 	@Override
