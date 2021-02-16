@@ -111,6 +111,14 @@ public class DDMFormTemplateContextFactoryImpl
 					continue;
 				}
 
+				if (Objects.equals(
+						visualPropertyDDMFormField.getName(), "label") &&
+					GetterUtil.getBoolean(
+						ddmFormField.getProperty("labelAtStructureLevel"))) {
+
+					continue;
+				}
+
 				if (visualPropertyDDMFormField.isLocalizable()) {
 					LocalizedValue localizedValue = (LocalizedValue)value;
 
