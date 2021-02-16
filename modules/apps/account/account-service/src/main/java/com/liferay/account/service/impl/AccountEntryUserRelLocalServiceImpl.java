@@ -91,9 +91,9 @@ public class AccountEntryUserRelLocalServiceImpl
 			accountEntryLocalService.getAccountEntry(accountEntryId);
 		}
 
-		User accountUser = userLocalService.getUser(accountUserId);
-
 		long creatorUserId = 0;
+
+		User accountUser = userLocalService.getUser(accountUserId);
 
 		try {
 			creatorUserId = GuestOrUserUtil.getGuestOrUserId();
