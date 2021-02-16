@@ -86,7 +86,6 @@ public class JournalArticleFinderByKeywordsTest {
 
 		_journalArticles.add(
 			_addJournalArticle(_ddmStructure, RandomTestUtil.randomString(10)));
-
 		_journalArticles.add(
 			_addJournalArticle(_ddmStructure, RandomTestUtil.randomString(10)));
 	}
@@ -96,10 +95,7 @@ public class JournalArticleFinderByKeywordsTest {
 		JournalArticle journalArticle = _journalArticles.get(0);
 
 		_testFindByKeywords(1, journalArticle.getTitle());
-	}
 
-	@Test
-	public void testFindByKeywordsNull() {
 		_testFindByKeywords(_journalArticles.size(), null);
 	}
 
