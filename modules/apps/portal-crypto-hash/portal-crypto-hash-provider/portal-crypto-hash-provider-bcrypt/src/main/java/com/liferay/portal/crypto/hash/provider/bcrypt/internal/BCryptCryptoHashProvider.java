@@ -27,11 +27,11 @@ public class BCryptCryptoHashProvider implements CryptoHashProvider {
 
 	@Override
 	public byte[] generate(byte[] salt, byte[] input) {
-		String hashpw = BCrypt.hashpw(
+		String hashedPassword = BCrypt.hashpw(
 			new String(input, StandardCharsets.US_ASCII),
 			new String(salt, StandardCharsets.US_ASCII));
 
-		return hashpw.getBytes(StandardCharsets.US_ASCII);
+		return hashedPassword.getBytes(StandardCharsets.US_ASCII);
 	}
 
 	@Override
