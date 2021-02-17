@@ -423,7 +423,6 @@ public class DataDefinitionResourceImpl
 		ddmForm.setAllowInvalidAvailableLocalesForProperty(
 			dataDefinitionContentType.
 				allowInvalidAvailableLocalesForProperty());
-
 		ddmForm.setDefinitionSchemaVersion("2.0");
 
 		_validate(dataDefinition, dataDefinitionContentType, ddmForm);
