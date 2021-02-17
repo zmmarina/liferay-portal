@@ -2804,10 +2804,10 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			String externalReferenceCode, long groupId)
 		throws PortalException {
 
-		MBMessage messageWithERC = mbMessagePersistence.fetchByG_ERC(
+		MBMessage message = mbMessagePersistence.fetchByG_ERC(
 			groupId, externalReferenceCode);
 
-		if (messageWithERC != null) {
+		if (message != null) {
 			throw new DuplicateMessageExternalReferenceCodeException(
 				StringBundler.concat(
 					"Duplicate message external reference code ",
