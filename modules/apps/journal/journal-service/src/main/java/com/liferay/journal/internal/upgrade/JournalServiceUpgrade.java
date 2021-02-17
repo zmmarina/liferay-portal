@@ -25,7 +25,7 @@ import com.liferay.dynamic.data.mapping.service.DDMStorageLinkLocalService;
 import com.liferay.dynamic.data.mapping.service.DDMStructureLocalService;
 import com.liferay.dynamic.data.mapping.service.DDMTemplateLinkLocalService;
 import com.liferay.dynamic.data.mapping.util.DefaultDDMStructureHelper;
-import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityLayer;
+import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityConverter;
 import com.liferay.journal.internal.upgrade.util.JournalArticleImageUpgradeHelper;
 import com.liferay.journal.internal.upgrade.v0_0_3.UpgradeJournalArticleType;
 import com.liferay.journal.internal.upgrade.v0_0_4.UpgradeSchema;
@@ -274,7 +274,7 @@ public class JournalServiceUpgrade implements UpgradeStepRegistrator {
 		registry.register(
 			"3.4.1", "3.5.0",
 			new UpgradeJournalArticleContent(
-				_journalContentCompatibilityLayer));
+				_journalContentCompatibilityConverter));
 	}
 
 	protected void deleteTempImages() throws Exception {
@@ -356,7 +356,8 @@ public class JournalServiceUpgrade implements UpgradeStepRegistrator {
 	private JournalArticleImageUpgradeHelper _journalArticleImageUpgradeHelper;
 
 	@Reference
-	private JournalContentCompatibilityLayer _journalContentCompatibilityLayer;
+	private JournalContentCompatibilityConverter
+		_journalContentCompatibilityConverter;
 
 	@Reference
 	private LayoutLocalService _layoutLocalService;

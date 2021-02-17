@@ -22,7 +22,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @author Eudaldo Alonso
  */
 @ProviderType
-public interface JournalContentCompatibilityLayer {
+public interface JournalContentCompatibilityConverter {
 
 	public void convert(Document document);
 

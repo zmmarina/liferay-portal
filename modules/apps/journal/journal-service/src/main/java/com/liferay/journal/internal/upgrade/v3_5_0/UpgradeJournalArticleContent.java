@@ -14,7 +14,7 @@
 
 package com.liferay.journal.internal.upgrade.v3_5_0;
 
-import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityLayer;
+import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityConverter;
 import com.liferay.portal.kernel.dao.jdbc.AutoBatchPreparedStatementUtil;
 import com.liferay.portal.kernel.upgrade.UpgradeProcess;
 
@@ -27,9 +27,11 @@ import java.sql.ResultSet;
 public class UpgradeJournalArticleContent extends UpgradeProcess {
 
 	public UpgradeJournalArticleContent(
-		JournalContentCompatibilityLayer journalContentCompatibilityLayer) {
+		JournalContentCompatibilityConverter
+			journalContentCompatibilityConverter) {
 
-		_journalContentCompatibilityLayer = journalContentCompatibilityLayer;
+		_journalContentCompatibilityConverter =
+			journalContentCompatibilityConverter;
 	}
 
 	@Override
@@ -44,7 +46,8 @@ public class UpgradeJournalArticleContent extends UpgradeProcess {
 
 				String content = rs1.getString("content");
 
-				content = _journalContentCompatibilityLayer.convert(content);
+				content = _journalContentCompatibilityConverter.convert(
+					content);
 
 				try (PreparedStatement ps2 =
 						AutoBatchPreparedStatementUtil.concurrentAutoBatch(
@@ -61,7 +64,7 @@ public class UpgradeJournalArticleContent extends UpgradeProcess {
 		}
 	}
 
-	private final JournalContentCompatibilityLayer
-		_journalContentCompatibilityLayer;
+	private final JournalContentCompatibilityConverter
+		_journalContentCompatibilityConverter;
 
 }

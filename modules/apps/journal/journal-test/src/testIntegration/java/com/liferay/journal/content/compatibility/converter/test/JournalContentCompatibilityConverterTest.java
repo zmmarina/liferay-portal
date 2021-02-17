@@ -15,7 +15,7 @@
 package com.liferay.journal.content.compatibility.converter.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
-import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityLayer;
+import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityConverter;
 import com.liferay.portal.kernel.test.rule.AggregateTestRule;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.xml.Document;
@@ -35,7 +35,7 @@ import org.junit.runner.RunWith;
  * @author Eudaldo Alonso
  */
 @RunWith(Arquillian.class)
-public class JournalContentCompatibilityLayerTest {
+public class JournalContentCompatibilityConverterTest {
 
 	@ClassRule
 	@Rule
@@ -49,7 +49,7 @@ public class JournalContentCompatibilityLayerTest {
 
 		Document document = SAXReaderUtil.read(content);
 
-		_journalContentCompatibilityLayer.convert(document);
+		_journalContentCompatibilityConverter.convert(document);
 
 		String expectedContent = read(
 			"test-journal-content-all-fields-compatibility-expected-" +
@@ -69,7 +69,7 @@ public class JournalContentCompatibilityLayerTest {
 
 		Document document = SAXReaderUtil.read(content);
 
-		_journalContentCompatibilityLayer.convert(document);
+		_journalContentCompatibilityConverter.convert(document);
 
 		String expectedContent = read(
 			"test-journal-content-complex-nested-fields-compatibility-" +
@@ -89,7 +89,7 @@ public class JournalContentCompatibilityLayerTest {
 
 		Document document = SAXReaderUtil.read(content);
 
-		_journalContentCompatibilityLayer.convert(document);
+		_journalContentCompatibilityConverter.convert(document);
 
 		String expectedContent = read(
 			"test-journal-content-nested-fields-compatibility-expected-" +
@@ -111,7 +111,7 @@ public class JournalContentCompatibilityLayerTest {
 
 		Document document = SAXReaderUtil.read(content);
 
-		_journalContentCompatibilityLayer.convert(document);
+		_journalContentCompatibilityConverter.convert(document);
 
 		String expectedContent = read(
 			"test-journal-content-repeatable-nested-fields-compatibility-" +
@@ -130,7 +130,7 @@ public class JournalContentCompatibilityLayerTest {
 
 		Document document = SAXReaderUtil.read(content);
 
-		_journalContentCompatibilityLayer.convert(document);
+		_journalContentCompatibilityConverter.convert(document);
 
 		String expectedContent = read(
 			"test-journal-content-version-compatibility-expected-results.xml");
@@ -160,6 +160,7 @@ public class JournalContentCompatibilityLayerTest {
 	}
 
 	@Inject
-	private JournalContentCompatibilityLayer _journalContentCompatibilityLayer;
+	private JournalContentCompatibilityConverter
+		_journalContentCompatibilityConverter;
 
 }

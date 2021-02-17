@@ -16,7 +16,7 @@ package com.liferay.journal.internal.content.compatibility.converter;
 
 import com.liferay.dynamic.data.mapping.form.field.type.constants.DDMFormFieldTypeConstants;
 import com.liferay.journal.article.dynamic.data.mapping.form.field.type.constants.JournalArticleDDMFormFieldTypeConstants;
-import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityLayer;
+import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityConverter;
 import com.liferay.layout.dynamic.data.mapping.form.field.type.constants.LayoutDDMFormFieldTypeConstants;
 import com.liferay.petra.string.StringPool;
 import com.liferay.petra.xml.XMLUtil;
@@ -35,9 +35,11 @@ import org.osgi.service.component.annotations.Component;
 /**
  * @author Eudaldo Alonso
  */
-@Component(immediate = true, service = JournalContentCompatibilityLayer.class)
-public class JournalContentCompatibilityLayerImpl
-	implements JournalContentCompatibilityLayer {
+@Component(
+	immediate = true, service = JournalContentCompatibilityConverter.class
+)
+public class JournalContentCompatibilityConverterImpl
+	implements JournalContentCompatibilityConverter {
 
 	@Override
 	public void convert(Document document) {

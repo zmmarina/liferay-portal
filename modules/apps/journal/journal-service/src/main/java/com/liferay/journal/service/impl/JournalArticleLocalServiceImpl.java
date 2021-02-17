@@ -53,7 +53,7 @@ import com.liferay.journal.constants.JournalActivityKeys;
 import com.liferay.journal.constants.JournalArticleConstants;
 import com.liferay.journal.constants.JournalConstants;
 import com.liferay.journal.constants.JournalFolderConstants;
-import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityLayer;
+import com.liferay.journal.content.compatibility.converter.JournalContentCompatibilityConverter;
 import com.liferay.journal.exception.ArticleExpirationDateException;
 import com.liferay.journal.exception.ArticleFriendlyURLException;
 import com.liferay.journal.exception.ArticleReviewDateException;
@@ -8948,7 +8948,7 @@ public class JournalArticleLocalServiceImpl
 			JournalArticle article, String content, long groupId, User user)
 		throws PortalException {
 
-		content = _journalContentCompatibilityLayer.convert(content);
+		content = _journalContentCompatibilityConverter.convert(content);
 
 		content = format(user, groupId, article, content);
 
@@ -9180,7 +9180,8 @@ public class JournalArticleLocalServiceImpl
 		_journalArticleResourceLocalService;
 
 	@Reference
-	private JournalContentCompatibilityLayer _journalContentCompatibilityLayer;
+	private JournalContentCompatibilityConverter
+		_journalContentCompatibilityConverter;
 
 	@Reference
 	private JournalContentSearchLocalService _journalContentSearchLocalService;
