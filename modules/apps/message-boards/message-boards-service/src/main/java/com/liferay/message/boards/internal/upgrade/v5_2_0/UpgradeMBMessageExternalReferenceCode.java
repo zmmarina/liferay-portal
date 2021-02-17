@@ -41,8 +41,8 @@ public class UpgradeMBMessageExternalReferenceCode extends UpgradeProcess {
 	private void _populateExternalReferenceCode() throws Exception {
 		try (PreparedStatement ps1 = connection.prepareStatement(
 				"select messageId, externalReferenceCode from MBMessage " +
-					"where (externalReferenceCode is null) or " +
-						"(externalReferenceCode = '')");
+					"where externalReferenceCode is null or " +
+						"externalReferenceCode = ''");
 			ResultSet rs = ps1.executeQuery();
 			PreparedStatement ps2 = AutoBatchPreparedStatementUtil.autoBatch(
 				connection.prepareStatement(
