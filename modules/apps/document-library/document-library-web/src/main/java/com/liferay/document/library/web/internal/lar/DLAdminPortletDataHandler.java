@@ -256,7 +256,6 @@ public class DLAdminPortletDataHandler extends BasePortletDataHandler {
 						classNameIdProperty.eq(
 							_portal.getClassNameId(DLFileEntryMetadata.class)));
 				});
-
 			exportActionableDynamicQuery.setStagedModelType(
 				new StagedModelType(
 					DDMStructure.class.getName(),
