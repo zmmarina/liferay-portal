@@ -48,7 +48,8 @@ definition {
 	@description = "Assign an entry (task) through the App's table view"
 	@priority = "5"
 	test AssignEntryThroughTableView {
-		property portal.acceptance = "true";
+		property portal.acceptance = "quarantine";
+		property portal.upstream = "quarantine";
 
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "my custom object",
