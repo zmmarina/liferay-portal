@@ -78,11 +78,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -101,11 +99,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -126,11 +122,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -210,11 +204,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isExportInProcess()) {
 
-		if (ExportImportThreadLocal.isExportInProcess()) {
 			secure = false;
 		}
 
@@ -288,11 +280,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isExportInProcess()) {
 
-		if (ExportImportThreadLocal.isExportInProcess()) {
 			secure = false;
 		}
 
@@ -316,11 +306,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isExportInProcess()) {
 
-		if (ExportImportThreadLocal.isExportInProcess()) {
 			secure = false;
 		}
 
@@ -445,11 +433,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -505,11 +491,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -544,11 +528,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
@@ -592,11 +574,9 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
 
-		if (CopyLayoutThreadLocal.isCopyLayout()) {
-			secure = false;
-		}
+		if (CopyLayoutThreadLocal.isCopyLayout() ||
+			ExportImportThreadLocal.isImportInProcess()) {
 
-		if (ExportImportThreadLocal.isImportInProcess()) {
 			secure = false;
 		}
 
