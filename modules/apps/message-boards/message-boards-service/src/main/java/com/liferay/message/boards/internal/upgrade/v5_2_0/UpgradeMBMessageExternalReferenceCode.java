@@ -53,7 +53,6 @@ public class UpgradeMBMessageExternalReferenceCode extends UpgradeProcess {
 				long messageId = rs.getLong(1);
 
 				ps2.setString(1, String.valueOf(messageId));
-
 				ps2.setLong(2, messageId);
 
 				ps2.addBatch();
