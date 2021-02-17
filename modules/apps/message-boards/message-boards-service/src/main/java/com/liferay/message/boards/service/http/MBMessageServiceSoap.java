@@ -132,6 +132,10 @@ public class MBMessageServiceSoap {
 		}
 	}
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x)
+	 */
+	@Deprecated
 	public static com.liferay.message.boards.model.MBMessageSoap addMessage(
 			long parentMessageId, String subject, String body, String format,
 			java.util.List

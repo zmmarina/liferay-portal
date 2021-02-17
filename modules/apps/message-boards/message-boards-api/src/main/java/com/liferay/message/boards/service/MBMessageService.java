@@ -88,6 +88,10 @@ public interface MBMessageService extends BaseService {
 			ServiceContext serviceContext)
 		throws PortalException;
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x)
+	 */
+	@Deprecated
 	public MBMessage addMessage(
 			long parentMessageId, String subject, String body, String format,
 			List<ObjectValuePair<String, InputStream>> inputStreamOVPs,

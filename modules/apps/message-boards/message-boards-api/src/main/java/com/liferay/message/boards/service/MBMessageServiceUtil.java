@@ -86,6 +86,10 @@ public class MBMessageServiceUtil {
 			categoryId, subject, body, serviceContext);
 	}
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x)
+	 */
+	@Deprecated
 	public static com.liferay.message.boards.model.MBMessage addMessage(
 			long parentMessageId, String subject, String body, String format,
 			java.util.List
