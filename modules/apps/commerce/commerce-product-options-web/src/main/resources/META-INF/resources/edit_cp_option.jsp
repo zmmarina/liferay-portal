@@ -17,6 +17,8 @@
 <%@ include file="/init.jsp" %>
 
 <%
+String redirect = ParamUtil.getString(request, "redirect");
+
 CPOptionDisplayContext cpOptionDisplayContext = (CPOptionDisplayContext)request.getAttribute(WebKeys.PORTLET_DISPLAY_CONTEXT);
 
 CPOption cpOption = cpOptionDisplayContext.getCPOption();
@@ -24,8 +26,6 @@ CPOption cpOption = cpOptionDisplayContext.getCPOption();
 long cpOptionId = cpOptionDisplayContext.getCPOptionId();
 
 portletDisplay.setShowBackIcon(true);
-
-String redirect = ParamUtil.getString(request, "redirect");
 
 if (Validator.isNull(redirect)) {
 	portletDisplay.setURLBack(String.valueOf(renderResponse.createRenderURL()));
