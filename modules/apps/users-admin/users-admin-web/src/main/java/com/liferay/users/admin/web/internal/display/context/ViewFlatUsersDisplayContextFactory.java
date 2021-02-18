@@ -58,17 +58,16 @@ public class ViewFlatUsersDisplayContextFactory {
 		viewFlatUsersDisplayContext.setDisplayStyle(
 			DisplayStyleUtil.getDisplayStyle(renderRequest, "list"));
 
+		LiferayPortletRequest liferayPortletRequest =
+			PortalUtil.getLiferayPortletRequest(renderRequest);
+		LiferayPortletResponse liferayPortletResponse =
+			PortalUtil.getLiferayPortletResponse(renderResponse);
+
 		UserSearch searchContainer = _createSearchContainer(
 			renderRequest, renderResponse);
 
 		UserSearchTerms userSearchTerms =
 			(UserSearchTerms)searchContainer.getSearchTerms();
-
-		LiferayPortletRequest liferayPortletRequest =
-			PortalUtil.getLiferayPortletRequest(renderRequest);
-
-		LiferayPortletResponse liferayPortletResponse =
-			PortalUtil.getLiferayPortletResponse(renderResponse);
 
 		ManagementToolbarDisplayContext managementToolbarDisplayContext =
 			new ViewFlatUsersManagementToolbarDisplayContext(
