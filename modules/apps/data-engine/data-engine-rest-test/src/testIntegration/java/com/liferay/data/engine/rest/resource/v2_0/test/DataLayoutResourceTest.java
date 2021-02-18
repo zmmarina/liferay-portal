@@ -182,10 +182,22 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 	public void testPostDataDefinitionDataLayout() throws Exception {
 		super.testPostDataDefinitionDataLayout();
 
-		// Multiple data layouts with the same data definition
+		// Data layout with data layout fields (visual property)
 
-		DataLayout postDataLayout = null;
-		DataLayout randomDataLayout = null;
+		DataLayout randomDataLayout = _randomDataLayout(true);
+
+		DataLayout postDataLayout =
+			testPostDataDefinitionDataLayout_addDataLayout(
+				randomDataLayout);
+
+		assertEquals(randomDataLayout, postDataLayout);
+		assertValid(postDataLayout);
+		Assert.assertTrue(
+			equals(
+				randomDataLayout.getDataLayoutFields(),
+				postDataLayout.getDataLayoutFields()));
+
+		// Multiple data layouts with the same data definition
 
 		for (int i = 0; i < 3; i++) {
 			randomDataLayout = randomDataLayout();
@@ -197,19 +209,6 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 			assertValid(postDataLayout);
 		}
 
-		// Data layout with data layout fields (visual property)
-
-		randomDataLayout = _randomDataLayout(true);
-
-		postDataLayout = testPostDataDefinitionDataLayout_addDataLayout(
-			randomDataLayout);
-
-		assertEquals(randomDataLayout, postDataLayout);
-		assertValid(postDataLayout);
-		Assert.assertTrue(
-			equals(
-				randomDataLayout.getDataLayoutFields(),
-				postDataLayout.getDataLayoutFields()));
 
 		// MustNotDuplicateFieldName
 
