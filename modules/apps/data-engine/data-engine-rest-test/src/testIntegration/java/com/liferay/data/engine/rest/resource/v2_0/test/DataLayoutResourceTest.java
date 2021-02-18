@@ -371,9 +371,8 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 	public void testPutDataLayout() throws Exception {
 		super.testPutDataLayout();
 
-		DataLayout randomDataLayout = _randomDataLayout(true);
-
 		DataLayout dataLayout = testPutDataLayout_addDataLayout();
+		DataLayout randomDataLayout = _randomDataLayout(true);
 
 		DataLayout putDataLayout = dataLayoutResource.putDataLayout(
 			dataLayout.getId(), randomDataLayout);
