@@ -187,8 +187,7 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 		DataLayout randomDataLayout = _randomDataLayout(true);
 
 		DataLayout postDataLayout =
-			testPostDataDefinitionDataLayout_addDataLayout(
-				randomDataLayout);
+			testPostDataDefinitionDataLayout_addDataLayout(randomDataLayout);
 
 		assertEquals(randomDataLayout, postDataLayout);
 		assertValid(postDataLayout);
@@ -208,7 +207,6 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 			assertEquals(randomDataLayout, postDataLayout);
 			assertValid(postDataLayout);
 		}
-
 
 		// MustNotDuplicateFieldName
 
