@@ -479,8 +479,6 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 			return dataLayout;
 		}
 
-		String defaultLanguageId = _dataDefinition.getDefaultLanguageId();
-
 		DataDefinitionField dataDefinitionField =
 			_dataDefinition.getDataDefinitionFields()[0];
 
@@ -490,17 +488,20 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 				HashMapBuilder.<String, Object>put(
 					"label",
 					HashMapBuilder.<String, Object>put(
-						defaultLanguageId, RandomTestUtil.randomString()
+						_dataDefinition.getDefaultLanguageId(),
+						RandomTestUtil.randomString()
 					).build()
 				).put(
 					"placeholder",
 					HashMapBuilder.<String, Object>put(
-						defaultLanguageId, RandomTestUtil.randomString()
+						_dataDefinition.getDefaultLanguageId(),
+						RandomTestUtil.randomString()
 					).build()
 				).put(
 					"predefinedValue",
 					HashMapBuilder.<String, Object>put(
-						defaultLanguageId, RandomTestUtil.randomString()
+						_dataDefinition.getDefaultLanguageId(),
+						RandomTestUtil.randomString()
 					).build()
 				).put(
 					"required", RandomTestUtil.randomBoolean()
@@ -509,7 +510,8 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 				).put(
 					"tip",
 					HashMapBuilder.<String, Object>put(
-						defaultLanguageId, RandomTestUtil.randomString()
+						_dataDefinition.getDefaultLanguageId(),
+						RandomTestUtil.randomString()
 					).build()
 				).build()
 			).build());
