@@ -347,7 +347,6 @@ public class FragmentEntryLinkLocalServiceTest {
 				_fragmentEntry.getCss(), _fragmentEntry.getHtml(),
 				_fragmentEntry.getJs(), _fragmentEntry.getConfiguration(),
 				StringPool.BLANK, StringPool.BLANK, 0, null, _serviceContext);
-
 		FragmentEntryLink fragmentEntryLink2 =
 			_fragmentEntryLinkLocalService.addFragmentEntryLink(
 				TestPropsValues.getUserId(), _group.getGroupId(), 0,
@@ -362,7 +361,6 @@ public class FragmentEntryLinkLocalServiceTest {
 		Assert.assertNull(
 			_fragmentEntryLinkLocalService.fetchFragmentEntryLink(
 				fragmentEntryLink1.getFragmentEntryLinkId()));
-
 		Assert.assertNull(
 			_fragmentEntryLinkLocalService.fetchFragmentEntryLink(
 				fragmentEntryLink2.getFragmentEntryLinkId()));
@@ -475,7 +473,6 @@ public class FragmentEntryLinkLocalServiceTest {
 				_fragmentEntry.getCss(), _fragmentEntry.getHtml(),
 				_fragmentEntry.getJs(), _fragmentEntry.getConfiguration(),
 				StringPool.BLANK, StringPool.BLANK, 1, null, _serviceContext);
-
 		FragmentEntryLink fragmentEntryLink2 =
 			_fragmentEntryLinkLocalService.addFragmentEntryLink(
 				TestPropsValues.getUserId(), _group.getGroupId(), 0,
@@ -490,7 +487,6 @@ public class FragmentEntryLinkLocalServiceTest {
 
 		Assert.assertEquals(
 			fragmentEntryLinks.toString(), 2, fragmentEntryLinks.size());
-
 		Assert.assertEquals(fragmentEntryLink1, fragmentEntryLinks.get(0));
 		Assert.assertEquals(fragmentEntryLink2, fragmentEntryLinks.get(1));
 
@@ -506,7 +502,6 @@ public class FragmentEntryLinkLocalServiceTest {
 
 		Assert.assertEquals(
 			fragmentEntryLinks.toString(), 2, fragmentEntryLinks.size());
-
 		Assert.assertEquals(fragmentEntryLink2, fragmentEntryLinks.get(0));
 		Assert.assertEquals(fragmentEntryLink1, fragmentEntryLinks.get(1));
 	}
