@@ -406,7 +406,7 @@ public class DDMFormDisplayContextTest extends PowerMockito {
 
 	@Test
 	public void testIsShowIconInEditMode() throws Exception {
-		_originalServletRequest.addParameter("p_l_mode", Constants.EDIT);
+		_mockHttpServletRequest.addParameter("p_l_mode", Constants.EDIT);
 
 		DDMFormDisplayContext ddmFormDisplayContext = createSpy(
 			false, false, false);
@@ -731,7 +731,7 @@ public class DDMFormDisplayContextTest extends PowerMockito {
 			PortalUtil.getOriginalServletRequest(
 				Matchers.any(HttpServletRequest.class))
 		).thenReturn(
-			_originalServletRequest
+			_mockHttpServletRequest
 		);
 	}
 
@@ -761,7 +761,7 @@ public class DDMFormDisplayContextTest extends PowerMockito {
 	@Mock
 	private Language _language;
 
-	private final MockHttpServletRequest _originalServletRequest =
+	private final MockHttpServletRequest _mockHttpServletRequest =
 		new MockHttpServletRequest();
 
 	@Mock
