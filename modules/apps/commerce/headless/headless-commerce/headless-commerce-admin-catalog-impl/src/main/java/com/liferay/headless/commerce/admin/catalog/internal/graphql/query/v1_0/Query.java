@@ -594,13 +594,15 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {optionByExternalReferenceCodeOptionValues(externalReferenceCode: ___, page: ___, pageSize: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {optionByExternalReferenceCodeOptionValues(externalReferenceCode: ___, page: ___, pageSize: ___, search: ___, sorts: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public OptionValuePage optionByExternalReferenceCodeOptionValues(
 			@GraphQLName("externalReferenceCode") String externalReferenceCode,
+			@GraphQLName("search") String search,
 			@GraphQLName("pageSize") int pageSize,
-			@GraphQLName("page") int page)
+			@GraphQLName("page") int page,
+			@GraphQLName("sort") String sortsString)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -609,18 +611,23 @@ public class Query {
 			optionValueResource -> new OptionValuePage(
 				optionValueResource.
 					getOptionByExternalReferenceCodeOptionValuesPage(
-						externalReferenceCode, Pagination.of(page, pageSize))));
+						externalReferenceCode, search,
+						Pagination.of(page, pageSize),
+						_sortsBiFunction.apply(
+							optionValueResource, sortsString))));
 	}
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {optionIdOptionValues(id: ___, page: ___, pageSize: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {optionIdOptionValues(id: ___, page: ___, pageSize: ___, search: ___, sorts: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public OptionValuePage optionIdOptionValues(
-			@GraphQLName("id") Long id, @GraphQLName("pageSize") int pageSize,
-			@GraphQLName("page") int page)
+			@GraphQLName("id") Long id, @GraphQLName("search") String search,
+			@GraphQLName("pageSize") int pageSize,
+			@GraphQLName("page") int page,
+			@GraphQLName("sort") String sortsString)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -628,7 +635,8 @@ public class Query {
 			this::_populateResourceContext,
 			optionValueResource -> new OptionValuePage(
 				optionValueResource.getOptionIdOptionValuesPage(
-					id, Pagination.of(page, pageSize))));
+					id, search, Pagination.of(page, pageSize),
+					_sortsBiFunction.apply(optionValueResource, sortsString))));
 	}
 
 	/**
@@ -900,13 +908,15 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productByExternalReferenceCodeProductOptions(externalReferenceCode: ___, page: ___, pageSize: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productByExternalReferenceCodeProductOptions(externalReferenceCode: ___, page: ___, pageSize: ___, search: ___, sorts: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ProductOptionPage productByExternalReferenceCodeProductOptions(
 			@GraphQLName("externalReferenceCode") String externalReferenceCode,
+			@GraphQLName("search") String search,
 			@GraphQLName("pageSize") int pageSize,
-			@GraphQLName("page") int page)
+			@GraphQLName("page") int page,
+			@GraphQLName("sort") String sortsString)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -915,18 +925,23 @@ public class Query {
 			productOptionResource -> new ProductOptionPage(
 				productOptionResource.
 					getProductByExternalReferenceCodeProductOptionsPage(
-						externalReferenceCode, Pagination.of(page, pageSize))));
+						externalReferenceCode, search,
+						Pagination.of(page, pageSize),
+						_sortsBiFunction.apply(
+							productOptionResource, sortsString))));
 	}
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productIdProductOptions(id: ___, page: ___, pageSize: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productIdProductOptions(id: ___, page: ___, pageSize: ___, search: ___, sorts: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ProductOptionPage productIdProductOptions(
-			@GraphQLName("id") Long id, @GraphQLName("pageSize") int pageSize,
-			@GraphQLName("page") int page)
+			@GraphQLName("id") Long id, @GraphQLName("search") String search,
+			@GraphQLName("pageSize") int pageSize,
+			@GraphQLName("page") int page,
+			@GraphQLName("sort") String sortsString)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -934,18 +949,22 @@ public class Query {
 			this::_populateResourceContext,
 			productOptionResource -> new ProductOptionPage(
 				productOptionResource.getProductIdProductOptionsPage(
-					id, Pagination.of(page, pageSize))));
+					id, search, Pagination.of(page, pageSize),
+					_sortsBiFunction.apply(
+						productOptionResource, sortsString))));
 	}
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productOptionIdProductOptionValues(id: ___, page: ___, pageSize: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {productOptionIdProductOptionValues(id: ___, page: ___, pageSize: ___, search: ___, sorts: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ProductOptionValuePage productOptionIdProductOptionValues(
-			@GraphQLName("id") Long id, @GraphQLName("pageSize") int pageSize,
-			@GraphQLName("page") int page)
+			@GraphQLName("id") Long id, @GraphQLName("search") String search,
+			@GraphQLName("pageSize") int pageSize,
+			@GraphQLName("page") int page,
+			@GraphQLName("sort") String sortsString)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -954,7 +973,9 @@ public class Query {
 			productOptionValueResource -> new ProductOptionValuePage(
 				productOptionValueResource.
 					getProductOptionIdProductOptionValuesPage(
-						id, Pagination.of(page, pageSize))));
+						id, search, Pagination.of(page, pageSize),
+						_sortsBiFunction.apply(
+							productOptionValueResource, sortsString))));
 	}
 
 	/**
@@ -1295,8 +1316,10 @@ public class Query {
 
 		@GraphQLField
 		public OptionValuePage optionByExternalReferenceCodeOptionValues(
+				@GraphQLName("search") String search,
 				@GraphQLName("pageSize") int pageSize,
-				@GraphQLName("page") int page)
+				@GraphQLName("page") int page,
+				@GraphQLName("sort") String sortsString)
 			throws Exception {
 
 			return _applyComponentServiceObjects(
@@ -1305,8 +1328,10 @@ public class Query {
 				optionValueResource -> new OptionValuePage(
 					optionValueResource.
 						getOptionByExternalReferenceCodeOptionValuesPage(
-							_catalog.getExternalReferenceCode(),
-							Pagination.of(page, pageSize))));
+							_catalog.getExternalReferenceCode(), search,
+							Pagination.of(page, pageSize),
+							_sortsBiFunction.apply(
+								optionValueResource, sortsString))));
 		}
 
 		private Catalog _catalog;
@@ -1516,8 +1541,10 @@ public class Query {
 
 		@GraphQLField
 		public ProductOptionPage productByExternalReferenceCodeProductOptions(
+				@GraphQLName("search") String search,
 				@GraphQLName("pageSize") int pageSize,
-				@GraphQLName("page") int page)
+				@GraphQLName("page") int page,
+				@GraphQLName("sort") String sortsString)
 			throws Exception {
 
 			return _applyComponentServiceObjects(
@@ -1526,8 +1553,10 @@ public class Query {
 				productOptionResource -> new ProductOptionPage(
 					productOptionResource.
 						getProductByExternalReferenceCodeProductOptionsPage(
-							_catalog.getExternalReferenceCode(),
-							Pagination.of(page, pageSize))));
+							_catalog.getExternalReferenceCode(), search,
+							Pagination.of(page, pageSize),
+							_sortsBiFunction.apply(
+								productOptionResource, sortsString))));
 		}
 
 		private Catalog _catalog;
