@@ -92,24 +92,14 @@ public class DiffVersionComparatorTag extends IncludeTag {
 
 		User user = UserLocalServiceUtil.fetchUser(diffVersion.getUserId());
 
-		if (user != null) {
-			diffVersionJSONObject.put(
-				"userInitials", user.getInitials()
-			).put(
-				"userName", user.getFullName()
-			).put(
-				"version", diffVersionString
-			);
-		}
-		else {
-			diffVersionJSONObject.put(
-				"userInitials", StringPool.BLANK
-			).put(
-				"userName", StringPool.BLANK
-			).put(
-				"version", diffVersionString
-			);
-		}
+		diffVersionJSONObject.put(
+			"userInitials",
+			(user != null) ? user.getInitials() : StringPool.BLANK
+		).put(
+			"userName", (user != null) ? user.getFullName() : StringPool.BLANK
+		).put(
+			"version", diffVersionString
+		);
 
 		return diffVersionJSONObject;
 	}
