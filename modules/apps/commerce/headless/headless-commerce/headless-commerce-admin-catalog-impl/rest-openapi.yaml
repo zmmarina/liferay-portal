@@ -2728,6 +2728,16 @@ paths:
                   schema:
                       type: integer
                   style: form
+                - in: query
+                  name: search
+                  required: false
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  required: false
+                  schema:
+                      type: string
             responses:
                 200:
                     content:
@@ -3064,6 +3074,16 @@ paths:
                   schema:
                       type: integer
                   style: form
+                - in: query
+                  name: search
+                  required: false
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  required: false
+                  schema:
+                      type: string
             responses:
                 200:
                     content:
@@ -4356,6 +4376,16 @@ paths:
                   schema:
                       type: integer
                   style: form
+                - in: query
+                  name: search
+                  required: false
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  required: false
+                  schema:
+                      type: string
             responses:
                 200:
                     content:
@@ -6003,6 +6033,16 @@ paths:
                   schema:
                       type: integer
                   style: form
+                - in: query
+                  name: search
+                  required: false
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  required: false
+                  schema:
+                      type: string
             responses:
                 200:
                     content:
@@ -8267,6 +8307,16 @@ paths:
                   schema:
                       type: integer
                   style: form
+                - in: query
+                  name: search
+                  required: false
+                  schema:
+                      type: string
+                - in: query
+                  name: sort
+                  required: false
+                  schema:
+                      type: string
             responses:
                 200:
                     content:
