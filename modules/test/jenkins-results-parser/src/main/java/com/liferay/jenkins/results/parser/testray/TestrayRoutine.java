@@ -44,7 +44,7 @@ public class TestrayRoutine {
 		}
 		catch (MalformedURLException malformedURLException) {
 			throw new RuntimeException(
-				"Invalid Testray Project URL " + urlString,
+				"Invalid Testray project URL " + urlString,
 				malformedURLException);
 		}
 	}

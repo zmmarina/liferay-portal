@@ -40,7 +40,7 @@ public class TestrayServer {
 		}
 		catch (MalformedURLException malformedURLException) {
 			throw new RuntimeException(
-				"Invalid Testray Server URL " + urlString,
+				"Invalid Testray server URL " + urlString,
 				malformedURLException);
 		}
 	}

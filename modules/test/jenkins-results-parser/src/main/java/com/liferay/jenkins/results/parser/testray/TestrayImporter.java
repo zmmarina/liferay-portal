@@ -287,7 +287,6 @@ public class TestrayImporter {
 				JenkinsResultsParserUtil.getProperty(
 					job.getJobProperties(), "testray.admin.user.name",
 					job.getJobName(), _topLevelBuild.getTestSuiteName()));
-
 			_testrayServer.setAdminUserPassword(
 				JenkinsResultsParserUtil.getProperty(
 					job.getJobProperties(), "testray.admin.user.password",
@@ -295,7 +294,7 @@ public class TestrayImporter {
 
 			System.out.println(
 				JenkinsResultsParserUtil.combine(
-					"Testray Server ", String.valueOf(_testrayServer.getURL()),
+					"Testray server ", String.valueOf(_testrayServer.getURL()),
 					" created in ",
 					JenkinsResultsParserUtil.toDurationString(
 						System.currentTimeMillis() - start)));
@@ -337,17 +336,14 @@ public class TestrayImporter {
 
 		string = string.replace(
 			"$(jenkins.controller.build.url)", controllerBuild.getBuildURL());
-
 		string = string.replace(
 			"$(jenkins.controller.build.number)",
 			String.valueOf(controllerBuild.getBuildNumber()));
-
 		string = string.replace(
 			"$(jenkins.controller.build.start)",
 			JenkinsResultsParserUtil.toDateString(
 				new Date(controllerBuild.getStartTime()),
 				"yyyy-MM-dd[HH:mm:ss]", "America/Los_Angeles"));
-
 		string = string.replace(
 			"$(jenkins.controller.job.name)", controllerBuild.getJobName());
 
@@ -417,7 +413,6 @@ public class TestrayImporter {
 		string = string.replace(
 			"$(portal.branch.name)",
 			portalBranchInformation.getUpstreamBranchName());
-
 		string = string.replace(
 			"$(portal.repository)",
 			portalBranchInformation.getRepositoryName());
@@ -433,7 +428,6 @@ public class TestrayImporter {
 			String tomcatURL = String.valueOf(portalRelease.getTomcatURL());
 
 			string = string.replace("$(portal.release.tomcat.url)", tomcatURL);
-
 			string = string.replace(
 				"$(portal.release.version)", portalRelease.getPortalVersion());
 
@@ -504,10 +498,8 @@ public class TestrayImporter {
 
 		string = string.replace(
 			"$(pull.request.number)", pullRequest.getNumber());
-
 		string = string.replace(
 			"$(pull.request.url)", pullRequest.getHtmlURL());
-
 		string = string.replace(
 			"$(pull.request.receiver.username)",
 			pullRequest.getReceiverUsername());
@@ -533,20 +525,16 @@ public class TestrayImporter {
 	private String _replaceEnvVarsTopLevelBuild(String string) {
 		string = string.replace(
 			"$(ci.test.suite)", _topLevelBuild.getTestSuiteName());
-
 		string = string.replace(
 			"$(jenkins.build.number)",
 			String.valueOf(_topLevelBuild.getBuildNumber()));
-
 		string = string.replace(
 			"$(jenkins.build.start)",
 			JenkinsResultsParserUtil.toDateString(
 				new Date(_topLevelBuild.getStartTime()), "yyyy-MM-dd[HH:mm:ss]",
 				"America/Los_Angeles"));
-
 		string = string.replace(
 			"$(jenkins.build.url)", _topLevelBuild.getBuildURL());
-
 		string = string.replace(
 			"$(jenkins.job.name)", _topLevelBuild.getJobName());
 
