@@ -182,11 +182,10 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 	public void testPostDataDefinitionDataLayout() throws Exception {
 		super.testPostDataDefinitionDataLayout();
 
-		DataLayout postDataLayout = null;
-
-		DataLayout randomDataLayout = null;
-
 		// Multiple data layouts with the same data definition
+
+		DataLayout postDataLayout = null;
+		DataLayout randomDataLayout = null;
 
 		for (int i = 0; i < 3; i++) {
 			randomDataLayout = randomDataLayout();
@@ -198,7 +197,7 @@ public class DataLayoutResourceTest extends BaseDataLayoutResourceTestCase {
 			assertValid(postDataLayout);
 		}
 
-		// Data layout with Data Layout Fields (Visual Property)
+		// Data layout with data layout fields (visual property)
 
 		randomDataLayout = _randomDataLayout(true);
 
