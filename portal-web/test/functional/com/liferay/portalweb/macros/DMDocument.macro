@@ -2481,7 +2481,7 @@ definition {
 
 		if ("${dmDocumentFileType}" == "Image") {
 			if (!(isSet(dmDocumentFileName))) {
-				var dmDocumentFileName = "${dmDocumentFile}";
+				var dmDocumentFileName = "${dmDocumentTitle}";
 			}
 
 			AssertElementPresent(
