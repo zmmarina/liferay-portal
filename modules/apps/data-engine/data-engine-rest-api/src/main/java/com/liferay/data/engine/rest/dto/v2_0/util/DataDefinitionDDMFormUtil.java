@@ -209,12 +209,10 @@ public class DataDefinitionDDMFormUtil {
 			_toDDMFormFields(
 				dataDefinitionField.getNestedDataDefinitionFields(),
 				ddmFormFieldTypeServicesTracker, languageId));
-
 		ddmFormField.setPredefinedValue(
 			LocalizedValueUtil.toLocalizedValue(
 				dataDefinitionField.getDefaultValue(),
 				LocaleUtil.fromLanguageId(languageId)));
-
 		ddmFormField.setReadOnly(
 			GetterUtil.getBoolean(dataDefinitionField.getReadOnly()));
 		ddmFormField.setRepeatable(
