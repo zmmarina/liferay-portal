@@ -46,7 +46,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>The direction of the image drag to crop it. Possible values are <![CDATA[<code>vertical</code>]]>, <![CDATA[<code>horizontal</code>]]>, <![CDATA[<code>both</code>]]>, or <![CDATA[<code>none</code>]]>.</description>
+			<description>The direction of the image drag to crop it. Possible values are <![CDATA[<code>both</code>]]>, <![CDATA[<code>horizontal</code>]]>, <![CDATA[<code>none</code>]]>, or <![CDATA[<code>vertical</code>]]>.</description>
 			<name>imageCropDirection</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
