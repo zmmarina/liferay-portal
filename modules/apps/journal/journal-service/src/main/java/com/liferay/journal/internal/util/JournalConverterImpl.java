@@ -492,7 +492,6 @@ public class JournalConverterImpl implements JournalConverter {
 		boolean multiple = GetterUtil.getBoolean(
 			ddmStructure.getFieldProperty(fieldName, "multiple"));
 
-		dynamicElementElement.addAttribute("type", fieldType);
 		dynamicElementElement.addAttribute("index-type", indexType);
 
 		int count = ddmFieldsCounter.get(fieldName);
@@ -525,6 +524,8 @@ public class JournalConverterImpl implements JournalConverter {
 					multiple, valueString.trim());
 			}
 		}
+
+		dynamicElementElement.addAttribute("type", fieldType);
 
 		ddmFieldsCounter.incrementKey(fieldName);
 	}
