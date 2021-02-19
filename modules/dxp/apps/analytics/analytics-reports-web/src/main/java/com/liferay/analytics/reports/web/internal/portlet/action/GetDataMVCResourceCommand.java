@@ -120,6 +120,7 @@ public class GetDataMVCResourceCommand extends BaseMVCResourceCommand {
 					_analyticsReportsInfoItemTracker.
 						getAnalyticsReportsInfoItem(
 							infoItemClassPKReference.getClassName());
+
 			CanonicalURLProvider canonicalURLProvider =
 				new CanonicalURLProvider(
 					httpServletRequest, _layoutDisplayPageProviderTracker,
