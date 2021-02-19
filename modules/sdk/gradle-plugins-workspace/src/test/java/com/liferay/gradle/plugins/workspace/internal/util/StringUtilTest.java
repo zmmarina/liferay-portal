@@ -24,23 +24,23 @@ public class StringUtilTest {
 
 	@Test
 	public void testiFromCamelCaseToHyphenated() throws Exception {
-		Assert.assertEquals("test", StringUtil.getDockerSafeName("test"));
-		Assert.assertEquals("test", StringUtil.getDockerSafeName("Test"));
-		Assert.assertEquals("t-est", StringUtil.getDockerSafeName("TEst"));
 		Assert.assertEquals(
-			"test-test", StringUtil.getDockerSafeName("TestTest"));
-		Assert.assertEquals(
-			"test-test-test", StringUtil.getDockerSafeName("TestTestTest"));
+			"-tt-tes-ttt", StringUtil.getDockerSafeName("-TTTesTTT"));
 		Assert.assertEquals(
 			"b2b-new-quote-process",
 			StringUtil.getDockerSafeName("B2BNewQuoteProcess"));
 		Assert.assertEquals(
 			"b2b-new-quote-process",
 			StringUtil.getDockerSafeName("b2BNewQuoteProcess"));
+		Assert.assertEquals("t-est", StringUtil.getDockerSafeName("TEst"));
+		Assert.assertEquals("test", StringUtil.getDockerSafeName("Test"));
+		Assert.assertEquals("test", StringUtil.getDockerSafeName("test"));
+		Assert.assertEquals(
+			"test-test", StringUtil.getDockerSafeName("TestTest"));
+		Assert.assertEquals(
+			"test-test-test", StringUtil.getDockerSafeName("TestTestTest"));
 		Assert.assertEquals(
 			"tt-tes-ttt", StringUtil.getDockerSafeName("TTTesTTT"));
-		Assert.assertEquals(
-			"-tt-tes-ttt", StringUtil.getDockerSafeName("-TTTesTTT"));
 	}
 
 }
