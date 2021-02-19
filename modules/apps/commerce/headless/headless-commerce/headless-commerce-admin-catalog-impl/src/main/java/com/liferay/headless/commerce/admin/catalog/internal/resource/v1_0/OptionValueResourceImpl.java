@@ -84,7 +84,7 @@ public class OptionValueResourceImpl
 
 		CPOptionValue cpOptionValue =
 			_cpOptionValueService.fetchByExternalReferenceCode(
-				contextCompany.getCompanyId(), externalReferenceCode);
+				externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpOptionValue == null) {
 			throw new NoSuchCPOptionValueException(
@@ -107,7 +107,7 @@ public class OptionValueResourceImpl
 		throws Exception {
 
 		CPOption cpOption = _cpOptionService.fetchByExternalReferenceCode(
-			contextCompany.getCompanyId(), externalReferenceCode);
+			externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpOption == null) {
 			throw new NoSuchCPOptionException(
@@ -165,7 +165,7 @@ public class OptionValueResourceImpl
 
 		CPOptionValue cpOptionValue =
 			_cpOptionValueService.fetchByExternalReferenceCode(
-				contextCompany.getCompanyId(), externalReferenceCode);
+				externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpOptionValue == null) {
 			throw new NoSuchCPOptionValueException(
@@ -197,7 +197,7 @@ public class OptionValueResourceImpl
 
 		CPOptionValue cpOptionValue =
 			_cpOptionValueService.fetchByExternalReferenceCode(
-				contextCompany.getCompanyId(), externalReferenceCode);
+				externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpOptionValue == null) {
 			throw new NoSuchCPOptionValueException(
@@ -218,7 +218,7 @@ public class OptionValueResourceImpl
 		throws Exception {
 
 		CPOption cpOption = _cpOptionService.fetchByExternalReferenceCode(
-			contextCompany.getCompanyId(), externalReferenceCode);
+			externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpOption == null) {
 			throw new NoSuchCPOptionException(
@@ -366,10 +366,9 @@ public class OptionValueResourceImpl
 		throws Exception {
 
 		CPOptionValue cpOptionValue = _cpOptionValueService.upsertCPOptionValue(
-			cpOption.getCPOptionId(),
+			optionValue.getExternalReferenceCode(), cpOption.getCPOptionId(),
 			LanguageUtils.getLocalizedMap(optionValue.getName()),
 			GetterUtil.get(optionValue.getPriority(), 0D), optionValue.getKey(),
-			optionValue.getExternalReferenceCode(),
 			_serviceContextHelper.getServiceContext());
 
 		return _toOptionValue(cpOptionValue.getCPOptionValueId());

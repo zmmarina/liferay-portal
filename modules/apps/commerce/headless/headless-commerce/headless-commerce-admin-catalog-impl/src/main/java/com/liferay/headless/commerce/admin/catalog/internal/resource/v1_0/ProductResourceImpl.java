@@ -141,7 +141,7 @@ public class ProductResourceImpl
 		CPDefinition cpDefinition =
 			_cpDefinitionService.
 				fetchCPDefinitionByCProductExternalReferenceCode(
-					contextCompany.getCompanyId(), externalReferenceCode);
+					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpDefinition == null) {
 			throw new NoSuchCPDefinitionException(
@@ -183,7 +183,7 @@ public class ProductResourceImpl
 		CPDefinition cpDefinition =
 			_cpDefinitionService.
 				fetchCPDefinitionByCProductExternalReferenceCode(
-					contextCompany.getCompanyId(), externalReferenceCode);
+					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpDefinition == null) {
 			throw new NoSuchCPDefinitionException(
@@ -220,8 +220,8 @@ public class ProductResourceImpl
 
 		if (!Validator.isBlank(product.getExternalReferenceCode())) {
 			_cpDefinitionService.updateExternalReferenceCode(
-				cpDefinition.getCPDefinitionId(),
-				product.getExternalReferenceCode());
+				product.getExternalReferenceCode(),
+				cpDefinition.getCPDefinitionId());
 		}
 
 		Response.ResponseBuilder responseBuilder = Response.ok();
@@ -237,7 +237,7 @@ public class ProductResourceImpl
 		CPDefinition cpDefinition =
 			_cpDefinitionService.
 				fetchCPDefinitionByCProductExternalReferenceCode(
-					contextCompany.getCompanyId(), externalReferenceCode);
+					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpDefinition == null) {
 			throw new NoSuchCPDefinitionException(
@@ -267,7 +267,7 @@ public class ProductResourceImpl
 		CPDefinition cpDefinition =
 			_cpDefinitionService.
 				fetchCPDefinitionByCProductExternalReferenceCode(
-					contextCompany.getCompanyId(), externalReferenceCode);
+					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (cpDefinition == null) {
 			throw new NoSuchCPDefinitionException();
@@ -730,8 +730,8 @@ public class ProductResourceImpl
 		CPDefinition cpDefinition =
 			_cpDefinitionService.
 				fetchCPDefinitionByCProductExternalReferenceCode(
-					contextCompany.getCompanyId(),
-					product.getExternalReferenceCode());
+					product.getExternalReferenceCode(),
+					contextCompany.getCompanyId());
 
 		if ((product.getCategories() == null) && (cpDefinition != null)) {
 			long[] categoryIds = _assetCategoryLocalService.getCategoryIds(
@@ -768,8 +768,8 @@ public class ProductResourceImpl
 		}
 
 		cpDefinition = _cpDefinitionService.upsertCPDefinition(
-			commerceCatalog.getGroupId(), contextUser.getUserId(),
-			LanguageUtils.getLocalizedMap(nameMap),
+			product.getExternalReferenceCode(), commerceCatalog.getGroupId(),
+			contextUser.getUserId(), LanguageUtils.getLocalizedMap(nameMap),
 			LanguageUtils.getLocalizedMap(shortDescriptionMap),
 			LanguageUtils.getLocalizedMap(descriptionMap), null,
 			LanguageUtils.getLocalizedMap(product.getMetaTitle()),
@@ -801,7 +801,7 @@ public class ProductResourceImpl
 				subscriptionConfiguration.getSubscriptionTypeAsString()),
 			null,
 			GetterUtil.getLong(subscriptionConfiguration.getNumberOfLength()),
-			product.getExternalReferenceCode(), serviceContext);
+			serviceContext);
 
 		// Workflow
 
