@@ -42,7 +42,7 @@ import java.util.Objects;
  */
 public class TalendProcess {
 
-	public static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
+	public static final String ISO_8601_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
 
 	public String[] getMainMethodArguments() {
 		return _mainMethodArguments.toArray(new String[0]);
