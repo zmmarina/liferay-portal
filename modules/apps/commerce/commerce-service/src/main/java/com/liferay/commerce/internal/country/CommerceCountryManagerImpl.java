@@ -127,7 +127,6 @@ public class CommerceCountryManagerImpl implements CommerceCountryManager {
 				channelFilterPredicate = channelFilterPredicate.and(
 					CommerceChannelRelTable.INSTANCE.classNameId.eq(
 						_classNameLocalService.getClassNameId(Country.class)));
-
 				channelFilterPredicate = channelFilterPredicate.and(
 					CommerceChannelRelTable.INSTANCE.commerceChannelId.eq(
 						commerceChannelId));
@@ -139,7 +138,6 @@ public class CommerceCountryManagerImpl implements CommerceCountryManager {
 
 				predicate = predicate.and(
 					CountryTable.INSTANCE.billingAllowed.eq(billingAllowed));
-
 				predicate = predicate.and(
 					CountryTable.INSTANCE.shippingAllowed.eq(shippingAllowed));
 
