@@ -2838,11 +2838,16 @@ public class JenkinsResultsParserUtil {
 						buildProperties.getProperty("jenkins.admin.user.name"));
 				}
 
-				if (((httpAuthorizationHeader == null) &&
-					 url.matches("https://testray.liferay.com/?.+")) ||
+				boolean testrayRequest = false;
+
+				if (url.matches("https://testray.liferay.com/?.+") ||
 					url.matches(
 						"https://webserver-testray-dev.lfr.cloud/?.+")) {
 
+					testrayRequest = true;
+				}
+
+				if ((httpAuthorizationHeader == null) && testrayRequest) {
 					Properties buildProperties = getBuildProperties();
 
 					httpAuthorizationHeader = new BasicHTTPAuthorization(
@@ -2904,8 +2909,11 @@ public class JenkinsResultsParserUtil {
 						httpURLConnection.setRequestProperty(
 							"Authorization",
 							httpAuthorizationHeader.toString());
-						httpURLConnection.setRequestProperty(
-							"Content-Type", "application/json");
+
+						if (!testrayRequest) {
+							httpURLConnection.setRequestProperty(
+								"Content-Type", "application/json");
+						}
 					}
 
 					if (postContent != null) {
