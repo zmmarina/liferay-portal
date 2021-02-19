@@ -91,7 +91,7 @@ public class AddSegmentsExperienceMVCActionCommand
 			actionRequest);
 
 		String[] languageIds = StringUtil.split(
-			ParamUtil.getString(actionRequest, "languageIds", ""));
+			ParamUtil.getString(actionRequest, "languageIds"));
 
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 			actionRequest);

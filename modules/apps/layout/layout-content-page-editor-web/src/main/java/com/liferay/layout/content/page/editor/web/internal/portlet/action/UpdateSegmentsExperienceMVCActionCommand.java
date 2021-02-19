@@ -59,7 +59,7 @@ public class UpdateSegmentsExperienceMVCActionCommand
 			actionRequest, "segmentsEntryId");
 		String name = ParamUtil.getString(actionRequest, "name");
 		String[] languageIds = StringUtil.split(
-			ParamUtil.getString(actionRequest, "languageIds", ""));
+			ParamUtil.getString(actionRequest, "languageIds"));
 
 		UnicodeProperties typeSettingsUnicodeProperties = new UnicodeProperties(
 			true);
