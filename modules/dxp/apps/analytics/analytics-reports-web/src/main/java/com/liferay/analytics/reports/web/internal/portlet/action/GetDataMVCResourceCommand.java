@@ -96,10 +96,10 @@ public class GetDataMVCResourceCommand extends BaseMVCResourceCommand {
 		HttpServletRequest httpServletRequest = _portal.getHttpServletRequest(
 			resourceRequest);
 
-		InfoItemClassPKReference infoItemClassPKReference =
-			_getInfoItemClassPKReference(httpServletRequest);
-
 		try {
+			InfoItemClassPKReference infoItemClassPKReference =
+				_getInfoItemClassPKReference(httpServletRequest);
+
 			Object analyticsReportsInfoItemObject = Optional.ofNullable(
 				_analyticsReportsInfoItemObjectProviderTracker.
 					getAnalyticsReportsInfoItemObjectProvider(
