@@ -124,36 +124,9 @@ public class BackgroundImageFragmentEntryProcessor
 
 			String value = StringPool.BLANK;
 
-			Object fieldValue = null;
-
-			if (_fragmentEntryProcessorHelper.isAssetDisplayPage(
-					fragmentEntryProcessorContext.getMode())) {
-
-				String mappedField = editableValueJSONObject.getString(
-					"mappedField");
-
-				Optional<Map<String, Object>> fieldValuesOptional =
-					fragmentEntryProcessorContext.getFieldValuesOptional();
-
-				Map<String, Object> fieldValues = fieldValuesOptional.orElse(
-					new HashMap<>());
-
-				fieldValue = fieldValues.get(mappedField);
-			}
-			else if (_fragmentEntryProcessorHelper.isMapped(
-						editableValueJSONObject)) {
-
-				fieldValue = _fragmentEntryProcessorHelper.getMappedValue(
-					editableValueJSONObject, infoDisplaysFieldValues,
-					fragmentEntryProcessorContext);
-			}
-			else if (_fragmentEntryProcessorHelper.isMappedCollection(
-						editableValueJSONObject)) {
-
-				fieldValue =
-					_fragmentEntryProcessorHelper.getMappedCollectionValue(
-						editableValueJSONObject, fragmentEntryProcessorContext);
-			}
+			Object fieldValue = _getFieldValue(
+				editableValueJSONObject, infoDisplaysFieldValues,
+				fragmentEntryProcessorContext);
 
 			if (fieldValue != null) {
 				value = _getImageURL(fieldValue);
@@ -279,6 +252,43 @@ public class BackgroundImageFragmentEntryProcessor
 		document.outputSettings(outputSettings);
 
 		return document;
+	}
+
+	private Object _getFieldValue(
+			JSONObject editableValueJSONObject,
+			Map<Long, Map<String, Object>> infoDisplaysFieldValues,
+			FragmentEntryProcessorContext fragmentEntryProcessorContext)
+		throws PortalException {
+
+		if (_fragmentEntryProcessorHelper.isAssetDisplayPage(
+				fragmentEntryProcessorContext.getMode())) {
+
+			String mappedField = editableValueJSONObject.getString(
+				"mappedField");
+
+			Optional<Map<String, Object>> fieldValuesOptional =
+				fragmentEntryProcessorContext.getFieldValuesOptional();
+
+			Map<String, Object> fieldValues = fieldValuesOptional.orElse(
+				new HashMap<>());
+
+			return fieldValues.get(mappedField);
+		}
+		else if (_fragmentEntryProcessorHelper.isMapped(
+					editableValueJSONObject)) {
+
+			return _fragmentEntryProcessorHelper.getMappedValue(
+				editableValueJSONObject, infoDisplaysFieldValues,
+				fragmentEntryProcessorContext);
+		}
+		else if (_fragmentEntryProcessorHelper.isMappedCollection(
+					editableValueJSONObject)) {
+
+			return _fragmentEntryProcessorHelper.getMappedCollectionValue(
+				editableValueJSONObject, fragmentEntryProcessorContext);
+		}
+
+		return null;
 	}
 
 	private long _getFileEntryId(
