@@ -359,12 +359,6 @@ public class GetDataMVCResourceCommandTest {
 					getLayoutDisplayPageProviderByClassName(
 						MockObject.class.getName());
 
-			mockLiferayResourceRequest.setParameter(
-				"classNameId",
-				String.valueOf(
-					_classNameLocalService.getClassNameId(
-						MockObject.class.getName())));
-
 			mockLiferayResourceRequest.setAttribute(
 				LayoutDisplayPageWebKeys.LAYOUT_DISPLAY_PAGE_OBJECT_PROVIDER,
 				layoutDisplayPageProvider.getLayoutDisplayPageObjectProvider(
@@ -378,6 +372,11 @@ public class GetDataMVCResourceCommandTest {
 					_group, _layout,
 					_layoutSetLocalService.getLayoutSet(
 						_group.getGroupId(), false)));
+			mockLiferayResourceRequest.setParameter(
+				"classNameId",
+				String.valueOf(
+					_classNameLocalService.getClassNameId(
+						MockObject.class.getName())));
 
 			return mockLiferayResourceRequest;
 		}
