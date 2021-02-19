@@ -12,10 +12,10 @@
  * details.
  */
 
-package com.liferay.commerce.internal.util;
+package com.liferay.commerce.internal.helper;
 
 import com.liferay.commerce.constants.CommerceSAPConstants;
-import com.liferay.commerce.util.CommerceSAPHelper;
+import com.liferay.commerce.helper.CommerceSAPHelper;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.resource.bundle.AggregateResourceBundleLoader;

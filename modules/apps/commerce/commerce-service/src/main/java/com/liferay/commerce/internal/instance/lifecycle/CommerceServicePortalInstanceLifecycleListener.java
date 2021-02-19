@@ -15,7 +15,7 @@
 package com.liferay.commerce.internal.instance.lifecycle;
 
 import com.liferay.commerce.constants.CommerceSAPConstants;
-import com.liferay.commerce.util.CommerceSAPHelper;
+import com.liferay.commerce.helper.CommerceSAPHelper;
 import com.liferay.oauth2.provider.scope.spi.scope.finder.ScopeFinder;
 import com.liferay.oauth2.provider.scope.spi.scope.mapper.ScopeMapper;
 import com.liferay.petra.string.StringPool;
