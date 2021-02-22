@@ -440,6 +440,7 @@ away from Soy:
 > were the only people using this technology.
 
 ---------------------------------------
+
 ### The spi.id property in log4j xml definition file has been removed
 - **Date:** 2021-Jan-19
 - **JIRA Ticket:** [LPS-125998](https://issues.liferay.com/browse/LPS-125998)
@@ -461,6 +462,7 @@ Remove `@spi.id@` from log4j xml definition file.
 The support of SPI has been removed by LPS-110758.
 
 ---------------------------------------
+
 ### Deprecated attributes have been removed from the frontend-taglib-clay tags
 - **Date:** 2021-Jan-26
 - **JIRA Ticket:** [LPS-125256](https://issues.liferay.com/browse/LPS-125256)
@@ -481,6 +483,7 @@ The `frontend-taglib-clay` module is now using components from
 previous attributes.
 
 ---------------------------------------
+
 ### Handling HTML boolean attributes in tags
 - **Date:** 2021-Feb-18
 - **JIRA Ticket:** [LPS-127832](https://issues.liferay.com/browse/LPS-127832)
