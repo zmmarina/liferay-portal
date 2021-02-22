@@ -72,6 +72,7 @@ public class ReleaseAPIJarTest implements BaseReleaseAPIJarTestCase {
 		File releaseApiJarSourcesFile = new File(RELEASE_API_JAR_SOURCES_FILE);
 
 		Assert.assertTrue(releaseApiJarSourcesFile.exists());
+
 		File sourcesDir = temporaryFolder.newFolder(
 			releaseApiJarSourcesFile.getName() + "-sources");
 
