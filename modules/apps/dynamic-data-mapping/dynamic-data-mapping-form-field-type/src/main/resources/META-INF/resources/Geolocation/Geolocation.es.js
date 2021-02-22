@@ -95,7 +95,7 @@ const Main = ({
 	viewMode,
 	...otherProps
 }) => (
-	<FieldBase {...otherProps} name={name}>
+	<FieldBase name={name} readOnly={readOnly} {...otherProps}>
 		<Geolocation
 			disabled={readOnly}
 			googleMapsAPIKey={googleMapsAPIKey}
