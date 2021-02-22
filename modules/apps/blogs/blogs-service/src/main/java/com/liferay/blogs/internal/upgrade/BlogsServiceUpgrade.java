@@ -115,7 +115,6 @@ public class BlogsServiceUpgrade implements UpgradeStepRegistrator {
 					_classNameLocalService.getClassNameId(
 						MBDiscussion.class.getName() + StringPool.UNDERLINE +
 							BlogsEntry.class.getName()));
-
 				ps.setLong(2, _classNameLocalService.getClassNameId(className));
 
 				ps.executeUpdate();
