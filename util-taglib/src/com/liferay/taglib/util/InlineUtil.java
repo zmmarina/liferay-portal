@@ -16,9 +16,8 @@ package com.liferay.taglib.util;
 
 import com.liferay.petra.string.StringBundler;
 import com.liferay.petra.string.StringPool;
+import com.liferay.portal.kernel.util.SetUtil;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,24 +36,22 @@ public class InlineUtil {
 		StringBundler sb = new StringBundler(dynamicAttributes.size() * 4);
 
 		for (Map.Entry<String, Object> entry : dynamicAttributes.entrySet()) {
-			String key = entry.getKey();
+			String attributeName = entry.getKey();
 
-			if (!key.equals("class")) {
-				String value = String.valueOf(entry.getValue());
+			if (!attributeName.equals("class")) {
+				String attributeValue = String.valueOf(entry.getValue());
 
-				if (_attributesSet.contains(key)) {
-					Boolean attributeValue = Boolean.valueOf(value);
-
-					if (!attributeValue) {
+				if (_attributeNames.contains(attributeName)) {
+					if (!Boolean.valueOf(attributeValue)) {
 						continue;
 					}
 
-					value = key;
+					attributeValue = attributeName;
 				}
 
-				sb.append(key);
+				sb.append(attributeName);
 				sb.append("=\"");
-				sb.append(value);
+				sb.append(attributeValue);
 				sb.append("\" ");
 			}
 		}
@@ -62,15 +59,14 @@ public class InlineUtil {
 		return sb.toString();
 	}
 
-	private static final String[] _HTML_BOOLEAN_ATTRIBUTES = {
-		"allowfullscreen", "allowpaymentrequest", "async", "autofocus",
-		"autoplay", "checked", "controls", "default", "disabled",
-		"formnovalidate", "hidden", "ismap", "itemscope", "loop", "multiple",
-		"muted", "nomodule", "novalidate", "open", "playsinline", "readonly",
-		"required", "reversed", "selected", "truespeed"
-	};
-
-	private static final Set<String> _attributesSet = new HashSet<>(
-		Arrays.asList(_HTML_BOOLEAN_ATTRIBUTES));
+	private static final Set<String> _attributeNames = SetUtil.fromArray(
+		new String[] {
+			"allowfullscreen", "allowpaymentrequest", "async", "autofocus",
+			"autoplay", "checked", "controls", "default", "disabled",
+			"formnovalidate", "hidden", "ismap", "itemscope", "loop",
+			"multiple", "muted", "nomodule", "novalidate", "open",
+			"playsinline", "readonly", "required", "reversed", "selected",
+			"truespeed"
+		});
 
 }
