@@ -41,12 +41,15 @@ JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
 			creationMenu: <%= jsonSerializer.serializeDeep(creationMenu) %>,
 			currentURL: '<%= PortalUtil.getCurrentURL(request) %>',
 			filters: <%= jsonSerializer.serializeDeep(clayDataSetFiltersContext) %>,
+
 			<c:if test="<%= Validator.isNotNull(formId) %>">
 				formId: '<%= formId %>',
 			</c:if>
+
 			id: '<%= id %>',
 			itemsActions: <%= jsonSerializer.serializeDeep(clayDataSetActionDropdownItems) %>,
 			namespace: '<%= namespace %>',
+
 			<c:if test="<%= Validator.isNotNull(nestedItemsKey) %>">
 				nestedItemsKey: '<%= nestedItemsKey %>',
 			</c:if>
@@ -54,6 +57,7 @@ JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
 			<c:if test="<%= Validator.isNotNull(nestedItemsReferenceKey) %>">
 				nestedItemsReferenceKey: '<%= nestedItemsReferenceKey %>',
 			</c:if>
+
 			pagination: {
 				deltas: <%= jsonSerializer.serializeDeep(clayPaginationEntries) %>,
 				initialDelta: <%= itemsPerPage %>,
@@ -62,6 +66,7 @@ JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
 			portletId: '<%= portletDisplay.getRootPortletId() %>',
 			portletURL: '<%= portletURL %>',
 			selectedItems: <%= jsonSerializer.serializeDeep(selectedItems) %>,
+
 			<c:if test="<%= Validator.isNotNull(selectedItemsKey) %>">
 				selectedItemsKey: '<%= selectedItemsKey %>',
 			</c:if>
@@ -69,13 +74,16 @@ JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
 			<c:if test="<%= Validator.isNotNull(selectionType) %>">
 				selectionType: '<%= selectionType %>',
 			</c:if>
+
 			showManagementBar: <%= showManagementBar %>,
 			showPagination: <%= showPagination %>,
 			showSearch: <%= showSearch %>,
 			sorting: <%= jsonSerializer.serializeDeep(sortItemList) %>,
+
 			<c:if test="<%= Validator.isNotNull(style) %>">
 				style: '<%= style %>',
 			</c:if>
+
 			views: <%= jsonSerializer.serializeDeep(clayDataSetDisplayViewsContext) %>,
 		},
 		document.getElementById('<%= containerId %>')
