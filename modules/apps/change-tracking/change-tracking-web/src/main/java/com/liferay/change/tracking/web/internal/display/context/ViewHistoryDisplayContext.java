@@ -83,14 +83,12 @@ public class ViewHistoryDisplayContext extends BasePublicationsDisplayContext {
 		_ctSchemaVersionLocalService = ctSchemaVersionLocalService;
 		_httpServletRequest = httpServletRequest;
 		_language = language;
-
 		_renderRequest = renderRequest;
+		_renderResponse = renderResponse;
+		_userLocalService = userLocalService;
 
 		_themeDisplay = (ThemeDisplay)_renderRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
-
-		_renderResponse = renderResponse;
-		_userLocalService = userLocalService;
 	}
 
 	public String getFilterByStatus() {
