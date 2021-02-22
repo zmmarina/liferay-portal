@@ -54,11 +54,6 @@ public class DataLayoutRendererTag extends BaseDataLayoutRendererTag {
 
 			dataLayoutRendererContext.setContainerId(getContainerId());
 
-			if (Validator.isNotNull(getDefaultLanguageId())) {
-				dataLayoutRendererContext.setDefaultLanguageId(
-					getDefaultLanguageId());
-			}
-
 			HttpServletRequest httpServletRequest = getRequest();
 
 			if (Validator.isNotNull(getDataRecordId())) {
@@ -69,6 +64,11 @@ public class DataLayoutRendererTag extends BaseDataLayoutRendererTag {
 			else {
 				dataLayoutRendererContext.setDataRecordValues(
 					getDataRecordValues());
+			}
+
+			if (Validator.isNotNull(getDefaultLanguageId())) {
+				dataLayoutRendererContext.setDefaultLanguageId(
+					getDefaultLanguageId());
 			}
 
 			dataLayoutRendererContext.setHttpServletRequest(httpServletRequest);

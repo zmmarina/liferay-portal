@@ -83,9 +83,6 @@ public class DataLayoutRendererImpl implements DataLayoutRenderer {
 		DDMFormRenderingContext ddmFormRenderingContext =
 			new DDMFormRenderingContext();
 
-		ddmFormRenderingContext.setContainerId(
-			dataLayoutRendererContext.getContainerId());
-
 		if (Validator.isNotNull(
 				dataLayoutRendererContext.getDefaultLanguageId())) {
 
@@ -94,6 +91,8 @@ public class DataLayoutRendererImpl implements DataLayoutRenderer {
 				dataLayoutRendererContext.getDefaultLanguageId());
 		}
 
+		ddmFormRenderingContext.setContainerId(
+			dataLayoutRendererContext.getContainerId());
 		ddmFormRenderingContext.setDDMFormValues(
 			MapToDDMFormValuesConverterUtil.toDDMFormValues(
 				dataLayoutRendererContext.getDataRecordValues(), ddmForm,
