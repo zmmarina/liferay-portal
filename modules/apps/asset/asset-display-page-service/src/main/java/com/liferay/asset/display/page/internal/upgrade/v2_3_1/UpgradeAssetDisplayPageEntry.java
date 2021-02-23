@@ -32,7 +32,7 @@ public class UpgradeAssetDisplayPageEntry extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
-		StringBundler sb1 = new StringBundler(12);
+		StringBundler sb1 = new StringBundler(14);
 
 		sb1.append("select groupId, companyId, userId, userName, ");
 		sb1.append("classNameId, classPK from AssetEntry where classNameId ");
@@ -55,6 +55,13 @@ public class UpgradeAssetDisplayPageEntry extends UpgradeProcess {
 		sb1.append(blogsClassNameId);
 		sb1.append(", ");
 		sb1.append(dlFileEntryClassNameId);
+		sb1.append(", ");
+
+		long fileEntryClassNameId = PortalUtil.getClassNameId(
+			"com.liferay.portal.kernel.repository.model.FileEntry");
+
+		sb1.append(fileEntryClassNameId);
+
 		sb1.append("))");
 
 		StringBundler sb2 = new StringBundler(5);
