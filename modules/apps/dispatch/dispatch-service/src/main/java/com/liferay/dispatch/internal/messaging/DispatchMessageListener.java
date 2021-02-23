@@ -66,7 +66,7 @@ public class DispatchMessageListener extends BaseMessageListener {
 				_dispatchLogLocalService.addDispatchLog(
 					dispatchTrigger.getUserId(),
 					dispatchTrigger.getDispatchTriggerId(), date,
-					"Only one instance in PROGRESS is allowed", null, date,
+					"Only one instance in progress is allowed", null, date,
 					DispatchTaskStatus.CANCELED);
 
 				return;
@@ -89,7 +89,7 @@ public class DispatchMessageListener extends BaseMessageListener {
 		}
 
 		String message =
-			"Unable to find DispatchTaskExecutor of type " +
+			"Unable to find dispatch task executor of type " +
 				dispatchTrigger.getDispatchTaskExecutorType();
 
 		if (_log.isWarnEnabled()) {
