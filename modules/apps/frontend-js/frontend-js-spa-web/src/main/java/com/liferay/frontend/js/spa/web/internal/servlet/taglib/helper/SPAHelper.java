@@ -173,7 +173,6 @@ public class SPAHelper {
 			SPAConfiguration.class, properties);
 
 		_cacheExpirationTime = _getCacheExpirationTime(_spaConfiguration);
-
 		_spaExcludedPathsJSONArray = _getExcludedPathsJSONArray(
 			_spaConfiguration);
 
@@ -209,7 +208,6 @@ public class SPAHelper {
 			SPAConfiguration.class, properties);
 
 		_cacheExpirationTime = _getCacheExpirationTime(_spaConfiguration);
-
 		_spaExcludedPathsJSONArray = _getExcludedPathsJSONArray(
 			_spaConfiguration);
 
