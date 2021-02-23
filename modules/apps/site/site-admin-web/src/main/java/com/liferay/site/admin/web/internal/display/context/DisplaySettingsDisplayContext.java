@@ -32,12 +32,11 @@ import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.PrefsPropsUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
+import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.util.PropsValues;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -143,7 +142,7 @@ public class DisplaySettingsDisplayContext {
 			PropsKeys.LOCALES);
 
 		if (groupLanguageIds != null) {
-			List<String> instanceCurrentLanguageIds = Arrays.asList(
+			Set<String> companyLanguageIds = SetUtil.fromArray(
 				PrefsPropsUtil.getStringArray(
 					_themeDisplay.getCompanyId(), PropsKeys.LOCALES,
 					StringPool.COMMA, PropsValues.LOCALES_ENABLED));
@@ -152,7 +151,7 @@ public class DisplaySettingsDisplayContext {
 					LocaleUtil.fromLanguageIds(
 						StringUtil.split(groupLanguageIds))) {
 
-				if (instanceCurrentLanguageIds.contains(
+				if (companyLanguageIds.contains(
 						LanguageUtil.getLanguageId(currentLocale))) {
 
 					currentLanguagesJSONArray.put(
