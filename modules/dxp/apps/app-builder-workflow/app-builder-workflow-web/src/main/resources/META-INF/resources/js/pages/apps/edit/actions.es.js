@@ -121,8 +121,8 @@ export function populateConfigData([
 	};
 
 	if (app.active && config.formView.missingRequiredFields.nativeField) {
-		config.formView = {};
 		app.dataLayoutId = null;
+		config.formView = {};
 	}
 
 	return [app, config];
