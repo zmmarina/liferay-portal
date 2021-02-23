@@ -58,12 +58,10 @@ public class AssetEntriesSearchFacetTest {
 
 		mockAssetRendererFactoryGetClassName(
 			assetRendererFactory1, CLASS_NAME_1);
+		mockAssetRendererFactoryIsSearchable(assetRendererFactory1, true);
 
 		mockAssetRendererFactoryGetClassName(
 			assetRendererFactory2, CLASS_NAME_2);
-
-		mockAssetRendererFactoryIsSearchable(assetRendererFactory1, true);
-
 		mockAssetRendererFactoryIsSearchable(assetRendererFactory2, true);
 	}
 
@@ -72,12 +70,12 @@ public class AssetEntriesSearchFacetTest {
 		mockAssetRendererFactoryRegistry(
 			assetRendererFactory1, assetRendererFactory2);
 
-		String[] entryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
+		String[] assetEntryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
 
-		mockSearchEngineHelperEntryClassNames(entryClassNames);
+		mockSearchEngineHelperassetEntryClassNames(assetEntryClassNames);
 
 		Assert.assertArrayEquals(
-			entryClassNames,
+			assetEntryClassNames,
 			assetEntriesSearchFacet.getAssetTypes(RandomTestUtil.randomLong()));
 	}
 
@@ -85,9 +83,9 @@ public class AssetEntriesSearchFacetTest {
 	public void testGetAssetTypesNotInRegistry() {
 		mockAssetRendererFactoryRegistry(assetRendererFactory2);
 
-		String[] entryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
+		String[] assetEntryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
 
-		mockSearchEngineHelperEntryClassNames(entryClassNames);
+		mockSearchEngineHelperassetEntryClassNames(assetEntryClassNames);
 
 		Assert.assertArrayEquals(
 			new String[] {CLASS_NAME_2},
@@ -99,12 +97,12 @@ public class AssetEntriesSearchFacetTest {
 		mockAssetRendererFactoryRegistry(
 			assetRendererFactory1, assetRendererFactory2);
 
-		String[] entryClassNames = {CLASS_NAME_1};
+		String[] assetEntryClassNames = {CLASS_NAME_1};
 
-		mockSearchEngineHelperEntryClassNames(entryClassNames);
+		mockSearchEngineHelperassetEntryClassNames(assetEntryClassNames);
 
 		Assert.assertArrayEquals(
-			entryClassNames,
+			assetEntryClassNames,
 			assetEntriesSearchFacet.getAssetTypes(RandomTestUtil.randomLong()));
 	}
 
@@ -115,9 +113,9 @@ public class AssetEntriesSearchFacetTest {
 		mockAssetRendererFactoryRegistry(
 			assetRendererFactory1, assetRendererFactory2);
 
-		String[] entryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
+		String[] assetEntryClassNames = {CLASS_NAME_1, CLASS_NAME_2};
 
-		mockSearchEngineHelperEntryClassNames(entryClassNames);
+		mockSearchEngineHelperassetEntryClassNames(assetEntryClassNames);
 
 		Assert.assertArrayEquals(
 			new String[] {CLASS_NAME_2},
@@ -155,13 +153,13 @@ public class AssetEntriesSearchFacetTest {
 		);
 	}
 
-	protected void mockSearchEngineHelperEntryClassNames(
-		String[] entryClassNames) {
+	protected void mockSearchEngineHelperassetEntryClassNames(
+		String[] assetEntryClassNames) {
 
 		Mockito.when(
-			_searchEngineHelper.getEntryClassNames()
+			_searchEngineHelper.getassetEntryClassNames()
 		).thenReturn(
-			entryClassNames
+			assetEntryClassNames
 		);
 	}
 

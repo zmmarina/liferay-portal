@@ -53,6 +53,10 @@ public class TypeFacetConfigurationAction extends DefaultConfigurationAction {
 			HttpServletResponse httpServletResponse)
 		throws Exception {
 
+		httpServletRequest.setAttribute(
+			SearchableAssetClassNamesProvider.class.getName(),
+			searchableAssetClassNamesProvider);
+
 		RenderRequest renderRequest =
 			(RenderRequest)httpServletRequest.getAttribute(
 				JavaConstants.JAVAX_PORTLET_REQUEST);
@@ -64,10 +68,6 @@ public class TypeFacetConfigurationAction extends DefaultConfigurationAction {
 		httpServletRequest.setAttribute(
 			WebKeys.PORTLET_DISPLAY_CONTEXT,
 			assetEntriesSearchFacetDisplayBuilder.build());
-
-		httpServletRequest.setAttribute(
-			SearchableAssetClassNamesProvider.class.getName(),
-			searchableAssetClassNamesProvider);
 
 		super.include(portletConfig, httpServletRequest, httpServletResponse);
 	}
