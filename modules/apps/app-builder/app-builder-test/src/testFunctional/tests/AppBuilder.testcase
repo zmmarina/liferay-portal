@@ -2518,8 +2518,7 @@ definition {
 	@description = "Publish apps in standalone mode and reuse its views"
 	@priority = "4"
 	test PublishAppsInStandaloneAndReuseItsViews {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
 
 		var myFormViewName_1 = "My Form View 1";
 		var myFormViewName_2 = "My Form View 2";
