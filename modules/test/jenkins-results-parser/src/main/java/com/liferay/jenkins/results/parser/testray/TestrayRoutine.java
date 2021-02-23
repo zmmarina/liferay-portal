@@ -64,10 +64,8 @@ public class TestrayRoutine {
 	}
 
 	public TestrayBuild getTestrayBuildByID(int buildID) {
-		TestrayServer testrayServer = getTestrayServer();
-
 		String buildAPIURL = JenkinsResultsParserUtil.combine(
-			String.valueOf(testrayServer.getURL()),
+			String.valueOf(_testrayServer.getURL()),
 			"/web/guest/home/-/testray/builds/view.json?id=",
 			String.valueOf(buildID));
 
@@ -99,12 +97,10 @@ public class TestrayRoutine {
 
 		int current = 1;
 
-		TestrayServer testrayServer = getTestrayServer();
-
 		while (true) {
 			try {
 				String buildAPIURL = JenkinsResultsParserUtil.combine(
-					String.valueOf(testrayServer.getURL()),
+					String.valueOf(_testrayServer.getURL()),
 					"/home/-/testray/builds.json?cur=", String.valueOf(current),
 					"&delta=", String.valueOf(_DELTA),
 					"&orderByCol=testrayBuildId&testrayRoutineId=",
