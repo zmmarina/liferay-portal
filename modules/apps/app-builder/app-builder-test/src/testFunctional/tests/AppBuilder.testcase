@@ -2142,8 +2142,7 @@ definition {
 	@description = "Publish my app as a widget with only a Table View"
 	@priority = "5"
 	test PublishAppAsWidgetWithOnlyTableView {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
 
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "my custom object",
