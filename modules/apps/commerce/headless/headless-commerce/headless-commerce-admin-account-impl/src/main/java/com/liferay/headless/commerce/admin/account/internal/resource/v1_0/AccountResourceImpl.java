@@ -44,6 +44,7 @@ import com.liferay.headless.commerce.admin.account.resource.v1_0.AccountResource
 import com.liferay.headless.commerce.core.util.ExpandoUtil;
 import com.liferay.headless.commerce.core.util.ServiceContextHelper;
 import com.liferay.petra.function.UnsafeConsumer;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
@@ -421,10 +422,9 @@ public class AccountResourceImpl
 		if (region == null) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(
-					String.format(
-						"Unable to find region with ISO code %s for country " +
-							"ID %d",
-						accountAddress.getRegionISOCode(),
+					StringBundler.concat(
+						"Unable to find region with ISO code ",
+						accountAddress.getRegionISOCode(), " for country ",
 						country.getCountryId()));
 			}
 
@@ -511,10 +511,10 @@ public class AccountResourceImpl
 				if (country == null) {
 					if (_log.isWarnEnabled()) {
 						_log.warn(
-							String.format(
-								"Unable to import account address with " +
-									"country ISO code %s and account name %s",
-								account.getName(),
+							StringBundler.concat(
+								"Unable to import account address with ",
+								"country ISO code ", account.getName(),
+								" and account name ",
 								accountAddress.getCountryISOCode()));
 					}
 
