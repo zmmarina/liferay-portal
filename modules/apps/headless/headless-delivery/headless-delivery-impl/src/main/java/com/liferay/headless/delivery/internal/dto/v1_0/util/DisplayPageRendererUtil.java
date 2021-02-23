@@ -187,13 +187,11 @@ public class DisplayPageRendererUtil {
 			InfoDisplayWebKeys.INFO_ITEM_FIELD_VALUES_PROVIDER,
 			infoItemServiceTracker.getFirstInfoItemService(
 				InfoItemFieldValuesProvider.class, itemClassName));
-
 		httpServletRequest.setAttribute(
 			LayoutDisplayPageWebKeys.LAYOUT_DISPLAY_PAGE_OBJECT_PROVIDER,
 			_getLayoutDisplayPageObjectProvider(
 				infoItemDetails.getInfoItemReference(),
 				layoutDisplayPageProviderTracker));
-
 		httpServletRequest.setAttribute(
 			WebKeys.THEME_DISPLAY,
 			_getThemeDisplay(httpServletRequest, layout));
