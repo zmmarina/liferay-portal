@@ -101,7 +101,7 @@ public class CopyDataDefinitionMVCActionCommand
 		DataDefinition dataDefinition =
 			dataDefinitionResource.getDataDefinition(ddmStructureId);
 
-		_makeDataDefinitionFieldsUnique(dataDefinition);
+		_uniquifyDataDefinitionFields(dataDefinition);
 
 		dataDefinition.setDataDefinitionKey(StringPool.BLANK);
 		dataDefinition.setDescription(
@@ -132,19 +132,17 @@ public class CopyDataDefinitionMVCActionCommand
 		}
 	}
 
-	private void _makeDataDefinitionFieldsUnique(
-		DataDefinition dataDefinition) {
-
+	private void _uniquifyDataDefinitionFields(DataDefinition dataDefinition) {
 		for (DataDefinitionField dataDefinitionField :
 				dataDefinition.getDataDefinitionFields()) {
 
-			_makeDataDefinitionFieldUnique(dataDefinitionField);
+			_uniquifyDataDefinitionFields(dataDefinitionField);
 		}
 
 		_updateDataLayout(dataDefinition.getDefaultDataLayout());
 	}
 
-	private void _makeDataDefinitionFieldUnique(
+	private void _uniquifyDataDefinitionFields(
 		DataDefinitionField dataDefinitionField) {
 
 		dataDefinitionField.setName("CopyOf" + dataDefinitionField.getName());
@@ -166,7 +164,7 @@ public class CopyDataDefinitionMVCActionCommand
 			for (DataDefinitionField nestedDataDefinitionField :
 					dataDefinitionField.getNestedDataDefinitionFields()) {
 
-				_makeDataDefinitionFieldUnique(nestedDataDefinitionField);
+				_uniquifyDataDefinitionFields(nestedDataDefinitionField);
 			}
 		}
 	}
