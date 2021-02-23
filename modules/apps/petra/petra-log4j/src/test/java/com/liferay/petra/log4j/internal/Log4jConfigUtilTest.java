@@ -207,13 +207,13 @@ public class Log4jConfigUtilTest {
 	public void testSetLevel() {
 		String loggerName = StringUtil.randomString();
 
-		String childLoggerName = loggerName + ".child";
-
 		Logger logger = Logger.getLogger(loggerName);
 
-		Logger childLogger = Logger.getLogger(childLoggerName);
-
 		_assertPriority(logger, _INFO);
+
+		String childLoggerName = loggerName + ".child";
+
+		Logger childLogger = Logger.getLogger(childLoggerName);
 
 		_assertPriority(childLogger, _INFO);
 
@@ -221,19 +221,16 @@ public class Log4jConfigUtilTest {
 			_generateXMLConfigurationContent(loggerName, _WARN));
 
 		_assertPriority(logger, _WARN);
-
 		_assertPriority(childLogger, _WARN);
 
 		Log4jConfigUtil.setLevel(loggerName, _DEBUG);
 
 		_assertPriority(logger, _DEBUG);
-
 		_assertPriority(childLogger, _DEBUG);
 
 		Log4jConfigUtil.setLevel(childLoggerName, _ERROR);
 
 		_assertPriority(logger, _DEBUG);
-
 		_assertPriority(childLogger, _ERROR);
 	}
 
