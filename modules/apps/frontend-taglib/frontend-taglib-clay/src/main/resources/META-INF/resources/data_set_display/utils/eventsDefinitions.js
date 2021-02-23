@@ -25,7 +25,7 @@ export const OPEN_MODAL = 'open-modal';
 export const OPEN_SIDE_PANEL = 'open-side-panel';
 export const PRODUCT_OPTIONS_CHANGED = 'product-options-changed';
 export const SIDE_PANEL_CLOSED = 'side-panel-closed';
-export const UPDATE_DATASET_DISPLAY = 'update-data-set-display';
+export const UPDATE_DATASET_DISPLAY = 'update-dataset-display';
 
 export default {
 	AUTOCOMPLETE_VALUE_UPDATED,
