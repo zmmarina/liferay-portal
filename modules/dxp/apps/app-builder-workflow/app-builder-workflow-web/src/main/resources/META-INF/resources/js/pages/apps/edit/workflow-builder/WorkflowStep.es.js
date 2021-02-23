@@ -143,7 +143,7 @@ const Card = ({
 					}}
 					setShowPopover={setShowPopover}
 					showPopover={showPopover}
-					triggerClassName="step-card-icon help-cursor"
+					triggerClassName="help-cursor step-card-icon"
 				/>
 			)}
 

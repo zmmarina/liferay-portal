@@ -335,7 +335,7 @@ export default function EditAppSidebar() {
 														setShowPopover
 													}
 													showPopover={showPopover}
-													triggerClassName="icon-with-popover help-cursor"
+													triggerClassName="help-cursor icon-with-popover"
 												/>
 											)}
 
