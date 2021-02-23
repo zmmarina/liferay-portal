@@ -151,18 +151,19 @@ public class DisplaySettingsDisplayContext {
 					LocaleUtil.fromLanguageIds(
 						StringUtil.split(groupLanguageIds))) {
 
-				if (companyLanguageIds.contains(
+				if (!companyLanguageIds.contains(
 						LanguageUtil.getLanguageId(currentLocale))) {
 
-					currentLanguagesJSONArray.put(
-						JSONUtil.put(
-							"label",
-							currentLocale.getDisplayName(
-								_themeDisplay.getLocale())
-						).put(
-							"value", LanguageUtil.getLanguageId(currentLocale)
-						));
+					continue;
 				}
+
+				currentLanguagesJSONArray.put(
+					JSONUtil.put(
+						"label",
+						currentLocale.getDisplayName(_themeDisplay.getLocale())
+					).put(
+						"value", LanguageUtil.getLanguageId(currentLocale)
+					));
 			}
 		}
 		else {
