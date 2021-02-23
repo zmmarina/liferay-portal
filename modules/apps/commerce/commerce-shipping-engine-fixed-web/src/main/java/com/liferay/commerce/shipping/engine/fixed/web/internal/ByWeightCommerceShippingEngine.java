@@ -134,8 +134,8 @@ public class ByWeightCommerceShippingEngine implements CommerceShippingEngine {
 		String zip = StringPool.BLANK;
 
 		if (commerceAddress != null) {
-			commerceCountryId = commerceAddress.getCommerceCountryId();
-			commerceRegionId = commerceAddress.getCommerceRegionId();
+			commerceCountryId = commerceAddress.getCountryId();
+			commerceRegionId = commerceAddress.getRegionId();
 			zip = commerceAddress.getZip();
 		}
 
@@ -215,7 +215,7 @@ public class ByWeightCommerceShippingEngine implements CommerceShippingEngine {
 		CommerceAddress commerceAddress = commerceOrder.getShippingAddress();
 
 		if (commerceAddress != null) {
-			commerceCountryId = commerceAddress.getCommerceCountryId();
+			commerceCountryId = commerceAddress.getCountryId();
 		}
 
 		List<CommerceShippingFixedOption> commerceShippingFixedOptions =
