@@ -66,10 +66,5 @@ else {
 <liferay-ui:error embed="<%= false %>" exception="<%= CommerceOrderStatusException.class %>" message="this-order-cannot-be-transitioned" />
 
 <div id="<portlet:namespace />editOrderContainer">
-	<liferay-frontend:screen-navigation
-		fullContainerCssClass="col-12 pt-4"
-		key="<%= CommerceOrderScreenNavigationConstants.SCREEN_NAVIGATION_KEY_COMMERCE_ORDER_GENERAL %>"
-		modelBean="<%= commerceOrder %>"
-		portletURL="<%= currentURLObj %>"
-	/>
+	<liferay-frontend containerWrapperCssClass="container" key="<%= CommerceOrderScreenNavigationConstants.SCREEN_NAVIGATION_KEY_COMMERCE_ORDER_GENERAL %>" modelBean="<%= commerceOrder %>" portletURL="<%= currentURLObj %>" />
 </div>
