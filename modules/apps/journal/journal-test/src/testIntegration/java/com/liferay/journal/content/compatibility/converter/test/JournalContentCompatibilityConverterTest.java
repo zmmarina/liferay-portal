@@ -145,19 +145,16 @@ public class JournalContentCompatibilityConverterTest {
 			LayoutConstants.DEFAULT_PARENT_LAYOUT_ID, "layout1",
 			RandomTestUtil.randomString(), StringPool.BLANK,
 			LayoutConstants.TYPE_CONTENT, false, "/layout1", serviceContext);
-
 		Layout layout2 = LayoutLocalServiceUtil.addLayout(
 			TestPropsValues.getUserId(), _group.getGroupId(), false,
 			LayoutConstants.DEFAULT_PARENT_LAYOUT_ID, "layout2",
 			RandomTestUtil.randomString(), StringPool.BLANK,
 			LayoutConstants.TYPE_CONTENT, false, "/layout2", serviceContext);
-
 		Layout layout3 = LayoutLocalServiceUtil.addLayout(
 			TestPropsValues.getUserId(), _group.getGroupId(), false,
 			LayoutConstants.DEFAULT_PARENT_LAYOUT_ID, "layout3",
 			RandomTestUtil.randomString(), StringPool.BLANK,
 			LayoutConstants.TYPE_CONTENT, false, "/layout3", serviceContext);
-
 		Layout layout4 = LayoutLocalServiceUtil.addLayout(
 			TestPropsValues.getUserId(), _group.getGroupId(), false,
 			LayoutConstants.DEFAULT_PARENT_LAYOUT_ID, "layout4",
