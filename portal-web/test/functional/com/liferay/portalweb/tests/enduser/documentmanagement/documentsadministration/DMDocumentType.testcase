@@ -751,4 +751,72 @@ definition {
 			uploadFile = "Document_1.doc");
 	}
 
+	@description = "This test covers LPS-128182. It ensures that the translated document field can be localized properly."
+	@priority = "3"
+	test ViewLocalizedDocumentField {
+		JSONLayout.addPublicLayout(
+			groupName = "Guest",
+			layoutName = "Documents and Media Page");
+
+		JSONLayout.addWidgetToPublicLayout(
+			column = "1",
+			groupName = "Guest",
+			layoutName = "Documents and Media Page",
+			widgetName = "Documents and Media");
+
+		Navigator.gotoPage(pageName = "Documents and Media Page");
+
+		DMDocument.enableActionsMenuOnPortlet();
+
+		LexiconEntry.changeDisplayStyle(displayStyle = "list");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		DMNavigator.gotoDocumentType();
+
+		DMDocumentType.add(
+			dmDocumentTypeDescription = "DM Document Type Description",
+			dmDocumentTypeFieldNames = "Text",
+			dmDocumentTypeName = "DM Document Type Name");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		DMDocument.addCP(
+			dmDocumentDescription = "DM Document Description",
+			dmDocumentTitle = "DM Document Title",
+			dmDocumentTypeName = "DM Document Type Name",
+			navTab = "Documents and Media",
+			textField = "Test Text");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		LexiconEntry.gotoEntryMenuItem(
+			menuItem = "Edit",
+			rowEntry = "DM Document Title");
+
+		PageEditor.changeLocale(
+			currentLocale = "en-US",
+			locale = "es-ES");
+
+		Type(
+			key_fieldLabel = "Text",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "Texto de prueba");
+
+		Button.clickPublish();
+
+		Navigator.gotoPage(pageName = "Documents and Media Page");
+
+		Navigator.ensureLocaleURL(locale = "es-ES");
+
+		AssertClick(
+			key_dmDocumentTitle = "DM Document Title",
+			locator1 = "DocumentsAndMedia#DESCRIPTIVE_LIST_DOCUMENT_TITLE",
+			value1 = "DM Document Title");
+
+		DMDocument.viewDocumentTypePG(
+			fieldFieldLabel = "Text",
+			textContent = "Texto de prueba");
+	}
+
 }
