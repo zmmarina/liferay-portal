@@ -66,8 +66,7 @@ definition {
 	@description = "Create, Remove, Update and Delete entries of an application deployed as Product Menu"
 	@priority = "5"
 	test CreateRemoveUpdateDeleteEntriesOfProductMenuApp {
-		property portal.acceptance = "quarantine";
-		property portal.upstream = "quarantine";
+		property portal.acceptance = "true";
 		property test.name.skip.portal.instance = "AppBuilder#CreateRemoveUpdateDeleteEntriesOfProductMenuApp";
 
 		var myFormViewName = "My Registration form";
