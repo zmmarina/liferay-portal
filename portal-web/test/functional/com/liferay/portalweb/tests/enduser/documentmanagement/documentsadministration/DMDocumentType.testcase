@@ -877,4 +877,39 @@ definition {
 			textContent = "Texto de prueba");
 	}
 
+	@description = "This test covers LPS-127092. It ensures that the translated document type can be localized properly."
+	@priority = "5"
+	test ViewLocalizedDocumentType {
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		DMNavigator.gotoDocumentType();
+
+		DMDocumentType.add(
+			dmDocumentTypeDescription = "DM Document Type Description",
+			dmDocumentTypeFieldNames = "Image",
+			dmDocumentTypeName = "DM Document Type Name");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		DMNavigator.gotoDocumentType();
+
+		DMDocumentType.edit(
+			dmDocumentTypeName = "DM Document Type Name",
+			dmDocumentTypeNameEdit = "DM Document Type Name Spain",
+			fieldFieldLabel = "Image",
+			fieldFieldLabelEdit = "Imagen",
+			locale = "es-ES");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		Navigator.ensureLocaleURL(locale = "es");
+
+		DMNavigator.gotoAddDocumentTypeCP(dmDocumentTypeName = "DM Document Type Name Spain");
+
+		AssertTextEquals(
+			key_fieldFieldLabel = "Imagen",
+			locator1 = "DDMEditStructure#FORM_FIELD_CONTAINER_LABEL",
+			value1 = "Imagen");
+	}
+
 }
