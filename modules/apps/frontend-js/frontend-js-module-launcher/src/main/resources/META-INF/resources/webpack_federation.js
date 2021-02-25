@@ -40,27 +40,27 @@
 
 		const containerRequest = {
 
-			// set to the container's exported object
+			// Set to the container's exported object
 
 			container: undefined,
 
-			// set if request failed
+			// Set if request failed
 
 			error: undefined,
 
-			// set to true if the .js file has been fetched from the server
+			// Set to true if the .js file has been fetched from the server
 
 			fetched: false,
 
-			// set to the exported values of each module (undefined if error set)
+			// Set to the exported values of each module (undefined if error set)
 
 			modules: undefined,
 
-			// set to the <script> DOM node while it is being retrieved (undefined after)
+			// Set to the <script> DOM node while it is being retrieved (undefined after)
 
 			script,
 
-			// set to an array of functions to be invoked once the <script> loads
+			// Set to an array of functions to be invoked once the <script> loads
 
 			subscribers: [],
 		};
