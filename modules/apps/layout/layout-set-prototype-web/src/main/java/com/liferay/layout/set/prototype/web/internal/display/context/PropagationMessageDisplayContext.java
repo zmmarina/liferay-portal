@@ -78,14 +78,14 @@ public class PropagationMessageDisplayContext {
 					ActionRequest.ACTION_NAME,
 					"updateLayoutSetPrototypeAction");
 				enableDisableLayoutSetPrototypePropagationURL.setParameter(
-					"readyForPropagation",
-					String.valueOf(!readyForPropagation));
-				enableDisableLayoutSetPrototypePropagationURL.setParameter(
 					"redirect", PortalUtil.getLayoutURL(themeDisplay));
 				enableDisableLayoutSetPrototypePropagationURL.setParameter(
 					"layoutSetPrototypeId",
 					String.valueOf(
 						layoutSetPrototype.getLayoutSetPrototypeId()));
+				enableDisableLayoutSetPrototypePropagationURL.setParameter(
+					"readyForPropagation",
+					String.valueOf(!readyForPropagation));
 
 				return enableDisableLayoutSetPrototypePropagationURL.toString();
 			}
