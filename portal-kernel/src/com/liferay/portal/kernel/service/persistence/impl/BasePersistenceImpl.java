@@ -685,17 +685,19 @@ public class BasePersistenceImpl<T extends BaseModel<T>>
 	public T update(T model) {
 		Class<?> clazz = model.getModelClass();
 
-		if (_checkDataLimit == null) {
-			long dataLimitMaxCount = GetterUtil.getLong(
-				PropsUtil.get("data.limit.max.count[" + clazz.getName() + "]"));
+		if (_checkDataLimitModelMaxCount == null) {
+			long dataLimitModelMaxCount = GetterUtil.getLong(
+				PropsUtil.get(
+					"data.limit.model.max.count[" + clazz.getName() + "]"));
 
-			_checkDataLimit =
-				(model instanceof AuditedModel) && (dataLimitMaxCount > 0);
+			_checkDataLimitModelMaxCount =
+				(model instanceof AuditedModel) && (dataLimitModelMaxCount > 0);
 		}
 
-		if (_checkDataLimit) {
-			long dataLimitMaxCount = GetterUtil.getLong(
-				PropsUtil.get("data.limit.max.count[" + clazz.getName() + "]"));
+		if (_checkDataLimitModelMaxCount) {
+			long dataLimitModelMaxCount = GetterUtil.getLong(
+				PropsUtil.get(
+					"data.limit.model.max.count[" + clazz.getName() + "]"));
 
 			DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
 				clazz, clazz.getClassLoader());
@@ -706,7 +708,7 @@ public class BasePersistenceImpl<T extends BaseModel<T>>
 				RestrictionsFactoryUtil.eq(
 					"companyId", auditedModel.getCompanyId()));
 
-			if (countWithDynamicQuery(dynamicQuery) >= dataLimitMaxCount) {
+			if (countWithDynamicQuery(dynamicQuery) >= dataLimitModelMaxCount) {
 				throw new DataLimitExceededException(
 					"Unable to exceed maximum number of allowed " +
 						clazz.getName());
@@ -1126,7 +1128,7 @@ public class BasePersistenceImpl<T extends BaseModel<T>>
 			Timestamp.class, Type.TIMESTAMP
 		).build();
 
-	private Boolean _checkDataLimit;
+	private Boolean _checkDataLimitModelMaxCount;
 	private int _databaseOrderByMaxColumns;
 	private DataSource _dataSource;
 	private DB _db;
