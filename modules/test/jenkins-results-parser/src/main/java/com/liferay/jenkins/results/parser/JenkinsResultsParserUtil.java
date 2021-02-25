@@ -1952,6 +1952,8 @@ public class JenkinsResultsParserUtil {
 
 				if (matchesAllPropertyOptRegexes) {
 					propertyName = propertyOptRegexEntry.getKey();
+
+					break;
 				}
 			}
 
