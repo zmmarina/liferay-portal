@@ -42,15 +42,16 @@ public class JournalArticleDDMFormFieldValueRequestParameterRetriever
 		HttpServletRequest httpServletRequest, String ddmFormFieldParameterName,
 		String defaultDDMFormFieldParameterValue) {
 
-		String parameter = httpServletRequest.getParameter(
+		String parameterValue = httpServletRequest.getParameter(
 			ddmFormFieldParameterName);
 
-		if (!Validator.isBlank(parameter)) {
-			parameter = String.valueOf(getJSONObject(_log, parameter));
+		if (!Validator.isBlank(parameterValue)) {
+			parameterValue = String.valueOf(
+				getJSONObject(_log, parameterValue));
 		}
 
 		return Optional.ofNullable(
-			parameter
+			parameterValue
 		).orElse(
 			defaultDDMFormFieldParameterValue
 		);
