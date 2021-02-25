@@ -2250,7 +2250,13 @@ public class JenkinsResultsParserUtil {
 					buildProperties.getProperty(propertyName.toString()));
 
 				for (String slave : slavesString.split(",")) {
-					slaves.add(slave.trim());
+					slave = slave.trim();
+
+					if (isNullOrEmpty(slave)) {
+						continue;
+					}
+
+					slaves.add(slave);
 				}
 			}
 		}
