@@ -658,6 +658,19 @@ public interface PropsKeys {
 	public static final String CUSTOM_SQL_FUNCTION_ISNULL =
 		"custom.sql.function.isnull";
 
+	public static final String DATA_LIMIT_DL_STORAGE_MAX_SIZE =
+		"data.limit.dl.storage.max.size";
+
+	public static final String DATA_LIMIT_MAIL_MESSAGE_MAX_COUNT =
+		"data.limit.mail.message.max.count";
+
+	public static final String DATA_LIMIT_MAIL_MESSAGE_MAX_PERIOD =
+		"data.limit.mail.message.max.period";
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), with no direct replacement
+	 */
+	@Deprecated
 	public static final String DATA_LIMIT_MAX_DL_STORAGE_SIZE =
 		"data.limit.max.dl.storage.size";
 
@@ -675,9 +688,17 @@ public interface PropsKeys {
 	public static final String DATA_LIMIT_MAX_JOURNAL_FOLDER_COUNT =
 		"data.limit.max.journal.folder.count";
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), with no direct replacement
+	 */
+	@Deprecated
 	public static final String DATA_LIMIT_MAX_MAIL_MESSAGE_COUNT =
 		"data.limit.max.mail.message.count";
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), with no direct replacement
+	 */
+	@Deprecated
 	public static final String DATA_LIMIT_MAX_MAIL_MESSAGE_PERIOD =
 		"data.limit.max.mail.message.period";
 
@@ -715,6 +736,9 @@ public interface PropsKeys {
 	@Deprecated
 	public static final String DATA_LIMIT_MAX_USER_COUNT =
 		"data.limit.max.user.count";
+
+	public static final String DATA_LIMIT_SITE_MAX_COUNT =
+		"data.limit.site.max.count";
 
 	public static final String DATABASE_IN_MAX_PARAMETERS =
 		"database.in.max.parameters";
