@@ -1,24 +1,26 @@
-.status {
+.status.workflow-status-data-renderer {
 	background-color: #fff;
 	border-color: $info-secondary;
 	color: $info-primary;
 
 	&.awaiting-pickup,
 	&.draft,
+	&.expired,
 	&.in-progress,
-	&.on-hold,
 	&.partially-refunded,
 	&.partially-shipped,
 	&.pending,
 	&.processing,
+	&.on-hold,
 	&.shipped {
 		border-color: $warning-secondary;
 		color: $warning-primary;
 	}
 
+	&.denied,
+	&.disputed,
 	&.cancelled,
-	&.declined,
-	&.disputed {
+	&.declined {
 		border-color: $danger-secondary;
 		color: $danger-primary;
 	}
@@ -26,7 +28,8 @@
 	&.approved,
 	&.completed,
 	&.refunded,
-	&.subscription {
+	&.subscription,
+	&.completed {
 		border-color: $success-secondary;
 		color: $success-primary;
 	}
