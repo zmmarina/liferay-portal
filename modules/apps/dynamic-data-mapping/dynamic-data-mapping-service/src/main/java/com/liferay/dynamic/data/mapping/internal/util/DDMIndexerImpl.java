@@ -180,7 +180,8 @@ public class DDMIndexerImpl implements DDMIndexer {
 		if (GetterUtil.getBoolean(ddmFormField.getProperty("localizable"))) {
 			if (locale == null) {
 				throw new IllegalArgumentException(
-					"Locale cannot be null if the ddmFormField is localizable");
+					"Locale cannot be null if the dynamic data mapping form " +
+						"field is localizable");
 			}
 		}
 		else {
