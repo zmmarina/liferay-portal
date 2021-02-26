@@ -404,11 +404,6 @@ public class KBAdminManagementToolbarDisplayContext {
 			_searchContainer.setTotal(kbArticleSearchDisplay.getTotal());
 		}
 		else if (kbFolderView) {
-			OrderByComparator<Object> kbObjectsOrderByComparator =
-				KBUtil.getKBObjectsOrderByComparator(
-					_searchContainer.getOrderByCol(),
-					_searchContainer.getOrderByType());
-
 			_searchContainer.setTotal(
 				KBFolderServiceUtil.getKBFoldersAndKBArticlesCount(
 					_themeDisplay.getScopeGroupId(), parentResourcePrimKey,
@@ -417,7 +412,10 @@ public class KBAdminManagementToolbarDisplayContext {
 				KBFolderServiceUtil.getKBFoldersAndKBArticles(
 					_themeDisplay.getScopeGroupId(), parentResourcePrimKey,
 					WorkflowConstants.STATUS_ANY, _searchContainer.getStart(),
-					_searchContainer.getEnd(), kbObjectsOrderByComparator));
+					_searchContainer.getEnd(),
+					KBUtil.getKBObjectsOrderByComparator(
+						_searchContainer.getOrderByCol(),
+						_searchContainer.getOrderByType())));
 		}
 		else {
 			OrderByComparator<KBArticle> kbArticleOrderByComparator =
