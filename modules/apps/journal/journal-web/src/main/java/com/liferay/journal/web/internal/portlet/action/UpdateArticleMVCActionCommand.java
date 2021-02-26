@@ -561,7 +561,7 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 		ActionRequest actionRequest, Map<Locale, String> originalFriendlyURLMap,
 		Map<Locale, String> currentFriendlyURLMap) {
 
-		List<String> messageList = new ArrayList<>();
+		List<String> messages = new ArrayList<>();
 
 		HttpServletRequest httpServletRequest = _portal.getHttpServletRequest(
 			actionRequest);
@@ -582,7 +582,7 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 			if (!originalFriendlyURL.equals(StringPool.BLANK) &&
 				!currentFriendlyURL.equals(normalizedOriginalFriendlyURL)) {
 
-				messageList.add(
+				messages.add(
 					LanguageUtil.format(
 						httpServletRequest, "for-locale-x-x-was-changed-to-x",
 						new Object[] {
@@ -593,8 +593,8 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 			}
 		}
 
-		if (!messageList.isEmpty()) {
-			messageList.add(
+		if (!messages.isEmpty()) {
+			messages.add(
 				0,
 				LanguageUtil.get(
 					httpServletRequest,
@@ -602,7 +602,7 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 						"uniqueness"));
 		}
 
-		return StringUtil.merge(messageList, "<br>");
+		return StringUtil.merge(messages, "<br>");
 	}
 
 	private void _updateLayoutClassedModelUsage(
