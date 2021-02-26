@@ -148,8 +148,7 @@ public class UpgradeFriendlyURLEntryLocalization extends UpgradeProcess {
 						long groupId = rs1.getLong(3);
 						long companyId = rs1.getLong(4);
 
-						urlTitleMap = _sortUrlTitleMapByGroupLocaleSettings(
-							groupId, urlTitleMap);
+						urlTitleMap = _sortUrlTitleMap(groupId, urlTitleMap);
 
 						long ctCollectionId =
 							_getFriendlyURLEntryCTCollectionId(
@@ -302,7 +301,7 @@ public class UpgradeFriendlyURLEntryLocalization extends UpgradeProcess {
 		return encodedString;
 	}
 
-	private Map<String, String> _sortUrlTitleMapByGroupLocaleSettings(
+	private Map<String, String> _sortUrlTitleMap(
 		long groupId, Map<String, String> urlTitleMap) {
 
 		Map<String, String> sortedUrlTitleMap = new LinkedHashMap<>();
