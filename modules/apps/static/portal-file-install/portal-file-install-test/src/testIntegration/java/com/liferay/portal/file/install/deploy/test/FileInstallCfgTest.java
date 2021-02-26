@@ -67,16 +67,17 @@ public class FileInstallCfgTest {
 
 		_bundleContext = bundle.getBundleContext();
 
-		_originalValue = ReflectionTestUtil.getAndSetFieldValue(
-			PropsValues.class, "MODULE_FRAMEWORK_FILE_INSTALL_CFG_ENABLED",
-			true);
+		_originalModuleFrameworkFileInstallCfgEnabled =
+			ReflectionTestUtil.getAndSetFieldValue(
+				PropsValues.class, "MODULE_FRAMEWORK_FILE_INSTALL_CFG_ENABLED",
+				true);
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
 		ReflectionTestUtil.setFieldValue(
 			PropsValues.class, "MODULE_FRAMEWORK_FILE_INSTALL_CFG_ENABLED",
-			_originalValue);
+			_originalModuleFrameworkFileInstallCfgEnabled);
 	}
 
 	@After
@@ -155,7 +156,7 @@ public class FileInstallCfgTest {
 	@Inject
 	private static ConfigurationAdmin _configurationAdmin;
 
-	private static boolean _originalValue;
+	private static boolean _originalModuleFrameworkFileInstallCfgEnabled;
 
 	private Configuration _configuration;
 	private Path _configurationPath;
