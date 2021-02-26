@@ -571,13 +571,13 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 
 			Locale locale = entry.getKey();
 
-			String currentFriendlyURL = entry.getValue();
-
 			String originalFriendlyURL = originalFriendlyURLMap.get(locale);
 
 			String normalizedOriginalFriendlyURL =
 				FriendlyURLNormalizerUtil.normalizeWithEncoding(
 					originalFriendlyURL);
+
+			String currentFriendlyURL = entry.getValue();
 
 			if (!originalFriendlyURL.equals(StringPool.BLANK) &&
 				!currentFriendlyURL.equals(normalizedOriginalFriendlyURL)) {
