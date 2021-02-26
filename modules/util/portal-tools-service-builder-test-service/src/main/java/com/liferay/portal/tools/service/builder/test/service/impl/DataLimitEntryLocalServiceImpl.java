@@ -17,25 +17,8 @@ package com.liferay.portal.tools.service.builder.test.service.impl;
 import com.liferay.portal.tools.service.builder.test.service.base.DataLimitEntryLocalServiceBaseImpl;
 
 /**
- * The implementation of the data limit entry local service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>com.liferay.portal.tools.service.builder.test.service.DataLimitEntryLocalService</code> interface.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
- *
  * @author Brian Wing Shun Chan
- * @see DataLimitEntryLocalServiceBaseImpl
  */
 public class DataLimitEntryLocalServiceImpl
 	extends DataLimitEntryLocalServiceBaseImpl {
-
-	/**
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Use <code>com.liferay.portal.tools.service.builder.test.service.DataLimitEntryLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.portal.tools.service.builder.test.service.DataLimitEntryLocalServiceUtil</code>.
-	 */
-
 }
