@@ -598,7 +598,8 @@ public class UpdateArticleMVCActionCommand extends BaseMVCActionCommand {
 				0,
 				LanguageUtil.get(
 					httpServletRequest,
-					"for-uniqueness-these-friendly-urls-were-changed"));
+					"the-following-friendly-urls-were-changed-to-ensure-" +
+						"uniqueness"));
 		}
 
 		return StringUtil.merge(messageList, "<br>");
