@@ -102,7 +102,7 @@ public class TestrayRun {
 		try {
 			return JenkinsResultsParserUtil.getBuildProperty(
 				JenkinsResultsParserUtil.combine(
-					_FACTOR_NAME_PROPERTY, "[", factorNameKey, "]"));
+					_PROPERTY_KEY_FACTOR_NAME, "[", factorNameKey, "]"));
 		}
 		catch (IOException ioException) {
 			throw new RuntimeException(ioException);
@@ -182,19 +182,19 @@ public class TestrayRun {
 		return JenkinsResultsParserUtil.getProperty(
 			buildProperties,
 			JenkinsResultsParserUtil.combine(
-				_FACTOR_VALUE_PROPERTY, "[", factorNameKey, "]"));
+				_PROPERTY_KEY_FACTOR_VALUE, "[", factorNameKey, "]"));
 	}
 
-	private static final String _FACTOR_NAME_PROPERTY =
+	private static final String _PROPERTY_KEY_FACTOR_NAME =
 		"testray.environment.factor.name";
 
-	private static final String _FACTOR_VALUE_PROPERTY =
+	private static final String _PROPERTY_KEY_FACTOR_VALUE =
 		"testray.environment.factor.value";
 
 	private static final Pattern _factorNamePattern = Pattern.compile(
-		_FACTOR_NAME_PROPERTY + "\\[(?<nameKey>[^\\]]+)\\]");
+		_PROPERTY_KEY_FACTOR_NAME + "\\[(?<nameKey>[^\\]]+)\\]");
 	private static final Pattern _factorValuePattern = Pattern.compile(
-		_FACTOR_VALUE_PROPERTY +
+		_PROPERTY_KEY_FACTOR_VALUE +
 			"\\[(?<nameKey>[^\\]]+)\\](\\[(?<valueKey>[^\\]]+)\\])?");
 
 	private final String _batchName;
