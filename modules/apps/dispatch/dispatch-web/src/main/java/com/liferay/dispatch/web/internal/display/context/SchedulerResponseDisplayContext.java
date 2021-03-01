@@ -82,6 +82,17 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 
 		PortletURL portletURL = liferayPortletResponse.createRenderURL();
 
+		portletURL.setParameter(
+			"mvcRenderCommandName", "/dispatch/edit_scheduler_response");
+		portletURL.setParameter("tabs1", "scheduler-response");
+
+		String redirect = ParamUtil.getString(
+			dispatchRequestHelper.getRequest(), "redirect");
+
+		if (Validator.isNotNull(redirect)) {
+			portletURL.setParameter("redirect", redirect);
+		}
+
 		String delta = ParamUtil.getString(
 			dispatchRequestHelper.getRequest(), "delta");
 
@@ -94,18 +105,6 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 
 		if (Validator.isNotNull(deltaEntry)) {
 			portletURL.setParameter("deltaEntry", deltaEntry);
-		}
-
-		portletURL.setParameter(
-			"mvcRenderCommandName", "/dispatch/edit_scheduler_response");
-
-		portletURL.setParameter("tabs1", "scheduler-response");
-
-		String redirect = ParamUtil.getString(
-			dispatchRequestHelper.getRequest(), "redirect");
-
-		if (Validator.isNotNull(redirect)) {
-			portletURL.setParameter("redirect", redirect);
 		}
 
 		return portletURL;
