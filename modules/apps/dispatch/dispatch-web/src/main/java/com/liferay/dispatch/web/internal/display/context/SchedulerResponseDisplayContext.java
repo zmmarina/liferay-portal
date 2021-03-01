@@ -44,10 +44,10 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 
 		super(renderRequest);
 
+		_schedulerResponseManager = schedulerResponseManager;
+
 		_dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(
 			dispatchRequestHelper.getLocale());
-
-		_schedulerResponseManager = schedulerResponseManager;
 	}
 
 	public String getNextFireDateString(SchedulerResponse schedulerResponse)
