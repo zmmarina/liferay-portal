@@ -227,17 +227,6 @@ public class AccountMemberResourceTest
 		assertEquals(accountMember1, accountMember2);
 	}
 
-	private AccountMember _randomAccountMember() throws Exception {
-		User user = UserTestUtil.addUser(testCompany);
-
-		return new AccountMember() {
-			{
-				email = user.getEmailAddress();
-				name = user.getFullName();
-			}
-		};
-	}
-
 	@Override
 	protected String[] getAdditionalAssertFieldNames() {
 		return new String[] {"accountId", "userId", "email", "name"};
@@ -318,6 +307,17 @@ public class AccountMemberResourceTest
 
 		return accountMemberResource.getAccountIdAccountMember(
 			_commerceAccount.getCommerceAccountId(), accountMember.getUserId());
+	}
+
+	private AccountMember _randomAccountMember() throws Exception {
+		User user = UserTestUtil.addUser(testCompany);
+
+		return new AccountMember() {
+			{
+				email = user.getEmailAddress();
+				name = user.getFullName();
+			}
+		};
 	}
 
 	private CommerceAccount _commerceAccount;
