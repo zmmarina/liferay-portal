@@ -43,7 +43,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 				FunctionalBatchTestClassGroup.FunctionalTestClass)) {
 
 			throw new RuntimeException(
-				"TestClass needs to be an instance of FunctionalTestClass");
+				"Test class is not a functional test class");
 		}
 
 		_functionalTestClass =
