@@ -155,10 +155,10 @@ public class TalendArchive {
 	private TalendArchive(Builder builder) {
 		_classPath = builder._buildClassPath();
 		_contextName = builder._contextName;
-		_jvmOptions = builder._buildJVMOptions();
 		_jobDirectory = builder._jobDirectory;
 		_jobJarPath = builder._jobJarPath;
 		_jobMainClassFQN = builder._jobMainClassFQN;
+		_jvmOptions = builder._buildJVMOptions();
 	}
 
 	private final String _classPath;
