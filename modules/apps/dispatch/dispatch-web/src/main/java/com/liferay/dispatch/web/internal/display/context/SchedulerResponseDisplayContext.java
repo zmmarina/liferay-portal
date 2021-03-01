@@ -122,7 +122,6 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 		_searchContainer.setOrderByCol(getOrderByCol());
 		_searchContainer.setOrderByComparator(null);
 		_searchContainer.setOrderByType(getOrderByType());
-
 		_searchContainer.setTotal(
 			_schedulerResponseManager.getSchedulerResponsesCount());
 
