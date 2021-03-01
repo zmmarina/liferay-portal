@@ -118,9 +118,7 @@ public class EditDispatchTalendJobArchiveMVCActionCommand
 		}
 	}
 
-	private String _getJVMOptions(
-		String newJVMOptions, String oldJVMOptions) {
-
+	private String _getJVMOptions(String newJVMOptions, String oldJVMOptions) {
 		String[] jvmOptions = newJVMOptions.split("\\s");
 
 		StringBundler sb = new StringBundler((jvmOptions.length * 2) + 1);
