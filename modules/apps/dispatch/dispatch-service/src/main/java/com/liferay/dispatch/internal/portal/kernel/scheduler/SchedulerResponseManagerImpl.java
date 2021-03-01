@@ -56,7 +56,7 @@ public class SchedulerResponseManagerImpl implements SchedulerResponseManager {
 			schedulerResponses = _schedulerEngineHelper.getScheduledJobs();
 		}
 		catch (SchedulerException schedulerException) {
-			_log.error("Unable to get scheduler entries", schedulerException);
+			_log.error("Unable to get scheduler responses", schedulerException);
 
 			return schedulerResponses;
 		}
@@ -86,7 +86,7 @@ public class SchedulerResponseManagerImpl implements SchedulerResponseManager {
 			schedulerResponses = _schedulerEngineHelper.getScheduledJobs();
 		}
 		catch (SchedulerException schedulerException) {
-			_log.error("Unable to get scheduler entries", schedulerException);
+			_log.error("Unable to get scheduler responses", schedulerException);
 
 			return 0;
 		}
