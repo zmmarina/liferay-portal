@@ -302,8 +302,7 @@ public class TalendArchiveParserUtil {
 		talendArchiveBuilder.jobMainClassFQN(
 			_getJobMainClassFQN(jobName, jobJarPath.toString()));
 		talendArchiveBuilder.jvmOptionsList(
-			_getJVMOptionsList(
-				jobDirectory, (String)jobProperties.get("job")));
+			_getJVMOptionsList(jobDirectory, jobName));
 
 		return talendArchiveBuilder.build();
 	}
