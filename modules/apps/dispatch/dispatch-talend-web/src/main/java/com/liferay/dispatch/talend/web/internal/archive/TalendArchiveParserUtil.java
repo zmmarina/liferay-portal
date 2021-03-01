@@ -122,7 +122,9 @@ public class TalendArchiveParserUtil {
 
 					String pathString = filePath.toString();
 
-					if (pathString.endsWith(".jar") && pathString.contains(jobName)) {
+					if (pathString.endsWith(".jar") &&
+						pathString.contains(jobName)) {
+
 						pathReference.set(filePath);
 
 						return FileVisitResult.TERMINATE;
@@ -229,7 +231,8 @@ public class TalendArchiveParserUtil {
 
 					String pathString = filePath.toString();
 
-					if (pathString.endsWith(".bat") || pathString.endsWith(".ps1") ||
+					if (pathString.endsWith(".bat") ||
+						pathString.endsWith(".ps1") ||
 						pathString.endsWith(".sh")) {
 
 						pathStrings.add(pathString);
@@ -251,7 +254,8 @@ public class TalendArchiveParserUtil {
 
 		Path path = jobDirectory.toPath();
 
-		List<String> jobScriptPathStrings = _getJobScriptPathStrings(path.resolve(jobName));
+		List<String> jobScriptPathStrings = _getJobScriptPathStrings(
+			path.resolve(jobName));
 
 		List<String> jvmOptionsList = new ArrayList<>();
 
@@ -298,9 +302,9 @@ public class TalendArchiveParserUtil {
 		Path jobJarPath = _getJobJarPath(jobName, jobDirectoryPath);
 
 		talendArchiveBuilder.jobJarPath(jobJarPath.toString());
-
 		talendArchiveBuilder.jobMainClassFQN(
 			_getJobMainClassFQN(jobName, jobJarPath.toString()));
+
 		talendArchiveBuilder.jvmOptionsList(
 			_getJVMOptionsList(jobDirectory, jobName));
 
