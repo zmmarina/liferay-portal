@@ -158,15 +158,13 @@ public class EditDispatchTalendJobArchiveMVCActionCommand
 		String newJVMOptions = talendArchive.getJVMOptions();
 
 		String oldJVMOptions =
-			dispatchTaskSettingsUnicodeProperties.getProperty(
-				TalendProcess.JAVA_OPTS_KEY);
+			dispatchTaskSettingsUnicodeProperties.getProperty("JAVA_OPTS");
 
 		if (Validator.isNotNull(oldJVMOptions)) {
 			newJVMOptions = _getJVMOptions(newJVMOptions, oldJVMOptions);
 		}
 
-		dispatchTaskSettingsUnicodeProperties.put(
-			TalendProcess.JAVA_OPTS_KEY, newJVMOptions);
+		dispatchTaskSettingsUnicodeProperties.put("JAVA_OPTS", newJVMOptions);
 
 		_dispatchTriggerLocalService.updateDispatchTrigger(
 			dispatchTriggerId, dispatchTaskSettingsUnicodeProperties,
