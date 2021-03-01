@@ -191,7 +191,7 @@ public class AccountMemberResourceTest
 	public void testPostAccountByExternalReferenceCodeAccountMemberWithEmail()
 		throws Exception {
 
-		AccountMember accountMember1 = accountMemberOnlyEmail();
+		AccountMember accountMember1 = _randomAccountMember();
 
 		accountMember1 =
 			accountMemberResource.
@@ -212,7 +212,7 @@ public class AccountMemberResourceTest
 
 	@Test
 	public void testPostAccountIdAccountMemberWithEmail() throws Exception {
-		AccountMember accountMember1 = accountMemberOnlyEmail();
+		AccountMember accountMember1 = _randomAccountMember();
 
 		accountMember1 = accountMemberResource.postAccountIdAccountMember(
 			_commerceAccount.getCommerceAccountId(), accountMember1);
@@ -227,7 +227,7 @@ public class AccountMemberResourceTest
 		assertEquals(accountMember1, accountMember2);
 	}
 
-	protected AccountMember accountMemberOnlyEmail() throws Exception {
+	private AccountMember _randomAccountMember() throws Exception {
 		User user = UserTestUtil.addUser(testCompany);
 
 		return new AccountMember() {
