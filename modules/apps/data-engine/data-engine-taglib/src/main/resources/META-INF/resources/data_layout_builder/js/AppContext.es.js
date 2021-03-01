@@ -502,11 +502,9 @@ const createReducer = (dataLayoutBuilder) => {
 				};
 			}
 			case UPDATE_EDITING_LANGUAGE_ID: {
-				const editingLanguageId = action.payload;
-
 				return {
 					...state,
-					editingLanguageId,
+					editingLanguageId: action.payload,
 				};
 			}
 			case UPDATE_FIELD_TYPES: {
