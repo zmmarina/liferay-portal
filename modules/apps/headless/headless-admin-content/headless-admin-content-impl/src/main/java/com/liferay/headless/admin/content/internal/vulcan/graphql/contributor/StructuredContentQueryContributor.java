@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.headless.admin.content.internal.graphql.extension;
+package com.liferay.headless.admin.content.internal.vulcan.graphql.contributor;
 
 import com.liferay.headless.admin.content.dto.v1_0.Version;
 import com.liferay.headless.admin.content.internal.dto.v1_0.extension.ExtendedStructuredContent;
