@@ -42,9 +42,9 @@ public class StructuredContentGraphQLContributor implements GraphQLContributor {
 	private class StructuredContentQuery {
 
 		@GraphQLTypeExtension(StructuredContent.class)
-		public class ExtendedStructuredContentExtension {
+		public class StructuredContentGraphQLTypeExtension {
 
-			public ExtendedStructuredContentExtension(
+			public StructuredContentGraphQLTypeExtension(
 				StructuredContent structuredContent) {
 
 				_structuredContent = structuredContent;
