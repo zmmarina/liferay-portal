@@ -79,7 +79,7 @@ const ModalContent = ({
 			type: UPDATE_DATA_DEFINITION_AVAILABLE_LANGUAGE,
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [dispatch])
+	}, [dispatch]);
 
 	const actionProps = {
 		availableLanguageIds: dataDefinition?.availableLanguageIds,
