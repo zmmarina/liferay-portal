@@ -108,12 +108,11 @@ public class AssetCategoryVocabularyVisibilitySearchTest {
 
 		_addJournalArticle(assetCategory, keyword);
 
-		_assertSearchPublicFields(
-			keyword, Collections.emptyList(), Collections.emptyList());
-
 		_assertSearchInternalFields(
 			keyword, _getAssetCategoryIds(assetCategory),
 			_getAssetCategoryTitles(assetCategory));
+		_assertSearchPublicFields(
+			keyword, Collections.emptyList(), Collections.emptyList());
 	}
 
 	@Test
@@ -125,12 +124,11 @@ public class AssetCategoryVocabularyVisibilitySearchTest {
 
 		_addJournalArticle(assetCategory, keyword);
 
+		_assertSearchInternalFields(
+			keyword, Collections.emptyList(), Collections.emptyList());
 		_assertSearchPublicFields(
 			keyword, _getAssetCategoryIds(assetCategory),
 			_getAssetCategoryTitles(assetCategory));
-
-		_assertSearchInternalFields(
-			keyword, Collections.emptyList(), Collections.emptyList());
 	}
 
 	@Rule

@@ -53,7 +53,6 @@ public class AssetCategoryDocumentContributor
 		_addAssetCategoriesFields(
 			document, Field.ASSET_CATEGORY_IDS, Field.ASSET_CATEGORY_TITLES,
 			AssetVocabularyConstants.VISIBILITY_TYPE_PUBLIC);
-
 		_addAssetCategoriesFields(
 			document, Field.ASSET_INTERNAL_CATEGORY_IDS,
 			Field.ASSET_INTERNAL_CATEGORY_TITLES,
