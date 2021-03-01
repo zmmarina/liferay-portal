@@ -15,7 +15,7 @@
 package com.liferay.dispatch.web.internal.portlet.action;
 
 import com.liferay.dispatch.constants.DispatchPortletKeys;
-import com.liferay.dispatch.scheduler.SchedulerResponseHelper;
+import com.liferay.dispatch.scheduler.SchedulerResponseManager;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.scheduler.StorageType;
@@ -68,7 +68,7 @@ public class EditSchedulerResponseMVCActionCommand
 		StorageType storageType = StorageType.valueOf(
 			ParamUtil.getString(actionRequest, "storageType"));
 
-		_schedulerResponseHelper.run(jobName, groupName, storageType);
+		_schedulerResponseManager.run(jobName, groupName, storageType);
 	}
 
 	private void _updateScheduledJob(ActionRequest actionRequest, String cmd)
@@ -80,14 +80,14 @@ public class EditSchedulerResponseMVCActionCommand
 			ParamUtil.getString(actionRequest, "storageType"));
 
 		if (Objects.equals(cmd, "pause")) {
-			_schedulerResponseHelper.pause(jobName, groupName, storageType);
+			_schedulerResponseManager.pause(jobName, groupName, storageType);
 		}
 		else {
-			_schedulerResponseHelper.resume(jobName, groupName, storageType);
+			_schedulerResponseManager.resume(jobName, groupName, storageType);
 		}
 	}
 
 	@Reference
-	private SchedulerResponseHelper _schedulerResponseHelper;
+	private SchedulerResponseManager _schedulerResponseManager;
 
 }

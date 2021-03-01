@@ -14,7 +14,7 @@
 
 package com.liferay.dispatch.internal.portal.kernel.scheduler;
 
-import com.liferay.dispatch.scheduler.SchedulerResponseHelper;
+import com.liferay.dispatch.scheduler.SchedulerResponseManager;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -38,8 +38,8 @@ import org.osgi.service.component.annotations.Reference;
 /**
  * @author Matija Petanjek
  */
-@Component(service = SchedulerResponseHelper.class)
-public class SchedulerResponseHelperImpl implements SchedulerResponseHelper {
+@Component(service = SchedulerResponseManager.class)
+public class SchedulerResponseManagerImpl implements SchedulerResponseManager {
 
 	public Date getNextFireDate(
 			String jobName, String groupName, StorageType storageType)
@@ -141,7 +141,7 @@ public class SchedulerResponseHelperImpl implements SchedulerResponseHelper {
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		SchedulerResponseHelperImpl.class);
+		SchedulerResponseManagerImpl.class);
 
 	@Reference
 	private MessageBus _messageBus;

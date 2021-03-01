@@ -15,7 +15,7 @@
 package com.liferay.dispatch.web.internal.portlet.action;
 
 import com.liferay.dispatch.constants.DispatchPortletKeys;
-import com.liferay.dispatch.scheduler.SchedulerResponseHelper;
+import com.liferay.dispatch.scheduler.SchedulerResponseManager;
 import com.liferay.dispatch.web.internal.display.context.SchedulerResponseDisplayContext;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCRenderCommand;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -46,7 +46,7 @@ public class EditSchedulerResponseMVCRenderCommand implements MVCRenderCommand {
 
 		SchedulerResponseDisplayContext schedulerResponseDisplayContext =
 			new SchedulerResponseDisplayContext(
-				renderRequest, _schedulerResponseHelper);
+				renderRequest, _schedulerResponseManager);
 
 		renderRequest.setAttribute(
 			WebKeys.PORTLET_DISPLAY_CONTEXT, schedulerResponseDisplayContext);
@@ -55,6 +55,6 @@ public class EditSchedulerResponseMVCRenderCommand implements MVCRenderCommand {
 	}
 
 	@Reference
-	private SchedulerResponseHelper _schedulerResponseHelper;
+	private SchedulerResponseManager _schedulerResponseManager;
 
 }

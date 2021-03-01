@@ -14,7 +14,7 @@
 
 package com.liferay.dispatch.web.internal.display.context;
 
-import com.liferay.dispatch.scheduler.SchedulerResponseHelper;
+import com.liferay.dispatch.scheduler.SchedulerResponseManager;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
@@ -40,20 +40,20 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 
 	public SchedulerResponseDisplayContext(
 		RenderRequest renderRequest,
-		SchedulerResponseHelper schedulerResponseHelper) {
+		SchedulerResponseManager schedulerResponseManager) {
 
 		super(renderRequest);
 
 		_dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(
 			dispatchRequestHelper.getLocale());
 
-		_schedulerResponseHelper = schedulerResponseHelper;
+		_schedulerResponseManager = schedulerResponseManager;
 	}
 
 	public String getNextFireDateString(SchedulerResponse schedulerResponse)
 		throws SchedulerException {
 
-		Date nextFireDate = _schedulerResponseHelper.getNextFireDate(
+		Date nextFireDate = _schedulerResponseManager.getNextFireDate(
 			schedulerResponse.getJobName(), schedulerResponse.getGroupName(),
 			schedulerResponse.getStorageType());
 
@@ -125,10 +125,10 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 		_searchContainer.setOrderByType(getOrderByType());
 
 		_searchContainer.setTotal(
-			_schedulerResponseHelper.getSchedulerResponsesCount());
+			_schedulerResponseManager.getSchedulerResponsesCount());
 
 		List<SchedulerResponse> results =
-			_schedulerResponseHelper.getSchedulerResponses(
+			_schedulerResponseManager.getSchedulerResponses(
 				_searchContainer.getStart(), _searchContainer.getEnd());
 
 		_searchContainer.setResults(results);
@@ -137,19 +137,19 @@ public class SchedulerResponseDisplayContext extends BaseDisplayContext {
 	}
 
 	public String getSimpleName(String jobName) {
-		return _schedulerResponseHelper.getSimpleJobName(jobName);
+		return _schedulerResponseManager.getSimpleJobName(jobName);
 	}
 
 	public TriggerState getTriggerState(SchedulerResponse schedulerResponse)
 		throws SchedulerException {
 
-		return _schedulerResponseHelper.getTriggerState(
+		return _schedulerResponseManager.getTriggerState(
 			schedulerResponse.getJobName(), schedulerResponse.getGroupName(),
 			schedulerResponse.getStorageType());
 	}
 
 	private final Format _dateFormatDateTime;
-	private final SchedulerResponseHelper _schedulerResponseHelper;
+	private final SchedulerResponseManager _schedulerResponseManager;
 	private SearchContainer<SchedulerResponse> _searchContainer;
 
 }

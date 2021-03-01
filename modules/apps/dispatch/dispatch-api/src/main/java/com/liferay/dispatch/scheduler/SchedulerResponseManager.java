@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * @author Matija Petanjek
  */
-public interface SchedulerResponseHelper {
+public interface SchedulerResponseManager {
 
 	public Date getNextFireDate(
 			String jobName, String groupName, StorageType storageType)
