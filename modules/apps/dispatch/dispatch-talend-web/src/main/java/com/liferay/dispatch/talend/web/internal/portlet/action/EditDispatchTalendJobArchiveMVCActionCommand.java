@@ -118,7 +118,7 @@ public class EditDispatchTalendJobArchiveMVCActionCommand
 		}
 	}
 
-	private String _getJVMOptionsUnion(
+	private String _getJVMOptions(
 		String newJVMOptions, String oldJVMOptions) {
 
 		String[] jvmOptions = newJVMOptions.split("\\s");
@@ -164,8 +164,7 @@ public class EditDispatchTalendJobArchiveMVCActionCommand
 		String newJVMOptions = talendArchive.getJVMOptions();
 
 		if (Validator.isNotNull(currentJVMOptions)) {
-			newJVMOptions = _getJVMOptionsUnion(
-				newJVMOptions, currentJVMOptions);
+			newJVMOptions = _getJVMOptions(newJVMOptions, currentJVMOptions);
 		}
 
 		dispatchTaskSettingsUnicodeProperties.put(
