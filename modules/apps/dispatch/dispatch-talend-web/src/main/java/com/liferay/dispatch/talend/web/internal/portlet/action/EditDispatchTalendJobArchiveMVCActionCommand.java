@@ -157,14 +157,14 @@ public class EditDispatchTalendJobArchiveMVCActionCommand
 		UnicodeProperties dispatchTaskSettingsUnicodeProperties =
 			dispatchTrigger.getDispatchTaskSettingsUnicodeProperties();
 
-		String currentJVMOptions =
+		String newJVMOptions = talendArchive.getJVMOptions();
+
+		String oldJVMOptions =
 			dispatchTaskSettingsUnicodeProperties.getProperty(
 				TalendProcess.JAVA_OPTS_KEY);
 
-		String newJVMOptions = talendArchive.getJVMOptions();
-
-		if (Validator.isNotNull(currentJVMOptions)) {
-			newJVMOptions = _getJVMOptions(newJVMOptions, currentJVMOptions);
+		if (Validator.isNotNull(oldJVMOptions)) {
+			newJVMOptions = _getJVMOptions(newJVMOptions, oldJVMOptions);
 		}
 
 		dispatchTaskSettingsUnicodeProperties.put(
