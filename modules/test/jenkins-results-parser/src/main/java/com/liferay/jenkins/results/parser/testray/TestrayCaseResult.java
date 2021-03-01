@@ -118,6 +118,40 @@ public class TestrayCaseResult {
 		return warnings;
 	}
 
+	public static enum Status {
+
+		FAILED(3, "Failed"), PASSED(2, "Passed");
+
+		public static Status get(Integer id) {
+			return _statuses.get(id);
+		}
+
+		public Integer getID() {
+			return _id;
+		}
+
+		public String getName() {
+			return _name;
+		}
+
+		private Status(Integer id, String name) {
+			_id = id;
+			_name = name;
+		}
+
+		private static Map<Integer, Status> _statuses = new HashMap<>();
+
+		static {
+			for (Status status : values()) {
+				_statuses.put(status.getID(), status);
+			}
+		}
+
+		private final Integer _id;
+		private final String _name;
+
+	}
+
 	public class Attachment {
 
 		public Attachment(
@@ -169,40 +203,6 @@ public class TestrayCaseResult {
 		private final TestrayCaseResult _testrayCaseResult;
 		private TestrayS3Object _testrayS3Object;
 		private final String _value;
-
-	}
-
-	public static enum Status {
-
-		FAILED(3, "Failed"), PASSED(2, "Passed");
-
-		public static Status get(Integer id) {
-			return _statuses.get(id);
-		}
-
-		public Integer getID() {
-			return _id;
-		}
-
-		public String getName() {
-			return _name;
-		}
-
-		private Status(Integer id, String name) {
-			_id = id;
-			_name = name;
-		}
-
-		private static Map<Integer, Status> _statuses = new HashMap<>();
-
-		static {
-			for (Status status : values()) {
-				_statuses.put(status.getID(), status);
-			}
-		}
-
-		private final Integer _id;
-		private final String _name;
 
 	}
 
