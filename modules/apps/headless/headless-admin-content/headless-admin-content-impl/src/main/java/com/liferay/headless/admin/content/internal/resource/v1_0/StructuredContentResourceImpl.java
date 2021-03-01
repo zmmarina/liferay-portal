@@ -15,7 +15,7 @@
 package com.liferay.headless.admin.content.internal.resource.v1_0;
 
 import com.liferay.dynamic.data.mapping.util.DDMIndexer;
-import com.liferay.headless.admin.content.internal.dto.v1_0.extension.ExtendedStructuredContent;
+import com.liferay.headless.admin.content.internal.dto.v1_0.extension.ExtensionStructuredContent;
 import com.liferay.headless.admin.content.internal.dto.v1_0.util.VersionUtil;
 import com.liferay.headless.admin.content.internal.odata.entity.v1_0.StructuredContentEntityModel;
 import com.liferay.headless.admin.content.resource.v1_0.StructuredContentResource;
@@ -139,11 +139,11 @@ public class StructuredContentResourceImpl
 						document.get(Field.ARTICLE_ID),
 						WorkflowConstants.STATUS_ANY);
 
-				return _toExtendedStructuredContent(journalArticle);
+				return _toExtensionStructuredContent(journalArticle);
 			});
 	}
 
-	private StructuredContent _toExtendedStructuredContent(
+	private StructuredContent _toExtensionStructuredContent(
 			JournalArticle journalArticle)
 		throws Exception {
 
@@ -172,8 +172,8 @@ public class StructuredContentResourceImpl
 
 		return EntityExtensionUtil.extend(
 			structuredContent, StructuredContent.class,
-			ExtendedStructuredContent.class,
-			extendedStructuredContent -> extendedStructuredContent.setVersion(
+			ExtensionStructuredContent.class,
+			ExtensionStructuredContent -> ExtensionStructuredContent.setVersion(
 				VersionUtil.toVersion(journalArticle)));
 	}
 

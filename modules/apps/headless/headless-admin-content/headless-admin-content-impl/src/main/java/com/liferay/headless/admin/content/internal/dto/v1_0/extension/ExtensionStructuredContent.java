@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 /**
  * @author Luis Miguel Barcos
  */
-public class ExtendedStructuredContent extends StructuredContent {
+public class ExtensionStructuredContent extends StructuredContent {
 
 	public Version getVersion() {
 		return version;
