@@ -71,7 +71,6 @@ public class TalendArchiveParserUtilTest {
 		Properties contextProperties = talendArchive.getContextProperties();
 
 		Assert.assertNotNull(contextProperties);
-
 		Assert.assertEquals(
 			"2011", contextProperties.getProperty("multiplier"));
 		Assert.assertEquals("Liferay", contextProperties.getProperty("prefix"));
