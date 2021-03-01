@@ -259,12 +259,12 @@ public class TalendArchiveParserUtil {
 			BufferedReader bufferedReader = new BufferedReader(
 				new FileReader(jobScriptPathString));
 
-			String readLine = bufferedReader.readLine();
+			String line = bufferedReader.readLine();
 
-			while (readLine != null) {
-				_addJVMOptionsList(jvmOptionsList, readLine);
+			while (line != null) {
+				_addJVMOptionsList(jvmOptionsList, line);
 
-				readLine = bufferedReader.readLine();
+				line = bufferedReader.readLine();
 			}
 
 			if (!jvmOptionsList.isEmpty()) {
