@@ -35,11 +35,11 @@ public class StructuredContentGraphQLContributor implements GraphQLContributor {
 	}
 
 	@Override
-	public StructuredContentQueryContributor getQuery() {
-		return new StructuredContentQueryContributor();
+	public StructuredContentQuery getQuery() {
+		return new StructuredContentQuery();
 	}
 
-	private class StructuredContentQueryContributor {
+	private class StructuredContentQuery {
 
 		@GraphQLTypeExtension(StructuredContent.class)
 		public class ExtendedStructuredContentExtension {
