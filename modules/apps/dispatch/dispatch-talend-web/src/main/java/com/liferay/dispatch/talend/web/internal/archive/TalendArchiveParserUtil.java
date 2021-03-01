@@ -146,7 +146,7 @@ public class TalendArchiveParserUtil {
 	private static List<String> _getJobLibEntries(Path jobDirectoryPath)
 		throws IOException {
 
-		List<String> paths = new ArrayList<>();
+		List<String> pathStrings = new ArrayList<>();
 
 		Files.walkFileTree(
 			jobDirectoryPath.resolve("lib"),
@@ -160,7 +160,7 @@ public class TalendArchiveParserUtil {
 					String path = filePath.toString();
 
 					if (path.endsWith(".jar")) {
-						paths.add(path);
+						pathStrings.add(path);
 					}
 
 					return FileVisitResult.CONTINUE;
@@ -168,9 +168,9 @@ public class TalendArchiveParserUtil {
 
 			});
 
-		paths.sort(null);
+		pathStrings.sort(null);
 
-		return paths;
+		return pathStrings;
 	}
 
 	private static String _getJobMainClassFQN(
@@ -214,10 +214,10 @@ public class TalendArchiveParserUtil {
 		return properties;
 	}
 
-	private static List<String> _getJobScriptPaths(Path jobDirectoryPath)
+	private static List<String> _getJobScriptPathStrings(Path jobDirectoryPath)
 		throws IOException {
 
-		List<String> paths = new ArrayList<>();
+		List<String> pathStrings = new ArrayList<>();
 
 		Files.walkFileTree(
 			jobDirectoryPath,
@@ -227,12 +227,12 @@ public class TalendArchiveParserUtil {
 				public FileVisitResult visitFile(
 					Path filePath, BasicFileAttributes basicFileAttributes) {
 
-					String path = filePath.toString();
+					String pathString = filePath.toString();
 
-					if (path.endsWith(".bat") || path.endsWith(".ps1") ||
-						path.endsWith(".sh")) {
+					if (pathString.endsWith(".bat") || pathString.endsWith(".ps1") ||
+						pathString.endsWith(".sh")) {
 
-						paths.add(path);
+						pathStrings.add(pathString);
 					}
 
 					return FileVisitResult.CONTINUE;
@@ -240,9 +240,9 @@ public class TalendArchiveParserUtil {
 
 			});
 
-		paths.sort(null);
+		pathStrings.sort(null);
 
-		return paths;
+		return pathStrings;
 	}
 
 	private static List<String> _getJVMOptionsList(
@@ -251,13 +251,13 @@ public class TalendArchiveParserUtil {
 
 		Path path = jobDirectory.toPath();
 
-		List<String> jobScriptPaths = _getJobScriptPaths(path.resolve(jobName));
+		List<String> jobScriptPathStrings = _getJobScriptPathStrings(path.resolve(jobName));
 
 		List<String> jvmOptionsList = new ArrayList<>();
 
-		for (String jobScriptPath : jobScriptPaths) {
+		for (String jobScriptPathString : jobScriptPathStrings) {
 			BufferedReader reader = new BufferedReader(
-				new FileReader(jobScriptPath));
+				new FileReader(jobScriptPathString));
 
 			String readLine = reader.readLine();
 
