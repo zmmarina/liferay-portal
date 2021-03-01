@@ -118,7 +118,7 @@ public class TestrayCaseResult {
 		return warnings;
 	}
 
-	public static class Attachment {
+	public class Attachment {
 
 		public Attachment(
 			TestrayCaseResult testrayCaseResult, String name, String value) {
