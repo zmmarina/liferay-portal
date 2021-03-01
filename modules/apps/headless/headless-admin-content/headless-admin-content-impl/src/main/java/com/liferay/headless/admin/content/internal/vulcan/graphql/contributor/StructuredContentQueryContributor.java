@@ -25,7 +25,6 @@ import org.osgi.service.component.annotations.Component;
 /**
  * @author Luis Miguel Barcos
  */
-@Component(immediate = true, service = {})
 public class StructuredContentQueryContributor {
 
 	@GraphQLTypeExtension(StructuredContent.class)
