@@ -16,6 +16,7 @@ package com.liferay.headless.admin.content.internal.dto.v1_0.util;
 
 import com.liferay.headless.admin.content.dto.v1_0.Status;
 import com.liferay.headless.admin.content.dto.v1_0.Version;
+import com.liferay.journal.model.JournalArticle;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
@@ -30,24 +31,23 @@ import java.util.stream.Stream;
  */
 public class VersionUtil {
 
-	public static Version toVersion(
-		long groupId, int statusCode, double version) {
-
-		String statusLabel = WorkflowConstants.getStatusLabel(statusCode);
-
+	public static Version toVersion(JournalArticle journalArticle) {
 		Set<Locale> availableLocales = LanguageUtil.getAvailableLocales(
-			groupId);
+			journalArticle.getGroupId());
 
-		Stream<Locale> localesStream = availableLocales.stream();
+		Stream<Locale> availableLocalesStream = availableLocales.stream();
+
+		String statusLabel = WorkflowConstants.getStatusLabel(
+			journalArticle.getStatus());
 
 		return new Version() {
 			{
-				number = version;
+				number = journalArticle.getVersion();
 				status = new Status() {
 					{
-						code = statusCode;
+						code = journalArticle.getStatus();
 						label = statusLabel;
-						label_i18n = localesStream.collect(
+						label_i18n = availableLocalesStream.collect(
 							Collectors.toMap(
 								LocaleUtil::toBCP47LanguageId,
 								locale -> LanguageUtil.get(

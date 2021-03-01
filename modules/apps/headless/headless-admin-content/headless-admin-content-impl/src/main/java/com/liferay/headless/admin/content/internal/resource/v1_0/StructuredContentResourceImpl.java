@@ -174,9 +174,7 @@ public class StructuredContentResourceImpl
 			structuredContent, StructuredContent.class,
 			ExtendedStructuredContent.class,
 			extendedStructuredContent -> extendedStructuredContent.setVersion(
-				VersionUtil.toVersion(
-					journalArticle.getGroupId(), journalArticle.getStatus(),
-					journalArticle.getVersion())));
+				VersionUtil.toVersion(journalArticle)));
 	}
 
 	@Reference
