@@ -74,11 +74,9 @@ public class TalendArchiveParserUtilTest {
 		Assert.assertTrue(jobMainClassFQN.endsWith(_JOB_NAME));
 
 		Assert.assertNotNull(talendArchive.getJVMOptions());
-
-		Assert.assertTrue(talendArchive.hasJVMOptions());
-
 		Assert.assertEquals(
 			"-Xms256M -Xmx1024M", talendArchive.getJVMOptions());
+		Assert.assertTrue(talendArchive.hasJVMOptions());
 	}
 
 	private static final String[] _CLASS_PATH_ENTRIES = {
