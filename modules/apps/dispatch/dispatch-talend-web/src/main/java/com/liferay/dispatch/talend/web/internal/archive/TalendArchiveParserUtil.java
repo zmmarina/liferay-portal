@@ -120,9 +120,9 @@ public class TalendArchiveParserUtil {
 						Path filePath, BasicFileAttributes basicFileAttributes)
 					throws IOException {
 
-					String path = filePath.toString();
+					String pathString = filePath.toString();
 
-					if (path.endsWith(".jar") && path.contains(jobName)) {
+					if (pathString.endsWith(".jar") && pathString.contains(jobName)) {
 						pathReference.set(filePath);
 
 						return FileVisitResult.TERMINATE;
@@ -157,10 +157,10 @@ public class TalendArchiveParserUtil {
 						Path filePath, BasicFileAttributes basicFileAttributes)
 					throws IOException {
 
-					String path = filePath.toString();
+					String pathString = filePath.toString();
 
-					if (path.endsWith(".jar")) {
-						pathStrings.add(path);
+					if (pathString.endsWith(".jar")) {
+						pathStrings.add(pathString);
 					}
 
 					return FileVisitResult.CONTINUE;
