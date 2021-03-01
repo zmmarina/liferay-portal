@@ -96,8 +96,8 @@ public class TalendArchive {
 			return this;
 		}
 
-		public Builder jvmOptionEntries(List<String> jvmOptionEntries) {
-			_jvmOptionEntries = jvmOptionEntries;
+		public Builder jvmOptionsList(List<String> jvmOptionsList) {
+			_jvmOptionsList = jvmOptionsList;
 
 			return this;
 		}
@@ -121,19 +121,19 @@ public class TalendArchive {
 		}
 
 		private String _buildJVMOptions() {
-			if ((_jvmOptionEntries == null) || _jvmOptionEntries.isEmpty()) {
+			if ((_jvmOptionsList == null) || _jvmOptionsList.isEmpty()) {
 				return null;
 			}
 
 			StringBundler sb = new StringBundler(
-				(_jvmOptionEntries.size() * 2) - 1);
+				(_jvmOptionsList.size() * 2) - 1);
 
-			Iterator<String> iterator = _jvmOptionEntries.iterator();
+			Iterator<String> iterator = _jvmOptionsList.iterator();
 
 			while (iterator.hasNext()) {
-				String jvmOptionEntry = iterator.next();
+				String jvmOption = iterator.next();
 
-				sb.append(jvmOptionEntry);
+				sb.append(jvmOption);
 
 				if (iterator.hasNext()) {
 					sb.append(StringPool.SPACE);
@@ -148,7 +148,7 @@ public class TalendArchive {
 		private String _jobDirectory;
 		private String _jobJarPath;
 		private String _jobMainClassFQN;
-		private List<String> _jvmOptionEntries;
+		private List<String> _jvmOptionsList;
 
 	}
 

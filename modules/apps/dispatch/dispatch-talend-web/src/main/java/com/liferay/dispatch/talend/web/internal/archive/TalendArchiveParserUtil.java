@@ -59,8 +59,8 @@ public class TalendArchiveParserUtil {
 		return null;
 	}
 
-	private static void _addJVMOptionEntries(
-		List<String> jvmOptionEntries, String commandLine) {
+	private static void _addJVMOptionsList(
+		List<String> jvmOptionsList, String commandLine) {
 
 		if (Validator.isNull(commandLine) || !commandLine.startsWith("java")) {
 			return;
@@ -82,7 +82,7 @@ public class TalendArchiveParserUtil {
 			}
 
 			if (token.startsWith("-X")) {
-				jvmOptionEntries.add(token);
+				jvmOptionsList.add(token);
 			}
 		}
 	}
@@ -245,7 +245,7 @@ public class TalendArchiveParserUtil {
 		return paths;
 	}
 
-	private static List<String> _getJVMOptionEntries(
+	private static List<String> _getJVMOptionsList(
 			File jobDirectory, String jobName)
 		throws IOException {
 
@@ -253,7 +253,7 @@ public class TalendArchiveParserUtil {
 
 		List<String> jobScriptPaths = _getJobScriptPaths(path.resolve(jobName));
 
-		List<String> jvmOptionEntries = new ArrayList<>();
+		List<String> jvmOptionsList = new ArrayList<>();
 
 		for (String jobScriptPath : jobScriptPaths) {
 			BufferedReader reader = new BufferedReader(
@@ -262,17 +262,17 @@ public class TalendArchiveParserUtil {
 			String readLine = reader.readLine();
 
 			while (readLine != null) {
-				_addJVMOptionEntries(jvmOptionEntries, readLine);
+				_addJVMOptionsList(jvmOptionsList, readLine);
 
 				readLine = reader.readLine();
 			}
 
-			if (!jvmOptionEntries.isEmpty()) {
+			if (!jvmOptionsList.isEmpty()) {
 				break;
 			}
 		}
 
-		return jvmOptionEntries;
+		return jvmOptionsList;
 	}
 
 	private static TalendArchive _parse(InputStream jobZIPInputStream)
@@ -291,8 +291,8 @@ public class TalendArchiveParserUtil {
 			_getJobLibEntries(jobDirectoryPath));
 		talendArchiveBuilder.contextName(
 			(String)jobProperties.get("contextName"));
-		talendArchiveBuilder.jvmOptionEntries(
-			_getJVMOptionEntries(
+		talendArchiveBuilder.jvmOptionsList(
+			_getJVMOptionsList(
 				jobDirectory, (String)jobProperties.get("job")));
 		talendArchiveBuilder.jobDirectory(jobDirectory.getAbsolutePath());
 
