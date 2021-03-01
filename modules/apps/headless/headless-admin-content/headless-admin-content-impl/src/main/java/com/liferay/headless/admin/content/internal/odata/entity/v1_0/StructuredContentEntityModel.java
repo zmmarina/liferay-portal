@@ -35,11 +35,11 @@ public class StructuredContentEntityModel implements EntityModel {
 	public StructuredContentEntityModel() {
 		_entityFieldsMap = EntityFieldsMapFactory.create(
 			new CollectionEntityField(
-				new IntegerEntityField(
-					"taxonomyCategoryIds", locale -> "assetCategoryIds")),
-			new CollectionEntityField(
 				new StringEntityField(
 					"keywords", locale -> "assetTagNames.raw")),
+			new CollectionEntityField(
+				new IntegerEntityField(
+					"taxonomyCategoryIds", locale -> "assetCategoryIds")),
 			new DateTimeEntityField(
 				"dateCreated",
 				locale -> Field.getSortableFieldName(Field.CREATE_DATE),
