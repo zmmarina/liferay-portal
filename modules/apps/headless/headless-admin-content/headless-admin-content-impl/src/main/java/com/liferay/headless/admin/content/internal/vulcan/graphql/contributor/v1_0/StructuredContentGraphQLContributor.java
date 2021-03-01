@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.headless.admin.content.internal.vulcan.graphql.contributor;
+package com.liferay.headless.admin.content.internal.vulcan.graphql.contributor.v1_0;
 
 import com.liferay.portal.vulcan.graphql.contributor.GraphQLContributor;
 
