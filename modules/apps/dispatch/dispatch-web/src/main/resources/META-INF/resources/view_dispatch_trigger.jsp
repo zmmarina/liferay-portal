@@ -21,8 +21,8 @@ DispatchTriggerDisplayContext dispatchTriggerDisplayContext = (DispatchTriggerDi
 
 PortletURL portletURL = dispatchTriggerDisplayContext.getPortletURL();
 
-portletURL.setParameter("searchContainerId", "dispatchTriggers");
 portletURL.setParameter("tabs1", "dispatch-trigger");
+portletURL.setParameter("searchContainerId", "dispatchTriggers");
 %>
 
 <clay:navigation-bar

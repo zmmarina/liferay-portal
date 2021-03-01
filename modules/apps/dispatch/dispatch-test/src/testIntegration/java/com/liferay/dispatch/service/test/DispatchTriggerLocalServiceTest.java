@@ -164,7 +164,6 @@ public class DispatchTriggerLocalServiceTest {
 			for (DispatchTrigger dispatchTrigger : userDispatchTriggers) {
 				Assert.assertEquals(
 					user.getUserId(), dispatchTrigger.getUserId());
-
 				Assert.assertEquals(
 					DispatchTaskStatus.NEVER_RAN,
 					dispatchTrigger.getDispatchTaskStatus());
