@@ -31,7 +31,7 @@ public class TestrayCaseFactory {
 		TestClassGroup.TestClass testClass) {
 
 		if (testrayBuild == null) {
-			throw new RuntimeException("Please set a testray build");
+			throw new RuntimeException("Please set a Testray build");
 		}
 
 		if (topLevelBuild == null) {

@@ -61,11 +61,11 @@ public class TestrayRoutine {
 		TestrayProductVersion testrayProductVersion, String buildName) {
 
 		if (testrayProductVersion == null) {
-			throw new RuntimeException("Please set a testray product version");
+			throw new RuntimeException("Please set a Testray product version");
 		}
 
 		if (JenkinsResultsParserUtil.isNullOrEmpty(buildName)) {
-			throw new RuntimeException("Please set a testray build name");
+			throw new RuntimeException("Please set a Testray build name");
 		}
 
 		StringBuilder sb = new StringBuilder();
@@ -92,7 +92,7 @@ public class TestrayRoutine {
 			String message = jsonObject.optString("message", "");
 
 			if (!message.equals("The build name already exists.")) {
-				throw new RuntimeException("Failed to create a testray build");
+				throw new RuntimeException("Failed to create a Testray build");
 			}
 
 			return getTestrayBuildByName(buildName);

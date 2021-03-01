@@ -56,7 +56,7 @@ public class TestrayProject {
 
 		if (testrayProductVersionName == null) {
 			throw new RuntimeException(
-				"Please set a testray product version name");
+				"Please set a Testray product version name");
 		}
 
 		StringBuilder sb = new StringBuilder();
