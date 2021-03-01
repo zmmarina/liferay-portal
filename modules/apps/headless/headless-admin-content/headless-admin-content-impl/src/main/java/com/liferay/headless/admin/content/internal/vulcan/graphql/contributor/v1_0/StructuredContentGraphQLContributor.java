@@ -14,6 +14,11 @@
 
 package com.liferay.headless.admin.content.internal.vulcan.graphql.contributor.v1_0;
 
+import com.liferay.headless.admin.content.dto.v1_0.Version;
+import com.liferay.headless.admin.content.internal.dto.v1_0.extension.ExtendedStructuredContent;
+import com.liferay.headless.delivery.dto.v1_0.StructuredContent;
+import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
+import com.liferay.portal.vulcan.graphql.annotation.GraphQLTypeExtension;
 import com.liferay.portal.vulcan.graphql.contributor.GraphQLContributor;
 
 import org.osgi.service.component.annotations.Component;
@@ -32,6 +37,35 @@ public class StructuredContentGraphQLContributor implements GraphQLContributor {
 	@Override
 	public StructuredContentQueryContributor getQuery() {
 		return new StructuredContentQueryContributor();
+	}
+
+	private class StructuredContentQueryContributor {
+
+		@GraphQLTypeExtension(StructuredContent.class)
+		public class ExtendedStructuredContentExtension {
+
+			public ExtendedStructuredContentExtension(
+				StructuredContent structuredContent) {
+
+				_structuredContent = structuredContent;
+			}
+
+			@GraphQLField
+			public Version version() {
+				if (_structuredContent instanceof ExtendedStructuredContent) {
+					ExtendedStructuredContent extendedStructuredContent =
+						(ExtendedStructuredContent)_structuredContent;
+
+					return extendedStructuredContent.getVersion();
+				}
+
+				return null;
+			}
+
+			private final StructuredContent _structuredContent;
+
+		}
+
 	}
 
 }
