@@ -20,8 +20,6 @@ import com.liferay.headless.delivery.dto.v1_0.StructuredContent;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLTypeExtension;
 
-import org.osgi.service.component.annotations.Component;
-
 /**
  * @author Luis Miguel Barcos
  */
