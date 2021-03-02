@@ -1,5 +1,9 @@
 package ${apiPackagePath}.service;
 
+<#if entity.hasEntityColumns()>
+	import ${apiPackagePath}.model.${entity.name};
+</#if>
+
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -15,10 +19,6 @@ import java.sql.Blob;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-<#if entity.hasEntityColumns()>
-	import ${apiPackagePath}.model.${entity.name};
-</#if>
 
 <#if stringUtil.equals(sessionTypeName, "Local")>
 /**
