@@ -74,14 +74,14 @@ public class WorkflowDefinitionResourceTest
 		super.tearDown();
 
 		for (WorkflowDefinition workflowDefinition :
-				_workflowDefinitionMap.values()) {
+				_workflowDefinitions.values()) {
 
 			_undeployWorkflowDefinition(
 				workflowDefinition.getName(),
 				GetterUtil.getInteger(workflowDefinition.getVersion()));
 		}
 
-		_workflowDefinitionMap.clear();
+		_workflowDefinitions.clear();
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class WorkflowDefinitionResourceTest
 					workflowDefinition.getName(),
 					workflowDefinition.getVersion()));
 
-		_workflowDefinitionMap.remove(workflowDefinition.getName());
+		_workflowDefinitions.remove(workflowDefinition.getName());
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class WorkflowDefinitionResourceTest
 			workflowDefinitionResource.postWorkflowDefinitionDeploy(
 				workflowDefinition);
 
-		_workflowDefinitionMap.put(
+		_workflowDefinitions.put(
 			workflowDefinition.getName(), workflowDefinition);
 
 		return workflowDefinition;
@@ -212,7 +212,7 @@ public class WorkflowDefinitionResourceTest
 			workflowDefinitionResource.postWorkflowDefinitionSave(
 				workflowDefinition);
 
-		_workflowDefinitionMap.put(
+		_workflowDefinitions.put(
 			workflowDefinition.getName(), workflowDefinition);
 
 		return workflowDefinition;
@@ -247,7 +247,7 @@ public class WorkflowDefinitionResourceTest
 	@Inject
 	private static WorkflowDefinitionManager _workflowDefinitionManager;
 
-	private final Map<String, WorkflowDefinition> _workflowDefinitionMap =
+	private final Map<String, WorkflowDefinition> _workflowDefinitions =
 		new HashMap<>();
 
 }
