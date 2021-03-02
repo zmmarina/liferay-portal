@@ -298,7 +298,6 @@ public class JournalTransformer {
 				template.put("company", getCompany(themeDisplay, companyId));
 				template.put("companyId", companyId);
 				template.put("device", getDevice(themeDisplay));
-				template.put("groupId", articleGroupId);
 				template.put("locale", locale);
 				template.put(
 					"permissionChecker",
@@ -322,6 +321,11 @@ public class JournalTransformer {
 						new PipingServletResponse(
 							themeDisplay.getResponse(), unsyncStringWriter));
 				}
+
+				// Deprecated variables
+
+				template.put("groupId", articleGroupId);
+				template.put("journalTemplatesPath", templatesPath);
 
 				if (propagateException) {
 					template.processTemplate(unsyncStringWriter);
