@@ -80,21 +80,19 @@ public class PortalPreferencesImpl
 
 		_signedIn = signedIn;
 
-		_ownerId = portalPreferences.getOwnerId();
-		_ownerType = portalPreferences.getOwnerType();
-
 		_originalXML = portalPreferences.getPreferences();
+
+		_originalPreferences = new HashMap<>();
 
 		Map<String, Preference> preferencesMap =
 			PortletPreferencesFactoryImpl.createPreferencesMap(_originalXML);
 
-		Map<String, String[]> preferences = new HashMap<>();
-
 		for (Preference preference : preferencesMap.values()) {
-			preferences.put(preference.getName(), preference.getValues());
+			_originalPreferences.put(preference.getName(), preference.getValues());
 		}
 
-		_originalPreferences = preferences;
+		_ownerId = portalPreferences.getOwnerId();
+		_ownerType = portalPreferences.getOwnerType();
 
 		_portalPreferences =
 			(com.liferay.portal.kernel.model.PortalPreferences)
