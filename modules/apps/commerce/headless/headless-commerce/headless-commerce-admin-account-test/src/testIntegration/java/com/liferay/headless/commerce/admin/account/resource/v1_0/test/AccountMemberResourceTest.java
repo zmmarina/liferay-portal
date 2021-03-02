@@ -53,8 +53,6 @@ public class AccountMemberResourceTest
 			RandomTestUtil.randomString() + "@liferay.com", null,
 			CommerceAccountConstants.ACCOUNT_TYPE_GUEST, true,
 			RandomTestUtil.randomString(), _serviceContext);
-
-		_user = UserTestUtil.addCompanyAdminUser(testCompany);
 	}
 
 	@Override
