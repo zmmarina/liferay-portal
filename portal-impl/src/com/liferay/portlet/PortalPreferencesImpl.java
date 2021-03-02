@@ -88,7 +88,8 @@ public class PortalPreferencesImpl
 			PortletPreferencesFactoryImpl.createPreferencesMap(_originalXML);
 
 		for (Preference preference : preferencesMap.values()) {
-			_originalPreferences.put(preference.getName(), preference.getValues());
+			_originalPreferences.put(
+				preference.getName(), preference.getValues());
 		}
 
 		_ownerId = portalPreferences.getOwnerId();
