@@ -42,9 +42,9 @@ public class WorkflowTaskTestUtil {
 			workflowTaskResource.getWorkflowInstanceWorkflowTasksPage(
 				workflowInstanceId, false, Pagination.of(-1, -1));
 
-		List<WorkflowTask> items = (List<WorkflowTask>)page.getItems();
+		List<WorkflowTask> workflowTasks = (List<WorkflowTask>)page.getItems();
 
-		return items.get(items.size() - 1);
+		return workflowTasks.get(workflowTasks.size() - 1);
 	}
 
 }
