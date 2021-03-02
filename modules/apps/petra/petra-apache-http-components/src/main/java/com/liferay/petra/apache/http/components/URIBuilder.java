@@ -22,8 +22,10 @@ import java.net.URISyntaxException;
  */
 public class URIBuilder {
 
-	public static URIBuilderWrapper create(String s) throws URISyntaxException {
-		return new URIBuilderWrapper(new URI(s));
+	public static URIBuilderWrapper create(String string)
+		throws URISyntaxException {
+
+		return new URIBuilderWrapper(new URI(string));
 	}
 
 	public static URIBuilderWrapper create(URI uri) {
