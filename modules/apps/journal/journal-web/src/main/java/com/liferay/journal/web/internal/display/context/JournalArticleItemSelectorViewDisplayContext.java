@@ -602,7 +602,6 @@ public class JournalArticleItemSelectorViewDisplayContext {
 
 		breadcrumbEntry.setTitle(
 			LanguageUtil.get(_httpServletRequest, "sites-and-libraries"));
-
 		breadcrumbEntry.setURL(
 			PortletURLBuilder.create(
 				getPortletURL()
