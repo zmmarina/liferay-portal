@@ -1759,17 +1759,10 @@ public class GitWorkingDirectory {
 		for (File modifiedFile : getModifiedFilesList()) {
 			String modifiedFileName = modifiedFile.getName();
 
-			boolean poshiFileModified = false;
+			String fileExtension = modifiedFileName.replaceAll(
+				".*(\\..+)", "$1");
 
-			for (String poshiFileEnding : _POSHI_FILE_ENDINGS) {
-				if (modifiedFileName.endsWith(poshiFileEnding)) {
-					poshiFileModified = true;
-
-					break;
-				}
-			}
-
-			if (!poshiFileModified) {
+			if (!_poshiFileExtensions.contains(fileExtension.toLowerCase())) {
 				return false;
 			}
 		}
@@ -2648,10 +2641,6 @@ public class GitWorkingDirectory {
 
 	private static final int _BRANCHES_DELETE_BATCH_SIZE = 5;
 
-	private static final String[] _POSHI_FILE_ENDINGS = {
-		".function", ".macro", ".path", ".prose", ".testcase"
-	};
-
 	private static final Pattern _badRefPattern = Pattern.compile(
 		"fatal: bad object (?<badRef>.+/HEAD)");
 	private static final Pattern _gitDirectoryPathPattern = Pattern.compile(
@@ -2661,6 +2650,8 @@ public class GitWorkingDirectory {
 			"(?<message>.*)");
 	private static final Map<String, List<File>> _modifiedFilesMap =
 		new HashMap<>();
+	private static final List<String> _poshiFileExtensions = Arrays.asList(
+		".function", ".macro", ".path", ".prose", ".testcase");
 	private static final List<String> _privateOnlyGitRepositoryNames =
 		_getBuildPropertyAsList(
 			"git.working.directory.private.only.repository.names");
