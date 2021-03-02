@@ -108,7 +108,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 	}
 
 	@Override
-	public String getTeam() {
+	public String getTeamName() {
 		TopLevelBuild topLevelBuild = getTopLevelBuild();
 
 		Job job = topLevelBuild.getJob();
@@ -119,7 +119,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 			jobProperties, "testray.team.names");
 
 		if (JenkinsResultsParserUtil.isNullOrEmpty(testrayTeamNames)) {
-			return super.getTeam();
+			return super.getTeamName();
 		}
 
 		String component = getComponent();
@@ -147,7 +147,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 			}
 		}
 
-		return super.getTeam();
+		return super.getTeamName();
 	}
 
 	public TestResult getTestResult() {

@@ -102,7 +102,7 @@ public class TestrayCaseResult {
 		return Status.get(statusID);
 	}
 
-	public String getTeam() {
+	public String getTeamName() {
 		return jsonObject.getString("testrayTeamName");
 	}
 

@@ -45,7 +45,7 @@ public class TestrayCase {
 		return _jsonObject.getInt("priority");
 	}
 
-	public String getTeam() {
+	public String getTeamName() {
 		return _jsonObject.getString("testrayTeamName");
 	}
 

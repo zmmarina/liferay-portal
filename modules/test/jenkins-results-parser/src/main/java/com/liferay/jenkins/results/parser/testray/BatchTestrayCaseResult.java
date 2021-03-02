@@ -121,7 +121,7 @@ public class BatchTestrayCaseResult extends TestrayCaseResult {
 	}
 
 	@Override
-	public String getTeam() {
+	public String getTeamName() {
 		try {
 			return JenkinsResultsParserUtil.getProperty(
 				JenkinsResultsParserUtil.getBuildProperties(),
