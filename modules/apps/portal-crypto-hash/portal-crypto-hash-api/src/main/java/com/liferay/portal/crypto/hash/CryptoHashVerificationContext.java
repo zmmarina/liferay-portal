@@ -20,7 +20,7 @@ package com.liferay.portal.crypto.hash;
 public class CryptoHashVerificationContext {
 
 	public CryptoHashVerificationContext(
-		String cryptoHashProviderName, final byte[] salt) {
+		String cryptoHashProviderName, byte[] salt) {
 
 		_cryptoHashProviderName = cryptoHashProviderName;
 		_salt = salt;
