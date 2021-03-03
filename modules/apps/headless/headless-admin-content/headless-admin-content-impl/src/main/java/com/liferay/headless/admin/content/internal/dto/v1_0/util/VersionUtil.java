@@ -50,6 +50,7 @@ public class VersionUtil {
 					{
 						code = journalArticle.getStatus();
 						label = statusLabel;
+
 						setLabel_i18n(
 							() -> {
 								if (acceptLanguage.isAcceptAllLanguages()) {
