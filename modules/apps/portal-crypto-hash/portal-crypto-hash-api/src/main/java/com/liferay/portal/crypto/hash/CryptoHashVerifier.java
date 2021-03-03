@@ -16,10 +16,24 @@ package com.liferay.portal.crypto.hash;
 
 import com.liferay.portal.crypto.hash.exception.CryptoHashException;
 
+import java.util.Collection;
+
 /**
  * @author Carlos Sierra Andrés
  */
 public interface CryptoHashVerifier {
+
+	public default boolean verify(
+			byte[] input, byte[] hash,
+			Collection<CryptoHashVerificationContext>
+				cryptoHashVerificationContexts)
+		throws CryptoHashException {
+
+		return verify(
+			input, hash,
+			cryptoHashVerificationContexts.toArray(
+				new CryptoHashVerificationContext[0]));
+	}
 
 	public boolean verify(
 			byte[] input, byte[] hash,

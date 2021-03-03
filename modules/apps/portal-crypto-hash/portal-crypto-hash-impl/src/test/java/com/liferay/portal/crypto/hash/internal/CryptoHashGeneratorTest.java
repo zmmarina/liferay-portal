@@ -92,14 +92,10 @@ public class CryptoHashGeneratorTest {
 
 		Assert.assertFalse(
 			_cryptoHashVerifierImpl.verify(
-				_randomBytes(), hash,
-				cryptoHashVerificationContexts.toArray(
-					new CryptoHashVerificationContext[0])));
+				_randomBytes(), hash, cryptoHashVerificationContexts));
 		Assert.assertTrue(
 			_cryptoHashVerifierImpl.verify(
-				_INPUT, hash,
-				cryptoHashVerificationContexts.toArray(
-					new CryptoHashVerificationContext[0])));
+				_INPUT, hash, cryptoHashVerificationContexts));
 	}
 
 	private static byte[] _randomBytes() {
