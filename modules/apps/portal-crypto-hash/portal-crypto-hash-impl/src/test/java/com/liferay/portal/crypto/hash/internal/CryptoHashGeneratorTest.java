@@ -48,7 +48,7 @@ public class CryptoHashGeneratorTest {
 
 		_cryptoHashVerifierImpl.register(messageDigestCryptoHashProvider);
 
-		_cryptoHashGenerators = Arrays.asList(
+		_cryptoHashGeneratorImpls = Arrays.asList(
 			new CryptoHashGeneratorImpl(bCryptCryptoHashProvider),
 			new CryptoHashGeneratorImpl(messageDigestCryptoHashProvider));
 	}
@@ -56,7 +56,7 @@ public class CryptoHashGeneratorTest {
 	@Test
 	public void testGenerate() throws Exception {
 		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
-				_cryptoHashGenerators) {
+				_cryptoHashGeneratorImpls) {
 
 			CryptoHashResponse cryptoHashResponse =
 				cryptoHashGeneratorImpl.generate(_INPUT);
@@ -79,7 +79,7 @@ public class CryptoHashGeneratorTest {
 			cryptoHashVerificationContexts = new ArrayList<>();
 
 		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
-				_cryptoHashGenerators) {
+				_cryptoHashGeneratorImpls) {
 
 			CryptoHashResponse cryptoHashResponse =
 				cryptoHashGeneratorImpl.generate(hash);
@@ -109,7 +109,7 @@ public class CryptoHashGeneratorTest {
 
 	private static final byte[] _INPUT = _randomBytes();
 
-	private List<CryptoHashGeneratorImpl> _cryptoHashGenerators;
+	private List<CryptoHashGeneratorImpl> _cryptoHashGeneratorImpls;
 	private CryptoHashVerifierImpl _cryptoHashVerifierImpl;
 
 }
