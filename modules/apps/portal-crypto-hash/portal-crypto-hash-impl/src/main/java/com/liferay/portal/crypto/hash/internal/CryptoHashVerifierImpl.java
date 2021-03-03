@@ -34,17 +34,17 @@ public class CryptoHashVerifierImpl implements CryptoHashVerifier {
 	public CryptoHashProvider getCryptoHashProvider(
 		String cryptoHashProviderName) {
 
-		return _cryptoHashProviderMap.get(cryptoHashProviderName);
+		return _cryptoHashProviders.get(cryptoHashProviderName);
 	}
 
 	public void register(
 		String cryptoHashProviderName, CryptoHashProvider cryptoHashProvider) {
 
-		_cryptoHashProviderMap.put(cryptoHashProviderName, cryptoHashProvider);
+		_cryptoHashProviders.put(cryptoHashProviderName, cryptoHashProvider);
 	}
 
 	public void unregister(String cryptoHashProviderName) {
-		_cryptoHashProviderMap.remove(cryptoHashProviderName);
+		_cryptoHashProviders.remove(cryptoHashProviderName);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class CryptoHashVerifierImpl implements CryptoHashVerifier {
 		for (CryptoHashVerificationContext cryptoHashVerificationContext :
 				cryptoHashVerificationContexts) {
 
-			CryptoHashProvider cryptoHashProvider = _cryptoHashProviderMap.get(
+			CryptoHashProvider cryptoHashProvider = _cryptoHashProviders.get(
 				cryptoHashVerificationContext.getCryptoHashProviderName());
 
 			CryptoHashProviderResponse cryptoHashProviderResponse =
@@ -69,7 +69,7 @@ public class CryptoHashVerifierImpl implements CryptoHashVerifier {
 		return MessageDigest.isEqual(input, hash);
 	}
 
-	private final Map<String, CryptoHashProvider> _cryptoHashProviderMap =
+	private final Map<String, CryptoHashProvider> _cryptoHashProviders =
 		new HashMap<>();
 
 }
