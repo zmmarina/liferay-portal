@@ -86,6 +86,7 @@ public class CryptoHashGeneratorTest {
 
 			cryptoHashVerificationContexts.add(
 				cryptoHashResponse.getCryptoHashVerificationContext());
+
 			hash = cryptoHashResponse.getHash();
 		}
 
