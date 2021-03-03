@@ -698,10 +698,10 @@ public class LPKGBundleTrackerCustomizer
 			return null;
 		}
 
-		try (InputStream in = url.openStream()) {
+		try (InputStream inputStream = url.openStream()) {
 			Properties properties = new Properties();
 
-			properties.load(in);
+			properties.load(inputStream);
 
 			return properties;
 		}
