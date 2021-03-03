@@ -14,6 +14,7 @@
 
 package com.liferay.portal.crypto.hash.internal;
 
+import com.liferay.portal.crypto.hash.CryptoHashGenerator;
 import com.liferay.portal.crypto.hash.CryptoHashResponse;
 import com.liferay.portal.crypto.hash.CryptoHashVerificationContext;
 import com.liferay.portal.crypto.hash.provider.bcrypt.internal.BCryptCryptoHashProvider;
@@ -48,18 +49,16 @@ public class CryptoHashGeneratorTest {
 
 		_cryptoHashVerifierImpl.register(messageDigestCryptoHashProvider);
 
-		_cryptoHashGeneratorImpls = Arrays.asList(
+		_cryptoHashGenerators = Arrays.asList(
 			new CryptoHashGeneratorImpl(bCryptCryptoHashProvider),
 			new CryptoHashGeneratorImpl(messageDigestCryptoHashProvider));
 	}
 
 	@Test
 	public void testGenerate() throws Exception {
-		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
-				_cryptoHashGeneratorImpls) {
-
+		for (CryptoHashGenerator cryptoHashGenerator : _cryptoHashGenerators) {
 			CryptoHashResponse cryptoHashResponse =
-				cryptoHashGeneratorImpl.generate(_INPUT);
+				cryptoHashGenerator.generate(_INPUT);
 
 			Assert.assertFalse(
 				_cryptoHashVerifierImpl.verify(
@@ -78,11 +77,9 @@ public class CryptoHashGeneratorTest {
 			new ArrayList<>();
 		byte[] hash = _INPUT;
 
-		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
-				_cryptoHashGeneratorImpls) {
-
+		for (CryptoHashGenerator cryptoHashGenerator : _cryptoHashGenerators) {
 			CryptoHashResponse cryptoHashResponse =
-				cryptoHashGeneratorImpl.generate(hash);
+				cryptoHashGenerator.generate(hash);
 
 			cryptoHashVerificationContexts.add(
 				cryptoHashResponse.getCryptoHashVerificationContext());
@@ -106,7 +103,7 @@ public class CryptoHashGeneratorTest {
 
 	private static final byte[] _INPUT = _randomBytes();
 
-	private List<CryptoHashGeneratorImpl> _cryptoHashGeneratorImpls;
+	private List<CryptoHashGenerator> _cryptoHashGenerators;
 	private CryptoHashVerifierImpl _cryptoHashVerifierImpl;
 
 }
