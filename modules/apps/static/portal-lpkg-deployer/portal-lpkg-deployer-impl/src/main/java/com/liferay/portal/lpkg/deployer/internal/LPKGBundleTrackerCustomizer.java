@@ -314,8 +314,8 @@ public class LPKGBundleTrackerCustomizer
 						newBundle = _bundleContext.installBundle(
 							location,
 							_toWARWrapperBundle(
-								bundle, url, servletContextName, lpkgURL,
-								liferayEnterpriseApp));
+								bundle, liferayEnterpriseApp, lpkgURL,
+								servletContextName, url));
 					}
 				}
 
@@ -756,8 +756,8 @@ public class LPKGBundleTrackerCustomizer
 	}
 
 	private InputStream _toWARWrapperBundle(
-			Bundle bundle, URL url, String servletContextName, String lpkgURL,
-			String liferayEnterpriseApp)
+			Bundle bundle, String liferayEnterpriseApp, String lpkgURL,
+			String servletContextName, URL url)
 		throws IOException {
 
 		String pathString = url.getPath();
@@ -780,8 +780,8 @@ public class LPKGBundleTrackerCustomizer
 					unsyncByteArrayOutputStream)) {
 
 				_writeManifest(
-					bundle, servletContextName, version, lpkgURL,
-					liferayEnterpriseApp, jarOutputStream);
+					bundle, jarOutputStream, liferayEnterpriseApp, lpkgURL,
+					servletContextName, version);
 
 				_writeClasses(
 					jarOutputStream, BundleStartLevelUtil.class,
@@ -884,8 +884,9 @@ public class LPKGBundleTrackerCustomizer
 	}
 
 	private void _writeManifest(
-			Bundle bundle, String contextName, String version, String lpkgURL,
-			String liferayEnterpriseApp, JarOutputStream jarOutputStream)
+			Bundle bundle, JarOutputStream jarOutputStream,
+			String liferayEnterpriseApp, String lpkgURL,
+			String servletContextName, String version)
 		throws IOException {
 
 		Manifest manifest = new Manifest();
@@ -899,7 +900,7 @@ public class LPKGBundleTrackerCustomizer
 		attributes.putValue(
 			Constants.BUNDLE_SYMBOLICNAME,
 			StringBundler.concat(
-				bundle.getSymbolicName(), "-", contextName, "-wrapper"));
+				bundle.getSymbolicName(), "-", servletContextName, "-wrapper"));
 
 		attributes.putValue(Constants.BUNDLE_VERSION, version);
 		attributes.putValue(
@@ -913,7 +914,7 @@ public class LPKGBundleTrackerCustomizer
 			attributes.putValue("Liferay-Enterprise-App", liferayEnterpriseApp);
 		}
 
-		attributes.putValue("Liferay-WAB-Context-Name", contextName);
+		attributes.putValue("Liferay-WAB-Context-Name", servletContextName);
 		attributes.putValue("Liferay-WAB-LPKG-URL", lpkgURL);
 		attributes.putValue(
 			"Liferay-WAB-Start-Level",
