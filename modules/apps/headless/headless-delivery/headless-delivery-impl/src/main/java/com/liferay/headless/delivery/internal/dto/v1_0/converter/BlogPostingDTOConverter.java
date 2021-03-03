@@ -133,7 +133,6 @@ public class BlogPostingDTOConverter
 								blogsEntry.getContent(),
 								PropsValues.BLOGS_PAGE_ABSTRACT_LENGTH));
 					});
-
 				setRenderedContents(
 					() -> DisplayPageRendererUtil.getRenderedContent(
 						BaseBlogPostingResourceImpl.class,
