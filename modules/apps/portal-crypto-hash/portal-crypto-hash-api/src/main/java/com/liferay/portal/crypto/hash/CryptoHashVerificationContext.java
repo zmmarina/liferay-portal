@@ -17,7 +17,7 @@ package com.liferay.portal.crypto.hash;
 /**
  * @author Carlos Sierra Andrés
  */
-public final class CryptoHashVerificationContext {
+public class CryptoHashVerificationContext {
 
 	public CryptoHashVerificationContext(
 		String cryptoHashProviderName, final byte[] salt) {

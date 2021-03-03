@@ -17,7 +17,7 @@ package com.liferay.portal.crypto.hash;
 /**
  * @author Carlos Sierra Andrés
  */
-public final class CryptoHashResponse {
+public class CryptoHashResponse {
 
 	public CryptoHashResponse(
 		byte[] hash,

@@ -17,7 +17,7 @@ package com.liferay.portal.crypto.hash.spi;
 /**
  * @author Carlos Sierra Andrés
  */
-public final class CryptoHashProviderResponse {
+public class CryptoHashProviderResponse {
 
 	public CryptoHashProviderResponse(
 		String cryptoHashProviderName, byte[] hash) {
