@@ -35,4 +35,6 @@ public interface CryptoHashProvider {
 		return salt;
 	}
 
+	public String getCryptoHashProviderName();
+
 }

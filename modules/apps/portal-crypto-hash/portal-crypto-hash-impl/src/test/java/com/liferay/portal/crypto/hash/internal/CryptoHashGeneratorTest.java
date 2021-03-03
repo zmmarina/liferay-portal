@@ -41,16 +41,12 @@ public class CryptoHashGeneratorTest {
 		BCryptCryptoHashProvider bCryptCryptoHashProvider =
 			new BCryptCryptoHashProvider();
 
-		_cryptoHashVerifierImpl.register(
-			BCryptCryptoHashProvider.CRYPTO_HASH_PROVIDER_NAME,
-			bCryptCryptoHashProvider);
+		_cryptoHashVerifierImpl.register(bCryptCryptoHashProvider);
 
 		MessageDigestCryptoHashProvider messageDigestCryptoHashProvider =
 			new MessageDigestCryptoHashProvider();
 
-		_cryptoHashVerifierImpl.register(
-			MessageDigestCryptoHashProvider.CRYPTO_HASH_PROVIDER_NAME,
-			messageDigestCryptoHashProvider);
+		_cryptoHashVerifierImpl.register(messageDigestCryptoHashProvider);
 
 		_cryptoHashGenerators = Arrays.asList(
 			new CryptoHashGeneratorImpl(bCryptCryptoHashProvider),

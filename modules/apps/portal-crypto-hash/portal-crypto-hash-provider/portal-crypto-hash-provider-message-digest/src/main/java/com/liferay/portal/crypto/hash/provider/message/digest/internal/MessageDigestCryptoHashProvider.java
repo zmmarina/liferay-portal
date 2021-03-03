@@ -26,8 +26,6 @@ import java.security.NoSuchAlgorithmException;
  */
 public class MessageDigestCryptoHashProvider implements CryptoHashProvider {
 
-	public static final String CRYPTO_HASH_PROVIDER_NAME = "MessageDigest";
-
 	public MessageDigestCryptoHashProvider() throws NoSuchAlgorithmException {
 		_messageDigest = MessageDigest.getInstance("SHA-256");
 	}
@@ -35,9 +33,16 @@ public class MessageDigestCryptoHashProvider implements CryptoHashProvider {
 	@Override
 	public CryptoHashProviderResponse generate(byte[] salt, byte[] input) {
 		return new CryptoHashProviderResponse(
-			CRYPTO_HASH_PROVIDER_NAME,
+			_CRYPTO_HASH_PROVIDER_NAME,
 			_messageDigest.digest(ArrayUtil.append(salt, input)));
 	}
+
+	@Override
+	public String getCryptoHashProviderName() {
+		return _CRYPTO_HASH_PROVIDER_NAME;
+	}
+
+	private static final String _CRYPTO_HASH_PROVIDER_NAME = "MessageDigest";
 
 	private final MessageDigest _messageDigest;
 

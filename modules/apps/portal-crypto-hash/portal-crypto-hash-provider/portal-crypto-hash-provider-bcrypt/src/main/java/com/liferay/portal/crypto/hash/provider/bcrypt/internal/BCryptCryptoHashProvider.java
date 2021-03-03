@@ -26,8 +26,6 @@ import jodd.crypt.BCrypt;
  */
 public class BCryptCryptoHashProvider implements CryptoHashProvider {
 
-	public static final String CRYPTO_HASH_PROVIDER_NAME = "BCrypt";
-
 	@Override
 	public CryptoHashProviderResponse generate(byte[] salt, byte[] input) {
 		String hashedPassword = BCrypt.hashpw(
@@ -35,7 +33,7 @@ public class BCryptCryptoHashProvider implements CryptoHashProvider {
 			new String(salt, StandardCharsets.US_ASCII));
 
 		return new CryptoHashProviderResponse(
-			CRYPTO_HASH_PROVIDER_NAME,
+			_CRYPTO_HASH_PROVIDER_NAME,
 			hashedPassword.getBytes(StandardCharsets.US_ASCII));
 	}
 
@@ -45,5 +43,12 @@ public class BCryptCryptoHashProvider implements CryptoHashProvider {
 
 		return salt.getBytes(StandardCharsets.US_ASCII);
 	}
+
+	@Override
+	public String getCryptoHashProviderName() {
+		return _CRYPTO_HASH_PROVIDER_NAME;
+	}
+
+	private static final String _CRYPTO_HASH_PROVIDER_NAME = "BCrypt";
 
 }

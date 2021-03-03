@@ -37,10 +37,9 @@ public class CryptoHashVerifierImpl implements CryptoHashVerifier {
 		return _cryptoHashProviders.get(cryptoHashProviderName);
 	}
 
-	public void register(
-		String cryptoHashProviderName, CryptoHashProvider cryptoHashProvider) {
-
-		_cryptoHashProviders.put(cryptoHashProviderName, cryptoHashProvider);
+	public void register(CryptoHashProvider cryptoHashProvider) {
+		_cryptoHashProviders.put(
+			cryptoHashProvider.getCryptoHashProviderName(), cryptoHashProvider);
 	}
 
 	public void unregister(String cryptoHashProviderName) {
