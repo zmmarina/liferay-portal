@@ -69,10 +69,7 @@ public class CryptoHashGeneratorTest {
 					_INPUT, cryptoHashResponse.getHash(),
 					cryptoHashResponse.getCryptoHashVerificationContext()));
 		}
-	}
 
-	@Test
-	public void testGenerateWithMultipleAlgorithms() throws Exception {
 		List<CryptoHashVerificationContext> cryptoHashVerificationContexts =
 			new ArrayList<>();
 		byte[] hash = _INPUT;
