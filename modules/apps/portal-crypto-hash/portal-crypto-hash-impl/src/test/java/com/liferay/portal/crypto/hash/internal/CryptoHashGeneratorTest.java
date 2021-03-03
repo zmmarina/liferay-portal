@@ -74,9 +74,9 @@ public class CryptoHashGeneratorTest {
 
 	@Test
 	public void testGenerateWithMultipleAlgorithms() throws Exception {
-		byte[] hash = _INPUT;
 		ArrayList<CryptoHashVerificationContext>
 			cryptoHashVerificationContexts = new ArrayList<>();
+		byte[] hash = _INPUT;
 
 		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
 				_cryptoHashGeneratorImpls) {
@@ -84,9 +84,9 @@ public class CryptoHashGeneratorTest {
 			CryptoHashResponse cryptoHashResponse =
 				cryptoHashGeneratorImpl.generate(hash);
 
-			hash = cryptoHashResponse.getHash();
 			cryptoHashVerificationContexts.add(
 				cryptoHashResponse.getCryptoHashVerificationContext());
+			hash = cryptoHashResponse.getHash();
 		}
 
 		Assert.assertFalse(
