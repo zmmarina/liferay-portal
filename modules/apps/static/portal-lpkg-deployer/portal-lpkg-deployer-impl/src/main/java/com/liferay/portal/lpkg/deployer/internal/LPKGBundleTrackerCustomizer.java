@@ -235,11 +235,9 @@ public class LPKGBundleTrackerCustomizer
 					continue;
 				}
 
-				String servletContextName = null;
-
-				String lpkgURL = null;
-
 				String liferayEnterpriseApp = null;
+				String lpkgURL = null;
+				String servletContextName = null;
 
 				if (name.endsWith(".war")) {
 					sb = new StringBundler(10);
@@ -252,6 +250,10 @@ public class LPKGBundleTrackerCustomizer
 
 					Properties liferayPluginPackageProperties =
 						_readLiferayPluginPackageProperties(url);
+
+					liferayEnterpriseApp =
+						liferayPluginPackageProperties.getProperty(
+							"Liferay-Enterprise-App");
 
 					servletContextName =
 						liferayPluginPackageProperties.getProperty(
@@ -279,10 +281,6 @@ public class LPKGBundleTrackerCustomizer
 					// URL.
 
 					_urls.put(lpkgURL, url);
-
-					liferayEnterpriseApp =
-						liferayPluginPackageProperties.getProperty(
-							"Liferay-Enterprise-App");
 				}
 
 				Bundle newBundle = _bundleContext.getBundle(location);
@@ -655,9 +653,8 @@ public class LPKGBundleTrackerCustomizer
 			servletContextName = servletContextName.substring(0, index);
 		}
 
-		Path tempFilePath = Files.createTempFile(null, null);
-
 		Properties properties = new Properties();
+		Path tempFilePath = Files.createTempFile(null, null);
 
 		try (InputStream inputStream1 = url.openStream()) {
 			Files.copy(
