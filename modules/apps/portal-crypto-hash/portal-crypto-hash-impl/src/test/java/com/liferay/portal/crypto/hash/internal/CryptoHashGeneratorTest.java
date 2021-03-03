@@ -74,8 +74,8 @@ public class CryptoHashGeneratorTest {
 
 	@Test
 	public void testGenerateWithMultipleAlgorithms() throws Exception {
-		ArrayList<CryptoHashVerificationContext>
-			cryptoHashVerificationContexts = new ArrayList<>();
+		List<CryptoHashVerificationContext> cryptoHashVerificationContexts =
+			new ArrayList<>();
 		byte[] hash = _INPUT;
 
 		for (CryptoHashGeneratorImpl cryptoHashGeneratorImpl :
