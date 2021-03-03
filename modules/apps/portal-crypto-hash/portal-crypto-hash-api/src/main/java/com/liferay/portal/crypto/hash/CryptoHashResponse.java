@@ -20,11 +20,11 @@ package com.liferay.portal.crypto.hash;
 public class CryptoHashResponse {
 
 	public CryptoHashResponse(
-		byte[] hash,
-		CryptoHashVerificationContext cryptoHashVerificationContext) {
+		CryptoHashVerificationContext cryptoHashVerificationContext,
+		byte[] hash) {
 
-		_hash = hash;
 		_cryptoHashVerificationContext = cryptoHashVerificationContext;
+		_hash = hash;
 	}
 
 	public CryptoHashVerificationContext getCryptoHashVerificationContext() {
