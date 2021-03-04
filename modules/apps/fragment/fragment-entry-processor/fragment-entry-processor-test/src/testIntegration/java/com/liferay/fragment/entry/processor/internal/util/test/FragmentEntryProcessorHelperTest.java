@@ -302,13 +302,6 @@ public class FragmentEntryProcessorHelperTest {
 				"/dependencies/" + fileName);
 	}
 
-	private String _getJsonFileAsString(String jsonFileName) throws Exception {
-		JSONObject jsonObject = JSONFactoryUtil.createJSONObject(
-			_getFileAsString(jsonFileName));
-
-		return jsonObject.toString();
-	}
-
 	private String _getJournalArticleStructuredContent(
 		String name, List<Map<Locale, String>> contents, String defaultLocale) {
 
@@ -323,8 +316,7 @@ public class FragmentEntryProcessorHelperTest {
 			sb.setIndex(sb.index() - 1);
 		}
 
-		Document document = _createDocument(
-			sb.toString(), defaultLocale);
+		Document document = _createDocument(sb.toString(), defaultLocale);
 
 		Element rootElement = document.getRootElement();
 
@@ -347,6 +339,13 @@ public class FragmentEntryProcessorHelperTest {
 		}
 
 		return document.asXML();
+	}
+
+	private String _getJsonFileAsString(String jsonFileName) throws Exception {
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject(
+			_getFileAsString(jsonFileName));
+
+		return jsonObject.toString();
 	}
 
 	@Inject
