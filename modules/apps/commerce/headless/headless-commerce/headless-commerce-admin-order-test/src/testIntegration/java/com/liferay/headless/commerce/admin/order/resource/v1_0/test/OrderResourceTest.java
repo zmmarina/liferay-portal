@@ -84,8 +84,14 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 
 		// Nested fields
 
-		OrderResource orderResource = _getOrderResource(
-			"nestedFields", "orderItems,orderItems.shippingAddress");
+		OrderResource orderResource = OrderResource.builder(
+		).authentication(
+			"test@liferay.com", "test"
+		).locale(
+			LocaleUtil.getDefault()
+		).parameters(
+			"nestedFields", "orderItems,orderItems.shippingAddress"
+		).build();
 
 		Order expectedOrder = orderResource.postOrder(_randomOrder());
 
@@ -208,17 +214,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 	@Override
 	protected Order testPostOrder_addOrder(Order order) throws Exception {
 		return orderResource.postOrder(order);
-	}
-
-	private OrderResource _getOrderResource(String... parameters) {
-		return OrderResource.builder(
-		).authentication(
-			"test@liferay.com", "test"
-		).locale(
-			LocaleUtil.getDefault()
-		).parameters(
-			parameters
-		).build();
 	}
 
 	private Order _randomOrder() throws Exception {
