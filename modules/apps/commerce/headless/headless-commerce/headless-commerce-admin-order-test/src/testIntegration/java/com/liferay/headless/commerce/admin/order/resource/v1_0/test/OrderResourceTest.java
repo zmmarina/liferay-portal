@@ -106,7 +106,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		Assert.assertEquals(
 			Arrays.toString(actualOrderItems), expectedOrderItems.length,
 			actualOrderItems.length);
-
 		Assert.assertNotNull(actualOrderItems[0].getShippingAddress());
 	}
 
