@@ -88,7 +88,7 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 			"nestedFields", "orderItems,orderItems.shippingAddress");
 
 		Order expectedOrder = orderResource.postOrder(
-			_randomOrderWithNestedFields());
+			_randomOrder());
 
 		Order actualOrder = orderResource.getOrder(expectedOrder.getId());
 
@@ -270,7 +270,7 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		return orderItem;
 	}
 
-	private Order _randomOrderWithNestedFields() throws Exception {
+	private Order _randomOrder() throws Exception {
 		Order order = randomOrder();
 
 		ShippingAddress shippingAddress = _randomShippingAddress();
