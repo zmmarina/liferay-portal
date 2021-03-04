@@ -87,8 +87,7 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		OrderResource orderResource = _getOrderResource(
 			"nestedFields", "orderItems,orderItems.shippingAddress");
 
-		Order expectedOrder = orderResource.postOrder(
-			_randomOrder());
+		Order expectedOrder = orderResource.postOrder(_randomOrder());
 
 		Order actualOrder = orderResource.getOrder(expectedOrder.getId());
 
@@ -222,6 +221,20 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		).build();
 	}
 
+	private Order _randomOrder() throws Exception {
+		Order order = randomOrder();
+
+		ShippingAddress shippingAddress = _randomShippingAddress();
+
+		OrderItem orderItem = _randomOrderItem(shippingAddress);
+
+		orderItem.setOrderId(order.getId());
+
+		order.setOrderItems(new OrderItem[] {orderItem});
+
+		return order;
+	}
+
 	private OrderItem _randomOrderItem(ShippingAddress shippingAddress)
 		throws Exception {
 
@@ -254,20 +267,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		}
 
 		return orderItem;
-	}
-
-	private Order _randomOrder() throws Exception {
-		Order order = randomOrder();
-
-		ShippingAddress shippingAddress = _randomShippingAddress();
-
-		OrderItem orderItem = _randomOrderItem(shippingAddress);
-
-		orderItem.setOrderId(order.getId());
-
-		order.setOrderItems(new OrderItem[] {orderItem});
-
-		return order;
 	}
 
 	private ShippingAddress _randomShippingAddress() throws Exception {
