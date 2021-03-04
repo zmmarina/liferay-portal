@@ -268,7 +268,7 @@ public class FragmentEntryProcessorHelperTest {
 		return _addJournalArticle(ddmStructure, fieldId, fileEntry);
 	}
 
-	private Document _createDocumentContent(
+	private Document _createDocument(
 		String availableLocales, String defaultLocale) {
 
 		Document document = SAXReaderUtil.createDocument();
@@ -323,7 +323,7 @@ public class FragmentEntryProcessorHelperTest {
 			sb.setIndex(sb.index() - 1);
 		}
 
-		Document document = _createDocumentContent(
+		Document document = _createDocument(
 			sb.toString(), defaultLocale);
 
 		Element rootElement = document.getRootElement();
