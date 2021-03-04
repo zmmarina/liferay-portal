@@ -63,7 +63,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 
 		_commerceAccount = CommerceTestUtil.addAccount(
 			testGroup.getGroupId(), _user.getUserId());
-
 		_commerceCurrency = CommerceCurrencyTestUtil.addCommerceCurrency(
 			_user.getCompanyId());
 
