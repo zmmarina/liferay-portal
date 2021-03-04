@@ -212,9 +212,8 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 	}
 
 	private OrderResource _getOrderResource(String... parameters) {
-		OrderResource.Builder builder = OrderResource.builder();
-
-		builder = builder.authentication(
+		OrderResource.Builder builder = OrderResource.builder(
+		).authentication(
 			"test@liferay.com", "test"
 		).locale(
 			LocaleUtil.getDefault()
