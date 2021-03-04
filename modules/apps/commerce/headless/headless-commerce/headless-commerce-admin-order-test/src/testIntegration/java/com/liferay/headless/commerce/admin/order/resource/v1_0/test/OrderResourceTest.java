@@ -263,7 +263,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 
 		if (shippingAddress != null) {
 			orderItem.setShippingAddress(shippingAddress);
-
 			orderItem.setShippingAddressId(shippingAddress.getId());
 		}
 
