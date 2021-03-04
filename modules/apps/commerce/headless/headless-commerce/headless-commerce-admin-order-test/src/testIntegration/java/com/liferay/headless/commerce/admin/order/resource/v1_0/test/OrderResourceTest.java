@@ -82,9 +82,29 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 	public void testGetOrder() throws Exception {
 		super.testGetOrder();
 
-		// Test nested fields retrieval
+		// Nested fields
 
-		_testGetOrderWithNestedEntities();
+		OrderResource orderResourceWithParameters =
+			_getOrderResourceWithParameters(
+				"nestedFields", "orderItems,orderItems.shippingAddress");
+
+		Order expectedOrder = orderResourceWithParameters.postOrder(
+			_randomOrderWithNestedFields());
+
+		Order actualOrder = orderResourceWithParameters.getOrder(
+			expectedOrder.getId());
+
+		assertEquals(expectedOrder, actualOrder);
+
+		OrderItem[] expectedOrderItems = expectedOrder.getOrderItems();
+
+		OrderItem[] actualOrderItems = actualOrder.getOrderItems();
+
+		Assert.assertEquals(
+			Arrays.toString(actualOrderItems), expectedOrderItems.length,
+			actualOrderItems.length);
+
+		Assert.assertNotNull(actualOrderItems[0].getShippingAddress());
 	}
 
 	@Override
@@ -293,30 +313,6 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 				zip = commerceAddress.getZip();
 			}
 		};
-	}
-
-	private void _testGetOrderWithNestedEntities() throws Exception {
-		OrderResource orderResourceWithParameters =
-			_getOrderResourceWithParameters(
-				"nestedFields", "orderItems,orderItems.shippingAddress");
-
-		Order expectedOrder = orderResourceWithParameters.postOrder(
-			_randomOrderWithNestedFields());
-
-		Order actualOrder = orderResourceWithParameters.getOrder(
-			expectedOrder.getId());
-
-		assertEquals(expectedOrder, actualOrder);
-
-		OrderItem[] expectedOrderItems = expectedOrder.getOrderItems();
-
-		OrderItem[] actualOrderItems = actualOrder.getOrderItems();
-
-		Assert.assertEquals(
-			Arrays.toString(actualOrderItems), expectedOrderItems.length,
-			actualOrderItems.length);
-
-		Assert.assertNotNull(actualOrderItems[0].getShippingAddress());
 	}
 
 	private CommerceAccount _commerceAccount;
