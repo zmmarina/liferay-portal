@@ -236,7 +236,7 @@ public class FragmentEntryProcessorHelperTest {
 			HashMapBuilder.put(
 				defaultLocale, defaultLocale.toString()
 			).build(),
-			_getStructuredContent(
+			_getJournalArticleStructuredContent(
 				fieldId,
 				Collections.singletonList(
 					HashMapBuilder.put(
@@ -309,7 +309,7 @@ public class FragmentEntryProcessorHelperTest {
 		return jsonObject.toString();
 	}
 
-	private String _getStructuredContent(
+	private String _getJournalArticleStructuredContent(
 		String name, List<Map<Locale, String>> contents, String defaultLocale) {
 
 		StringBundler sb = new StringBundler();
