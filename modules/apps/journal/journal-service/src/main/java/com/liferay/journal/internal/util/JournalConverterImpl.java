@@ -28,7 +28,7 @@ import com.liferay.dynamic.data.mapping.util.DDMFieldsCounter;
 import com.liferay.journal.article.dynamic.data.mapping.form.field.type.constants.JournalArticleDDMFormFieldTypeConstants;
 import com.liferay.journal.exception.ArticleContentException;
 import com.liferay.journal.model.JournalArticle;
-import com.liferay.journal.service.JournalArticleLocalServiceUtil;
+import com.liferay.journal.service.JournalArticleLocalService;
 import com.liferay.journal.util.JournalConverter;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.petra.string.StringPool;
@@ -702,7 +702,7 @@ public class JournalConverterImpl implements JournalConverter {
 				(jsonObject.get("titleMap") == null)) {
 
 				JournalArticle journalArticle =
-					JournalArticleLocalServiceUtil.fetchLatestArticle(
+					_journalArticleLocalService.fetchLatestArticle(
 						jsonObject.getLong("classPK"));
 
 				jsonObject.put(
@@ -757,5 +757,8 @@ public class JournalConverterImpl implements JournalConverter {
 
 	@Reference
 	private ClassNameLocalService _classNameLocalService;
+
+	@Reference
+	private JournalArticleLocalService _journalArticleLocalService;
 
 }
