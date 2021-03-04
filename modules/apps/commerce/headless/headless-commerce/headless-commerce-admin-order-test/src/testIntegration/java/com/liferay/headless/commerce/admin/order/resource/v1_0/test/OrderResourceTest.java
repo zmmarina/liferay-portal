@@ -235,7 +235,7 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		CPInstance cpInstance = CPTestUtil.addCPInstanceWithRandomSku(
 			testGroup.getGroupId());
 
-		OrderItem orderItem = new OrderItem() {
+		return new OrderItem() {
 			{
 				bookedQuantityId = RandomTestUtil.randomLong();
 				deliveryGroup = StringUtil.toLowerCase(
@@ -252,15 +252,25 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 				shippedQuantity = RandomTestUtil.randomInt();
 				skuId = cpInstance.getCPInstanceId();
 				subscription = RandomTestUtil.randomBoolean();
+
+				setShippingAddress(
+					() -> {
+						if (shippingAddress == null) {
+							return null;
+						}
+
+						return shippingAddress;
+					});
+				setShippingAddressId(
+					() -> {
+						if (shippingAddress == null) {
+							return null;
+						}
+
+						return shippingAddress.getId();
+					});
 			}
 		};
-
-		if (shippingAddress != null) {
-			orderItem.setShippingAddress(shippingAddress);
-			orderItem.setShippingAddressId(shippingAddress.getId());
-		}
-
-		return orderItem;
 	}
 
 	private ShippingAddress _randomShippingAddress() throws Exception {
