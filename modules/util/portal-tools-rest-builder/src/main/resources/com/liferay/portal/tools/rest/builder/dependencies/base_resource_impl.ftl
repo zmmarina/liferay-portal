@@ -436,36 +436,20 @@ public abstract class Base${schemaName}ResourceImpl
 			throw new UnsupportedOperationException("This method needs to be implemented");
 		}
 
-		protected Page<com.liferay.portal.vulcan.permission.Permission>
-			toPermissionPage(
-				long id, String resourceName, String roleNames)
-			throws Exception {
-
-			List<ResourceAction> resourceActions =
-				resourceActionLocalService.getResourceActions(resourceName);
+		protected Page<com.liferay.portal.vulcan.permission.Permission> toPermissionPage(long id, String resourceName, String roleNames) throws Exception {
+			List<ResourceAction> resourceActions = resourceActionLocalService.getResourceActions(resourceName);
 
 			if (Validator.isNotNull(roleNames)) {
 				return Page.of(
 					transform(
-						PermissionUtil.getRoles(
-							contextCompany, roleLocalService,
-							StringUtil.split(roleNames)),
-						role -> PermissionUtil.toPermission(
-							contextCompany.getCompanyId(), id,
-							resourceActions,
-							resourceName, resourcePermissionLocalService, role)));
+						PermissionUtil.getRoles(contextCompany, roleLocalService, StringUtil.split(roleNames)),
+						role -> PermissionUtil.toPermission(contextCompany.getCompanyId(), id, resourceActions, resourceName, resourcePermissionLocalService, role)));
 			}
 
 			return Page.of(
 				transform(
-					resourcePermissionLocalService.getResourcePermissions(
-						contextCompany.getCompanyId(), resourceName,
-						ResourceConstants.SCOPE_INDIVIDUAL, String.valueOf(id)),
-					resourcePermission ->
-						PermissionUtil.toPermission(
-							resourceActions,
-							resourcePermission,
-							roleLocalService.getRole(resourcePermission.getRoleId()))));
+					resourcePermissionLocalService.getResourcePermissions(contextCompany.getCompanyId(), resourceName, ResourceConstants.SCOPE_INDIVIDUAL, String.valueOf(id)),
+					resourcePermission -> PermissionUtil.toPermission(resourceActions, resourcePermission, roleLocalService.getRole(resourcePermission.getRoleId()))));
 		}
 	</#if>
 
