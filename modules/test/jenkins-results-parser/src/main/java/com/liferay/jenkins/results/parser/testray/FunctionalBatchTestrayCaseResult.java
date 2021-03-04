@@ -129,7 +129,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 			return super.getTeamName();
 		}
 
-		String component = getComponentName();
+		String componentName = getComponentName();
 
 		for (String testrayTeamName : testrayTeamNames.split(",")) {
 			String testrayTeamComponentNames =
@@ -146,7 +146,7 @@ public class FunctionalBatchTestrayCaseResult extends BatchTestrayCaseResult {
 			for (String testrayTeamComponentName :
 					testrayTeamComponentNames.split(",")) {
 
-				if (testrayTeamComponentName.equals(component)) {
+				if (testrayTeamComponentName.equals(componentName)) {
 					testrayTeamName = testrayTeamName.replace("-", " ");
 
 					return WordUtils.capitalize(testrayTeamName);
