@@ -84,15 +84,13 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 
 		// Nested fields
 
-		OrderResource orderResource =
-			_getOrderResource(
-				"nestedFields", "orderItems,orderItems.shippingAddress");
+		OrderResource orderResource = _getOrderResource(
+			"nestedFields", "orderItems,orderItems.shippingAddress");
 
 		Order expectedOrder = orderResource.postOrder(
 			_randomOrderWithNestedFields());
 
-		Order actualOrder = orderResource.getOrder(
-			expectedOrder.getId());
+		Order actualOrder = orderResource.getOrder(expectedOrder.getId());
 
 		assertEquals(expectedOrder, actualOrder);
 
@@ -213,9 +211,7 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 		return orderResource.postOrder(order);
 	}
 
-	private OrderResource _getOrderResource(
-		String... parameters) {
-
+	private OrderResource _getOrderResource(String... parameters) {
 		OrderResource.Builder builder = OrderResource.builder();
 
 		builder = builder.authentication(
