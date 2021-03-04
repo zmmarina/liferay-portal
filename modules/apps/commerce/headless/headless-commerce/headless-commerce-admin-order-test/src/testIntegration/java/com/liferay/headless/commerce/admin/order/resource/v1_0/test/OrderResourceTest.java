@@ -212,26 +212,14 @@ public class OrderResourceTest extends BaseOrderResourceTestCase {
 	}
 
 	private OrderResource _getOrderResource(String... parameters) {
-		OrderResource.Builder builder = OrderResource.builder(
+		return OrderResource.builder(
 		).authentication(
 			"test@liferay.com", "test"
 		).locale(
 			LocaleUtil.getDefault()
-		);
-
-		if ((parameters.length % 2) != 0) {
-			throw new IllegalArgumentException(
-				"Parameters length is not an even number");
-		}
-
-		for (int i = 0; i < parameters.length; i += 2) {
-			String parameterName = String.valueOf(parameters[i]);
-			String parameterValue = String.valueOf(parameters[i + 1]);
-
-			builder = builder.parameter(parameterName, parameterValue);
-		}
-
-		return builder.build();
+		).parameters(
+			parameters
+		).build();
 	}
 
 	private OrderItem _randomOrderItem(ShippingAddress shippingAddress)
