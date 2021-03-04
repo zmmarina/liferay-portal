@@ -208,18 +208,16 @@ public class FragmentEntryProcessorHelperTest {
 		String dynamicContent = _getJsonFileAsString("dynamic_content.json");
 
 		dynamicContent = StringUtil.replace(
-			dynamicContent, "FILE_ENTRY_ID",
-			String.valueOf(fileEntry.getFileEntryId()));
-
-		dynamicContent = StringUtil.replace(
-			dynamicContent, "GROUP_ID", String.valueOf(fileEntry.getGroupId()));
-
-		dynamicContent = StringUtil.replace(
-			dynamicContent, "RESOURCE_PRIM_KEY",
-			String.valueOf(fileEntry.getPrimaryKey()));
-
-		dynamicContent = StringUtil.replace(
-			dynamicContent, "UUID", String.valueOf(fileEntry.getUuid()));
+			dynamicContent,
+			new String[] {
+				"FILE_ENTRY_ID", "GROUP_ID", "RESOURCE_PRIM_KEY", "UUID"
+			},
+			new String[] {
+				String.valueOf(fileEntry.getFileEntryId()),
+				String.valueOf(fileEntry.getGroupId()),
+				String.valueOf(fileEntry.getPrimaryKey()),
+				String.valueOf(fileEntry.getUuid())
+			});
 
 		DDMTemplate ddmTemplate = DDMTemplateTestUtil.addTemplate(
 			_group.getGroupId(), ddmStructure.getStructureId(),
