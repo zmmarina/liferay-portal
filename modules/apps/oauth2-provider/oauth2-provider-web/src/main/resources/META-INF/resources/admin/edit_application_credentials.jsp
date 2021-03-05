@@ -266,6 +266,7 @@ String clientSecret = (oAuth2Application == null) ? "" : oAuth2Application.getCl
 
 	<portlet:namespace />isClientCredentialsSectionRequired = function () {
 		var selectedClientProfile = <portlet:namespace />getSelectedClientProfile();
+
 		return (
 			A.all(
 				'#<portlet:namespace />allowedGrantTypes .client-profile-' +
@@ -277,6 +278,7 @@ String clientSecret = (oAuth2Application == null) ? "" : oAuth2Application.getCl
 
 	<portlet:namespace />isConfidentialClientRequired = function () {
 		var selectedClientProfile = <portlet:namespace />getSelectedClientProfile();
+
 		return (
 			A.all(
 				'#<portlet:namespace />allowedGrantTypes .client-profile-' +
@@ -288,6 +290,7 @@ String clientSecret = (oAuth2Application == null) ? "" : oAuth2Application.getCl
 
 	<portlet:namespace />isRedirectURIRequired = function () {
 		var selectedClientProfile = <portlet:namespace />getSelectedClientProfile();
+
 		return (
 			A.all(
 				'#<portlet:namespace />allowedGrantTypes .client-profile-' +
@@ -299,6 +302,7 @@ String clientSecret = (oAuth2Application == null) ? "" : oAuth2Application.getCl
 
 	<portlet:namespace />isTrustedApplicationSectionRequired = function () {
 		var selectedClientProfile = <portlet:namespace />getSelectedClientProfile();
+
 		return (
 			A.all(
 				'#<portlet:namespace />allowedGrantTypes .client-profile-' +
