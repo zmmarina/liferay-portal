@@ -152,14 +152,14 @@ public class StructuredContentResourceImpl
 		JournalArticle journalArticle = _journalArticleService.getArticle(
 			structuredContentId);
 
-		List<JournalArticle> articleVersions =
+		List<JournalArticle> journalArticles =
 			_journalArticleService.getArticlesByArticleId(
 				journalArticle.getGroupId(), journalArticle.getArticleId(),
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 
-		for (JournalArticle articleVersion : articleVersions) {
+		for (JournalArticle curJournalArticle : journalArticles) {
 			structuredContents.add(
-				_toExtensionStructuredContent(articleVersion));
+				_toExtensionStructuredContent(curJournalArticle));
 		}
 
 		return Page.of(structuredContents);
