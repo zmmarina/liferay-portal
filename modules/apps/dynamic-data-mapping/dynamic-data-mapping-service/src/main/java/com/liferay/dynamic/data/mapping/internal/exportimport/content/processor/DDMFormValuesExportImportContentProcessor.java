@@ -755,9 +755,10 @@ public class DDMFormValuesExportImportContentProcessor
 		private String _getLayoutBreadcrumb(Layout layout, Locale locale)
 			throws PortalException {
 
-			List<Layout> ancestors = layout.getAncestors();
+			List<Layout> ancestorLayouts = layout.getAncestors();
 
-			StringBundler sb = new StringBundler((4 * ancestors.size()) + 5);
+			StringBundler sb = new StringBundler(
+				(4 * ancestorLayouts.size()) + 5);
 
 			if (layout.isPrivateLayout()) {
 				sb.append(LanguageUtil.get(locale, "private-pages"));
@@ -770,10 +771,10 @@ public class DDMFormValuesExportImportContentProcessor
 			sb.append(StringPool.GREATER_THAN);
 			sb.append(StringPool.SPACE);
 
-			Collections.reverse(ancestors);
+			Collections.reverse(ancestorLayouts);
 
-			for (Layout ancestor : ancestors) {
-				sb.append(HtmlUtil.escape(ancestor.getName(locale)));
+			for (Layout ancestorLayout : ancestorLayouts) {
+				sb.append(HtmlUtil.escape(ancestorLayout.getName(locale)));
 				sb.append(StringPool.SPACE);
 				sb.append(StringPool.GREATER_THAN);
 				sb.append(StringPool.SPACE);

@@ -204,15 +204,15 @@ public class LayoutStagedModelDataHandler
 	@Override
 	public String getDisplayName(Layout layout) {
 		try {
-			List<Layout> ancestorFolders = layout.getAncestors();
+			List<Layout> ancestorLayouts = layout.getAncestors();
 
 			StringBundler sb = new StringBundler(
-				(4 * ancestorFolders.size()) + 1);
+				(4 * ancestorLayouts.size()) + 1);
 
-			Collections.reverse(ancestorFolders);
+			Collections.reverse(ancestorLayouts);
 
-			for (Layout ancestorFolder : ancestorFolders) {
-				sb.append(ancestorFolder.getNameCurrentValue());
+			for (Layout ancestorLayout : ancestorLayouts) {
+				sb.append(ancestorLayout.getNameCurrentValue());
 				sb.append(StringPool.SPACE);
 				sb.append(StringPool.GREATER_THAN);
 				sb.append(StringPool.SPACE);
