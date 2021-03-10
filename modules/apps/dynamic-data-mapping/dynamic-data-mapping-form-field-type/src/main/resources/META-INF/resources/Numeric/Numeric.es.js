@@ -69,8 +69,12 @@ const getValue = (dataType, symbols, value = '') => {
 
 	newValue = newValue.replace('$[DECIMAL_SYMBOL]', decimalSymbol);
 
-	if (dataType === 'integer' && newValue && !isNaN(Number(newValue))) {
-		newValue = String(Math.round(newValue.replace(decimalSymbol, '.')));
+	if (dataType === 'integer' && newValue) {
+		newValue = newValue.replace(decimalSymbol, '.');
+
+		if (!isNaN(Number(newValue))) {
+			newValue = String(Math.round(newValue.replace(decimalSymbol, '.')));
+		}
 	}
 
 	return newValue;
