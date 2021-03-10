@@ -1288,7 +1288,7 @@ definition {
 	@description = "Create more than one Table View and choose between the two when deploying an App"
 	@priority = "5"
 	test DeployAppChoosingBetweenDifferentTableViews {
-		property portal.acceptance = "true";
+		property portal.acceptance = "quarantine";
 
 		AppBuilderAdmin.addCustomObject(
 			customObjectName = "Custom Object Title",
