@@ -21,6 +21,8 @@ import com.liferay.portal.kernel.util.ArrayUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.util.Collections;
+
 /**
  * @author Arthur Chan
  */
@@ -34,6 +36,8 @@ public class MessageDigestCryptoHashProvider implements CryptoHashProvider {
 	public CryptoHashProviderResponse generate(byte[] salt, byte[] input) {
 		return new CryptoHashProviderResponse(
 			_CRYPTO_HASH_PROVIDER_NAME,
+			Collections.singletonMap(
+				"algorithm", _messageDigest.getAlgorithm()),
 			_messageDigest.digest(ArrayUtil.append(salt, input)));
 	}
 
