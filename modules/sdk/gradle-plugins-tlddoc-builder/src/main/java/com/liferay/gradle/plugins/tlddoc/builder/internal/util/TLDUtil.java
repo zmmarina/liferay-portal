@@ -303,7 +303,9 @@ public class TLDUtil {
 						gradleUserHome, "/../definitionFiles");
 
 					if (definitionFilesDir.exists()) {
-						for (File definitionFile : definitionFilesDir.listFiles()) {
+						for (File definitionFile :
+								definitionFilesDir.listFiles()) {
+
 							String definitionFileName =
 								definitionFile.getName();
 
