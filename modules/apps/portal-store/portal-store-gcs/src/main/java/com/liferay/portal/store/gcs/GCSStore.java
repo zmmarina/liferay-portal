@@ -66,6 +66,7 @@ import org.threeten.bp.Duration;
 /**
  * @author Shanon Mathai
  * @author Alicia García
+ * @author Adolfo Pérez
  */
 @Component(
 	configurationPid = "com.liferay.portal.store.gcs.configuration.GCSStoreConfiguration",
