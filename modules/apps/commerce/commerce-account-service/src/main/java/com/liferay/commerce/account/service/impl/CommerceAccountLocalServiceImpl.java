@@ -412,16 +412,6 @@ public class CommerceAccountLocalServiceImpl
 			String keywords, Boolean active, int start, int end)
 		throws PortalException {
 
-		accountEntryLocalService.dslQuery(
-			_getGroupByStep(
-				DSLQueryFactoryUtil.selectDistinct(AccountEntryTable.INSTANCE),
-				userId, parentCommerceAccountId, keywords,
-				CommerceAccountImpl.toAccountEntryTypes(commerceSiteType),
-				CommerceAccountImpl.toAccountEntryStatus(active)
-			).limit(
-				start, end
-			));
-
 		return TransformUtil.transform(
 			accountEntryLocalService.dslQuery(
 				_getGroupByStep(
