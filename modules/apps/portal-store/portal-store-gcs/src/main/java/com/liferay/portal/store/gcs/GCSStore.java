@@ -98,8 +98,7 @@ public class GCSStore implements Store {
 				inputStream, Channels.newOutputStream(writeChannel));
 		}
 		catch (IOException ioException) {
-			throw new PortalException(
-				"Unable to write out to buffer", ioException);
+			throw new PortalException("Unable to add file", ioException);
 		}
 	}
 
