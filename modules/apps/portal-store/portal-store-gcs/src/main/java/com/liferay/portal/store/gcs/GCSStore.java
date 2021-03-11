@@ -187,7 +187,7 @@ public class GCSStore implements Store {
 			BlobId.of(_gcsStoreConfiguration.bucketName(), pathName));
 
 		if (blob == null) {
-			throw new PortalException("No such file store entry: " + pathName);
+			throw new PortalException("No file exists for " + pathName);
 		}
 
 		return blob.getSize();
