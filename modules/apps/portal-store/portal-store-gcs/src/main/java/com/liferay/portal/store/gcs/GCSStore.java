@@ -293,25 +293,22 @@ public class GCSStore implements Store {
 
 		String path = _getFileKey(companyId, repositoryId, fileName);
 
-		String[] names = getFileNames(companyId, repositoryId, path);
+		String[] fileNames = getFileNames(companyId, repositoryId, path);
 
-		if ((names == null) || (names.length == 0)) {
+		if ((fileNames == null) || (fileNames.length == 0)) {
 			if (_log.isDebugEnabled()) {
-				_log.debug(
-					StringBundler.concat(
-						"Unable to determine available versions for: ", path,
-						" using default version: ", VERSION_DEFAULT));
+				_log.debug("Using default version for " + path);
 			}
 
 			return _getFileVersionKey(
 				companyId, repositoryId, fileName, VERSION_DEFAULT);
 		}
 
-		List<String> fileNames = Arrays.asList(names);
+		List<String> fileNamesList = Arrays.asList(fileNames);
 
-		fileNames.sort(new VersionNumberComparator());
+		fileNamesList.sort(new VersionNumberComparator());
 
-		return fileNames.get(fileNames.size() - 1);
+		return fileNamesList.get(fileNamesList.size() - 1);
 	}
 
 	private String _getNormalizedFileName(String fileName) {
