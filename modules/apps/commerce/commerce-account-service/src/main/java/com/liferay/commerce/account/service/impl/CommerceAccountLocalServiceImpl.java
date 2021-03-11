@@ -55,6 +55,7 @@ import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.ArrayUtil;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LinkedHashMapBuilder;
 import com.liferay.portal.kernel.util.Portal;
 import com.liferay.portal.kernel.util.Validator;
@@ -462,15 +463,14 @@ public class CommerceAccountLocalServiceImpl
 			String keywords, Boolean active)
 		throws PortalException {
 
-		Long value = accountEntryLocalService.dslQuery(
-			_getGroupByStep(
-				DSLQueryFactoryUtil.countDistinct(
-					AccountEntryTable.INSTANCE.accountEntryId),
-				userId, parentCommerceAccountId, keywords,
-				CommerceAccountImpl.toAccountEntryTypes(commerceSiteType),
-				CommerceAccountImpl.toAccountEntryStatus(active)));
-
-		return value.intValue();
+		return GetterUtil.getInteger(
+			accountEntryLocalService.dslQuery(
+				_getGroupByStep(
+					DSLQueryFactoryUtil.countDistinct(
+						AccountEntryTable.INSTANCE.accountEntryId),
+					userId, parentCommerceAccountId, keywords,
+					CommerceAccountImpl.toAccountEntryTypes(commerceSiteType),
+					CommerceAccountImpl.toAccountEntryStatus(active))));
 	}
 
 	@Override
