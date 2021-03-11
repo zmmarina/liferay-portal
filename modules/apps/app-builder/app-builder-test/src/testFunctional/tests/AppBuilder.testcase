@@ -4601,6 +4601,7 @@ definition {
 		var maritalStatus = "Marital Status";
 		var nameFormView1 = "Name Form View 1";
 		var nameFormView2 = "Name Form View 2";
+		var onlyForThisForm = "Label for Only This Form";
 		var since = "Since";
 		var sincePredefinedDateFormView1 = "01/01/2001";
 		var sincePredefinedDateFormView2 = "02/02/2002";
@@ -4704,6 +4705,10 @@ definition {
 		FormViewBuilder.addFieldByDoubleClickFromObjectSidebar(fieldLabel = "${teams}");
 
 		FormViewBuilder.clickFieldLabel(fieldLabel = "${nameFormView1}");
+
+		FormViewBuilder.clickFieldLabelActionMenu();
+
+		FormViewBuilder.clickFieldLabelScope(fieldLabelScope = "${onlyForThisForm}");
 
 		FormViewBuilder.setFieldLabelWithNoAssertion(fieldLabel = "${nameFormView2}");
 

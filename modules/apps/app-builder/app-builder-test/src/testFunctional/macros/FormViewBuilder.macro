@@ -193,10 +193,20 @@ definition {
 			value1 = "${fieldLabel}");
 	}
 
+	macro clickFieldLabelActionMenu {
+		Click.javaScriptClick(locator1 = "FormViewBuilder#FIELD_LABEL_ACTION_MENU");
+	}
+
 	macro clickFieldLabelFromFieldset {
 		Click(
 			locator1 = "FormViewBuilder#FIELD_FROM_FIELDSET",
 			value1 = "${key_fieldLabel}");
+	}
+
+	macro clickFieldLabelScope {
+		var key_fieldLabelScope = "${fieldLabelScope}";
+
+		Click(locator1 = "FormViewBuilder#FIELD_LABEL_SET_SCOPE");
 	}
 
 	macro clickInline {
