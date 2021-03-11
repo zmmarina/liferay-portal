@@ -49,14 +49,14 @@ public class TLDUtil {
 			return;
 		}
 
-		Map<String, File> definitions = _getDefinitions(tldFile);
+		Map<String, File> definitionFiles = _getDefinitionFiles(tldFile);
 		Document document = _getDocument(tldFile);
 
-		_scanDTD(document, definitions, dtdConsumer);
-		_scanXSD(document, definitions, xsdConsumer);
+		_scanDTD(document, definitionFiles, dtdConsumer);
+		_scanXSD(document, definitionFiles, xsdConsumer);
 	}
 
-	private static Map<String, File> _getDefinitions(File tldFile) {
+	private static Map<String, File> _getDefinitionFiles(File tldFile) {
 		if (!_portalDefinitions.isEmpty()) {
 			return _portalDefinitions;
 		}
@@ -67,21 +67,21 @@ public class TLDUtil {
 			return Collections.emptyMap();
 		}
 
-		File definitionsDir = new File(tldDir, "definitions");
+		File definitionFilesDir = new File(tldDir, "definitionFiles");
 
-		if (!definitionsDir.exists()) {
+		if (!definitionFilesDir.exists()) {
 			return Collections.emptyMap();
 		}
 
-		Map<String, File> definitions = new HashMap<>();
+		Map<String, File> definitionFiles = new HashMap<>();
 
-		for (File definitionFile : definitionsDir.listFiles()) {
+		for (File definitionFile : definitionFilesDir.listFiles()) {
 			String definitionFileName = definitionFile.getName();
 
-			definitions.put(definitionFileName, definitionFile);
+			definitionFiles.put(definitionFileName, definitionFile);
 		}
 
-		return definitions;
+		return definitionFiles;
 	}
 
 	private static Document _getDocument(File file) throws Exception {
@@ -109,7 +109,7 @@ public class TLDUtil {
 	}
 
 	private static void _scanDTD(
-		Document document, Map<String, File> definitions,
+		Document document, Map<String, File> definitionFiles,
 		BiConsumer<String, File> dtdConsumer) {
 
 		DocumentType documentType = document.getDoctype();
@@ -132,7 +132,7 @@ public class TLDUtil {
 
 		String definitionFileName = _getFileName(systemId);
 
-		File dtdFile = definitions.get(definitionFileName);
+		File dtdFile = definitionFiles.get(definitionFileName);
 
 		if (dtdFile == null) {
 			return;
@@ -142,7 +142,7 @@ public class TLDUtil {
 	}
 
 	private static Map<String, File> _scanNestedXSD(
-			File xsdFile, Map<String, File> definitions)
+			File xsdFile, Map<String, File> definitionFiles)
 		throws Exception {
 
 		Map<String, File> nestedXSDs = new HashMap<>();
@@ -184,7 +184,7 @@ public class TLDUtil {
 					continue;
 				}
 
-				File curDefinitionFile = definitions.get(
+				File curDefinitionFile = definitionFiles.get(
 					_getFileName(schemaLocation));
 
 				if (curDefinitionFile == null) {
@@ -217,7 +217,7 @@ public class TLDUtil {
 					continue;
 				}
 
-				File curDefinitionFile = definitions.get(
+				File curDefinitionFile = definitionFiles.get(
 					_getFileName(schemaLocation));
 
 				if (curDefinitionFile == null) {
@@ -232,7 +232,7 @@ public class TLDUtil {
 	}
 
 	private static void _scanXSD(
-			Document document, Map<String, File> definitions,
+			Document document, Map<String, File> definitionFiles,
 			BiConsumer<String, File> xsdConsumer)
 		throws Exception {
 
@@ -262,7 +262,7 @@ public class TLDUtil {
 		for (int i = 0; i < values.length; i += 2) {
 			String definitionFileName = _getFileName(values[i + 1]);
 
-			File xsdFile = definitions.get(definitionFileName);
+			File xsdFile = definitionFiles.get(definitionFileName);
 
 			if (xsdFile == null) {
 				return;
@@ -274,7 +274,7 @@ public class TLDUtil {
 				xsdFile,
 				keyXSDFile -> {
 					try {
-						return _scanNestedXSD(keyXSDFile, definitions);
+						return _scanNestedXSD(keyXSDFile, definitionFiles);
 					}
 					catch (Exception exception) {
 						throw new RuntimeException(exception);
@@ -299,11 +299,11 @@ public class TLDUtil {
 				String gradleUserHome = System.getProperty("gradle.user.home");
 
 				if (gradleUserHome != null) {
-					File definitionsDir = new File(
-						gradleUserHome, "/../definitions");
+					File definitionFilesDir = new File(
+						gradleUserHome, "/../definitionFiles");
 
-					if (definitionsDir.exists()) {
-						for (File definitionFile : definitionsDir.listFiles()) {
+					if (definitionFilesDir.exists()) {
+						for (File definitionFile : definitionFilesDir.listFiles()) {
 							String definitionFileName =
 								definitionFile.getName();
 
