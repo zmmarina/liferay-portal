@@ -12,10 +12,11 @@
  * details.
  */
 
-import {act, cleanup, fireEvent, render} from '@testing-library/react';
+import {cleanup, fireEvent, render} from '@testing-library/react';
 import React, {createContext} from 'react';
 
 import RequiredField from '../../../../src/main/resources/META-INF/resources/js/components/form-renderer-custom-fields/RequiredField.es';
+import * as utils from '../../../../src/main/resources/META-INF/resources/js/components/form-renderer-custom-fields/shared/utils.es';
 import {FORM_VIEW} from '../../constants.es';
 
 const DEFAULT_STATE = {
@@ -35,46 +36,34 @@ const DATA_DEFINITION_FIELD = (label) => ({
 
 const STRUCTURE_LEVEL_STATE = {
 	...DEFAULT_STATE,
-	dataDefinition: {
-		dataDefinitionFields: [
-			{
-				...DATA_DEFINITION_FIELD('Name'),
-				required: true,
-			},
-			{
-				...DATA_DEFINITION_FIELD('Email'),
-				required: true,
-			},
-		],
+	dataDefinitionField: {
+		...DATA_DEFINITION_FIELD('Name'),
+		required: true,
 	},
-	dataLayout: {
-		dataLayoutFields: {},
+	dataDefinitionFields: [
+		{
+			...DATA_DEFINITION_FIELD('Name'),
+			required: true,
+		},
+		{
+			...DATA_DEFINITION_FIELD('Email'),
+			required: true,
+		},
+	],
+	dataLayoutFields: {
+		RequiredName: {required: false},
 	},
 };
 
 const VIEW_LEVEL_STATE = {
-	...DEFAULT_STATE,
-	dataDefinition: {
-		dataDefinitionFields: [
-			{
-				...DATA_DEFINITION_FIELD('Name'),
-				required: false,
-			},
-			{
-				...DATA_DEFINITION_FIELD('Email'),
-				required: false,
-			},
-		],
+	...STRUCTURE_LEVEL_STATE,
+	dataDefinitionField: {
+		...DATA_DEFINITION_FIELD('Name'),
+		required: false,
 	},
-	dataLayout: {
-		dataLayoutFields: {
-			RequiredEmail: {
-				required: false,
-			},
-			RequiredName: {
-				required: false,
-			},
-		},
+	dataLayoutField: {
+		...DATA_DEFINITION_FIELD('Name'),
+		required: false,
 	},
 };
 
@@ -83,29 +72,23 @@ const AppContext = createContext();
 const RequiredFieldWrapper = ({
 	state = STRUCTURE_LEVEL_STATE,
 	dataLayoutBuilder = FORM_VIEW.getDataLayoutBuilderProps(),
+	dispatch = jest.fn(),
 }) => (
 	<AppContext.Provider value={[state, jest.fn()]}>
 		<RequiredField
-			AppContext={AppContext}
 			dataLayoutBuilder={dataLayoutBuilder}
+			dispatch={dispatch}
+			state={state}
 		/>
 	</AppContext.Provider>
 );
 
 describe('RequiredField', () => {
-	beforeEach(() => {
-		jest.useFakeTimers();
-	});
-
 	afterEach(() => {
 		cleanup();
-
-		jest.clearAllTimers();
-		jest.restoreAllMocks();
-	});
-
-	afterAll(() => {
-		jest.useRealTimers();
+		jest.spyOn(utils, 'containsFieldInsideFormBuilder').mockImplementation(
+			() => true
+		);
 	});
 
 	it('renders with structure-level', () => {
@@ -171,18 +154,15 @@ describe('RequiredField', () => {
 
 		// View level option
 
-		expect(options[1].checked).toBeTruthy();
+		expect(options[0].checked).toBeTruthy();
 	});
 
 	it('renders the popover with view level option selected', async () => {
 		const VIEW_LEVEL_STATE_CUSTUM = {
 			...VIEW_LEVEL_STATE,
-			dataLayout: {
-				dataLayoutFields: {
-					RequiredName: {
-						required: true,
-					},
-				},
+			dataLayoutField: {
+				...DATA_DEFINITION_FIELD('Name'),
+				required: true,
 			},
 		};
 
@@ -208,14 +188,32 @@ describe('RequiredField', () => {
 
 		// View level option
 
-		expect(options[0].checked).toBeTruthy();
+		expect(options[1].checked).toBeTruthy();
 	});
 
-	it('change ToggleSwitch to false', () => {
+	it('change level field', async () => {
+		const dispatch = jest.fn();
+
+		const {container} = render(
+			<RequiredFieldWrapper dispatch={dispatch} state={VIEW_LEVEL_STATE} />
+		);
+		
+		const options = container.querySelectorAll(
+			'.form-renderer-required-field input.custom-control-input'
+		);
+
+		fireEvent.click(options[0]);
+
+		expect(dispatch).toBeCalled();
+	});
+
+	it('change ToggleSwitch to false', async () => {
 		const dataLayoutBuilder = FORM_VIEW.getDataLayoutBuilderProps();
 
 		const {container} = render(
-			<RequiredFieldWrapper dataLayoutBuilder={dataLayoutBuilder} />
+			<RequiredFieldWrapper
+				dataLayoutBuilder={dataLayoutBuilder}
+			/>
 		);
 
 		const toggleSwitch = container.querySelector('.toggle-switch-check');
@@ -241,10 +239,6 @@ describe('RequiredField', () => {
 		const toggleSwitch = container.querySelector('.toggle-switch-check');
 
 		fireEvent.click(toggleSwitch);
-
-		await act(async () => {
-			jest.runAllTimers();
-		});
 
 		expect(dataLayoutBuilder.dispatch).toHaveBeenCalledWith('fieldEdited', {
 			propertyName: 'required',

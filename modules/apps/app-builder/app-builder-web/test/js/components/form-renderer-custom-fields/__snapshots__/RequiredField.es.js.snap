@@ -3,10 +3,10 @@
 exports[`RequiredField renders with structure-level 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex form-renderer-required-field justify-content-between"
+    class="form-renderer-required-field d-flex justify-content-between"
   >
     <div
-      class="form-group form-renderer-required-field__toggle"
+      class="form-group form-renderer-required-field__input"
     >
       <label
         class="toggle-switch simple-toggle-switch"
@@ -37,7 +37,7 @@ exports[`RequiredField renders with structure-level 1`] = `
       </label>
     </div>
     <button
-      class="btn btn-monospaced btn-outline-borderless btn-sm btn-outline-secondary"
+      class="form-renderer-required-field__button btn btn-monospaced btn-outline-borderless btn-sm btn-outline-secondary"
       title="required-options"
       type="button"
     >
@@ -79,10 +79,11 @@ exports[`RequiredField renders with structure-level 1`] = `
               >
                 <label>
                   <input
+                    checked=""
                     class="custom-control-input"
                     role="radio"
                     type="radio"
-                    value="form-view-level"
+                    value="structure-level"
                   />
                   <span
                     class="custom-control-label"
@@ -90,7 +91,7 @@ exports[`RequiredField renders with structure-level 1`] = `
                     <span
                       class="custom-control-label-text"
                     >
-                      only-for-this-form
+                      for-all-forms-using-this-field
                     </span>
                   </span>
                 </label>
@@ -100,11 +101,10 @@ exports[`RequiredField renders with structure-level 1`] = `
               >
                 <label>
                   <input
-                    checked=""
                     class="custom-control-input"
                     role="radio"
                     type="radio"
-                    value="object-view-level"
+                    value="view-level"
                   />
                   <span
                     class="custom-control-label"
@@ -112,7 +112,7 @@ exports[`RequiredField renders with structure-level 1`] = `
                     <span
                       class="custom-control-label-text"
                     >
-                      for-all-forms-using-this-field
+                      only-for-this-form
                     </span>
                   </span>
                 </label>
@@ -129,10 +129,10 @@ exports[`RequiredField renders with structure-level 1`] = `
 exports[`RequiredField renders with view-level 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex form-renderer-required-field justify-content-between"
+    class="form-renderer-required-field d-flex justify-content-between"
   >
     <div
-      class="form-group form-renderer-required-field__toggle"
+      class="form-group form-renderer-required-field__input"
     >
       <label
         class="toggle-switch simple-toggle-switch"
@@ -162,7 +162,7 @@ exports[`RequiredField renders with view-level 1`] = `
       </label>
     </div>
     <button
-      class="btn btn-monospaced btn-outline-borderless btn-sm btn-outline-secondary"
+      class="form-renderer-required-field__button btn btn-monospaced btn-outline-borderless btn-sm btn-outline-secondary"
       disabled=""
       title="required-options"
       type="button"
@@ -205,11 +205,10 @@ exports[`RequiredField renders with view-level 1`] = `
               >
                 <label>
                   <input
-                    checked=""
                     class="custom-control-input"
                     role="radio"
                     type="radio"
-                    value="form-view-level"
+                    value="structure-level"
                   />
                   <span
                     class="custom-control-label"
@@ -217,7 +216,7 @@ exports[`RequiredField renders with view-level 1`] = `
                     <span
                       class="custom-control-label-text"
                     >
-                      only-for-this-form
+                      for-all-forms-using-this-field
                     </span>
                   </span>
                 </label>
@@ -227,10 +226,11 @@ exports[`RequiredField renders with view-level 1`] = `
               >
                 <label>
                   <input
+                    checked=""
                     class="custom-control-input"
                     role="radio"
                     type="radio"
-                    value="object-view-level"
+                    value="view-level"
                   />
                   <span
                     class="custom-control-label"
@@ -238,7 +238,7 @@ exports[`RequiredField renders with view-level 1`] = `
                     <span
                       class="custom-control-label-text"
                     >
-                      for-all-forms-using-this-field
+                      only-for-this-form
                     </span>
                   </span>
                 </label>
