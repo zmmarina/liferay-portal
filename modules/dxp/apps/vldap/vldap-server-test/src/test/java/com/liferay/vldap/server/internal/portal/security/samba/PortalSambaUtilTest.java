@@ -59,8 +59,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttribute() throws Exception {
-		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
+		_setUpExpandoBridge();
 
 		Method checkAttributeMethod = _clazz.getDeclaredMethod(
 			"_checkAttribute", String.class);
@@ -89,8 +89,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttributes() throws Exception {
-		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
+		_setUpExpandoBridge();
 
 		PortalSambaUtil.checkAttributes();
 
@@ -126,8 +126,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttributeWithExistingAttribute() throws Exception {
-		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
+		_setUpExpandoBridge();
 
 		when(
 			_expandoBridge.hasAttribute("sambaLMPassword")
