@@ -68,7 +68,6 @@ public class SegmentDTOConverter
 
 						return null;
 					});
-
 				setCriteriaValue(
 					() -> {
 						String criteria = segmentsEntry.getCriteria();
@@ -88,7 +87,6 @@ public class SegmentDTOConverter
 
 						return null;
 					});
-
 				setSource(
 					() -> {
 						if (StringUtil.equals(
