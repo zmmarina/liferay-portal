@@ -150,7 +150,9 @@ public class IndexerScoreDistortionTest {
 		Map<String, String> map = HashMapBuilder.put(
 			Field.ENTRY_CLASS_NAME,
 			getClassNamesAsString(
-				// ORDER IS IMPORTANT - Scores higher to lower
+
+				// Order is important (scores higher to lower)
+
 				BlogsEntry.class, WikiPage.class, MBMessage.class,
 				JournalArticle.class, DLFileEntry.class)
 		).put(
