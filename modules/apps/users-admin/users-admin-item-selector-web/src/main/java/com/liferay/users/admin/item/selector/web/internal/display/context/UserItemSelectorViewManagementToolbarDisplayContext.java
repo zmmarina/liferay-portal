@@ -69,6 +69,11 @@ public class UserItemSelectorViewManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _userItemSelectorViewDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"descriptive", "icon", "list"};
 	}
