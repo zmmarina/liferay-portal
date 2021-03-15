@@ -262,6 +262,24 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 		);
 	}
 
+	private void _setUpCompanyLocalServiceUtil() throws Exception {
+		mockStatic(CompanyLocalServiceUtil.class);
+
+		doAnswer(
+			invocation -> {
+				UnsafeConsumer<Long, Exception> unsafeConsumer =
+					(UnsafeConsumer)invocation.getArguments()[0];
+
+				unsafeConsumer.accept(PRIMARY_KEY);
+
+				return null;
+			}
+		).when(
+			CompanyLocalServiceUtil.class, "forEachCompanyId",
+			Mockito.any(UnsafeConsumer.class)
+		);
+	}
+
 	private void _setUpExpandoBridge() throws Exception {
 		_expandoBridge = mock(ExpandoBridge.class);
 
@@ -294,24 +312,6 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 			_user.getExpandoBridge()
 		).thenReturn(
 			_expandoBridge
-		);
-	}
-
-	private void _setUpCompanyLocalServiceUtil() throws Exception {
-		mockStatic(CompanyLocalServiceUtil.class);
-
-		doAnswer(
-			invocation -> {
-				UnsafeConsumer<Long, Exception> unsafeConsumer =
-					(UnsafeConsumer)invocation.getArguments()[0];
-
-				unsafeConsumer.accept(PRIMARY_KEY);
-
-				return null;
-			}
-		).when(
-			CompanyLocalServiceUtil.class, "forEachCompanyId",
-			Mockito.any(UnsafeConsumer.class)
 		);
 	}
 
