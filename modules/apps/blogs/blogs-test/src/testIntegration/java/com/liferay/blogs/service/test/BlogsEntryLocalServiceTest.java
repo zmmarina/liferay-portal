@@ -330,7 +330,7 @@ public class BlogsEntryLocalServiceTest {
 					_creatorUser.getUserId(), RandomTestUtil.randomString(),
 					RandomTestUtil.randomString(), serviceContext);
 
-				_addDiscussionMessage(
+				_addMBMessage(
 					TestPropsValues.getUserId(), serviceContext, blogsEntry);
 
 				Assert.assertEquals(1, MailServiceTestUtil.getInboxSize());
@@ -1399,17 +1399,17 @@ public class BlogsEntryLocalServiceTest {
 		Assert.assertEquals(initialCount + 1, actualCount);
 	}
 
-	private MBMessage _addDiscussionMessage(
+	private MBMessage _addMBMessage(
 			long userId, ServiceContext serviceContext, BlogsEntry entry)
 		throws Exception {
 
-		MBMessageDisplay messageDisplay =
+		MBMessageDisplay mbMessageDisplay =
 			MBMessageLocalServiceUtil.getDiscussionMessageDisplay(
 				TestPropsValues.getUserId(), _group.getGroupId(),
 				BlogsEntry.class.getName(), entry.getEntryId(),
 				WorkflowConstants.STATUS_APPROVED);
 
-		MBThread thread = messageDisplay.getThread();
+		MBThread mbThread = mbMessageDisplay.getThread();
 
 		MBTestUtil.populateNotificationsServiceContext(
 			serviceContext, Constants.ADD);
@@ -1417,7 +1417,8 @@ public class BlogsEntryLocalServiceTest {
 		return MBMessageLocalServiceUtil.addDiscussionMessage(
 			userId, RandomTestUtil.randomString(), _group.getGroupId(),
 			BlogsEntry.class.getName(), entry.getEntryId(),
-			thread.getThreadId(), MBMessageConstants.DEFAULT_PARENT_MESSAGE_ID,
+			mbThread.getThreadId(),
+			MBMessageConstants.DEFAULT_PARENT_MESSAGE_ID,
 			RandomTestUtil.randomString(), RandomTestUtil.randomString(),
 			serviceContext);
 	}
