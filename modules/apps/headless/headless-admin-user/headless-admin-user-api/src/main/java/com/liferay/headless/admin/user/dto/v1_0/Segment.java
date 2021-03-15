@@ -123,7 +123,7 @@ public class Segment implements Serializable {
 	@NotEmpty
 	protected String criteria;
 
-	@Schema(description = "The segment's criteria in a JSONObject.")
+	@Schema(description = "The segment's criteria in JSON.")
 	@Valid
 	public Map<String, Object> getCriteriaValue() {
 		return criteriaValue;
@@ -149,7 +149,7 @@ public class Segment implements Serializable {
 		}
 	}
 
-	@GraphQLField(description = "The segment's criteria in a JSONObject.")
+	@GraphQLField(description = "The segment's criteria in JSON.")
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	protected Map<String, Object> criteriaValue;
 

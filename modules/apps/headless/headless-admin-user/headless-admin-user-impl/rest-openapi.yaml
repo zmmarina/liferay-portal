@@ -464,7 +464,7 @@ components:
                     additionalProperties:
                         type: object
                     description:
-                        The segment's criteria in a JSONObject.
+                        The segment's criteria in JSON.
                     readOnly: true
                     type: object
                 dateCreated:
