@@ -225,6 +225,11 @@ public class AssetCategoriesManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _assetCategoriesDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		if (_assetCategoriesDisplayContext.isFlattenedNavigationAllowed()) {
 			return new String[0];
