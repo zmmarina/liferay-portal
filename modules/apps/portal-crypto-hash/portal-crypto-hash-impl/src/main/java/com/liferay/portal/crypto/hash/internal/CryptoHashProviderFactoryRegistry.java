@@ -15,7 +15,6 @@
 package com.liferay.portal.crypto.hash.internal;
 
 import com.liferay.portal.crypto.hash.exception.CryptoHashException;
-import com.liferay.portal.crypto.hash.exception.NoSuchCryptoHashProviderFactoryNameCryptoHashException;
 import com.liferay.portal.crypto.hash.spi.CryptoHashProvider;
 import com.liferay.portal.crypto.hash.spi.CryptoHashProviderFactory;
 
@@ -37,8 +36,8 @@ public class CryptoHashProviderFactoryRegistry {
 			_cryptoHashProviderFactories.get(cryptoHashProviderFactoryName);
 
 		if (cryptoHashProviderFactory == null) {
-			throw new NoSuchCryptoHashProviderFactoryNameCryptoHashException(
-				"No such crypto hash provider factory: " +
+			throw new CryptoHashException(
+				"No crypto hash provider factory found for " +
 					cryptoHashProviderFactoryName);
 		}
 
