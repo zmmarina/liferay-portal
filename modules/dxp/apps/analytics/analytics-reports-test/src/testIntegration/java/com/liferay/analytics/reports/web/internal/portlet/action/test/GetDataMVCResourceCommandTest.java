@@ -89,8 +89,6 @@ public class GetDataMVCResourceCommandTest {
 		_group = GroupTestUtil.addGroup();
 
 		_layout = LayoutTestUtil.addLayout(_group);
-
-		_locale = LocaleUtil.US;
 	}
 
 	@Test
@@ -548,7 +546,7 @@ public class GetDataMVCResourceCommandTest {
 	@Inject
 	private LayoutSetLocalService _layoutSetLocalService;
 
-	private Locale _locale;
+	private Locale _locale = LocaleUtil.US;
 
 	@Inject(filter = "mvc.command.name=/analytics_reports/get_data")
 	private MVCResourceCommand _mvcResourceCommand;
