@@ -238,13 +238,11 @@ public class DDMFormAdminDisplayContext {
 	}
 
 	public String getClearResultsURL() throws PortletException {
-		PortletURL clearResultsURL = PortletURLBuilder.create(
+		return PortletURLBuilder.create(
 			PortletURLUtil.clone(getPortletURL(), renderResponse)
 		).setParameter(
 			"keywords", StringPool.BLANK
-		).build();
-
-		return clearResultsURL.toString();
+		).buildString();
 	}
 
 	public long getCompanyId() {
@@ -996,7 +994,7 @@ public class DDMFormAdminDisplayContext {
 	}
 
 	public String getSearchActionURL() {
-		PortletURL portletURL = PortletURLBuilder.createRenderURL(
+		return PortletURLBuilder.createRenderURL(
 			renderResponse
 		).setMVCPath(
 			"/admin/view.jsp"
@@ -1004,9 +1002,7 @@ public class DDMFormAdminDisplayContext {
 			"currentTab", "forms"
 		).setParameter(
 			"groupId", getScopeGroupId()
-		).build();
-
-		return portletURL.toString();
+		).buildString();
 	}
 
 	public String getSearchContainerId() {
@@ -1039,7 +1035,7 @@ public class DDMFormAdminDisplayContext {
 	}
 
 	public String getSortingURL() throws Exception {
-		PortletURL sortingURL = PortletURLBuilder.create(
+		return PortletURLBuilder.create(
 			PortletURLUtil.clone(getPortletURL(), renderResponse)
 		).setParameter(
 			"orderByType",
@@ -1049,9 +1045,7 @@ public class DDMFormAdminDisplayContext {
 
 				return orderByType.equals("asc") ? "desc" : "asc";
 			}
-		).build();
-
-		return sortingURL.toString();
+		).buildString();
 	}
 
 	public DDMStructureService getStructureService() {
@@ -1580,26 +1574,26 @@ public class DDMFormAdminDisplayContext {
 
 		navigationItem.setActive(false);
 
-		PortletURL portletURL = PortletURLBuilder.create(
-			PortletURLFactoryUtil.create(
-				formAdminRequestHelper.getLiferayPortletRequest(),
-				PortletProviderUtil.getPortletId(
-					DDMDataProviderInstance.class.getName(),
-					PortletProvider.Action.EDIT),
-				PortletRequest.RENDER_PHASE)
-		).setMVCPath(
-			"/view.jsp"
-		).setParameter(
-			"backURL", formAdminRequestHelper.getCurrentURL()
-		).setParameter(
-			"refererPortletName", DDMPortletKeys.DYNAMIC_DATA_MAPPING_FORM_ADMIN
-		).setParameter(
-			"groupId", formAdminRequestHelper.getScopeGroupId()
-		).setParameter(
-			"showBackIcon", Boolean.FALSE.toString()
-		).build();
-
-		navigationItem.setHref(portletURL.toString());
+		navigationItem.setHref(
+			PortletURLBuilder.create(
+				PortletURLFactoryUtil.create(
+					formAdminRequestHelper.getLiferayPortletRequest(),
+					PortletProviderUtil.getPortletId(
+						DDMDataProviderInstance.class.getName(),
+						PortletProvider.Action.EDIT),
+					PortletRequest.RENDER_PHASE)
+			).setMVCPath(
+				"/view.jsp"
+			).setParameter(
+				"backURL", formAdminRequestHelper.getCurrentURL()
+			).setParameter(
+				"refererPortletName",
+				DDMPortletKeys.DYNAMIC_DATA_MAPPING_FORM_ADMIN
+			).setParameter(
+				"groupId", formAdminRequestHelper.getScopeGroupId()
+			).setParameter(
+				"showBackIcon", Boolean.FALSE.toString()
+			).buildString());
 
 		ResourceBundle moduleResourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", formAdminRequestHelper.getLocale(), getClass());
