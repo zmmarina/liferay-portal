@@ -91,7 +91,7 @@ public class MarketplaceAppPluginsTopLevelBuild
 			return null;
 		}
 
-		Properties buildProperties;
+		Properties buildProperties = null;
 
 		try {
 			buildProperties = JenkinsResultsParserUtil.getBuildProperties();
