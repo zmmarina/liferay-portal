@@ -112,7 +112,7 @@ public class CryptoHashGeneratorTest {
 			new CryptoHashProviderFactoryRegistry();
 
 		cryptoHashProviderFactoryRegistry.getCryptoHashProvider(
-			"nonexistent", Collections.emptyMap());
+			RandomTestUtil.randomString(), Collections.emptyMap());
 	}
 
 	private static byte[] _randomBytes() {
