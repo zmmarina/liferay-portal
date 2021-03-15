@@ -107,11 +107,11 @@ public class MarketplaceAppPluginsTopLevelBuild
 			return null;
 		}
 
-		String portalVersionLatest = JenkinsResultsParserUtil.getProperty(
+		String latestPortalVersion = JenkinsResultsParserUtil.getProperty(
 			buildProperties, "portal.version.latest", portalVersion);
 
-		if (!JenkinsResultsParserUtil.isNullOrEmpty(portalVersionLatest)) {
-			_portalRelease = new PortalRelease(portalVersionLatest);
+		if (!JenkinsResultsParserUtil.isNullOrEmpty(latestPortalVersion)) {
+			_portalRelease = new PortalRelease(latestPortalVersion);
 
 			return _portalRelease;
 		}
