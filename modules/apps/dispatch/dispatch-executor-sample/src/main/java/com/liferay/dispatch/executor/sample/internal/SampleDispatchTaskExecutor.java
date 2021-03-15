@@ -50,22 +50,22 @@ public class SampleDispatchTaskExecutor extends BaseDispatchTaskExecutor {
 		UnicodeProperties dispatchTaskSettingsUnicodeProperties =
 			dispatchTrigger.getDispatchTaskSettingsUnicodeProperties();
 
-		long taskInMils = GetterUtil.getLong(
+		long time = GetterUtil.getLong(
 			dispatchTaskSettingsUnicodeProperties.getProperty("sleepTime"),
-			_SLEEP_TIME_MILS);
+			5000);
 
 		try {
-			Thread.sleep(taskInMils);
+			Thread.sleep(time);
 
 			dispatchTaskExecutorOutput.setOutput(
 				StringBundler.concat(
-					"Slept for ", taskInMils, " milli seconds and woke up in ",
+					"Slept for ", time, " milliseconds and woke up on ",
 					new Date()));
 		}
 		catch (Exception exception) {
 			dispatchTaskExecutorOutput.setError(
 				StringBundler.concat(
-					"Unable to sleep for ", taskInMils, " milli seconds"));
+					"Unable to sleep for ", time, " milliseconds"));
 		}
 	}
 
@@ -73,7 +73,5 @@ public class SampleDispatchTaskExecutor extends BaseDispatchTaskExecutor {
 	public String getName() {
 		return null;
 	}
-
-	private static final long _SLEEP_TIME_MILS = 5000;
 
 }
