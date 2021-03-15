@@ -225,6 +225,7 @@ Navigation.proptypes = {
 		PropTypes.shape({
 			default: PropTypes.bool.isRequired,
 			languageId: PropTypes.string.isRequired,
+			languageLabel: PropTypes.string.isRequired,
 			selected: PropTypes.bool.isRequired,
 			viewURL: PropTypes.string.isRequired,
 		})

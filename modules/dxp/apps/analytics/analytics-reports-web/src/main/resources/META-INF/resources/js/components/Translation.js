@@ -83,7 +83,7 @@ export default function Translation({onSelectedLanguageClick, viewURLs}) {
 							>
 								<ClayLayout.ContentRow>
 									<ClayLayout.ContentCol expand>
-										<span>{language.languageId}</span>
+										<span>{language.languageLabel}</span>
 									</ClayLayout.ContentCol>
 									{language.default && (
 										<ClayLabel displayType="primary">
