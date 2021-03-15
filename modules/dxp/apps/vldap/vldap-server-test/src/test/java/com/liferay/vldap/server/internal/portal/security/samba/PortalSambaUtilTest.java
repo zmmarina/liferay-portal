@@ -59,7 +59,7 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttribute() throws Exception {
-		setUpExpandoBridge();
+		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
 
 		Method checkAttributeMethod = _clazz.getDeclaredMethod(
@@ -89,7 +89,7 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttributes() throws Exception {
-		setUpExpandoBridge();
+		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
 
 		PortalSambaUtil.checkAttributes();
@@ -126,7 +126,7 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testCheckAttributeWithExistingAttribute() throws Exception {
-		setUpExpandoBridge();
+		_setUpExpandoBridge();
 		_setUpCompanyLocalServiceUtil();
 
 		when(
@@ -208,8 +208,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testGetSambaLMPassword() throws Exception {
-		setUpExpandoBridge();
-		setUpUser();
+		_setUpExpandoBridge();
+		_setUpUser();
 
 		PortalSambaUtil.getSambaLMPassword(_user);
 
@@ -222,8 +222,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testGetSambaNTPassword() throws Exception {
-		setUpExpandoBridge();
-		setUpUser();
+		_setUpExpandoBridge();
+		_setUpUser();
 
 		PortalSambaUtil.getSambaNTPassword(_user);
 
@@ -236,8 +236,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testSetSambaLMPassword() throws Exception {
-		setUpExpandoBridge();
-		setUpUser();
+		_setUpExpandoBridge();
+		_setUpUser();
 
 		PortalSambaUtil.setSambaLMPassword(_user, "password");
 
@@ -250,8 +250,8 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 
 	@Test
 	public void testSetSambaNTPassword() throws Exception {
-		setUpExpandoBridge();
-		setUpUser();
+		_setUpExpandoBridge();
+		_setUpUser();
 
 		PortalSambaUtil.setSambaNTPassword(_user, "password");
 
@@ -262,7 +262,7 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 		);
 	}
 
-	protected void setUpExpandoBridge() throws Exception {
+	private void _setUpExpandoBridge() throws Exception {
 		_expandoBridge = mock(ExpandoBridge.class);
 
 		when(
@@ -287,7 +287,7 @@ public class PortalSambaUtilTest extends BaseVLDAPTestCase {
 		);
 	}
 
-	protected void setUpUser() {
+	private void _setUpUser() {
 		_user = mock(User.class);
 
 		when(
