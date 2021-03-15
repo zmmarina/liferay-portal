@@ -330,7 +330,8 @@ public class AMThumbnailsOSGiCommands {
 
 		_log.error(
 			StringBundler.concat(
-				"CompanyId ", companyId, " failed: ", portalException),
+				"Processing company ", companyId, " failed with: ",
+				portalException.getMessage()),
 			portalException);
 	}
 
