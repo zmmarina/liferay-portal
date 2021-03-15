@@ -28,9 +28,9 @@ import java.security.MessageDigest;
 public class CryptoHashVerifierImpl implements CryptoHashVerifier {
 
 	public CryptoHashVerifierImpl(
-		CryptoHashProviderFactoryRegistry cryptoHashProviderRegistry) {
+		CryptoHashProviderFactoryRegistry cryptoHashProviderFactoryRegistry) {
 
-		_cryptoHashProviderFactoryRegistry = cryptoHashProviderRegistry;
+		_cryptoHashProviderFactoryRegistry = cryptoHashProviderFactoryRegistry;
 	}
 
 	@Override
