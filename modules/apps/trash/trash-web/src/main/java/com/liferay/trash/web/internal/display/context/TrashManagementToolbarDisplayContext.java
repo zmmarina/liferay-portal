@@ -62,6 +62,8 @@ public class TrashManagementToolbarDisplayContext
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			trashDisplayContext.getEntrySearch());
 
+		_trashDisplayContext = trashDisplayContext;
+
 		_themeDisplay = (ThemeDisplay)httpServletRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 	}
@@ -169,6 +171,11 @@ public class TrashManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _trashDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive", "icon"};
 	}
@@ -222,5 +229,6 @@ public class TrashManagementToolbarDisplayContext
 	}
 
 	private final ThemeDisplay _themeDisplay;
+	private final TrashDisplayContext _trashDisplayContext;
 
 }

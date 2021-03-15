@@ -41,6 +41,8 @@ public class TrashContainerManagementToolbarDisplayContext
 		super(
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			trashDisplayContext.getTrashContainerSearchContainer());
+
+		_trashDisplayContext = trashDisplayContext;
 	}
 
 	@Override
@@ -75,6 +77,11 @@ public class TrashContainerManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _trashDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive", "icon"};
 	}
@@ -83,5 +90,7 @@ public class TrashContainerManagementToolbarDisplayContext
 	protected String[] getNavigationKeys() {
 		return new String[] {"all"};
 	}
+
+	private final TrashDisplayContext _trashDisplayContext;
 
 }
