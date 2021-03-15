@@ -23,12 +23,6 @@ import java.util.Map;
  */
 public interface CryptoHashProviderFactory {
 
-	/**
-	 * Construct a {@link CryptoHashProvider} from given hash provider meta information.
-	 *
-	 * @param cryptoHashProviderProperties A map of meta info required by some providers
-	 * @return An instance of CryptoHashProvider
-	 */
 	public CryptoHashProvider create(
 			Map<String, ?> cryptoHashProviderProperties)
 		throws CryptoHashException;
