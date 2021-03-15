@@ -39,6 +39,8 @@ public class SiteMySitesManagementToolbarDisplayContext
 		super(
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			siteMySitesDisplayContext.getGroupSearchContainer());
+
+		_siteMySitesDisplayContext = siteMySitesDisplayContext;
 	}
 
 	@Override
@@ -73,6 +75,11 @@ public class SiteMySitesManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _siteMySitesDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive", "icon"};
 	}
@@ -86,5 +93,7 @@ public class SiteMySitesManagementToolbarDisplayContext
 	protected String[] getOrderByKeys() {
 		return new String[] {"name"};
 	}
+
+	private final SiteMySitesDisplayContext _siteMySitesDisplayContext;
 
 }

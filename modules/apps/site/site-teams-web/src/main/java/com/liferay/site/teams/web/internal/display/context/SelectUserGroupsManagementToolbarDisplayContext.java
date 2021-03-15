@@ -39,6 +39,8 @@ public class SelectUserGroupsManagementToolbarDisplayContext
 		super(
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			selectUserGroupsDisplayContext.getUserGroupSearchContainer());
+
+		_selectUserGroupsDisplayContext = selectUserGroupsDisplayContext;
 	}
 
 	@Override
@@ -68,6 +70,11 @@ public class SelectUserGroupsManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _selectUserGroupsDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive"};
 	}
@@ -81,5 +88,8 @@ public class SelectUserGroupsManagementToolbarDisplayContext
 	protected String[] getOrderByKeys() {
 		return new String[] {"name", "description"};
 	}
+
+	private final SelectUserGroupsDisplayContext
+		_selectUserGroupsDisplayContext;
 
 }

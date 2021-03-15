@@ -55,6 +55,8 @@ public class SiteTeamsManagementToolbarDisplayContext
 		super(
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			siteTeamsDisplayContext.getSearchContainer());
+
+		_siteTeamsDisplayContext = siteTeamsDisplayContext;
 	}
 
 	@Override
@@ -147,6 +149,11 @@ public class SiteTeamsManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _siteTeamsDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive"};
 	}
@@ -163,5 +170,7 @@ public class SiteTeamsManagementToolbarDisplayContext
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		SiteTeamsManagementToolbarDisplayContext.class);
+
+	private final SiteTeamsDisplayContext _siteTeamsDisplayContext;
 
 }

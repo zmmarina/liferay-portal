@@ -41,6 +41,8 @@ public class UserGroupRolesManagementToolbarDisplayContext
 		super(
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			userGroupRolesDisplayContext.getRoleSearchSearchContainer());
+
+		_userGroupRolesDisplayContext = userGroupRolesDisplayContext;
 	}
 
 	@Override
@@ -75,6 +77,11 @@ public class UserGroupRolesManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _userGroupRolesDisplayContext.getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive", "icon"};
 	}
@@ -88,5 +95,7 @@ public class UserGroupRolesManagementToolbarDisplayContext
 	protected String[] getOrderByKeys() {
 		return new String[] {"title"};
 	}
+
+	private final UserGroupRolesDisplayContext _userGroupRolesDisplayContext;
 
 }
