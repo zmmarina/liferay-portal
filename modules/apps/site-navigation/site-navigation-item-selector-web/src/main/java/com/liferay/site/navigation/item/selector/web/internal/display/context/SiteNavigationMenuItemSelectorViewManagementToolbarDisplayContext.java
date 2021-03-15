@@ -41,6 +41,9 @@ public class SiteNavigationMenuItemSelectorViewManagementToolbarDisplayContext
 			httpServletRequest, liferayPortletRequest, liferayPortletResponse,
 			siteNavigationMenuItemSelectorViewDisplayContext.
 				getSearchContainer());
+
+		_siteNavigationMenuItemSelectorViewDisplayContext =
+			siteNavigationMenuItemSelectorViewDisplayContext;
 	}
 
 	@Override
@@ -70,6 +73,12 @@ public class SiteNavigationMenuItemSelectorViewManagementToolbarDisplayContext
 	}
 
 	@Override
+	protected String getDisplayStyle() {
+		return _siteNavigationMenuItemSelectorViewDisplayContext.
+			getDisplayStyle();
+	}
+
+	@Override
 	protected String[] getDisplayViews() {
 		return new String[] {"list", "descriptive"};
 	}
@@ -83,5 +92,8 @@ public class SiteNavigationMenuItemSelectorViewManagementToolbarDisplayContext
 	protected String[] getOrderByKeys() {
 		return new String[] {"create-date", "name"};
 	}
+
+	private final SiteNavigationMenuItemSelectorViewDisplayContext
+		_siteNavigationMenuItemSelectorViewDisplayContext;
 
 }
