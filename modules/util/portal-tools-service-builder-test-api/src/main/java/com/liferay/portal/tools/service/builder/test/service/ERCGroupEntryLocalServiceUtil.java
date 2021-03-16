@@ -214,6 +214,17 @@ public class ERCGroupEntryLocalServiceUtil {
 	 * @param externalReferenceCode the erc group entry's external reference code
 	 * @return the matching erc group entry, or <code>null</code> if a matching erc group entry could not be found
 	 */
+	public static ERCGroupEntry fetchERCGroupEntryByExternalReferenceCode(
+		long groupId, String externalReferenceCode) {
+
+		return getService().fetchERCGroupEntryByExternalReferenceCode(
+			groupId, externalReferenceCode);
+	}
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchERCGroupEntryByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
 	public static ERCGroupEntry fetchERCGroupEntryByReferenceCode(
 		long groupId, String externalReferenceCode) {
 
@@ -262,6 +273,22 @@ public class ERCGroupEntryLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getERCGroupEntry(ercGroupEntryId);
+	}
+
+	/**
+	 * Returns the erc group entry with the matching external reference code and group.
+	 *
+	 * @param groupId the primary key of the group
+	 * @param externalReferenceCode the erc group entry's external reference code
+	 * @return the matching erc group entry
+	 * @throws PortalException if a matching erc group entry could not be found
+	 */
+	public static ERCGroupEntry getERCGroupEntryByExternalReferenceCode(
+			long groupId, String externalReferenceCode)
+		throws PortalException {
+
+		return getService().getERCGroupEntryByExternalReferenceCode(
+			groupId, externalReferenceCode);
 	}
 
 	public static

@@ -237,6 +237,20 @@ public class ERCGroupEntryLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.portal.tools.service.builder.test.model.ERCGroupEntry
+		fetchERCGroupEntryByExternalReferenceCode(
+			long groupId, String externalReferenceCode) {
+
+		return _ercGroupEntryLocalService.
+			fetchERCGroupEntryByExternalReferenceCode(
+				groupId, externalReferenceCode);
+	}
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchERCGroupEntryByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
+	@Override
+	public com.liferay.portal.tools.service.builder.test.model.ERCGroupEntry
 		fetchERCGroupEntryByReferenceCode(
 			long groupId, String externalReferenceCode) {
 
@@ -293,6 +307,25 @@ public class ERCGroupEntryLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _ercGroupEntryLocalService.getERCGroupEntry(ercGroupEntryId);
+	}
+
+	/**
+	 * Returns the erc group entry with the matching external reference code and group.
+	 *
+	 * @param groupId the primary key of the group
+	 * @param externalReferenceCode the erc group entry's external reference code
+	 * @return the matching erc group entry
+	 * @throws PortalException if a matching erc group entry could not be found
+	 */
+	@Override
+	public com.liferay.portal.tools.service.builder.test.model.ERCGroupEntry
+			getERCGroupEntryByExternalReferenceCode(
+				long groupId, String externalReferenceCode)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _ercGroupEntryLocalService.
+			getERCGroupEntryByExternalReferenceCode(
+				groupId, externalReferenceCode);
 	}
 
 	@Override

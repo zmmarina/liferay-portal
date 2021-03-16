@@ -266,6 +266,17 @@ public class AddressLocalServiceUtil {
 	 * @param externalReferenceCode the address's external reference code
 	 * @return the matching address, or <code>null</code> if a matching address could not be found
 	 */
+	public static Address fetchAddressByExternalReferenceCode(
+		long companyId, String externalReferenceCode) {
+
+		return getService().fetchAddressByExternalReferenceCode(
+			companyId, externalReferenceCode);
+	}
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchAddressByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
 	public static Address fetchAddressByReferenceCode(
 		long companyId, String externalReferenceCode) {
 
@@ -301,6 +312,22 @@ public class AddressLocalServiceUtil {
 	 */
 	public static Address getAddress(long addressId) throws PortalException {
 		return getService().getAddress(addressId);
+	}
+
+	/**
+	 * Returns the address with the matching external reference code and company.
+	 *
+	 * @param companyId the primary key of the company
+	 * @param externalReferenceCode the address's external reference code
+	 * @return the matching address
+	 * @throws PortalException if a matching address could not be found
+	 */
+	public static Address getAddressByExternalReferenceCode(
+			long companyId, String externalReferenceCode)
+		throws PortalException {
+
+		return getService().getAddressByExternalReferenceCode(
+			companyId, externalReferenceCode);
 	}
 
 	/**

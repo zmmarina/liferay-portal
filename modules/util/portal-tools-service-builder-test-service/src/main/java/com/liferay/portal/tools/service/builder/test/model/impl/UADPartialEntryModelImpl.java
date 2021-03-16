@@ -117,7 +117,7 @@ public class UADPartialEntryModelImpl
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *		#getColumnBitmask(String)
+	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long UADPARTIALENTRYID_COLUMN_BITMASK = 1L;

@@ -455,6 +455,17 @@ public class MBMessageLocalServiceUtil {
 	 * @param externalReferenceCode the message-boards message's external reference code
 	 * @return the matching message-boards message, or <code>null</code> if a matching message-boards message could not be found
 	 */
+	public static MBMessage fetchMBMessageByExternalReferenceCode(
+		long groupId, String externalReferenceCode) {
+
+		return getService().fetchMBMessageByExternalReferenceCode(
+			groupId, externalReferenceCode);
+	}
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchMBMessageByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
 	public static MBMessage fetchMBMessageByReferenceCode(
 		long groupId, String externalReferenceCode) {
 
@@ -673,6 +684,22 @@ public class MBMessageLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getMBMessage(messageId);
+	}
+
+	/**
+	 * Returns the message-boards message with the matching external reference code and group.
+	 *
+	 * @param groupId the primary key of the group
+	 * @param externalReferenceCode the message-boards message's external reference code
+	 * @return the matching message-boards message
+	 * @throws PortalException if a matching message-boards message could not be found
+	 */
+	public static MBMessage getMBMessageByExternalReferenceCode(
+			long groupId, String externalReferenceCode)
+		throws PortalException {
+
+		return getService().getMBMessageByExternalReferenceCode(
+			groupId, externalReferenceCode);
 	}
 
 	/**

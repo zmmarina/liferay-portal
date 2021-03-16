@@ -319,6 +319,17 @@ public class AccountEntryLocalServiceUtil {
 	 * @param externalReferenceCode the account entry's external reference code
 	 * @return the matching account entry, or <code>null</code> if a matching account entry could not be found
 	 */
+	public static AccountEntry fetchAccountEntryByExternalReferenceCode(
+		long companyId, String externalReferenceCode) {
+
+		return getService().fetchAccountEntryByExternalReferenceCode(
+			companyId, externalReferenceCode);
+	}
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchAccountEntryByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
 	public static AccountEntry fetchAccountEntryByReferenceCode(
 		long companyId, String externalReferenceCode) {
 
@@ -383,6 +394,22 @@ public class AccountEntryLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getAccountEntry(accountEntryId);
+	}
+
+	/**
+	 * Returns the account entry with the matching external reference code and company.
+	 *
+	 * @param companyId the primary key of the company
+	 * @param externalReferenceCode the account entry's external reference code
+	 * @return the matching account entry
+	 * @throws PortalException if a matching account entry could not be found
+	 */
+	public static AccountEntry getAccountEntryByExternalReferenceCode(
+			long companyId, String externalReferenceCode)
+		throws PortalException {
+
+		return getService().getAccountEntryByExternalReferenceCode(
+			companyId, externalReferenceCode);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery

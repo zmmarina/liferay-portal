@@ -121,7 +121,7 @@ public class DataLimitEntryModelImpl
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *		#getColumnBitmask(String)
+	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long DATALIMITENTRYID_COLUMN_BITMASK = 1L;

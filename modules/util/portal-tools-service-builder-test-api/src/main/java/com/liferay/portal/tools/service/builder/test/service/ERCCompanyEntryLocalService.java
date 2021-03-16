@@ -206,6 +206,14 @@ public interface ERCCompanyEntryLocalService
 	 * @return the matching erc company entry, or <code>null</code> if a matching erc company entry could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public ERCCompanyEntry fetchERCCompanyEntryByExternalReferenceCode(
+		long companyId, String externalReferenceCode);
+
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetchERCCompanyEntryByExternalReferenceCode(long, String)}
+	 */
+	@Deprecated
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ERCCompanyEntry fetchERCCompanyEntryByReferenceCode(
 		long companyId, String externalReferenceCode);
 
@@ -243,6 +251,19 @@ public interface ERCCompanyEntryLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ERCCompanyEntry getERCCompanyEntry(long ercCompanyEntryId)
+		throws PortalException;
+
+	/**
+	 * Returns the erc company entry with the matching external reference code and company.
+	 *
+	 * @param companyId the primary key of the company
+	 * @param externalReferenceCode the erc company entry's external reference code
+	 * @return the matching erc company entry
+	 * @throws PortalException if a matching erc company entry could not be found
+	 */
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public ERCCompanyEntry getERCCompanyEntryByExternalReferenceCode(
+			long companyId, String externalReferenceCode)
 		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
