@@ -97,7 +97,7 @@ public interface CommerceInventoryWarehouseItemService extends BaseService {
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public CommerceInventoryWarehouseItem
-			fetchCommerceInventoryWarehouseItemByReferenceCode(
+			fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 				String externalReferenceCode, long companyId)
 		throws PortalException;
 

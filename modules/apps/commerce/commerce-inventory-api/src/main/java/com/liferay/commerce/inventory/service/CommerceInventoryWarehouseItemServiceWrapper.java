@@ -111,12 +111,12 @@ public class CommerceInventoryWarehouseItemServiceWrapper
 
 	@Override
 	public com.liferay.commerce.inventory.model.CommerceInventoryWarehouseItem
-			fetchCommerceInventoryWarehouseItemByReferenceCode(
+			fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 				String externalReferenceCode, long companyId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _commerceInventoryWarehouseItemService.
-			fetchCommerceInventoryWarehouseItemByReferenceCode(
+			fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 				externalReferenceCode, companyId);
 	}
 
