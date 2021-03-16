@@ -69,23 +69,24 @@ public class MessageBoardMessageResourceTest
 		randomMessageBoardMessage.setParentMessageBoardMessageId(
 			_mbThread.getRootMessageId());
 
-		MessageBoardMessage insertMessageBoardMessage =
+		MessageBoardMessage putMessageBoardMessage =
 			messageBoardMessageResource.
 				putSiteMessageBoardMessageByExternalReferenceCode(
 					randomMessageBoardMessage.getExternalReferenceCode(),
 					testGroup.getGroupId(), randomMessageBoardMessage);
 
-		assertEquals(randomMessageBoardMessage, insertMessageBoardMessage);
-		assertValid(insertMessageBoardMessage);
+		assertEquals(randomMessageBoardMessage, putMessageBoardMessage);
+		assertValid(putMessageBoardMessage);
 
 		MessageBoardMessage getMessageBoardMessage =
 			messageBoardMessageResource.
 				getSiteMessageBoardMessageByExternalReferenceCode(
-					insertMessageBoardMessage.getExternalReferenceCode(),
+					putMessageBoardMessage.getExternalReferenceCode(),
 					testGroup.getGroupId());
 
 		assertEquals(randomMessageBoardMessage, getMessageBoardMessage);
 		assertValid(getMessageBoardMessage);
+
 		Assert.assertEquals(
 			randomMessageBoardMessage.getExternalReferenceCode(),
 			getMessageBoardMessage.getExternalReferenceCode());
