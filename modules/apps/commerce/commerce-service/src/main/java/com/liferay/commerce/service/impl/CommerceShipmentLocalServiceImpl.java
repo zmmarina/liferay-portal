@@ -101,7 +101,7 @@ public class CommerceShipmentLocalServiceImpl
 
 		CommerceAddress commerceAddress = updateCommerceShipmentAddress(
 			commerceShipment, name, description, street1, street2, street3,
-			city, zip, regionId, countryId, phoneNumber);
+			city, zip, regionId, countryId, phoneNumber, null);
 
 		commerceShipment.setCommerceAddressId(
 			commerceAddress.getCommerceAddressId());
@@ -359,7 +359,7 @@ public class CommerceShipmentLocalServiceImpl
 			String zip, long regionId, long countryId, String phoneNumber)
 		throws PortalException {
 
-		return commerceShipmentLocalService.updateAddress(
+		return updateAddress(
 			commerceShipmentId, name, description, street1, street2, street3,
 			city, zip, regionId, countryId, phoneNumber, null);
 	}
@@ -462,8 +462,6 @@ public class CommerceShipmentLocalServiceImpl
 			int expectedDateMinute)
 		throws PortalException {
 
-		// Commerce shipment
-
 		CommerceShipment commerceShipment =
 			commerceShipmentPersistence.findByPrimaryKey(commerceShipmentId);
 
@@ -485,7 +483,7 @@ public class CommerceShipmentLocalServiceImpl
 
 		CommerceAddress commerceAddress = updateCommerceShipmentAddress(
 			commerceShipment, name, description, street1, street2, street3,
-			city, zip, regionId, countryId, phoneNumber);
+			city, zip, regionId, countryId, phoneNumber, null);
 
 		commerceShipment.setCommerceAddressId(
 			commerceAddress.getCommerceAddressId());
@@ -664,17 +662,6 @@ public class CommerceShipmentLocalServiceImpl
 				}
 
 			});
-	}
-
-	protected CommerceAddress updateCommerceShipmentAddress(
-			CommerceShipment commerceShipment, String name, String description,
-			String street1, String street2, String street3, String city,
-			String zip, long regionId, long countryId, String phoneNumber)
-		throws PortalException {
-
-		return updateCommerceShipmentAddress(
-			commerceShipment, name, description, street1, street2, street3,
-			city, zip, regionId, countryId, phoneNumber, null);
 	}
 
 	protected CommerceAddress updateCommerceShipmentAddress(
