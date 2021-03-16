@@ -328,7 +328,7 @@ public class MessageBoardMessageResourceImpl
 		}
 
 		MBMessage mbMessage =
-			_mbMessageLocalService.fetchMBMessageByReferenceCode(
+			_mbMessageLocalService.fetchMBMessageByExternalReferenceCode(
 				siteId, externalReferenceCode);
 
 		if (mbMessage == null) {
@@ -393,7 +393,7 @@ public class MessageBoardMessageResourceImpl
 		throws Exception {
 
 		MBMessage mbMessage =
-			_mbMessageLocalService.fetchMBMessageByReferenceCode(
+			_mbMessageLocalService.fetchMBMessageByExternalReferenceCode(
 				siteId, externalReferenceCode);
 
 		if (mbMessage == null) {
