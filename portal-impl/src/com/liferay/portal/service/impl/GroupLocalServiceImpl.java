@@ -4357,7 +4357,7 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 				catch (PortalException portalException) {
 					if (_log.isWarnEnabled()) {
 						_log.warn(
-							"Unable to check permission for group: " +
+							"Unable to check permission for group " +
 								group.getGroupId(),
 							portalException);
 					}

@@ -487,14 +487,14 @@ public class SiteBrowserDisplayContext {
 		else if (filterManageableGroups) {
 			User user = themeDisplay.getUser();
 
-			_groupParams.put("usersGroups", user.getUserId());
-
 			if (Objects.equals(type, "sites-that-i-administer")) {
 				_groupParams.put("actionId", ActionKeys.UPDATE);
 			}
 			else {
 				_groupParams.put("actionId", ActionKeys.ASSIGN_MEMBERS);
 			}
+
+			_groupParams.put("usersGroups", user.getUserId());
 		}
 
 		_groupParams.put("site", Boolean.TRUE);

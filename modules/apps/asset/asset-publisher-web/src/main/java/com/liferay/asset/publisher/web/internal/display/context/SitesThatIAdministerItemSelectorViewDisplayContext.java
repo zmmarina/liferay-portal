@@ -108,9 +108,8 @@ public class SitesThatIAdministerItemSelectorViewDisplayContext
 		if (filterManageableGroups) {
 			User user = themeDisplay.getUser();
 
-			_groupParams.put("usersGroups", user.getUserId());
-
 			_groupParams.put("actionId", ActionKeys.UPDATE);
+			_groupParams.put("usersGroups", user.getUserId());
 		}
 
 		_groupParams.put("site", Boolean.TRUE);
