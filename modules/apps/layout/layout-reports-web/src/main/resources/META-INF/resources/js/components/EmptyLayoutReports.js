@@ -54,7 +54,7 @@ export default function EmptyLayoutReports({assetsPath, showButton}) {
 				<div className="text-secondary">
 					<span>
 						{Liferay.Language.get(
-							'to-run-a-page-audit-connect-with-pagespeed-from-instance-settings-pages-pagespeed'
+							'to-run-a-page-audit,-connect-with-pagespeed-from-instance-settings-pages-pagespeed'
 						)}
 					</span>
 				</div>

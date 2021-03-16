@@ -42,7 +42,7 @@ describe('EmptyLayoutReports', () => {
 		).toBeInTheDocument();
 		expect(
 			getByText(
-				'to-run-a-page-audit-connect-with-pagespeed-from-instance-settings-pages-pagespeed'
+				'to-run-a-page-audit,-connect-with-pagespeed-from-instance-settings-pages-pagespeed'
 			)
 		).toBeInTheDocument();
 	});
