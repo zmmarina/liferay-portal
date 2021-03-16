@@ -182,10 +182,8 @@ public class AddToCartTag extends IncludeTag {
 		setNamespacedAttribute(httpServletRequest, "inCart", _inCart);
 		setNamespacedAttribute(httpServletRequest, "namespace", _namespace);
 		setNamespacedAttribute(httpServletRequest, "options", _options);
-
-		httpServletRequest.setAttribute(
-			_ATTRIBUTE_NAMESPACE + "productSettingsModel",
-			_productSettingsModel);
+		setNamespacedAttribute(
+			httpServletRequest, "productSettingsModel", _productSettingsModel);
 
 		if (Validator.isNull(_spritemap)) {
 			ThemeDisplay themeDisplay =
@@ -196,6 +194,7 @@ public class AddToCartTag extends IncludeTag {
 		}
 
 		setNamespacedAttribute(httpServletRequest, "spritemap", _spritemap);
+
 		setNamespacedAttribute(
 			httpServletRequest, "stockQuantity", _stockQuantity);
 	}
