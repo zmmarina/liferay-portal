@@ -57,14 +57,10 @@ public class AccountEntrySearchPermissionFilterContributor
 		TermsFilter primaryKeysTermsFilter = new TermsFilter(
 			Field.ENTRY_CLASS_PK);
 
-		List<String> accountEntryIdStrings = ListUtil.toList(
-			accountEntryUserRels,
-			accountEntryUserRel -> String.valueOf(
-				accountEntryUserRel.getAccountEntryId()));
-
-		primaryKeysTermsFilter.addValues(
-			accountEntryIdStrings.toArray(
-				new String[accountEntryUserRels.size()]));
+		for (AccountEntryUserRel accountEntryUserRel : accountEntryUserRels) {
+			primaryKeysTermsFilter.addValue(
+				String.valueOf(accountEntryUserRel.getAccountEntryId()));
+		}
 
 		booleanFilter.add(primaryKeysTermsFilter, BooleanClauseOccur.MUST);
 	}
