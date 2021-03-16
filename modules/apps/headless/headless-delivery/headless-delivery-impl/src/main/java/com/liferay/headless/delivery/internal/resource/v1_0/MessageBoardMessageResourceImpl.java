@@ -108,7 +108,7 @@ public class MessageBoardMessageResourceImpl
 			String externalReferenceCode, Long siteId)
 		throws Exception {
 
-		MBMessage mbMessage = _getMbMessageByExternalReferenceCode(
+		MBMessage mbMessage = _getMBMessageByExternalReferenceCode(
 			externalReferenceCode, siteId);
 
 		_mbMessageService.deleteMessage(mbMessage.getMessageId());
@@ -209,7 +209,7 @@ public class MessageBoardMessageResourceImpl
 				String externalReferenceCode, Long siteId)
 		throws Exception {
 
-		MBMessage mbMessage = _getMbMessageByExternalReferenceCode(
+		MBMessage mbMessage = _getMBMessageByExternalReferenceCode(
 			externalReferenceCode, siteId);
 
 		return _toMessageBoardMessage(mbMessage);
@@ -388,7 +388,7 @@ public class MessageBoardMessageResourceImpl
 			contextAcceptLanguage.getPreferredLocale());
 	}
 
-	private MBMessage _getMbMessageByExternalReferenceCode(
+	private MBMessage _getMBMessageByExternalReferenceCode(
 			String externalReferenceCode, Long siteId)
 		throws Exception {
 
