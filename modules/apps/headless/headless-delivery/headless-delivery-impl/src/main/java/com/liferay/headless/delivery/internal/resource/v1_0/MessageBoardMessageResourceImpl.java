@@ -108,8 +108,9 @@ public class MessageBoardMessageResourceImpl
 			String externalReferenceCode, Long siteId)
 		throws Exception {
 
-		MBMessage mbMessage = _getMBMessageByExternalReferenceCode(
-			externalReferenceCode, siteId);
+		MBMessage mbMessage =
+			_mbMessageLocalService.getMBMessageByExternalReferenceCode(
+				siteId, externalReferenceCode);
 
 		_mbMessageService.deleteMessage(mbMessage.getMessageId());
 	}
@@ -209,8 +210,9 @@ public class MessageBoardMessageResourceImpl
 				String externalReferenceCode, Long siteId)
 		throws Exception {
 
-		MBMessage mbMessage = _getMBMessageByExternalReferenceCode(
-			externalReferenceCode, siteId);
+		MBMessage mbMessage =
+			_mbMessageLocalService.getMBMessageByExternalReferenceCode(
+				siteId, externalReferenceCode);
 
 		return _toMessageBoardMessage(mbMessage);
 	}
@@ -386,23 +388,6 @@ public class MessageBoardMessageResourceImpl
 			MBMessage.class.getName(), contextCompany.getCompanyId(),
 			messageBoardMessage.getCustomFields(),
 			contextAcceptLanguage.getPreferredLocale());
-	}
-
-	private MBMessage _getMBMessageByExternalReferenceCode(
-			String externalReferenceCode, Long siteId)
-		throws Exception {
-
-		MBMessage mbMessage =
-			_mbMessageLocalService.fetchMBMessageByExternalReferenceCode(
-				siteId, externalReferenceCode);
-
-		if (mbMessage == null) {
-			throw new NoSuchMessageException(
-				"No message exists with external reference code " +
-					externalReferenceCode);
-		}
-
-		return mbMessage;
 	}
 
 	private Page<MessageBoardMessage> _getMessageBoardMessagesPage(
