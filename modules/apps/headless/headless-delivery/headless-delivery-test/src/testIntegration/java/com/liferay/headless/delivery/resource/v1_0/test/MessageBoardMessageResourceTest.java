@@ -61,7 +61,7 @@ public class MessageBoardMessageResourceTest
 
 		super.testPutSiteMessageBoardMessageByExternalReferenceCode();
 
-		// Create
+		// Add
 
 		MessageBoardMessage randomMessageBoardMessage =
 			randomMessageBoardMessage();
