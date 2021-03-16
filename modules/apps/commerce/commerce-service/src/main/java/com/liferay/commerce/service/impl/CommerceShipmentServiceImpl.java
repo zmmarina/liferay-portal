@@ -318,7 +318,7 @@ public class CommerceShipmentServiceImpl
 			String zip, long regionId, long countryId, String phoneNumber)
 		throws PortalException {
 
-		return commerceShipmentService.updateAddress(
+		return updateAddress(
 			commerceShipmentId, name, description, street1, street2, street3,
 			city, zip, regionId, countryId, phoneNumber, null);
 	}

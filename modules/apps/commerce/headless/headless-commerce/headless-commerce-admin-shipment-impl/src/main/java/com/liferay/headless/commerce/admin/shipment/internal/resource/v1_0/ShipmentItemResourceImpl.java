@@ -31,7 +31,6 @@ import com.liferay.portal.vulcan.fields.NestedFieldSupport;
 import com.liferay.portal.vulcan.pagination.Page;
 import com.liferay.portal.vulcan.pagination.Pagination;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Component;
@@ -67,18 +66,15 @@ public class ShipmentItemResourceImpl
 			@NestedFieldId(value = "id") Long shipmentId, Pagination pagination)
 		throws Exception {
 
-		List<CommerceShipmentItem> commerceShipmentItems =
-			_commerceShipmentItemService.getCommerceShipmentItems(
-				shipmentId, pagination.getStartPosition(),
-				pagination.getEndPosition(), null);
-
-		int commerceShipmentItemsCount =
-			_commerceShipmentItemService.getCommerceShipmentItemsCount(
-				shipmentId);
-
 		return Page.of(
-			transform(commerceShipmentItems, this::_toShipmentItem), pagination,
-			commerceShipmentItemsCount);
+			transform(
+				_commerceShipmentItemService.getCommerceShipmentItems(
+					shipmentId, pagination.getStartPosition(),
+					pagination.getEndPosition(), null),
+				this::_toShipmentItem),
+			pagination,
+			_commerceShipmentItemService.getCommerceShipmentItemsCount(
+				shipmentId));
 	}
 
 	@Override
