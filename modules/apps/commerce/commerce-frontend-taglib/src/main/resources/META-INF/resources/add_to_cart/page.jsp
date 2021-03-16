@@ -66,7 +66,7 @@ else {
 		spritemap: '<%= spritemap %>',
 	};
 
-	<c:if test="<%= Validator.isNotNull(productSettingsModel) %>">
+	<c:if test="<%= productSettingsModel != null %>">
 
 		<%
 		JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
