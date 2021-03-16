@@ -342,7 +342,6 @@ public class MenuItemProvider {
 
 		urlMenuItem.setIcon(
 			DLFileEntryTypeIconProviderUtil.getIcon(fileEntryType));
-
 		urlMenuItem.setKey(
 			DLFileEntryType.class.getSimpleName() +
 				fileEntryType.getFileEntryTypeKey());
