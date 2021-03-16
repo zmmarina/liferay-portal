@@ -54,7 +54,7 @@ public class MySubscriptionsResultRowSplitter implements ResultRowSplitter {
 		for (Map.Entry<String, List<ResultRow>> entry : rowMap.entrySet()) {
 			resultRowSplitterEntries.add(
 				new ResultRowSplitterEntry(
-					MySubscriptionsUtil.getAssetTypeText(
+					MySubscriptionsUtil.getAssetTypeDescription(
 						_locale, entry.getKey()),
 					entry.getValue()));
 		}

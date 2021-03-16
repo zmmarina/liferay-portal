@@ -88,7 +88,7 @@ int subscriptionsCount = mySubscriptionsManagementToolbarDisplayContext.getTotal
 					<liferay-ui:search-container-column-text
 						href="<%= rowURL %>"
 						name="asset-type"
-						value="<%= MySubscriptionsUtil.getAssetTypeText(locale, subscription.getClassName()) %>"
+						value="<%= MySubscriptionsUtil.getAssetTypeDescription(locale, subscription.getClassName()) %>"
 					/>
 
 					<liferay-ui:search-container-column-date
