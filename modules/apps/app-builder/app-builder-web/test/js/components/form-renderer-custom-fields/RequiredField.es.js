@@ -152,8 +152,6 @@ describe('RequiredField', () => {
 
 		expect(popover.classList.contains('show')).toBeTruthy();
 
-		// View level option
-
 		expect(options[0].checked).toBeTruthy();
 	});
 
@@ -185,8 +183,6 @@ describe('RequiredField', () => {
 		fireEvent.click(dropdownButton);
 
 		expect(popover.classList.contains('show')).toBeTruthy();
-
-		// View level option
 
 		expect(options[1].checked).toBeTruthy();
 	});
