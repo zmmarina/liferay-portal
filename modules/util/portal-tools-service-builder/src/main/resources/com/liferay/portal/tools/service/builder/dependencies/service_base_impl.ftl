@@ -498,8 +498,30 @@ import org.osgi.service.component.annotations.Reference;
 			</#list>
 			 */
 			@Override
-			public ${entity.name} fetch${entity.name}ByReferenceCode(long ${entity.externalReferenceCode}Id, String externalReferenceCode) <#if (serviceBaseExceptions?size gt 0)>throws ${stringUtil.merge(serviceBaseExceptions)} </#if>{
+			public ${entity.name} fetch${entity.name}ByExternalReferenceCode(long ${entity.externalReferenceCode}Id, String externalReferenceCode) <#if (serviceBaseExceptions?size gt 0)>throws ${stringUtil.merge(serviceBaseExceptions)} </#if>{
 				return ${entity.variableName}Persistence.fetchBy${entity.externalReferenceCode?cap_first[0..0]}_ERC(${entity.externalReferenceCode}Id, externalReferenceCode);
+			}
+
+			/**
+			 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link #fetch${entity.name}ByExternalReferenceCode(long, String)}
+			 */
+			@Deprecated
+			@Override
+			public ${entity.name} fetch${entity.name}ByReferenceCode(long ${entity.externalReferenceCode}Id, String externalReferenceCode) <#if (serviceBaseExceptions?size gt 0)>throws ${stringUtil.merge(serviceBaseExceptions)} </#if>{
+				return fetch${entity.name}ByExternalReferenceCode(${entity.externalReferenceCode}Id, externalReferenceCode);
+			}
+
+			/**
+			 * Returns the ${entity.humanName} with the matching external reference code and ${entity.externalReferenceCode}.
+			 *
+			 * @param ${entity.externalReferenceCode}Id the primary key of the ${entity.externalReferenceCode}
+			 * @param externalReferenceCode the ${entity.humanName}'s external reference code
+			 * @return the matching ${entity.humanName}
+			 * @throws PortalException if a matching ${entity.humanName} could not be found
+			 */
+			@Override
+			public ${entity.name} get${entity.name}ByExternalReferenceCode(long ${entity.externalReferenceCode}Id, String externalReferenceCode) throws PortalException {
+				return ${entity.variableName}Persistence.findBy${entity.externalReferenceCode?cap_first[0..0]}_ERC(${entity.externalReferenceCode}Id, externalReferenceCode);
 			}
 		</#if>
 

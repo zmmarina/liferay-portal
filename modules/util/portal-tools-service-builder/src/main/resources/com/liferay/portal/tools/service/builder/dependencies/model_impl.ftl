@@ -288,7 +288,7 @@ public class ${entity.name}ModelImpl extends BaseModelImpl<${entity.name}> imple
 		<#list entity.finderEntityColumns as entityColumn>
 			<#if serviceBuilder.isVersionGTE_7_3_0()>
 				/**
-				 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)
+				 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 				 */
 				@Deprecated
 			</#if>
@@ -302,7 +302,7 @@ public class ${entity.name}ModelImpl extends BaseModelImpl<${entity.name}> imple
 				<#if serviceBuilder.isVersionGTE_7_3_0()>
 					/**
 					* @deprecated As of Athanasius (7.3.x), replaced by {@link
-					*		#getColumnBitmask(String)
+					*		#getColumnBitmask(String)}
 					*/
 					@Deprecated
 				</#if>
