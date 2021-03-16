@@ -372,8 +372,9 @@ public class TaxonomyCategoryResourceImpl
 		throws Exception {
 
 		AssetCategory assetCategory =
-			_assetCategoryLocalService.fetchAssetCategoryByExternalReferenceCode(
-				contextCompany.getCompanyId(), taxonomyCategoryId);
+			_assetCategoryLocalService.
+				fetchAssetCategoryByExternalReferenceCode(
+					contextCompany.getCompanyId(), taxonomyCategoryId);
 
 		if (assetCategory == null) {
 			assetCategory = _assetCategoryService.getCategory(
@@ -385,8 +386,9 @@ public class TaxonomyCategoryResourceImpl
 
 	private long _getAssetCategoryId(String taxonomyCategoryId) {
 		AssetCategory assetCategory =
-			_assetCategoryLocalService.fetchAssetCategoryByExternalReferenceCode(
-				contextCompany.getCompanyId(), taxonomyCategoryId);
+			_assetCategoryLocalService.
+				fetchAssetCategoryByExternalReferenceCode(
+					contextCompany.getCompanyId(), taxonomyCategoryId);
 
 		if (assetCategory == null) {
 			return GetterUtil.getLong(taxonomyCategoryId);

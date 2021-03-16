@@ -553,9 +553,11 @@ public class DiscountResourceImpl extends BaseDiscountResourceImpl {
 
 				if (cProduct == null) {
 					cProduct =
-						_cProductLocalService.fetchCProductByExternalReferenceCode(
-							contextCompany.getCompanyId(),
-							discountProduct.getProductExternalReferenceCode());
+						_cProductLocalService.
+							fetchCProductByExternalReferenceCode(
+								contextCompany.getCompanyId(),
+								discountProduct.
+									getProductExternalReferenceCode());
 				}
 
 				if (cProduct == null) {

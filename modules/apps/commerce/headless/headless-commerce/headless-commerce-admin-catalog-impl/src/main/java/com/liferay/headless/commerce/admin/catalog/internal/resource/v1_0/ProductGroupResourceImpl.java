@@ -233,10 +233,11 @@ public class ProductGroupResourceImpl
 
 				if (cProduct == null) {
 					cProduct =
-						_cProductLocalService.fetchCProductByExternalReferenceCode(
-							contextCompany.getCompanyId(),
-							productGroupProduct.
-								getProductExternalReferenceCode());
+						_cProductLocalService.
+							fetchCProductByExternalReferenceCode(
+								contextCompany.getCompanyId(),
+								productGroupProduct.
+									getProductExternalReferenceCode());
 				}
 
 				if (cProduct == null) {
