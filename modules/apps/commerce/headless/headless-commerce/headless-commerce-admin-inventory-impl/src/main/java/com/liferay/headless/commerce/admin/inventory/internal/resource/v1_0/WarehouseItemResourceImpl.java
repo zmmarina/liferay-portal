@@ -73,7 +73,7 @@ public class WarehouseItemResourceImpl
 
 		CommerceInventoryWarehouseItem commerceInventoryWarehouseItem =
 			_commerceInventoryWarehouseItemService.
-				fetchCommerceInventoryWarehouseItemByReferenceCode(
+				fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (commerceInventoryWarehouseItem == null) {
@@ -141,7 +141,7 @@ public class WarehouseItemResourceImpl
 
 		CommerceInventoryWarehouseItem commerceInventoryWarehouseItem =
 			_commerceInventoryWarehouseItemService.
-				fetchCommerceInventoryWarehouseItemByReferenceCode(
+				fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (commerceInventoryWarehouseItem == null) {
@@ -238,7 +238,7 @@ public class WarehouseItemResourceImpl
 
 		CommerceInventoryWarehouseItem commerceInventoryWarehouseItem =
 			_commerceInventoryWarehouseItemService.
-				fetchCommerceInventoryWarehouseItemByReferenceCode(
+				fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (commerceInventoryWarehouseItem == null) {
@@ -330,7 +330,7 @@ public class WarehouseItemResourceImpl
 
 		CommerceInventoryWarehouseItem commerceInventoryWarehouseItem =
 			_commerceInventoryWarehouseItemService.
-				fetchCommerceInventoryWarehouseItemByReferenceCode(
+				fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 					externalReferenceCode, contextCompany.getCompanyId());
 
 		if (commerceInventoryWarehouseItem != null) {

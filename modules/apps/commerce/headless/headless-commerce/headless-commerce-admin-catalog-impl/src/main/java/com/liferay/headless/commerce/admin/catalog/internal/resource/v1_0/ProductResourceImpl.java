@@ -278,7 +278,7 @@ public class ProductResourceImpl
 		if (catalogExternalReferenceCode != null) {
 			commerceCatalog =
 				_commerceCatalogLocalService.
-					fetchCommerceCatalogByReferenceCode(
+					fetchCommerceCatalogByExternalReferenceCode(
 						contextCompany.getCompanyId(),
 						catalogExternalReferenceCode);
 		}

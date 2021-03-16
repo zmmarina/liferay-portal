@@ -312,7 +312,7 @@ public class PunchOutSessionResourceImpl
 	private CommerceAccount _fetchBusinessCommerceAccount(
 		String externalReferenceCode) {
 
-		return _commerceAccountLocalService.fetchCommerceAccountByReferenceCode(
+		return _commerceAccountLocalService.fetchCommerceAccountByExternalReferenceCode(
 			contextCompany.getCompanyId(), externalReferenceCode);
 	}
 
