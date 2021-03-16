@@ -143,7 +143,7 @@ public class CommerceInventoryWarehouseItemServiceImpl
 
 	@Override
 	public CommerceInventoryWarehouseItem
-			fetchCommerceInventoryWarehouseItemByReferenceCode(
+			fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 				String externalReferenceCode, long companyId)
 		throws PortalException {
 
@@ -156,7 +156,7 @@ public class CommerceInventoryWarehouseItemServiceImpl
 			CommerceInventoryActionKeys.MANAGE_INVENTORY);
 
 		return commerceInventoryWarehouseItemLocalService.
-			fetchCommerceInventoryWarehouseItemByReferenceCode(
+			fetchCommerceInventoryWarehouseItemByExternalReferenceCode(
 				companyId, externalReferenceCode);
 	}
 
