@@ -1130,12 +1130,12 @@ public class PayPalCommercePaymentMethod implements CommercePaymentMethod {
 
 		BigDecimal shippingAmount = commerceOrder.getShippingAmount();
 
-		Currency initialFee = new Currency(
+		Currency initialFeeCurrency = new Currency(
 			commerceCurrency.getCode(),
 			_payPalDecimalFormat.format(
 				shippingAmount.add(commerceOrder.getTaxAmount())));
 
-		merchantPreferences.setSetupFee(initialFee);
+		merchantPreferences.setSetupFee(initialFeeCurrency);
 
 		PayPalGroupServiceConfiguration payPalGroupServiceConfiguration =
 			_getPayPalGroupServiceConfiguration(commerceOrder.getGroupId());
