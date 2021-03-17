@@ -53,7 +53,7 @@ public class RsyncTestrayServer extends BaseTestrayServer {
 				JenkinsResultsParserUtil.combine(
 					"Uploaded ",
 					JenkinsResultsParserUtil.getCanonicalPath(resultFile),
-					" by RSYNC"));
+					" by Rsync"));
 
 			JenkinsResultsParserUtil.delete(resultFile);
 		}
