@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.security.permission.PermissionChecker;
 import com.liferay.portal.kernel.security.permission.PermissionThreadLocal;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.Portal;
 import com.liferay.portal.kernel.util.Validator;
 
@@ -223,17 +224,13 @@ public class CommerceSubscriptionEngineImpl
 			commercePaymentMethod.completeRecurringPayment(
 				commercePaymentRequest);
 
-		String authTransactionId = commercePaymentResult.getAuthTransactionId();
-
-		if (Validator.isNull(authTransactionId)) {
-			authTransactionId = commerceOrder.getTransactionId();
-		}
-
 		commerceOrder =
 			_commerceOrderLocalService.updatePaymentStatusAndTransactionId(
 				commerceOrder.getUserId(), commerceOrderId,
 				commercePaymentResult.getNewPaymentStatus(),
-				authTransactionId);
+				GetterUtil.getString(
+					commercePaymentResult.getAuthTransactionId(),
+					commerceOrder.getTransactionId()));
 
 		_commerceOrderPaymentLocalService.addCommerceOrderPayment(
 			commerceOrderId, commercePaymentResult.getNewPaymentStatus(),
