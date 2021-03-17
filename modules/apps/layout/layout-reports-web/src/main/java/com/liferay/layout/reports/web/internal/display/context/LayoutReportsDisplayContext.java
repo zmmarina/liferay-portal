@@ -191,28 +191,27 @@ public class LayoutReportsDisplayContext {
 	}
 
 	private String _getConfigurePageSpeedURL(PortletRequest portletRequest) {
-		if (_isOmniAdmin()) {
-			PortletURL portletURL = _portal.getControlPanelPortletURL(
-				portletRequest, ConfigurationAdminPortletKeys.SYSTEM_SETTINGS,
-				PortletRequest.RENDER_PHASE);
-
-			portletURL.setParameter(
-				"mvcRenderCommandName",
-				"/configuration_admin/edit_configuration");
-
-			portletURL.setParameter(
-				"factoryPid", LayoutReportsConfiguration.class.getName());
-			portletURL.setParameter(
-				"pid", LayoutReportsConfiguration.class.getName());
-			portletURL.setParameter(
-				"redirect",
-				_portal.getCurrentCompleteURL(
-					_portal.getHttpServletRequest(portletRequest)));
-
-			return String.valueOf(portletURL);
+		if (!_isOmniAdmin()) {
+			return null;
 		}
 
-		return null;
+		PortletURL portletURL = _portal.getControlPanelPortletURL(
+			portletRequest, ConfigurationAdminPortletKeys.SYSTEM_SETTINGS,
+			PortletRequest.RENDER_PHASE);
+
+		portletURL.setParameter(
+			"mvcRenderCommandName",
+			"/configuration_admin/edit_configuration");
+		portletURL.setParameter(
+			"redirect",
+			_portal.getCurrentCompleteURL(
+				_portal.getHttpServletRequest(portletRequest)));
+		portletURL.setParameter(
+			"factoryPid", LayoutReportsConfiguration.class.getName());
+		portletURL.setParameter(
+			"pid", LayoutReportsConfiguration.class.getName());
+
+		return String.valueOf(portletURL);
 	}
 
 	private Locale _getDefaultLocale(Layout layout) {
