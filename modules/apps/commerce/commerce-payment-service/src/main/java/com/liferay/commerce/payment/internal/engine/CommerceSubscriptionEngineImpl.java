@@ -223,8 +223,6 @@ public class CommerceSubscriptionEngineImpl
 			commercePaymentMethod.completeRecurringPayment(
 				commercePaymentRequest);
 
-		int paymentStatus = commercePaymentResult.getNewPaymentStatus();
-
 		String authTransactionId = commercePaymentResult.getAuthTransactionId();
 
 		if (Validator.isNull(authTransactionId)) {
@@ -233,13 +231,17 @@ public class CommerceSubscriptionEngineImpl
 
 		commerceOrder =
 			_commerceOrderLocalService.updatePaymentStatusAndTransactionId(
-				commerceOrder.getUserId(), commerceOrderId, paymentStatus,
+				commerceOrder.getUserId(), commerceOrderId,
+				commercePaymentResult.getNewPaymentStatus(),
 				authTransactionId);
 
 		_commerceOrderPaymentLocalService.addCommerceOrderPayment(
-			commerceOrderId, paymentStatus, StringPool.BLANK);
+			commerceOrderId, commercePaymentResult.getNewPaymentStatus(),
+			StringPool.BLANK);
 
-		if (paymentStatus == CommerceOrderConstants.PAYMENT_STATUS_PAID) {
+		if (commercePaymentResult.getNewPaymentStatus() ==
+				CommerceOrderConstants.PAYMENT_STATUS_PAID) {
+
 			PermissionChecker permissionChecker =
 				PermissionThreadLocal.getPermissionChecker();
 
