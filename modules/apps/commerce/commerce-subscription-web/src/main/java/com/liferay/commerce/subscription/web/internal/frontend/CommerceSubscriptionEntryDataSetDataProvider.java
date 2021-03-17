@@ -202,7 +202,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 			CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 				CommerceSubscriptionEntryConstants.
 					SUBSCRIPTION_STATUS_COMPLETED);
-
 		String label = Label.INFO;
 
 		if (Objects.equals(
@@ -218,7 +217,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_ACTIVE);
-
 			label = Label.SUCCESS;
 		}
 		else if (Objects.equals(
@@ -234,7 +232,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_INACTIVE);
-
 			label = Label.WARNING;
 		}
 		else if (Objects.equals(
@@ -250,7 +247,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_SUSPENDED);
-
 			label = Label.WARNING;
 		}
 		else if (Objects.equals(
@@ -266,7 +262,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_CANCELLED);
-
 			label = Label.DANGER;
 		}
 		else if ((Objects.equals(
@@ -290,7 +285,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_SUSPENDED);
-
 			label = Label.WARNING;
 		}
 		else if ((Objects.equals(
@@ -314,7 +308,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_CANCELLED);
-
 			label = Label.DANGER;
 		}
 		else if ((Objects.equals(
@@ -338,7 +331,6 @@ public class CommerceSubscriptionEntryDataSetDataProvider
 				CommerceSubscriptionEntryConstants.getSubscriptionStatusLabel(
 					CommerceSubscriptionEntryConstants.
 						SUBSCRIPTION_STATUS_CANCELLED);
-
 			label = Label.DANGER;
 		}
 
