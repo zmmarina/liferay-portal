@@ -229,11 +229,7 @@ public class LayoutReportsDisplayContext {
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
-		if (permissionChecker.isOmniadmin()) {
-			return true;
-		}
-
-		return false;
+		return permissionChecker.isOmniadmin();
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
