@@ -258,7 +258,8 @@ public class AuthorizationCodeGrantServiceRegistrator {
 					OAuth2ProviderRESTEndpointConstants.
 						PROPERTY_KEY_CLIENT_REMEMBER_DEVICE) ||
 				!params.containsKey(
-					_OAUTH2_AUTHORIZE_PORTLET_REMEMBER_DEVICE_PARAMETER)) {
+					"_com_liferay_oauth2_provider_web_internal_portlet_" +
+						"OAuth2AuthorizePortlet_rememberDevice")) {
 
 				return oAuthRedirectionState;
 			}
@@ -319,11 +320,6 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				null
 			);
 		}
-
-		private static final String
-			_OAUTH2_AUTHORIZE_PORTLET_REMEMBER_DEVICE_PARAMETER =
-				"_com_liferay_oauth2_provider_web_internal_portlet_" +
-					"OAuth2AuthorizePortlet_rememberDevice";
 
 		@Context
 		private UriInfo _uriInfo;
