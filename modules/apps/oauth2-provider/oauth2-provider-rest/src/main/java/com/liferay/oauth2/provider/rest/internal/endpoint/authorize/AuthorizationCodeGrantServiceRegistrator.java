@@ -158,9 +158,9 @@ public class AuthorizationCodeGrantServiceRegistrator {
 					permissions);
 			}
 
-			String rememberDeviceCookieContent = _getRememberDeviceContent();
+			String rememberDeviceContent = _getRememberDeviceContent();
 
-			if (rememberDeviceCookieContent == null) {
+			if (rememberDeviceContent == null) {
 				return super.canAuthorizationBeSkipped(
 					params, client, userSubject, requestedScopesList,
 					permissions);
@@ -174,10 +174,10 @@ public class AuthorizationCodeGrantServiceRegistrator {
 			OAuth2Authorization oAuth2Authorization =
 				liferayOAuthDataProvider.
 					getOAuth2AuthorizationByRememberDeviceContent(
-						client, rememberDeviceCookieContent, userId);
+						client, rememberDeviceContent, userId);
 
 			if ((oAuth2Authorization != null) &&
-				rememberDeviceCookieContent.equals(
+				rememberDeviceContent.equals(
 					oAuth2Authorization.getRememberDeviceContent())) {
 
 				RefreshToken refreshToken =
