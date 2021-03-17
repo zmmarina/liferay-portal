@@ -86,12 +86,12 @@ public class AccessControlImpl implements AccessControl {
 
 	@Override
 	public AuthVerifierResult.State verifyRequest() throws PortalException {
+		AuthVerifierResult authVerifierResult = null;
+
 		AccessControlContext accessControlContext =
 			AccessControlUtil.getAccessControlContext();
 
 		Map<String, Object> settings = accessControlContext.getSettings();
-
-		AuthVerifierResult authVerifierResult = null;
 
 		if (!settings.containsKey(AuthVerifierPipeline.class.getName())) {
 			authVerifierResult =
