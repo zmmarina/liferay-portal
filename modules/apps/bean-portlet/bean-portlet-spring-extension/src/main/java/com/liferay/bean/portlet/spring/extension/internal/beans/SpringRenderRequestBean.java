@@ -43,6 +43,8 @@ import javax.servlet.http.Cookie;
 /**
  * @author Neil Griffin
  */
+@ManagedBean("renderRequest")
+
 // When the developer uses "@Inject RenderRequest", Spring must be able to
 // disambiguate between RenderRequest and HeaderRequest. This is accomplished
 // with @Priority. However, Spring only knows how to apply the @Priority
@@ -51,6 +53,8 @@ import javax.servlet.http.Cookie;
 // class like JSR362SpringBeanProducer that produces multiple
 // types of beans via producer methods annotated with @Bean.
 
+@Priority(2)
+
 // In order to support unwrapping, it is necessary for this bean to extend
 // RenderRequestWrapper. However, RenderRequestWrapper is designed in
 // such a way that it requires the wrapped instance to be specified via the
@@ -58,9 +62,6 @@ import javax.servlet.http.Cookie;
 // it is not possible to pass the instance via the constructor. Therefore each
 // of the methods of PortletRequestWrapper and RenderRequestWrapper are
 // overridden in this class.
-
-@ManagedBean("renderRequest")
-@Priority(2)
 public class SpringRenderRequestBean extends RenderRequestWrapper {
 
 	public SpringRenderRequestBean() {
