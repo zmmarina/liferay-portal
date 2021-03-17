@@ -249,7 +249,12 @@ public class KBFolderLocalServiceImpl extends KBFolderLocalServiceBaseImpl {
 		while (!kbFoldersAndArticles.isEmpty()) {
 			Object kbObject = kbFoldersAndArticles.pop();
 
-			if (kbObject instanceof KBFolder) {
+			if (kbObject instanceof KBArticle) {
+				KBArticle childKBArticle = (KBArticle)kbObject;
+
+				_kbArticleLocalService.updateKBArticle(childKBArticle);
+			}
+			else if (kbObject instanceof KBFolder) {
 				KBFolder childKBFolder = (KBFolder)kbObject;
 
 				kbFoldersAndArticles.addAll(
@@ -258,11 +263,6 @@ public class KBFolderLocalServiceImpl extends KBFolderLocalServiceBaseImpl {
 						childKBFolder.getKbFolderId(),
 						WorkflowConstants.STATUS_ANY, QueryUtil.ALL_POS,
 						QueryUtil.ALL_POS, null));
-			}
-			else if (kbObject instanceof KBArticle) {
-				KBArticle childKBArticle = (KBArticle)kbObject;
-
-				_kbArticleLocalService.updateKBArticle(childKBArticle);
 			}
 		}
 	}
