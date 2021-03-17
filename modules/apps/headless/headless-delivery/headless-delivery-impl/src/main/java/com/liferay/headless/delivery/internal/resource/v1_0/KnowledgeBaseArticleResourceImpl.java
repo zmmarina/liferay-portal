@@ -207,7 +207,6 @@ public class KnowledgeBaseArticleResourceImpl
 							Field.FOLDER_ID,
 							String.valueOf(kbFolder.getKbFolderId())),
 						BooleanClauseOccur.MUST);
-
 					booleanFilter.add(
 						new TermFilter(
 							"parentMessageId",
