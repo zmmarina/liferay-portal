@@ -160,25 +160,24 @@ public class CommerceSubscriptionEntryDisplayContext {
 	}
 
 	public String getCommerceSubscriptionEntryStartDate() {
+		Date showDate = null;
+
 		CommerceSubscriptionEntry commerceSubscriptionEntry =
 			getCommerceSubscriptionEntry();
 
-		Date startDate = commerceSubscriptionEntry.getStartDate();
-
 		Date deliveryStartDate =
 			commerceSubscriptionEntry.getDeliveryStartDate();
+		Date startDate = commerceSubscriptionEntry.getStartDate();
 
-		Date showDate;
-
-		if ((startDate != null) && (deliveryStartDate != null)) {
+		if ((deliveryStartDate != null) && (startDate != null)) {
 			showDate =
 				startDate.before(deliveryStartDate) ? startDate :
 					deliveryStartDate;
 		}
-		else if ((startDate == null) && (deliveryStartDate != null)) {
+		else if ((deliveryStartDate != null) && (startDate == null)) {
 			showDate = deliveryStartDate;
 		}
-		else if ((startDate != null) && (deliveryStartDate == null)) {
+		else if ((deliveryStartDate == null) && (startDate != null)) {
 			showDate = startDate;
 		}
 		else {
