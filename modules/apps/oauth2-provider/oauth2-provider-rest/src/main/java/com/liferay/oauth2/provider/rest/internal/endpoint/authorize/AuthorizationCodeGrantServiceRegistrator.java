@@ -128,7 +128,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				serverAuthorizationCodeGrant.getExtraProperties();
 
 			extraProperties.put(
-				OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE,
+				OAuth2ProviderRESTEndpointConstants.COOKIE_NAME_REMEMBER_DEVICE,
 				cookie.getValue());
 
 			return serverAuthorizationCodeGrant;
@@ -276,7 +276,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				oAuthRedirectionState.getExtraProperties();
 
 			extraProperties.put(
-				OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE,
+				OAuth2ProviderRESTEndpointConstants.COOKIE_NAME_REMEMBER_DEVICE,
 				cookie.getValue());
 
 			return oAuthRedirectionState;
@@ -287,7 +287,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				SecureRandomUtil.nextLong(), SecureRandomUtil.nextLong());
 
 			Cookie cookie = new Cookie(
-				OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE,
+				OAuth2ProviderRESTEndpointConstants.COOKIE_NAME_REMEMBER_DEVICE,
 				uuid.toString());
 
 			URI baseURI = _uriInfo.getBaseUri();
@@ -312,7 +312,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 			).filter(
 				cookie -> Objects.equals(
 					cookie.getName(),
-					OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE)
+					OAuth2ProviderRESTEndpointConstants.COOKIE_NAME_REMEMBER_DEVICE)
 			).map(
 				Cookie::getValue
 			).findFirst(
