@@ -131,8 +131,6 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE,
 				cookie.getValue());
 
-			serverAuthorizationCodeGrant.setExtraProperties(extraProperties);
-
 			return serverAuthorizationCodeGrant;
 		}
 
@@ -272,8 +270,6 @@ public class AuthorizationCodeGrantServiceRegistrator {
 			extraProperties.put(
 				OAuth2ProviderRESTEndpointConstants.COOKIE_REMEMBER_DEVICE,
 				cookie.getValue());
-
-			oAuthRedirectionState.setExtraProperties(extraProperties);
 
 			return oAuthRedirectionState;
 		}
