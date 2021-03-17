@@ -27,6 +27,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -127,6 +130,7 @@ public class TestrayRoutine {
 			}
 		}
 		catch (IOException ioException) {
+			_log.debug(ioException.getMessage(), ioException);
 		}
 
 		return getTestrayBuildByName(buildName);
@@ -286,6 +290,8 @@ public class TestrayRoutine {
 	}
 
 	private static final int _DELTA = 25;
+
+	private static final Log _log = LogFactory.getLog(TestrayRoutine.class);
 
 	private final JSONObject _jsonObject;
 	private final Map<Integer, TestrayBuild> _testrayBuildsByID =
