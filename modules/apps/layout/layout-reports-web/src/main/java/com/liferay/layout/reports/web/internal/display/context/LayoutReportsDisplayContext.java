@@ -211,7 +211,7 @@ public class LayoutReportsDisplayContext {
 		portletURL.setParameter(
 			"pid", LayoutReportsConfiguration.class.getName());
 
-		return String.valueOf(portletURL);
+		return portletURL.toString();
 	}
 
 	private Locale _getDefaultLocale(Layout layout) {
