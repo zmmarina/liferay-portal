@@ -105,13 +105,56 @@ public class ShipmentResourceImpl extends BaseShipmentResourceImpl {
 		CommerceShipment commerceShipment =
 			_commerceShipmentService.getCommerceShipment(shipmentId);
 
-		_patchCarrierAndTrackingNumber(shipment, commerceShipment);
+		_commerceShipmentService.updateCarrierDetails(
+			commerceShipment.getCommerceShipmentId(),
+			GetterUtil.get(
+				shipment.getCarrier(), commerceShipment.getCarrier()),
+			GetterUtil.get(
+				shipment.getTrackingNumber(),
+				commerceShipment.getTrackingNumber()));
 
-		_patchShippingAddress(shipment, commerceShipment);
+		ShippingAddress shippingAddress = shipment.getShippingAddress();
 
-		_patchShippingDate(shipmentId, shipment.getShippingDate());
+		if (shippingAddress != null) {
+			ShippingAddressUtil.updateShippingAddress(
+				_commerceAddressService, _commerceShipmentService,
+				commerceShipment, _countryService, _regionService,
+				shippingAddress, _serviceContextHelper);
+		}
 
-		_patchExpectedDate(shipmentId, shipment.getExpectedDate());
+		Date shippingDate = shipment.getShippingDate();
+
+		if (shippingDate != null) {
+			Calendar calendar = CalendarFactoryUtil.getCalendar(
+				shippingDate.getTime());
+
+			int shippingDay = calendar.get(Calendar.DAY_OF_MONTH);
+			int shippingMonth = calendar.get(Calendar.MONTH);
+			int shippingYear = calendar.get(Calendar.YEAR);
+			int shippingHour = calendar.get(Calendar.HOUR_OF_DAY);
+			int shippingMinute = calendar.get(Calendar.MINUTE);
+
+			_commerceShipmentService.updateShippingDate(
+				shipmentId, shippingMonth, shippingDay, shippingYear,
+				shippingHour, shippingMinute);
+		}
+
+		Date expectedDate = shipment.getExpectedDate();
+
+		if (expectedDate != null) {
+			Calendar calendar = CalendarFactoryUtil.getCalendar(
+				expectedDate.getTime());
+
+			int expectedDay = calendar.get(Calendar.DAY_OF_MONTH);
+			int expectedMonth = calendar.get(Calendar.MONTH);
+			int expectedYear = calendar.get(Calendar.YEAR);
+			int expectedHour = calendar.get(Calendar.HOUR_OF_DAY);
+			int expectedMinute = calendar.get(Calendar.MINUTE);
+
+			_commerceShipmentService.updateExpectedDate(
+				shipmentId, expectedMonth, expectedDay, expectedYear,
+				expectedHour, expectedMinute);
+		}
 
 		return _toShipment(shipmentId);
 	}
@@ -187,71 +230,6 @@ public class ShipmentResourceImpl extends BaseShipmentResourceImpl {
 				"com.liferay.commerce.model.CommerceShipment",
 				commerceShipment.getGroupId())
 		).build();
-	}
-
-	private void _patchCarrierAndTrackingNumber(
-			Shipment shipment, CommerceShipment commerceShipment)
-		throws Exception {
-
-		_commerceShipmentService.updateCarrierDetails(
-			commerceShipment.getCommerceShipmentId(),
-			GetterUtil.get(
-				shipment.getCarrier(), commerceShipment.getCarrier()),
-			GetterUtil.get(
-				shipment.getTrackingNumber(),
-				commerceShipment.getTrackingNumber()));
-	}
-
-	private void _patchExpectedDate(long shipmentId, Date expectedDate)
-		throws Exception {
-
-		if (expectedDate != null) {
-			Calendar calendar = CalendarFactoryUtil.getCalendar(
-				expectedDate.getTime());
-
-			int expectedDay = calendar.get(Calendar.DAY_OF_MONTH);
-			int expectedMonth = calendar.get(Calendar.MONTH);
-			int expectedYear = calendar.get(Calendar.YEAR);
-			int expectedHour = calendar.get(Calendar.HOUR_OF_DAY);
-			int expectedMinute = calendar.get(Calendar.MINUTE);
-
-			_commerceShipmentService.updateExpectedDate(
-				shipmentId, expectedMonth, expectedDay, expectedYear,
-				expectedHour, expectedMinute);
-		}
-	}
-
-	private void _patchShippingAddress(
-			Shipment shipment, CommerceShipment commerceShipment)
-		throws Exception {
-
-		ShippingAddress shippingAddress = shipment.getShippingAddress();
-
-		if (shippingAddress != null) {
-			ShippingAddressUtil.updateShippingAddress(
-				_commerceAddressService, _commerceShipmentService,
-				commerceShipment, _countryService, _regionService,
-				shippingAddress, _serviceContextHelper);
-		}
-	}
-
-	private void _patchShippingDate(long shipmentId, Date shippingDate)
-		throws Exception {
-
-		if (shippingDate != null) {
-			Calendar calendar = CalendarFactoryUtil.getCalendar(
-				shippingDate.getTime());
-
-			int shippingDay = calendar.get(Calendar.DAY_OF_MONTH);
-			int shippingMonth = calendar.get(Calendar.MONTH);
-			int shippingYear = calendar.get(Calendar.YEAR);
-			int shippingHour = calendar.get(Calendar.HOUR_OF_DAY);
-			int shippingMinute = calendar.get(Calendar.MINUTE);
-
-			_commerceShipmentService.updateShippingDate(
-				shipmentId, shippingMonth, shippingDay, shippingYear,
-				shippingHour, shippingMinute);
-		}
 	}
 
 	private Shipment _toShipment(CommerceShipment commerceShipment)
