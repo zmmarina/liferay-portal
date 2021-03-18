@@ -258,8 +258,8 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 				formData.add("client_id", applicationClientId);
 				formData.add("client_secret", "oauthTestApplicationSecret");
-				formData.add("grant_type", "authorization_code");
 				formData.add("code", parseAuthorizationCodeString(response1));
+				formData.add("grant_type", "authorization_code");
 
 				return tokenInvocationBuilder.post(Entity.form(formData));
 			},
@@ -289,8 +289,8 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 				formData.add("client_id", applicationClientId);
 				formData.add("client_secret", "oauthTestApplicationSecret");
-				formData.add("grant_type", "authorization_code");
 				formData.add("code", parseAuthorizationCodeString(response2));
+				formData.add("grant_type", "authorization_code");
 
 				return tokenInvocationBuilder.post(Entity.form(formData));
 			},
@@ -366,8 +366,8 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 				formData.add("client_id", applicationClientId);
 				formData.add("client_secret", "oauthTestApplicationSecret");
-				formData.add("grant_type", "authorization_code");
 				formData.add("code", parseAuthorizationCodeString(response2));
+				formData.add("grant_type", "authorization_code");
 
 				return tokenInvocationBuilder.post(Entity.form(formData));
 			},
@@ -525,8 +525,8 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 				formData1.add("client_id", applicationClientId);
 				formData1.add("client_secret", "oauthTestApplicationSecret");
-				formData1.add("grant_type", "authorization_code");
 				formData1.add("code", parseAuthorizationCodeString(response1));
+				formData1.add("grant_type", "authorization_code");
 
 				return tokenInvocationBuilder.post(Entity.form(formData1));
 			},
