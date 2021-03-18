@@ -23,8 +23,6 @@ import com.liferay.portal.aop.AopService;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.security.auth.CompanyThreadLocal;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Time;
@@ -172,21 +170,8 @@ public class OAuth2AuthorizationLocalServiceImpl
 	public OAuth2Authorization fetchOAuth2AuthorizationByRememberDeviceContent(
 		long userId, long oAuth2ApplicationId, String rememberDeviceContent) {
 
-		try {
-			return oAuth2AuthorizationPersistence.findByU_O_R_First(
-				userId, oAuth2ApplicationId, rememberDeviceContent, null);
-		}
-		catch (NoSuchOAuth2AuthorizationException
-					noSuchOAuth2AuthorizationException) {
-
-			if (_log.isDebugEnabled()) {
-				_log.debug(
-					noSuchOAuth2AuthorizationException,
-					noSuchOAuth2AuthorizationException);
-			}
-
-			return null;
-		}
+		return oAuth2AuthorizationPersistence.fetchByU_O_R_First(
+			userId, oAuth2ApplicationId, rememberDeviceContent, null);
 	}
 
 	@Override
@@ -284,9 +269,6 @@ public class OAuth2AuthorizationLocalServiceImpl
 		_expiredAuthorizationsAfterlifeDurationMillis =
 			expiredAuthorizationsAfterlifeDuration * Time.SECOND;
 	}
-
-	private static final Log _log = LogFactoryUtil.getLog(
-		OAuth2AuthorizationLocalServiceImpl.class);
 
 	private long _expiredAuthorizationsAfterlifeDurationMillis;
 
