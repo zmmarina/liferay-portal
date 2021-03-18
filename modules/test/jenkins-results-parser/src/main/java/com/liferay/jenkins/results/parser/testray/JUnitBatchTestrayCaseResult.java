@@ -53,7 +53,7 @@ public class JUnitBatchTestrayCaseResult extends BatchTestrayCaseResult {
 				return "Failed to run on CI";
 			}
 
-			return "Failed prior to running test.";
+			return "Failed prior to running test";
 		}
 
 		if (!testClassResult.isFailing()) {
