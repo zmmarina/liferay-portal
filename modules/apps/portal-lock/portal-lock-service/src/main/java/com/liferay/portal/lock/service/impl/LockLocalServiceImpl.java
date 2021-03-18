@@ -305,7 +305,7 @@ public class LockLocalServiceImpl extends LockLocalServiceBaseImpl {
 					causeThrowable instanceof LockAcquisitionException) {
 
 					if (_log.isInfoEnabled()) {
-						_log.info("Unable to acquire lock, will retry again");
+						_log.info("Unable to acquire lock, retrying");
 					}
 
 					continue;
@@ -422,7 +422,7 @@ public class LockLocalServiceImpl extends LockLocalServiceBaseImpl {
 					causeThrowable instanceof LockAcquisitionException) {
 
 					if (_log.isInfoEnabled()) {
-						_log.info("Failed to remove lock, will retry again");
+						_log.info("Unable to remove lock, retrying");
 					}
 
 					continue;
