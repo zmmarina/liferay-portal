@@ -588,10 +588,10 @@ public class JournalArticleActionDropdownItemsProvider {
 					_themeDisplay);
 
 			previewURL = HttpUtil.addParameter(
-				previewURL, "version", _article.getId());
+				previewURL, "p_l_mode", Constants.PREVIEW);
 
 			return HttpUtil.addParameter(
-				previewURL, "p_l_mode", Constants.PREVIEW);
+				previewURL, "version", _article.getId());
 		}
 
 		if (Validator.isNull(_article.getDDMTemplateKey())) {
