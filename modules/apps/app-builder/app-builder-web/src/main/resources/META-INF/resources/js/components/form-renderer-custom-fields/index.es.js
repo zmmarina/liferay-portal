@@ -20,7 +20,7 @@ import RequiredField from './RequiredField.es';
 import {getDataDefinitionField, getFormattedState} from './shared/utils.es';
 
 const withFormattedState = (Component) => {
-	return ({AppContext, ...props}) => {
+	return ({AppContext, field, ...props}) => {
 		const [state, dispatch] = useContext(AppContext);
 
 		if (!getDataDefinitionField(state)) {
@@ -28,11 +28,14 @@ const withFormattedState = (Component) => {
 		}
 
 		return (
-			<Component
-				{...props}
-				dispatch={dispatch}
-				state={getFormattedState(state)}
-			/>
+			<div className="ddm-field" data-field-name={field.fieldName}>
+				<Component
+					{...props}
+					dispatch={dispatch}
+					field={field}
+					state={getFormattedState(state)}
+				/>
+			</div>
 		);
 	};
 };
