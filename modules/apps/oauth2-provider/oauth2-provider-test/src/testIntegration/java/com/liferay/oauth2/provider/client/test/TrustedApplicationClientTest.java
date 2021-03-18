@@ -131,7 +131,6 @@ public class TrustedApplicationClientTest extends BaseClientTestCase {
 				Collections.singletonList(GrantType.AUTHORIZATION_CODE_PKCE),
 				Collections.singletonList("http://redirecturi:8080"), false,
 				Collections.singletonList("everything"), false);
-
 			createOAuth2Application(
 				defaultCompanyId, user, "oauthTestTrustedApplicationCode",
 				Collections.singletonList(GrantType.AUTHORIZATION_CODE), false,
