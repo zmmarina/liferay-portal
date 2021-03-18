@@ -161,7 +161,6 @@ public class LiferayOAuthDataProvider
 
 		serverAuthorizationCodeGrant.setExtraProperties(
 			authorizationCodeRegistration.getExtraProperties());
-
 		serverAuthorizationCodeGrant.setRequestedScopes(
 			authorizationCodeRegistration.getRequestedScope());
 
