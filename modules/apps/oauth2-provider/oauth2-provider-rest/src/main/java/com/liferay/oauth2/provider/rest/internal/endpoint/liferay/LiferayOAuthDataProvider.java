@@ -336,7 +336,7 @@ public class LiferayOAuthDataProvider
 			getServerAuthorizationCodeGrants(client, subject);
 	}
 
-	public OAuth2Authorization getOAuth2AuthorizationByRememberDeviceContent(
+	public OAuth2Authorization getOAuth2Authorization(
 		Client client, String rememberDeviceContent, long userId) {
 
 		long companyId = MapUtil.getLong(

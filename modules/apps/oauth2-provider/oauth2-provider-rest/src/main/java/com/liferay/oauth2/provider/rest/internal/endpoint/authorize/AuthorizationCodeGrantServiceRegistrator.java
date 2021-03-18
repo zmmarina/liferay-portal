@@ -104,7 +104,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 
 			OAuth2Authorization oAuth2Authorization =
 				liferayOAuthDataProvider.
-					getOAuth2AuthorizationByRememberDeviceContent(
+					getOAuth2Authorization(
 						client, rememberDeviceContent, userId);
 
 			if ((oAuth2Authorization == null) ||
@@ -174,7 +174,7 @@ public class AuthorizationCodeGrantServiceRegistrator {
 
 			OAuth2Authorization oAuth2Authorization =
 				liferayOAuthDataProvider.
-					getOAuth2AuthorizationByRememberDeviceContent(
+					getOAuth2Authorization(
 						client, rememberDeviceContent, userId);
 
 			if ((oAuth2Authorization != null) &&
