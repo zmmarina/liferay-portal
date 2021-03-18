@@ -62,19 +62,14 @@ const getColumn = ({customFields = {}, ...otherProps}) => ({
 
 				if (CustomField) {
 					return (
-						<div
-							className="ddm-field"
-							data-field-name={fieldName}
+						<CustomField
+							{...otherProps}
+							field={field}
+							index={index}
 							key={index}
 						>
-							<CustomField
-								{...otherProps}
-								field={field}
-								index={index}
-							>
-								{children}
-							</CustomField>
-						</div>
+							{children}
+						</CustomField>
 					);
 				}
 
