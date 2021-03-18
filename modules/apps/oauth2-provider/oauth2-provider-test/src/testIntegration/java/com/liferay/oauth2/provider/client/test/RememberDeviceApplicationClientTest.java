@@ -130,8 +130,8 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 				formData.add("client_id", applicationClientId);
 				formData.add("client_secret", "oauthTestApplicationSecret");
-				formData.add("grant_type", "authorization_code");
 				formData.add("code", authorizationCodeString);
+				formData.add("grant_type", "authorization_code");
 
 				return tokenInvocationBuilder.post(Entity.form(formData));
 			},
