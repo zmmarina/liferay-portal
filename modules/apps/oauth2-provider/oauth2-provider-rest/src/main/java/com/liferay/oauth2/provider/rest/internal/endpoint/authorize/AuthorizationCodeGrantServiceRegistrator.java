@@ -292,9 +292,9 @@ public class AuthorizationCodeGrantServiceRegistrator {
 				OAuth2ProviderRESTEndpointConstants.COOKIE_NAME_REMEMBER_DEVICE,
 				uuid.toString());
 
-			URI baseURI = _uriInfo.getBaseUri();
+			URI uri = _uriInfo.getBaseUri();
 
-			cookie.setPath(baseURI.getPath());
+			cookie.setPath(uri.getPath());
 
 			return cookie;
 		}
