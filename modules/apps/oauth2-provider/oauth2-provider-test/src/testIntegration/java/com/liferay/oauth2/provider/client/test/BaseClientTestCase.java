@@ -107,14 +107,12 @@ public abstract class BaseClientTestCase {
 	}
 
 	protected String generateCodeChallenge(String codeVerifier) {
-		String base64Digest = DigesterUtil.digestBase64(
-			Digester.SHA_256, codeVerifier);
-
-		String base64UrlDigest = StringUtil.replace(
-			base64Digest, new char[] {CharPool.PLUS, CharPool.SLASH},
-			new char[] {CharPool.MINUS, CharPool.UNDERLINE});
-
-		return StringUtil.removeChar(base64UrlDigest, CharPool.EQUAL);
+		return StringUtil.removeChar(
+			StringUtil.replace(
+				DigesterUtil.digestBase64(Digester.SHA_256, codeVerifier),
+				new char[] {CharPool.PLUS, CharPool.SLASH},
+				new char[] {CharPool.MINUS, CharPool.UNDERLINE}),
+			CharPool.EQUAL);
 	}
 
 	protected Cookie getAuthenticatedCookie(
