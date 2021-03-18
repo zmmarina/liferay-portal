@@ -69,9 +69,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		Assert.assertNull(cookies.get(_COOKIE_NAME));
+		Assert.assertNull(newCookies.get(_COOKIE_NAME));
 	}
 
 	@Test
@@ -91,9 +91,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		Assert.assertNull(cookies.get(_COOKIE_NAME));
+		Assert.assertNull(newCookies.get(_COOKIE_NAME));
 	}
 
 	@Test
@@ -112,9 +112,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		NewCookie newCookie1 = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie1 = newCookies.get(_COOKIE_NAME);
 
 		Assert.assertNotNull(newCookie1);
 
@@ -153,9 +153,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 		Assert.assertNotNull(parseAuthorizationCodeString(response));
 
-		cookies = response.getCookies();
+		newCookies = response.getCookies();
 
-		NewCookie newCookie2 = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie2 = newCookies.get(_COOKIE_NAME);
 
 		Assert.assertNotEquals(newCookie1.getValue(), newCookie2.getValue());
 	}
@@ -180,9 +180,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		NewCookie newCookie1 = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie1 = newCookies.get(_COOKIE_NAME);
 
 		Assert.assertNotNull(newCookie1);
 
@@ -223,9 +223,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 
 		Assert.assertNotNull(parseAuthorizationCodeString(response));
 
-		cookies = response.getCookies();
+		newCookies = response.getCookies();
 
-		NewCookie newCookie2 = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie2 = newCookies.get(_COOKIE_NAME);
 
 		Assert.assertNotEquals(newCookie1.getValue(), newCookie2.getValue());
 	}
@@ -321,9 +321,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response1.getCookies();
+		Map<String, NewCookie> newCookies = response1.getCookies();
 
-		NewCookie newCookie = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie = newCookies.get(_COOKIE_NAME);
 
 		String token = getToken(
 			applicationClientId, null,
@@ -396,9 +396,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		NewCookie newCookie = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie = newCookies.get(_COOKIE_NAME);
 
 		_revokeOAuth2AuthorizationByAccessToken(
 			getToken(
@@ -456,9 +456,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response.getCookies();
+		Map<String, NewCookie> newCookies = response.getCookies();
 
-		NewCookie newCookie = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie = newCookies.get(_COOKIE_NAME);
 
 		_revokeOAuth2AuthorizationByAccessToken(
 			getToken(
@@ -513,9 +513,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response1.getCookies();
+		Map<String, NewCookie> newCookies = response1.getCookies();
 
-		NewCookie newCookie = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie = newCookies.get(_COOKIE_NAME);
 
 		getToken(
 			applicationClientId, null,
@@ -600,9 +600,9 @@ public class RememberDeviceApplicationClientTest extends BaseClientTestCase {
 				),
 				_getExtraParameters(), false));
 
-		Map<String, NewCookie> cookies = response1.getCookies();
+		Map<String, NewCookie> newCookies = response1.getCookies();
 
-		NewCookie newCookie = cookies.get(_COOKIE_NAME);
+		NewCookie newCookie = newCookies.get(_COOKIE_NAME);
 
 		getToken(
 			applicationClientId, null,
