@@ -652,11 +652,6 @@ public class LiferayOAuthDataProvider
 
 		bearerTokenProvider.onBeforeCreate(accessToken);
 
-		Map<String, String> accessTokenParameters = accessToken.getParameters();
-
-		accessTokenParameters.putAll(
-			accessTokenRegistration.getExtraProperties());
-
 		serverAccessToken.setAudiences(accessToken.getAudiences());
 		serverAccessToken.setClientCodeVerifier(
 			accessToken.getClientCodeVerifier());
@@ -667,7 +662,14 @@ public class LiferayOAuthDataProvider
 		serverAccessToken.setIssuedAt(accessToken.getIssuedAt());
 		serverAccessToken.setIssuer(accessToken.getIssuer());
 		serverAccessToken.setNonce(accessToken.getNonce());
+
+		Map<String, String> accessTokenParameters = accessToken.getParameters();
+
+		accessTokenParameters.putAll(
+			accessTokenRegistration.getExtraProperties());
+
 		serverAccessToken.setParameters(accessTokenParameters);
+
 		serverAccessToken.setRefreshToken(accessToken.getRefreshToken());
 		serverAccessToken.setResponseType(accessToken.getResponseType());
 		serverAccessToken.setScopes(
