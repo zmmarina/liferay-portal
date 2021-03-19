@@ -43,16 +43,6 @@ if (accountRole != null) {
 	role = accountRole.getRole();
 }
 
-PortletURL portletURL = PortletURLBuilder.createRenderURL(
-	renderResponse
-).setMVCPath(
-	"/account_entries_admin/edit_account_role.jsp"
-).setParameter(
-	"accountEntryId", String.valueOf(accountEntryId)
-).setParameter(
-	"accountRoleId", String.valueOf(accountRoleId)
-).build();
-
 portletDisplay.setShowBackIcon(true);
 portletDisplay.setURLBack(backURL);
 
@@ -62,5 +52,15 @@ renderResponse.setTitle((role == null) ? LanguageUtil.get(request, "add-new-role
 <liferay-frontend:screen-navigation
 	context="<%= accountRole %>"
 	key="<%= AccountScreenNavigationEntryConstants.SCREEN_NAVIGATION_KEY_ACCOUNT_ROLE %>"
-	portletURL="<%= portletURL %>"
+	portletURL="<%=
+		PortletURLBuilder.createRenderURL(
+			renderResponse
+		).setMVCPath(
+			"/account_entries_admin/edit_account_role.jsp"
+		).setParameter(
+			"accountEntryId", String.valueOf(accountEntryId)
+		).setParameter(
+			"accountRoleId", String.valueOf(accountRoleId)
+		).build()
+	%>"
 />
