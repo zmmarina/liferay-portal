@@ -169,18 +169,15 @@ List<String> domains = accountEntryDisplay.getDomains();
 				],
 				id: '<%= liferayPortletResponse.getNamespace() + "addDomains" %>',
 				title: '<liferay-ui:message key="add-domain" />',
-
-				<%
-				PortletURL addDomainsURL = PortletURLBuilder.createRenderURL(
-					renderResponse
-				).setMVCPath(
-					"/account_entries_admin/account_entry/add_domains.jsp"
-				).setWindowState(
-					LiferayWindowState.POP_UP
-				).build();
-				%>
-
-				url: '<%= addDomainsURL.toString() %>',
+				url: '<%=
+					PortletURLBuilder.createRenderURL(
+						renderResponse
+					).setMVCPath(
+						"/account_entries_admin/account_entry/add_domains.jsp"
+					).setWindowState(
+						LiferayWindowState.POP_UP
+					).build()
+				%>',
 			});
 		});
 	}
