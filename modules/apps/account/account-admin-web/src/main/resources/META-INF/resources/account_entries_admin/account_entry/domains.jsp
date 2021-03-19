@@ -138,7 +138,7 @@ List<String> domains = accountEntryDisplay.getDomains();
 				customEvents: [
 					{
 						name:
-							'<%= liferayPortletResponse.getNamespace() + "addDomains" %>',
+							'<%= liferayPortletResponse.getNamespace() %>addDomains',
 						onEvent: function (event) {
 							var newDomains = event.data.split(',');
 
@@ -167,9 +167,10 @@ List<String> domains = accountEntryDisplay.getDomains();
 						},
 					},
 				],
-				id: '<%= liferayPortletResponse.getNamespace() + "addDomains" %>',
+				id: '<%= liferayPortletResponse.getNamespace() %>addDomains',
 				title: '<liferay-ui:message key="add-domain" />',
-				url: '<%=
+				url:
+					'<%=
 					PortletURLBuilder.createRenderURL(
 						renderResponse
 					).setMVCPath(
