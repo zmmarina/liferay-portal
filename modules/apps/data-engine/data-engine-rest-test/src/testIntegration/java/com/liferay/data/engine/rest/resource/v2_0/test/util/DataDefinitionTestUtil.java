@@ -81,7 +81,7 @@ public class DataDefinitionTestUtil {
 			groupId, "app-builder", dataDefinition);
 	}
 
-	public static DataDefinition addDataDefinitionWithFieldSet(long groupId)
+	public static DataDefinition addDataDefinitionWithFieldset(long groupId)
 		throws Exception {
 
 		DataDefinition dataDefinition = DataDefinition.toDTO(

@@ -270,7 +270,7 @@ public class DataDefinitionResourceTest
 		// Allow invalid field languages for app builder
 
 		assertValid(
-			DataDefinitionTestUtil.addDataDefinitionWithFieldSet(
+			DataDefinitionTestUtil.addDataDefinitionWithFieldset(
 				testGroup.getGroupId()));
 
 		// MustNotDuplicateFieldName

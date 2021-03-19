@@ -502,7 +502,7 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 		// Persist data for text in a fieldset
 
 		DataDefinition dataDefinition =
-			DataDefinitionTestUtil.addDataDefinitionWithFieldSet(
+			DataDefinitionTestUtil.addDataDefinitionWithFieldset(
 				testGroup.getGroupId());
 
 		String fieldsetKey = StringBundler.concat(
