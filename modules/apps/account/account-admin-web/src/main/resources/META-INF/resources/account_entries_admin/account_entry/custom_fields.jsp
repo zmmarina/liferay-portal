@@ -42,7 +42,7 @@ AccountEntryDisplay accountEntryDisplay = (AccountEntryDisplay)request.getAttrib
 				linkCssClass="btn btn-secondary btn-sm"
 				message='<%= hasVisibleAttributes ? "manage" : "add" %>'
 				method="get"
-				url="<%=
+				url='<%=
 					PortletURLBuilder.create(
 						PortletProviderUtil.getPortletURL(request, ExpandoColumn.class.getName(), hasVisibleAttributes ? PortletProvider.Action.MANAGE : PortletProvider.Action.EDIT)
 					).setRedirect(
@@ -50,7 +50,7 @@ AccountEntryDisplay accountEntryDisplay = (AccountEntryDisplay)request.getAttrib
 					).setParameter(
 						"modelResource", AccountEntry.class.getName()
 					).buildString()
-				%>"
+				%>'
 			/>
 		</clay:content-col>
 	</c:if>

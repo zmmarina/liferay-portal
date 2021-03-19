@@ -52,7 +52,7 @@ renderResponse.setTitle((role == null) ? LanguageUtil.get(request, "add-new-role
 <liferay-frontend:screen-navigation
 	context="<%= accountRole %>"
 	key="<%= AccountScreenNavigationEntryConstants.SCREEN_NAVIGATION_KEY_ACCOUNT_ROLE %>"
-	portletURL="<%=
+	portletURL='<%=
 		PortletURLBuilder.createRenderURL(
 			renderResponse
 		).setMVCPath(
@@ -62,5 +62,5 @@ renderResponse.setTitle((role == null) ? LanguageUtil.get(request, "add-new-role
 		).setParameter(
 			"accountRoleId", String.valueOf(accountRoleId)
 		).build()
-	%>"
+	%>'
 />
