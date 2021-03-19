@@ -22,7 +22,7 @@ String backURL = ParamUtil.getString(request, "backURL");
 long accountEntryId = ParamUtil.getLong(request, "accountEntryId");
 
 if (Validator.isNull(backURL)) {
-	PortletURL viewAccountRolesURL = PortletURLBuilder.createRenderURL(
+	backURL = PortletURLBuilder.createRenderURL(
 		renderResponse
 	).setMVCRenderCommandName(
 		"/account_admin/edit_account_entry"
@@ -30,9 +30,7 @@ if (Validator.isNull(backURL)) {
 		"screenNavigationCategoryKey", AccountScreenNavigationEntryConstants.CATEGORY_KEY_ROLES
 	).setParameter(
 		"accountEntryId", String.valueOf(accountEntryId)
-	).build();
-
-	backURL = viewAccountRolesURL.toString();
+	).buildString();
 }
 
 long accountRoleId = ParamUtil.getLong(request, "accountRoleId");
