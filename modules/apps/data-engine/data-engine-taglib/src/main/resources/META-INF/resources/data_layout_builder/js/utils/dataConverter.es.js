@@ -153,6 +153,7 @@ export function getDDMFormFieldSettingsContext({
 			}
 
 			let options = field.options;
+			let multiple = field.multiple;
 
 			if (
 				field.type === 'select' &&
@@ -162,11 +163,13 @@ export function getDDMFormFieldSettingsContext({
 					dataDefinitionField.customProperties.options[
 						editingLanguageId
 					];
+				multiple = dataDefinitionField.customProperties.multiple
 			}
 
 			return {
 				...field,
 				localizedValue,
+				multiple,
 				options,
 				value,
 			};
