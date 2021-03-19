@@ -34,12 +34,6 @@ AccountEntryDisplay accountEntryDisplay = (AccountEntryDisplay)request.getAttrib
 
 			<%
 			boolean hasVisibleAttributes = ExpandoAttributesUtil.hasVisibleAttributes(company.getCompanyId(), AccountEntry.class);
-
-			PortletProvider.Action action = PortletProvider.Action.EDIT;
-
-			if (hasVisibleAttributes) {
-				action = PortletProvider.Action.MANAGE;
-			}
 			%>
 
 			<liferay-ui:icon
@@ -50,7 +44,7 @@ AccountEntryDisplay accountEntryDisplay = (AccountEntryDisplay)request.getAttrib
 				method="get"
 				url="<%=
 					PortletURLBuilder.create(
-						PortletProviderUtil.getPortletURL(request, ExpandoColumn.class.getName(), action)
+						PortletProviderUtil.getPortletURL(request, ExpandoColumn.class.getName(), hasVisibleAttributes ? PortletProvider.Action.MANAGE : PortletProvider.Action.EDIT)
 					).setRedirect(
 						currentURL
 					).setParameter(
