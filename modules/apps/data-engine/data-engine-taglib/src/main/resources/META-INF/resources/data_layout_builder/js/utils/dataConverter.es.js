@@ -163,7 +163,7 @@ export function getDDMFormFieldSettingsContext({
 					dataDefinitionField.customProperties.options[
 						editingLanguageId
 					];
-				multiple = dataDefinitionField.customProperties.multiple
+				multiple = dataDefinitionField.customProperties.multiple;
 			}
 
 			return {
