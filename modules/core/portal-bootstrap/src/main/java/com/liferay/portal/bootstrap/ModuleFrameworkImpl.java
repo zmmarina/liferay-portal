@@ -405,8 +405,8 @@ public class ModuleFrameworkImpl implements ModuleFramework {
 
 		if (_log.isInfoEnabled()) {
 			_log.info(
-				"Navigate to Control Panel > Configuration > Gogo Shell and " +
-					"enter \"lb\" to see all bundles");
+				"Navigate to Control Panel > System > Gogo Shell and enter " +
+					"\"lb\" to see all bundles");
 		}
 
 		if (_log.isDebugEnabled()) {
