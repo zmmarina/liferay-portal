@@ -136,8 +136,8 @@ public class FragmentEntryLinkModelListener
 		return StringUtil.replace(
 			fragmentEntryLink.getJs(),
 			new String[] {
-				"'__FRAGMENT_MODULE_NAME__'", "'frontend-js-react-web$react'",
-				"'__REACT_PROVIDER__$react'"
+				"'__FRAGMENT_MODULE_NAME__'", "'__REACT_PROVIDER__$react'",
+				"'frontend-js-react-web$react'"
 			},
 			new String[] {
 				StringBundler.concat(
