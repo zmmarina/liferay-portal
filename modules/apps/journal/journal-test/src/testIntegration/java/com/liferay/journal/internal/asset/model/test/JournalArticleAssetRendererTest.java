@@ -80,11 +80,11 @@ public class JournalArticleAssetRendererTest {
 
 	@Test
 	public void testGetURLViewInContext() throws Exception {
-		JournalArticle article = JournalTestUtil.addArticleWithWorkflow(
-			_group.getGroupId(), false);
-
 		long classNameId = _portal.getClassNameId(
 			JournalArticle.class.getName());
+
+		JournalArticle article = JournalTestUtil.addArticleWithWorkflow(
+			_group.getGroupId(), false);
 
 		DDMStructure ddmStructure = article.getDDMStructure();
 
