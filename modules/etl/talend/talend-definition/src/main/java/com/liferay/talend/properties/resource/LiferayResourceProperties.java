@@ -263,10 +263,8 @@ public class LiferayResourceProperties extends ComponentPropertiesImpl {
 		public ValidationResult afterSchema() {
 			entitySchemaProperties.schema.setValue(
 				outboundSchemaProperties.schema.getValue());
-
 			inboundSchemaProperties.schema.setValue(
 				outboundSchemaProperties.schema.getValue());
-
 			rejectSchemaProperties.schema.setValue(
 				SchemaUtils.createRejectSchema(
 					outboundSchemaProperties.schema.getValue()));
