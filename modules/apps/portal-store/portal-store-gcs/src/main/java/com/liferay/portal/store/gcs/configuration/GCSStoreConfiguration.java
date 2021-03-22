@@ -18,7 +18,6 @@ import aQute.bnd.annotation.metatype.Meta;
 
 import com.liferay.portal.configuration.metatype.annotations.ExtendedAttributeDefinition;
 import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClassDefinition;
-import com.liferay.portal.store.gcs.constants.ConfigurationGCSConstants;
 
 /**
  * @author Shanon Mathai
@@ -31,7 +30,7 @@ import com.liferay.portal.store.gcs.constants.ConfigurationGCSConstants;
 public interface GCSStoreConfiguration {
 
 	@ExtendedAttributeDefinition(
-		descriptionArguments = ConfigurationGCSConstants.SERVICE_ACCOUNT_KEYS_URL,
+		descriptionArguments = "https://cloud.google.com/iam/docs/creating-managing-service-account-keys",
 		requiredInput = true
 	)
 	@Meta.AD(
