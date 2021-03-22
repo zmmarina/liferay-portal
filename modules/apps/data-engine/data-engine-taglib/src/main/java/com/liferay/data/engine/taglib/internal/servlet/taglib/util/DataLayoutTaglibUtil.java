@@ -385,9 +385,11 @@ public class DataLayoutTaglibUtil {
 			Long dataDefinitionId, HttpServletRequest httpServletRequest)
 		throws Exception {
 
+		DataDefinitionResource.Builder dataDefinitionResourceBuilder =
+			_dataDefinitionResourceFactory.create();
+
 		DataDefinitionResource dataDefinitionResource =
-			DataDefinitionResource.builder(
-			).httpServletRequest(
+			dataDefinitionResourceBuilder.httpServletRequest(
 				httpServletRequest
 			).user(
 				_portal.getUser(httpServletRequest)
@@ -400,12 +402,15 @@ public class DataLayoutTaglibUtil {
 			Long dataLayoutId, HttpServletRequest httpServletRequest)
 		throws Exception {
 
-		DataLayoutResource dataLayoutResource = DataLayoutResource.builder(
-		).httpServletRequest(
-			httpServletRequest
-		).user(
-			_portal.getUser(httpServletRequest)
-		).build();
+		DataLayoutResource.Builder dataLayoutResourceBuilder =
+			_dataLayoutResourceFactory.create();
+
+		DataLayoutResource dataLayoutResource =
+			dataLayoutResourceBuilder.httpServletRequest(
+				httpServletRequest
+			).user(
+				_portal.getUser(httpServletRequest)
+			).build();
 
 		return dataLayoutResource.getDataLayout(dataLayoutId);
 	}
@@ -464,8 +469,10 @@ public class DataLayoutTaglibUtil {
 			return Collections.emptyMap();
 		}
 
-		DataRecordResource dataRecordResource = DataRecordResource.builder(
-		).user(
+		DataRecordResource.Builder dataRecordResourceBuilder =
+			_dataRecordResourceFactory.create();
+
+		DataRecordResource dataRecordResource = dataRecordResourceBuilder.user(
 			_portal.getUser(httpServletRequest)
 		).build();
 
@@ -510,9 +517,11 @@ public class DataLayoutTaglibUtil {
 
 		JSONArray fieldTypesJSONArray = _jsonFactory.createJSONArray();
 
+		DataDefinitionResource.Builder dataDefinitionResourceBuilder =
+			_dataDefinitionResourceFactory.create();
+
 		DataDefinitionResource dataDefinitionResource =
-			DataDefinitionResource.builder(
-			).httpServletRequest(
+			dataDefinitionResourceBuilder.httpServletRequest(
 				httpServletRequest
 			).user(
 				_portal.getUser(httpServletRequest)
@@ -619,7 +628,16 @@ public class DataLayoutTaglibUtil {
 	private static DataLayoutTaglibUtil _dataLayoutTaglibUtil;
 
 	@Reference
+	private DataDefinitionResource.Factory _dataDefinitionResourceFactory;
+
+	@Reference
 	private DataLayoutRenderer _dataLayoutRenderer;
+
+	@Reference
+	private DataLayoutResource.Factory _dataLayoutResourceFactory;
+
+	@Reference
+	private DataRecordResource.Factory _dataRecordResourceFactory;
 
 	@Reference
 	private DDMFormBuilderContextFactory _ddmFormBuilderContextFactory;
