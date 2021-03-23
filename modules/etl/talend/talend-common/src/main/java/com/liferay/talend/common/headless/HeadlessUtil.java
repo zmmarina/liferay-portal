@@ -103,6 +103,6 @@ public class HeadlessUtil {
 	}
 
 	private static final Pattern _liferayOpenAPIURLPattern = Pattern.compile(
-		"(https?://.+(:\\d+)?)(/o/(.+)/)(v\\d+(.\\d+)*)/openapi\\.(yaml|json)");
+		"(https?://.+(:\\d+)?)(/o/(.+)/)(v\\d+(.\\d+)*)/openapi\\.(json|yaml)");
 
 }
