@@ -86,8 +86,7 @@ public class StructuredContentResourceImpl
 			Sort[] sorts)
 		throws Exception {
 
-		boolean permissionToManageVersions = _hasPermissionToManageVersions(
-			siteId);
+		boolean permissionToManageVersions = _hasPermission(siteId);
 
 		return SearchUtil.search(
 			HashMapBuilder.put(
@@ -175,7 +174,7 @@ public class StructuredContentResourceImpl
 			_journalArticleLocalService.getLatestArticle(
 				structuredContentId, WorkflowConstants.STATUS_ANY, false);
 
-		if (_hasPermissionToManageVersions(journalArticle.getGroupId())) {
+		if (_hasPermission(journalArticle.getGroupId())) {
 			return Page.of(
 				transform(
 					_journalArticleService.getArticlesByArticleId(
@@ -198,7 +197,7 @@ public class StructuredContentResourceImpl
 				this::_toExtensionStructuredContent));
 	}
 
-	private boolean _hasPermissionToManageVersions(Long siteId) {
+	private boolean _hasPermission(Long siteId) {
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
