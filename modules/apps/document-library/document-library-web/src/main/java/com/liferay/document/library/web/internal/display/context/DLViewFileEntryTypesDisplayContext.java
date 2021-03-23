@@ -103,7 +103,7 @@ public class DLViewFileEntryTypesDisplayContext {
 			getPortletURL(), null,
 			LanguageUtil.get(_httpServletRequest, "there-are-no-results"));
 
-		DisplayTerms searchTerms = searchContainer.getSearchTerms();
+		DisplayTerms displayTerms = searchContainer.getSearchTerms();
 
 		boolean includeBasicFileEntryType = ParamUtil.getBoolean(
 			_renderRequest, "includeBasicFileEntryType");
@@ -112,7 +112,7 @@ public class DLViewFileEntryTypesDisplayContext {
 			themeDisplay.getCompanyId(),
 			PortalUtil.getCurrentAndAncestorSiteGroupIds(
 				themeDisplay.getScopeGroupId()),
-			searchTerms.getKeywords(), includeBasicFileEntryType,
+			displayTerms.getKeywords(), includeBasicFileEntryType,
 			DLFileEntryTypeConstants.FILE_ENTRY_TYPE_SCOPE_DEFAULT);
 
 		searchContainer.setTotal(total);
@@ -122,7 +122,7 @@ public class DLViewFileEntryTypesDisplayContext {
 				themeDisplay.getCompanyId(),
 				PortalUtil.getCurrentAndAncestorSiteGroupIds(
 					themeDisplay.getScopeGroupId()),
-				searchTerms.getKeywords(), includeBasicFileEntryType,
+				displayTerms.getKeywords(), includeBasicFileEntryType,
 				DLFileEntryTypeConstants.FILE_ENTRY_TYPE_SCOPE_DEFAULT,
 				searchContainer.getStart(), searchContainer.getEnd(),
 				searchContainer.getOrderByComparator()));
@@ -141,10 +141,10 @@ public class DLViewFileEntryTypesDisplayContext {
 	public boolean isSearchDisabled() throws PortalException {
 		SearchContainer<DLFileEntryType> searchContainer = getSearchContainer();
 
-		DisplayTerms searchTerms = searchContainer.getSearchTerms();
+		DisplayTerms displayTerms = searchContainer.getSearchTerms();
 
 		if ((searchContainer.getTotal() == 0) &&
-			Validator.isNull(searchTerms.getKeywords())) {
+			Validator.isNull(displayTerms.getKeywords())) {
 
 			return true;
 		}

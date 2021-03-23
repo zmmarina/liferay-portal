@@ -144,7 +144,7 @@ public class DLViewMoreMenuItemsDisplayContext {
 			getPortletURL(), null,
 			LanguageUtil.get(_httpServletRequest, "there-are-no-results"));
 
-		DisplayTerms searchTerms = searchContainer.getSearchTerms();
+		DisplayTerms displayTerms = searchContainer.getSearchTerms();
 
 		ThemeDisplay themeDisplay =
 			(ThemeDisplay)_httpServletRequest.getAttribute(
@@ -159,7 +159,7 @@ public class DLViewMoreMenuItemsDisplayContext {
 				themeDisplay.getCompanyId(), folderId,
 				_getCurrentAndAncestorSiteAndDepotGroupIds(
 					themeDisplay.getScopeGroupId()),
-				searchTerms.getKeywords(), includeBasicFileEntryType,
+				displayTerms.getKeywords(), includeBasicFileEntryType,
 				_inherited, searchContainer.getStart(),
 				searchContainer.getEnd()));
 		searchContainer.setTotal(
@@ -167,7 +167,7 @@ public class DLViewMoreMenuItemsDisplayContext {
 				themeDisplay.getCompanyId(), folderId,
 				_getCurrentAndAncestorSiteAndDepotGroupIds(
 					themeDisplay.getScopeGroupId()),
-				searchTerms.getKeywords(), includeBasicFileEntryType,
+				displayTerms.getKeywords(), includeBasicFileEntryType,
 				_inherited));
 
 		_searchContainer = searchContainer;
