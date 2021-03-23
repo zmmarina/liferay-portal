@@ -44,15 +44,12 @@ public class ResourcePropertiesTest extends BasePropertiesTestCase {
 		_assertEndpointUrlEquals(
 			"/o/headless-liferay/v1.0/test/by-externalReferenceCode",
 			"/headless-liferay/v1.0", liferayResourceProperties);
-
 		_assertEndpointUrlEquals(
 			"/o/headless-liferay/v1.0/test/by-externalReferenceCode",
 			"/headless-liferay/v1.0/", liferayResourceProperties);
-
 		_assertEndpointUrlEquals(
 			"/o/headless-liferay/v1.0/test/by-externalReferenceCode",
 			"headless-liferay/v1.0", liferayResourceProperties);
-
 		_assertEndpointUrlEquals(
 			"/o/headless-liferay/v1.0/test/by-externalReferenceCode",
 			"headless-liferay/v1.0/", liferayResourceProperties);
