@@ -105,6 +105,12 @@ public class DLFileEntryTypeLocalServiceWrapper
 			descriptionMap, scope, serviceContext);
 	}
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
+	 #addFileEntryType(long, long, long, String, Map, Map, long,
+	 ServiceContext)}
+	 */
+	@Deprecated
 	@Override
 	public DLFileEntryType addFileEntryType(
 			long userId, long groupId, long dataDefinitionId,

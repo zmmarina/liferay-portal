@@ -112,6 +112,12 @@ public interface DLFileEntryTypeLocalService
 			ServiceContext serviceContext)
 		throws PortalException;
 
+	/**
+	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
+	 #addFileEntryType(long, long, long, String, Map, Map, long,
+	 ServiceContext)}
+	 */
+	@Deprecated
 	public DLFileEntryType addFileEntryType(
 			long userId, long groupId, long dataDefinitionId,
 			String fileEntryTypeKey, Map<Locale, String> nameMap,
