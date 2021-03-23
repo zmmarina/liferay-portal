@@ -162,6 +162,9 @@ public class PortalFragmentBundleWatcher {
 		return fragmentHost;
 	}
 
+	/**
+	 * @see com.liferay.portal.file.install.internal.DirectoryWatcher#_isFragment
+	 */
 	private boolean _isFragment(Bundle bundle) {
 		BundleRevision bundleRevision = bundle.adapt(BundleRevision.class);
 
