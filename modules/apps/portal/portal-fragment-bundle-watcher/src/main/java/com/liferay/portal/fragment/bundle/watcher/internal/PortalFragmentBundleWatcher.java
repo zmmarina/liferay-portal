@@ -69,9 +69,9 @@ public class PortalFragmentBundleWatcher {
 			FrameworkWiring.class);
 
 		_resolvedBundleListener = bundleEvent -> {
-			if ((bundleEvent.getType() == BundleEvent.RESOLVED) ||
-				((bundleEvent.getType() == BundleEvent.INSTALLED) &&
-				 _isFragment(bundleEvent.getBundle()))) {
+			if (((bundleEvent.getType() == BundleEvent.INSTALLED) &&
+				 _isFragment(bundleEvent.getBundle())) ||
+				(bundleEvent.getType() == BundleEvent.RESOLVED)) {
 
 				Map<Bundle, String> installedFragmentBundles =
 					_installedFragmentBundleTracker.getTracked();
