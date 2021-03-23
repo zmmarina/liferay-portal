@@ -27,7 +27,7 @@ public class UpgradeDLFileEntryType extends UpgradeProcess {
 		if (!hasColumn("DLFileEntryType", "scope")) {
 			alter(
 				DLFileEntryTypeTable.class,
-				new AlterTableAddColumn("scope", "INT"));
+				new AlterTableAddColumn("scope", "INTEGER"));
 		}
 
 		runSQL("update DLFileEntryType set scope = 0");
