@@ -102,11 +102,11 @@ public class CPDisplayLayoutLocalServiceTest {
 			CommerceChannelConstants.CHANNEL_TYPE_SITE, null, StringPool.BLANK,
 			_serviceContext);
 
-		List<AssetVocabulary> companyVocabularies =
+		List<AssetVocabulary> companyAssetVocabularies =
 			AssetVocabularyLocalServiceUtil.getCompanyVocabularies(
 				_company.getCompanyId());
 
-		_assetVocabulary = companyVocabularies.get(0);
+		_assetVocabulary = companyAssetVocabularies.get(0);
 
 		_commerceCatalog = CommerceCatalogLocalServiceUtil.addCommerceCatalog(
 			null, RandomTestUtil.randomString(), RandomTestUtil.randomString(),
@@ -146,12 +146,10 @@ public class CPDisplayLayoutLocalServiceTest {
 			_user.getUserId(), _commerceChannel1.getSiteGroupId(),
 			CPDefinition.class, _cpDefinition.getCPDefinitionId(),
 			RandomTestUtil.randomString());
-
 		_cpDisplayLayoutLocalService.addCPDisplayLayout(
 			_user.getUserId(), _commerceChannel2.getSiteGroupId(),
 			AssetCategory.class, assetCategory.getCategoryId(),
 			RandomTestUtil.randomString());
-
 		_cpDisplayLayoutLocalService.addCPDisplayLayout(
 			_user.getUserId(), _commerceChannel2.getSiteGroupId(),
 			CPDefinition.class, _cpDefinition.getCPDefinitionId(),
@@ -171,9 +169,7 @@ public class CPDisplayLayoutLocalServiceTest {
 
 		Assert.assertEquals(
 			2, _cpDisplayLayoutLocalService.getCPDisplayLayoutsCount());
-
 		AssetCategoryLocalServiceUtil.deleteAssetCategory(assetCategory);
-
 		Assert.assertEquals(
 			0, _cpDisplayLayoutLocalService.getCPDisplayLayoutsCount());
 	}
