@@ -55,11 +55,6 @@ public class DLFileEntryTypeUpgradeProcess extends UpgradeProcess {
 					RestrictionsFactoryUtil.eq(
 						"fileEntryTypeKey",
 						GoogleDocsConstants.DL_FILE_ENTRY_TYPE_KEY)));
-
-			long dlFileEntryMetadataClassNameId =
-				_classNameLocalService.getClassNameId(
-					DLFileEntryMetadata.class);
-
 			actionableDynamicQuery.setPerformActionMethod(
 				(DLFileEntryType dlFileEntryType) -> {
 					dlFileEntryType.setScope(
@@ -71,7 +66,8 @@ public class DLFileEntryTypeUpgradeProcess extends UpgradeProcess {
 					DDMStructure ddmStructure =
 						_ddmStructureLocalService.getStructure(
 							dlFileEntryType.getGroupId(),
-							dlFileEntryMetadataClassNameId,
+							_classNameLocalService.getClassNameId(
+								DLFileEntryMetadata.class),
 							GoogleDocsConstants.DL_FILE_ENTRY_TYPE_KEY);
 
 					ddmStructure.setType(DDMStructureConstants.TYPE_AUTO);
