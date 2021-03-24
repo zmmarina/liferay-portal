@@ -329,7 +329,7 @@ public class JournalEditArticleDisplayContext {
 			return _ddmTemplate;
 		}
 
-		if ((_ddmTemplate == null) && (_article == null)) {
+		if ((_article == null) && (_ddmTemplate == null)) {
 			DDMStructure ddmStructure = getDDMStructure();
 
 			List<DDMTemplate> ddmTemplates =
