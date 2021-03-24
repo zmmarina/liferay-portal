@@ -45,7 +45,6 @@ import java.util.Objects;
 
 import javax.portlet.PortletRequest;
 import javax.portlet.WindowState;
-import javax.portlet.WindowStateException;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -81,21 +80,20 @@ public class AppBuilderAppWorkflowHandler
 			return super.getNotificationLink(workflowTaskId, serviceContext);
 		}
 
-		String portletURL = PortletURLBuilder.create(
-			PortletURLFactoryUtil.create(
-				serviceContext.getRequest(),
-				GetterUtil.getString(
-					serviceContext.getAttribute("portletId")),
-				GetterUtil.getLong(serviceContext.getAttribute("plid")),
-				PortletRequest.RENDER_PHASE)
-		).setMVCPath(
-			"/view_app_entries.jsp"
-		).setWindowState(
-			WindowState.MAXIMIZED
-		).buildString();
-
 		return StringUtil.replaceFirst(
-			portletURL, '?', "#/view-entry/" + ddlRecordId + "?");
+			PortletURLBuilder.create(
+				PortletURLFactoryUtil.create(
+					serviceContext.getRequest(),
+					GetterUtil.getString(
+						serviceContext.getAttribute("portletId")),
+					GetterUtil.getLong(serviceContext.getAttribute("plid")),
+					PortletRequest.RENDER_PHASE)
+			).setMVCPath(
+				"/view_app_entries.jsp"
+			).setWindowState(
+				WindowState.MAXIMIZED
+			).buildString(),
+			'?', "#/view-entry/" + ddlRecordId + "?");
 	}
 
 	@Override
@@ -145,8 +143,7 @@ public class AppBuilderAppWorkflowHandler
 		return PortletURLBuilder.create(
 			PortletURLFactoryUtil.create(
 				serviceContext.getRequest(),
-				GetterUtil.getString(
-					serviceContext.getAttribute("portletId")),
+				GetterUtil.getString(serviceContext.getAttribute("portletId")),
 				GetterUtil.getLong(serviceContext.getAttribute("plid")),
 				PortletRequest.RENDER_PHASE)
 		).setMVCPath(
