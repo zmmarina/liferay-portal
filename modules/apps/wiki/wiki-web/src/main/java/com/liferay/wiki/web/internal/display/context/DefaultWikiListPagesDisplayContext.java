@@ -78,8 +78,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.portlet.WindowStateException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -674,53 +672,45 @@ public class DefaultWikiListPagesDisplayContext
 	}
 
 	protected void addPrintPageMenuItem(
-			List<MenuItem> menuItems, WikiPage wikiPage)
-		throws PortalException {
+		List<MenuItem> menuItems, WikiPage wikiPage) {
 
-		try {
-			JavaScriptMenuItem javaScriptMenuItem = new JavaScriptMenuItem();
+		JavaScriptMenuItem javaScriptMenuItem = new JavaScriptMenuItem();
 
-			javaScriptMenuItem.setKey(WikiUIItemKeys.PRINT);
-			javaScriptMenuItem.setLabel("print");
+		javaScriptMenuItem.setKey(WikiUIItemKeys.PRINT);
+		javaScriptMenuItem.setLabel("print");
 
-			StringBundler sb = new StringBundler(5);
+		StringBundler sb = new StringBundler(5);
 
-			sb.append("window.open('");
+		sb.append("window.open('");
 
-			sb.append(
-				HtmlUtil.escapeJS(
-					PortletURLBuilder.createRenderURL(
-						_wikiRequestHelper.getLiferayPortletResponse()
-					).setMVCRenderCommandName(
-						"/wiki/view"
-					).setParameter(
-						"nodeName",
-						() -> {
-							WikiNode wikiNode = wikiPage.getNode();
+		sb.append(
+			HtmlUtil.escapeJS(
+				PortletURLBuilder.createRenderURL(
+					_wikiRequestHelper.getLiferayPortletResponse()
+				).setMVCRenderCommandName(
+					"/wiki/view"
+				).setParameter(
+					"nodeName",
+					() -> {
+						WikiNode wikiNode = wikiPage.getNode();
 
-							return wikiNode.getName();
-						}
-					).setParameter(
-						"title", wikiPage.getTitle()
-					).setParameter(
-						"viewMode", Constants.PRINT
-					).setWindowState(
-						LiferayWindowState.POP_UP
-					).buildString()));
+						return wikiNode.getName();
+					}
+				).setParameter(
+					"title", wikiPage.getTitle()
+				).setParameter(
+					"viewMode", Constants.PRINT
+				).setWindowState(
+					LiferayWindowState.POP_UP
+				).buildString()));
 
-			sb.append("', '', 'directories=0,height=480,left=80,location=1,");
-			sb.append("menubar=1,resizable=1,scrollbars=yes,status=0,");
-			sb.append("toolbar=0,top=180,width=640');");
+		sb.append("', '', 'directories=0,height=480,left=80,location=1,");
+		sb.append("menubar=1,resizable=1,scrollbars=yes,status=0,");
+		sb.append("toolbar=0,top=180,width=640');");
 
-			javaScriptMenuItem.setOnClick(sb.toString());
+		javaScriptMenuItem.setOnClick(sb.toString());
 
-			menuItems.add(javaScriptMenuItem);
-		}
-		catch (WindowStateException windowStateException) {
-			if (_log.isDebugEnabled()) {
-				_log.debug(windowStateException, windowStateException);
-			}
-		}
+		menuItems.add(javaScriptMenuItem);
 	}
 
 	protected void addSubscriptionMenuItem(

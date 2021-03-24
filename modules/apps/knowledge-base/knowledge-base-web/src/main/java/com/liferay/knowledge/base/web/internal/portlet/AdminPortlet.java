@@ -76,7 +76,6 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
-import javax.portlet.WindowStateException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -408,28 +407,22 @@ public class AdminPortlet extends BaseKBPortlet {
 
 	@Override
 	protected String buildEditURL(
-			ActionRequest actionRequest, ActionResponse actionResponse,
-			KBArticle kbArticle)
-		throws PortalException {
+		ActionRequest actionRequest, ActionResponse actionResponse,
+		KBArticle kbArticle) {
 
-		try {
-			return PortletURLBuilder.create(
-				PortletURLFactoryUtil.create(
-					actionRequest, KBPortletKeys.KNOWLEDGE_BASE_ADMIN,
-					PortletRequest.RENDER_PHASE)
-			).setMVCPath(
-				templatePath + "edit_article.jsp"
-			).setRedirect(
-				getRedirect(actionRequest, actionResponse)
-			).setParameter(
-				"resourcePrimKey", kbArticle.getResourcePrimKey()
-			).setWindowState(
-				actionRequest.getWindowState()
-			).buildString();
-		}
-		catch (WindowStateException windowStateException) {
-			throw new PortalException(windowStateException);
-		}
+		return PortletURLBuilder.create(
+			PortletURLFactoryUtil.create(
+				actionRequest, KBPortletKeys.KNOWLEDGE_BASE_ADMIN,
+				PortletRequest.RENDER_PHASE)
+		).setMVCPath(
+			templatePath + "edit_article.jsp"
+		).setRedirect(
+			getRedirect(actionRequest, actionResponse)
+		).setParameter(
+			"resourcePrimKey", kbArticle.getResourcePrimKey()
+		).setWindowState(
+			actionRequest.getWindowState()
+		).buildString();
 	}
 
 	@Override
