@@ -161,7 +161,7 @@ public class PortalLog4jTest {
 			RollingFileAppender.createAppender(
 				null, testFilePattern, Boolean.TRUE.toString(),
 				portalRollingFileAppender.getName(), Boolean.TRUE.toString(),
-				String.valueOf(_DEFAULT_BUFFER_SIZE), Boolean.TRUE.toString(),
+				String.valueOf(_BUFFER_SIZE), Boolean.TRUE.toString(),
 				portalRollingFileAppender.getTriggeringPolicy(), null,
 				portalRollingFileAppender.getLayout(), null,
 				Boolean.FALSE.toString(), null, null,
@@ -502,9 +502,9 @@ public class PortalLog4jTest {
 		}
 	}
 
-	private static final String _DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+	private static final int _BUFFER_SIZE = 8192;
 
-	private static final int _DEFAULT_BUFFER_SIZE = 8192;
+	private static final String _DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		PortalLog4jTest.class);
