@@ -14,6 +14,7 @@
 
 package com.liferay.petra.portlet.url.builder;
 
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 
 import java.util.Map;
@@ -300,10 +301,13 @@ public class PortletURLBuilder {
 		}
 
 		@Override
-		public AfterPortletModeStep setPortletMode(PortletMode portletMode)
-			throws PortletModeException {
-
-			_portletURL.setPortletMode(portletMode);
+		public AfterPortletModeStep setPortletMode(PortletMode portletMode) {
+			try {
+				_portletURL.setPortletMode(portletMode);
+			}
+			catch (PortletModeException portletModeException) {
+				throw new SystemException(portletModeException);
+			}
 
 			return this;
 		}
@@ -325,19 +329,25 @@ public class PortletURLBuilder {
 		}
 
 		@Override
-		public AfterSecureStep setSecure(boolean secure)
-			throws PortletSecurityException {
-
-			_portletURL.setSecure(secure);
+		public AfterSecureStep setSecure(boolean secure) {
+			try {
+				_portletURL.setSecure(secure);
+			}
+			catch (PortletSecurityException portletSecurityException) {
+				throw new SystemException(portletSecurityException);
+			}
 
 			return this;
 		}
 
 		@Override
-		public AfterWindowStateStep setWindowState(WindowState windowState)
-			throws WindowStateException {
-
-			_portletURL.setWindowState(windowState);
+		public AfterWindowStateStep setWindowState(WindowState windowState) {
+			try {
+				_portletURL.setWindowState(windowState);
+			}
+			catch (WindowStateException windowStateException) {
+				throw new SystemException(windowStateException);
+			}
 
 			return this;
 		}
@@ -436,8 +446,7 @@ public class PortletURLBuilder {
 
 	public interface PortletModeStep {
 
-		public AfterPortletModeStep setPortletMode(PortletMode portletMode)
-			throws PortletModeException;
+		public AfterPortletModeStep setPortletMode(PortletMode portletMode);
 
 	}
 
@@ -452,8 +461,7 @@ public class PortletURLBuilder {
 
 	public interface SecureStep {
 
-		public AfterSecureStep setSecure(boolean secure)
-			throws PortletSecurityException;
+		public AfterSecureStep setSecure(boolean secure);
 
 	}
 
@@ -466,8 +474,7 @@ public class PortletURLBuilder {
 
 	public interface WindowStateStep {
 
-		public AfterWindowStateStep setWindowState(WindowState windowState)
-			throws WindowStateException;
+		public AfterWindowStateStep setWindowState(WindowState windowState);
 
 	}
 
