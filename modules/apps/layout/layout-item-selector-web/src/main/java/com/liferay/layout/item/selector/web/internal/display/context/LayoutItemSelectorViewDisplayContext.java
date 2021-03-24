@@ -135,7 +135,6 @@ public class LayoutItemSelectorViewDisplayContext {
 
 		breadcrumbEntry.setTitle(
 			LanguageUtil.get(_httpServletRequest, "sites-and-libraries"));
-
 		breadcrumbEntry.setURL(
 			PortletURLBuilder.create(
 				PortletURLUtil.clone(
@@ -144,7 +143,7 @@ public class LayoutItemSelectorViewDisplayContext {
 			).setParameter(
 				"groupType", "site"
 			).setParameter(
-				"showGroupSelector", Boolean.TRUE.toString()
+				"showGroupSelector", true
 			).buildString());
 
 		return breadcrumbEntry;
