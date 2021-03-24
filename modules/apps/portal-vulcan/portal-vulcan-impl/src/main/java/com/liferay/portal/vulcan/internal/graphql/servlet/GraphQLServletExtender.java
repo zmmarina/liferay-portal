@@ -382,12 +382,12 @@ public class GraphQLServletExtender {
 								clazz, processingElementsContainer
 							);
 
-						GraphQLName annotation = clazz.getAnnotation(
+						GraphQLName graphQLName = clazz.getAnnotation(
 							GraphQLName.class);
 
-						if (annotation != null) {
+						if (graphQLName != null) {
 							outputObjectBuilder.description(
-								annotation.description());
+								graphQLName.description());
 						}
 
 						graphQLType = outputObjectBuilder.build();
