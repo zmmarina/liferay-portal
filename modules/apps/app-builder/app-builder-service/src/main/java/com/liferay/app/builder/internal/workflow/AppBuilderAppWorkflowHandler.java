@@ -81,26 +81,21 @@ public class AppBuilderAppWorkflowHandler
 			return super.getNotificationLink(workflowTaskId, serviceContext);
 		}
 
-		try {
-			String portletURL = PortletURLBuilder.create(
-				PortletURLFactoryUtil.create(
-					serviceContext.getRequest(),
-					GetterUtil.getString(
-						serviceContext.getAttribute("portletId")),
-					GetterUtil.getLong(serviceContext.getAttribute("plid")),
-					PortletRequest.RENDER_PHASE)
-			).setMVCPath(
-				"/view_app_entries.jsp"
-			).setWindowState(
-				WindowState.MAXIMIZED
-			).buildString();
+		String portletURL = PortletURLBuilder.create(
+			PortletURLFactoryUtil.create(
+				serviceContext.getRequest(),
+				GetterUtil.getString(
+					serviceContext.getAttribute("portletId")),
+				GetterUtil.getLong(serviceContext.getAttribute("plid")),
+				PortletRequest.RENDER_PHASE)
+		).setMVCPath(
+			"/view_app_entries.jsp"
+		).setWindowState(
+			WindowState.MAXIMIZED
+		).buildString();
 
-			return StringUtil.replaceFirst(
-				portletURL, '?', "#/view-entry/" + ddlRecordId + "?");
-		}
-		catch (WindowStateException windowStateException) {
-			throw new PortalException(windowStateException);
-		}
+		return StringUtil.replaceFirst(
+			portletURL, '?', "#/view-entry/" + ddlRecordId + "?");
 	}
 
 	@Override
@@ -147,25 +142,20 @@ public class AppBuilderAppWorkflowHandler
 			return super.getURLEditWorkflowTask(workflowTaskId, serviceContext);
 		}
 
-		try {
-			return PortletURLBuilder.create(
-				PortletURLFactoryUtil.create(
-					serviceContext.getRequest(),
-					GetterUtil.getString(
-						serviceContext.getAttribute("portletId")),
-					GetterUtil.getLong(serviceContext.getAttribute("plid")),
-					PortletRequest.RENDER_PHASE)
-			).setMVCPath(
-				"/edit_app_entry.jsp"
-			).setParameter(
-				"dataRecordId", ddlRecordId
-			).setWindowState(
-				WindowState.MAXIMIZED
-			).buildString();
-		}
-		catch (WindowStateException windowStateException) {
-			throw new PortalException(windowStateException);
-		}
+		return PortletURLBuilder.create(
+			PortletURLFactoryUtil.create(
+				serviceContext.getRequest(),
+				GetterUtil.getString(
+					serviceContext.getAttribute("portletId")),
+				GetterUtil.getLong(serviceContext.getAttribute("plid")),
+				PortletRequest.RENDER_PHASE)
+		).setMVCPath(
+			"/edit_app_entry.jsp"
+		).setParameter(
+			"dataRecordId", ddlRecordId
+		).setWindowState(
+			WindowState.MAXIMIZED
+		).buildString();
 	}
 
 	@Override
