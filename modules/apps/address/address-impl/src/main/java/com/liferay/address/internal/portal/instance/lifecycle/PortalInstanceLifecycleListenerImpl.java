@@ -112,10 +112,9 @@ public class PortalInstanceLifecycleListenerImpl
 		super.portalInstanceUnregistered(company);
 	}
 
-	private JSONArray _getJSONArray(String filePath) throws Exception {
-		String regionsJSON = StringUtil.read(getClassLoader(), filePath, false);
-
-		return _jsonFactory.createJSONArray(regionsJSON);
+	private JSONArray _getJSONArray(String path) throws Exception {
+		return _jsonFactory.createJSONArray(
+			StringUtil.read(getClassLoader(), path, false));
 	}
 
 	private void _processCountryRegions(Country country) {
@@ -125,7 +124,9 @@ public class PortalInstanceLifecycleListenerImpl
 			String path =
 				"com/liferay/address/dependencies/regions/" + a2 + ".json";
 
-			if (getClassLoader().getResource(path) == null) {
+			ClassLoader classLoader = getClassLoader();
+
+			if (classLoader.getResource(path) == null) {
 				return;
 			}
 
@@ -152,16 +153,14 @@ public class PortalInstanceLifecycleListenerImpl
 						regionJSONObject.getString("regionCode"),
 						serviceContext);
 
-					JSONObject regionLocalizationsJSONObject =
+					JSONObject localizationsJSONObject =
 						regionJSONObject.getJSONObject("localizations");
 
-					if (regionLocalizationsJSONObject != null) {
-						for (String key :
-								regionLocalizationsJSONObject.keySet()) {
-
+					if (localizationsJSONObject != null) {
+						for (String key : localizationsJSONObject.keySet()) {
 							_regionLocalService.updateRegionLocalization(
 								region, key,
-								regionLocalizationsJSONObject.getString(key));
+								localizationsJSONObject.getString(key));
 						}
 					}
 				}
