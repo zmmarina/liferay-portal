@@ -354,6 +354,12 @@ definition {
 			value1 = "${fieldLabel}");
 	}
 
+	macro duplicateField {
+		Click(
+			key_selectAction = "${selectAction}",
+			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION");
+	}
+
 	macro editDate {
 		Type(
 			key_fieldName = "${fieldName}",
@@ -498,6 +504,10 @@ definition {
 		Click(
 			key_selectAction = "Delete from Object",
 			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION");
+	}
+
+	macro fieldLabelOptionsIsShown {
+		AssertElementPresent(locator1 = "FormViewBuilder#FIELD_LABEL_ACTION_MENU");
 	}
 
 	macro gotoFields {
@@ -866,6 +876,10 @@ definition {
 		IsChecked(locator1 = "FormViewBuilder#SIDEBAR_ADVANCED_INLINE");
 	}
 
+	macro validateLabelScopeOptionsIsShown {
+		AssertElementPresent(locator1 = "FormViewBuilder#FIELD_LABEL_OPTION");
+	}
+
 	macro validateLocalization {
 		AssertElementPresent(
 			key_symbolName = "${symbolName}",
@@ -896,6 +910,12 @@ definition {
 		AssertTextEquals(
 			locator1 = "FormViewBuilder#OBJECT_FIELD_LABEL",
 			value1 = "${fieldName}");
+	}
+
+	macro validateObjectLabelOptionTextIsShown {
+		AssertTextEquals(
+			locator1 = "FormViewBuilder#OBJECT_FIELD_LABEL_TEXT",
+			value1 = "${text}");
 	}
 
 	macro validatePredefinedDate {

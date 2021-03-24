@@ -65,6 +65,18 @@
 </tr>
 
 <tr>
+	<td>FIELD_LABEL_OPTION</td>
+	<td>//span[contains(text(),'${labelOption}')]</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>OBJECT_FIELD_LABEL_TEXT</td>
+	<td>//div[@class='form-feedback-item']</td>
+	<td></td>
+</tr>
+
+<tr>
 	<td>FIELD_LABEL_SET_SCOPE</td>
 	<td>//span[contains(text(),'${key_fieldLabelScope}')]</td>
 	<td></td>

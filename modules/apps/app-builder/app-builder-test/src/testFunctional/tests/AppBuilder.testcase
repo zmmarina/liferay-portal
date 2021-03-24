@@ -858,6 +858,51 @@ definition {
 		AppBuilderAdmin.validateItemNameOnTable(itemName = "Content from Form 1");
 	}
 
+	@description = "Define different labels for the same field in different Form Views of an Object"
+	@priority = "5"
+	test DefineDifferentFieldLabelsForDifferentForm {
+		property portal.acceptance = "true";
+
+		var formView1 = "Form View 1";
+		var formView2 = "Form View 2";
+		var labelForAllFormsText = "Label for All Forms Using This Field";
+		var labelForOnlyThisFormText = "Label for Only This Form";
+		var nameFormView1 = "Name Form View 1";
+		var nameFormView2 = "Name Form View 2";
+		var onlyForThisForm = "Label for Only This Form";
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "${formView1}");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Text");
+
+		FormViewBuilder.fieldLabelOptionsIsShown();
+
+		FormViewBuilder.clickFieldLabelActionMenu();
+
+		FormViewBuilder.validateLabelScopeOptionsIsShown(labelOption = "${labelForAllFormsText}");
+
+		FormViewBuilder.validateLabelScopeOptionsIsShown(labelOption = "${labelForOnlyThisFormText}");
+
+		FormViewBuilder.clickFieldLabelScope(fieldLabelScope = "${onlyForThisForm}");
+
+		FormViewBuilder.setFieldLabel(fieldLabel = "${nameFormView1}");
+
+		FormViewBuilder.validateObjectLabelOptionTextIsShown(text = "Object Field Label: Text");
+
+		FormViewBuilder.clickActionMenuFieldset();
+
+		FormViewBuilder.duplicateField(selectAction = "Duplicate");
+
+		FormViewBuilder.clickFieldLabel(fieldLabel = "Copy of Text");
+
+		FormViewBuilder.validateFieldLabel(fieldLabel = "Copy of Text");
+	}
+
 	@description = "Automate LPS-117199 Define translations when creating fieldsets"
 	@priority = "5"
 	test DefineTranslationCreatedFieldSets {
