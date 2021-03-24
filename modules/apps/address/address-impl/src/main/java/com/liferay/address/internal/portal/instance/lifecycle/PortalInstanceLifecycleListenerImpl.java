@@ -156,12 +156,14 @@ public class PortalInstanceLifecycleListenerImpl
 					JSONObject localizationsJSONObject =
 						regionJSONObject.getJSONObject("localizations");
 
-					if (localizationsJSONObject != null) {
-						for (String key : localizationsJSONObject.keySet()) {
-							_regionLocalService.updateRegionLocalization(
-								region, key,
-								localizationsJSONObject.getString(key));
-						}
+					if (localizationsJSONObject == null) {
+						continue;
+					}
+
+					for (String key : localizationsJSONObject.keySet()) {
+						_regionLocalService.updateRegionLocalization(
+							region, key,
+							localizationsJSONObject.getString(key));
 					}
 				}
 				catch (PortalException portalException) {
