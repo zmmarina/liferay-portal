@@ -184,6 +184,10 @@ definition {
 		Click(locator1 = "FormViewBuilder#RULE_OR_FIELD_SET_BUILDER_CANCEL_BUTTON");
 	}
 
+	macro changeAppLanguageTo {
+		Click(locator1 = "FormViewBuilder#SELECT_LANGUAGE_AT_APP_DEPLOYED");
+	}
+
 	macro checkSwitcher {
 		Check.checkToggleSwitch(
 			key_switcherOption = "${propertyName}",
@@ -224,6 +228,10 @@ definition {
 
 	macro clickInline {
 		Click(locator1 = "FormViewBuilder#SIDEBAR_ADVANCED_INLINE");
+	}
+
+	macro clickLocalizableAppButton {
+		Click(locator1 = "FormViewBuilder#LOCALIZABLE_APP_BUTTON");
 	}
 
 	macro clickRequiredEllipses {

@@ -858,6 +858,95 @@ definition {
 		AppBuilderAdmin.validateItemNameOnTable(itemName = "Content from Form 1");
 	}
 
+	@description = "Automate LPS-129636 - It's not possible to create entries when changing the App's language"
+	@priority = "5"
+	test CreateAnEntryWithTranslaedFieldLabel {
+		property portal.acceptance = "quarantine";
+
+		var appNameEnglish = "App 1 - enUS";
+		var appNamePortuguese = "App 1 - ptBR";
+		var appPortugueseLanguage = "Portuguese (Brazil)";
+		var formViewNameEnglish = "Form View 1 - enUS";
+		var formViewNamePortuguese = "Form View 1 - ptBR";
+		var tableViewName = "Table View 1";
+		var textFieldLabelEnglish = "Full Name";
+		var textFieldLabelPortuguese = "Nome Completo";
+		var textFieldInputContent = "Meu nome completo";
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "my custom object",
+			isCreatingFormView = "true",
+			isCreatingViaPlusIcon = "true");
+
+		FormViewBuilder.setName(formViewName = "${formViewNameEnglish}");
+
+		FormViewBuilder.addFieldByDoubleClick(fieldType = "Text");
+
+		FormViewBuilder.setFieldLabelWithNoAssertion(fieldLabel = "${textFieldLabelEnglish}");
+
+		FormViewBuilder.switchLocalization(
+			localizationName = "pt-BR",
+			symbolName = "en-US");
+
+		FormViewBuilder.setFieldLabelWithNoAssertion(fieldLabel = "${textFieldLabelPortuguese}");
+
+		FormViewBuilder.setName(formViewName = "${formViewNamePortuguese}");
+
+		FormViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Table Views");
+
+		AppBuilderAdmin.add();
+
+		TableViewBuilder.addColumnByDoubleClick(fieldType = "${textFieldLabelEnglish}");
+
+		TableViewBuilder.setName(tableViewName = "${tableViewName}");
+
+		TableViewBuilder.save();
+
+		AppBuilderAdmin.switchTab(tabName = "Apps");
+
+		AppBuilderAdmin.add();
+
+		AppBuilderAdmin.setName(title = "${appNameEnglish}");
+
+		FormViewBuilder.switchLocalization(
+			localizationName = "pt-BR",
+			symbolName = "en-US");
+
+		AppBuilderAdmin.setName(title = "${appNamePortuguese}");
+
+		App.selectFormView(formViewName = "${formViewNameEnglish}");
+
+		App.selectTableView(tableViewName = "${tableViewName}");
+
+		Button.clickNext();
+
+		App.toggleDeploy(deployOption = "Standalone");
+
+		App.clickDeploy();
+
+		AppBuilderAdmin.openStandAloneApp(itemName = "${appNameEnglish}");
+
+		SelectWindow.selectPopUp(locator1 = "null");
+
+		FormViewBuilder.clickLocalizableAppButton();
+
+		FormViewBuilder.changeAppLanguageTo(changeAppLanguageTo = "${appPortugueseLanguage}");
+
+		AppBuilderAdmin.addEntry();
+
+		FormViewBuilder.editText(
+			fieldName = "${textFieldLabelPortuguese}",
+			fieldValue = "${textFieldInputContent}");
+
+		AppBuilderAdmin.save();
+
+		Alert.viewSuccessMessage();
+
+		AppBuilderAdmin.validateItemNameOnTable(itemName = "${textFieldInputContent}");
+	}
+
 	@description = "Define different labels for the same field in different Form Views of an Object"
 	@priority = "5"
 	test DefineDifferentFieldLabelsForDifferentForm {

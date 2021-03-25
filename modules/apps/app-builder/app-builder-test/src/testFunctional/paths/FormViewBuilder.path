@@ -9,6 +9,19 @@
 </thead>
 <tbody>
 
+<!--APP-->
+<tr>
+	<td>LOCALIZABLE_APP_BUTTON</td>
+	<td>//div[@class='dropdown localizable-dropdown']</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>SELECT_LANGUAGE_AT_APP_DEPLOYED</td>
+	<td>//span[contains(text(),'${changeAppLanguageTo}')]</td>
+	<td></td>
+</tr>
+
 <!--FIELDS_SIDEBAR-->
 <tr>
 	<td>SIDEBAR_FIELD_LABEL</td>
