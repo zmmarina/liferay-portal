@@ -154,4 +154,17 @@ definition {
 		AssertElementNotPresent(locator1 = "FormViewBuilder#SIDEBAR_ADVANCED_TAB");
 	}
 
+	macro viewDefaultCP {
+		AssertTextEquals(
+			locator1 = "Message#EMPTY_INFO",
+			value1 = "There are no results.");
+
+		AssertElementNotPresent(
+			key_metadataSetName = "Google Docs Metadata",
+			locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME");
+		AssertElementNotPresent(
+			key_metadataSetName = "Google Docs Metadata",
+			locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME");
+	}
+
 }
