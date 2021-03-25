@@ -66,6 +66,7 @@ definition {
 			Alert.viewSuccessMessage();
 
 			AssertTextNotPresent(
+				key_metadataSetName = "${metadataSetName}",
 				locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME",
 				value1 = "${metadataSetName}");
 		}
