@@ -119,10 +119,10 @@ public class Page<T> {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("{\"actions\":");
+		StringBuilder sb = new StringBuilder("{\"actions\": ");
 
 		sb.append(_toString((Map)_actions));
-		sb.append(", \"items\":[");
+		sb.append(", \"items\": [");
 
 		Iterator<T> iterator = _items.iterator();
 
@@ -130,15 +130,15 @@ public class Page<T> {
 			sb.append(iterator.next());
 
 			if (iterator.hasNext()) {
-				sb.append(",");
+				sb.append(", ");
 			}
 		}
 
-		sb.append("], \"page\":");
+		sb.append("], \"page\": ");
 		sb.append(_page);
-		sb.append(", \"pageSize\":");
+		sb.append(", \"pageSize\": ");
 		sb.append(_pageSize);
-		sb.append(", \"totalCount\":");
+		sb.append(", \"totalCount\": ");
 		sb.append(_totalCount);
 		sb.append("}");
 
@@ -263,7 +263,7 @@ public class Page<T> {
 
 			sb.append("\"");
 			sb.append(entry.getKey());
-			sb.append("\":");
+			sb.append("\": ");
 
 			Object value = entry.getValue();
 

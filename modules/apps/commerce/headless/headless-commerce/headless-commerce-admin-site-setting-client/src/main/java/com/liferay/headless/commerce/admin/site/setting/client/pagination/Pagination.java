@@ -53,10 +53,10 @@ public class Pagination {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("{\"page\":");
+		StringBuilder sb = new StringBuilder("{\"page\": ");
 
 		sb.append(_page);
-		sb.append(", \"pageSize\":");
+		sb.append(", \"pageSize\": ");
 		sb.append(_pageSize);
 		sb.append("}");
 
