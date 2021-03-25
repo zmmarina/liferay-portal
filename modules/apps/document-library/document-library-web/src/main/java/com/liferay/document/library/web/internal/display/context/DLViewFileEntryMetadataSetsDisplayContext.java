@@ -391,11 +391,11 @@ public class DLViewFileEntryMetadataSetsDisplayContext {
 		actionURL.setParameter(
 			ActionRequest.ACTION_NAME,
 			"/document_library/delete_data_definition");
+		actionURL.setParameter("navigation", "file_entry_metadata_sets");
+		actionURL.setParameter("redirect", String.valueOf(_getRedirect()));
 		actionURL.setParameter(
 			"dataDefinitionId", String.valueOf(ddmStructure.getStructureId()));
 		actionURL.setParameter("keywords", _getKeywords());
-		actionURL.setParameter("navigation", "file_entry_metadata_sets");
-		actionURL.setParameter("redirect", String.valueOf(_getRedirect()));
 
 		return actionURL;
 	}
