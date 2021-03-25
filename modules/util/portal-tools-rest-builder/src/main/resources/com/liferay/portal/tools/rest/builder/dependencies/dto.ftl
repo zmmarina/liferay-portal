@@ -411,7 +411,7 @@ public class ${schemaName} <#if dtoParentClassName?has_content>extends ${dtoPare
 
 			sb.append("\"");
 			sb.append(entry.getKey());
-			sb.append("\":");
+			sb.append("\": ");
 
 			Object value = entry.getValue();
 
@@ -450,7 +450,7 @@ public class ${schemaName} <#if dtoParentClassName?has_content>extends ${dtoPare
 			}
 
 			if (iterator.hasNext()) {
-				sb.append(",");
+				sb.append(", ");
 			}
 		}
 
