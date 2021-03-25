@@ -484,12 +484,13 @@ public class AccountEntryLocalServiceImpl
 			String[] types, Integer status)
 		throws PortalException {
 
-		return dslQuery(
-			_getGroupByStep(
-				DSLQueryFactoryUtil.countDistinct(
-					AccountEntryTable.INSTANCE.accountEntryId.as(
-						"COUNT_VALUE")),
-				userId, parentAccountEntryId, keywords, types, status));
+		return GetterUtil.getInteger(
+			(Long)dslQuery(
+				_getGroupByStep(
+					DSLQueryFactoryUtil.countDistinct(
+						AccountEntryTable.INSTANCE.accountEntryId.as(
+							"COUNT_VALUE")),
+					userId, parentAccountEntryId, keywords, types, status)));
 	}
 
 	@Override
