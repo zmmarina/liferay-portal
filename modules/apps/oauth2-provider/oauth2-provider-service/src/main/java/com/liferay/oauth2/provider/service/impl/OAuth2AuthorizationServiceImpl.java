@@ -89,12 +89,12 @@ public class OAuth2AuthorizationServiceImpl
 	public void revokeAllOAuth2Authorizations(long oAuth2ApplicationId)
 		throws PortalException {
 
+		User user = getUser();
+
 		List<OAuth2Authorization> oAuth2Authorizations =
 			oAuth2AuthorizationLocalService.getOAuth2Authorizations(
 				oAuth2ApplicationId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
 				null);
-
-		User user = getUser();
 
 		for (OAuth2Authorization oAuth2Authorization : oAuth2Authorizations) {
 			if (user.getUserId() != oAuth2Authorization.getUserId()) {
