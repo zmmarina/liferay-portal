@@ -152,18 +152,18 @@ export function getDDMFormFieldSettingsContext({
 				localizedValue = {[defaultLanguageId]: ''};
 			}
 
-			let options = field.options;
 			let multiple = field.multiple;
+			let options = field.options;
 
 			if (
 				field.type === 'select' &&
 				field.fieldName === 'predefinedValue'
 			) {
+				multiple = dataDefinitionField.customProperties.multiple;
 				options =
 					dataDefinitionField.customProperties.options[
 						editingLanguageId
 					];
-				multiple = dataDefinitionField.customProperties.multiple;
 			}
 
 			return {
