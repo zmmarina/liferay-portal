@@ -51,7 +51,7 @@ public class AggregateKaleoTaskAssignmentSelectorImplTest {
 
 	@Test
 	public void testGetKaleoTaskAssignments() throws Exception {
-		ArrayList<String> assigneeClassNames = new ArrayList<>(
+		List<String> assigneeClassNames = new ArrayList<>(
 			_kaleoTaskAssignmentSelectors.keySet());
 
 		KaleoTaskAssignment kaleoTaskAssignment1 = _createKaleoTaskAssignment(
