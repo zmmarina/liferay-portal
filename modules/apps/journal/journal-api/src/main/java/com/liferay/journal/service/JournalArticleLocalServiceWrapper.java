@@ -2970,15 +2970,15 @@ public class JournalArticleLocalServiceWrapper
 		long companyId, long groupId, java.util.List<Long> folderIds,
 		long classNameId, String keywords, Double version,
 		String ddmStructureKey, String ddmTemplateKey,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate, int start, int end,
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<JournalArticle>
 			orderByComparator) {
 
 		return _journalArticleLocalService.search(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate, start, end, orderByComparator);
+			reviewDate, status, start, end, orderByComparator);
 	}
 
 	/**
@@ -3053,7 +3053,7 @@ public class JournalArticleLocalServiceWrapper
 		long classNameId, String articleId, Double version, String title,
 		String description, String content, String ddmStructureKey,
 		String ddmTemplateKey, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate,
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<JournalArticle>
 			orderByComparator) {
@@ -3061,7 +3061,7 @@ public class JournalArticleLocalServiceWrapper
 		return _journalArticleLocalService.search(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKey, ddmTemplateKey,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator,
+			displayDateGT, displayDateLT, reviewDate, status, andOperator,
 			start, end, orderByComparator);
 	}
 
@@ -3136,7 +3136,7 @@ public class JournalArticleLocalServiceWrapper
 		long classNameId, String articleId, Double version, String title,
 		String description, String content, String[] ddmStructureKeys,
 		String[] ddmTemplateKeys, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate,
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<JournalArticle>
 			orderByComparator) {
@@ -3144,7 +3144,7 @@ public class JournalArticleLocalServiceWrapper
 		return _journalArticleLocalService.search(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKeys, ddmTemplateKeys,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator,
+			displayDateGT, displayDateLT, reviewDate, status, andOperator,
 			start, end, orderByComparator);
 	}
 
@@ -3399,13 +3399,13 @@ public class JournalArticleLocalServiceWrapper
 		long companyId, long groupId, java.util.List<Long> folderIds,
 		long classNameId, String keywords, Double version,
 		String ddmStructureKey, String ddmTemplateKey,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate) {
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status) {
 
 		return _journalArticleLocalService.searchCount(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate);
+			reviewDate, status);
 	}
 
 	/**
@@ -3460,13 +3460,13 @@ public class JournalArticleLocalServiceWrapper
 		long classNameId, String articleId, Double version, String title,
 		String description, String content, String ddmStructureKey,
 		String ddmTemplateKey, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate,
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status,
 		boolean andOperator) {
 
 		return _journalArticleLocalService.searchCount(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKey, ddmTemplateKey,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator);
+			displayDateGT, displayDateLT, reviewDate, status, andOperator);
 	}
 
 	/**
@@ -3523,13 +3523,13 @@ public class JournalArticleLocalServiceWrapper
 		long classNameId, String articleId, Double version, String title,
 		String description, String content, String[] ddmStructureKeys,
 		String[] ddmTemplateKeys, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate,
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status,
 		boolean andOperator) {
 
 		return _journalArticleLocalService.searchCount(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKeys, ddmTemplateKeys,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator);
+			displayDateGT, displayDateLT, reviewDate, status, andOperator);
 	}
 
 	/**

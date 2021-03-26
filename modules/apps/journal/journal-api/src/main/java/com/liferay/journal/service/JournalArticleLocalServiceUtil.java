@@ -2787,14 +2787,14 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate,
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status,
 		int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
 		return getService().search(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate, start, end, orderByComparator);
+			reviewDate, status, start, end, orderByComparator);
 	}
 
 	/**
@@ -2867,14 +2867,14 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate, boolean andOperator, int start, int end,
-		OrderByComparator<JournalArticle> orderByComparator) {
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status, boolean andOperator, int start,
+		int end, OrderByComparator<JournalArticle> orderByComparator) {
 
 		return getService().search(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKey, ddmTemplateKey,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator,
+			displayDateGT, displayDateLT, reviewDate, status, andOperator,
 			start, end, orderByComparator);
 	}
 
@@ -2947,14 +2947,14 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate, boolean andOperator, int start, int end,
-		OrderByComparator<JournalArticle> orderByComparator) {
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status, boolean andOperator, int start,
+		int end, OrderByComparator<JournalArticle> orderByComparator) {
 
 		return getService().search(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKeys, ddmTemplateKeys,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator,
+			displayDateGT, displayDateLT, reviewDate, status, andOperator,
 			start, end, orderByComparator);
 	}
 
@@ -3200,12 +3200,12 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, java.util.Date displayDateGT,
-		java.util.Date displayDateLT, int status, java.util.Date reviewDate) {
+		java.util.Date displayDateLT, java.util.Date reviewDate, int status) {
 
 		return getService().searchCount(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate);
+			reviewDate, status);
 	}
 
 	/**
@@ -3258,13 +3258,13 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate, boolean andOperator) {
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status, boolean andOperator) {
 
 		return getService().searchCount(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKey, ddmTemplateKey,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator);
+			displayDateGT, displayDateLT, reviewDate, status, andOperator);
 	}
 
 	/**
@@ -3319,13 +3319,13 @@ public class JournalArticleLocalServiceUtil {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		java.util.Date displayDateGT, java.util.Date displayDateLT, int status,
-		java.util.Date reviewDate, boolean andOperator) {
+		java.util.Date displayDateGT, java.util.Date displayDateLT,
+		java.util.Date reviewDate, int status, boolean andOperator) {
 
 		return getService().searchCount(
 			companyId, groupId, folderIds, classNameId, articleId, version,
 			title, description, content, ddmStructureKeys, ddmTemplateKeys,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator);
+			displayDateGT, displayDateLT, reviewDate, status, andOperator);
 	}
 
 	/**

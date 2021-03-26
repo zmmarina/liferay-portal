@@ -1515,7 +1515,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate, int start, int end,
+		Date reviewDate, int status, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator);
 
 	/**
@@ -1586,7 +1586,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator);
 
@@ -1660,7 +1660,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator);
 
@@ -1709,7 +1709,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate);
+		Date reviewDate, int status);
 
 	/**
 	 * Returns the number of web content articles matching the parameters,
@@ -1762,7 +1762,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator);
 
 	/**
@@ -1818,7 +1818,7 @@ public interface JournalArticleService extends BaseService {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator);
 
 	public void subscribe(long groupId, long articleId) throws PortalException;
