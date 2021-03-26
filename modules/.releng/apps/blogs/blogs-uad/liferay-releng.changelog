@@ -7,3 +7,8 @@
 # Bundle Version 5.0.4
 #
 7255b43d28598faf42a7ffab535caf0ee6eba514^..bb164f87e11e6e8a6ece4dec9dc682ad1c8b9b04=LPS-117975
+
+#
+# Bundle Version 6.0.0
+#
+bb164f87e11e6e8a6ece4dec9dc682ad1c8b9b04^..7a39ae3d940fd2b5051b9276efb873988a0d21b6=LPS-77699 LPS-119446 LPS-121824 LPS-122403 LRQA-51488
