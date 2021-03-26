@@ -7,3 +7,8 @@
 # Bundle Version 1.0.2
 #
 3a08933bd71ebc4990b82332bb0b4ce87d25631b^..d76ade0badb363809dbdaa59eac700d8673242d0=LPS-105380
+
+#
+# Bundle Version 2.0.0
+#
+d76ade0badb363809dbdaa59eac700d8673242d0^..581699d1c6029be4fe7d23f1cd3ba9bfeca76596=LPS-121096 LPS-121824 LPS-125550
