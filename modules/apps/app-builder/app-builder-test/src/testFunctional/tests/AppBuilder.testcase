@@ -2868,6 +2868,36 @@ definition {
 		FormViewBuilder.validateObjectFieldName(fieldName = "Text");
 	}
 
+	@description = "Automate LPS-129501 - It's not possible to rename the Object name"
+	@priority = "5"
+	test RenameCustomObject {
+		property portal.acceptance = "true";
+
+		var objName = "My Custom Object";
+		var objNameEdit = "My Custom Object edited";
+
+		AppBuilderAdmin.addCustomObject(
+			customObjectName = "${objName}",
+			isCreatingFormView = "false",
+			isCreatingViaPlusIcon = "true");
+
+		AppBuilderAdmin.gotoBack();
+
+		AppBuilderAdmin.openActionMenu(itemName = "${objName}");
+
+		MenuItem.clickNoError(menuItem = "Rename");
+
+		AppBuilderAdmin.waitForSaveButtonNotVisible();
+
+		AppBuilderAdmin.renameObject(newName = "${objNameEdit}");
+
+		AppBuilderAdmin.waitForSaveButtonVisible();
+
+		Button.clickSave();
+
+		AppBuilderAdmin.validateItemNameOnTable(itemName = "${objNameEdit}");
+	}
+
 	@description = "Automate LPS-122695 Use fieldsets with translations in Form view Object"
 	@priority = "5"
 	test ReusedTranslatedFieldset {

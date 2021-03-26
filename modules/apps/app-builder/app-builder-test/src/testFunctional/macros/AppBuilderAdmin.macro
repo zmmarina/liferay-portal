@@ -350,6 +350,12 @@ definition {
 		Button.clickSave();
 	}
 
+	macro renameObject {
+		Type(
+			locator1 = "AppBuilder#INPUT_OBJECT_RENAME",
+			value1 = "${newName}");
+	}
+
 	macro save {
 		Click(locator1 = "AppBuilder#SAVE_BUTTON");
 
