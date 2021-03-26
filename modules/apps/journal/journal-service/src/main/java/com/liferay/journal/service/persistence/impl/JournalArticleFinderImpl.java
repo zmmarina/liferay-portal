@@ -127,7 +127,7 @@ public class JournalArticleFinderImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate) {
+		Date reviewDate, int status) {
 
 		String[] articleIds = null;
 		String[] titles = null;
@@ -254,7 +254,7 @@ public class JournalArticleFinderImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate) {
+		Date reviewDate, int status) {
 
 		String[] articleIds = null;
 		String[] titles = null;
@@ -381,7 +381,7 @@ public class JournalArticleFinderImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate, int start, int end,
+		Date reviewDate, int status, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
 		String[] articleIds = null;
@@ -592,7 +592,7 @@ public class JournalArticleFinderImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate, int start, int end,
+		Date reviewDate, int status, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
 		String[] articleIds = null;

@@ -148,8 +148,8 @@ public class JournalArticleAtomCollectionProvider
 		String ddmTemplateKey = null;
 		Date displayDateGT = null;
 		Date displayDateLT = new Date();
-		int status = WorkflowConstants.STATUS_APPROVED;
 		Date reviewDate = null;
+		int status = WorkflowConstants.STATUS_APPROVED;
 
 		OrderByComparator<JournalArticle> orderByComparator =
 			new ArticleVersionComparator();
@@ -157,7 +157,7 @@ public class JournalArticleAtomCollectionProvider
 		int count = _journalArticleService.searchCount(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate);
+			reviewDate, status);
 
 		AtomPager atomPager = new AtomPager(atomRequestContext, count);
 
@@ -166,7 +166,7 @@ public class JournalArticleAtomCollectionProvider
 		return _journalArticleService.search(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate, atomPager.getStart(), atomPager.getEnd() + 1,
+			reviewDate, status, atomPager.getStart(), atomPager.getEnd() + 1,
 			orderByComparator);
 	}
 

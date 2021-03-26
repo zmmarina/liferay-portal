@@ -640,7 +640,7 @@ public class JournalArticleServiceTest {
 			TestPropsValues.getCompanyId(), _group.getGroupId(),
 			ListUtil.fromArray(JournalFolderConstants.DEFAULT_PARENT_FOLDER_ID),
 			JournalArticleConstants.CLASS_NAME_ID_DEFAULT, null, null, null,
-			null, keyword, "", "", null, null, status, null, true);
+			null, keyword, "", "", null, null, null, status, true);
 	}
 
 	protected List<JournalArticle> createArticlesWithKeyword(int count)
@@ -692,7 +692,7 @@ public class JournalArticleServiceTest {
 			TestPropsValues.getCompanyId(), _group.getGroupId(),
 			ListUtil.fromArray(JournalFolderConstants.DEFAULT_PARENT_FOLDER_ID),
 			JournalArticleConstants.CLASS_NAME_ID_DEFAULT, null, null, null,
-			null, keyword, "", "", null, null, status, null, false,
+			null, keyword, "", "", null, null, null, status, false,
 			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 

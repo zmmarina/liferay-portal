@@ -2050,13 +2050,13 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate, int start, int end,
+		Date reviewDate, int status, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
 		return journalArticleFinder.filterFindByKeywords(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate, start, end, orderByComparator);
+			reviewDate, status, start, end, orderByComparator);
 	}
 
 	/**
@@ -2127,7 +2127,7 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
@@ -2211,7 +2211,7 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
@@ -2270,12 +2270,12 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate) {
+		Date reviewDate, int status) {
 
 		return journalArticleFinder.filterCountByKeywords(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate);
+			reviewDate, status);
 	}
 
 	/**
@@ -2329,7 +2329,7 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator) {
 
 		return journalArticleFinder.filterCountByC_G_F_C_A_V_T_D_C_S_T_D_R(
@@ -2392,7 +2392,7 @@ public class JournalArticleServiceImpl extends JournalArticleServiceBaseImpl {
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator) {
 
 		return journalArticleFinder.filterCountByC_G_F_C_A_V_T_D_C_S_T_D_R(

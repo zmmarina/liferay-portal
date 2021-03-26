@@ -118,8 +118,8 @@ public class JournalRSSHelper {
 
 		Date displayDateGT = null;
 		Date displayDateLT = new Date();
-		int status = WorkflowConstants.STATUS_APPROVED;
 		Date reviewDate = null;
+		int status = WorkflowConstants.STATUS_APPROVED;
 		boolean andOperator = true;
 		int start = 0;
 		int end = feed.getDelta();
@@ -141,7 +141,7 @@ public class JournalRSSHelper {
 			companyId, groupId, folderIds,
 			JournalArticleConstants.CLASS_NAME_ID_DEFAULT, articleId, version,
 			title, description, content, ddmStructureKey, ddmTemplateKey,
-			displayDateGT, displayDateLT, status, reviewDate, andOperator,
+			displayDateGT, displayDateLT, reviewDate, status, andOperator,
 			start, end, orderByComparator);
 	}
 

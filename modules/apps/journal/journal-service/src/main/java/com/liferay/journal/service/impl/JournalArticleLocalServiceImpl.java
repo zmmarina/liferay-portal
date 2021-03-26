@@ -4489,13 +4489,13 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate, int start, int end,
+		Date reviewDate, int status, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
 		return journalArticleFinder.findByKeywords(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate, start, end, orderByComparator);
+			reviewDate, status, start, end, orderByComparator);
 	}
 
 	/**
@@ -4569,7 +4569,7 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
@@ -4653,7 +4653,7 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator, int start, int end,
 		OrderByComparator<JournalArticle> orderByComparator) {
 
@@ -4952,12 +4952,12 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String keywords, Double version, String ddmStructureKey,
 		String ddmTemplateKey, Date displayDateGT, Date displayDateLT,
-		int status, Date reviewDate) {
+		Date reviewDate, int status) {
 
 		return journalArticleFinder.countByKeywords(
 			companyId, groupId, folderIds, classNameId, keywords, version,
 			ddmStructureKey, ddmTemplateKey, displayDateGT, displayDateLT,
-			status, reviewDate);
+			reviewDate, status);
 	}
 
 	/**
@@ -5011,7 +5011,7 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String ddmStructureKey, String ddmTemplateKey,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator) {
 
 		return journalArticleFinder.countByC_G_F_C_A_V_T_D_C_S_T_D_R(
@@ -5074,7 +5074,7 @@ public class JournalArticleLocalServiceImpl
 		long companyId, long groupId, List<Long> folderIds, long classNameId,
 		String articleId, Double version, String title, String description,
 		String content, String[] ddmStructureKeys, String[] ddmTemplateKeys,
-		Date displayDateGT, Date displayDateLT, int status, Date reviewDate,
+		Date displayDateGT, Date displayDateLT, Date reviewDate, int status,
 		boolean andOperator) {
 
 		return journalArticleFinder.countByC_G_F_C_A_V_T_D_C_S_T_D_R(
