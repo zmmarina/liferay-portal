@@ -191,8 +191,8 @@ public class StructuredContentResourceImpl
 					Collections.singletonList(journalArticle.getFolderId()),
 					journalArticle.getClassNameId(),
 					journalArticle.getArticleId(), null, null, null, null,
-					(String)null, null, null, null,
-					WorkflowConstants.STATUS_APPROVED, null, true,
+					(String)null, null, null, null, null,
+					WorkflowConstants.STATUS_APPROVED, true,
 					QueryUtil.ALL_POS, QueryUtil.ALL_POS, null),
 				this::_toExtensionStructuredContent));
 	}
