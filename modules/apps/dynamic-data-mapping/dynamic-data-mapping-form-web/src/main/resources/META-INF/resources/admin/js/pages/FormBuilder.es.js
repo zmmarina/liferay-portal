@@ -96,6 +96,7 @@ export const FormBuilder = () => {
 
 	useEffect(() => {
 		const hasFocusedField = Object.keys(focusedField).length > 0;
+
 		if (!hasFocusedField) {
 			return;
 		}
