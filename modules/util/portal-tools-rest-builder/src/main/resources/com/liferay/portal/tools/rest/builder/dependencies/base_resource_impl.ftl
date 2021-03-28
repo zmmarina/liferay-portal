@@ -300,11 +300,11 @@ public abstract class Base${schemaName}ResourceImpl
 		public void delete(java.util.Collection<${schemaName}> ${schemaVarNames}, Map<String, Serializable> parameters) throws Exception {
 			<#assign properties = freeMarkerTool.getDTOProperties(configYAML, openAPIYAML, schema) />
 
-			<#if deleteBatchJavaMethodSignature?? && properties?keys?seq_contains('id')>
+			<#if deleteBatchJavaMethodSignature?? && properties?keys?seq_contains("id")>
 				for (${schemaName} ${schemaVarName} : ${schemaVarNames}) {
 					delete${schemaName}(${schemaVarName}.getId());
 				}
-			<#elseif deleteBatchJavaMethodSignature?? && properties?keys?seq_contains(schemaVarName + 'Id')>
+			<#elseif deleteBatchJavaMethodSignature?? && properties?keys?seq_contains(schemaVarName + "Id")>
 				for (${schemaName} ${schemaVarName} : ${schemaVarNames}) {
 					delete${schemaName}(${schemaVarName}.get${schemaName}Id());
 				}
@@ -390,10 +390,10 @@ public abstract class Base${schemaName}ResourceImpl
 							<#elseif stringUtil.equals(javaMethodParameter.parameterName, schemaVarName + "Id") || stringUtil.equals(javaMethodParameter.parameterName, "id")>
 								<#assign properties = freeMarkerTool.getDTOProperties(configYAML, openAPIYAML, schema) />
 
-								<#if properties?keys?seq_contains('id')>
+								<#if properties?keys?seq_contains("id")>
 									${schemaVarName}.getId() != null ? ${schemaVarName}.getId() :
-								<#elseif properties?keys?seq_contains(schemaVarName + 'Id')>
-									${schemaVarName}.get${schemaName}Id() != null ? ${schemaVarName}.get${schemaName}Id() :
+								<#elseif properties?keys?seq_contains(schemaVarName + "Id")>
+									(${schemaVarName}.get${schemaName}Id() != null) ? ${schemaVarName}.get${schemaName}Id() :
 								</#if>
 
 								<#if stringUtil.equals(javaMethodParameter.parameterType, "java.lang.Integer")>
