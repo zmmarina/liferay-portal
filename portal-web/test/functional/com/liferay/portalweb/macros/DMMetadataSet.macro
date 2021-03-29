@@ -31,7 +31,9 @@ definition {
 	}
 
 	macro delete {
-		Search.searchCP(searchTerm = "${metadataSetName}");
+		if (isSet(searchMetadataSet)) {
+			Search.searchCP(searchTerm = "${metadataSetName}");
+		}
 
 		if (isSet(deleteViaManagementBar)) {
 			LexiconEntry.selectEntry(rowEntry = "${metadataSetName}");
@@ -58,17 +60,18 @@ definition {
 
 			AssertElementNotPresent(locator1 = "Icon#DELETE");
 
-			AssertElementNotPresent(locator1 = "Link#CLEAR");
-
 			LexiconEntry.viewNoEntry(rowEntry = "${metadataSetName}");
 		}
 		else {
 			Alert.viewSuccessMessage();
 
-			AssertTextNotPresent(
+			if (isSet(searchMetadataSet)) {
+				AssertElementPresent(locator1 = "Link#CLEAR");
+			}
+
+			AssertElementNotPresent(
 				key_metadataSetName = "${metadataSetName}",
-				locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME",
-				value1 = "${metadataSetName}");
+				locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME");
 		}
 	}
 
