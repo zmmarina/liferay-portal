@@ -171,4 +171,10 @@ definition {
 			locator1 = "DocumentsAndMediaMetadataSets#METADATA_SETS_NAME");
 	}
 
+	macro viewMetadataSetNotFoundCP {
+		AssertTextEquals(
+			locator1 = "Message#EMPTY_INFO",
+			value1 = "No results were found.");
+	}
+
 }
