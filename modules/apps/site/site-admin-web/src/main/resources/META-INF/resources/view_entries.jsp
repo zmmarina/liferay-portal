@@ -18,8 +18,6 @@
 
 <%
 SiteAdminDisplayContext siteAdminDisplayContext = (SiteAdminDisplayContext)request.getAttribute(SiteAdminDisplayContext.class.getName());
-
-SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContext = (SiteAdminManagementToolbarDisplayContext)request.getAttribute(SiteAdminManagementToolbarDisplayContext.class.getName());
 %>
 
 <liferay-ui:search-container
@@ -34,14 +32,14 @@ SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContex
 	>
 
 		<%
-		List<Group> childSites = curGroup.getChildren(true);
-
-		String siteImageURL = curGroup.getLogoURL(themeDisplay, false);
+		SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContext = (SiteAdminManagementToolbarDisplayContext)request.getAttribute(SiteAdminManagementToolbarDisplayContext.class.getName());
 
 		row.setData(
 			HashMapBuilder.<String, Object>put(
 				"actions", siteAdminManagementToolbarDisplayContext.getAvailableActions(curGroup)
 			).build());
+
+		List<Group> childSites = curGroup.getChildren(true);
 		%>
 
 		<portlet:renderURL var="viewSubsitesURL">
@@ -51,6 +49,11 @@ SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContex
 
 		<c:choose>
 			<c:when test='<%= Objects.equals(siteAdminDisplayContext.getDisplayStyle(), "descriptive") %>'>
+
+				<%
+				String siteImageURL = curGroup.getLogoURL(themeDisplay, false);
+				%>
+
 				<c:choose>
 					<c:when test="<%= Validator.isNotNull(siteImageURL) %>">
 						<liferay-ui:search-container-column-image

@@ -19,8 +19,6 @@
 <%
 SiteAdminDisplayContext siteAdminDisplayContext = new SiteAdminDisplayContext(request, liferayPortletRequest, liferayPortletResponse);
 
-SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContext = new SiteAdminManagementToolbarDisplayContext(request, liferayPortletRequest, liferayPortletResponse, siteAdminDisplayContext);
-
 Group group = siteAdminDisplayContext.getGroup();
 
 if (group != null) {
@@ -38,6 +36,8 @@ if (group != null) {
 
 	renderResponse.setTitle(group.getDescriptiveName(locale));
 }
+
+SiteAdminManagementToolbarDisplayContext siteAdminManagementToolbarDisplayContext = new SiteAdminManagementToolbarDisplayContext(request, liferayPortletRequest, liferayPortletResponse, siteAdminDisplayContext);
 %>
 
 <clay:management-toolbar
