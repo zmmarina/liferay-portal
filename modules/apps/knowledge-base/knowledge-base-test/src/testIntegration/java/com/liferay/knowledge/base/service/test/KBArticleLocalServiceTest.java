@@ -463,8 +463,6 @@ public class KBArticleLocalServiceTest {
 
 	@Test
 	public void testBuildTreePathAfterMoveKBArticle() throws Exception {
-		String sourceURL = StringPool.BLANK;
-
 		KBFolder kbFolder = KBFolderLocalServiceUtil.addKBFolder(
 			_user.getUserId(), _group.getGroupId(), _kbFolderClassNameId,
 			KBFolderConstants.DEFAULT_PARENT_FOLDER_ID,
@@ -480,7 +478,8 @@ public class KBArticleLocalServiceTest {
 			_user.getUserId(), _kbFolderClassNameId,
 			childKBFolder.getKbFolderId(), StringUtil.randomString(),
 			StringUtil.randomString(), StringUtil.randomString(),
-			StringUtil.randomString(), sourceURL, null, null, _serviceContext);
+			StringUtil.randomString(), StringPool.BLANK, null, null,
+			_serviceContext);
 
 		String originalKBArticleTreePath = kbArticle.buildTreePath();
 
@@ -510,8 +509,6 @@ public class KBArticleLocalServiceTest {
 
 	@Test
 	public void testBuildTreePathAfterMoveKBFolder() throws Exception {
-		String sourceURL = StringPool.BLANK;
-
 		KBFolder kbFolder = KBFolderLocalServiceUtil.addKBFolder(
 			_user.getUserId(), _group.getGroupId(), _kbFolderClassNameId,
 			KBFolderConstants.DEFAULT_PARENT_FOLDER_ID,
@@ -527,7 +524,8 @@ public class KBArticleLocalServiceTest {
 			_user.getUserId(), _kbFolderClassNameId,
 			childKBFolder.getKbFolderId(), StringUtil.randomString(),
 			StringUtil.randomString(), StringUtil.randomString(),
-			StringUtil.randomString(), sourceURL, null, null, _serviceContext);
+			StringUtil.randomString(), StringPool.BLANK, null, null,
+			_serviceContext);
 
 		String originalKBArticleTreePath = kbArticle.buildTreePath();
 
