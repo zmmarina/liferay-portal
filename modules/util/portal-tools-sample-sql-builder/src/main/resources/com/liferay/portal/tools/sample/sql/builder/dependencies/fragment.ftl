@@ -1,6 +1,7 @@
 <#if (dataFactory.maxContentLayoutCount > 0)>
 	<#assign
 		journalArticleResourceModel = dataFactory.newJournalArticleResourceModel(groupId)
+
 		journalArticleModel = dataFactory.newJournalArticleModel(journalArticleResourceModel, 0, 1)
 	/>
 
