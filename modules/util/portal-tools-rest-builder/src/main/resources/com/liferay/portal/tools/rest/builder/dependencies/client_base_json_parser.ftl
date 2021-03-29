@@ -578,16 +578,12 @@ public abstract class BaseJSONParser<T> {
 
 			while (index != -1) {
 				if (!_isCharEscaped(string, index)) {
-					string =
-						string.substring(0, index) + escapeStrings[0] +
-							string.substring(index + escapeStrings[1].length());
+					string = string.substring(0, index) + escapeStrings[0] + string.substring(index + escapeStrings[1].length());
 
-					index = string.indexOf(
-						escapeStrings[1], index + escapeStrings[0].length());
+					index = string.indexOf(escapeStrings[1], index + escapeStrings[0].length());
 				}
 				else {
-					index = string.indexOf(
-						escapeStrings[1], index + escapeStrings[1].length());
+					index = string.indexOf(escapeStrings[1], index + escapeStrings[1].length());
 				}
 			}
 		}
