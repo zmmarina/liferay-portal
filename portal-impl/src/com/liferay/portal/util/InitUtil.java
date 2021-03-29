@@ -133,7 +133,9 @@ public class InitUtil {
 
 		if (ServerDetector.isTomcat()) {
 			try {
-				Class<?> clazz = Class.forName(_PORTAL_CLASS_LOADER_FACTORY);
+				Class<?> clazz = Class.forName(
+					"com.liferay.support.tomcat.loader." +
+						"PortalClassLoaderFactory");
 
 				Method method = clazz.getMethod(
 					"setClassLoader", ClassLoader.class);
@@ -362,9 +364,6 @@ public class InitUtil {
 			throw new RuntimeException(exception);
 		}
 	}
-
-	private static final String _PORTAL_CLASS_LOADER_FACTORY =
-		"com.liferay.support.tomcat.loader.PortalClassLoaderFactory";
 
 	private static final boolean _PRINT_TIME = false;
 
