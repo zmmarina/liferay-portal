@@ -162,8 +162,8 @@ public class BatchTestrayCaseResult extends TestrayCaseResult {
 		List<TestrayAttachment> testrayAttachments = new ArrayList<>();
 
 		testrayAttachments.add(_getJenkinsConsoleTestrayAttachment());
-		testrayAttachments.add(_getJenkinsReportTestrayAttachment());
 		testrayAttachments.add(_getJenkinsConsoleTopLevelTestrayAttachment());
+		testrayAttachments.add(_getJenkinsReportTestrayAttachment());
 
 		testrayAttachments.removeAll(Collections.singleton(null));
 
