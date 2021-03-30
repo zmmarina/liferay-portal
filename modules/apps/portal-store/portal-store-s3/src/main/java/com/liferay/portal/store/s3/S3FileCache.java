@@ -95,8 +95,8 @@ public class S3FileCache {
 	}
 
 	public InputStream getCacheFileInputStream(
-			String fileName, Supplier<InputStream> inputStreamSupplier,
-			Closeable closeable, Date lastModifiedDate)
+			Closeable closeable, String fileName,
+			Supplier<InputStream> inputStreamSupplier, Date lastModifiedDate)
 		throws IOException {
 
 		StringBundler sb = new StringBundler(4);
