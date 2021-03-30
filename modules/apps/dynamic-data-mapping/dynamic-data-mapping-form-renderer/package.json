@@ -37,5 +37,5 @@
 		"format": "liferay-npm-scripts fix",
 		"test": "metalsoy -s \"test/**/*.soy\" -d \"test\" && liferay-npm-scripts test"
 	},
-	"version": "6.0.2"
+	"version": "6.0.3"
 }
