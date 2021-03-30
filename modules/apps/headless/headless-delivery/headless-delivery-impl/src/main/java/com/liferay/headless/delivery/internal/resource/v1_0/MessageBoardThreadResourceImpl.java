@@ -614,8 +614,6 @@ public class MessageBoardThreadResourceImpl
 		MBMessage mbMessage = _mbMessageLocalService.getMessage(
 			mbThread.getRootMessageId());
 
-		long threadId = mbMessage.getThreadId();
-
 		ModelResourcePermission<MBMessage> modelResourcePermission =
 			new MessageBoardThreadModelResourcePermission(
 				mbMessage, MBMessage.class.getName());
@@ -626,23 +624,24 @@ public class MessageBoardThreadResourceImpl
 				HashMapBuilder.put(
 					"delete",
 					addAction(
-						"DELETE", threadId, "deleteMessageBoardThread",
-						modelResourcePermission)
+						"DELETE", mbMessage.getThreadId(),
+						"deleteMessageBoardThread", modelResourcePermission)
 				).put(
 					"get",
 					addAction(
-						"VIEW", threadId, "getMessageBoardThread",
-						modelResourcePermission)
+						"VIEW", mbMessage.getThreadId(),
+						"getMessageBoardThread", modelResourcePermission)
 				).put(
 					"replace",
 					addAction(
-						"UPDATE", threadId, "putMessageBoardThread",
-						modelResourcePermission)
+						"UPDATE", mbMessage.getThreadId(),
+						"putMessageBoardThread", modelResourcePermission)
 				).put(
 					"reply-to-thread",
 					ActionUtil.addAction(
 						"REPLY_TO_MESSAGE",
-						MessageBoardMessageResourceImpl.class, threadId,
+						MessageBoardMessageResourceImpl.class,
+						mbMessage.getThreadId(),
 						"postMessageBoardThreadMessageBoardMessage",
 						contextScopeChecker,
 						new MessageBoardThreadModelResourcePermission(
@@ -651,12 +650,13 @@ public class MessageBoardThreadResourceImpl
 				).put(
 					"subscribe",
 					addAction(
-						"SUBSCRIBE", threadId, "putMessageBoardThreadSubscribe",
+						"SUBSCRIBE", mbMessage.getThreadId(),
+						"putMessageBoardThreadSubscribe",
 						modelResourcePermission)
 				).put(
 					"unsubscribe",
 					addAction(
-						"SUBSCRIBE", threadId,
+						"SUBSCRIBE", mbMessage.getThreadId(),
 						"putMessageBoardThreadUnsubscribe",
 						modelResourcePermission)
 				).build(),
