@@ -17,7 +17,7 @@ import extractDataRecordValueKey from '../util/extractDataRecordValueKey.es';
 export default (
 	{
 		localizable,
-		localizedValue,
+		localizedValue = {},
 		localizedValueEdited,
 		name,
 		transient,
