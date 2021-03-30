@@ -47,7 +47,6 @@ if (Validator.isNotNull(editorGadgetURL)) {
 	PortletURL publishGadgetRedirectURL = renderResponse.createRenderURL();
 
 	publishGadgetRedirectURL.setParameter("mvcPath", "/editor/publish_gadget_redirect.jsp");
-
 	publishGadgetRedirectURL.setWindowState(LiferayWindowState.POP_UP);
 
 	publishGadgetRedirect = publishGadgetRedirectURL.toString();
