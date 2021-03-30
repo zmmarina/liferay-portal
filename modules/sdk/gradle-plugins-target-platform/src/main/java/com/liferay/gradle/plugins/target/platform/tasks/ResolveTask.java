@@ -118,13 +118,13 @@ public class ResolveTask extends DefaultTask {
 
 		File distroFile = getDistroFile();
 
-		String distroReference = distroFile.getAbsolutePath() + ";version=file";
-
-		gradleProperties.put("targetPlatformDistro", distroReference);
+		gradleProperties.put(
+			"targetPlatformDistro",
+			distroFile.getAbsolutePath() + ";version=file");
 
 		gradleProperties.put("task", this);
 
-		final Processor processor = new ProcessorWrapper(gradleProperties);
+		Processor processor = new ProcessorWrapper(gradleProperties);
 
 		Workspace workspace = Workspace.createStandaloneWorkspace(
 			processor, bndrunFile.toURI());
@@ -133,13 +133,13 @@ public class ResolveTask extends DefaultTask {
 
 				@Override
 				public String getUnexpandedProperty(String key) {
-					String raw = super.getUnexpandedProperty(key);
+					String value = super.getUnexpandedProperty(key);
 
-					if (raw == null) {
-						raw = processor.getUnexpandedProperty(key);
+					if (value == null) {
+						value = processor.getUnexpandedProperty(key);
 					}
 
-					return raw;
+					return value;
 				}
 
 			}) {
