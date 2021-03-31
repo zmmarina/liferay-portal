@@ -739,8 +739,8 @@ public class ArrayUtil_IW {
 	}
 
 	public java.lang.String[] toStringArray(
-		com.liferay.portal.kernel.json.JSONArray array) {
-		return ArrayUtil.toStringArray(array);
+		com.liferay.portal.kernel.json.JSONArray jsonArray) {
+		return ArrayUtil.toStringArray(jsonArray);
 	}
 
 	public java.lang.String[] toStringArray(long[] array) {
