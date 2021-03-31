@@ -26,7 +26,7 @@ definition {
 		}
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can clear the uploaded image from form by clicking on Clear button"
+	@description = "Verify if user can clear the uploaded image from form by clicking on Clear button"
 	@priority = "4"
 	test ClearUploadedImage {
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
@@ -72,7 +72,7 @@ definition {
 			locator1 = "DocumentsAndMediaDocument#CUSTOM_FIELD_IMAGE_PREVIEW");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can drag and drop image field into form builder"
+	@description = "Verify if user can drag and drop image field into form builder"
 	@priority = "5"
 	test DragAndDropImageFieldToBuilder {
 		DMDocument.addImageField();
@@ -88,7 +88,7 @@ definition {
 			fieldName = "Image");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can duplicate the image field"
+	@description = "Verify if user can duplicate the image field"
 	@priority = "4"
 	test DuplicateImageField {
 		DMDocument.addImageField();
@@ -108,7 +108,7 @@ definition {
 		}
 	}
 
-	@description = "This is a test for LPS-98073. Verify if label and field name from image field can be translated"
+	@description = "Verify if label and field name of image field can be translated"
 	@priority = "5"
 	test LocalizationOfImageFieldtPersists {
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
@@ -157,7 +157,7 @@ definition {
 			value1 = "Imagen");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user is required to define a description for an uploaded image"
+	@description = "Verify if user is required to define a description for an uploaded image"
 	@priority = "3"
 	test SaveUploadedImageWithoutDescription {
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
@@ -194,7 +194,7 @@ definition {
 			value1 = "");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can define a field Reference"
+	@description = "Verify if user can define a field Reference"
 	@priority = "4"
 	test SetFieldReferenceOfImageField {
 		DMDocument.addImageField();
@@ -218,7 +218,7 @@ definition {
 			value1 = "Image");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can define a help text"
+	@description = "Verify if user can define a help text"
 	@priority = "4"
 	test SetHelpTextOfImageField {
 		DMDocument.addImageField();
@@ -239,7 +239,7 @@ definition {
 			fieldName = "Image");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can define a description for the uploaded image"
+	@description = "Verify if user can define a description for the uploaded image"
 	@priority = "4"
 	test SetImageDescriptionOnDM {
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
@@ -277,7 +277,7 @@ definition {
 			value1 = "This is an image.");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can set the image field as repeatable"
+	@description = "Verify if user can set the image field as repeatable"
 	@priority = "4"
 	test SetImageFieldAsRepeatable {
 		DMDocument.addImageField();
@@ -305,7 +305,7 @@ definition {
 			locator1 = "FormFields#FIELD_ADD_SPECIFIC");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can add a field label"
+	@description = "Verify if user can add a field label"
 	@priority = "5"
 	test SetLabelOfImageField {
 		DMDocument.addImageField();
@@ -325,7 +325,7 @@ definition {
 			fieldName = "Image");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can show/hide label"
+	@description = "Verify if user can show/hide label"
 	@priority = "4"
 	test ShowAndHideImageFieldLabel {
 		DMDocument.addImageField();
@@ -345,7 +345,7 @@ definition {
 			locator1 = "DDMEditStructure#FORM_FIELD_CONTAINER_LABEL");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can upload an image from Liferay Documents and Media"
+	@description = "Verify if user can upload an image from Liferay Documents and Media"
 	@priority = "5"
 	test UploadImageFromDocumentsAndMedia {
 		JSONDocument.addFileWithUploadedFile(
@@ -373,7 +373,7 @@ definition {
 		DMDocument.viewDocumentTypePG(imageName = "Document_1.jpg");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can upload an image from local storage"
+	@description = "Verify if user can upload an image from local storage"
 	@priority = "5"
 	test UploadImageFromLocalStorage {
 		DMDocument.addImageField();
@@ -395,7 +395,7 @@ definition {
 		DMDocument.viewDocumentTypePG(imageName = "Document_1.jpg");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user is not allowed to upload a file that is not an image"
+	@description = "Verify if user is not allowed to upload a file that is not an image"
 	@priority = "4"
 	test UploadInvalidFile {
 		DMDocument.addImageField();
@@ -421,7 +421,7 @@ definition {
 			locator1 = "DocumentsAndMediaDocument#METADATA_PANEL_IMAGE");
 	}
 
-	@description = "This is a test for LPS-98073. Verify if user can set the field as required or not"
+	@description = "Verify if user can set the field as required or not"
 	@priority = "4"
 	test VerifyRequiredPropertyOfImageField {
 		DMDocument.addImageField();
