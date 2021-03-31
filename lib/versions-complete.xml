@@ -3458,14 +3458,13 @@
 				</licenses>
 			</library>
 			<library>
-				<file-name>com.liferay.portal.security.sso.openid.connect.impl.jar!javax.mail.jar</file-name>
+				<file-name>com.liferay.portal.security.sso.openid.connect.impl.jar!jakarta.mail.jar</file-name>
 				<version>1.6.6</version>
-				<project-name>JavaMail API</project-name>
-				<project-url>https://eclipse-ee4j.github.io/mail/</project-url>
+				<project-name>Jakarta Mail API</project-name>
+				<project-url>http://www.oracle.com</project-url>
 				<licenses>
 					<license>
-						<license-name>COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0</license-name>
-						<license-url>https://opensource.org/licenses/CDDL-1.0</license-url>
+						<license-name>http://www.eclipse.org/legal/epl-2.0, https://www.gnu.org/software/classpath/license.html, http://www.eclipse.org/org/documents/edl-v10.php</license-name>
 					</license>
 				</licenses>
 			</library>
@@ -5458,9 +5457,9 @@
 			</library>
 			<library>
 				<file-name>lib/development/mail.jar</file-name>
-				<version>1.6.2</version>
+				<version>1.6.6</version>
 				<project-name>JavaMail</project-name>
-				<project-url>http://java.sun.com/products/javamail</project-url>
+				<project-url>https://eclipse-ee4j.github.io/mail/</project-url>
 				<licenses>
 					<license>
 						<license-name>Common Development and Distribution License 1.0</license-name>
