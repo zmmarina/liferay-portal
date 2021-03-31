@@ -159,7 +159,7 @@ public class PortalContextLoaderListener extends ContextLoaderListener {
 
 		super.contextDestroyed(servletContextEvent);
 
-		_cleanupJDBCDrivers();
+		_cleanUpJDBCDrivers();
 
 		try {
 			ModuleFrameworkUtilAdapter.stopRuntime();
@@ -470,7 +470,7 @@ public class PortalContextLoaderListener extends ContextLoaderListener {
 		}
 	}
 
-	private void _cleanupJDBCDrivers() {
+	private void _cleanUpJDBCDrivers() {
 		Enumeration<Driver> enumeration = DriverManager.getDrivers();
 
 		while (enumeration.hasMoreElements()) {
@@ -509,10 +509,7 @@ public class PortalContextLoaderListener extends ContextLoaderListener {
 			}
 			catch (Exception exception) {
 				if (_log.isWarnEnabled()) {
-					_log.warn(
-						"Unable to shutdown mysql " +
-							"AbandonedConnectionCleanupThread",
-						exception);
+					_log.warn("Unable to cleanly shut down MySQL", exception);
 				}
 			}
 		}
