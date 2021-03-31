@@ -229,8 +229,6 @@ public class DLFileEntryIndexerIndexedFieldsTest extends BaseDLIndexerTestCase {
 		map.put(Field.USER_ID, String.valueOf(fileEntry.getUserId()));
 		map.put(
 			Field.USER_NAME, StringUtil.toLowerCase(fileEntry.getUserName()));
-		map.put("fileName", fileEntry.getFileName());
-
 		map.put("classTypeId", "0");
 		map.put("content_ja_JP", getContents(fileEntry));
 		map.put(
@@ -238,6 +236,7 @@ public class DLFileEntryIndexerIndexedFieldsTest extends BaseDLIndexerTestCase {
 		map.put("ddmContent", "text/plain; charset=UTF-8 UTF-8");
 		map.put("extension", fileEntry.getExtension());
 		map.put("extension_String_sortable", fileEntry.getExtension());
+		map.put("fileName", fileEntry.getFileName());
 		map.put("fileEntryTypeId", "0");
 		map.put("hidden", "false");
 		map.put(
