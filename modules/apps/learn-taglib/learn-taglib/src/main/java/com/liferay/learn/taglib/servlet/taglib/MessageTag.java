@@ -14,17 +14,10 @@
 
 package com.liferay.learn.taglib.servlet.taglib;
 
+import com.liferay.learn.taglib.internal.web.cache.JSONObjectWebCacheItem;
 import com.liferay.petra.string.StringBundler;
-import com.liferay.petra.string.StringPool;
-import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.language.LanguageUtil;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.util.HttpUtil;
-import com.liferay.portal.kernel.util.Time;
-import com.liferay.portal.kernel.webcache.WebCacheItem;
-import com.liferay.portal.kernel.webcache.WebCachePoolUtil;
 import com.liferay.taglib.util.IncludeTag;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,9 +38,7 @@ public class MessageTag extends IncludeTag {
 
 	@Override
 	public int processEndTag() throws Exception {
-		JSONObject jsonObject = (JSONObject)WebCachePoolUtil.get(
-			MessageTag.class.getName() + StringPool.POUND + _resource,
-			new JSONObjectWebCacheItem(_resource));
+		JSONObject jsonObject = JSONObjectWebCacheItem.get(_resource);
 
 		if (jsonObject.length() == 0) {
 			return EVAL_PAGE;
@@ -102,41 +93,6 @@ public class MessageTag extends IncludeTag {
 		_resource = resource;
 	}
 
-	public class JSONObjectWebCacheItem implements WebCacheItem {
-
-		public JSONObjectWebCacheItem(String resource) {
-			_resource = resource;
-		}
-
-		@Override
-		public JSONObject convert(String key) {
-			try {
-				String json = HttpUtil.URLtoString(
-					"https://learn-resources.liferay.com/" + _resource +
-						".json");
-
-				return JSONFactoryUtil.createJSONObject(json);
-			}
-			catch (Exception exception) {
-				if (_log.isDebugEnabled()) {
-					_log.debug(exception, exception);
-				}
-
-				return JSONFactoryUtil.createJSONObject();
-			}
-		}
-
-		@Override
-		public long getRefreshTime() {
-			return _REFRESH_TIME;
-		}
-
-		private static final long _REFRESH_TIME = Time.HOUR * 4;
-
-		private String _resource;
-
-	}
-
 	@Override
 	protected void cleanUp() {
 		super.cleanUp();
@@ -144,8 +100,6 @@ public class MessageTag extends IncludeTag {
 		_key = null;
 		_resource = null;
 	}
-
-	private static final Log _log = LogFactoryUtil.getLog(MessageTag.class);
 
 	private String _key;
 	private String _resource;
