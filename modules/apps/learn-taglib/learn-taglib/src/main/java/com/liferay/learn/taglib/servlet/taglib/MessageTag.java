@@ -112,8 +112,8 @@ public class MessageTag extends IncludeTag {
 		public JSONObject convert(String key) {
 			try {
 				String json = HttpUtil.URLtoString(
-					"https://s3.amazonaws.com/learn-resources.liferay.com/" +
-						_resource + ".json");
+					"https://learn-resources.liferay.com/" + _resource +
+						".json");
 
 				return JSONFactoryUtil.createJSONObject(json);
 			}
