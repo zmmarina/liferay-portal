@@ -1,0 +1,18 @@
+{
+	"chatwoot-token": {
+		"en_US": {
+			"message": "Get my account token for Chatwoot.",
+			"url": "https://learn.liferay.com/dxp/7.x/en/index.html"
+		},
+		"pt_BR": {
+			"message": "Obter meu token de conta para Chatwoot.",
+			"url": "https://learn.liferay.com/dxp/7.x/pt/index.html"
+		}
+	},
+	"jivochat-token": {
+		"en_US": {
+			"message": "Get my account token for JivoChat.",
+			"url": "https://learn.liferay.com/dxp/7.x/en/getting_started.html"
+		}
+	}
+}
