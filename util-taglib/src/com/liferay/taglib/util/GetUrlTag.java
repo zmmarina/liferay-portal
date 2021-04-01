@@ -37,7 +37,7 @@ public class GetUrlTag extends TagSupport {
 			WebCacheItem wci = new GetUrlWebCacheItem(_url, _expires);
 
 			String content = (String)WebCachePoolUtil.get(
-				GetUrlTag.class.getName() + StringPool.PERIOD + _url, wci);
+				GetUrlTag.class.getName() + StringPool.POUND + _url, wci);
 
 			if (Validator.isNotNull(_var)) {
 				pageContext.setAttribute(_var, content);
