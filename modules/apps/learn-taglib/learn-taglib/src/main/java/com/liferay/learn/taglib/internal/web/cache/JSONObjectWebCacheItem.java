@@ -43,10 +43,14 @@ public class JSONObjectWebCacheItem implements WebCacheItem {
 	@Override
 	public JSONObject convert(String key) {
 		try {
-			String json = HttpUtil.URLtoString(
-				"https://learn-resources.liferay.com/" + _resource + ".json");
+			String url =
+				"https://learn-resources.liferay.com/" + _resource + ".json";
 
-			return JSONFactoryUtil.createJSONObject(json);
+			if (_log.isDebugEnabled()) {
+				_log.debug("Reading " + url);
+			}
+
+			return JSONFactoryUtil.createJSONObject(HttpUtil.URLtoString(url));
 		}
 		catch (Exception exception) {
 			if (_log.isDebugEnabled()) {
