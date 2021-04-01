@@ -1,17 +1,11 @@
 apply plugin: "com.liferay.alloy.taglib"
 
 buildTaglibs {
-	classpath = configurations.alloyTaglib
 	componentsXmlFiles "liferay-ddm.xml"
 	javaPackage = "com.liferay.dynamic.data.mapping.taglib.servlet"
 }
 
-configurations {
-	alloyTaglib
-}
-
 dependencies {
-	alloyTaglib group: "org.apache.felix", name: "org.apache.felix.http.servlet-api", version: "1.1.2"
 	alloyTaglib project(":apps:dynamic-data-mapping:dynamic-data-mapping-api")
 
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.impl", version: "default"
