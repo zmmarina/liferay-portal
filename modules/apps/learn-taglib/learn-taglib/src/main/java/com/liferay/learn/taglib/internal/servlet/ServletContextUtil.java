@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.trash.taglib.internal.servlet;
+package com.liferay.learn.taglib.internal.servlet;
 
 import javax.servlet.ServletContext;
 
@@ -20,21 +20,17 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Michael Bradford
+ * @author Brian Wing Shun Chan
  */
-@Component(immediate = true)
+@Component(immediate = true, service = {})
 public class ServletContextUtil {
-
-	public static String getContextPath() {
-		return _servletContext.getContextPath();
-	}
 
 	public static ServletContext getServletContext() {
 		return _servletContext;
 	}
 
 	@Reference(
-		target = "(osgi.web.symbolicname=com.liferay.trash.taglib)",
+		target = "(osgi.web.symbolicname=com.liferay.learn.taglib)",
 		unbind = "-"
 	)
 	protected void setServletContext(ServletContext servletContext) {
