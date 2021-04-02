@@ -45,6 +45,10 @@ public class JSONObjectWebCacheItem implements WebCacheItem {
 	@Override
 	public JSONObject convert(String key) {
 		try {
+			if (!PropsValues.LEARN_RESOURCES_ENABLED) {
+				return JSONFactoryUtil.createJSONObject();
+			}
+
 			StringBundler sb = new StringBundler(5);
 
 			sb.append(Http.HTTPS_WITH_SLASH);
