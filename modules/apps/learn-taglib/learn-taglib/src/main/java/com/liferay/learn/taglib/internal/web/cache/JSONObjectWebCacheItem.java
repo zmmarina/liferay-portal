@@ -14,15 +14,17 @@
 
 package com.liferay.learn.taglib.internal.web.cache;
 
+import com.liferay.petra.string.StringBundler;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.Http;
 import com.liferay.portal.kernel.util.HttpUtil;
-import com.liferay.portal.kernel.util.Time;
 import com.liferay.portal.kernel.webcache.WebCacheItem;
 import com.liferay.portal.kernel.webcache.WebCachePoolUtil;
+import com.liferay.portal.util.PropsValues;
 
 /**
  * @author Brian Wing Shun Chan
@@ -43,8 +45,19 @@ public class JSONObjectWebCacheItem implements WebCacheItem {
 	@Override
 	public JSONObject convert(String key) {
 		try {
-			String url =
-				"https://learn-resources.liferay.com/" + _resource + ".json";
+			StringBundler sb = new StringBundler(5);
+
+			sb.append(Http.HTTPS_WITH_SLASH);
+
+			if (!PropsValues.LEARN_RESOURCES_CDN_ENABLED) {
+				sb.append("s3.amazonaws.com/");
+			}
+
+			sb.append("learn-resources.liferay.com/");
+			sb.append(_resource);
+			sb.append(".json");
+
+			String url = sb.toString();
 
 			if (_log.isDebugEnabled()) {
 				_log.debug("Reading " + url);
@@ -63,10 +76,8 @@ public class JSONObjectWebCacheItem implements WebCacheItem {
 
 	@Override
 	public long getRefreshTime() {
-		return _REFRESH_TIME;
+		return PropsValues.LEARN_RESOURCES_REFRESH_TIME;
 	}
-
-	private static final long _REFRESH_TIME = Time.HOUR * 4;
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		JSONObjectWebCacheItem.class);
