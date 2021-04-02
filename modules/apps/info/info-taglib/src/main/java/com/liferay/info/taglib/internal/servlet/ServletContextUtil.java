@@ -31,7 +31,7 @@ public class ServletContextUtil {
 		return _infoItemRendererTracker;
 	}
 
-	public static final ServletContext getServletContext() {
+	public static ServletContext getServletContext() {
 		return _servletContext;
 	}
 

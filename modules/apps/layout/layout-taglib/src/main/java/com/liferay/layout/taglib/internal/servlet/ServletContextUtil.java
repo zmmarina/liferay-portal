@@ -45,7 +45,7 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
 @Component(immediate = true, service = {})
 public class ServletContextUtil {
 
-	public static final String getContextPath() {
+	public static String getContextPath() {
 		return _servletContext.getContextPath();
 	}
 
@@ -109,7 +109,7 @@ public class ServletContextUtil {
 		return _listObjectReferenceFactoryTracker;
 	}
 
-	public static final ServletContext getServletContext() {
+	public static ServletContext getServletContext() {
 		return _servletContext;
 	}
 

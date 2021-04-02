@@ -49,7 +49,7 @@ public class ServletContextUtil {
 		return _servletContextUtil._getCPContentListRendererRegistry();
 	}
 
-	public static final ServletContext getServletContext() {
+	public static ServletContext getServletContext() {
 		return _servletContextUtil._getServletContext();
 	}
 

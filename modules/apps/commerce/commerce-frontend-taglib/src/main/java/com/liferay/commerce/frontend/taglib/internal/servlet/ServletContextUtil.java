@@ -104,7 +104,7 @@ public class ServletContextUtil {
 		return _servletContextUtil._getProductHelper();
 	}
 
-	public static final ServletContext getServletContext() {
+	public static ServletContext getServletContext() {
 		return _servletContextUtil._getServletContext();
 	}
 

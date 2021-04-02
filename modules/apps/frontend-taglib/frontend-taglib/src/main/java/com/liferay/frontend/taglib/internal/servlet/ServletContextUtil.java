@@ -45,7 +45,7 @@ public class ServletContextUtil {
 		return _screenNavigationRegistry;
 	}
 
-	public static final ServletContext getServletContext() {
+	public static ServletContext getServletContext() {
 		return _servletContext;
 	}
 
