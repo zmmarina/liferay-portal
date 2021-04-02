@@ -29,10 +29,10 @@ public class WeatherUtil {
 	public static Weather getWeather(String zip, String apiKey) {
 		String key = WeatherUtil.class.getName() + StringPool.PERIOD + zip;
 
-		WebCacheItem wci = new WeatherWebCacheItem(zip, apiKey);
+		WebCacheItem webCacheItem = new WeatherWebCacheItem(zip, apiKey);
 
 		try {
-			return (Weather)WebCachePoolUtil.get(key, wci);
+			return (Weather)WebCachePoolUtil.get(key, webCacheItem);
 		}
 		catch (ClassCastException classCastException) {
 			if (_log.isDebugEnabled()) {
@@ -41,7 +41,7 @@ public class WeatherUtil {
 
 			WebCachePoolUtil.remove(key);
 
-			return (Weather)WebCachePoolUtil.get(key, wci);
+			return (Weather)WebCachePoolUtil.get(key, webCacheItem);
 		}
 	}
 
