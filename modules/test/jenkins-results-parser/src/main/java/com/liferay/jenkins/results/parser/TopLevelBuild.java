@@ -201,7 +201,7 @@ public abstract class TopLevelBuild extends BaseBuild {
 
 		String tempMapName = "git." + gitRepositoryType + ".properties";
 
-		return getTempMap(tempMapName);
+		return getTempMapFromBuildDatabase(tempMapName);
 	}
 
 	public JSONObject getBuildResultsJSONObject(
@@ -257,7 +257,7 @@ public abstract class TopLevelBuild extends BaseBuild {
 		String tempMapName = JenkinsResultsParserUtil.combine(
 			"git.", gitRepositoryType, ".", branchType, ".properties");
 
-		return getTempMap(tempMapName);
+		return getTempMapFromBuildDatabase(tempMapName);
 	}
 
 	public String getCompanionGitRepositorySHA() {

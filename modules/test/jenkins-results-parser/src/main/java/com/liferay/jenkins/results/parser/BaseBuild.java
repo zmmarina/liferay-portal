@@ -1127,7 +1127,7 @@ public abstract class BaseBuild implements Build {
 
 	@Override
 	public Map<String, String> getStartPropertiesTempMap() {
-		return getTempMap("start.properties");
+		return getTempMapFromBuildDatabase("start.properties");
 	}
 
 	@Override
@@ -1266,7 +1266,7 @@ public abstract class BaseBuild implements Build {
 
 	@Override
 	public Map<String, String> getStopPropertiesTempMap() {
-		return getTempMap("stop.properties");
+		return getTempMapFromBuildDatabase("stop.properties");
 	}
 
 	@Override
@@ -3283,50 +3283,6 @@ public abstract class BaseBuild implements Build {
 		stopWatchRecordConsoleReadCursor = consoleTextLength;
 
 		return stopWatchRecordsGroup;
-	}
-
-	protected Map<String, String> getTempMap(String tempMapName) {
-		String tempMapURL = getTempMapURL(tempMapName);
-
-		if (tempMapURL == null) {
-			return getTempMapFromBuildDatabase(tempMapName);
-		}
-
-		JSONObject tempMapJSONObject = null;
-
-		try {
-			tempMapJSONObject = JenkinsResultsParserUtil.toJSONObject(
-				JenkinsResultsParserUtil.getLocalURL(tempMapURL), false, 0, 0,
-				0);
-		}
-		catch (IOException ioException) {
-		}
-
-		if ((tempMapJSONObject == null) ||
-			!tempMapJSONObject.has("properties")) {
-
-			return getTempMapFromBuildDatabase(tempMapName);
-		}
-
-		JSONArray propertiesJSONArray = tempMapJSONObject.getJSONArray(
-			"properties");
-
-		Map<String, String> tempMap = new HashMap<>(
-			propertiesJSONArray.length());
-
-		for (int i = 0; i < propertiesJSONArray.length(); i++) {
-			JSONObject propertyJSONObject = propertiesJSONArray.getJSONObject(
-				i);
-
-			String key = propertyJSONObject.getString("name");
-			String value = propertyJSONObject.optString("value");
-
-			if ((value != null) && !value.isEmpty()) {
-				tempMap.put(key, value);
-			}
-		}
-
-		return tempMap;
 	}
 
 	protected Map<String, String> getTempMapFromBuildDatabase(
