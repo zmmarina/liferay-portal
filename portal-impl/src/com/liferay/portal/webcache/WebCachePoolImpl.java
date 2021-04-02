@@ -56,7 +56,9 @@ public class WebCachePoolImpl implements WebCachePool {
 
 			int timeToLive = (int)(webCacheItem.getRefreshTime() / Time.SECOND);
 
-			_portalCache.put(key, object, timeToLive);
+			if (timeToLive > 0) {
+				_portalCache.put(key, object, timeToLive);
+			}
 		}
 		catch (WebCacheException webCacheException) {
 			if (_log.isWarnEnabled()) {
