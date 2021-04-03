@@ -86,12 +86,12 @@ public class SynonymSearchTest {
 		try (ConfigurationTemporarySwapper
 				elasticSearchConfigurationTemporarySwapper =
 					new ConfigurationTemporarySwapper(
-						_ELASTICSEARCH_CONFIGURATION_PID,
+						_CONFIGURATION_PID_ELASTICSEARCH,
 						setUpElasticsearchProperties());
 
 			ConfigurationTemporarySwapper synonymConfigurationTemporarySwapper =
 				new ConfigurationTemporarySwapper(
-					_SYNONYMS_CONFIGURATION_PID,
+					_CONFIGURATION_PID_SYNONYMS,
 					setUpSynonymsProperties())) {
 
 			_company = CompanyTestUtil.addCompany();
@@ -226,7 +226,7 @@ public class SynonymSearchTest {
 		throws Exception {
 
 		Configuration configuration = _configurationAdmin.getConfiguration(
-			_ELASTICSEARCH_CONFIGURATION_PID, StringPool.QUESTION);
+			_CONFIGURATION_PID_ELASTICSEARCH, StringPool.QUESTION);
 
 		Dictionary<String, Object> properties = configuration.getProperties();
 
@@ -283,11 +283,11 @@ public class SynonymSearchTest {
 			expectedCount);
 	}
 
-	private static final String _ELASTICSEARCH_CONFIGURATION_PID =
+	private static final String _CONFIGURATION_PID_ELASTICSEARCH =
 		"com.liferay.portal.search.elasticsearch7.configuration." +
 			"ElasticsearchConfiguration";
 
-	private static final String _SYNONYMS_CONFIGURATION_PID =
+	private static final String _CONFIGURATION_PID_SYNONYMS =
 		"com.liferay.portal.search.tuning.synonyms.web.internal." +
 			"configuration.SynonymsConfiguration";
 
