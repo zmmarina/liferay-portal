@@ -47,7 +47,7 @@ public class UserGroupPermissionTest {
 		new LiferayIntegrationTestRule();
 
 	@Test
-	public void testOwnerPermissions() throws Exception {
+	public void testOwnerActionIds() throws Exception {
 		User user = UserTestUtil.addUser();
 
 		UserGroup userGroup = _userGroupLocalService.addUserGroup(
