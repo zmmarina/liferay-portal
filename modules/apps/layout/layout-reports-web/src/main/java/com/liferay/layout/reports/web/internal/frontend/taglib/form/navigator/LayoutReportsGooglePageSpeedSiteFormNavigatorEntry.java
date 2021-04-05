@@ -136,7 +136,7 @@ public class LayoutReportsGooglePageSpeedSiteFormNavigatorEntry
 
 	@Override
 	protected String getJspPath() {
-		return "/site/google_page_speed_settings.jsp";
+		return "/site/google_pagespeed_settings.jsp";
 	}
 
 	private String _getApiKey(long companyId) {
