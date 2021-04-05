@@ -906,8 +906,7 @@ public class TestrayImporter {
 				axisTestClassGroup.getTestBaseDir());
 
 			TestrayRun testrayRun = new TestrayRun(
-				testrayBuild, axisTestClassGroup.getBatchName(),
-				_getPropertiesList(axisTestClassGroup.getTestBaseDir()));
+				testrayBuild, axisTestClassGroup.getBatchName());
 
 			long start = JenkinsResultsParserUtil.getCurrentTimeMillis();
 
@@ -1474,13 +1473,6 @@ public class TestrayImporter {
 		Job job = getJob();
 
 		propertiesList.add(job.getJobProperties());
-
-		try {
-			propertiesList.add(JenkinsResultsParserUtil.getBuildProperties());
-		}
-		catch (IOException ioException) {
-			throw new RuntimeException(ioException);
-		}
 
 		return propertiesList;
 	}

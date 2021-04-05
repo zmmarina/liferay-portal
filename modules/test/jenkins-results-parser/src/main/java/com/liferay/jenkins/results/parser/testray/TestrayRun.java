@@ -16,6 +16,8 @@ package com.liferay.jenkins.results.parser.testray;
 
 import com.liferay.jenkins.results.parser.JenkinsResultsParserUtil;
 
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -29,13 +31,9 @@ import java.util.regex.Pattern;
  */
 public class TestrayRun {
 
-	public TestrayRun(
-		TestrayBuild testrayBuild, String batchName,
-		List<Properties> propertiesList) {
-
+	public TestrayRun(TestrayBuild testrayBuild, String batchName) {
 		_testrayBuild = testrayBuild;
 		_batchName = batchName;
-		_propertiesList = propertiesList;
 	}
 
 	public String getBatchName() {
@@ -101,82 +99,90 @@ public class TestrayRun {
 	}
 
 	private String _getFactorName(String factorNameKey) {
-		for (Properties properties : _propertiesList) {
-			String factorName = JenkinsResultsParserUtil.getProperty(
-				properties,
+		try {
+			return JenkinsResultsParserUtil.getBuildProperty(
 				JenkinsResultsParserUtil.combine(
 					_PROPERTY_KEY_FACTOR_NAME, "[", factorNameKey, "]"));
-
-			if (!JenkinsResultsParserUtil.isNullOrEmpty(factorName)) {
-				return factorName;
-			}
 		}
-
-		return null;
+		catch (IOException ioException) {
+			throw new RuntimeException(ioException);
+		}
 	}
 
 	private Set<String> _getFactorNameKeys() {
 		Set<String> factorNameKeys = new TreeSet<>();
 
-		for (Properties properties : _propertiesList) {
-			for (String propertyName : properties.stringPropertyNames()) {
-				Matcher matcher = _factorNamePattern.matcher(propertyName);
+		Properties buildProperties;
 
-				if (!matcher.find()) {
-					continue;
-				}
+		try {
+			buildProperties = JenkinsResultsParserUtil.getBuildProperties();
+		}
+		catch (IOException ioException) {
+			throw new RuntimeException(ioException);
+		}
 
-				factorNameKeys.add(matcher.group("nameKey"));
+		for (String propertyName : buildProperties.stringPropertyNames()) {
+			Matcher matcher = _factorNamePattern.matcher(propertyName);
+
+			if (!matcher.find()) {
+				continue;
 			}
+
+			factorNameKeys.add(matcher.group("nameKey"));
 		}
 
 		return factorNameKeys;
 	}
 
 	private String _getFactorValue(String factorNameKey) {
-		for (Properties properties : _propertiesList) {
-			String matchingValueKey = null;
-			String matchingPropertyName = null;
+		Properties buildProperties;
 
-			for (String propertyName : properties.stringPropertyNames()) {
-				Matcher matcher = _factorValuePattern.matcher(propertyName);
-
-				if (!matcher.find()) {
-					continue;
-				}
-
-				String nameKey = matcher.group("nameKey");
-
-				if (!nameKey.equals(factorNameKey)) {
-					continue;
-				}
-
-				String valueKey = matcher.group("valueKey");
-
-				if ((valueKey == null) || !_batchName.contains(valueKey)) {
-					continue;
-				}
-
-				if ((matchingValueKey == null) ||
-					(valueKey.length() > matchingValueKey.length())) {
-
-					matchingValueKey = valueKey;
-					matchingPropertyName = propertyName;
-				}
-			}
-
-			if (!JenkinsResultsParserUtil.isNullOrEmpty(matchingPropertyName)) {
-				return JenkinsResultsParserUtil.getProperty(
-					properties, matchingPropertyName);
-			}
-
-			return JenkinsResultsParserUtil.getProperty(
-				properties,
-				JenkinsResultsParserUtil.combine(
-					_PROPERTY_KEY_FACTOR_VALUE, "[", factorNameKey, "]"));
+		try {
+			buildProperties = JenkinsResultsParserUtil.getBuildProperties();
+		}
+		catch (IOException ioException) {
+			throw new RuntimeException(ioException);
 		}
 
-		return null;
+		String matchingValueKey = null;
+		String matchingPropertyName = null;
+
+		for (String propertyName : buildProperties.stringPropertyNames()) {
+			Matcher matcher = _factorValuePattern.matcher(propertyName);
+
+			if (!matcher.find()) {
+				continue;
+			}
+
+			String nameKey = matcher.group("nameKey");
+
+			if (!nameKey.equals(factorNameKey)) {
+				continue;
+			}
+
+			String valueKey = matcher.group("valueKey");
+
+			if ((valueKey == null) || !_batchName.contains(valueKey)) {
+				continue;
+			}
+
+			if ((matchingValueKey == null) ||
+				(valueKey.length() > matchingValueKey.length())) {
+
+				matchingValueKey = valueKey;
+				matchingPropertyName = propertyName;
+			}
+		}
+
+		if (!JenkinsResultsParserUtil.isNullOrEmpty(matchingPropertyName)) {
+			return JenkinsResultsParserUtil.getProperty(
+				buildProperties, matchingPropertyName);
+		}
+
+		return JenkinsResultsParserUtil.getProperty(
+			buildProperties,
+			JenkinsResultsParserUtil.combine(
+				_PROPERTY_KEY_FACTOR_VALUE, "[", factorNameKey, "]"));
 	}
 
 	private static final String _PROPERTY_KEY_FACTOR_NAME =
@@ -192,7 +198,6 @@ public class TestrayRun {
 			"\\[(?<nameKey>[^\\]]+)\\](\\[(?<valueKey>[^\\]]+)\\])?");
 
 	private final String _batchName;
-	private final List<Properties> _propertiesList;
 	private final TestrayBuild _testrayBuild;
 
 }
