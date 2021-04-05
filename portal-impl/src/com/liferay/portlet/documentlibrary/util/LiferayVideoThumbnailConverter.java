@@ -81,12 +81,12 @@ public class LiferayVideoThumbnailConverter extends LiferayConverter {
 			throw new RuntimeException("Input URL does not have any streams");
 		}
 
+		boolean hasCodecTypeVideo = false;
+
 		IVideoPicture[] inputIVideoPictures =
 			new IVideoPicture[inputStreamsCount];
 
 		IStreamCoder[] inputIStreamCoders = new IStreamCoder[inputStreamsCount];
-
-		boolean hasCodecTypeVideo = false;
 
 		for (int i = 0; i < inputStreamsCount; i++) {
 			IStream inputIStream = _inputIContainer.getStream(i);
