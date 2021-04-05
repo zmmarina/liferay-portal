@@ -18,6 +18,7 @@ import com.liferay.learn.taglib.internal.web.cache.JSONObjectWebCacheItem;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.language.LanguageUtil;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.taglib.util.IncludeTag;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,10 @@ public class MessageTag extends IncludeTag {
 
 	public String getResource() {
 		return _resource;
+	}
+
+	public String getVar() {
+		return _var;
 	}
 
 	@Override
@@ -70,8 +75,6 @@ public class MessageTag extends IncludeTag {
 			}
 		}
 
-		JspWriter jspWriter = pageContext.getOut();
-
 		StringBundler sb = new StringBundler(5);
 
 		sb.append("<a href=\"");
@@ -80,7 +83,14 @@ public class MessageTag extends IncludeTag {
 		sb.append(languageIdJSONObject.getString("message"));
 		sb.append("</a>");
 
-		jspWriter.write(sb.toString());
+		if (Validator.isNotNull(_var)) {
+			pageContext.setAttribute(_var, sb.toString());
+		}
+		else {
+			JspWriter jspWriter = pageContext.getOut();
+
+			jspWriter.write(sb.toString());
+		}
 
 		return EVAL_PAGE;
 	}
@@ -93,15 +103,21 @@ public class MessageTag extends IncludeTag {
 		_resource = resource;
 	}
 
+	public void setVar(String var) {
+		_var = var;
+	}
+
 	@Override
 	protected void cleanUp() {
 		super.cleanUp();
 
 		_key = null;
 		_resource = null;
+		_var = null;
 	}
 
 	private String _key;
 	private String _resource;
+	private String _var;
 
 }

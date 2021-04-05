@@ -16,6 +16,7 @@ package com.liferay.learn.taglib.servlet.taglib;
 
 import com.liferay.learn.taglib.internal.web.cache.JSONObjectWebCacheItem;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.taglib.util.IncludeTag;
 
 import javax.servlet.jsp.JspWriter;
@@ -29,13 +30,22 @@ public class JSONTag extends IncludeTag {
 		return _resource;
 	}
 
+	public String getVar() {
+		return _var;
+	}
+
 	@Override
 	public int processEndTag() throws Exception {
-		JspWriter jspWriter = pageContext.getOut();
-
 		JSONObject jsonObject = JSONObjectWebCacheItem.get(_resource);
 
-		jspWriter.write(jsonObject.toString());
+		if (Validator.isNotNull(_var)) {
+			pageContext.setAttribute(_var, jsonObject.toString());
+		}
+		else {
+			JspWriter jspWriter = pageContext.getOut();
+
+			jspWriter.write(jsonObject.toString());
+		}
 
 		return EVAL_PAGE;
 	}
@@ -44,13 +54,19 @@ public class JSONTag extends IncludeTag {
 		_resource = resource;
 	}
 
+	public void setVar(String var) {
+		_var = var;
+	}
+
 	@Override
 	protected void cleanUp() {
 		super.cleanUp();
 
 		_resource = null;
+		_var = null;
 	}
 
 	private String _resource;
+	private String _var;
 
 }
