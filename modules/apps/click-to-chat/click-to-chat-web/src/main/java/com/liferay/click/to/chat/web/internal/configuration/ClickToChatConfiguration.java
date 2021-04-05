@@ -31,7 +31,7 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 )
 public interface ClickToChatConfiguration {
 
-	@Meta.AD(name = "enable-click-to-chat")
+	@Meta.AD(deflt = "false", name = "enable-click-to-chat", required = false)
 	public boolean enable();
 
 }

@@ -14,24 +14,38 @@
 
 package com.liferay.click.to.chat.web.internal.servlet.taglib;
 
+import com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration;
 import com.liferay.click.to.chat.web.internal.constants.ClickToChatWebKeys;
+import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Group;
+import com.liferay.portal.kernel.servlet.taglib.BaseJSPDynamicInclude;
 import com.liferay.portal.kernel.servlet.taglib.DynamicInclude;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 
 import java.io.IOException;
 
+import java.util.Map;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author José Abelenda
  */
-@Component(immediate = true, service = DynamicInclude.class)
-public class ClickToChatTopHeadDynamicInclude implements DynamicInclude {
+@Component(
+	configurationPid = "com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration",
+	immediate = true, service = DynamicInclude.class
+)
+public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 
 	@Override
 	public void include(
@@ -57,6 +71,16 @@ public class ClickToChatTopHeadDynamicInclude implements DynamicInclude {
 
 		httpServletRequest.setAttribute(
 			ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED, clickToChatEnabled);
+
+		if (!_clickToChatConfiguration.enable()) {
+			return;
+		}
+
+		httpServletRequest.setAttribute(
+			ClickToChatConfiguration.class.getName(),
+			_clickToChatConfiguration);
+
+		super.include(httpServletRequest, httpServletResponse, key);
 	}
 
 	@Override
@@ -64,5 +88,36 @@ public class ClickToChatTopHeadDynamicInclude implements DynamicInclude {
 		dynamicIncludeRegistry.register(
 			"/html/common/themes/top_head.jsp#post");
 	}
+
+	@Activate
+	@Modified
+	protected void activate(Map<String, Object> properties) {
+		_clickToChatConfiguration = ConfigurableUtil.createConfigurable(
+			ClickToChatConfiguration.class, properties);
+	}
+
+	@Override
+	protected String getJspPath() {
+		return "/dynamic_include/view.jsp";
+	}
+
+	@Override
+	protected Log getLog() {
+		return _log;
+	}
+
+	@Override
+	@Reference(
+		target = "(osgi.web.symbolicname=com.liferay.click.to.chat.web)",
+		unbind = "-"
+	)
+	protected void setServletContext(ServletContext servletContext) {
+		super.setServletContext(servletContext);
+	}
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		ClickToChatTopHeadJSPDynamicInclude.class);
+
+	private ClickToChatConfiguration _clickToChatConfiguration;
 
 }

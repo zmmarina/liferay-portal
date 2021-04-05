@@ -16,12 +16,17 @@
 
 <%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
 taglib uri="http://liferay.com/tld/frontend" prefix="liferay-frontend" %><%@
-taglib uri="http://liferay.com/tld/learn" prefix="liferay-learn" %>
+taglib uri="http://liferay.com/tld/learn" prefix="liferay-learn" %><%@
+taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
+taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 
-<%@ page import="com.liferay.click.to.chat.web.internal.constants.ClickToChatWebKeys" %><%@
+<%@ page import="com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration" %><%@
+page import="com.liferay.click.to.chat.web.internal.constants.ClickToChatWebKeys" %><%@
 page import="com.liferay.portal.kernel.language.LanguageUtil" %><%@
 page import="com.liferay.portal.kernel.util.GetterUtil" %>
 
 <liferay-frontend:defineObjects />
+
+<liferay-theme:defineObjects />
 
 <%@ include file="/init-ext.jsp" %>
