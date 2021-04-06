@@ -4285,7 +4285,6 @@ definition {
 				dmNavTab = "User Personal Folder",
 				navTab = "Web Content Images",
 				row = "1",
-				structureName = "WC Structure Name",
 				templateName = "WC Template Name",
 				webContentColor = "FF0D0D",
 				webContentDate = "10/10/2020",
