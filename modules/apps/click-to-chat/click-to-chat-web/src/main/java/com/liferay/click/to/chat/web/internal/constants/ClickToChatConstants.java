@@ -1,4 +1,3 @@
-<%--
 /**
  * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
@@ -12,11 +11,16 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
---%>
 
-<%@ include file="/init.jsp" %>
+package com.liferay.click.to.chat.web.internal.constants;
 
-<%
-String clickToChatProviderAccountId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID);
-String clickToChatProviderId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID);
-%>
+/**
+ * @author Brian Wing Shun Chan
+ */
+public interface ClickToChatConstants {
+
+	public static final String[] CLICK_TO_CHAT_PROVIDER_IDS = {
+		"chatwoot", "crisp", "jivochat", "liveperson", "smartsupp", "tidio"
+	};
+
+}

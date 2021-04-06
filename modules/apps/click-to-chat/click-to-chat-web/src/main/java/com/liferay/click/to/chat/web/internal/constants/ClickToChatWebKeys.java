@@ -19,12 +19,15 @@ package com.liferay.click.to.chat.web.internal.constants;
  */
 public interface ClickToChatWebKeys {
 
-	public static final String CLICK_TO_CHAT_ACCOUNT_TOKEN =
-		"CLICK_TO_CHAT_ACCOUNT_TOKEN";
-
 	public static final String CLICK_TO_CHAT_ENABLED = "CLICK_TO_CHAT_ENABLED";
 
-	public static final String CLICK_TO_CHAT_PROVIDER_NAME =
-		"CLICK_TO_CHAT_PROVIDER_NAME";
+	public static final String CLICK_TO_CHAT_GUEST_USERS_ALLOWED =
+		"CLICK_TO_CHAT_GUEST_USERS_ALLOWED";
+
+	public static final String CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID =
+		"CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID";
+
+	public static final String CLICK_TO_CHAT_PROVIDER_ID =
+		"CLICK_TO_CHAT_PROVIDER_ID";
 
 }

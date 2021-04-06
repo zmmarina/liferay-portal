@@ -16,4 +16,4 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<liferay-util:include page='<%= "/dynamic_include/" + clickToChatProviderName + ".jsp" %>' servletContext="<%= application %>" />
+<liferay-util:include page='<%= "/dynamic_include/" + clickToChatProviderId + ".jsp" %>' servletContext="<%= application %>" />

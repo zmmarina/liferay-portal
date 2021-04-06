@@ -15,7 +15,6 @@
 package com.liferay.click.to.chat.web.internal.servlet.taglib;
 
 import com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration;
-import com.liferay.click.to.chat.web.internal.configuration.ProviderOptions;
 import com.liferay.click.to.chat.web.internal.constants.ClickToChatWebKeys;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.log.Log;
@@ -23,13 +22,16 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Group;
 import com.liferay.portal.kernel.servlet.taglib.BaseJSPDynamicInclude;
 import com.liferay.portal.kernel.servlet.taglib.DynamicInclude;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
+import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import java.io.IOException;
 
 import java.util.Map;
+import java.util.Objects;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -55,47 +57,148 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 			HttpServletResponse httpServletResponse, String key)
 		throws IOException {
 
-		Group liveGroup = (Group)httpServletRequest.getAttribute(
-			"site.liveGroup");
+		ThemeDisplay themeDisplay =
+			(ThemeDisplay)httpServletRequest.getAttribute(
+				WebKeys.THEME_DISPLAY);
 
-		UnicodeProperties typeSettingsUnicodeProperties = null;
+		Group group = themeDisplay.getScopeGroup();
 
-		if (liveGroup != null) {
-			typeSettingsUnicodeProperties =
-				liveGroup.getTypeSettingsProperties();
-		}
-		else {
-			typeSettingsUnicodeProperties = new UnicodeProperties();
-		}
-
-		boolean clickToChatEnabled = GetterUtil.getBoolean(
-			typeSettingsUnicodeProperties.getProperty("clickToChatEnabled"));
-
-		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED, clickToChatEnabled);
-
-		if (!_clickToChatConfiguration.enable()) {
+		if (group.isStagingGroup()) {
 			return;
 		}
 
-		if (_clickToChatConfiguration.provider() == null) {
-			return;
+		if (Objects.equals(
+				_clickToChatConfiguration.siteSettingsStrategy(),
+				"always-inherit")) {
+
+			if (!_clickToChatConfiguration.enabled()) {
+				return;
+			}
+
+			if (!_clickToChatConfiguration.guestUsersAllowed() &&
+				!themeDisplay.isSignedIn()) {
+
+				return;
+			}
+
+			if (Validator.isNull(
+					_clickToChatConfiguration.chatProviderAccountId()) ||
+				Validator.isNull(_clickToChatConfiguration.chatProviderId())) {
+
+				return;
+			}
+
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				_clickToChatConfiguration.chatProviderAccountId());
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				_clickToChatConfiguration.chatProviderId());
 		}
+		else if (Objects.equals(
+					_clickToChatConfiguration.siteSettingsStrategy(),
+					"always-override")) {
 
-		ProviderOptions provider = _clickToChatConfiguration.provider();
+			UnicodeProperties typeSettingsUnicodeProperties =
+				group.getTypeSettingsProperties();
 
-		String providerName = StringUtil.toLowerCase(provider.getValue());
+			if (!GetterUtil.getBoolean(
+					typeSettingsUnicodeProperties.getProperty(
+						"clickToChatEnabled"))) {
 
-		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_NAME, providerName);
+				return;
+			}
 
-		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_ACCOUNT_TOKEN,
-			_clickToChatConfiguration.accountToken());
+			if (!GetterUtil.getBoolean(
+					typeSettingsUnicodeProperties.getProperty(
+						"clickToChatGuestUsersAllowed")) &&
+				!themeDisplay.isSignedIn()) {
 
-		httpServletRequest.setAttribute(
-			ClickToChatConfiguration.class.getName(),
-			_clickToChatConfiguration);
+				return;
+			}
+
+			String clickToChatProviderAccountId =
+				typeSettingsUnicodeProperties.getProperty(
+					"clickToChatProviderAccountId");
+			String clickToChatProviderId =
+				typeSettingsUnicodeProperties.getProperty(
+					"clickToChatProviderId");
+
+			if (Validator.isNull(clickToChatProviderAccountId) ||
+				Validator.isNull(clickToChatProviderId)) {
+
+				return;
+			}
+
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				clickToChatProviderAccountId);
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				clickToChatProviderId);
+		}
+		else if (Objects.equals(
+					_clickToChatConfiguration.siteSettingsStrategy(),
+					"inherit-or-override")) {
+
+			UnicodeProperties typeSettingsUnicodeProperties =
+				group.getTypeSettingsProperties();
+
+			String clickToChatEnabled =
+				typeSettingsUnicodeProperties.getProperty("clickToChatEnabled");
+
+			if (clickToChatEnabled == null) {
+				if (!_clickToChatConfiguration.enabled()) {
+					return;
+				}
+			}
+			else {
+				if (!GetterUtil.getBoolean(clickToChatEnabled)) {
+					return;
+				}
+			}
+
+			String clickToChatGuestUsersAllowed =
+				typeSettingsUnicodeProperties.getProperty(
+					"clickToChatGuestUsersAllowed");
+
+			if (clickToChatGuestUsersAllowed == null) {
+				if (!_clickToChatConfiguration.guestUsersAllowed() &&
+					!themeDisplay.isSignedIn()) {
+
+					return;
+				}
+			}
+			else {
+				if (!GetterUtil.getBoolean(clickToChatGuestUsersAllowed) &&
+					!themeDisplay.isSignedIn()) {
+
+					return;
+				}
+			}
+
+			String clickToChatProviderAccountId =
+				typeSettingsUnicodeProperties.getProperty(
+					"clickToChatProviderAccountId",
+					_clickToChatConfiguration.chatProviderAccountId());
+			String clickToChatProviderId =
+				typeSettingsUnicodeProperties.getProperty(
+					"clickToChatProviderId",
+					_clickToChatConfiguration.chatProviderId());
+
+			if (Validator.isNull(clickToChatProviderAccountId) ||
+				Validator.isNull(clickToChatProviderId)) {
+
+				return;
+			}
+
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				clickToChatProviderAccountId);
+			httpServletRequest.setAttribute(
+				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				clickToChatProviderId);
+		}
 
 		super.include(httpServletRequest, httpServletResponse, key);
 	}

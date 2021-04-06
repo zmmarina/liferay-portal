@@ -32,30 +32,42 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 public interface ClickToChatConfiguration {
 
 	@Meta.AD(deflt = "false", name = "enable-click-to-chat", required = false)
-	public boolean enable();
-
-	@Meta.AD(deflt = "", name = "account-token", required = false)
-	public String accountToken();
+	public boolean enabled();
 
 	@Meta.AD(
-		name = "provider",
+		name = "chat-provider",
 		optionLabels = {
-			"CHATWOOT", "CRISP", "JIVOCHAT", "LIVEPERSON", "SMARTSUPP", "TIDIO"
+			"chat-provider-chatwoot", "chat-provider-crisp",
+			"chat-provider-jivochat", "chat-provider-liveperson",
+			"chat-provider-smartsupp", "chat-provider-tidio"
+		},
+		optionValues = {
+			"chatwoot", "crips", "jivochat", "liveperson", "smartsupp", "tidio"
 		},
 		required = false
 	)
-	public ProviderOptions provider();
+	public String chatProviderId();
+
+	@Meta.AD(deflt = "", name = "chat-provider-account-id", required = false)
+	public String chatProviderAccountId();
+
+	@Meta.AD(deflt = "false", name = "guest-users-allowed", required = false)
+	public boolean guestUsersAllowed();
 
 	@Meta.AD(
-		deflt = "PROVIDE_OR_INHERIT", description = "strategy-description",
-		name = "strategy",
+		deflt = "inherit-or-override",
+		description = "site-settings-strategy-description",
+		name = "site-settings-strategy",
 		optionLabels = {
-			"group-provider-site-strategy.ALWAYS_INHERIT",
-			"group-provider-site-strategy.PROVIDE",
-			"group-provider-site-strategy.PROVIDE_OR_INHERIT"
+			"site-settings-strategy-always-inherit",
+			"site-settings-strategy-always-override",
+			"site-settings-strategy-inherit-or-override"
+		},
+		optionValues = {
+			"always-inherit", "always-override", "inherit-or-override"
 		},
 		required = false
 	)
-	public ClickToChatProviderSiteStrategy groupProviderSiteStrategy();
+	public String siteSettingsStrategy();
 
 }

@@ -16,13 +16,15 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script src="//code.jivosite.com/widget/<%= accountToken %>" async></script>
+<script async src="//code.jivosite.com/widget/<%= clickToChatProviderAccountId %>"></script>
 
-<script>
-	function jivo_onOpen() {
-		jivo_api.setContactInfo({
-			name: '<%= user.getScreenName() %>',
-			email: '<%= user.getEmailAddress() %>',
-		});
-	}
-</script>
+<c:if test="<%= themeDisplay.isSignedIn() %>">
+	<script>
+		function jivo_onOpen() {
+			jivo_api.setContactInfo({
+				email: '<%= user.getEmailAddress() %>',
+				name: '<%= user.getScreenName() %>',
+			});
+		}
+	</script>
+</c:if>

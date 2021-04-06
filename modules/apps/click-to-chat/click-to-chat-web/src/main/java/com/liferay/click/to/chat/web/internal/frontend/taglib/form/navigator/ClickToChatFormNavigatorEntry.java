@@ -14,32 +14,37 @@
 
 package com.liferay.click.to.chat.web.internal.frontend.taglib.form.navigator;
 
+import com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration;
 import com.liferay.click.to.chat.web.internal.constants.ClickToChatWebKeys;
 import com.liferay.frontend.taglib.form.navigator.BaseJSPFormNavigatorEntry;
 import com.liferay.frontend.taglib.form.navigator.FormNavigatorEntry;
 import com.liferay.frontend.taglib.form.navigator.constants.FormNavigatorConstants;
+import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.model.Group;
-import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ResourceBundleUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 
 import java.io.IOException;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Brian Wing Shun Chan
  */
 @Component(
+	configurationPid = "com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration",
 	immediate = true, property = "form.navigator.entry.order:Integer=30",
 	service = FormNavigatorEntry.class
 )
@@ -76,6 +81,10 @@ public class ClickToChatFormNavigatorEntry
 			HttpServletResponse httpServletResponse)
 		throws IOException {
 
+		httpServletRequest.setAttribute(
+			ClickToChatConfiguration.class.getName(),
+			_clickToChatConfiguration);
+
 		Group liveGroup = (Group)httpServletRequest.getAttribute(
 			"site.liveGroup");
 
@@ -89,11 +98,21 @@ public class ClickToChatFormNavigatorEntry
 			typeSettingsUnicodeProperties = new UnicodeProperties();
 		}
 
-		boolean clickToChatEnabled = GetterUtil.getBoolean(
-			typeSettingsUnicodeProperties.getProperty("clickToChatEnabled"));
-
 		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED, clickToChatEnabled);
+			ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED,
+			typeSettingsUnicodeProperties.getProperty("clickToChatEnabled"));
+		httpServletRequest.setAttribute(
+			ClickToChatWebKeys.CLICK_TO_CHAT_GUEST_USERS_ALLOWED,
+			typeSettingsUnicodeProperties.getProperty(
+				"clickToChatGuestUsersAllowed"));
+		httpServletRequest.setAttribute(
+			ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+			typeSettingsUnicodeProperties.getProperty(
+				"clickToChatProviderAccountId"));
+		httpServletRequest.setAttribute(
+			ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+			typeSettingsUnicodeProperties.getProperty(
+				"curClickToChatProviderId"));
 
 		super.include(httpServletRequest, httpServletResponse);
 	}
@@ -107,9 +126,18 @@ public class ClickToChatFormNavigatorEntry
 		super.setServletContext(servletContext);
 	}
 
+	@Activate
+	@Modified
+	protected void activate(Map<String, Object> properties) {
+		_clickToChatConfiguration = ConfigurableUtil.createConfigurable(
+			ClickToChatConfiguration.class, properties);
+	}
+
 	@Override
 	protected String getJspPath() {
 		return "/sites_admin/click_to_chat.jsp";
 	}
+
+	private ClickToChatConfiguration _clickToChatConfiguration;
 
 }
