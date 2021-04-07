@@ -241,14 +241,15 @@ public abstract class BaseCommerceMLForecastServiceImpl
 
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
 
-		BooleanFilter booleanFilter = new BooleanFilter();
-
-		TermFilter termFilter = new TermFilter(
-			CommerceMLForecastField.FORECAST_ID, String.valueOf(forecastId));
-
-		booleanFilter.add(termFilter, BooleanClauseOccur.MUST);
-
-		booleanQuery.setPreBooleanFilter(booleanFilter);
+		booleanQuery.setPreBooleanFilter(
+			new BooleanFilter() {
+				{
+					add(
+						new TermFilter(
+							CommerceMLForecastField.FORECAST_ID, String.valueOf(forecastId)),
+						BooleanClauseOccur.MUST);
+				}
+			});
 
 		SearchSearchRequest searchSearchRequest = getSearchSearchRequest(
 			commerceMLIndexer.getIndexName(companyId), booleanQuery, 0, 1,
