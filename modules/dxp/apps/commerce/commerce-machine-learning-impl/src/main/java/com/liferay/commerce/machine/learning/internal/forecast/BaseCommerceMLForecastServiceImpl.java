@@ -121,36 +121,27 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		commerceMLForecast.setActual(
 			GetterUtil.getFloat(
 				document.get(CommerceMLForecastField.ACTUAL), Float.MIN_VALUE));
-
 		commerceMLForecast.setCompanyId(
 			GetterUtil.getLong(document.get(Field.COMPANY_ID)));
-
 		commerceMLForecast.setForecast(
 			GetterUtil.getFloat(
 				document.get(CommerceMLForecastField.FORECAST),
 				Float.MIN_VALUE));
-
 		commerceMLForecast.setForecastId(
 			GetterUtil.getLong(
 				document.get(CommerceMLForecastField.FORECAST_ID)));
-
 		commerceMLForecast.setForecastLowerBound(
 			GetterUtil.getFloat(
 				document.get(CommerceMLForecastField.FORECAST_LOWER_BOUND)));
-
 		commerceMLForecast.setForecastUpperBound(
 			GetterUtil.getFloat(
 				document.get(CommerceMLForecastField.FORECAST_UPPER_BOUND)));
-
 		commerceMLForecast.setJobId(
 			document.get(CommerceMLForecastField.JOB_ID));
-
 		commerceMLForecast.setScope(
 			document.get(CommerceMLForecastField.SCOPE));
-
 		commerceMLForecast.setPeriod(
 			document.get(CommerceMLForecastField.PERIOD));
-
 		commerceMLForecast.setTarget(
 			document.get(CommerceMLForecastField.TARGET));
 
