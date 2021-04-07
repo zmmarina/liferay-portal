@@ -120,22 +120,6 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return booleanFilter;
 	}
 
-	protected BooleanFilter getBooleanFilter(
-		String scope, String period, String target, Date startDate,
-		Date endDate) {
-
-		BooleanFilter booleanFilter = getBooleanFilter(
-			scope, period, target);
-
-		RangeTermFilter rangeTermFilter = new RangeTermFilter(
-			CommerceMLForecastField.TIMESTAMP, true, true,
-			_formatSearchDate(startDate), _formatSearchDate(endDate));
-
-		booleanFilter.add(rangeTermFilter, BooleanClauseOccur.MUST);
-
-		return booleanFilter;
-	}
-
 	protected T getBaseCommerceMLForecastModel(
 		T commerceMLForecast, Document document) {
 
@@ -239,7 +223,13 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return new BooleanQueryImpl() {
 			{
 				BooleanFilter booleanFilter = getBooleanFilter(
-					scope, period, target, startDate, endDate);
+					scope, period, target);
+
+				booleanFilter.add(
+					new RangeTermFilter(
+						CommerceMLForecastField.TIMESTAMP, true, true,
+						_formatSearchDate(startDate),
+						_formatSearchDate(endDate)), BooleanClauseOccur.MUST);
 
 				setPreBooleanFilter(booleanFilter);
 			}
