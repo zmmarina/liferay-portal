@@ -220,7 +220,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return document;
 	}
 
-	protected BooleanQuery getBaseQuery(
+	protected BooleanQuery getBooleanQuery(
 		String scope, String period, String target) {
 
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
@@ -233,7 +233,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return booleanQuery;
 	}
 
-	protected BooleanQuery getBaseQuery(
+	protected BooleanQuery getBooleanQuery(
 			String scope, String period, String target, Date startDate,
 			Date endDate)
 		throws com.liferay.portal.kernel.search.ParseException {

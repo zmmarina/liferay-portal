@@ -157,7 +157,7 @@ public class SkuCommerceMLForecastManagerImpl
 		CommerceMLForecastTarget commerceMLForecastTarget =
 			CommerceMLForecastTarget.QUANTITY;
 
-		BooleanQuery baseQuery = getBaseQuery(
+		BooleanQuery baseQuery = getBooleanQuery(
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(),

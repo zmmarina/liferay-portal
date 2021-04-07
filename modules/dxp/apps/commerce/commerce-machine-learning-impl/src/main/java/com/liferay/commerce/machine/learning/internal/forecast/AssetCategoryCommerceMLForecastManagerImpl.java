@@ -186,7 +186,7 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 		Date startDate = getStartDate(
 			actualDate, commerceMLForecastPeriod, historyLength);
 
-		BooleanQuery booleanQuery = getBaseQuery(
+		BooleanQuery booleanQuery = getBooleanQuery(
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(), startDate, endDate);
