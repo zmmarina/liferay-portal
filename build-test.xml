@@ -3556,178 +3556,6 @@ ${tomcat-gc-log}
 					project.setProperty("cmis.repository.vm.host.name", cmisRepositoryVMHostName);
 				]]>
 			</beanshell>
-
-			<if>
-				<contains string="@{cmis.repository.type}" substring="documentum" />
-				<then>
-					<get-testcase-property property.name="osgi.app.includes" />
-
-					<if>
-						<contains string="${osgi.app.includes}" substring="documentum" />
-						<then>
-							<pathconvert property="app.bnd.file">
-								<fileset
-									dir="modules"
-									includes="dxp/apps/documentum/app.bnd"
-								/>
-							</pathconvert>
-
-							<loadproperties srcFile="${app.bnd.file}">
-								<filterchain>
-									<linecontains>
-										<contains value="Liferay-Releng-App-Title" />
-									</linecontains>
-								</filterchain>
-							</loadproperties>
-
-							<if>
-								<available file="${project.dir}/plugins/dist/${Liferay-Releng-App-Title}.lpkg" />
-								<then>
-									<property name="lpkg.path" value="${project.dir}/plugins/dist/${Liferay-Releng-App-Title}.lpkg" />
-								</then>
-								<elseif>
-									<available file="${project.dir}/plugins/marketplace/${Liferay-Releng-App-Title}.lpkg" />
-									<then>
-										<property name="lpkg.path" value="${project.dir}/plugins/marketplace/${Liferay-Releng-App-Title}.lpkg" />
-									</then>
-								</elseif>
-							</if>
-
-							<if>
-								<isset property="lpkg.path" />
-								<then>
-									<local name="tstamp.value" />
-
-									<tstamp>
-										<format pattern="yyyyMMddkkmmssSSS" property="tstamp.value" />
-									</tstamp>
-
-									<local name="lpkg.dir" />
-
-									<property name="lpkg.dir" value="${tstamp.value}/lpkg-dir" />
-
-									<mkdir dir="${lpkg.dir}" />
-
-									<local name="lpkg.impl.include.name" />
-
-									<property name="lpkg.impl.include.name" value="Liferay Documentum Connector - Impl.lpkg" />
-
-									<unzip
-										dest="${lpkg.dir}"
-										src="${lpkg.path}"
-									>
-										<patternset>
-											<include name="${lpkg.impl.include.name}" />
-										</patternset>
-									</unzip>
-
-									<local name="lpkg.impl.path" />
-
-									<pathconvert property="lpkg.impl.path" setonempty="false">
-										<path>
-											<fileset
-												dir="${lpkg.dir}"
-											>
-												<include name="${lpkg.impl.include.name}" />
-											</fileset>
-										</path>
-									</pathconvert>
-
-									<local name="lpkg.impl.dir" />
-
-									<property name="lpkg.impl.dir" value="${tstamp.value}/lpkg-impl-dir" />
-
-									<mkdir dir="${lpkg.impl.dir}" />
-
-									<local name="war.include.name" />
-
-									<property name="war.include.name" value="documentum-hook-*.war" />
-
-									<unzip
-										dest="${lpkg.impl.dir}"
-										src="${lpkg.impl.path}"
-									>
-										<patternset>
-											<include name="${war.include.name}" />
-										</patternset>
-									</unzip>
-
-									<local name="war.path" />
-
-									<pathconvert property="war.path" setonempty="false">
-										<path>
-											<fileset
-												dir="${lpkg.impl.dir}"
-											>
-												<include name="${war.include.name}" />
-											</fileset>
-										</path>
-									</pathconvert>
-
-									<local name="war.dir" />
-
-									<property name="war.dir" value="${tstamp.value}/war-dir" />
-
-									<mkdir dir="${war.dir}" />
-
-									<unzip
-										dest="${war.dir}"
-										src="${war.path}"
-									>
-										<flattenmapper />
-										<patternset>
-											<include name="WEB-INF/classes/dfc.properties" />
-										</patternset>
-									</unzip>
-
-									<propertyfile file="${war.dir}/dfc.properties">
-										<entry key="dfc.docbroker.host[0]" value="${cmis.repository.vm.host.name}" />
-									</propertyfile>
-
-									<war
-										destfile="${war.path}"
-										update="true"
-									>
-										<zipfileset
-											file="${war.dir}/dfc.properties"
-											fullpath="WEB-INF/classes/dfc.properties"
-										/>
-									</war>
-
-									<zip
-										destfile="${lpkg.impl.path}"
-										update="true"
-									>
-										<zipfileset
-											dir="${lpkg.impl.dir}"
-										>
-											<include name="${war.include.name}" />
-										</zipfileset>
-									</zip>
-
-									<zip
-										destfile="${lpkg.path}"
-										update="true"
-									>
-										<zipfileset
-											dir="${lpkg.dir}"
-										>
-											<include name="${lpkg.impl.include.name}" />
-										</zipfileset>
-									</zip>
-
-									<delete dir="${tstamp.value}" />
-								</then>
-								<else>
-									<propertyfile file="${project.dir}/modules/dxp/apps/documentum/documentum-hook/docroot/WEB-INF/src/dfc.properties">
-										<entry key="dfc.docbroker.host[0]" value="${cmis.repository.vm.host.name}" />
-									</propertyfile>
-								</else>
-							</if>
-						</then>
-					</if>
-				</then>
-			</if>
 		</sequential>
 	</macrodef>
 
@@ -10650,7 +10478,6 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 
 		<if>
 			<or>
-				<equals arg1="${cmis.repository.type}" arg2="documentum6" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2010" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2013" />
 			</or>
@@ -13190,7 +13017,6 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 
 		<if>
 			<or>
-				<equals arg1="${cmis.repository.type}" arg2="documentum6" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2010" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2013" />
 			</or>
@@ -13533,25 +13359,11 @@ url=${short.hostname}:8080</echo>
 
 		<if>
 			<or>
-				<equals arg1="${cmis.repository.type}" arg2="documentum6" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2010" />
 				<equals arg1="${cmis.repository.type}" arg2="sharepoint2013" />
 			</or>
 			<then>
 				<property file="${project.dir}/${test.ext.properties.file}" />
-
-				<if>
-					<contains string="${cmis.repository.type}" substring="documentum" />
-					<then>
-						<ssh-execute ssh.host="${cmis.repository.vm.host.name}">perl C:/Windows/resetdocumentum.pl</ssh-execute>
-					</then>
-					<elseif>
-						<contains string="${cmis.repository.type}" substring="sharepoint" />
-						<then>
-							<ssh-execute ssh.host="${cmis.repository.vm.host.name}">perl C:/Windows/resetsharepointrepo.pl</ssh-execute>
-						</then>
-					</elseif>
-				</if>
 
 				<if>
 					<os family="unix" />
