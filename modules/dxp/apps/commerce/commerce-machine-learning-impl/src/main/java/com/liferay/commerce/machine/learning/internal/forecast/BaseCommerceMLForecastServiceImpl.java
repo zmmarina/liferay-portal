@@ -96,49 +96,6 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return model;
 	}
 
-	protected T getCommerceMLForecastModel(
-		T commerceMLForecast, Document document) {
-
-		commerceMLForecast.setActual(
-			GetterUtil.getFloat(
-				document.get(CommerceMLForecastField.ACTUAL), Float.MIN_VALUE));
-		commerceMLForecast.setCompanyId(
-			GetterUtil.getLong(document.get(Field.COMPANY_ID)));
-		commerceMLForecast.setForecast(
-			GetterUtil.getFloat(
-				document.get(CommerceMLForecastField.FORECAST),
-				Float.MIN_VALUE));
-		commerceMLForecast.setForecastId(
-			GetterUtil.getLong(
-				document.get(CommerceMLForecastField.FORECAST_ID)));
-		commerceMLForecast.setForecastLowerBound(
-			GetterUtil.getFloat(
-				document.get(CommerceMLForecastField.FORECAST_LOWER_BOUND)));
-		commerceMLForecast.setForecastUpperBound(
-			GetterUtil.getFloat(
-				document.get(CommerceMLForecastField.FORECAST_UPPER_BOUND)));
-		commerceMLForecast.setJobId(
-			document.get(CommerceMLForecastField.JOB_ID));
-		commerceMLForecast.setScope(
-			document.get(CommerceMLForecastField.SCOPE));
-		commerceMLForecast.setPeriod(
-			document.get(CommerceMLForecastField.PERIOD));
-		commerceMLForecast.setTarget(
-			document.get(CommerceMLForecastField.TARGET));
-
-		try {
-			commerceMLForecast.setTimestamp(
-				document.getDate(CommerceMLForecastField.TIMESTAMP));
-		}
-		catch (ParseException parseException) {
-			if (_log.isDebugEnabled()) {
-				_log.debug(parseException, parseException);
-			}
-		}
-
-		return commerceMLForecast;
-	}
-
 	protected BooleanQuery getBooleanQuery(
 		String scope, String period, String target) {
 
@@ -197,6 +154,49 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		}
 
 		return searchResults.get(0);
+	}
+
+	protected T getCommerceMLForecastModel(
+		T commerceMLForecast, Document document) {
+
+		commerceMLForecast.setActual(
+			GetterUtil.getFloat(
+				document.get(CommerceMLForecastField.ACTUAL), Float.MIN_VALUE));
+		commerceMLForecast.setCompanyId(
+			GetterUtil.getLong(document.get(Field.COMPANY_ID)));
+		commerceMLForecast.setForecast(
+			GetterUtil.getFloat(
+				document.get(CommerceMLForecastField.FORECAST),
+				Float.MIN_VALUE));
+		commerceMLForecast.setForecastId(
+			GetterUtil.getLong(
+				document.get(CommerceMLForecastField.FORECAST_ID)));
+		commerceMLForecast.setForecastLowerBound(
+			GetterUtil.getFloat(
+				document.get(CommerceMLForecastField.FORECAST_LOWER_BOUND)));
+		commerceMLForecast.setForecastUpperBound(
+			GetterUtil.getFloat(
+				document.get(CommerceMLForecastField.FORECAST_UPPER_BOUND)));
+		commerceMLForecast.setJobId(
+			document.get(CommerceMLForecastField.JOB_ID));
+		commerceMLForecast.setScope(
+			document.get(CommerceMLForecastField.SCOPE));
+		commerceMLForecast.setPeriod(
+			document.get(CommerceMLForecastField.PERIOD));
+		commerceMLForecast.setTarget(
+			document.get(CommerceMLForecastField.TARGET));
+
+		try {
+			commerceMLForecast.setTimestamp(
+				document.getDate(CommerceMLForecastField.TIMESTAMP));
+		}
+		catch (ParseException parseException) {
+			if (_log.isDebugEnabled()) {
+				_log.debug(parseException, parseException);
+			}
+		}
+
+		return commerceMLForecast;
 	}
 
 	protected long getCountResult(CountSearchRequest countSearchRequest) {

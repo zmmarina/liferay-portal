@@ -31,7 +31,6 @@ import com.liferay.portal.kernel.search.filter.TermsFilter;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.search.engine.adapter.search.CountSearchRequest;
-import com.liferay.portal.search.engine.adapter.search.SearchSearchRequest;
 
 import java.util.Date;
 import java.util.List;
@@ -105,8 +104,9 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 			getSearchSearchRequest(
 				commerceMLIndexer.getIndexName(companyId),
 				_getMonthlyRevenueQuery(
-					commerceAccountIds, actualDate, historyLength, forecastLength), start,
-				end - start, getDefaultSort(true)));
+					commerceAccountIds, actualDate, historyLength,
+					forecastLength),
+				start, end - start, getDefaultSort(true)));
 	}
 
 	@Override

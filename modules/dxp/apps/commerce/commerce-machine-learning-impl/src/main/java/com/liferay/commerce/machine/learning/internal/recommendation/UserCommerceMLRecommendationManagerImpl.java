@@ -119,13 +119,12 @@ public class UserCommerceMLRecommendationManagerImpl
 	protected Document toDocument(UserCommerceMLRecommendation model) {
 		Document document = getDocument(model);
 
-		long hash = getHash(
-			model.getEntryClassPK(), model.getRecommendedEntryClassPK());
-
-		document.addKeyword(Field.UID, String.valueOf(hash));
-
+		document.addKeyword(
+			Field.UID,
+			String.valueOf(
+				getHash(
+					model.getEntryClassPK(), model.getRecommendedEntryClassPK())));
 		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
-
 		document.addNumber(
 			Field.ASSET_CATEGORY_IDS, model.getAssetCategoryIds());
 
