@@ -317,18 +317,6 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return _toDate(endLocalDateTime);
 	}
 
-	private List<T> _getForecastList(Hits hits) {
-		List<Document> documents = _getDocuments(hits);
-
-		Stream<Document> stream = documents.stream();
-
-		return stream.map(
-			this::toForecastModel
-		).collect(
-			Collectors.toList()
-		);
-	}
-
 	protected long getHash(Object... values) {
 		StringBuilder sb = new StringBuilder(values.length);
 
@@ -345,7 +333,16 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		SearchSearchResponse searchSearchResponse = searchEngineAdapter.execute(
 			searchSearchRequest);
 
-		return _getForecastList(searchSearchResponse.getHits());
+		List<Document> documents = _getDocuments(
+			searchSearchResponse.getHits());
+
+		Stream<Document> stream = documents.stream();
+
+		return stream.map(
+			this::toForecastModel
+		).collect(
+			Collectors.toList()
+		);
 	}
 
 	protected SearchSearchRequest getSearchSearchRequest(
