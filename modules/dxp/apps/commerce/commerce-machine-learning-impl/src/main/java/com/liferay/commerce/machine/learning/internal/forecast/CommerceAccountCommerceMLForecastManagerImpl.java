@@ -56,14 +56,13 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 					commerceAccountCommerceMLForecast)
 		throws PortalException {
 
-		long commerceMLForecastId = getHash(
-			commerceAccountCommerceMLForecast.getCommerceAccountId(),
-			commerceAccountCommerceMLForecast.getPeriod(),
-			commerceAccountCommerceMLForecast.getScope(),
-			commerceAccountCommerceMLForecast.getTarget(),
-			commerceAccountCommerceMLForecast.getTimestamp());
-
-		commerceAccountCommerceMLForecast.setForecastId(commerceMLForecastId);
+		commerceAccountCommerceMLForecast.setForecastId(
+			getHash(
+				commerceAccountCommerceMLForecast.getCommerceAccountId(),
+				commerceAccountCommerceMLForecast.getPeriod(),
+				commerceAccountCommerceMLForecast.getScope(),
+				commerceAccountCommerceMLForecast.getTarget(),
+				commerceAccountCommerceMLForecast.getTimestamp()));
 
 		return addCommerceMLForecast(commerceAccountCommerceMLForecast);
 	}
