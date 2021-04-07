@@ -236,14 +236,14 @@ public abstract class BaseCommerceMLForecastServiceImpl
 			Date endDate)
 		throws com.liferay.portal.kernel.search.ParseException {
 
-		BooleanQuery booleanQuery = new BooleanQueryImpl();
+		return new BooleanQueryImpl() {
+			{
+				BooleanFilter booleanFilter = getBooleanFilter(
+					scope, period, target, startDate, endDate);
 
-		BooleanFilter booleanFilter = getBooleanFilter(
-			scope, period, target, startDate, endDate);
-
-		booleanQuery.setPreBooleanFilter(booleanFilter);
-
-		return booleanQuery;
+				setPreBooleanFilter(booleanFilter);
+			}
+		};
 	}
 
 	protected T getCommerceMLForecast(long companyId, long forecastId)
