@@ -89,11 +89,10 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 				int historyLength, int forecastLength)
 		throws PortalException {
 
-		int size = commerceAccountIds.length * (historyLength + forecastLength);
-
 		return getMonthlyRevenueCommerceAccountCommerceMLForecasts(
 			companyId, commerceAccountIds, actualDate, historyLength,
-			forecastLength, 0, size);
+			forecastLength, 0,
+			commerceAccountIds.length * (historyLength + forecastLength));
 	}
 
 	@Override
