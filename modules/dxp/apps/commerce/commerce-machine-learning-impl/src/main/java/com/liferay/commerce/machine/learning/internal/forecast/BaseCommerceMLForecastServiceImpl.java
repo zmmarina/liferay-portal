@@ -320,9 +320,9 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected List<T> getForecastList(Hits hits) {
 		List<Document> documents = _getDocuments(hits);
 
-		Stream<Document> documentsStream = documents.stream();
+		Stream<Document> stream = documents.stream();
 
-		return documentsStream.map(
+		return stream.map(
 			this::toForecastModel
 		).collect(
 			Collectors.toList()
