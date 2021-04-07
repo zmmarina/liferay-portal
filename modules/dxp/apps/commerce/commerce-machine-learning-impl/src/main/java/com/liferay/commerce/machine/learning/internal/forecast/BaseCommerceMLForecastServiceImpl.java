@@ -351,21 +351,16 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected SearchSearchRequest getSearchSearchRequest(
 		String indexName, Query query, int start, int size, Sort[] sorts) {
 
-		SearchSearchRequest searchSearchRequest = new SearchSearchRequest();
-
-		searchSearchRequest.setIndexNames(new String[] {indexName});
-
-		searchSearchRequest.setQuery(query);
-
-		searchSearchRequest.setStart(Integer.valueOf(start));
-
-		searchSearchRequest.setSize(Integer.valueOf(size));
-
-		searchSearchRequest.setSorts(sorts);
-
-		searchSearchRequest.setStats(Collections.emptyMap());
-
-		return searchSearchRequest;
+		return new SearchSearchRequest() {
+			{
+				setIndexNames(new String[] {indexName});
+				setQuery(query);
+				setStart(Integer.valueOf(start));
+				setSize(Integer.valueOf(size));
+				setSorts(sorts);
+				setStats(Collections.emptyMap());
+			}
+		};
 	}
 
 	protected Date getStartDate(
