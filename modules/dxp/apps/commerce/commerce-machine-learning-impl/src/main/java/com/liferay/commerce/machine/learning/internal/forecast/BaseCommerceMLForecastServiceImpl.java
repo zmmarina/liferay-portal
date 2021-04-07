@@ -239,6 +239,9 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected T getCommerceMLForecast(long companyId, long forecastId)
 		throws PortalException {
 
+		TermFilter termFilter = new TermFilter(
+			CommerceMLForecastField.FORECAST_ID, String.valueOf(forecastId));
+
 		List<T> searchResults = getSearchResults(
 			getSearchSearchRequest(
 				commerceMLIndexer.getIndexName(companyId),
@@ -247,11 +250,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 						setPreBooleanFilter(
 							new BooleanFilter() {
 								{
-									add(
-										new TermFilter(
-											CommerceMLForecastField.FORECAST_ID,
-											String.valueOf(forecastId)),
-										BooleanClauseOccur.MUST);
+									add(termFilter, BooleanClauseOccur.MUST);
 								}
 							});
 					}
