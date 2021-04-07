@@ -92,9 +92,9 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 		int start = 0;
 
 		Map<String, Document> documentMap = new LinkedHashMap<>(
-			DEFAULT_RESULT_SIZE, 1.0F);
+			_DOCUMENTS_SIZE, 1.0F);
 
-		while (documentMap.size() < DEFAULT_RESULT_SIZE) {
+		while (documentMap.size() < _DOCUMENTS_SIZE) {
 			searchSearchRequest.setStart(start);
 
 			SearchSearchResponse searchSearchResponse =
@@ -112,12 +112,12 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 				documentMap.put(recommendedEntryClassPK, doc);
 
-				if (documentMap.size() == DEFAULT_RESULT_SIZE) {
+				if (documentMap.size() == _DOCUMENTS_SIZE) {
 					break;
 				}
 			}
 
-			start += DEFAULT_FETCH_SIZE;
+			start += _SEARCH_SEARCH_REQUEST_SIZE;
 
 			if (start > searchSearchResponse.getCount()) {
 				break;
@@ -178,9 +178,9 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 		return frequentPatternCommerceMLRecommendation;
 	}
 
-	protected static final int DEFAULT_FETCH_SIZE = 300;
+	private static final int _SEARCH_SEARCH_REQUEST_SIZE = 300;
 
-	protected static final int DEFAULT_RESULT_SIZE = 10;
+	private static final int _DOCUMENTS_SIZE = 10;
 
 	private BooleanQuery _getConstantScoreQuery(long[] cpInstanceIds) {
 		BooleanQuery booleanQuery = _queries.booleanQuery();
@@ -247,7 +247,7 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 		searchSearchRequest.setQuery(functionScoreQuery);
 
-		searchSearchRequest.setSize(DEFAULT_FETCH_SIZE);
+		searchSearchRequest.setSize(_SEARCH_SEARCH_REQUEST_SIZE);
 
 		return searchSearchRequest;
 	}
