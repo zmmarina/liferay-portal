@@ -103,16 +103,12 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 				int historyLength, int forecastLength, int start, int end)
 		throws PortalException {
 
-		Query query = _getMonthlyRevenueQuery(
-			commerceAccountIds, actualDate, historyLength, forecastLength);
-
-		int size = end - start;
-
-		SearchSearchRequest searchSearchRequest = getSearchSearchRequest(
-			commerceMLIndexer.getIndexName(companyId), query, start, size,
-			getDefaultSort(true));
-
-		return getSearchResults(searchSearchRequest);
+		return getSearchResults(
+			getSearchSearchRequest(
+				commerceMLIndexer.getIndexName(companyId),
+				_getMonthlyRevenueQuery(
+					commerceAccountIds, actualDate, historyLength, forecastLength), start,
+				end - start, getDefaultSort(true)));
 	}
 
 	@Override
