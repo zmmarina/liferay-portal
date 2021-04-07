@@ -318,7 +318,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	}
 
 	protected List<T> getForecastList(Hits hits) {
-		List<Document> documents = _getDocumentList(hits);
+		List<Document> documents = _getDocuments(hits);
 
 		Stream<Document> documentsStream = documents.stream();
 
@@ -414,13 +414,13 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return dateFormat.format(searchDate);
 	}
 
-	private List<Document> _getDocumentList(Hits hits) {
+	private List<Document> _getDocuments(Hits hits) {
 		List<Document> list = new ArrayList<>(hits.toList());
 
 		Map<String, Hits> groupedHits = hits.getGroupedHits();
 
 		for (Map.Entry<String, Hits> entry : groupedHits.entrySet()) {
-			list.addAll(_getDocumentList(entry.getValue()));
+			list.addAll(_getDocuments(entry.getValue()));
 		}
 
 		return list;
