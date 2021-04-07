@@ -317,7 +317,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return _toDate(endLocalDateTime);
 	}
 
-	protected List<T> getForecastList(Hits hits) {
+	private List<T> _getForecastList(Hits hits) {
 		List<Document> documents = _getDocuments(hits);
 
 		Stream<Document> stream = documents.stream();
@@ -345,7 +345,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		SearchSearchResponse searchSearchResponse = searchEngineAdapter.execute(
 			searchSearchRequest);
 
-		return getForecastList(searchSearchResponse.getHits());
+		return _getForecastList(searchSearchResponse.getHits());
 	}
 
 	protected SearchSearchRequest getSearchSearchRequest(
