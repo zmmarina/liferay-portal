@@ -154,20 +154,17 @@ public class SkuCommerceMLForecastManagerImpl
 
 		CommerceMLForecastPeriod commerceMLForecastPeriod =
 			CommerceMLForecastPeriod.MONTH;
-
 		CommerceMLForecastTarget commerceMLForecastTarget =
 			CommerceMLForecastTarget.QUANTITY;
-
-		Date endDate = getEndDate(
-			actualDate, commerceMLForecastPeriod, forecastLength);
-
-		Date startDate = getStartDate(
-			actualDate, commerceMLForecastPeriod, historyLength);
 
 		BooleanQuery baseQuery = getBaseQuery(
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
-			commerceMLForecastTarget.getLabel(), startDate, endDate);
+			commerceMLForecastTarget.getLabel(),
+			getStartDate(
+				actualDate, commerceMLForecastPeriod, historyLength),
+			getEndDate(
+				actualDate, commerceMLForecastPeriod, forecastLength));
 
 		BooleanFilter preBooleanFilter = baseQuery.getPreBooleanFilter();
 
