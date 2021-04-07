@@ -100,24 +100,19 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected BooleanFilter getBooleanFilter(
 		String scope, String period, String target) {
 
-		BooleanFilter booleanFilter = new BooleanFilter();
-
-		TermFilter scopeTermFilter = new TermFilter(
-			CommerceMLForecastField.SCOPE, scope);
-
-		booleanFilter.add(scopeTermFilter, BooleanClauseOccur.MUST);
-
-		TermFilter periodTermFilter = new TermFilter(
-			CommerceMLForecastField.PERIOD, period);
-
-		booleanFilter.add(periodTermFilter, BooleanClauseOccur.MUST);
-
-		TermFilter targetTermFilter = new TermFilter(
-			CommerceMLForecastField.TARGET, target);
-
-		booleanFilter.add(targetTermFilter, BooleanClauseOccur.MUST);
-
-		return booleanFilter;
+		return new BooleanFilter() {
+			{
+				add(
+					new TermFilter(CommerceMLForecastField.SCOPE, scope),
+					BooleanClauseOccur.MUST);
+				add(
+					new TermFilter(CommerceMLForecastField.PERIOD, period),
+					BooleanClauseOccur.MUST);
+				add(
+					new TermFilter(CommerceMLForecastField.TARGET, target),
+					BooleanClauseOccur.MUST);
+			}
+		};
 	}
 
 	protected T getBaseCommerceMLForecastModel(
