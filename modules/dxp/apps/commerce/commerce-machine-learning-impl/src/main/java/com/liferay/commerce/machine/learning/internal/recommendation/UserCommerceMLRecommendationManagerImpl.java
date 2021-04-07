@@ -124,9 +124,9 @@ public class UserCommerceMLRecommendationManagerImpl
 			String.valueOf(
 				getHash(
 					model.getEntryClassPK(), model.getRecommendedEntryClassPK())));
-		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
 		document.addNumber(
 			Field.ASSET_CATEGORY_IDS, model.getAssetCategoryIds());
+		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
 
 		return document;
 	}
