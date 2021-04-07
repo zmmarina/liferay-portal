@@ -138,7 +138,7 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 	protected Document toDocument(
 		FrequentPatternCommerceMLRecommendation model) {
 
-		Document document = getBaseDocument(model);
+		Document document = getDocument(model);
 
 		long hash = getHash(
 			model.getAntecedentIds(), model.getRecommendedEntryClassPK());

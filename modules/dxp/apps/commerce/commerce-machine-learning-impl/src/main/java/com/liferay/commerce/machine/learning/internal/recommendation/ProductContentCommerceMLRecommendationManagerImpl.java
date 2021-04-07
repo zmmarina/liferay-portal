@@ -84,7 +84,7 @@ public class ProductContentCommerceMLRecommendationManagerImpl
 	protected Document toDocument(
 		ProductContentCommerceMLRecommendation model) {
 
-		Document document = getBaseDocument(model);
+		Document document = getDocument(model);
 
 		long hash = getHash(
 			model.getEntryClassPK(), model.getRecommendedEntryClassPK());

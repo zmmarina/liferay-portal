@@ -134,7 +134,7 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 	protected Document toDocumentModel(
 		CommerceAccountCommerceMLForecast commerceAccountCommerceMLForecast) {
 
-		Document document = getBaseDocument(commerceAccountCommerceMLForecast);
+		Document document = getDocument(commerceAccountCommerceMLForecast);
 
 		document.addNumber(
 			CommerceMLForecastField.COMMERCE_ACCOUNT_ID,

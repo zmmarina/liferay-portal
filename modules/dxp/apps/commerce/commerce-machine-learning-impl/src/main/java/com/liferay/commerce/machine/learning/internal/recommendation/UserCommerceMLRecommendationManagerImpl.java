@@ -117,7 +117,7 @@ public class UserCommerceMLRecommendationManagerImpl
 
 	@Override
 	protected Document toDocument(UserCommerceMLRecommendation model) {
-		Document document = getBaseDocument(model);
+		Document document = getDocument(model);
 
 		long hash = getHash(
 			model.getEntryClassPK(), model.getRecommendedEntryClassPK());

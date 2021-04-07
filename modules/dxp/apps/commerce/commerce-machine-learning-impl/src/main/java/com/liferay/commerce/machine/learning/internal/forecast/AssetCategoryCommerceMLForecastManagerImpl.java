@@ -139,7 +139,7 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 	protected Document toDocumentModel(
 		AssetCategoryCommerceMLForecast assetCategoryCommerceMLForecast) {
 
-		Document document = getBaseDocument(assetCategoryCommerceMLForecast);
+		Document document = getDocument(assetCategoryCommerceMLForecast);
 
 		document.addNumber(
 			CommerceMLForecastField.COMMERCE_ACCOUNT_ID,

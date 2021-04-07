@@ -158,7 +158,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return commerceMLForecast;
 	}
 
-	protected Document getBaseDocument(T commerceMLForecast) {
+	protected Document getDocument(T commerceMLForecast) {
 		Document document = new DocumentImpl();
 
 		document.addNumber(

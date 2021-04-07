@@ -129,7 +129,7 @@ public class SkuCommerceMLForecastManagerImpl
 	protected Document toDocumentModel(
 		SkuCommerceMLForecast skuCommerceMLForecast) {
 
-		Document document = getBaseDocument(skuCommerceMLForecast);
+		Document document = getDocument(skuCommerceMLForecast);
 
 		document.addText(
 			CommerceMLForecastField.SKU, skuCommerceMLForecast.getSku());

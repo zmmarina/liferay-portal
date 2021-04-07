@@ -106,7 +106,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		return commerceMLRecommendation;
 	}
 
-	protected Document getBaseDocument(T commerceMLRecommend) {
+	protected Document getDocument(T commerceMLRecommend) {
 		Document document = new DocumentImpl();
 
 		document.addNumber(
