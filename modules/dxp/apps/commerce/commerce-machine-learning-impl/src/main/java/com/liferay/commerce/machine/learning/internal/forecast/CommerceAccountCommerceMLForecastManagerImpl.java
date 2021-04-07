@@ -179,12 +179,13 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 
 		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
-		TermsFilter termsFilter = new TermsFilter(
-			CommerceMLForecastField.COMMERCE_ACCOUNT_ID);
-
-		termsFilter.addValues(ArrayUtil.toStringArray(commerceAccountIds));
-
-		preBooleanFilter.add(termsFilter, BooleanClauseOccur.MUST);
+		preBooleanFilter.add(
+			new TermsFilter(
+				CommerceMLForecastField.COMMERCE_ACCOUNT_ID) {
+				{
+					addValues(ArrayUtil.toStringArray(commerceAccountIds));
+				}
+			}, BooleanClauseOccur.MUST);
 
 		return booleanQuery;
 	}

@@ -201,14 +201,12 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 				assetCategoryIdsTermsFilter, BooleanClauseOccur.MUST);
 		}
 
-		TermsFilter commerceAccountIdsTermsFilter = new TermsFilter(
-			CommerceMLForecastField.COMMERCE_ACCOUNT_ID);
-
-		commerceAccountIdsTermsFilter.addValues(
-			ArrayUtil.toStringArray(commerceAccountIds));
-
 		preBooleanFilter.add(
-			commerceAccountIdsTermsFilter, BooleanClauseOccur.MUST);
+			new TermsFilter(CommerceMLForecastField.COMMERCE_ACCOUNT_ID) {
+				{
+					addValues(ArrayUtil.toStringArray(commerceAccountIds));
+				}
+			}, BooleanClauseOccur.MUST);
 
 		return booleanQuery;
 	}

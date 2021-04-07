@@ -168,11 +168,13 @@ public class SkuCommerceMLForecastManagerImpl
 
 		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
-		TermsFilter termsFilter = new TermsFilter(CommerceMLForecastField.SKU);
-
-		termsFilter.addValue(sku);
-
-		preBooleanFilter.add(termsFilter, BooleanClauseOccur.MUST);
+		preBooleanFilter.add(
+			new TermsFilter(CommerceMLForecastField.SKU) {
+				{
+					addValue(sku);
+				}
+			},
+			BooleanClauseOccur.MUST);
 
 		return booleanQuery;
 	}
