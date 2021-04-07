@@ -280,10 +280,8 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		Date endDate, CommerceMLForecastPeriod commerceMLForecastPeriod,
 		int stepCount) {
 
-		Instant endDateInstant = endDate.toInstant();
-
 		LocalDateTime endLocalDateTime = LocalDateTime.ofInstant(
-			endDateInstant, DEFAULT_ZONE_OFFSET);
+			endDate.toInstant(), DEFAULT_ZONE_OFFSET);
 
 		endLocalDateTime = endLocalDateTime.truncatedTo(ChronoUnit.DAYS);
 
