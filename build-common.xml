@@ -2393,15 +2393,40 @@ rerun your task.
 	</target>
 
 	<target name="run-cpd">
-		<ant antfile="build-common.xml" dir="${sdk.dir}" inheritRefs="true" target="run-cpd">
-			<property name="cpd.basedir" value="${basedir}" />
-		</ant>
+		<path id="pmd.classpath">
+			<fileset
+				dir="${sdk.dir}/dependencies/net.sourceforge.pmd/lib"
+				includes="*.jar"
+			/>
+		</path>
+
+		<taskdef classname="net.sourceforge.pmd.cpd.CPDTask" classpathref="pmd.classpath" name="cpd" />
+
+		<mkdir dir="${basedir}/pmd-reports" />
+
+		<cpd encoding="UTF-8" format="${pmd.output.type}" minimumTokenCount="${pmd.cpd.minimun.token.count}" outputFile="${basedir}/pmd-reports/cpd.${pmd.output.type}">
+			<fileset dir="${basedir}" includes="**/*.java" />
+		</cpd>
 	</target>
 
 	<target name="run-pmd">
-		<ant antfile="build-common.xml" dir="${sdk.dir}" inheritRefs="true" target="run-pmd">
-			<property name="pmd.basedir" value="${basedir}" />
-		</ant>
+		<path id="pmd.classpath">
+			<fileset
+				dir="${sdk.dir}/dependencies/net.sourceforge.pmd/lib"
+				includes="*.jar"
+			/>
+		</path>
+
+		<taskdef classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath" name="pmd" />
+
+		<mkdir dir="${basedir}/pmd-reports" />
+
+		<pmd shortFilenames="true" threads="${pmd.threads}">
+			<fileset dir="${basedir}" excludes="${pmd.java.excludes}" includes="${pmd.java.includes}" />
+			<formatter toConsole="${pmd.output.console}" toFile="${basedir}/pmd-reports/pmd-report.${pmd.output.type}" type="${pmd.output.type}" />
+			<ruleset>${pmd.java.ruleset}</ruleset>
+			<sourceLanguage name="java" version="${ant.build.javac.source}" />
+		</pmd>
 	</target>
 
 	<target if="setproxy.proxy.host" name="setproxy">
