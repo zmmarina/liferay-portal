@@ -106,7 +106,7 @@ public class UserCommerceMLRecommendationManagerImpl
 
 		searchSearchRequest.setQuery(booleanQuery);
 
-		searchSearchRequest.setSize(Integer.valueOf(DEFAULT_FETCH_SIZE));
+		searchSearchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
 
 		Sort sort = SortFactoryUtil.create(
 			CommerceMLRecommendationField.SCORE, Sort.FLOAT_TYPE, true);

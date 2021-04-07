@@ -152,7 +152,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 
 		searchRequest.setIndexNames(new String[] {indexName});
 
-		searchRequest.setSize(Integer.valueOf(DEFAULT_FETCH_SIZE));
+		searchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
 
 		TermFilter companyTermFilter = new TermFilter(
 			Field.COMPANY_ID, String.valueOf(companyId));
@@ -196,7 +196,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		);
 	}
 
-	protected static final int DEFAULT_FETCH_SIZE = 10;
+	protected static final int SEARCH_SEARCH_REQUEST_SIZE = 10;
 
 	@Reference
 	protected volatile SearchEngineAdapter searchEngineAdapter;
