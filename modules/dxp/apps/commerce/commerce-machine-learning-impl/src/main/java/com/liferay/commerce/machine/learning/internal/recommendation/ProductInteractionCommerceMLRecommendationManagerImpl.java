@@ -72,10 +72,10 @@ public class ProductInteractionCommerceMLRecommendationManagerImpl
 			_commerceMLIndexer.getIndexName(companyId), companyId,
 			cpDefinition);
 
-		Sort rankSort = SortFactoryUtil.create(
+		Sort sort = SortFactoryUtil.create(
 			CommerceMLRecommendationField.RANK, Sort.INT_TYPE, false);
 
-		searchSearchRequest.setSorts(new Sort[] {rankSort});
+		searchSearchRequest.setSorts(new Sort[] {sort});
 
 		return getSearchResults(searchSearchRequest);
 	}
