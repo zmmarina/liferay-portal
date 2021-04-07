@@ -274,13 +274,12 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected CountSearchRequest getCountSearchRequest(
 		String indexName, Query query) {
 
-		CountSearchRequest countSearchRequest = new CountSearchRequest();
-
-		countSearchRequest.setIndexNames(new String[] {indexName});
-
-		countSearchRequest.setQuery(query);
-
-		return countSearchRequest;
+		return new CountSearchRequest() {
+			{
+				setIndexNames(new String[] {indexName});
+				setQuery(query);
+			}
+		};
 	}
 
 	protected Sort[] getDefaultSort(boolean reverse) {
