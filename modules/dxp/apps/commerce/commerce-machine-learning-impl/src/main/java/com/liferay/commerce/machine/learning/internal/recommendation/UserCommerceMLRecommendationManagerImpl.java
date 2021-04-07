@@ -80,6 +80,15 @@ public class UserCommerceMLRecommendationManagerImpl
 
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
 
+		if (assetCategoryIds != null) {
+			for (long categoryId : assetCategoryIds) {
+				TermQuery categoryIdTermQuery = new TermQueryImpl(
+					Field.ASSET_CATEGORY_IDS, String.valueOf(categoryId));
+
+				booleanQuery.add(categoryIdTermQuery, BooleanClauseOccur.MUST);
+			}
+		}
+
 		booleanQuery.setPreBooleanFilter(
 			new BooleanFilter() {
 				{
@@ -94,15 +103,6 @@ public class UserCommerceMLRecommendationManagerImpl
 						BooleanClauseOccur.MUST);
 				}
 			});
-
-		if (assetCategoryIds != null) {
-			for (long categoryId : assetCategoryIds) {
-				TermQuery categoryIdTermQuery = new TermQueryImpl(
-					Field.ASSET_CATEGORY_IDS, String.valueOf(categoryId));
-
-				booleanQuery.add(categoryIdTermQuery, BooleanClauseOccur.MUST);
-			}
-		}
 
 		searchSearchRequest.setQuery(booleanQuery);
 
