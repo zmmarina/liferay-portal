@@ -10686,8 +10686,6 @@ ANT_OPTS=${env.ANT_OPTS}</echo>
 			app.server.type=${app.server.type}
 		</app-server-properties-update>
 
-		<antcall inheritAll="false" target="update-sdk-properties" />
-
 		<prepare-test-app-server-custom />
 
 		<ant inheritAll="false" target="deploy" />

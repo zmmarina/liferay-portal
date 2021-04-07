@@ -334,8 +334,6 @@ information.
 	<macrodef name="app-server-properties-reset">
 		<sequential>
 			<delete file="app.server.${user.name}.properties" />
-
-			<delete file="${sdk.dir}/build.${user.name}.properties" />
 		</sequential>
 	</macrodef>
 
@@ -344,8 +342,6 @@ information.
 
 		<sequential>
 			<echo file="app.server.${user.name}.properties">@{properties.content}</echo>
-
-			<echo file="${sdk.dir}/build.${user.name}.properties">@{properties.content}</echo>
 		</sequential>
 	</macrodef>
 
@@ -2111,67 +2107,6 @@ rerun your task.
 		</sequential>
 	</macrodef>
 
-	<macrodef name="update-sdk-properties">
-		<sequential>
-			<property file="release.${user.name}.properties" />
-			<property file="release.${env.COMPUTERNAME}.properties" />
-			<property file="release.${env.HOST}.properties" />
-			<property file="release.${env.HOSTNAME}.properties" />
-			<property file="release.properties" />
-
-			<property location="${sdk.dir}/build.${env.COMPUTERNAME}.properties" name="sdk.properties.file" />
-
-			<delete file="${sdk.properties.file}" />
-
-			<echoproperties destfile="${sdk.properties.file}">
-				<propertyset>
-					<propertyref name="app.server.parent.dir" />
-					<propertyref name="app.server.type" />
-					<propertyref name="junit.java.unit.gc" />
-					<propertyref name="junit.java.unit.gc.logging" />
-					<propertyref name="junit.test.excludes" />
-					<propertyref name="liferay.home" />
-					<propertyref name="lp.version" />
-					<propertyref name="sass.compiler.class.name" />
-					<propertyref name="snapshot.check.enabled" />
-					<propertyref name="upgrade.table.dir" />
-					<propertyref name="-baselinerepo" />
-					<propertyref name="-metatype" />
-					<propertyref name="-plugin" />
-					<propertyref name="-releaserepo" />
-					<propertyref prefix="ivy.pom." />
-					<propertyref prefix="microsoft.translator." />
-					<propertyref prefix="sonatype." />
-					<propertyref regex="^\s*app\.server\.(?:jboss|tcserver|tomcat|weblogic|websphere|wildfly).*\.dir" />
-				</propertyset>
-			</echoproperties>
-
-			<propertyfile file="${sdk.properties.file}">
-				<entry key="ivy.repository.liferay.private.password" value="${build.repository.private.password}" />
-				<entry key="ivy.repository.liferay.private.url" value="${build.repository.private.url}" />
-				<entry key="ivy.repository.liferay.private.username" value="${build.repository.private.username}" />
-				<entry key="lp.portal.project.dir" value="${project.dir}" />
-				<entry key="module.framework.base.dir" value="${liferay.home}/osgi" />
-			</propertyfile>
-
-			<replaceregexp
-				file="${sdk.properties.file}"
-				flags="g"
-				match="\\([\:\=\!\\])"
-				replace="\1"
-			/>
-
-			<copy
-				file="${sdk.properties.file}"
-				tofile="${sdk.dir}/build.${env.HOST}.properties"
-			/>
-			<copy
-				file="${sdk.properties.file}"
-				tofile="${sdk.dir}/build.${env.HOSTNAME}.properties"
-			/>
-		</sequential>
-	</macrodef>
-
 	<target name="compile">
 	</target>
 
@@ -2713,9 +2648,5 @@ rerun your task.
 
 	<target name="update-gradle-properties">
 		<update-gradle-properties />
-	</target>
-
-	<target name="update-sdk-properties">
-		<update-sdk-properties />
 	</target>
 </project>
