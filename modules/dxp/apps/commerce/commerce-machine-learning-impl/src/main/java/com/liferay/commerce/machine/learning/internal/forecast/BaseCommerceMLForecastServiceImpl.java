@@ -223,14 +223,12 @@ public abstract class BaseCommerceMLForecastServiceImpl
 	protected BooleanQuery getBooleanQuery(
 		String scope, String period, String target) {
 
-		BooleanQuery booleanQuery = new BooleanQueryImpl();
-
-		BooleanFilter booleanFilter = getBooleanFilter(
-			scope, period, target);
-
-		booleanQuery.setPreBooleanFilter(booleanFilter);
-
-		return booleanQuery;
+		return new BooleanQueryImpl() {
+			{
+				setPreBooleanFilter(
+					getBooleanFilter(scope, period, target));
+			}
+		};
 	}
 
 	protected BooleanQuery getBooleanQuery(
