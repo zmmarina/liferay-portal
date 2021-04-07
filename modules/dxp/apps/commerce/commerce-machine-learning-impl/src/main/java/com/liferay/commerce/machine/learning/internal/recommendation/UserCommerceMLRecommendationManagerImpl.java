@@ -84,12 +84,13 @@ public class UserCommerceMLRecommendationManagerImpl
 			new BooleanFilter() {
 				{
 					add(
-						new TermFilter(Field.COMPANY_ID, String.valueOf(companyId)),
+						new TermFilter(
+							Field.COMPANY_ID, String.valueOf(companyId)),
 						BooleanClauseOccur.MUST);
 					add(
 						new TermFilter(
 							Field.ENTRY_CLASS_PK,
-						String.valueOf(commerceAccountId)),
+							String.valueOf(commerceAccountId)),
 						BooleanClauseOccur.MUST);
 				}
 			});
@@ -125,7 +126,8 @@ public class UserCommerceMLRecommendationManagerImpl
 			Field.UID,
 			String.valueOf(
 				getHash(
-					model.getEntryClassPK(), model.getRecommendedEntryClassPK())));
+					model.getEntryClassPK(),
+					model.getRecommendedEntryClassPK())));
 		document.addNumber(
 			Field.ASSET_CATEGORY_IDS, model.getAssetCategoryIds());
 		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
