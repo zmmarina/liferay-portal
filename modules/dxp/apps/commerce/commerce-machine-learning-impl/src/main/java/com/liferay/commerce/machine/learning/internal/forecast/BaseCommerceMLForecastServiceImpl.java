@@ -97,7 +97,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return model;
 	}
 
-	protected BooleanFilter getBaseBooleanFilter(
+	protected BooleanFilter getBooleanFilter(
 		String scope, String period, String target) {
 
 		BooleanFilter booleanFilter = new BooleanFilter();
@@ -120,20 +120,20 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return booleanFilter;
 	}
 
-	protected BooleanFilter getBaseBooleanFilter(
+	protected BooleanFilter getBooleanFilter(
 		String scope, String period, String target, Date startDate,
 		Date endDate) {
 
-		BooleanFilter baseBooleanFilter = getBaseBooleanFilter(
+		BooleanFilter booleanFilter = getBooleanFilter(
 			scope, period, target);
 
 		RangeTermFilter rangeTermFilter = new RangeTermFilter(
 			CommerceMLForecastField.TIMESTAMP, true, true,
 			_formatSearchDate(startDate), _formatSearchDate(endDate));
 
-		baseBooleanFilter.add(rangeTermFilter, BooleanClauseOccur.MUST);
+		booleanFilter.add(rangeTermFilter, BooleanClauseOccur.MUST);
 
-		return baseBooleanFilter;
+		return booleanFilter;
 	}
 
 	protected T getBaseCommerceMLForecastModel(
@@ -225,10 +225,10 @@ public abstract class BaseCommerceMLForecastServiceImpl
 
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
 
-		BooleanFilter baseBooleanFilter = getBaseBooleanFilter(
+		BooleanFilter booleanFilter = getBooleanFilter(
 			scope, period, target);
 
-		booleanQuery.setPreBooleanFilter(baseBooleanFilter);
+		booleanQuery.setPreBooleanFilter(booleanFilter);
 
 		return booleanQuery;
 	}
@@ -240,10 +240,10 @@ public abstract class BaseCommerceMLForecastServiceImpl
 
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
 
-		BooleanFilter baseBooleanFilter = getBaseBooleanFilter(
+		BooleanFilter booleanFilter = getBooleanFilter(
 			scope, period, target, startDate, endDate);
 
-		booleanQuery.setPreBooleanFilter(baseBooleanFilter);
+		booleanQuery.setPreBooleanFilter(booleanFilter);
 
 		return booleanQuery;
 	}
