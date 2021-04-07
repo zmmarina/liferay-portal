@@ -97,7 +97,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return model;
 	}
 
-	protected BooleanFilter getBooleanFilter(
+	private BooleanFilter _getBooleanFilter(
 		String scope, String period, String target) {
 
 		return new BooleanFilter() {
@@ -196,7 +196,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return new BooleanQueryImpl() {
 			{
 				setPreBooleanFilter(
-					getBooleanFilter(scope, period, target));
+					_getBooleanFilter(scope, period, target));
 			}
 		};
 	}
@@ -208,7 +208,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 
 		return new BooleanQueryImpl() {
 			{
-				BooleanFilter booleanFilter = getBooleanFilter(
+				BooleanFilter booleanFilter = _getBooleanFilter(
 					scope, period, target);
 
 				booleanFilter.add(
