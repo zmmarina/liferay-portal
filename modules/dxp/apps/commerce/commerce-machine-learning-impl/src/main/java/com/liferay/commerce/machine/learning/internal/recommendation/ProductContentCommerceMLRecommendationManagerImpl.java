@@ -104,7 +104,7 @@ public class ProductContentCommerceMLRecommendationManagerImpl
 
 		ProductContentCommerceMLRecommendation
 			productContentCommerceMLRecommendation =
-				getBaseCommerceMLRecommendationModel(
+				getCommerceMLRecommendation(
 					new ProductContentCommerceMLRecommendationImpl(), document);
 
 		productContentCommerceMLRecommendation.setEntryClassPK(

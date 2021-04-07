@@ -162,7 +162,7 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 		FrequentPatternCommerceMLRecommendation
 			frequentPatternCommerceMLRecommendation =
-				getBaseCommerceMLRecommendationModel(
+				getCommerceMLRecommendation(
 					new FrequentPatternCommerceMLRecommendationImpl(),
 					document);
 

@@ -135,7 +135,7 @@ public class UserCommerceMLRecommendationManagerImpl
 	@Override
 	protected UserCommerceMLRecommendation toModel(Document document) {
 		UserCommerceMLRecommendation userCommerceMLRecommendation =
-			getBaseCommerceMLRecommendationModel(
+			getCommerceMLRecommendation(
 				new UserCommerceMLRecommendationImpl(), document);
 
 		userCommerceMLRecommendation.setAssetCategoryIds(

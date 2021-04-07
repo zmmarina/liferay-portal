@@ -104,7 +104,7 @@ public class ProductInteractionCommerceMLRecommendationManagerImpl
 
 		ProductInteractionCommerceMLRecommendation
 			productInteractionCommerceMLRecommendationModel =
-				getBaseCommerceMLRecommendationModel(
+				getCommerceMLRecommendation(
 					new ProductInteractionCommerceMLRecommendationImpl(),
 					document);
 

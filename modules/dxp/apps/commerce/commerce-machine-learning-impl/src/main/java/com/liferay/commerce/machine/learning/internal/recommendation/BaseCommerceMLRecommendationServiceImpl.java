@@ -82,7 +82,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		return model;
 	}
 
-	protected T getBaseCommerceMLRecommendationModel(
+	protected T getCommerceMLRecommendation(
 		T commerceMLRecommendation, Document document) {
 
 		commerceMLRecommendation.setCompanyId(
