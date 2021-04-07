@@ -140,15 +140,15 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 		Document document = getDocument(model);
 
-		long hash = getHash(
-			model.getAntecedentIds(), model.getRecommendedEntryClassPK());
-
-		document.addKeyword(Field.UID, String.valueOf(hash));
-
+		document.addKeyword(
+			Field.UID,
+			String.valueOf(
+				getHash(
+					model.getAntecedentIds(),
+					model.getRecommendedEntryClassPK())));
 		document.addKeyword(
 			CommerceMLRecommendationField.ANTECEDENT_IDS,
 			model.getAntecedentIds());
-
 		document.addNumber(
 			CommerceMLRecommendationField.ANTECEDENT_IDS_LENGTH,
 			model.getAntecedentIdsLength());
@@ -170,7 +170,6 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 			GetterUtil.getLongValues(
 				document.getValues(
 					CommerceMLRecommendationField.ANTECEDENT_IDS)));
-
 		frequentPatternCommerceMLRecommendation.setAntecedentIdsLength(
 			GetterUtil.getLong(
 				document.get(

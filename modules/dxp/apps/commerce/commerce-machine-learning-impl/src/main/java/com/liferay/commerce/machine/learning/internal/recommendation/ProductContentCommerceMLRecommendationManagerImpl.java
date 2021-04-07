@@ -86,14 +86,14 @@ public class ProductContentCommerceMLRecommendationManagerImpl
 
 		Document document = getDocument(model);
 
-		long hash = getHash(
-			model.getEntryClassPK(), model.getRecommendedEntryClassPK());
-
-		document.addKeyword(Field.UID, String.valueOf(hash));
-
-		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
-
+		document.addKeyword(
+			Field.UID,
+			String.valueOf(
+				getHash(
+					model.getEntryClassPK(),
+					model.getRecommendedEntryClassPK())));
 		document.addNumber(CommerceMLRecommendationField.RANK, model.getRank());
+		document.addNumber(Field.ENTRY_CLASS_PK, model.getEntryClassPK());
 
 		return document;
 	}
