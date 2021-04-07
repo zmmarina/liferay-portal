@@ -78,20 +78,21 @@ public class UserCommerceMLRecommendationManagerImpl
 		searchSearchRequest.setIndexNames(
 			new String[] {_commerceMLIndexer.getIndexName(companyId)});
 
-		TermFilter companyTermFilter = new TermFilter(
-			Field.COMPANY_ID, String.valueOf(companyId));
-
-		TermFilter entryClassPKTermFilter = new TermFilter(
-			Field.ENTRY_CLASS_PK, String.valueOf(commerceAccountId));
-
-		BooleanFilter booleanFilter = new BooleanFilter();
-
-		booleanFilter.add(companyTermFilter, BooleanClauseOccur.MUST);
-		booleanFilter.add(entryClassPKTermFilter, BooleanClauseOccur.MUST);
-
 		BooleanQuery booleanQuery = new BooleanQueryImpl();
 
-		booleanQuery.setPreBooleanFilter(booleanFilter);
+		booleanQuery.setPreBooleanFilter(
+			new BooleanFilter() {
+				{
+					add(
+						new TermFilter(Field.COMPANY_ID, String.valueOf(companyId)),
+						BooleanClauseOccur.MUST);
+					add(
+						new TermFilter(
+							Field.ENTRY_CLASS_PK,
+						String.valueOf(commerceAccountId)),
+						BooleanClauseOccur.MUST);
+				}
+			});
 
 		if (assetCategoryIds != null) {
 			for (long categoryId : assetCategoryIds) {
@@ -103,6 +104,7 @@ public class UserCommerceMLRecommendationManagerImpl
 		}
 
 		searchSearchRequest.setQuery(booleanQuery);
+
 		searchSearchRequest.setSize(Integer.valueOf(DEFAULT_FETCH_SIZE));
 
 		Sort scoreSort = SortFactoryUtil.create(
