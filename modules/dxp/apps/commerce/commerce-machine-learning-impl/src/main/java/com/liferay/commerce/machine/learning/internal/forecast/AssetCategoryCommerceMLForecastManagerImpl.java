@@ -156,7 +156,7 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 		Document document) {
 
 		AssetCategoryCommerceMLForecast assetCategoryCommerceMLForecast =
-			getBaseCommerceMLForecastModel(
+			getCommerceMLForecastModel(
 				new AssetCategoryCommerceMLForecastImpl(), document);
 
 		assetCategoryCommerceMLForecast.setAssetCategoryId(

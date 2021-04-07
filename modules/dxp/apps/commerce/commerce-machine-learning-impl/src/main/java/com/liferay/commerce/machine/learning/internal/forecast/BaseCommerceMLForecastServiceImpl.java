@@ -96,7 +96,7 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return model;
 	}
 
-	protected T getBaseCommerceMLForecastModel(
+	protected T getCommerceMLForecastModel(
 		T commerceMLForecast, Document document) {
 
 		commerceMLForecast.setActual(

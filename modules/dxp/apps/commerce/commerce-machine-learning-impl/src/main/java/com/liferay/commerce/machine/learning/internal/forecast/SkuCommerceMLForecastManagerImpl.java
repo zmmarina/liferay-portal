@@ -140,7 +140,7 @@ public class SkuCommerceMLForecastManagerImpl
 	@Override
 	protected SkuCommerceMLForecast toForecastModel(Document document) {
 		SkuCommerceMLForecast skuCommerceMLForecast =
-			getBaseCommerceMLForecastModel(
+			getCommerceMLForecastModel(
 				new SkuCommerceMLForecastImpl(), document);
 
 		skuCommerceMLForecast.setSku(document.get(CommerceMLForecastField.SKU));

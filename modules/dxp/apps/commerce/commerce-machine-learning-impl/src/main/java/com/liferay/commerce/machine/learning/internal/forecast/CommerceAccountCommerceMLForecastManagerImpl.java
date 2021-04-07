@@ -141,7 +141,7 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 		Document document) {
 
 		CommerceAccountCommerceMLForecast commerceAccountCommerceMLForecast =
-			getBaseCommerceMLForecastModel(
+			getCommerceMLForecastModel(
 				new CommerceAccountCommerceMLForecastImpl(), document);
 
 		commerceAccountCommerceMLForecast.setCommerceAccountId(
