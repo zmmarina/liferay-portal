@@ -3,7 +3,6 @@
 
 <hook>
 	<language-properties>content/Language*.properties</language-properties>
-	<custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
 	<servlet-filter-mapping>
 		<servlet-filter-name>Auto Login Filter</servlet-filter-name>
 		<url-pattern>/c/portal/saml/auth_redirect</url-pattern>
