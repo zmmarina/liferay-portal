@@ -172,20 +172,18 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(),
-			getStartDate(
-				actualDate, commerceMLForecastPeriod, historyLength),
-			getEndDate(
-				actualDate, commerceMLForecastPeriod, forecastLength));
+			getStartDate(actualDate, commerceMLForecastPeriod, historyLength),
+			getEndDate(actualDate, commerceMLForecastPeriod, forecastLength));
 
 		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
 		preBooleanFilter.add(
-			new TermsFilter(
-				CommerceMLForecastField.COMMERCE_ACCOUNT_ID) {
+			new TermsFilter(CommerceMLForecastField.COMMERCE_ACCOUNT_ID) {
 				{
 					addValues(ArrayUtil.toStringArray(commerceAccountIds));
 				}
-			}, BooleanClauseOccur.MUST);
+			},
+			BooleanClauseOccur.MUST);
 
 		return booleanQuery;
 	}

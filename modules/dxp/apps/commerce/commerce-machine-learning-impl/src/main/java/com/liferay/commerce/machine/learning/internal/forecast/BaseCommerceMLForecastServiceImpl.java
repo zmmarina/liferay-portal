@@ -48,7 +48,6 @@ import com.liferay.portal.search.engine.adapter.search.SearchSearchResponse;
 import java.text.DateFormat;
 import java.text.ParseException;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -97,24 +96,6 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return model;
 	}
 
-	private BooleanFilter _getBooleanFilter(
-		String scope, String period, String target) {
-
-		return new BooleanFilter() {
-			{
-				add(
-					new TermFilter(CommerceMLForecastField.PERIOD, period),
-					BooleanClauseOccur.MUST);
-				add(
-					new TermFilter(CommerceMLForecastField.SCOPE, scope),
-					BooleanClauseOccur.MUST);
-				add(
-					new TermFilter(CommerceMLForecastField.TARGET, target),
-					BooleanClauseOccur.MUST);
-			}
-		};
-	}
-
 	protected T getBaseCommerceMLForecastModel(
 		T commerceMLForecast, Document document) {
 
@@ -158,45 +139,12 @@ public abstract class BaseCommerceMLForecastServiceImpl
 		return commerceMLForecast;
 	}
 
-	protected Document getDocument(T commerceMLForecast) {
-		Document document = new DocumentImpl();
-
-		document.addNumber(
-			CommerceMLForecastField.ACTUAL, commerceMLForecast.getActual());
-		document.addNumber(Field.COMPANY_ID, commerceMLForecast.getCompanyId());
-		document.addNumber(
-			CommerceMLForecastField.FORECAST, commerceMLForecast.getForecast());
-		document.addNumber(
-			CommerceMLForecastField.FORECAST_ID,
-			commerceMLForecast.getForecastId());
-		document.addNumber(
-			CommerceMLForecastField.FORECAST_LOWER_BOUND,
-			commerceMLForecast.getForecastLowerBound());
-		document.addNumber(
-			CommerceMLForecastField.FORECAST_UPPER_BOUND,
-			commerceMLForecast.getForecastUpperBound());
-		document.addText(
-			CommerceMLForecastField.JOB_ID, commerceMLForecast.getJobId());
-		document.addText(
-			CommerceMLForecastField.PERIOD, commerceMLForecast.getPeriod());
-		document.addText(
-			CommerceMLForecastField.SCOPE, commerceMLForecast.getScope());
-		document.addText(
-			CommerceMLForecastField.TARGET, commerceMLForecast.getTarget());
-		document.addDate(
-			CommerceMLForecastField.TIMESTAMP,
-			commerceMLForecast.getTimestamp());
-
-		return document;
-	}
-
 	protected BooleanQuery getBooleanQuery(
 		String scope, String period, String target) {
 
 		return new BooleanQueryImpl() {
 			{
-				setPreBooleanFilter(
-					_getBooleanFilter(scope, period, target));
+				setPreBooleanFilter(_getBooleanFilter(scope, period, target));
 			}
 		};
 	}
@@ -215,7 +163,8 @@ public abstract class BaseCommerceMLForecastServiceImpl
 					new RangeTermFilter(
 						CommerceMLForecastField.TIMESTAMP, true, true,
 						_formatSearchDate(startDate),
-						_formatSearchDate(endDate)), BooleanClauseOccur.MUST);
+						_formatSearchDate(endDate)),
+					BooleanClauseOccur.MUST);
 
 				setPreBooleanFilter(booleanFilter);
 			}
@@ -274,6 +223,38 @@ public abstract class BaseCommerceMLForecastServiceImpl
 			reverse);
 
 		return new Sort[] {sort};
+	}
+
+	protected Document getDocument(T commerceMLForecast) {
+		Document document = new DocumentImpl();
+
+		document.addNumber(
+			CommerceMLForecastField.ACTUAL, commerceMLForecast.getActual());
+		document.addNumber(Field.COMPANY_ID, commerceMLForecast.getCompanyId());
+		document.addNumber(
+			CommerceMLForecastField.FORECAST, commerceMLForecast.getForecast());
+		document.addNumber(
+			CommerceMLForecastField.FORECAST_ID,
+			commerceMLForecast.getForecastId());
+		document.addNumber(
+			CommerceMLForecastField.FORECAST_LOWER_BOUND,
+			commerceMLForecast.getForecastLowerBound());
+		document.addNumber(
+			CommerceMLForecastField.FORECAST_UPPER_BOUND,
+			commerceMLForecast.getForecastUpperBound());
+		document.addText(
+			CommerceMLForecastField.JOB_ID, commerceMLForecast.getJobId());
+		document.addText(
+			CommerceMLForecastField.PERIOD, commerceMLForecast.getPeriod());
+		document.addText(
+			CommerceMLForecastField.SCOPE, commerceMLForecast.getScope());
+		document.addText(
+			CommerceMLForecastField.TARGET, commerceMLForecast.getTarget());
+		document.addDate(
+			CommerceMLForecastField.TIMESTAMP,
+			commerceMLForecast.getTimestamp());
+
+		return document;
 	}
 
 	protected Date getEndDate(
@@ -391,6 +372,24 @@ public abstract class BaseCommerceMLForecastServiceImpl
 			_INDEX_DATE_FORMAT_PATTERN);
 
 		return dateFormat.format(searchDate);
+	}
+
+	private BooleanFilter _getBooleanFilter(
+		String scope, String period, String target) {
+
+		return new BooleanFilter() {
+			{
+				add(
+					new TermFilter(CommerceMLForecastField.PERIOD, period),
+					BooleanClauseOccur.MUST);
+				add(
+					new TermFilter(CommerceMLForecastField.SCOPE, scope),
+					BooleanClauseOccur.MUST);
+				add(
+					new TermFilter(CommerceMLForecastField.TARGET, target),
+					BooleanClauseOccur.MUST);
+			}
+		};
 	}
 
 	private List<Document> _getDocuments(Hits hits) {

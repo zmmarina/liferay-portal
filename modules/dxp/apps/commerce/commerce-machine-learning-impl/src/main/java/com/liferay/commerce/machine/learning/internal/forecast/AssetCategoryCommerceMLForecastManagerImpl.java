@@ -183,10 +183,8 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(),
-			getStartDate(
-				actualDate, commerceMLForecastPeriod, historyLength),
-			getEndDate(
-				actualDate, commerceMLForecastPeriod, forecastLength));
+			getStartDate(actualDate, commerceMLForecastPeriod, historyLength),
+			getEndDate(actualDate, commerceMLForecastPeriod, forecastLength));
 
 		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
@@ -196,7 +194,8 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 					{
 						addValues(ArrayUtil.toStringArray(assetCategoryIds));
 					}
-				}, BooleanClauseOccur.MUST);
+				},
+				BooleanClauseOccur.MUST);
 		}
 
 		preBooleanFilter.add(
@@ -204,7 +203,8 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 				{
 					addValues(ArrayUtil.toStringArray(commerceAccountIds));
 				}
-			}, BooleanClauseOccur.MUST);
+			},
+			BooleanClauseOccur.MUST);
 
 		return booleanQuery;
 	}
