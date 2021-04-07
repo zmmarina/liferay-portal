@@ -112,6 +112,7 @@ definition {
 	}
 
 	@priority = "5"
+	@refactorneeded
 	test DeleteMessageboardsThread {
 		JSONMBMessage.addMessage(
 			groupName = "Guest",
@@ -142,6 +143,7 @@ definition {
 	}
 
 	@priority = "5"
+	@refactorneeded
 	test RestoreMessageboardsThread {
 		MessageBoardsAdmin.openMessageBoardsAdmin(siteURLKey = "guest");
 
@@ -207,6 +209,7 @@ definition {
 
 	@description = "This ensures that an MB thread can be searched via category."
 	@priority = "5"
+	@refactorneeded
 	test SearchMBThreadCategory {
 		Navigator.openURL();
 
@@ -239,6 +242,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test SearchMessageBoardsAttachment {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -272,6 +276,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test SplitMBThread {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -325,6 +330,7 @@ definition {
 
 	@description = "This is a use case for LPS-65368."
 	@priority = "5"
+	@refactorneeded
 	test ViewBBCodeNoXSSWithRemoteServices {
 		property custom.properties = "message.boards.message.formats.default=bbcode";
 
@@ -381,6 +387,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test ViewCorrectViewPermissionsInMessageBoardsQuickReplyInPrivateSite {
 		ApplicationsMenu.gotoPortlet(
 			category = "Sites",
@@ -442,6 +449,7 @@ definition {
 
 	@ignore = "true"
 	@priority = "4"
+	@refactorneeded
 	test ViewMBThreadAndReplyThreadInGmail {
 		property custom.properties = "jsonws.web.service.paths.excludes=${line.separator}message.boards.message.formats.default=html${line.separator}pop.server.notifications.enabled=true${line.separator}pop.server.subdomain=${line.separator}mail.session.mail.smtp.auth=true${line.separator}mail.session.mail.store.protocol=pop3${line.separator}mail.session.mail.transport.protocol=smtp";
 		property dummy.socket.proxy.disabled = "true";
@@ -585,6 +593,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test ViewMessageBoardsBannedUsers {
 		property custom.properties = "jsonws.web.service.paths.excludes=";
 
@@ -703,6 +712,7 @@ definition {
 
 	@ignore = "true"
 	@priority = "4"
+	@refactorneeded
 	test ViewMessageBoardsRSS {
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
@@ -761,6 +771,7 @@ definition {
 	}
 
 	@priority = "4"
+	@refactorneeded
 	test ViewMessageBoardsThreadStatistics {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -836,6 +847,7 @@ definition {
 
 	@description = "This is a use case for LPS-65365."
 	@priority = "5"
+	@refactorneeded
 	test ViewNoHTMLXSS {
 		property custom.properties = "message.boards.message.formats.default=html";
 
@@ -877,6 +889,7 @@ definition {
 	}
 
 	@priority = "4"
+	@refactorneeded
 	test ViewNoMBThreadXSS {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -910,6 +923,7 @@ definition {
 	}
 
 	@priority = "4"
+	@refactorneeded
 	test ViewNoSubscribeLinksNoWithEmailNotificationsDisabled {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -1006,6 +1020,7 @@ definition {
 
 	@description = "This test covers LPS-77252 and LPS-86797. It ensures that Categories group and Threads group are listed independently with their own pager."
 	@priority = "4"
+	@refactorneeded
 	test ViewPagersForCategoriesAndThreads {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -1117,6 +1132,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test ViewQuestionOnSplitThread {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
@@ -1177,6 +1193,7 @@ definition {
 	}
 
 	@priority = "3"
+	@refactorneeded
 	test ViewThreadDefaultQuestion {
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
