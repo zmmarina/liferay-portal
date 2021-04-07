@@ -157,7 +157,7 @@ public class SkuCommerceMLForecastManagerImpl
 		CommerceMLForecastTarget commerceMLForecastTarget =
 			CommerceMLForecastTarget.QUANTITY;
 
-		BooleanQuery baseQuery = getBooleanQuery(
+		BooleanQuery booleanQuery = getBooleanQuery(
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(),
@@ -166,7 +166,7 @@ public class SkuCommerceMLForecastManagerImpl
 			getEndDate(
 				actualDate, commerceMLForecastPeriod, forecastLength));
 
-		BooleanFilter preBooleanFilter = baseQuery.getPreBooleanFilter();
+		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
 		TermsFilter termsFilter = new TermsFilter(CommerceMLForecastField.SKU);
 
@@ -174,7 +174,7 @@ public class SkuCommerceMLForecastManagerImpl
 
 		preBooleanFilter.add(termsFilter, BooleanClauseOccur.MUST);
 
-		return baseQuery;
+		return booleanQuery;
 	}
 
 	private static final CommerceMLForecastScope _commerceMLForecastScope =

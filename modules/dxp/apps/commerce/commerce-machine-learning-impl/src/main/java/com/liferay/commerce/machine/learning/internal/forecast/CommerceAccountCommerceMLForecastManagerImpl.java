@@ -175,12 +175,12 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 		Date startDate = getStartDate(
 			actualDate, commerceMLForecastPeriod, historyLength);
 
-		BooleanQuery baseQuery = getBooleanQuery(
+		BooleanQuery booleanQuery = getBooleanQuery(
 			_commerceMLForecastScope.getLabel(),
 			commerceMLForecastPeriod.getLabel(),
 			commerceMLForecastTarget.getLabel(), startDate, endDate);
 
-		BooleanFilter preBooleanFilter = baseQuery.getPreBooleanFilter();
+		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
 		TermsFilter termsFilter = new TermsFilter(
 			CommerceMLForecastField.COMMERCE_ACCOUNT_ID);
@@ -189,7 +189,7 @@ public class CommerceAccountCommerceMLForecastManagerImpl
 
 		preBooleanFilter.add(termsFilter, BooleanClauseOccur.MUST);
 
-		return baseQuery;
+		return booleanQuery;
 	}
 
 	private static final CommerceMLForecastScope _commerceMLForecastScope =
