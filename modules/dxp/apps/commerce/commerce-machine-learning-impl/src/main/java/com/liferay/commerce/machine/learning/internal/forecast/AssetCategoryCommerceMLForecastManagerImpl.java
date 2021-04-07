@@ -191,14 +191,12 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 		BooleanFilter preBooleanFilter = booleanQuery.getPreBooleanFilter();
 
 		if (assetCategoryIds.length > 0) {
-			TermsFilter assetCategoryIdsTermsFilter = new TermsFilter(
-				Field.ASSET_CATEGORY_ID);
-
-			assetCategoryIdsTermsFilter.addValues(
-				ArrayUtil.toStringArray(assetCategoryIds));
-
 			preBooleanFilter.add(
-				assetCategoryIdsTermsFilter, BooleanClauseOccur.MUST);
+				new TermsFilter(Field.ASSET_CATEGORY_ID) {
+					{
+						addValues(ArrayUtil.toStringArray(assetCategoryIds));
+					}
+				}, BooleanClauseOccur.MUST);
 		}
 
 		preBooleanFilter.add(
