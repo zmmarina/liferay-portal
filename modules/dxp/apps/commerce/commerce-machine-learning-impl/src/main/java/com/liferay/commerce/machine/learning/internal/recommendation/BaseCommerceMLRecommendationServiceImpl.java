@@ -137,7 +137,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		SearchSearchResponse searchSearchResponse = searchEngineAdapter.execute(
 			searchSearchRequest);
 
-		return toModelList(searchSearchResponse.getHits());
+		return toList(searchSearchResponse.getHits());
 	}
 
 	protected SearchSearchRequest getSearchSearchRequest(
@@ -174,11 +174,11 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 
 	protected abstract T toModel(Document document);
 
-	protected List<T> toModelList(Hits hits) {
-		return toModelList(_getDocuments(hits));
+	protected List<T> toList(Hits hits) {
+		return toList(_getDocuments(hits));
 	}
 
-	protected List<T> toModelList(List<Document> documents) {
+	protected List<T> toList(List<Document> documents) {
 		Stream<Document> stream = documents.stream();
 
 		return stream.map(

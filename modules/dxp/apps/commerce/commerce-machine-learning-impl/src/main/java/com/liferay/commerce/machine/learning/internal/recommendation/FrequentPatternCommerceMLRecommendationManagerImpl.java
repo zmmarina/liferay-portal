@@ -131,7 +131,7 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 					System.currentTimeMillis() - startTimeMillis));
 		}
 
-		return toModelList(new ArrayList<>(documents.values()));
+		return toList(new ArrayList<>(documents.values()));
 	}
 
 	@Override
