@@ -153,7 +153,6 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 
 		assetCategoryCommerceMLForecast.setAssetCategoryId(
 			GetterUtil.getLong(document.get(Field.ASSET_CATEGORY_ID)));
-
 		assetCategoryCommerceMLForecast.setCommerceAccountId(
 			GetterUtil.getLong(
 				document.get(CommerceMLForecastField.COMMERCE_ACCOUNT_ID)));
