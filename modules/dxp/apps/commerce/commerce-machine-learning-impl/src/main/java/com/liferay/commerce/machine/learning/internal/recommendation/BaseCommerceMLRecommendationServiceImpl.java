@@ -143,33 +143,33 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	protected SearchSearchRequest getSearchSearchRequest(
 		String indexName, long companyId, long entryClassPK) {
 
-		SearchSearchRequest searchRequest = new SearchSearchRequest();
-
-		searchRequest.setIndexNames(new String[] {indexName});
-		searchRequest.setQuery(
-			new BooleanQueryImpl() {
-				{
-					setPreBooleanFilter(
-						new BooleanFilter() {
-							{
-								add(
-									new TermFilter(
-										Field.COMPANY_ID,
-										String.valueOf(companyId)),
-									BooleanClauseOccur.MUST);
-								add(
-									new TermFilter(
-										Field.ENTRY_CLASS_PK,
-										String.valueOf(entryClassPK)),
-									BooleanClauseOccur.MUST);
-							}
-						});
-				}
-			});
-		searchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
-		searchRequest.setStats(Collections.emptyMap());
-
-		return searchRequest;
+		return new SearchSearchRequest() {
+			{
+				setIndexNames(new String[] {indexName});
+				setQuery(
+					new BooleanQueryImpl() {
+						{
+							setPreBooleanFilter(
+								new BooleanFilter() {
+									{
+										add(
+											new TermFilter(
+												Field.COMPANY_ID,
+												String.valueOf(companyId)),
+											BooleanClauseOccur.MUST);
+										add(
+											new TermFilter(
+												Field.ENTRY_CLASS_PK,
+												String.valueOf(entryClassPK)),
+											BooleanClauseOccur.MUST);
+									}
+								});
+						}
+					});
+				setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
+				setStats(Collections.emptyMap());
+			}
+		};
 	}
 
 	protected abstract Document toDocument(T model);
