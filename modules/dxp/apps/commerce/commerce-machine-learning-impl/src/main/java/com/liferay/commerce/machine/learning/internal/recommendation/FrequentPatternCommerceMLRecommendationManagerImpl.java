@@ -91,10 +91,10 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 		int start = 0;
 
-		Map<String, Document> documentMap = new LinkedHashMap<>(
+		Map<String, Document> documents = new LinkedHashMap<>(
 			_DOCUMENTS_SIZE, 1.0F);
 
-		while (documentMap.size() < _DOCUMENTS_SIZE) {
+		while (documents.size() < _DOCUMENTS_SIZE) {
 			searchSearchRequest.setStart(start);
 
 			SearchSearchResponse searchSearchResponse =
@@ -102,17 +102,17 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 			Hits hits = searchSearchResponse.getHits();
 
-			for (Document doc : hits.getDocs()) {
-				String recommendedEntryClassPK = doc.get(
+			for (Document document : hits.getDocs()) {
+				String recommendedEntryClassPK = document.get(
 					CommerceMLRecommendationField.RECOMMENDED_ENTRY_CLASS_PK);
 
-				if (documentMap.get(recommendedEntryClassPK) != null) {
+				if (documents.get(recommendedEntryClassPK) != null) {
 					continue;
 				}
 
-				documentMap.put(recommendedEntryClassPK, doc);
+				documents.put(recommendedEntryClassPK, document);
 
-				if (documentMap.size() == _DOCUMENTS_SIZE) {
+				if (documents.size() == _DOCUMENTS_SIZE) {
 					break;
 				}
 			}
@@ -131,7 +131,7 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 					System.currentTimeMillis() - startTimeMillis));
 		}
 
-		return toModelList(new ArrayList<>(documentMap.values()));
+		return toModelList(new ArrayList<>(documents.values()));
 	}
 
 	@Override
