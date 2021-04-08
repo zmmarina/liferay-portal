@@ -175,9 +175,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	protected abstract T toModel(Document document);
 
 	protected List<T> toModelList(Hits hits) {
-		List<Document> documents = _getDocuments(hits);
-
-		return toModelList(documents);
+		return toModelList(_getDocuments(hits));
 	}
 
 	protected List<T> toModelList(List<Document> documents) {
