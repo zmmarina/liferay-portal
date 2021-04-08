@@ -181,9 +181,9 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	}
 
 	protected List<T> toModelList(List<Document> documents) {
-		Stream<Document> documentsStream = documents.stream();
+		Stream<Document> stream = documents.stream();
 
-		return documentsStream.map(
+		return stream.map(
 			this::toModel
 		).collect(
 			Collectors.toList()
