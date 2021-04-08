@@ -172,8 +172,6 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 
 	protected abstract Document toDocument(T model);
 
-	protected abstract T toModel(Document document);
-
 	protected List<T> toList(Hits hits) {
 		return toList(_getDocuments(hits));
 	}
@@ -187,6 +185,8 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 			Collectors.toList()
 		);
 	}
+
+	protected abstract T toModel(Document document);
 
 	protected static final int SEARCH_SEARCH_REQUEST_SIZE = 10;
 
