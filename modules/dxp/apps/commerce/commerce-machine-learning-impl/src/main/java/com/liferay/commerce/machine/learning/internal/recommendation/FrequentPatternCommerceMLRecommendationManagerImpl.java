@@ -226,11 +226,6 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 	private SearchSearchRequest _getSearchSearchRequest(
 		long companyId, long[] cpDefinitionIds) {
 
-		SearchSearchRequest searchSearchRequest = new SearchSearchRequest();
-
-		searchSearchRequest.setIndexNames(
-			_commerceMLIndexer.getIndexName(companyId));
-
 		FunctionScoreQuery functionScoreQuery = _queries.functionScore(
 			_getConstantScoreQuery(cpDefinitionIds));
 
@@ -241,11 +236,13 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 		functionScoreQuery.setScoreMode(FunctionScoreQuery.ScoreMode.SUM);
 		functionScoreQuery.setMinScore(1.1F);
 
-		searchSearchRequest.setQuery(functionScoreQuery);
-
-		searchSearchRequest.setSize(_SEARCH_SEARCH_REQUEST_SIZE);
-
-		return searchSearchRequest;
+		return new SearchSearchRequest() {
+			{
+				setIndexNames(_commerceMLIndexer.getIndexName(companyId));
+				setQuery(functionScoreQuery);
+				setSize(_SEARCH_SEARCH_REQUEST_SIZE);
+			}
+		};
 	}
 
 	private static final int _DOCUMENTS_SIZE = 10;
