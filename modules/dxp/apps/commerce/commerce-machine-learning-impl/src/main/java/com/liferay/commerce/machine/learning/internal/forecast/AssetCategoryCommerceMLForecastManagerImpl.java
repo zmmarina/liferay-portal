@@ -31,8 +31,6 @@ import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import com.liferay.portal.kernel.search.filter.TermsFilter;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.search.engine.adapter.search.CountSearchRequest;
-import com.liferay.portal.search.engine.adapter.search.SearchSearchRequest;
 
 import java.util.Date;
 import java.util.List;
@@ -106,17 +104,13 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 				int forecastLength, int start, int end)
 		throws PortalException {
 
-		Query query = _getMonthlyRevenueQuery(
-			actualDate, assetCategoryIds, commerceAccountIds, historyLength,
-			forecastLength);
-
-		int size = end - start;
-
-		SearchSearchRequest searchSearchRequest = getSearchSearchRequest(
-			commerceMLIndexer.getIndexName(companyId), query, start, size,
-			getDefaultSort(true));
-
-		return getSearchResults(searchSearchRequest);
+		return getSearchResults(
+			getSearchSearchRequest(
+				commerceMLIndexer.getIndexName(companyId),
+				_getMonthlyRevenueQuery(
+					actualDate, assetCategoryIds, commerceAccountIds,
+					historyLength, forecastLength),
+				start, end - start, getDefaultSort(true)));
 	}
 
 	@Override
@@ -125,14 +119,12 @@ public class AssetCategoryCommerceMLForecastManagerImpl
 			Date actualDate, int historyLength, int forecastLength)
 		throws PortalException {
 
-		Query query = _getMonthlyRevenueQuery(
-			actualDate, assetCategoryIds, commerceAccountIds, historyLength,
-			forecastLength);
-
-		CountSearchRequest countSearchRequest = getCountSearchRequest(
-			commerceMLIndexer.getIndexName(companyId), query);
-
-		return getCountResult(countSearchRequest);
+		return getCountResult(
+			getCountSearchRequest(
+				commerceMLIndexer.getIndexName(companyId),
+				_getMonthlyRevenueQuery(
+					actualDate, assetCategoryIds, commerceAccountIds,
+					historyLength, forecastLength)));
 	}
 
 	@Override
