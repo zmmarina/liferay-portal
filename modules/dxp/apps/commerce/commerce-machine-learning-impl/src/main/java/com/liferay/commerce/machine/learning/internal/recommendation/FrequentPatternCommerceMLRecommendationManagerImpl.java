@@ -206,9 +206,9 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 	}
 
 	private Script _getScript(long[] cpInstanceIds) {
-		ScriptBuilder builder = _scripts.builder();
+		ScriptBuilder scriptBuilder = _scripts.builder();
 
-		return builder.idOrCode(
+		return scriptBuilder.idOrCode(
 			StringUtil.read(
 				getClass(),
 				"/com/liferay/commerce/machine/learning/internal/dependencies" +
