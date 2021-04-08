@@ -210,15 +210,15 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	}
 
 	private List<Document> _getDocuments(Hits hits) {
-		List<Document> list = new ArrayList<>(hits.toList());
+		List<Document> documents = new ArrayList<>(hits.toList());
 
 		Map<String, Hits> groupedHits = hits.getGroupedHits();
 
 		for (Map.Entry<String, Hits> entry : groupedHits.entrySet()) {
-			list.addAll(_getDocuments(entry.getValue()));
+			documents.addAll(_getDocuments(entry.getValue()));
 		}
 
-		return list;
+		return documents;
 	}
 
 	private static final String _INDEX_DATE_FORMAT_PATTERN =
