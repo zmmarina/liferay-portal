@@ -42,7 +42,7 @@ public class CommerceCountryUpgradeProcess extends UpgradeProcess {
 			if (rs.next()) {
 				throw new UpgradeException(
 					"Unable to migrate data in CommerceCountry to Country " +
-						"because it contains countries missing ISO codes");
+						"because it contains countries with missing ISO codes");
 			}
 		}
 
