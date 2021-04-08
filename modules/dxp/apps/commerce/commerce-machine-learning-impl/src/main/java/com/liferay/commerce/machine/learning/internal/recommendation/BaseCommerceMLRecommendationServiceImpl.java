@@ -87,18 +87,14 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 
 		commerceMLRecommendation.setCompanyId(
 			GetterUtil.getLong(document.get(Field.COMPANY_ID)));
-
 		commerceMLRecommendation.setCreateDate(
 			_getDate(document.get(Field.CREATE_DATE)));
-
 		commerceMLRecommendation.setJobId(
 			document.get(CommerceMLRecommendationField.JOB_ID));
-
 		commerceMLRecommendation.setRecommendedEntryClassPK(
 			GetterUtil.getLong(
 				document.get(
 					CommerceMLRecommendationField.RECOMMENDED_ENTRY_CLASS_PK)));
-
 		commerceMLRecommendation.setScore(
 			GetterUtil.getFloat(
 				document.get(CommerceMLRecommendationField.SCORE)));
