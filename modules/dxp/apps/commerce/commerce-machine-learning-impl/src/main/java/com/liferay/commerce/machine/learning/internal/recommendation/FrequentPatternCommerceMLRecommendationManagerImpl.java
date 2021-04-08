@@ -178,10 +178,6 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 		return frequentPatternCommerceMLRecommendation;
 	}
 
-	private static final int _SEARCH_SEARCH_REQUEST_SIZE = 300;
-
-	private static final int _DOCUMENTS_SIZE = 10;
-
 	private BooleanQuery _getConstantScoreQuery(long[] cpInstanceIds) {
 		BooleanQuery booleanQuery = _queries.booleanQuery();
 
@@ -251,6 +247,10 @@ public class FrequentPatternCommerceMLRecommendationManagerImpl
 
 		return searchSearchRequest;
 	}
+
+	private static final int _DOCUMENTS_SIZE = 10;
+
+	private static final int _SEARCH_SEARCH_REQUEST_SIZE = 300;
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		FrequentPatternCommerceMLRecommendationManagerImpl.class);

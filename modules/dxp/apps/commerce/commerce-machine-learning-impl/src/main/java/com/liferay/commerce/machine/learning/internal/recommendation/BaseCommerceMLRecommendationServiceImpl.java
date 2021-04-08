@@ -21,7 +21,6 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
-import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.DocumentImpl;
 import com.liferay.portal.kernel.search.Field;
@@ -150,22 +149,26 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 
 		searchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
 
-		TermFilter companyTermFilter = new TermFilter(
-			Field.COMPANY_ID, String.valueOf(companyId));
-
-		TermFilter entryClassPKTermFilter = new TermFilter(
-			Field.ENTRY_CLASS_PK, String.valueOf(entryClassPK));
-
-		BooleanFilter booleanFilter = new BooleanFilter();
-
-		booleanFilter.add(companyTermFilter, BooleanClauseOccur.MUST);
-		booleanFilter.add(entryClassPKTermFilter, BooleanClauseOccur.MUST);
-
-		BooleanQuery booleanQuery = new BooleanQueryImpl();
-
-		booleanQuery.setPreBooleanFilter(booleanFilter);
-
-		searchRequest.setQuery(booleanQuery);
+		searchRequest.setQuery(
+			new BooleanQueryImpl() {
+				{
+					setPreBooleanFilter(
+						new BooleanFilter() {
+							{
+								add(
+									new TermFilter(
+										Field.COMPANY_ID,
+										String.valueOf(companyId)),
+									BooleanClauseOccur.MUST);
+								add(
+									new TermFilter(
+										Field.ENTRY_CLASS_PK,
+										String.valueOf(entryClassPK)),
+									BooleanClauseOccur.MUST);
+							}
+						});
+				}
+			});
 
 		searchRequest.setStats(Collections.emptyMap());
 
