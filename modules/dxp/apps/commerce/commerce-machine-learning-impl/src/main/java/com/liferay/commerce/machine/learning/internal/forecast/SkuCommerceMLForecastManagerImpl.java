@@ -64,12 +64,11 @@ public class SkuCommerceMLForecastManagerImpl
 
 	@Override
 	public SkuCommerceMLForecast create() {
-		SkuCommerceMLForecast skuCommerceMLForecast =
-			new SkuCommerceMLForecastImpl();
-
-		skuCommerceMLForecast.setScope(_commerceMLForecastScope.getLabel());
-
-		return skuCommerceMLForecast;
+		return new SkuCommerceMLForecastImpl() {
+			{
+				setScope(_commerceMLForecastScope.getLabel());
+			}
+		};
 	}
 
 	@Override
