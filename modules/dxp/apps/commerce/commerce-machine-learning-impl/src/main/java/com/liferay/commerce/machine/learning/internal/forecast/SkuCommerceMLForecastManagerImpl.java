@@ -28,8 +28,6 @@ import com.liferay.portal.kernel.search.ParseException;
 import com.liferay.portal.kernel.search.Query;
 import com.liferay.portal.kernel.search.filter.BooleanFilter;
 import com.liferay.portal.kernel.search.filter.TermsFilter;
-import com.liferay.portal.search.engine.adapter.search.CountSearchRequest;
-import com.liferay.portal.search.engine.adapter.search.SearchSearchRequest;
 
 import java.util.Date;
 import java.util.List;
@@ -77,10 +75,9 @@ public class SkuCommerceMLForecastManagerImpl
 			int forecastLength)
 		throws PortalException {
 
-		int size = forecastLength + historyLength;
-
 		return getMonthlyQuantitySkuCommerceMLForecasts(
-			companyId, sku, actualDate, historyLength, forecastLength, 0, size);
+			companyId, sku, actualDate, historyLength, forecastLength, 0,
+			forecastLength + historyLength);
 	}
 
 	@Override
@@ -89,16 +86,12 @@ public class SkuCommerceMLForecastManagerImpl
 			int forecastLength, int start, int end)
 		throws PortalException {
 
-		Query query = _getMonthlyQuantityQuery(
-			sku, actualDate, historyLength, forecastLength);
-
-		int size = end - start;
-
-		SearchSearchRequest searchSearchRequest = getSearchSearchRequest(
-			commerceMLIndexer.getIndexName(companyId), query, start, size,
-			getDefaultSort(true));
-
-		return getSearchResults(searchSearchRequest);
+		return getSearchResults(
+			getSearchSearchRequest(
+				commerceMLIndexer.getIndexName(companyId),
+				_getMonthlyQuantityQuery(
+					sku, actualDate, historyLength, forecastLength),
+				start, end - start, getDefaultSort(true)));
 	}
 
 	@Override
@@ -107,13 +100,11 @@ public class SkuCommerceMLForecastManagerImpl
 			int forecastLength)
 		throws PortalException {
 
-		Query query = _getMonthlyQuantityQuery(
-			sku, actualDate, historyLength, forecastLength);
-
-		CountSearchRequest countSearchRequest = getCountSearchRequest(
-			commerceMLIndexer.getIndexName(companyId), query);
-
-		return getCountResult(countSearchRequest);
+		return getCountResult(
+			getCountSearchRequest(
+				commerceMLIndexer.getIndexName(companyId),
+				_getMonthlyQuantityQuery(
+					sku, actualDate, historyLength, forecastLength)));
 	}
 
 	@Override
