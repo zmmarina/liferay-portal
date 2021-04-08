@@ -175,7 +175,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	protected abstract T toModel(Document document);
 
 	protected List<T> toModelList(Hits hits) {
-		List<Document> documents = _getDocumentList(hits);
+		List<Document> documents = _getDocuments(hits);
 
 		return toModelList(documents);
 	}
@@ -211,13 +211,13 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		return null;
 	}
 
-	private List<Document> _getDocumentList(Hits hits) {
+	private List<Document> _getDocuments(Hits hits) {
 		List<Document> list = new ArrayList<>(hits.toList());
 
 		Map<String, Hits> groupedHits = hits.getGroupedHits();
 
 		for (Map.Entry<String, Hits> entry : groupedHits.entrySet()) {
-			list.addAll(_getDocumentList(entry.getValue()));
+			list.addAll(_getDocuments(entry.getValue()));
 		}
 
 		return list;
