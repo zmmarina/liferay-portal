@@ -143,27 +143,25 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 	protected SearchSearchRequest getSearchSearchRequest(
 		String indexName, long companyId, long entryClassPK) {
 
+		BooleanFilter booleanFilter = new BooleanFilter() {
+			{
+				add(
+					new TermFilter(Field.COMPANY_ID, String.valueOf(companyId)),
+					BooleanClauseOccur.MUST);
+				add(
+					new TermFilter(
+						Field.ENTRY_CLASS_PK, String.valueOf(entryClassPK)),
+					BooleanClauseOccur.MUST);
+			}
+		};
+
 		return new SearchSearchRequest() {
 			{
 				setIndexNames(new String[] {indexName});
 				setQuery(
 					new BooleanQueryImpl() {
 						{
-							setPreBooleanFilter(
-								new BooleanFilter() {
-									{
-										add(
-											new TermFilter(
-												Field.COMPANY_ID,
-												String.valueOf(companyId)),
-											BooleanClauseOccur.MUST);
-										add(
-											new TermFilter(
-												Field.ENTRY_CLASS_PK,
-												String.valueOf(entryClassPK)),
-											BooleanClauseOccur.MUST);
-									}
-								});
+							setPreBooleanFilter(booleanFilter);
 						}
 					});
 				setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
