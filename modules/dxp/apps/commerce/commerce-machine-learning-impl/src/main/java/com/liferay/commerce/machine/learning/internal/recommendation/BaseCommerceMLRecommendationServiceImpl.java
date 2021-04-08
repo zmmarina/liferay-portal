@@ -146,9 +146,6 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 		SearchSearchRequest searchRequest = new SearchSearchRequest();
 
 		searchRequest.setIndexNames(new String[] {indexName});
-
-		searchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
-
 		searchRequest.setQuery(
 			new BooleanQueryImpl() {
 				{
@@ -169,7 +166,7 @@ public abstract class BaseCommerceMLRecommendationServiceImpl
 						});
 				}
 			});
-
+		searchRequest.setSize(Integer.valueOf(SEARCH_SEARCH_REQUEST_SIZE));
 		searchRequest.setStats(Collections.emptyMap());
 
 		return searchRequest;
