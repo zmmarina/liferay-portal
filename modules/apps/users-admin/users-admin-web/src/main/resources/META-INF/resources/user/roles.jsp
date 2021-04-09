@@ -588,24 +588,6 @@ currentURLObj.setParameter("historyKey", liferayPortletResponse.getNamespace() +
 					'.modify-link'
 				);
 
-				<%
-				String siteRoleEventName = liferayPortletResponse.getNamespace() + "selectSiteRole";
-
-				PortletURL selectSiteRoleURL = PortletURLBuilder.create(
-					PortletProviderUtil.getPortletURL(request, Role.class.getName(), PortletProvider.Action.BROWSE)
-				).setParameter(
-					"p_u_i_d", (selUser == null) ? "0" : String.valueOf(selUser.getUserId())
-				).setParameter(
-					"step", "1"
-				).setParameter(
-					"roleType", String.valueOf(RoleConstants.TYPE_SITE)
-				).setParameter(
-					"eventName", siteRoleEventName
-				).setWindowState(
-					LiferayWindowState.POP_UP
-				).build();
-				%>
-
 				const selectSiteRoleLink = document.getElementById(
 					'<portlet:namespace />selectSiteRoleLink'
 				);
@@ -623,11 +605,32 @@ currentURLObj.setParameter("historyKey", liferayPortletResponse.getNamespace() +
 									selectedItem.iconcssclass
 								);
 							},
+
+							<%
+							String siteRoleEventName = liferayPortletResponse.getNamespace() + "selectSiteRole";
+							%>
+
 							selectEventName: '<%= siteRoleEventName %>',
+
 							selectedData: searchContainer.getData(true),
 							title:
 								'<liferay-ui:message arguments="site-role" key="select-x" />',
-							url: '<%= selectSiteRoleURL.toString() %>',
+							url:
+								'<%=
+									PortletURLBuilder.create(
+										PortletProviderUtil.getPortletURL(request, Role.class.getName(), PortletProvider.Action.BROWSE)
+									).setParameter(
+										"p_u_i_d", (selUser == null) ? "0" : String.valueOf(selUser.getUserId())
+									).setParameter(
+										"step", "1"
+									).setParameter(
+										"roleType", String.valueOf(RoleConstants.TYPE_SITE)
+									).setParameter(
+										"eventName", siteRoleEventName
+									).setWindowState(
+										LiferayWindowState.POP_UP
+									).build()
+								%>',
 						});
 					});
 				}
