@@ -382,7 +382,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 
 		int count = TeamLocalServiceUtil.getGroupTeamsCount(group.getGroupId());
 
-		List<Role> roles;
+		List<Role> roles = null;
 
 		if (count > 0) {
 			roles = RoleLocalServiceUtil.getUserTeamRoles(
