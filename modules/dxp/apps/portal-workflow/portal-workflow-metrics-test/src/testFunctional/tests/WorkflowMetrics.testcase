@@ -686,18 +686,26 @@ definition {
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
 
 		WorkflowMetrics.goToBulkReassignSelectTasks();
+
 		AssertElementPresent(locator1 = "WorkflowReassignModal#BULK_REASSIGN_MODAL");
+
 		WorkflowMetrics.assertSelectTasksModalTable();
 
 		WorkflowMetrics.selectReassignTasks(taskList = "Blogs Entry: Blogs Entry Title 1,Blogs Entry: Blogs Entry Title 2");
+
 		WorkflowMetrics.assertNewAssigneeModalTable();
+
 		AssertElementPresent(locator1 = "WorkflowReassignModal#PERMISSION_TOOLTIP");
 		AssertElementPresent(locator1 = "WorkflowReassignModal#NEXT_BUTTON_DISABLED");
+
 		WorkflowMetrics.selectNewAssignee(taskList = "Blogs Entry: Blogs Entry Title 1,Blogs Entry: Blogs Entry Title 2");
 
 		WorkflowMetrics.goToBulkReassignSelectTasks();
+
 		WorkflowMetrics.selectReassignTasks(taskList = "Blogs Entry: Blogs Entry Title 3,Blogs Entry: Blogs Entry Title 4,Blogs Entry: Blogs Entry Title 5");
+
 		WorkflowMetrics.selectNewAssigneeBulkTask(nameOfAssignee = "Test Test");
+
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
 
 		AssertElementPresent(
@@ -748,22 +756,32 @@ definition {
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
 		WorkflowMetrics.bulkReassignSetup();
+
 		WorkflowMetrics.bulkReassignExceptionsSetup(site = "${siteName}");
+
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
+
 		WorkflowMetrics.assertBulkCount();
+
 		WorkflowMetrics.goToBulkReassignSelectTasks();
+
 		WorkflowMetrics.checkWorkflowTaskCrossover();
+
 		WorkflowMetrics.goToBulkReassignSelectNewAssignee();
+
 		Click(
 			key_itemName = "Blogs Entry: Blogs Entry Title 1",
 			locator1 = "WorkflowReassignModal#NEW_ASSIGNEE");
+
 		AssertElementNotPresent(
 			key_nameOfAssignee = "Test Test",
 			locator1 = "WorkflowReassignModal#REASSIGN_TASK_NEW_ASSIGNEE_DROPDOWN");
+
 		Type(
 			key_itemName = "Blogs Entry: Blogs Entry Title 1",
 			locator1 = "WorkflowReassignModal#NEW_ASSIGNEE",
 			value1 = "Test");
+
 		AssertElementPresent(
 			key_nameOfAssignee = "No results were found.",
 			locator1 = "WorkflowReassignModal#REASSIGN_TASK_NEW_ASSIGNEE_DROPDOWN");
@@ -796,9 +814,13 @@ definition {
 			workflowResourceValue = "Blogs Entry");
 
 		WorkflowMetrics.createBlogInstances(numberOfBlogInstances = "1");
+
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Fork Reviews Workflow");
+
 		WorkflowMetrics.goToBulkTransitionSelectTasks();
+
 		WorkflowMetrics.selectAllTransitionTasks();
+
 		WorkflowMetrics.assertTransitionTaskPresent(taskName = "Board Member Review 5");
 		WorkflowMetrics.assertTransitionTaskPresent(taskName = "Board Member Review 6");
 
@@ -878,8 +900,11 @@ definition {
 		}
 
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
+
 		WorkflowMetrics.goToUpdateDueDateTasks();
+
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_ALL_ITEMS_SELECT_ALL_MODAL");
+
 		Click(locator1 = "WorkflowReassignModal#NEXT_BUTTON");
 
 		Type(
@@ -933,8 +958,11 @@ definition {
 		}
 
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
+
 		WorkflowMetrics.goToUpdateDueDateTasks();
+
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_ALL_ITEMS_SELECT_ALL_MODAL");
+
 		Click(locator1 = "WorkflowReassignModal#NEXT_BUTTON");
 
 		AssertElementPresent(
@@ -950,6 +978,7 @@ definition {
 			value1 = "Disable");
 
 		Button.click(button = "Previous");
+
 		Button.clickNext();
 
 		AssertElementPresent(
