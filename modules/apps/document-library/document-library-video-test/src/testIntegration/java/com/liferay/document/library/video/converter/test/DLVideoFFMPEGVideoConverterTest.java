@@ -102,7 +102,7 @@ public class DLVideoFFMPEGVideoConverterTest {
 		_withDLVideoFFMPEGVideoConverterEnabled(
 			() -> {
 				FileEntry fileEntry = _createVideoFileEntry(
-					"video-corrupt.mp4");
+					"video_corrupt.mp4");
 
 				Assert.assertFalse(
 					VideoProcessorUtil.hasVideo(fileEntry.getFileVersion()));
@@ -174,7 +174,7 @@ public class DLVideoFFMPEGVideoConverterTest {
 		_withDLVideoFFMPEGVideoConverterEnabled(
 			() -> {
 				FileEntry fileEntry = _createVideoFileEntry(
-					"video-only-audio.mp4");
+					"video_only_audio.mp4");
 
 				Assert.assertTrue(
 					VideoProcessorUtil.hasVideo(fileEntry.getFileVersion()));
