@@ -2994,9 +2994,9 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 					}
 				<#else>
 					if (!checkColumn || _hasModifiedColumns(${entity.variableName}ModelImpl, columnNames)
-					<#if entity.entityOrder??>
-					|| _hasModifiedColumns(${entity.variableName}ModelImpl, _ORDER_BY_COLUMNS)
-					</#if>
+						<#if entity.entityOrder??>
+							|| _hasModifiedColumns(${entity.variableName}ModelImpl, _ORDER_BY_COLUMNS)
+						</#if>
 					) {
 						return _getValue(${entity.variableName}ModelImpl, columnNames, original);
 					}
