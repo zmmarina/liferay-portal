@@ -20,6 +20,7 @@ package com.liferay.frontend.editor.ckeditor.sample.web.internal.constants;
 public class CKEditorSamplePortletKeys {
 
 	public static final String CKEDITOR_SAMPLE =
-		"com_liferay_editor_ckeditor_sample_web_portlet_CKEditorSamplePortlet";
+		"com_liferay_editor_ckeditor_sample_web_internal_portlet_" +
+			"CKEditorSamplePortlet";
 
 }
