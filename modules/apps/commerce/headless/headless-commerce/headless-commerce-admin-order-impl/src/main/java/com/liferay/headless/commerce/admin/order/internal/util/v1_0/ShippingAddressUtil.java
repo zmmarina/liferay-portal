@@ -107,8 +107,8 @@ public class ShippingAddressUtil {
 			ShippingAddress shippingAddress)
 		throws Exception {
 
-		if (Validator.isNotNull(shippingAddress.getRegionISOCode()) &&
-			(country != null)) {
+		if ((country != null) &&
+			Validator.isNotNull(shippingAddress.getRegionISOCode())) {
 
 			Region region = RegionLocalServiceUtil.getRegion(
 				country.getCountryId(), shippingAddress.getRegionISOCode());
