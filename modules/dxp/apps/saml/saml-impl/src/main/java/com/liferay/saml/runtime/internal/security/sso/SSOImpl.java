@@ -12,7 +12,7 @@
  *
  */
 
-package com.liferay.saml.runtime.internal;
+package com.liferay.saml.runtime.internal.security.sso;
 
 import com.liferay.portal.kernel.security.sso.SSO;
 import com.liferay.saml.runtime.configuration.SamlProviderConfigurationHelper;
