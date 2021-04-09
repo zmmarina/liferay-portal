@@ -98,9 +98,7 @@ public class SetupUserAccountMVCActionCommand extends BaseMVCActionCommand {
 
 		User selectedUser = _portal.getSelectedUser(actionRequest);
 
-		long userId = _portal.getUserId(actionRequest);
-
-		if ((selectedUser.getUserId() != userId) &&
+		if ((selectedUser.getUserId() != themeDisplay.getUserId()) &&
 			!ModelResourcePermissionUtil.contains(
 				_userModelResourcePermission,
 				themeDisplay.getPermissionChecker(), 0,
