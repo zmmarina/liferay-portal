@@ -2,6 +2,6 @@
 
 <Configuration strict="true">
 	<Loggers>
-		<Logger level="INFO" name="com.liferay.saml.runtime" />
+		<Logger level="INFO" name="com.liferay.saml" />
 	</Loggers>
 </Configuration>
