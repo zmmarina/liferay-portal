@@ -8,4 +8,4 @@ Export-Package:\
 	com.liferay.asset.service,\
 	com.liferay.asset.service.persistence,\
 	com.liferay.asset.util,\
-	com.liferay.asset.util.comparator
+		com.liferay.asset.util.comparator
