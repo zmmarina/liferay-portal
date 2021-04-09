@@ -20,9 +20,9 @@ import com.liferay.portal.kernel.util.HashMapBuilder;
 import com.liferay.portal.kernel.util.Props;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.util.PropsImpl;
+import com.liferay.saml.internal.constants.LegacySamlPropsKeys;
 import com.liferay.saml.internal.upgrade.v1_0_0.SamlIdpSsoSessionMaxAgePropertyUpgradeProcess;
 import com.liferay.saml.runtime.configuration.SamlProviderConfiguration;
-import com.liferay.saml.internal.constants.LegacySamlPropsKeys;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
