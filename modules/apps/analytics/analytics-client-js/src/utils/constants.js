@@ -79,3 +79,9 @@ export const READ_WORDS_PER_MIN = 265;
 export const TRACK_DEFAULT_OPTIONS = {
 	applicationId: 'CustomEvent',
 };
+
+//Validation
+
+export const VALIDATION_MAXIMUM_LENGTH_DEFAULT = 255;
+
+export const VALIDATION_MAXIMUM_PROPERTY_VALUE_LENGTH = 1024;
