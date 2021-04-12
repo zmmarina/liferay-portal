@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.message.boards.moderation.internal.condition.evaluator;
+package com.liferay.message.boards.moderation.internal.kaleo.runtime.condition;
 
 import com.liferay.message.boards.moderation.internal.configuration.MBModerationGroupConfiguration;
 import com.liferay.message.boards.service.MBStatsUserLocalService;
