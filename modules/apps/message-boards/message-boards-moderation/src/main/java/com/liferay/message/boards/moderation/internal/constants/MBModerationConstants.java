@@ -20,6 +20,6 @@ package com.liferay.message.boards.moderation.internal.constants;
 public class MBModerationConstants {
 
 	public static final String WORKFLOW_DEFINITION_NAME =
-		"user-stats-moderation";
+		"message-boards-user-stats-moderation";
 
 }
