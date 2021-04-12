@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.util.StringUtil;
 import java.io.Serializable;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.portlet.PortletPreferences;
 
@@ -104,9 +105,10 @@ public class CustomUserAttributesAssetEntryQueryProcessor
 					_assetVocabularyLocalService.fetchAssetVocabulary(
 						assetCategory.getVocabularyId());
 
-				String vocabularyTitle = assetVocabulary.getTitleCurrentValue();
+				if (Objects.equals(
+						customUserAttributeName,
+						assetVocabulary.getTitleCurrentValue())) {
 
-				if (vocabularyTitle.equals(customUserAttributeName)) {
 					allCategoryIdsList.add(assetCategory.getCategoryId());
 				}
 			}
