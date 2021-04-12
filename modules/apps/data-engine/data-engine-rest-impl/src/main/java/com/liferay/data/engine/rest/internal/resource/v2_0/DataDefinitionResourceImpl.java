@@ -167,12 +167,8 @@ public class DataDefinitionResourceImpl
 			PermissionThreadLocal.getPermissionChecker(), dataDefinitionId,
 			ActionKeys.DELETE);
 
-		List<DEDataDefinitionFieldLink> deDataDefinitionFieldLinks =
-			_deDataDefinitionFieldLinkLocalService.
-				getDEDataDefinitionFieldLinks(dataDefinitionId);
-
-		Stream<DEDataDefinitionFieldLink> stream =
-			deDataDefinitionFieldLinks.stream();
+		List<DDMStructureLink> ddmStructureLinks =
+			_ddmStructureLinkLocalService.getStructureLinks(dataDefinitionId);
 
 		DDMStructure ddmStructure = _ddmStructureLocalService.getDDMStructure(
 			dataDefinitionId);
@@ -181,8 +177,12 @@ public class DataDefinitionResourceImpl
 			_dataDefinitionContentTypeTracker.getDataDefinitionContentType(
 				ddmStructure.getClassNameId());
 
-		List<DDMStructureLink> ddmStructureLinks =
-			_ddmStructureLinkLocalService.getStructureLinks(dataDefinitionId);
+		List<DEDataDefinitionFieldLink> deDataDefinitionFieldLinks =
+			_deDataDefinitionFieldLinkLocalService.
+				getDEDataDefinitionFieldLinks(dataDefinitionId);
+
+		Stream<DEDataDefinitionFieldLink> stream =
+			deDataDefinitionFieldLinks.stream();
 
 		if ((ddmStructureLinks.size() > 1) ||
 			(!dataDefinitionContentType.
