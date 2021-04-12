@@ -51,12 +51,12 @@ public class MBModerationConditionEvaluator implements ConditionEvaluator {
 		long groupId = GetterUtil.getLong(
 			workflowContext.get(WorkflowConstants.CONTEXT_GROUP_ID));
 
-		long userId = GetterUtil.getLong(
-			workflowContext.get(WorkflowConstants.CONTEXT_USER_ID));
-
 		MBModerationGroupConfiguration mbModerationGroupConfiguration =
 			_configurationProvider.getGroupConfiguration(
 				MBModerationGroupConfiguration.class, groupId);
+
+		long userId = GetterUtil.getLong(
+			workflowContext.get(WorkflowConstants.CONTEXT_USER_ID));
 
 		if (_mbStatsUserLocalService.getMessageCountByUserId(userId) >=
 				mbModerationGroupConfiguration.minimumContributedMessages()) {
