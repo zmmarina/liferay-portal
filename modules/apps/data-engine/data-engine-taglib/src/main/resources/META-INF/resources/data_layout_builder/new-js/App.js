@@ -31,6 +31,7 @@ import React from 'react';
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 
+import {AppBuilderCompatibilityLayer} from './AppBuilderCompatibilityLayer';
 import {FormBuilder} from './FormBuilder';
 import INITIAL_CONFIG from './config/initialConfig';
 import INITIAL_STATE from './config/initialState';
@@ -71,6 +72,7 @@ const App = (props) => {
 						]}
 						value={{...state, ...data}}
 					>
+						<AppBuilderCompatibilityLayer />
 						<FormBuilder />
 					</FormProvider>
 				</ConfigProvider>
