@@ -21,7 +21,7 @@
 			]]>
 		</metadata>
 		<script>
-			<![CDATA[com.liferay.message.boards.moderation.internal.condition.evaluator.MBModerationConditionEvaluator]]>
+			<![CDATA[com.liferay.message.boards.moderation.internal.kaleo.runtime.condition.MBModerationConditionEvaluator]]>
 		</script>
 		<script-language>java</script-language>
 		<transitions>
