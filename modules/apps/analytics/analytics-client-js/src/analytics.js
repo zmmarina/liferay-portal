@@ -35,6 +35,7 @@ import {normalizeEvent} from './utils/events';
 import hash from './utils/hash';
 import {getItem, setItem} from './utils/storage';
 import {upgradeStorage} from './utils/storage_version';
+import {isValidEvent} from './utils/validators';
 
 // Constants
 
@@ -250,7 +251,11 @@ class Analytics {
 	 * @param {Object} options Complementary information about the request
 	 */
 	track(eventId, eventProps, options = {}) {
-		if (this._isTrackingDisabled() || instance._disposed) {
+		if (
+			this._isTrackingDisabled() ||
+			instance._disposed ||
+			!isValidEvent({eventId, eventProps})
+		) {
 			return;
 		}
 
