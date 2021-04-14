@@ -26,9 +26,9 @@ import java.util.Enumeration;
 /**
  * @author Cristina González
  */
-public class ConfigurationCompanyTemporarySwapper implements AutoCloseable {
+public class CompanyConfigurationTemporarySwapper implements AutoCloseable {
 
-	public ConfigurationCompanyTemporarySwapper(
+	public CompanyConfigurationTemporarySwapper(
 			long companyId, String pid, Dictionary<String, Object> properties,
 			SettingsFactory settingsFactory)
 		throws Exception {

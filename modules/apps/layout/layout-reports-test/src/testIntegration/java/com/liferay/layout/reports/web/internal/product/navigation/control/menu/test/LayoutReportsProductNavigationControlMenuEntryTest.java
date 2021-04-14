@@ -16,7 +16,7 @@ package com.liferay.layout.reports.web.internal.product.navigation.control.menu.
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import com.liferay.layout.test.util.LayoutTestUtil;
-import com.liferay.portal.configuration.test.util.ConfigurationCompanyTemporarySwapper;
+import com.liferay.portal.configuration.test.util.CompanyConfigurationTemporarySwapper;
 import com.liferay.portal.configuration.test.util.ConfigurationTemporarySwapper;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.Group;
@@ -82,9 +82,9 @@ public class LayoutReportsProductNavigationControlMenuEntryTest {
 						}
 					})) {
 
-			try (ConfigurationCompanyTemporarySwapper
-					configurationCompanyTemporarySwapper =
-						new ConfigurationCompanyTemporarySwapper(
+			try (CompanyConfigurationTemporarySwapper
+					companyConfigurationTemporarySwapper =
+						new CompanyConfigurationTemporarySwapper(
 							_group.getCompanyId(),
 							"com.liferay.layout.reports.web.internal." +
 								"configuration.LayoutReportsGooglePageSpeed" +

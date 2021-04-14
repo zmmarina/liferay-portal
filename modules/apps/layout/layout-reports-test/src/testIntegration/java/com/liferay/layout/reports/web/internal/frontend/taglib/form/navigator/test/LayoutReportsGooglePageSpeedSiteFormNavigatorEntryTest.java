@@ -16,7 +16,7 @@ package com.liferay.layout.reports.web.internal.frontend.taglib.form.navigator.t
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import com.liferay.frontend.taglib.form.navigator.FormNavigatorEntry;
-import com.liferay.portal.configuration.test.util.ConfigurationCompanyTemporarySwapper;
+import com.liferay.portal.configuration.test.util.CompanyConfigurationTemporarySwapper;
 import com.liferay.portal.configuration.test.util.ConfigurationTemporarySwapper;
 import com.liferay.portal.kernel.model.Group;
 import com.liferay.portal.kernel.settings.SettingsFactory;
@@ -88,9 +88,9 @@ public class LayoutReportsGooglePageSpeedSiteFormNavigatorEntryTest {
 						}
 					})) {
 
-			try (ConfigurationCompanyTemporarySwapper
-					configurationCompanyTemporarySwapper =
-						new ConfigurationCompanyTemporarySwapper(
+			try (CompanyConfigurationTemporarySwapper
+					companyConfigurationTemporarySwapper =
+						new CompanyConfigurationTemporarySwapper(
 							_group.getCompanyId(),
 							"com.liferay.layout.reports.web.internal." +
 								"configuration.LayoutReportsGooglePageSpeed" +
@@ -141,9 +141,9 @@ public class LayoutReportsGooglePageSpeedSiteFormNavigatorEntryTest {
 						}
 					})) {
 
-			try (ConfigurationCompanyTemporarySwapper
-					configurationCompanyTemporarySwapper =
-						new ConfigurationCompanyTemporarySwapper(
+			try (CompanyConfigurationTemporarySwapper
+					companyConfigurationTemporarySwapper =
+						new CompanyConfigurationTemporarySwapper(
 							_group.getCompanyId(),
 							"com.liferay.layout.reports.web.internal." +
 								"configuration.LayoutReportsGooglePageSpeed" +
