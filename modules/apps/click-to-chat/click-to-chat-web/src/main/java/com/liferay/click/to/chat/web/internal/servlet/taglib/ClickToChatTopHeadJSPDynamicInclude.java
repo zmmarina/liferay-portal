@@ -71,7 +71,7 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 			ClickToChatConfiguration clickToChatConfiguration =
 				_configurationProvider.getCompanyConfiguration(
 					ClickToChatConfiguration.class,
-					CompanyThreadLocal.getCompanyId());
+					themeDisplay.getCompanyId());
 
 			if (Objects.equals(
 					clickToChatConfiguration.siteSettingsStrategy(),
