@@ -36,6 +36,7 @@ import com.liferay.taglib.util.IncludeTag;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.portlet.PortletURL;
 
@@ -101,7 +102,7 @@ public class MiniCartTag extends IncludeTag {
 		return super.doStartTag();
 	}
 
-	public HashMap<String, String> getLabels() {
+	public Map<String, String> getLabels() {
 		return _labels;
 	}
 
@@ -109,7 +110,7 @@ public class MiniCartTag extends IncludeTag {
 		return _spritemap;
 	}
 
-	public HashMap<String, String> getViews() {
+	public Map<String, String> getViews() {
 		return _views;
 	}
 
@@ -127,7 +128,7 @@ public class MiniCartTag extends IncludeTag {
 		_displayTotalItemsQuantity = displayTotalItemsQuantity;
 	}
 
-	public void setLabels(HashMap<String, String> labels) {
+	public void setLabels(Map<String, String> labels) {
 		_labels = labels;
 	}
 
@@ -149,7 +150,7 @@ public class MiniCartTag extends IncludeTag {
 		_toggleable = toggleable;
 	}
 
-	public void setViews(HashMap<String, String> views) {
+	public void setViews(Map<String, String> views) {
 		_views = views;
 	}
 
@@ -242,11 +243,11 @@ public class MiniCartTag extends IncludeTag {
 	private ConfigurationProvider _configurationProvider;
 	private boolean _displayTotalItemsQuantity;
 	private int _itemsQuantity;
-	private HashMap<String, String> _labels = new HashMap<>();
+	private Map<String, String> _labels = new HashMap<>();
 	private String _orderDetailURL;
 	private long _orderId;
 	private String _spritemap;
 	private boolean _toggleable = true;
-	private HashMap<String, String> _views = new HashMap<>();
+	private Map<String, String> _views = new HashMap<>();
 
 }
