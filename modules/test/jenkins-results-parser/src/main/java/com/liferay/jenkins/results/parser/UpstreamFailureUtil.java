@@ -372,7 +372,7 @@ public class UpstreamFailureUtil {
 
 				if (gitWorkingDirectory.refContainsSHA("HEAD", sha)) {
 					System.out.println(
-						"Downloading upstream test results from: " +
+						"Downloading upstream test results from " +
 							buildResultJSONURL);
 
 					return jsonObject;
