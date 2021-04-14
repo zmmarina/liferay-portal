@@ -20,18 +20,21 @@
 
 <script type="text/javascript">
 	var _tn = _tn || [];
-	_tn.push(['account','<%= clickToChatProviderAccountId %>']);
-	_tn.push(['action','track-view']);
+	_tn.push(['account', '<%= clickToChatProviderAccountId %>']);
+	_tn.push(['action', 'track-view']);
 
 	<c:if test="<%= themeDisplay.isSignedIn() %>">
-		_tn.push(['_setName','<%= user.getScreenName() %>']);
-		_tn.push(['_setEmail','<%= user.getEmailAddress() %>']);
+		_tn.push(['_setName', '<%= user.getScreenName() %>']);
+		_tn.push(['_setEmail', '<%= user.getEmailAddress() %>']);
 	</c:if>
 
-	(function() {
-	document.write(unescape("%3Cspan id='tolvnow'%3E%3C/span%3E"));
-	var tss = document.createElement('script'); tss.type = 'text/javascript'; tss.async = true;
-	tss.src = '//tracker.tolvnow.com/js/tn.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tss, s);
+	(function () {
+		document.write(unescape("%3Cspan id='tolvnow'%3E%3C/span%3E"));
+		var tss = document.createElement('script');
+		tss.type = 'text/javascript';
+		tss.async = true;
+		tss.src = '//tracker.tolvnow.com/js/tn.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(tss, s);
 	})();
 </script>

@@ -16,13 +16,14 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=<%= clickToChatProviderAccountId %>"> </script>
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=<%= clickToChatProviderAccountId %>">
+</script>
 
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<script>
 		zE('webWidget', 'identify', {
 			name: '<%= user.getScreenName() %>',
-			email: '<%= user.getEmailAddress() %>'
+			email: '<%= user.getEmailAddress() %>',
 		});
 	</script>
 </c:if>

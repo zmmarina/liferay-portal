@@ -130,9 +130,18 @@ String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickTo
 	}
 
 	function onChangeEnableClickToChat() {
-		Liferay.Util.toggleDisabled(clickToChatProviderId, !clickToChatEnabled.checked);
-		Liferay.Util.toggleDisabled(chatProviderAccountId, !clickToChatEnabled.checked);
-		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, !clickToChatEnabled.checked);
+		Liferay.Util.toggleDisabled(
+			clickToChatProviderId,
+			!clickToChatEnabled.checked
+		);
+		Liferay.Util.toggleDisabled(
+			chatProviderAccountId,
+			!clickToChatEnabled.checked
+		);
+		Liferay.Util.toggleDisabled(
+			clickToChatGuestUsersAllowed,
+			!clickToChatEnabled.checked
+		);
 	}
 
 	function onChangeProvider(event) {
@@ -149,7 +158,7 @@ String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickTo
 		}
 	}
 
-	var currentProviderId = "<%=clickToChatProviderId%>";
+	var currentProviderId = '<%=clickToChatProviderId%>';
 
 	showContainer(currentProviderId);
 </script>
