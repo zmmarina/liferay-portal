@@ -16,4 +16,4 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/<%= clickToChatProviderAccountId %>.js"></script>
+<script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= clickToChatProviderAccountId %>.js" type="text/javascript"></script>

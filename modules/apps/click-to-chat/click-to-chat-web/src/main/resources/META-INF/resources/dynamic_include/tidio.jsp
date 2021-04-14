@@ -21,10 +21,9 @@
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<script>
 		document.tidioIdentify = {
-		distinct_id: "<%= user.getUserId() %>",
-		email: "<%= user.getEmailAddress() %>",
-		name: "<%= user.getFirstName() %>"
-	};
-
+			distinct_id: "<%= user.getUserId() %>",
+			email: "<%= user.getEmailAddress() %>",
+			name: "<%= user.getFirstName() %>"
+		};
 	</script>
 </c:if>

@@ -93,8 +93,8 @@ lpTag.sdes.push({
 lpTag.sdes.push({
 			"type": "ctmrinfo",
 			"info": {
+				"customerId": '<%= user.getScreenName() %>',
 				"userName": '<%= user.getUserId() %>',
-				"customerId": '<%= user.getScreenName() %>'
 			}
 		});
 </script>
