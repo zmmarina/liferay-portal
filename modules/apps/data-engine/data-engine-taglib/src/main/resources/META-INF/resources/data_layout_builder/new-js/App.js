@@ -36,6 +36,7 @@ import {FormBuilder} from './FormBuilder';
 import INITIAL_CONFIG from './config/initialConfig';
 import INITIAL_STATE from './config/initialState';
 import {useData} from './hooks/useData';
+import rulesReducer from './reducers/rulesReducer';
 import sidebarReducer from './reducers/sidebarReducer';
 
 const App = (props) => {
@@ -68,6 +69,7 @@ const App = (props) => {
 							languageReducer,
 							pageReducer,
 							pagesStructureReducer,
+							rulesReducer,
 							sidebarReducer,
 						]}
 						value={{...state, dataDefinition, dataLayout}}
