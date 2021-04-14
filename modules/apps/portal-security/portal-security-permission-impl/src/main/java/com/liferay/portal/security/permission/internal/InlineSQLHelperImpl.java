@@ -85,6 +85,15 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 	public <T extends Table<T>> Predicate getPermissionWherePredicate(
 		Class<?> modelClass, Column<T, Long> classPKColumn, long... groupIds) {
 
+		return getPermissionWherePredicate(
+			modelClass.getName(), classPKColumn, groupIds);
+	}
+
+	@Override
+	public <T extends Table<T>> Predicate getPermissionWherePredicate(
+		String modelClassName, Column<T, Long> classPKColumn,
+		long... groupIds) {
+
 		PermissionChecker permissionChecker =
 			PermissionThreadLocal.getPermissionChecker();
 
@@ -93,14 +102,13 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 		}
 
 		if (_skipReplace(
-				permissionChecker, modelClass.getName(), classPKColumn,
-				groupIds)) {
+				permissionChecker, modelClassName, classPKColumn, groupIds)) {
 
 			return null;
 		}
 
 		return _getPermissionPredicate(
-			permissionChecker, modelClass, classPKColumn, groupIds);
+			permissionChecker, modelClassName, classPKColumn, groupIds);
 	}
 
 	@Override
@@ -435,7 +443,7 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 	}
 
 	private <T extends Table<T>> Predicate _getPermissionPredicate(
-		PermissionChecker permissionChecker, Class<?> modelClass,
+		PermissionChecker permissionChecker, String modelClassName,
 		Column<T, Long> classPKColumn, long[] groupIds) {
 
 		T table = classPKColumn.getTable();
@@ -443,13 +451,13 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 		Column<T, Long> userIdColumn = table.getColumn("userId", Long.class);
 
 		DSLQuery resourcePermissionDSLQuery = _getResourcePermissionQuery(
-			permissionChecker, modelClass, userIdColumn, groupIds);
+			permissionChecker, modelClassName, userIdColumn, groupIds);
 
 		Predicate permissionPredicate = classPKColumn.in(
 			resourcePermissionDSLQuery);
 
 		List<PermissionSQLContributor> permissionSQLContributors =
-			_permissionSQLContributors.getService(modelClass.getName());
+			_permissionSQLContributors.getService(modelClassName);
 
 		if ((permissionSQLContributors != null) &&
 			!permissionSQLContributors.isEmpty()) {
@@ -459,7 +467,7 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 
 				Predicate contributorPermissionPredicate =
 					permissionSQLContributor.getPermissionPredicate(
-						permissionChecker, modelClass.getName(), classPKColumn,
+						permissionChecker, modelClassName, classPKColumn,
 						groupIds);
 
 				if (contributorPermissionPredicate != null) {
@@ -500,7 +508,7 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 	}
 
 	private DSLQuery _getResourcePermissionQuery(
-		PermissionChecker permissionChecker, Class<?> modelClass,
+		PermissionChecker permissionChecker, String modelClassName,
 		Column<?, Long> userIdColumn, long[] groupIds) {
 
 		Predicate roleIdsOrOwnerIdsPredicate = null;
@@ -536,7 +544,7 @@ public class InlineSQLHelperImpl implements InlineSQLHelper {
 		Predicate predicate = ResourcePermissionTable.INSTANCE.companyId.eq(
 			permissionChecker.getCompanyId()
 		).and(
-			ResourcePermissionTable.INSTANCE.name.eq(modelClass.getName())
+			ResourcePermissionTable.INSTANCE.name.eq(modelClassName)
 		).and(
 			ResourcePermissionTable.INSTANCE.scope.eq(
 				ResourceConstants.SCOPE_INDIVIDUAL)
