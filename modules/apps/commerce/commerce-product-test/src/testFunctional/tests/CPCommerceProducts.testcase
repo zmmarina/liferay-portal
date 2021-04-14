@@ -172,161 +172,165 @@ definition {
 	@priority = "3"
 	test CreateProductBundleWithPriceTypeStatic {
 		property portal.acceptance = "false";
+
 		CommerceNavigator.gotoPortlet(
-            category = "Product Management",
-            portlet = "Options");
-        
+			category = "Product Management",
+			portlet = "Options");
+
 		CPCommerceCatalog.newOptionsEntry(
-            optionDescription = "Option Description",
-            optionFieldType = "Select from List",
-            optionName = "Color");
-        
+			optionDescription = "Option Description",
+			optionFieldType = "Select from List",
+			optionName = "Color");
+
 		Button.clickSave();
-        
+
 		Alert.viewSuccessMessage();
-        
+
 		Check.checkToggleSwitch(
-            key_toggleSwitchLabel = "Use in Faceted Navigation",
-            locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
-        
+			key_toggleSwitchLabel = "Use in Faceted Navigation",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
 		Check.checkToggleSwitch(
-            key_toggleSwitchLabel = "Required",
-            locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
-        
+			key_toggleSwitchLabel = "Required",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
 		Check.checkToggleSwitch(
-            key_toggleSwitchLabel = "SKU Contributor",
-            locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
-        
+			key_toggleSwitchLabel = "SKU Contributor",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
 		Button.clickSave();
-		
+
 		Click(locator1 = "Button#PLUS");
-		
+
 		SelectFrame(locator1 = "IFrame#MODAL_BODY");
-		
+
 		CommerceEntry.addOptionValue(
 			valueName = "Black",
 			valuePosition = "");
-		
+
 		Button.click(button = "Submit");
-		
+
 		SelectFrameTop();
-		
+
 		Button.clickSave();
-		
+
 		CommerceNavigator.gotoPortlet(
 			category = "Product Management",
 			portlet = "Products");
-		
+
 		CPCommerceCatalog.newProductsEntry(
 			productCatalog = "Master",
 			productName = "Shoes",
 			productType = "Simple");
-		
+
 		CommerceEntry.gotoMenuTab(menuTab = "SKUs");
-		
+
 		Click(locator1 = "Button#PLUS");
-		
+
 		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
-		
-		Type( 	
-			key_fieldLabel="SKU",
-			value1="SHOESSKU", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
+
+		Type(
+			key_fieldLabel = "SKU",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "SHOESSKU");
+
 		Check.checkToggleSwitch(
-            key_toggleSwitchLabel = "Purchasable",
-            locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
-		
-		Type( 	
-			key_fieldLabel="Base Price",
-			value1="50.0", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
+			key_toggleSwitchLabel = "Purchasable",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
+		Type(
+			key_fieldLabel = "Base Price",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "50.0");
+
 		Button.clickPublish();
-		
+
 		Refresh();
-		
+
 		Click(locator1 = "Icon#BACK");
-		
+
 		CPCommerceCatalog.newProductsEntry(
 			productCatalog = "Master",
 			productName = "Simple T-Shirt",
 			productType = "Simple");
-		
+
 		CommerceEntry.gotoMenuTab(menuTab = "Options");
-		
+
 		Type(
-				key_title = "Add Options",
-				locator1 = "CommerceEntry#ADD_RELATION_FIELD",
-				value1 = "Color");
-		
+			key_title = "Add Options",
+			locator1 = "CommerceEntry#ADD_RELATION_FIELD",
+			value1 = "Color");
+
 		Button.click(button = "Select");
-		
+
 		CommerceEntry.gotoMenuTab(menuTab = "SKUs");
-		
+
 		Click(locator1 = "Button#PLUS");
-		
-		Click(locator1 = "FormViewBuilder#OBJECT_FIELD_BUTTON_DROPDOWN",
-			key_fieldName = "Add SKU");
-		
+
+		Click(
+			key_fieldName = "Add SKU",
+			locator1 = "FormViewBuilder#OBJECT_FIELD_BUTTON_DROPDOWN");
+
 		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
-		
-		Type( 	
-			key_fieldLabel="SKU",
-			value1="BLACKSKU", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
+
+		Type(
+			key_fieldLabel = "SKU",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "BLACKSKU");
+
 		Click(locator1 = "Dropdown#TRIGGER");
-		
-		Click(locator1 = "FormViewBuilder#OBJECT_FIELD_BUTTON_DROPDOWN",
-			key_fieldName = "Black");
-		
+
+		Click(
+			key_fieldName = "Black",
+			locator1 = "FormViewBuilder#OBJECT_FIELD_BUTTON_DROPDOWN");
+
 		Check.checkToggleSwitch(
-            key_toggleSwitchLabel = "Purchasable",
-            locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
-		
-		Type( 	
-			key_fieldLabel="Base Price",
-			value1="10.0", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
+			key_toggleSwitchLabel = "Purchasable",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
+		Type(
+			key_fieldLabel = "Base Price",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "10.0");
+
 		Button.click(button = "Publish");
-		
+
 		Refresh();
-		
+
 		CommerceEntry.gotoMenuTab(menuTab = "Options");
-		
-		Click(key_index = "Color",
+
+		Click(
+			key_index = "Color",
 			locator1 = "WorkflowMetrics#SEARCH_FIELD_MAPPINGS_METRICS_INDEXES");
-		
+
 		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
-		
+
 		Select(
 			key_fieldLabel = "Price Type",
 			locator1 = "Select#GENERIC_SELECT_FIELD",
 			value1 = "Static");
-		
+
 		Button.clickSave();
-		
+
 		Alert.viewSuccessMessage();
-		
-		Click(key_index = "Black",
+
+		Click(
+			key_index = "Black",
 			locator1 = "WorkflowMetrics#SEARCH_FIELD_MAPPINGS_METRICS_INDEXES");
-		
-		Type( 	
-			key_fieldLabel="Delta Price",
-			value1="60.0", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
-		Type( 	
-			key_fieldLabel="SKU",
-			value1="SHOESSKU", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-		
+
+		Type(
+			key_fieldLabel = "Delta Price",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "60.0");
+
+		Type(
+			key_fieldLabel = "SKU",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "SHOESSKU");
+
 		Button.clickSave();
 
 		Alert.viewSuccessMessage();
-
 	}
 
 	@description = "This is a test for COMMERCE-5808. EditAProduct"
