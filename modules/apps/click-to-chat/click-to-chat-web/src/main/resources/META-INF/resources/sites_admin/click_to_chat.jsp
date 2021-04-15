@@ -104,14 +104,15 @@
 </div>
 
 <script>
-	function <portlet:namespace />hideContainers() {
+	function <portlet:namespace />hideUnselectedClickToChatProviderLearnMessages() {
 		var clickToChatProviderIdOptions = clickToChatChatProviderId.querySelectorAll(
 			'option'
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
 			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
-				option.value
+				option.value,
+				false
 			);
 		});
 	}
@@ -134,7 +135,7 @@
 	}
 
 	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
-		<portlet:namespace />hideContainers();
+		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
 
 		<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 			event.target.value,
