@@ -1391,14 +1391,14 @@ AUI.add(
 
 					var selector = 'a';
 
-					if (displayStyle === STR_LIST) {
+					if (displayStyle === CSS_ICON) {
+						selector = SELECTOR_ENTRY_LINK;
+					}
+					else if (displayStyle === STR_LIST) {
 						selector =
 							SELECTOR_ENTRY_DISPLAY_STYLE +
 							STR_SPACE +
 							SELECTOR_TAGLIB_ICON;
-					}
-					else if (displayStyle === CSS_ICON) {
-						selector = SELECTOR_ENTRY_LINK;
 					}
 
 					var link = node.all(selector);
