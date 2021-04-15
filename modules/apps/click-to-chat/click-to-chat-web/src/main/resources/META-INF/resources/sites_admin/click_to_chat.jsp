@@ -110,7 +110,7 @@
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatProviderIdHelp(option.value);
+			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(option.value);
 		});
 	}
 
@@ -134,13 +134,13 @@
 	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
 		<portlet:namespace />hideContainers();
 
-		<portlet:namespace />setVisibleClickToChatProviderIdHelp(
+		<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 			event.target.value,
 			true
 		);
 	}
 
-	function <portlet:namespace />setVisibleClickToChatProviderIdHelp(
+	function <portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 		providerAccountId,
 		visible
 	) {
@@ -179,7 +179,7 @@
 		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, true);
 	}
 
-	<portlet:namespace />setVisibleClickToChatProviderIdHelp(
+	<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
 		true
 	);
