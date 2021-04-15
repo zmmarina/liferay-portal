@@ -85,7 +85,7 @@ String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickTo
 			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_PROVIDER_IDS) {
 			%>
 
-				<div class="mb-2 hide chat-provider-link chat-provider-link-to-<%= curClickToChatProviderId %>">
+				<div class="chat-provider-link chat-provider-link-to-<%= curClickToChatProviderId %> hide mb-2">
 					<liferay-learn:message
 						key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
 						resource="click-to-chat-web"
