@@ -7,7 +7,7 @@
 	<description/>
 	<groupId>com.liferay</groupId>
 	<artifactId>com.liferay.source.formatter</artifactId>
-	<version>1.0.1101</version>
+	<version>1.0.1102</version>
 	<goalPrefix>source-formatter</goalPrefix>
 	<mojos>
 		<mojo>
@@ -40,6 +40,20 @@
 					<description/>
 				</parameter>
 				<parameter>
+					<name>checkCategoryNames</name>
+					<type>java.util.List</type>
+					<required>false</required>
+					<editable>true</editable>
+					<description/>
+				</parameter>
+				<parameter>
+					<name>checkNames</name>
+					<type>java.util.List</type>
+					<required>false</required>
+					<editable>true</editable>
+					<description/>
+				</parameter>
+				<parameter>
 					<name>failOnAutoFix</name>
 					<type>boolean</type>
 					<required>false</required>
@@ -49,6 +63,13 @@
 				<parameter>
 					<name>failOnHasWarning</name>
 					<type>boolean</type>
+					<required>false</required>
+					<editable>true</editable>
+					<description/>
+				</parameter>
+				<parameter>
+					<name>fileExtensions</name>
+					<type>java.util.List</type>
 					<required>false</required>
 					<editable>true</editable>
 					<description/>
