@@ -104,28 +104,6 @@
 </div>
 
 <script>
-	var clickToChatChatProviderAccountId = document.getElementById(
-		'<portlet:namespace />clickToChatChatProviderAccountId'
-	);
-
-	var clickToChatChatProviderId = document.getElementById(
-		'<portlet:namespace />clickToChatChatProviderId'
-	);
-
-	var clickToChatEnabled = document.getElementById(
-		'<portlet:namespace />clickToChatEnabled'
-	);
-
-	var clickToChatGuestUsersAllowed = document.getElementById(
-		'<portlet:namespace />clickToChatGuestUsersAllowed'
-	);
-
-	if (<%= disabled %> || !clickToChatEnabled.checked) {
-		Liferay.Util.toggleDisabled(clickToChatChatProviderAccountId, true);
-		Liferay.Util.toggleDisabled(clickToChatChatProviderId, true);
-		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, true);
-	}
-
 	function <portlet:namespace />hideContainers() {
 		var clickToChatProviderIdOptions = clickToChatChatProviderId.querySelectorAll(
 			'option'
@@ -177,6 +155,28 @@
 			event.target.value,
 			true
 		);
+	}
+
+	var clickToChatChatProviderAccountId = document.getElementById(
+		'<portlet:namespace />clickToChatChatProviderAccountId'
+	);
+
+	var clickToChatChatProviderId = document.getElementById(
+		'<portlet:namespace />clickToChatChatProviderId'
+	);
+
+	var clickToChatEnabled = document.getElementById(
+		'<portlet:namespace />clickToChatEnabled'
+	);
+
+	var clickToChatGuestUsersAllowed = document.getElementById(
+		'<portlet:namespace />clickToChatGuestUsersAllowed'
+	);
+
+	if (<%= disabled %> || !clickToChatEnabled.checked) {
+		Liferay.Util.toggleDisabled(clickToChatChatProviderAccountId, true);
+		Liferay.Util.toggleDisabled(clickToChatChatProviderId, true);
+		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, true);
 	}
 
 	<portlet:namespace />setVisibleClickToChatProviderIdHelp(
