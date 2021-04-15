@@ -81,15 +81,16 @@ String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickTo
 	<div class="col-md-6">
 		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
 
-			<% for (String curClickToChatProviderId :
-			ClickToChatConstants.CLICK_TO_CHAT_PROVIDER_IDS) { %>
+			<%
+			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_PROVIDER_IDS) {
+			%>
 
-			<div class="<%= "mb-2 hide chat-provider-link chat-provider-link-to-" + curClickToChatProviderId %>">
-				<liferay-learn:message
-					key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
-					resource="click-to-chat-web"
-				/>
-			</div>
+				<div class="<%= "mb-2 hide chat-provider-link chat-provider-link-to-" + curClickToChatProviderId %>">
+					<liferay-learn:message
+						key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
+						resource="click-to-chat-web"
+					/>
+				</div>
 
 			<%
 			}
