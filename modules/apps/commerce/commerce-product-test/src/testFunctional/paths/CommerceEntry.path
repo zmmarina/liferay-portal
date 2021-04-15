@@ -493,6 +493,12 @@
 	<td>//h4[contains(.,'Images')]//..//button[contains(@class,'btn-primary')]</td>
 	<td></td>
 </tr>
+<!--ATTACHMENT-->
+<tr>
+	<td>ATTACHMENT_PLUS_BUTTON</td>
+	<td>//h4[contains(.,'Attachments')]//..//button[contains(@class,'btn-primary')]</td>
+	<td></td>
+</tr>
 <!--PRODUCT-->
 <tr>
 	<td>ANY_AUTOCOMPLETE_TEXT_FIELD</td>

@@ -38,12 +38,22 @@ definition {
 	}
 
 	@description = "This is a test for COMMERCE-6030. AddAnAttachment"
-	@ignore = "true"
 	@priority = "3"
 	test AddAnAttachment {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6030 AddAnAttachment
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Products");
+
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
+			productName = "Simple T-Shirt",
+			productType = "Simple");
+
+		CommerceEntry.gotoMenuTab(menuTab = "Media");
+
+		CommerceProductImages.addAttachmentImages(imageTitles = "Black");
 
 	}
 
