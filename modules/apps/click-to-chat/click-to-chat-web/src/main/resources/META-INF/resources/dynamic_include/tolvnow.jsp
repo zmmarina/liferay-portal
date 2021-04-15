@@ -20,6 +20,7 @@
 
 <script type="text/javascript">
 	var _tn = _tn || [];
+
 	_tn.push(['account', '<%= clickToChatChatProviderAccountId %>']);
 	_tn.push(['action', 'track-view']);
 
