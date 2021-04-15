@@ -80,8 +80,8 @@ export const TRACK_DEFAULT_OPTIONS = {
 	applicationId: 'CustomEvent',
 };
 
-//Validation
+// Validation
 
-export const VALIDATION_MAXIMUM_LENGTH_DEFAULT = 255;
+export const VALIDATION_PROPERTY_NAME_MAXIMUM_LENGTH = 255;
 
-export const VALIDATION_MAXIMUM_PROPERTY_VALUE_LENGTH = 1024;
+export const VALIDATION_PROPERTY_VALUE_MAXIMUM_LENGTH = 1024;

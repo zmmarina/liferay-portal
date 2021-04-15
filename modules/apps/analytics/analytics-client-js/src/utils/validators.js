@@ -13,8 +13,8 @@
  */
 
 import {
-	VALIDATION_MAXIMUM_LENGTH_DEFAULT,
-	VALIDATION_MAXIMUM_PROPERTY_VALUE_LENGTH,
+	VALIDATION_PROPERTY_NAME_MAXIMUM_LENGTH,
+	VALIDATION_PROPERTY_VALUE_MAXIMUM_LENGTH,
 } from './constants';
 
 const isValidEvent = ({eventId, eventProps}) => {
@@ -27,7 +27,7 @@ const isValidEvent = ({eventId, eventProps}) => {
 		validateMaxLength(),
 	]);
 	const validationsValue = _validate([
-		validateMaxLength(VALIDATION_MAXIMUM_PROPERTY_VALUE_LENGTH),
+		validateMaxLength(VALIDATION_PROPERTY_VALUE_MAXIMUM_LENGTH),
 	]);
 	let errors = [];
 
@@ -59,9 +59,9 @@ const validateEmptyString = (labelField) => (str) => {
 	return error;
 };
 
-const validateMaxLength = (maxAllowed = VALIDATION_MAXIMUM_LENGTH_DEFAULT) => (
-	str
-) => {
+const validateMaxLength = (
+	maxAllowed = VALIDATION_PROPERTY_NAME_MAXIMUM_LENGTH
+) => (str) => {
 	let error = '';
 
 	if (String(str).length > maxAllowed) {
