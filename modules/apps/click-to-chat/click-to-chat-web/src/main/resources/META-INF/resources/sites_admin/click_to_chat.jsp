@@ -89,7 +89,7 @@
 		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 		%>
 
-			<div class="hide mb-2" id="<portlet:namespace />clickToChatProviderLearnMessage<%=  curClickToChatProviderId %>">
+			<div class="hide mb-2" id="<portlet:namespace />clickToChatProviderLearnMessage<%= curClickToChatProviderId %>">
 				<liferay-learn:message
 					key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
 					resource="click-to-chat-web"
@@ -110,7 +110,9 @@
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(option.value);
+			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+				option.value
+			);
 		});
 	}
 
@@ -145,7 +147,8 @@
 		visible
 	) {
 		var clickToChatProviderLearnMessage = document.getElementById(
-			'<portlet:namespace />clickToChatProviderLearnMessage' + clickToChatChatProviderAccountId
+			'<portlet:namespace />clickToChatProviderLearnMessage' +
+				clickToChatChatProviderAccountId
 		);
 
 		if (clickToChatProviderLearnMessage) {
