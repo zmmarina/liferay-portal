@@ -54,7 +54,6 @@ definition {
 		CommerceEntry.gotoMenuTab(menuTab = "Media");
 
 		CommerceProductImages.addAttachmentImages(imageTitles = "Black");
-
 	}
 
 	@description = "This is a test for COMMERCE-6032. AddAnAttachmentToAnOption"
@@ -64,6 +63,7 @@ definition {
 		property portal.acceptance = "false";
 
 		// TODO COMMERCE-6032 AddAnAttachmentToAnOption
+
 	}
 
 	@description = "This is a test for COMMERCE-6025. AddAnImage"

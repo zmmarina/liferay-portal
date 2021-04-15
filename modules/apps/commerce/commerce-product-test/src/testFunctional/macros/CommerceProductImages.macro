@@ -1,69 +1,69 @@
 definition {
 
 	macro addAttachmentImages {
-        for (var imageTitle : list "${imageTitles}") {
-            echo("imageTitle is equal to ${imageTitle}");
+		for (var imageTitle : list "${imageTitles}") {
+			echo("imageTitle is equal to ${imageTitle}");
 
-            var image = StringUtil.extractFirst("${imageTitle}", ":");
+			var image = StringUtil.extractFirst("${imageTitle}", ":");
 
-            var number = StringUtil.extractLast("${imageTitle}", ":");
+			var number = StringUtil.extractLast("${imageTitle}", ":");
 
-            var count = "0";
+			var count = "0";
 
-            if ("${image}" == "") {
-                image = "${imageTitle}";
-            }
+			if ("${image}" == "") {
+				image = "${imageTitle}";
+			}
 
-            var uploadFileName = "Commerce_${image}.jpg";
+			var uploadFileName = "Commerce_${image}.jpg";
 
-            Refresh();
+			Refresh();
 
-            Click(locator1 = "CommerceEntry#ATTACHMENT_PLUS_BUTTON");
+			Click(locator1 = "CommerceEntry#ATTACHMENT_PLUS_BUTTON");
 
-            SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
+			SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
 
-            Click(locator1 = "Button#SELECT_FILE");
+			Click(locator1 = "Button#SELECT_FILE");
 
-            SelectFrameTop();
+			SelectFrameTop();
 
-            CommerceItemSelector.uploadSingleFile(uploadFileName = "${uploadFileName}");
+			CommerceItemSelector.uploadSingleFile(uploadFileName = "${uploadFileName}");
 
-            SelectFrameTop();
+			SelectFrameTop();
 
-            Button.clickAdd();
+			Button.clickAdd();
 
-            if (isSet(optionValues)) {
-                var optionValue = StringUtil.extractFirst("${optionValues}", ",");
+			if (isSet(optionValues)) {
+				var optionValue = StringUtil.extractFirst("${optionValues}", ",");
 
-                if ("${optionValue}" == "") {
-                    optionValue = "${optionValues}";
-                }
+				if ("${optionValue}" == "") {
+					optionValue = "${optionValues}";
+				}
 
-                CommerceEntry.selectAssociatedOptionsValue(optionValue = "${optionValue}");
+				CommerceEntry.selectAssociatedOptionsValue(optionValue = "${optionValue}");
 
-                var optionValues = StringUtil.replaceFirst("${optionValues}", "${optionValue},", "");
-            }
+				var optionValues = StringUtil.replaceFirst("${optionValues}", "${optionValue},", "");
+			}
 
-            SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
+			SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
 
-            CommerceEntry.publishProductImage();
+			CommerceEntry.publishProductImage();
 
-            Click(locator1 = "Icon#CLOSE");
+			Click(locator1 = "Icon#CLOSE");
 
-            Refresh();
+			Refresh();
 
-            if (isSet(validationImage)) {
-                CommerceEntry.checkImageName(
-                    image = "${image}",
-                    number = "${number}",
-                    uploadFileName = "${uploadFileName}");
-            }
-        }
+			if (isSet(validationImage)) {
+				CommerceEntry.checkImageName(
+					image = "${image}",
+					number = "${number}",
+					uploadFileName = "${uploadFileName}");
+			}
+		}
 
-        Refresh();
-    }
+		Refresh();
+	}
 
-    macro addProductImages {
+	macro addProductImages {
 		for (var imageTitle : list "${imageTitles}") {
 			echo("imageTitle is equal to ${imageTitle}");
 
