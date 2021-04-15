@@ -53,12 +53,13 @@
 	</div>
 </div>
 
-<%
-String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID));
-%>
-
 <div class="row">
 	<div class="col-md-6">
+
+		<%
+		String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID));
+		%>
+
 		<aui:select label="chat-provider" name="TypeSettingsProperties--clickToChatProviderId--" onchange="onChangeProvider(event)" value="<%= clickToChatProviderId %>">
 			<aui:option label="" value="" />
 
