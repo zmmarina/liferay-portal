@@ -19,9 +19,6 @@ package com.liferay.click.to.chat.web.internal.constants;
  */
 public interface ClickToChatWebKeys {
 
-	public static final String CLICK_TO_CHAT_DISABLED =
-		"CLICK_TO_CHAT_DISABLED";
-
 	public static final String CLICK_TO_CHAT_ENABLED = "CLICK_TO_CHAT_ENABLED";
 
 	public static final String CLICK_TO_CHAT_GUEST_USERS_ALLOWED =

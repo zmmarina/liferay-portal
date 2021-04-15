@@ -85,7 +85,6 @@ public class ClickToChatFormNavigatorEntry
 
 		String chatProviderAccountId = null;
 		String chatProviderId = null;
-		boolean disabled = false;
 		boolean enabled = false;
 		boolean guestUsersAllowed = false;
 
@@ -105,7 +104,6 @@ public class ClickToChatFormNavigatorEntry
 			chatProviderAccountId =
 				clickToChatConfiguration.chatProviderAccountId();
 			chatProviderId = clickToChatConfiguration.chatProviderId();
-			disabled = true;
 			enabled = clickToChatConfiguration.enabled();
 			guestUsersAllowed = clickToChatConfiguration.guestUsersAllowed();
 		}
@@ -149,8 +147,6 @@ public class ClickToChatFormNavigatorEntry
 					clickToChatConfiguration.guestUsersAllowed();
 		}
 
-		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_DISABLED, disabled);
 		httpServletRequest.setAttribute(
 			ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED, enabled);
 		httpServletRequest.setAttribute(
