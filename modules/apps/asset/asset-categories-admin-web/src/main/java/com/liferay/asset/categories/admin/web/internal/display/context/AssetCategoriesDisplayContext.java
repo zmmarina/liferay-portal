@@ -876,8 +876,8 @@ public class AssetCategoriesDisplayContext {
 			"/view.jsp"
 		).setRedirect(
 			currentURL.toString()
-		).setParameter(
-			"navigation", getNavigation()
+		).setNavigation(
+			getNavigation()
 		).build();
 
 		if (!isFlattenedNavigationAllowed()) {
