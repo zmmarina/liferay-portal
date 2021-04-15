@@ -16,7 +16,7 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script src="//code.tidio.co/<%= clickToChatProviderAccountId %>.js" async></script>
+<script src="//code.tidio.co/<%= clickToChatChatProviderAccountId %>.js" async></script>
 
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<script>

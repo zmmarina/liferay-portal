@@ -19,7 +19,7 @@
 <script type="text/javascript">
 	window.$crisp = [];
 
-	window.CRISP_WEBSITE_ID = '<%= clickToChatProviderAccountId %>';
+	window.CRISP_WEBSITE_ID = '<%= clickToChatChatProviderAccountId %>';
 
 	(function () {
 		d = document;

@@ -18,7 +18,7 @@
 
 <script type="text/javascript">
 	var _smartsupp = _smartsupp || {};
-	_smartsupp.key = '<%= clickToChatProviderAccountId %>';
+	_smartsupp.key = '<%= clickToChatChatProviderAccountId %>';
 	window.smartsupp ||
 		(function (d) {
 			var c,

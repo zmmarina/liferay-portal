@@ -25,7 +25,7 @@
 		s1.async = true;
 		s1.charset = 'UTF-8';
 		s1.setAttribute('crossorigin', '*');
-		s1.src = 'https://embed.tawk.to/<%= clickToChatProviderAccountId %>';
+		s1.src = 'https://embed.tawk.to/<%= clickToChatChatProviderAccountId %>';
 		s0.parentNode.insertBefore(s1, s0);
 	})();
 </script>

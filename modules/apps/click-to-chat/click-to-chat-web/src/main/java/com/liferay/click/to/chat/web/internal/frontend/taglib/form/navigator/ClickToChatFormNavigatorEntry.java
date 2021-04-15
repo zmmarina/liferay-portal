@@ -112,9 +112,9 @@ public class ClickToChatFormNavigatorEntry
 					"always-override")) {
 
 			chatProviderAccountId = typeSettingsUnicodeProperties.getProperty(
-				"clickToChatProviderAccountId");
+				"clickToChatChatProviderAccountId");
 			chatProviderId = typeSettingsUnicodeProperties.getProperty(
-				"clickToChatProviderId");
+				"clickToChatChatProviderId");
 			enabled = GetterUtil.getBoolean(
 				typeSettingsUnicodeProperties.getProperty(
 					"clickToChatEnabled"));
@@ -127,9 +127,9 @@ public class ClickToChatFormNavigatorEntry
 					"inherit-or-override")) {
 
 			chatProviderAccountId = typeSettingsUnicodeProperties.getProperty(
-				"clickToChatProviderAccountId");
+				"clickToChatChatProviderAccountId");
 			chatProviderId = typeSettingsUnicodeProperties.getProperty(
-				"clickToChatProviderId");
+				"clickToChatChatProviderId");
 
 			String clickToChatEnabled =
 				typeSettingsUnicodeProperties.getProperty("clickToChatEnabled");

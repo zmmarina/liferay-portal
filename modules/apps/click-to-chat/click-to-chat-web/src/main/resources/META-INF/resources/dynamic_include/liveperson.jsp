@@ -81,7 +81,7 @@
 					scp: lpTag.scp || null,
 					sdes: lpTag.sdes || [],
 					section: lpTag.section || '',
-					site: '<%= clickToChatProviderAccountId %>' || '',
+					site: '<%= clickToChatChatProviderAccountId %>' || '',
 					start: function () {
 						this.autoStart = !0;
 					},

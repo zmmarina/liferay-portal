@@ -57,10 +57,10 @@
 	<div class="col-md-6">
 
 		<%
-		String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID));
+		String clickToChatChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID));
 		%>
 
-		<aui:select label="chat-provider" name="TypeSettingsProperties--clickToChatProviderId--" onchange="onChangeProvider(event)" value="<%= clickToChatProviderId %>">
+		<aui:select label="chat-provider" name="TypeSettingsProperties--clickToChatChatProviderId--" onchange="onChangeProvider(event)" value="<%= clickToChatChatProviderId %>">
 			<aui:option label="" value="" />
 
 			<%
@@ -83,7 +83,7 @@
 	</div>
 
 	<div class="col-md-6">
-		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
+		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
 
 		<%
 		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
@@ -108,12 +108,12 @@
 		'<portlet:namespace />clickToChatEnabled'
 	);
 
-	var clickToChatProviderId = document.getElementById(
-		'<portlet:namespace />clickToChatProviderId'
+	var clickToChatChatProviderId = document.getElementById(
+		'<portlet:namespace />clickToChatChatProviderId'
 	);
 
 	var chatProviderAccountId = document.getElementById(
-		'<portlet:namespace />clickToChatProviderAccountId'
+		'<portlet:namespace />clickToChatChatProviderAccountId'
 	);
 
 	var clickToChatGuestUsersAllowed = document.getElementById(
@@ -121,7 +121,7 @@
 	);
 
 	if (<%= disabled %> || !clickToChatEnabled.checked) {
-		Liferay.Util.toggleDisabled(clickToChatProviderId, true);
+		Liferay.Util.toggleDisabled(clickToChatChatProviderId, true);
 		Liferay.Util.toggleDisabled(chatProviderAccountId, true);
 		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, true);
 	}
@@ -146,7 +146,7 @@
 		);
 
 		Liferay.Util.toggleDisabled(
-			clickToChatProviderId,
+			clickToChatChatProviderId,
 			!clickToChatEnabled.checked
 		);
 	}
@@ -165,5 +165,5 @@
 		}
 	}
 
-	showContainer('<%= clickToChatProviderId %>');
+	showContainer('<%= clickToChatChatProviderId %>');
 </script>

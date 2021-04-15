@@ -16,7 +16,7 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script async src="//code.jivosite.com/widget/<%= clickToChatProviderAccountId %>"></script>
+<script async src="//code.jivosite.com/widget/<%= clickToChatChatProviderAccountId %>"></script>
 
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<script>

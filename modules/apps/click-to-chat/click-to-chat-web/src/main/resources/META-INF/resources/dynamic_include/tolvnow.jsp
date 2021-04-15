@@ -16,11 +16,11 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script src="//code.tidio.co/<%= clickToChatProviderAccountId %>.js" async></script>
+<script src="//code.tidio.co/<%= clickToChatChatProviderAccountId %>.js" async></script>
 
 <script type="text/javascript">
 	var _tn = _tn || [];
-	_tn.push(['account', '<%= clickToChatProviderAccountId %>']);
+	_tn.push(['account', '<%= clickToChatChatProviderAccountId %>']);
 	_tn.push(['action', 'track-view']);
 
 	<c:if test="<%= themeDisplay.isSignedIn() %>">

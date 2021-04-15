@@ -18,7 +18,7 @@
 
 <script>
 	window.__lc = window.__lc || {};
-	window.__lc.license = '<%= clickToChatProviderAccountId %>';
+	window.__lc.license = '<%= clickToChatChatProviderAccountId %>';
 	(function (n, t, c) {
 		function i(n) {
 			return e._h ? e._h.apply(null, n) : e._q.push(n);

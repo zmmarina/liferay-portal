@@ -17,6 +17,6 @@
 <%@ include file="/init.jsp" %>
 
 <%
-String clickToChatProviderAccountId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID);
-String clickToChatProviderId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID);
+String clickToChatChatProviderAccountId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID);
+String clickToChatChatProviderId = (String)request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID);
 %>

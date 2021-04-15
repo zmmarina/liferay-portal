@@ -30,7 +30,7 @@
 		g.onload = function () {
 			window.chatwootSDK.run({
 				baseUrl: BASE_URL,
-				websiteToken: '<%= clickToChatProviderAccountId %>',
+				websiteToken: '<%= clickToChatChatProviderAccountId %>',
 			});
 		};
 	})(document, 'script');

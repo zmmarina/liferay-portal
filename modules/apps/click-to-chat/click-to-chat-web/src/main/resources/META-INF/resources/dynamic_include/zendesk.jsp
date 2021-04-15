@@ -16,7 +16,7 @@
 
 <%@ include file="/dynamic_include/init.jsp" %>
 
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=<%= clickToChatProviderAccountId %>">
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=<%= clickToChatChatProviderAccountId %>">
 </script>
 
 <c:if test="<%= themeDisplay.isSignedIn() %>">

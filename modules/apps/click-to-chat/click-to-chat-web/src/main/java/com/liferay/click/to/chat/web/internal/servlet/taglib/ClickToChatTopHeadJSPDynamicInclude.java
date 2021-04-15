@@ -119,25 +119,25 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 				return;
 			}
 
-			String clickToChatProviderAccountId =
+			String clickToChatChatProviderAccountId =
 				typeSettingsUnicodeProperties.getProperty(
-					"clickToChatProviderAccountId");
-			String clickToChatProviderId =
+					"clickToChatChatProviderAccountId");
+			String clickToChatChatProviderId =
 				typeSettingsUnicodeProperties.getProperty(
-					"clickToChatProviderId");
+					"clickToChatChatProviderId");
 
-			if (Validator.isNull(clickToChatProviderAccountId) ||
-				Validator.isNull(clickToChatProviderId)) {
+			if (Validator.isNull(clickToChatChatProviderAccountId) ||
+				Validator.isNull(clickToChatChatProviderId)) {
 
 				return;
 			}
 
 			httpServletRequest.setAttribute(
 				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
-				clickToChatProviderAccountId);
+				clickToChatChatProviderAccountId);
 			httpServletRequest.setAttribute(
 				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID,
-				clickToChatProviderId);
+				clickToChatChatProviderId);
 		}
 		else if (Objects.equals(
 					clickToChatConfiguration.siteSettingsStrategy(),
@@ -179,27 +179,27 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 				}
 			}
 
-			String clickToChatProviderAccountId =
+			String clickToChatChatProviderAccountId =
 				typeSettingsUnicodeProperties.getProperty(
-					"clickToChatProviderAccountId",
+					"clickToChatChatProviderAccountId",
 					clickToChatConfiguration.chatProviderAccountId());
-			String clickToChatProviderId =
+			String clickToChatChatProviderId =
 				typeSettingsUnicodeProperties.getProperty(
-					"clickToChatProviderId",
+					"clickToChatChatProviderId",
 					clickToChatConfiguration.chatProviderId());
 
-			if (Validator.isNull(clickToChatProviderAccountId) ||
-				Validator.isNull(clickToChatProviderId)) {
+			if (Validator.isNull(clickToChatChatProviderAccountId) ||
+				Validator.isNull(clickToChatChatProviderId)) {
 
 				return;
 			}
 
 			httpServletRequest.setAttribute(
 				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
-				clickToChatProviderAccountId);
+				clickToChatChatProviderAccountId);
 			httpServletRequest.setAttribute(
 				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID,
-				clickToChatProviderId);
+				clickToChatChatProviderId);
 		}
 
 		super.include(httpServletRequest, httpServletResponse, key);
