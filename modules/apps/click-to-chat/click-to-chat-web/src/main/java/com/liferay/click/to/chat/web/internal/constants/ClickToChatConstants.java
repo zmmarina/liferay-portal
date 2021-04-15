@@ -19,7 +19,7 @@ package com.liferay.click.to.chat.web.internal.constants;
  */
 public interface ClickToChatConstants {
 
-	public static final String[] CLICK_TO_CHAT_PROVIDER_IDS = {
+	public static final String[] CLICK_TO_CHAT_CHAT_PROVIDER_IDS = {
 		"chatwoot", "crisp", "hubspot", "jivochat", "livechat", "liveperson",
 		"smartsupp", "tawkto", "tidio", "tolvnow", "zendesk"
 	};
