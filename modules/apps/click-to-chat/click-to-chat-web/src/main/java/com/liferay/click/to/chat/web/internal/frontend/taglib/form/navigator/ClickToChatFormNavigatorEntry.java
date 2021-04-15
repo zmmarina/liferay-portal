@@ -175,13 +175,6 @@ public class ClickToChatFormNavigatorEntry
 		return "/sites_admin/click_to_chat.jsp";
 	}
 
-	@Reference(unbind = "-")
-	protected void setConfigurationProvider(
-		ConfigurationProvider configurationProvider) {
-
-		_configurationProvider = configurationProvider;
-	}
-
 	private ClickToChatConfiguration _getClickToChatConfiguration(
 		long companyId) {
 
@@ -213,6 +206,7 @@ public class ClickToChatFormNavigatorEntry
 		return typeSettingsUnicodeProperties;
 	}
 
+	@Reference
 	private ConfigurationProvider _configurationProvider;
 
 }
