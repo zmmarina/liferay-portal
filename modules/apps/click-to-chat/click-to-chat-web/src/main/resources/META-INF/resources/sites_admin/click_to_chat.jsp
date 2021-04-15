@@ -57,14 +57,14 @@
 	<div class="col-md-6">
 
 		<%
-		String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID));
+		String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID));
 		%>
 
 		<aui:select label="chat-provider" name="TypeSettingsProperties--clickToChatProviderId--" onchange="onChangeProvider(event)" value="<%= clickToChatProviderId %>">
 			<aui:option label="" value="" />
 
 			<%
-			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_PROVIDER_IDS) {
+			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 			%>
 
 				<aui:option label='<%= "chat-provider-" + curClickToChatProviderId %>' value="<%= curClickToChatProviderId %>" />
@@ -83,10 +83,10 @@
 	</div>
 
 	<div class="col-md-6">
-		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
+		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
 
 		<%
-		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_PROVIDER_IDS) {
+		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 		%>
 
 			<div class="chat-provider-link chat-provider-link-to-<%= curClickToChatProviderId %> hide mb-2">

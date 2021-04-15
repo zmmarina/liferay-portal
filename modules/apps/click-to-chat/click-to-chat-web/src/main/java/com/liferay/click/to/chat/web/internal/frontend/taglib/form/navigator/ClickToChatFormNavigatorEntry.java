@@ -153,10 +153,10 @@ public class ClickToChatFormNavigatorEntry
 			ClickToChatWebKeys.CLICK_TO_CHAT_GUEST_USERS_ALLOWED,
 			guestUsersAllowed);
 		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+			ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
 			chatProviderAccountId);
 		httpServletRequest.setAttribute(
-			ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID, chatProviderId);
+			ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID, chatProviderId);
 
 		super.include(httpServletRequest, httpServletResponse);
 	}

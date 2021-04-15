@@ -91,10 +91,10 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 			}
 
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
 				clickToChatConfiguration.chatProviderAccountId());
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID,
 				clickToChatConfiguration.chatProviderId());
 		}
 		else if (Objects.equals(
@@ -133,10 +133,10 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 			}
 
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
 				clickToChatProviderAccountId);
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID,
 				clickToChatProviderId);
 		}
 		else if (Objects.equals(
@@ -195,10 +195,10 @@ public class ClickToChatTopHeadJSPDynamicInclude extends BaseJSPDynamicInclude {
 			}
 
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ACCOUNT_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID,
 				clickToChatProviderAccountId);
 			httpServletRequest.setAttribute(
-				ClickToChatWebKeys.CLICK_TO_CHAT_PROVIDER_ID,
+				ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ID,
 				clickToChatProviderId);
 		}
 
