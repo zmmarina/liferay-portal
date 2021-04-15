@@ -131,6 +131,15 @@
 		);
 	}
 
+	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
+		<portlet:namespace />hideContainers();
+
+		<portlet:namespace />setVisibleClickToChatProviderIdHelp(
+			event.target.value,
+			true
+		);
+	}
+
 	function <portlet:namespace />setVisibleClickToChatProviderIdHelp(
 		providerAccountId,
 		visible
@@ -146,15 +155,6 @@
 
 			clickToChatProviderLearnMessage.classList.add('hide');
 		}
-	}
-
-	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
-		<portlet:namespace />hideContainers();
-
-		<portlet:namespace />setVisibleClickToChatProviderIdHelp(
-			event.target.value,
-			true
-		);
 	}
 
 	var clickToChatChatProviderAccountId = document.getElementById(
