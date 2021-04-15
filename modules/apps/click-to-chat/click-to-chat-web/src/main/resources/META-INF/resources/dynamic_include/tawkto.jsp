@@ -23,15 +23,18 @@
 	(function () {
 		var s1 = document.createElement('script'),
 			s0 = document.getElementsByTagName('script')[0];
+
 		s1.async = true;
 		s1.charset = 'UTF-8';
 		s1.setAttribute('crossorigin', '*');
 		s1.src = 'https://embed.tawk.to/<%= clickToChatChatProviderAccountId %>';
+
 		s0.parentNode.insertBefore(s1, s0);
 	})();
 
 	<c:if test="<%= themeDisplay.isSignedIn() %>">
 		Tawk_API = Tawk_API || {};
+
 		Tawk_API.visitor = {
 			email: '<%= user.getEmailAddress() %>',
 			name: '<%= user.getScreenName() %>',

@@ -120,7 +120,9 @@
 			  }),
 			  lpTag.init())
 			: (window.lpTag._tagCount += 1);
+
 	lpTag.sdes = lpTag.sdes || [];
+
 	lpTag.sdes.push({
 		personal: {
 			contacts: [
@@ -133,6 +135,7 @@
 		},
 		type: 'personal',
 	});
+
 	lpTag.sdes.push({
 		info: {
 			customerId: '<%= user.getScreenName() %>',

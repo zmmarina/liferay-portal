@@ -24,6 +24,7 @@
 		function i(n) {
 			return e._h ? e._h.apply(null, n) : e._q.push(n);
 		}
+
 		var e = {
 			_h: null,
 			_q: [],
@@ -55,6 +56,7 @@
 				i(['once', c.call(arguments)]);
 			},
 		};
+
 		!n.__lc.asyncInit && e.init(), (n.LiveChatWidget = n.LiveChatWidget || e);
 	})(window, document, [].slice);
 

@@ -18,7 +18,9 @@
 
 <script type="text/javascript">
 	var _smartsupp = _smartsupp || {};
+
 	_smartsupp.key = '<%= clickToChatChatProviderAccountId %>';
+
 	window.smartsupp ||
 		(function (d) {
 			var c,
@@ -26,13 +28,18 @@
 				o = (smartsupp = function () {
 					o._.push(arguments);
 				});
+
 			o._ = [];
+
 			c = d.createElement('script');
+
 			c.async = true;
 			c.charset = 'utf-8';
 			c.src = 'https://www.smartsuppchat.com/loader.js?';
 			c.type = 'text/javascript';
+
 			s = d.getElementsByTagName('script')[0];
+
 			s.parentNode.insertBefore(c, s);
 		})(document);
 
