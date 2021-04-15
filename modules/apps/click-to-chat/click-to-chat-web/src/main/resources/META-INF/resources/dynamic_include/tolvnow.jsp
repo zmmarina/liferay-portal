@@ -25,8 +25,8 @@
 	_tn.push(['action', 'track-view']);
 
 	<c:if test="<%= themeDisplay.isSignedIn() %>">
-		_tn.push(['_setName', '<%= user.getScreenName() %>']);
 		_tn.push(['_setEmail', '<%= user.getEmailAddress() %>']);
+		_tn.push(['_setName', '<%= user.getScreenName() %>']);
 	</c:if>
 
 	(function () {
