@@ -160,7 +160,7 @@ String clickToChatProviderId = GetterUtil.getString(request.getAttribute(ClickTo
 		}
 	}
 
-	var currentProviderId = '<%=clickToChatProviderId%>';
+	var currentProviderId = '<%= clickToChatProviderId %>';
 
 	showContainer(currentProviderId);
 </script>
