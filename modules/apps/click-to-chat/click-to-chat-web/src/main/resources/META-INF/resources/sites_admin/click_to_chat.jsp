@@ -141,11 +141,11 @@
 	}
 
 	function <portlet:namespace />setVisibleClickToChatProviderLearnMessage(
-		providerAccountId,
+		clickToChatChatProviderAccountId,
 		visible
 	) {
 		var clickToChatProviderLearnMessage = document.getElementById(
-			'<portlet:namespace />clickToChatProviderLearnMessage' + providerAccountId
+			'<portlet:namespace />clickToChatProviderLearnMessage' + clickToChatChatProviderAccountId
 		);
 
 		if (clickToChatProviderLearnMessage) {
