@@ -49,7 +49,7 @@
 		}
 		%>
 
-		<aui:input checked="<%= clickToChatEnabled %>" disabled="<%= disabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="TypeSettingsProperties--clickToChatEnabled--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeEnableClickToChat(event);" %>' type="toggle-switch" value="<%= clickToChatEnabled %>" />
+		<aui:input checked="<%= clickToChatEnabled %>" disabled="<%= disabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="TypeSettingsProperties--clickToChatEnabled--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatEnabled(event);" %>' type="toggle-switch" value="<%= clickToChatEnabled %>" />
 	</div>
 </div>
 
@@ -114,7 +114,7 @@
 		});
 	}
 
-	function <portlet:namespace />onChangeEnableClickToChat() {
+	function <portlet:namespace />onChangeClickToChatEnabled() {
 		Liferay.Util.toggleDisabled(
 			clickToChatChatProviderAccountId,
 			!clickToChatEnabled.checked
