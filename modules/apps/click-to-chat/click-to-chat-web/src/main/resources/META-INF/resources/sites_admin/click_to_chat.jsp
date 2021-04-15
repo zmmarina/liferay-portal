@@ -21,7 +21,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 boolean disabled = false;
 
-if (Objects.equals(clickToChatConfiguration.siteSettingsStrategy(), "always-inherit") || Validator.isNull(clickToChatConfiguration.siteSettingsStrategy())) {
+if (Objects.equals(clickToChatConfiguration.siteSettingsStrategy(), "always-inherit")) {
 	disabled = true;
 }
 
