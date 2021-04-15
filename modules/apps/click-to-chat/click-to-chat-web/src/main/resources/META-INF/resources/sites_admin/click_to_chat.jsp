@@ -16,18 +16,6 @@
 
 <%@ include file="/init.jsp" %>
 
-<%
-ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)request.getAttribute(ClickToChatConfiguration.class.getName());
-
-boolean disabled = false;
-
-if (Objects.equals(clickToChatConfiguration.siteSettingsStrategy(), "always-inherit")) {
-	disabled = true;
-}
-
-boolean clickToChatEnabled = GetterUtil.getBoolean(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED));
-%>
-
 <div class="form-group row">
 	<div class="col-md-12">
 		<label class="control-label">
@@ -36,6 +24,10 @@ boolean clickToChatEnabled = GetterUtil.getBoolean(request.getAttribute(ClickToC
 			<liferay-ui:icon-help message="site-settings-strategy-description" />
 		</label>
 	</div>
+
+	<%
+	ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)request.getAttribute(ClickToChatConfiguration.class.getName());
+	%>
 
 	<c:if test="<%= Validator.isNotNull(clickToChatConfiguration.siteSettingsStrategy()) %>">
 		<div class="col-md-12">
@@ -46,6 +38,17 @@ boolean clickToChatEnabled = GetterUtil.getBoolean(request.getAttribute(ClickToC
 
 <div class="row">
 	<div class="col-md-12">
+
+		<%
+		boolean clickToChatEnabled = GetterUtil.getBoolean(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_ENABLED));
+
+		boolean disabled = false;
+
+		if (Objects.equals(clickToChatConfiguration.siteSettingsStrategy(), "always-inherit")) {
+			disabled = true;
+		}
+		%>
+
 		<aui:input checked="<%= clickToChatEnabled %>" disabled="<%= disabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="TypeSettingsProperties--clickToChatEnabled--" onchange="onChangeEnableClickToChat(event)" type="toggle-switch" value="<%= clickToChatEnabled %>" />
 	</div>
 </div>
