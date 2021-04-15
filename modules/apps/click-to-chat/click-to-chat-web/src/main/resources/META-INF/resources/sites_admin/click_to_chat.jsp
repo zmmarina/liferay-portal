@@ -104,16 +104,16 @@
 </div>
 
 <script>
-	var clickToChatEnabled = document.getElementById(
-		'<portlet:namespace />clickToChatEnabled'
+	var clickToChatChatProviderAccountId = document.getElementById(
+		'<portlet:namespace />clickToChatChatProviderAccountId'
 	);
 
 	var clickToChatChatProviderId = document.getElementById(
 		'<portlet:namespace />clickToChatChatProviderId'
 	);
 
-	var clickToChatChatProviderAccountId = document.getElementById(
-		'<portlet:namespace />clickToChatChatProviderAccountId'
+	var clickToChatEnabled = document.getElementById(
+		'<portlet:namespace />clickToChatEnabled'
 	);
 
 	var clickToChatGuestUsersAllowed = document.getElementById(
@@ -121,8 +121,8 @@
 	);
 
 	if (<%= disabled %> || !clickToChatEnabled.checked) {
-		Liferay.Util.toggleDisabled(clickToChatChatProviderId, true);
 		Liferay.Util.toggleDisabled(clickToChatChatProviderAccountId, true);
+		Liferay.Util.toggleDisabled(clickToChatChatProviderId, true);
 		Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowed, true);
 	}
 
@@ -143,12 +143,12 @@
 		);
 
 		Liferay.Util.toggleDisabled(
-			clickToChatGuestUsersAllowed,
+			clickToChatChatProviderId,
 			!clickToChatEnabled.checked
 		);
 
 		Liferay.Util.toggleDisabled(
-			clickToChatChatProviderId,
+			clickToChatGuestUsersAllowed,
 			!clickToChatEnabled.checked
 		);
 	}
