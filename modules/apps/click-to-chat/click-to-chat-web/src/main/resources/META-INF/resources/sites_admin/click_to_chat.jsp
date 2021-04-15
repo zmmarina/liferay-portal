@@ -139,10 +139,12 @@
 			chatProviderAccountId,
 			!clickToChatEnabled.checked
 		);
+
 		Liferay.Util.toggleDisabled(
 			clickToChatGuestUsersAllowed,
 			!clickToChatEnabled.checked
 		);
+
 		Liferay.Util.toggleDisabled(
 			clickToChatProviderId,
 			!clickToChatEnabled.checked
