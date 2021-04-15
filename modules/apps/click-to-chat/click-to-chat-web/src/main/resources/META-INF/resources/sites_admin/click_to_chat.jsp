@@ -89,7 +89,7 @@
 		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 		%>
 
-			<div class="hide mb-2" id="<%= liferayPortletResponse.getNamespace() + curClickToChatProviderId %>">
+			<div class="hide mb-2" id="<portlet:namespace /><%=  curClickToChatProviderId %>">
 				<liferay-learn:message
 					key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
 					resource="click-to-chat-web"
