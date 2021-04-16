@@ -603,6 +603,7 @@ definition {
 
 	@priority = "5"
 	test ImportLARsOnStagedSite {
+		property portal.acceptance = "true";
 		property testray.component.names = "Training";
 
 		LAR.importSiteCP(
