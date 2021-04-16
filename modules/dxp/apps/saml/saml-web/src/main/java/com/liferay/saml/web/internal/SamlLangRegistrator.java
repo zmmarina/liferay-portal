@@ -59,12 +59,10 @@ public class SamlLangRegistrator {
 
 	@Deactivate
 	protected void deactivate() {
-		if (_serviceRegistrations != null) {
-			for (ServiceRegistration<ResourceBundle> serviceRegistration :
-					_serviceRegistrations) {
+		for (ServiceRegistration<ResourceBundle> serviceRegistration :
+				_serviceRegistrations) {
 
-				serviceRegistration.unregister();
-			}
+			serviceRegistration.unregister();
 		}
 	}
 
