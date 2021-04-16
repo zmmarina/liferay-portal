@@ -322,7 +322,7 @@ public abstract class BasePortalWorkspace
 
 	private static final Pattern _portalBatchNamePattern = Pattern.compile(
 		".*-(?<databaseName>(?<databaseType>db2|mariadb|mysql|oracle|" +
-			"postgresql|sybase)\\d+)(-.*|$)");
+			"postgresql|sqlserver|sybase)\\d+)(-.*|$)");
 	private static final Pattern _portalGitHubURLPattern = Pattern.compile(
 		"https://github.com/[^/]+/(?<gitRepositoryName>" +
 			"liferay-portal(-ee)?)/.*");
