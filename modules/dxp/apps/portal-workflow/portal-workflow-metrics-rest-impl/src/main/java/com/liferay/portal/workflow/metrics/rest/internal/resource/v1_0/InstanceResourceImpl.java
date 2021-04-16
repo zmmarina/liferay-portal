@@ -1033,15 +1033,15 @@ public class InstanceResourceImpl extends BaseInstanceResourceImpl {
 			Long[]::new
 		);
 
+		searchSearchRequest.setIndexNames(
+			_slaInstanceResultWorkflowMetricsIndexNameBuilder.getIndexName(
+				contextCompany.getCompanyId()));
+
 		BooleanQuery booleanQuery = _createInstancesBooleanQuery(
 			new Long[0], new Long[0], null, null, null, instanceIds, processId,
 			new String[0], null, new String[0]);
 
 		searchSearchRequest.setQuery(booleanQuery);
-
-		searchSearchRequest.setIndexNames(
-			_slaInstanceResultWorkflowMetricsIndexNameBuilder.getIndexName(
-				contextCompany.getCompanyId()));
 
 		SearchSearchResponse searchSearchResponse =
 			_searchRequestExecutor.executeSearchRequest(searchSearchRequest);
