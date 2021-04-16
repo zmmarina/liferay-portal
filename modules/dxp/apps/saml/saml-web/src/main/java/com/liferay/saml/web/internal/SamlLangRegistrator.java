@@ -49,7 +49,7 @@ public class SamlLangRegistrator {
 					).build());
 
 			ResourceBundle resourceBundle =
-				_resourceBundleLoader.loadResourceBundle(locale);
+				_resourceBundleLoaderWeb.loadResourceBundle(locale);
 
 			ServiceRegistration<ResourceBundle> serviceRegistration =
 				bundleContext.registerService(
@@ -74,7 +74,7 @@ public class SamlLangRegistrator {
 		policyOption = ReferencePolicyOption.GREEDY,
 		target = "(bundle.symbolic.name=com.liferay.saml.web)"
 	)
-	private ResourceBundleLoader _resourceBundleLoader;
+	private ResourceBundleLoader _resourceBundleLoaderWeb;
 
 	@Reference(
 		policyOption = ReferencePolicyOption.GREEDY,
