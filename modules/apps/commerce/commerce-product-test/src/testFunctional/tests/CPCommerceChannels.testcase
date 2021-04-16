@@ -87,7 +87,8 @@ definition {
 
 		CommerceNavigator.gotoEntry(entryName = "Minium Portal");
 
-		Click(key_entryName = "Variable Rate",
+		Click(
+			key_entryName = "Variable Rate",
 			locator1 = "CommerceEntry#CHANNELS_GENERAL_TAB_EDITS");
 
 		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
@@ -106,15 +107,15 @@ definition {
 
 		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
 
-		Type( 	
-			key_fieldLabel="Name",
-			value1="Standard", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
-			
-		Type( 	
-			key_fieldLabel="Description",
-			value1="Standard Description", 
-			locator1="TextInput#GENERIC_TEXT_INPUT");
+		Type(
+			key_fieldLabel = "Name",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "Standard");
+
+		Type(
+			key_fieldLabel = "Description",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "Standard Description");
 
 		Button.clickSave();
 
