@@ -88,7 +88,6 @@ definition {
 			key_productName = "Shoes",
 			key_Value = "1",
 			locator1 = "CommerceEntry#VALUE_PRODUCT_RELATIONS");
-
 	}
 
 	@description = "This is a test for COMMERCE-6063. RemoveAProductRelations"
