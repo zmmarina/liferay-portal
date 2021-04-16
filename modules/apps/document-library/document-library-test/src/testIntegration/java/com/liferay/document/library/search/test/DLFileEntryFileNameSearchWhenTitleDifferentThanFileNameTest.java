@@ -87,8 +87,8 @@ public class DLFileEntryFileNameSearchWhenTitleDifferentThanFileNameTest {
 
 	@After
 	public void tearDown() throws Exception {
-		_userSearchFixture.tearDown();
 		_fileEntrySearchFixture.tearDown();
+		_userSearchFixture.tearDown();
 	}
 
 	@Test
