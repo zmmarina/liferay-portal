@@ -75,12 +75,50 @@ definition {
 	}
 
 	@description = "This is a test for COMMERCE-6110. AddShippingOptionVariableRate"
-	@ignore = "true"
 	@priority = "3"
 	test AddShippingOptionVariableRate {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6110 AddShippingOptionVariableRate
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+		CommerceNavigator.gotoPortlet(
+			category = "Store Management",
+			portlet = "Channels");
+
+		CommerceNavigator.gotoEntry(entryName = "Minium Portal");
+
+		Click(key_entryName = "Variable Rate",
+			locator1 = "CommerceEntry#CHANNELS_GENERAL_TAB_EDITS");
+
+		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
+
+		Check.checkToggleSwitch(
+			key_toggleSwitchLabel = "Active",
+			locator1 = "ToggleSwitch#ANY_TOGGLE_SWITCH");
+
+		Button.clickSave();
+
+		Alert.viewSuccessMessage();
+
+		CommerceEntry.gotoMenuTab(menuTab = "Shipping Options");
+
+		Click(locator1 = "Button#PLUS");
+
+		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
+
+		Type( 	
+			key_fieldLabel="Name",
+			value1="Standard", 
+			locator1="TextInput#GENERIC_TEXT_INPUT");
+			
+		Type( 	
+			key_fieldLabel="Description",
+			value1="Standard Description", 
+			locator1="TextInput#GENERIC_TEXT_INPUT");
+
+		Button.clickSave();
+
+		Alert.viewSuccessMessage();
 	}
 
 	@description = "This is a test for COMMERCE-6120. AddTaxRateSettingsByAddressTaxCalculation"

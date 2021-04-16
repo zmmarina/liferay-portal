@@ -389,6 +389,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CHANNELS_GENERAL_TAB_EDITS</td>
+	<td>//div[contains(text(),'${key_entryName}')]/following-sibling::div[contains(@class,'item-actions')]//a</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PAGINATION_RESULTS</td>
 	<td>//div[@class='pagination-results']</td>
 	<td></td>
