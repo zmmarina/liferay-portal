@@ -68,12 +68,6 @@ public class SamlLangRegistrator {
 
 	@Reference(
 		policyOption = ReferencePolicyOption.GREEDY,
-		target = "(bundle.symbolic.name=com.liferay.saml.web)"
-	)
-	private ResourceBundleLoader _resourceBundleLoaderWeb;
-
-	@Reference(
-		policyOption = ReferencePolicyOption.GREEDY,
 		target = "(bundle.symbolic.name=com.liferay.saml.api)"
 	)
 	private ResourceBundleLoader _resourceBundleLoaderAPI;
@@ -83,6 +77,12 @@ public class SamlLangRegistrator {
 		target = "(bundle.symbolic.name=com.liferay.saml.lang)"
 	)
 	private ResourceBundleLoader _resourceBundleLoaderLang;
+
+	@Reference(
+		policyOption = ReferencePolicyOption.GREEDY,
+		target = "(bundle.symbolic.name=com.liferay.saml.web)"
+	)
+	private ResourceBundleLoader _resourceBundleLoaderWeb;
 
 	private final List<ServiceRegistration<ResourceBundle>>
 		_serviceRegistrations = new ArrayList<>();
