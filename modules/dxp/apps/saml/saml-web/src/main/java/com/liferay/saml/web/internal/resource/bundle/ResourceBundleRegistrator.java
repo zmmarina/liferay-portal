@@ -12,7 +12,7 @@
  *
  */
 
-package com.liferay.saml.web.internal;
+package com.liferay.saml.web.internal.resource.bundle;
 
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.resource.bundle.ResourceBundleLoader;
@@ -37,7 +37,7 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
  * @author Marta Medio
  */
 @Component(immediate = true, service = {})
-public class SamlLangRegistrator {
+public class ResourceBundleRegistrator {
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
