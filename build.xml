@@ -231,6 +231,7 @@ message.
 		</parallel>
 
 		<ant dir="portal-impl" inheritAll="false" target="compile" />
+
 		<ant dir="portal-test" inheritAll="false" target="compile" />
 
 		<print-current-time />
@@ -271,8 +272,8 @@ message.
 		<ant dir="util-taglib" inheritAll="false" target="deploy" />
 
 		<ant dir="portal-impl" inheritAll="false" target="deploy" />
-		<ant dir="portal-test" inheritAll="false" target="deploy" />
 
+		<ant dir="portal-test" inheritAll="false" target="deploy" />
 		<ant dir="portal-web" inheritAll="false" target="deploy" />
 
 		<antcall target="install-portal-snapshots" />
