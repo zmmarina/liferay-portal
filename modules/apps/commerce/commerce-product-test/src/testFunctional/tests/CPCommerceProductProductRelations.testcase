@@ -48,12 +48,47 @@ definition {
 	}
 
 	@description = "This is a test for COMMERCE-6064. EditAProductRelations"
-	@ignore = "true"
 	@priority = "3"
 	test EditAProductRelations {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6064 EditAProductRelations
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Products");
+
+		Pause(locator1 = "3000");
+
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
+			productName = "Simple T-Shirt",
+			productType = "Simple");
+
+		Click(locator1 = "Icon#BACK");
+
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
+			productName = "Shoes",
+			productType = "Simple");
+
+		Click(locator1 = "Icon#BACK");
+
+		AppBuilderAdmin.searchByItem(itemName = "Simple T-Shirt");
+
+		CommerceNavigator.gotoEntry(entryName = "Simple T-Shirt");
+
+		CommerceEntry.gotoMenuTab(menuTab = "Product Relations");
+
+		CommerceRelations.addProductRelation(productNameRelation = "Shoes");
+
+		CommerceRelations.productRelationSetPriority(
+			priorityValue = "1",
+			productNameRelation = "Shoes");
+
+		AssertElementPresent(
+			key_productName = "Shoes",
+			key_Value = "1",
+			locator1 = "CommerceEntry#VALUE_PRODUCT_RELATIONS");
+
 	}
 
 	@description = "This is a test for COMMERCE-6063. RemoveAProductRelations"
