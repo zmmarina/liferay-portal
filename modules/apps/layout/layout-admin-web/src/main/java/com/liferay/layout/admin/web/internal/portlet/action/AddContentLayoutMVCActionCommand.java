@@ -84,15 +84,14 @@ public class AddContentLayoutMVCActionCommand
 			LocaleUtil.getSiteDefault(),
 			ParamUtil.getString(actionRequest, "name")
 		).build();
+		UnicodeProperties typeSettingsUnicodeProperties =
+			PropertiesParamUtil.getProperties(
+				actionRequest, "TypeSettingsProperties--");
 
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 			Layout.class.getName(), actionRequest);
 
 		Layout layout = null;
-
-		UnicodeProperties typeSettingsUnicodeProperties =
-			PropertiesParamUtil.getProperties(
-				actionRequest, "TypeSettingsProperties--");
 
 		try {
 			LayoutPageTemplateEntry layoutPageTemplateEntry =
