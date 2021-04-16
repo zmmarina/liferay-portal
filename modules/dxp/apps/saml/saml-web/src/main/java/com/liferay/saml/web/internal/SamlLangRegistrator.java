@@ -42,18 +42,16 @@ public class SamlLangRegistrator {
 	@Activate
 	protected void activate(BundleContext bundleContext) {
 		for (Locale locale : LanguageUtil.getAvailableLocales()) {
-			HashMapDictionary<String, String> dictionary =
-				new HashMapDictionary<>(
-					HashMapBuilder.put(
-						"language.id", LocaleUtil.toLanguageId(locale)
-					).build());
-
 			ResourceBundle resourceBundle =
 				_resourceBundleLoaderWeb.loadResourceBundle(locale);
 
 			ServiceRegistration<ResourceBundle> serviceRegistration =
 				bundleContext.registerService(
-					ResourceBundle.class, resourceBundle, dictionary);
+					ResourceBundle.class, resourceBundle,
+					new HashMapDictionary<>(
+						HashMapBuilder.put(
+							"language.id", LocaleUtil.toLanguageId(locale)
+						).build()));
 
 			_serviceRegistrations.add(serviceRegistration);
 		}
