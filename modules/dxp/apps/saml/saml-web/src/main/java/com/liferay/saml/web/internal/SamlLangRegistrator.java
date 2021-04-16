@@ -80,7 +80,7 @@ public class SamlLangRegistrator {
 		policyOption = ReferencePolicyOption.GREEDY,
 		target = "(bundle.symbolic.name=com.liferay.saml.api)"
 	)
-	private ResourceBundleLoader _resourceBundleLoaderApi;
+	private ResourceBundleLoader _resourceBundleLoaderAPI;
 
 	@Reference(
 		policyOption = ReferencePolicyOption.GREEDY,
