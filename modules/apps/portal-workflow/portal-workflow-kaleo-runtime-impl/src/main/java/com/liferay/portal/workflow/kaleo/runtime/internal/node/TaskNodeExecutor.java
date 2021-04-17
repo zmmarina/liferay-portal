@@ -63,8 +63,6 @@ public class TaskNodeExecutor extends BaseNodeExecutor {
 	public void executeTimer(ExecutionContext executionContext)
 		throws PortalException {
 
-		ServiceContext serviceContext = executionContext.getServiceContext();
-
 		KaleoTimerInstanceToken kaleoTimerInstanceToken =
 			executionContext.getKaleoTimerInstanceToken();
 
@@ -89,7 +87,7 @@ public class TaskNodeExecutor extends BaseNodeExecutor {
 		if (!kaleoTimer.isRecurring()) {
 			kaleoTimerInstanceTokenLocalService.completeKaleoTimerInstanceToken(
 				kaleoTimerInstanceToken.getKaleoTimerInstanceTokenId(),
-				serviceContext);
+				executionContext.getServiceContext());
 		}
 	}
 
