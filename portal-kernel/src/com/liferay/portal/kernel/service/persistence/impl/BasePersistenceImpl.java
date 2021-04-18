@@ -560,6 +560,7 @@ public class BasePersistenceImpl<T extends BaseModel<T>>
 		return _dataSource;
 	}
 
+	@Override
 	public DB getDB() {
 		if (_db == null) {
 			_db = DBManagerUtil.getDB(_dialect, _dataSource);

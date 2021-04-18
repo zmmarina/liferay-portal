@@ -15,6 +15,10 @@
 package com.liferay.portal.kernel.service.persistence;
 
 import com.liferay.petra.sql.dsl.query.DSLQuery;
+import com.liferay.portal.kernel.dao.db.DB;
+import com.liferay.portal.kernel.dao.db.DBManagerUtil;
+import com.liferay.portal.kernel.dao.db.DBType;
+import com.liferay.portal.kernel.dao.orm.Dialect;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.ORMException;
 import com.liferay.portal.kernel.dao.orm.Projection;
@@ -205,6 +209,10 @@ public interface BasePersistence<T extends BaseModel<T>> {
 	 * @see    #setDataSource(DataSource)
 	 */
 	public DataSource getDataSource();
+
+	public DB getDB();
+
+	public Dialect getDialect();
 
 	/**
 	 * Returns the listeners registered for this model.
