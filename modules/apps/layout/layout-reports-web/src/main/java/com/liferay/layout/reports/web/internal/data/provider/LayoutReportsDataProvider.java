@@ -44,65 +44,12 @@ public class LayoutReportsDataProvider {
 		throws LayoutReportsDataProviderException {
 
 		try {
-			if (!isValidConnection()) {
-				throw new LayoutReportsDataProviderException(
-					"Invalid Connection");
-			}
+			return _getLayoutReportsIssues(url);
+		}
+		catch (LayoutReportsDataProviderException
+					layoutReportsDataProviderException) {
 
-			PagespeedInsights pagespeedInsights = new PagespeedInsights.Builder(
-				GoogleNetHttpTransport.newTrustedTransport(),
-				JacksonFactory.getDefaultInstance(),
-				request -> request.setConnectTimeout(_TIMEOUT)
-			).build();
-
-			PagespeedInsights.Pagespeedapi pagespeedapi =
-				pagespeedInsights.pagespeedapi();
-
-			PagespeedInsights.Pagespeedapi.Runpagespeed runpagespeed =
-				pagespeedapi.runpagespeed(url);
-
-			runpagespeed.setCategory(
-				Arrays.asList("accessibility", "best-practices", "seo"));
-			runpagespeed.setKey(_apiKey);
-
-			PagespeedApiPagespeedResponseV5 pagespeedApiPagespeedResponseV5 =
-				runpagespeed.execute();
-
-			LighthouseResultV5 lighthouseResultV5 =
-				pagespeedApiPagespeedResponseV5.getLighthouseResult();
-
-			Map<String, LighthouseAuditResultV5> lighthouseAuditResultV5s =
-				lighthouseResultV5.getAudits();
-
-			return Arrays.asList(
-				new LayoutReportsIssue(
-					"accessibility",
-					IntStream.of(
-						_getCount(
-							lighthouseAuditResultV5s.get("color-contrast")),
-						_getCount(lighthouseAuditResultV5s.get("image-alt")),
-						_getCount(
-							lighthouseAuditResultV5s.get("input-image-alt")),
-						_getCount(lighthouseAuditResultV5s.get("video-caption"))
-					).sum()),
-				new LayoutReportsIssue(
-					"seo",
-					IntStream.of(
-						_getCount(lighthouseAuditResultV5s.get("canonical")),
-						_getCount(
-							lighthouseAuditResultV5s.get("crawlable-anchors")),
-						_getCount(
-							lighthouseAuditResultV5s.get("document-title")),
-						_getCount(lighthouseAuditResultV5s.get("font-size")),
-						_getCount(lighthouseAuditResultV5s.get("hreflang")),
-						_getCount(
-							lighthouseAuditResultV5s.get("image-aspect-ratio")),
-						_getCount(lighthouseAuditResultV5s.get("is-crawlable")),
-						_getCount(lighthouseAuditResultV5s.get("link-text")),
-						_getCount(
-							lighthouseAuditResultV5s.get("meta-description")),
-						_getCount(lighthouseAuditResultV5s.get("tap-targets"))
-					).sum()));
+			throw layoutReportsDataProviderException;
 		}
 		catch (Exception exception) {
 			throw new LayoutReportsDataProviderException(exception);
@@ -146,6 +93,65 @@ public class LayoutReportsDataProvider {
 		}
 
 		return 0;
+	}
+
+	private List<LayoutReportsIssue> _getLayoutReportsIssues(String url)
+		throws Exception {
+
+		if (!isValidConnection()) {
+			throw new LayoutReportsDataProviderException("Invalid Connection");
+		}
+
+		PagespeedInsights pagespeedInsights = new PagespeedInsights.Builder(
+			GoogleNetHttpTransport.newTrustedTransport(),
+			JacksonFactory.getDefaultInstance(),
+			request -> request.setConnectTimeout(_TIMEOUT)
+		).build();
+
+		PagespeedInsights.Pagespeedapi pagespeedapi =
+			pagespeedInsights.pagespeedapi();
+
+		PagespeedInsights.Pagespeedapi.Runpagespeed runpagespeed =
+			pagespeedapi.runpagespeed(url);
+
+		runpagespeed.setCategory(
+			Arrays.asList("accessibility", "best-practices", "seo"));
+		runpagespeed.setKey(_apiKey);
+
+		PagespeedApiPagespeedResponseV5 pagespeedApiPagespeedResponseV5 =
+			runpagespeed.execute();
+
+		LighthouseResultV5 lighthouseResultV5 =
+			pagespeedApiPagespeedResponseV5.getLighthouseResult();
+
+		Map<String, LighthouseAuditResultV5> lighthouseAuditResultV5s =
+			lighthouseResultV5.getAudits();
+
+		return Arrays.asList(
+			new LayoutReportsIssue(
+				"accessibility",
+				IntStream.of(
+					_getCount(lighthouseAuditResultV5s.get("color-contrast")),
+					_getCount(lighthouseAuditResultV5s.get("image-alt")),
+					_getCount(lighthouseAuditResultV5s.get("input-image-alt")),
+					_getCount(lighthouseAuditResultV5s.get("video-caption"))
+				).sum()),
+			new LayoutReportsIssue(
+				"seo",
+				IntStream.of(
+					_getCount(lighthouseAuditResultV5s.get("canonical")),
+					_getCount(
+						lighthouseAuditResultV5s.get("crawlable-anchors")),
+					_getCount(lighthouseAuditResultV5s.get("document-title")),
+					_getCount(lighthouseAuditResultV5s.get("font-size")),
+					_getCount(lighthouseAuditResultV5s.get("hreflang")),
+					_getCount(
+						lighthouseAuditResultV5s.get("image-aspect-ratio")),
+					_getCount(lighthouseAuditResultV5s.get("is-crawlable")),
+					_getCount(lighthouseAuditResultV5s.get("link-text")),
+					_getCount(lighthouseAuditResultV5s.get("meta-description")),
+					_getCount(lighthouseAuditResultV5s.get("tap-targets"))
+				).sum()));
 	}
 
 	private static final int _TIMEOUT = 30000;
