@@ -110,8 +110,8 @@ public abstract class BaseProcessResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Process")})
 	public Response postProcessBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -143,8 +143,8 @@ public abstract class BaseProcessResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Process")})
 	public void deleteProcess(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId)
 		throws Exception {
 	}
 
@@ -163,8 +163,8 @@ public abstract class BaseProcessResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Process")})
 	public Response deleteProcessBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -196,8 +196,8 @@ public abstract class BaseProcessResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Process")})
 	public Process getProcess(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId)
 		throws Exception {
 
 		return new Process();
@@ -216,8 +216,8 @@ public abstract class BaseProcessResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Process")})
 	public void putProcess(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			Process process)
 		throws Exception {
 	}
@@ -237,8 +237,8 @@ public abstract class BaseProcessResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Process")})
 	public Response putProcessBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -270,8 +270,8 @@ public abstract class BaseProcessResourceImpl
 	@Produces("text/plain")
 	@Tags(value = {@Tag(name = "Process")})
 	public String getProcessTitle(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId)
 		throws Exception {
 
 		return StringPool.BLANK;

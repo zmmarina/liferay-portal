@@ -91,7 +91,7 @@ public abstract class BaseProductGroupResourceImpl
 	public ProductGroup getDiscountProductGroupProductGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("discountProductGroupId")
-				Long discountProductGroupId)
+			Long discountProductGroupId)
 		throws Exception {
 
 		return new ProductGroup();
@@ -119,7 +119,7 @@ public abstract class BaseProductGroupResourceImpl
 	public ProductGroup getPriceModifierProductGroupProductGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceModifierProductGroupId")
-				Long priceModifierProductGroupId)
+			Long priceModifierProductGroupId)
 		throws Exception {
 
 		return new ProductGroup();

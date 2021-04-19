@@ -98,7 +98,7 @@ public abstract class BasePriceListAccountGroupResourceImpl
 	public void deletePriceListAccountGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceListAccountGroupId")
-				Long priceListAccountGroupId)
+			Long priceListAccountGroupId)
 		throws Exception {
 	}
 
@@ -117,8 +117,8 @@ public abstract class BasePriceListAccountGroupResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "PriceListAccountGroup")})
 	public Response deletePriceListAccountGroupBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -161,7 +161,7 @@ public abstract class BasePriceListAccountGroupResourceImpl
 			getPriceListByExternalReferenceCodePriceListAccountGroupsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -190,7 +190,7 @@ public abstract class BasePriceListAccountGroupResourceImpl
 			postPriceListByExternalReferenceCodePriceListAccountGroup(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				PriceListAccountGroup priceListAccountGroup)
 		throws Exception {
 
@@ -266,8 +266,8 @@ public abstract class BasePriceListAccountGroupResourceImpl
 	@Tags(value = {})
 	public Response postPriceListIdPriceListAccountGroupBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

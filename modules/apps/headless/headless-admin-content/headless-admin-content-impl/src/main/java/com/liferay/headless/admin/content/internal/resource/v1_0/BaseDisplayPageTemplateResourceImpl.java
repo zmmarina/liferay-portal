@@ -112,7 +112,7 @@ public abstract class BaseDisplayPageTemplateResourceImpl
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
 			@NotNull @Parameter(hidden = true)
 			@PathParam("displayPageTemplateKey")
-				String displayPageTemplateKey)
+			String displayPageTemplateKey)
 		throws Exception {
 
 		return new DisplayPageTemplate();

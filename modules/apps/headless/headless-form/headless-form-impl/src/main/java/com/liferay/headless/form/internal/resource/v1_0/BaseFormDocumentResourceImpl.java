@@ -94,8 +94,8 @@ public abstract class BaseFormDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "FormDocument")})
 	public void deleteFormDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("formDocumentId")
-				Long formDocumentId)
+			@NotNull @Parameter(hidden = true) @PathParam("formDocumentId") Long
+				formDocumentId)
 		throws Exception {
 	}
 
@@ -114,8 +114,8 @@ public abstract class BaseFormDocumentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "FormDocument")})
 	public Response deleteFormDocumentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -151,8 +151,8 @@ public abstract class BaseFormDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "FormDocument")})
 	public FormDocument getFormDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("formDocumentId")
-				Long formDocumentId)
+			@NotNull @Parameter(hidden = true) @PathParam("formDocumentId") Long
+				formDocumentId)
 		throws Exception {
 
 		return new FormDocument();

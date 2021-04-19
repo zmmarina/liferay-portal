@@ -79,8 +79,8 @@ public abstract class BaseAssigneeResourceImpl implements AssigneeResource {
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Assignee")})
 	public Page<Assignee> getWorkflowTaskAssignableUsersPage(
-			@NotNull @Parameter(hidden = true) @PathParam("workflowTaskId")
-				Long workflowTaskId,
+			@NotNull @Parameter(hidden = true) @PathParam("workflowTaskId") Long
+				workflowTaskId,
 			@Context Pagination pagination)
 		throws Exception {
 

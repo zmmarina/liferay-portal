@@ -100,7 +100,7 @@ public abstract class BasePriceModifierProductGroupResourceImpl
 	public void deletePriceModifierProductGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceModifierProductGroupId")
-				Long priceModifierProductGroupId)
+			Long priceModifierProductGroupId)
 		throws Exception {
 	}
 
@@ -119,8 +119,8 @@ public abstract class BasePriceModifierProductGroupResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "PriceModifierProductGroup")})
 	public Response deletePriceModifierProductGroupBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -163,7 +163,7 @@ public abstract class BasePriceModifierProductGroupResourceImpl
 			getPriceModifierByExternalReferenceCodePriceModifierProductGroupsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -192,7 +192,7 @@ public abstract class BasePriceModifierProductGroupResourceImpl
 			postPriceModifierByExternalReferenceCodePriceModifierProductGroup(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				PriceModifierProductGroup priceModifierProductGroup)
 		throws Exception {
 
@@ -270,8 +270,8 @@ public abstract class BasePriceModifierProductGroupResourceImpl
 	@Tags(value = {@Tag(name = "PriceModifierProductGroup")})
 	public Response postPriceModifierIdPriceModifierProductGroupBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

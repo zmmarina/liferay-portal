@@ -90,8 +90,8 @@ public abstract class BaseEmailAddressResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "EmailAddress")})
 	public EmailAddress getEmailAddress(
-			@NotNull @Parameter(hidden = true) @PathParam("emailAddressId")
-				Long emailAddressId)
+			@NotNull @Parameter(hidden = true) @PathParam("emailAddressId") Long
+				emailAddressId)
 		throws Exception {
 
 		return new EmailAddress();
@@ -134,8 +134,8 @@ public abstract class BaseEmailAddressResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "EmailAddress")})
 	public Page<EmailAddress> getUserAccountEmailAddressesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

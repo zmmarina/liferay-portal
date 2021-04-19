@@ -89,8 +89,8 @@ public abstract class BaseAssigneeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Assignee")})
 	public Page<Assignee> postProcessAssigneesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			AssigneeBulkSelection assigneeBulkSelection)
 		throws Exception {
 

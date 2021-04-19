@@ -107,12 +107,12 @@ public abstract class BaseAccountRoleResourceImpl
 	public void deleteAccountRoleUserAssociationByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("accountExternalReferenceCode")
-				String accountExternalReferenceCode,
-			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId")
-				Long accountRoleId,
+			String accountExternalReferenceCode,
+			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId") Long
+				accountRoleId,
 			@NotNull @Parameter(hidden = true)
 			@PathParam("accountUserExternalReferenceCode")
-				String accountUserExternalReferenceCode)
+			String accountUserExternalReferenceCode)
 		throws Exception {
 	}
 
@@ -143,12 +143,12 @@ public abstract class BaseAccountRoleResourceImpl
 	public void postAccountRoleUserAssociationByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("accountExternalReferenceCode")
-				String accountExternalReferenceCode,
-			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId")
-				Long accountRoleId,
+			String accountExternalReferenceCode,
+			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId") Long
+				accountRoleId,
 			@NotNull @Parameter(hidden = true)
 			@PathParam("accountUserExternalReferenceCode")
-				String accountUserExternalReferenceCode)
+			String accountUserExternalReferenceCode)
 		throws Exception {
 	}
 
@@ -177,7 +177,7 @@ public abstract class BaseAccountRoleResourceImpl
 	public Page<AccountRole> getAccountRolesByExternalReferenceCodePage(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			@Parameter(hidden = true) @QueryParam("keywords") String keywords,
 			@Context Pagination pagination, @Context Sort[] sorts)
 		throws Exception {
@@ -207,7 +207,7 @@ public abstract class BaseAccountRoleResourceImpl
 	public AccountRole postAccountRoleByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			AccountRole accountRole)
 		throws Exception {
 
@@ -235,8 +235,8 @@ public abstract class BaseAccountRoleResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "AccountRole")})
 	public Page<AccountRole> getAccountRolesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
 			@Parameter(hidden = true) @QueryParam("keywords") String keywords,
 			@Context Pagination pagination, @Context Sort[] sorts)
 		throws Exception {
@@ -258,8 +258,8 @@ public abstract class BaseAccountRoleResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "AccountRole")})
 	public AccountRole postAccountRole(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
 			AccountRole accountRole)
 		throws Exception {
 
@@ -287,12 +287,12 @@ public abstract class BaseAccountRoleResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "AccountRole")})
 	public void deleteAccountRoleUserAssociation(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
-			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId")
-				Long accountRoleId,
-			@NotNull @Parameter(hidden = true) @PathParam("accountUserId")
-				Long accountUserId)
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId") Long
+				accountRoleId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountUserId") Long
+				accountUserId)
 		throws Exception {
 	}
 
@@ -317,12 +317,12 @@ public abstract class BaseAccountRoleResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "AccountRole")})
 	public void postAccountRoleUserAssociation(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
-			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId")
-				Long accountRoleId,
-			@NotNull @Parameter(hidden = true) @PathParam("accountUserId")
-				Long accountUserId)
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountRoleId") Long
+				accountRoleId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountUserId") Long
+				accountUserId)
 		throws Exception {
 	}
 

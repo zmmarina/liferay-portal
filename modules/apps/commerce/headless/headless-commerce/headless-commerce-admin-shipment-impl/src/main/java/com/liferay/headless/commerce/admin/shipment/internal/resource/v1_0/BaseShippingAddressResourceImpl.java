@@ -89,8 +89,8 @@ public abstract class BaseShippingAddressResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "ShippingAddress")})
 	public ShippingAddress getShipmentShippingAddress(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 
 		return new ShippingAddress();
@@ -111,8 +111,8 @@ public abstract class BaseShippingAddressResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "ShippingAddress")})
 	public ShippingAddress patchShipmentShippingAddress(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId,
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId,
 			ShippingAddress shippingAddress)
 		throws Exception {
 

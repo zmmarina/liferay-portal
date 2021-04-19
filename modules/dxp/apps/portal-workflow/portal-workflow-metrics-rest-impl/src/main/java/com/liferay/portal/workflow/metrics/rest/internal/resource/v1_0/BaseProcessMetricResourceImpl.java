@@ -121,14 +121,14 @@ public abstract class BaseProcessMetricResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "ProcessMetric")})
 	public ProcessMetric getProcessMetric(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("completed")
-				Boolean completed,
-			@Parameter(hidden = true) @QueryParam("dateEnd")
-				java.util.Date dateEnd,
-			@Parameter(hidden = true) @QueryParam("dateStart")
-				java.util.Date dateStart)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("completed") Boolean
+				completed,
+			@Parameter(hidden = true) @QueryParam("dateEnd") java.util.Date
+				dateEnd,
+			@Parameter(hidden = true) @QueryParam("dateStart") java.util.Date
+				dateStart)
 		throws Exception {
 
 		return new ProcessMetric();

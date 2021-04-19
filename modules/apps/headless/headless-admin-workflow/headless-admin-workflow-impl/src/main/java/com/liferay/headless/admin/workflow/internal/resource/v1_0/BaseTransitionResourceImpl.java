@@ -105,8 +105,8 @@ public abstract class BaseTransitionResourceImpl implements TransitionResource {
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Transition")})
 	public Page<Transition> getWorkflowTaskNextTransitionsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("workflowTaskId")
-				Long workflowTaskId,
+			@NotNull @Parameter(hidden = true) @PathParam("workflowTaskId") Long
+				workflowTaskId,
 			@Context Pagination pagination)
 		throws Exception {
 

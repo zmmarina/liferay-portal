@@ -105,8 +105,8 @@ public abstract class BaseAppResourceImpl
 	@Tags(value = {@Tag(name = "App")})
 	public Page<App> getAppsPage(
 			@Parameter(hidden = true) @QueryParam("active") Boolean active,
-			@Parameter(hidden = true) @QueryParam("deploymentTypes")
-				String[] deploymentTypes,
+			@Parameter(hidden = true) @QueryParam("deploymentTypes") String[]
+				deploymentTypes,
 			@Parameter(hidden = true) @QueryParam("keywords") String keywords,
 			@Parameter(hidden = true) @QueryParam("scope") String scope,
 			@Parameter(hidden = true) @QueryParam("userIds") Long[] userIds,
@@ -147,8 +147,8 @@ public abstract class BaseAppResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "App")})
 	public Response deleteAppBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -221,8 +221,8 @@ public abstract class BaseAppResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "App")})
 	public Response putAppBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

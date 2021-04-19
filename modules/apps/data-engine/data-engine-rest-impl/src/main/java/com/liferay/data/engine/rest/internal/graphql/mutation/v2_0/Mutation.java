@@ -546,8 +546,8 @@ public class Mutation {
 	@GraphQLField
 	public DataRecordCollection createDataDefinitionDataRecordCollection(
 			@GraphQLName("dataDefinitionId") Long dataDefinitionId,
-			@GraphQLName("dataRecordCollection")
-				DataRecordCollection dataRecordCollection)
+			@GraphQLName("dataRecordCollection") DataRecordCollection
+				dataRecordCollection)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -607,8 +607,8 @@ public class Mutation {
 	@GraphQLField
 	public DataRecordCollection updateDataRecordCollection(
 			@GraphQLName("dataRecordCollectionId") Long dataRecordCollectionId,
-			@GraphQLName("dataRecordCollection")
-				DataRecordCollection dataRecordCollection)
+			@GraphQLName("dataRecordCollection") DataRecordCollection
+				dataRecordCollection)
 		throws Exception {
 
 		return _applyComponentServiceObjects(

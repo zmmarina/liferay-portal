@@ -103,8 +103,8 @@ public abstract class BaseKeywordResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Page<Keyword> getAssetLibraryKeywordsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
@@ -128,8 +128,8 @@ public abstract class BaseKeywordResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Keyword postAssetLibraryKeyword(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			Keyword keyword)
 		throws Exception {
 
@@ -154,10 +154,10 @@ public abstract class BaseKeywordResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Response postAssetLibraryKeywordBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -219,8 +219,8 @@ public abstract class BaseKeywordResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Keyword")})
 	public void deleteKeyword(
-			@NotNull @Parameter(hidden = true) @PathParam("keywordId")
-				Long keywordId)
+			@NotNull @Parameter(hidden = true) @PathParam("keywordId") Long
+				keywordId)
 		throws Exception {
 	}
 
@@ -239,8 +239,8 @@ public abstract class BaseKeywordResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Response deleteKeywordBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -273,8 +273,8 @@ public abstract class BaseKeywordResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Keyword getKeyword(
-			@NotNull @Parameter(hidden = true) @PathParam("keywordId")
-				Long keywordId)
+			@NotNull @Parameter(hidden = true) @PathParam("keywordId") Long
+				keywordId)
 		throws Exception {
 
 		return new Keyword();
@@ -296,8 +296,8 @@ public abstract class BaseKeywordResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Keyword putKeyword(
-			@NotNull @Parameter(hidden = true) @PathParam("keywordId")
-				Long keywordId,
+			@NotNull @Parameter(hidden = true) @PathParam("keywordId") Long
+				keywordId,
 			Keyword keyword)
 		throws Exception {
 
@@ -319,8 +319,8 @@ public abstract class BaseKeywordResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Response putKeywordBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -413,8 +413,8 @@ public abstract class BaseKeywordResourceImpl
 	@Tags(value = {@Tag(name = "Keyword")})
 	public Response postSiteKeywordBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

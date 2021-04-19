@@ -87,8 +87,8 @@ public abstract class BaseSkuResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Sku")})
 	public Sku getPriceEntryIdSku(
-			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId")
-				Long priceEntryId)
+			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId") Long
+				priceEntryId)
 		throws Exception {
 
 		return new Sku();

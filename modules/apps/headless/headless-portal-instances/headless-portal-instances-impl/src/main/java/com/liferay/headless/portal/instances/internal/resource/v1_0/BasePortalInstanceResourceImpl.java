@@ -82,8 +82,8 @@ public abstract class BasePortalInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "PortalInstance")})
 	public Page<PortalInstance> getPortalInstancesPage(
-			@Parameter(hidden = true) @QueryParam("skipDefault")
-				Boolean skipDefault)
+			@Parameter(hidden = true) @QueryParam("skipDefault") Boolean
+				skipDefault)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -105,8 +105,8 @@ public abstract class BasePortalInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "PortalInstance")})
 	public PortalInstance postPortalInstance(
-			@Parameter(hidden = true) @QueryParam("initializerKey")
-				String initializerKey,
+			@Parameter(hidden = true) @QueryParam("initializerKey") String
+				initializerKey,
 			PortalInstance portalInstance)
 		throws Exception {
 

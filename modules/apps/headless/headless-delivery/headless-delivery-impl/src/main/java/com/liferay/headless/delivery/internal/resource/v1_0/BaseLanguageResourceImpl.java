@@ -90,8 +90,8 @@ public abstract class BaseLanguageResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Language")})
 	public Page<Language> getAssetLibraryLanguagesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId)
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

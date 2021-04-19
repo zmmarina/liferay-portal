@@ -91,7 +91,7 @@ public abstract class BaseAccountGroupResourceImpl
 	public AccountGroup getDiscountAccountGroupAccountGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("discountAccountGroupId")
-				Long discountAccountGroupId)
+			Long discountAccountGroupId)
 		throws Exception {
 
 		return new AccountGroup();
@@ -115,7 +115,7 @@ public abstract class BaseAccountGroupResourceImpl
 	public AccountGroup getPriceListAccountGroupAccountGroup(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceListAccountGroupId")
-				Long priceListAccountGroupId)
+			Long priceListAccountGroupId)
 		throws Exception {
 
 		return new AccountGroup();

@@ -231,8 +231,8 @@ public abstract class BaseUserAccountResourceImpl
 	@Produces("application/json")
 	@Tags(value = {})
 	public Response postUserAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -267,8 +267,8 @@ public abstract class BaseUserAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "UserAccount")})
 	public void deleteUserAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 	}
 
@@ -287,8 +287,8 @@ public abstract class BaseUserAccountResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "UserAccount")})
 	public Response deleteUserAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -323,8 +323,8 @@ public abstract class BaseUserAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "UserAccount")})
 	public UserAccount getUserAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 
 		return new UserAccount();
@@ -348,8 +348,8 @@ public abstract class BaseUserAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {})
 	public UserAccount patchUserAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
 			UserAccount userAccount)
 		throws Exception {
 
@@ -446,8 +446,8 @@ public abstract class BaseUserAccountResourceImpl
 	@PUT
 	@Tags(value = {})
 	public UserAccount putUserAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
 			UserAccount userAccount)
 		throws Exception {
 
@@ -469,8 +469,8 @@ public abstract class BaseUserAccountResourceImpl
 	@PUT
 	@Tags(value = {})
 	public Response putUserAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

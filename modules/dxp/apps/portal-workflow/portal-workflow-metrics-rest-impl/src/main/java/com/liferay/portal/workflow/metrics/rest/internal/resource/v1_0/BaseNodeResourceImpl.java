@@ -91,8 +91,8 @@ public abstract class BaseNodeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Node")})
 	public Page<Node> getProcessNodesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -111,8 +111,8 @@ public abstract class BaseNodeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Node")})
 	public Node postProcessNode(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			Node node)
 		throws Exception {
 
@@ -137,10 +137,10 @@ public abstract class BaseNodeResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Node")})
 	public Response postProcessNodeBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -177,8 +177,8 @@ public abstract class BaseNodeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Node")})
 	public void deleteProcessNode(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@NotNull @Parameter(hidden = true) @PathParam("nodeId") Long nodeId)
 		throws Exception {
 	}

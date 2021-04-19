@@ -139,8 +139,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Response postShipmentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -174,8 +174,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public void deleteShipment(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 	}
 
@@ -194,8 +194,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Response deleteShipmentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -229,8 +229,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Shipment getShipment(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 
 		return new Shipment();
@@ -251,8 +251,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Shipment patchShipment(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId,
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId,
 			Shipment shipment)
 		throws Exception {
 
@@ -273,8 +273,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Shipment postShipmentStatusDelivered(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 
 		return new Shipment();
@@ -294,8 +294,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Shipment postShipmentStatusFinishProcessing(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 
 		return new Shipment();
@@ -315,8 +315,8 @@ public abstract class BaseShipmentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Shipment")})
 	public Shipment postShipmentStatusShipped(
-			@NotNull @Parameter(hidden = true) @PathParam("shipmentId")
-				Long shipmentId)
+			@NotNull @Parameter(hidden = true) @PathParam("shipmentId") Long
+				shipmentId)
 		throws Exception {
 
 		return new Shipment();

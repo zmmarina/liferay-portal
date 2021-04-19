@@ -108,8 +108,8 @@ public abstract class BaseWikiNodeResourceImpl
 	public Page<WikiNode> getSiteWikiNodesPage(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -157,8 +157,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public Response postSiteWikiNodeBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -195,8 +195,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public void deleteWikiNode(
-			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId")
-				Long wikiNodeId)
+			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId") Long
+				wikiNodeId)
 		throws Exception {
 	}
 
@@ -215,8 +215,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public Response deleteWikiNodeBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -251,8 +251,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public WikiNode getWikiNode(
-			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId")
-				Long wikiNodeId)
+			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId") Long
+				wikiNodeId)
 		throws Exception {
 
 		return new WikiNode();
@@ -276,8 +276,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public WikiNode putWikiNode(
-			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId")
-				Long wikiNodeId,
+			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId") Long
+				wikiNodeId,
 			WikiNode wikiNode)
 		throws Exception {
 
@@ -299,8 +299,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public Response putWikiNodeBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -334,8 +334,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public void putWikiNodeSubscribe(
-			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId")
-				Long wikiNodeId)
+			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId") Long
+				wikiNodeId)
 		throws Exception {
 	}
 
@@ -353,8 +353,8 @@ public abstract class BaseWikiNodeResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "WikiNode")})
 	public void putWikiNodeUnsubscribe(
-			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId")
-				Long wikiNodeId)
+			@NotNull @Parameter(hidden = true) @PathParam("wikiNodeId") Long
+				wikiNodeId)
 		throws Exception {
 	}
 

@@ -93,12 +93,12 @@ public abstract class BaseHistogramMetricResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "HistogramMetric")})
 	public HistogramMetric getProcessHistogramMetric(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("dateEnd")
-				java.util.Date dateEnd,
-			@Parameter(hidden = true) @QueryParam("dateStart")
-				java.util.Date dateStart,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("dateEnd") java.util.Date
+				dateEnd,
+			@Parameter(hidden = true) @QueryParam("dateStart") java.util.Date
+				dateStart,
 			@NotNull @Parameter(hidden = true) @QueryParam("unit") String unit)
 		throws Exception {
 

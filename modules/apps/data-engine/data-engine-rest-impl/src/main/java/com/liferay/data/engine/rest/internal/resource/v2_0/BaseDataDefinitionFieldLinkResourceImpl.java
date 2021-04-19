@@ -95,9 +95,9 @@ public abstract class BaseDataDefinitionFieldLinkResourceImpl
 			getDataDefinitionDataDefinitionFieldLinkPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("dataDefinitionId")
-					Long dataDefinitionId,
-				@Parameter(hidden = true) @QueryParam("fieldName")
-					String fieldName)
+				Long dataDefinitionId,
+				@Parameter(hidden = true) @QueryParam("fieldName") String
+					fieldName)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

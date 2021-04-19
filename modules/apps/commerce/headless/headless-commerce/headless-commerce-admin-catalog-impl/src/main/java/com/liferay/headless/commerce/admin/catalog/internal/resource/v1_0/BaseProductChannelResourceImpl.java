@@ -114,8 +114,8 @@ public abstract class BaseProductChannelResourceImpl
 	@Tags(value = {@Tag(name = "ProductChannel")})
 	public Response deleteProductChannelBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -176,7 +176,7 @@ public abstract class BaseProductChannelResourceImpl
 			getProductByExternalReferenceCodeProductChannelsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				@Context Pagination pagination)
 		throws Exception {
 

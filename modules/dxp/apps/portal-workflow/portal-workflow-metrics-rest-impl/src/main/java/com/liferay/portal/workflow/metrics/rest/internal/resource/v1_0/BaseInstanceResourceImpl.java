@@ -106,21 +106,21 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public Page<Instance> getProcessInstancesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("assigneeIds")
-				Long[] assigneeIds,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("assigneeIds") Long[]
+				assigneeIds,
 			@Parameter(hidden = true) @QueryParam("classPKs") Long[] classPKs,
-			@Parameter(hidden = true) @QueryParam("completed")
-				Boolean completed,
-			@Parameter(hidden = true) @QueryParam("dateEnd")
-				java.util.Date dateEnd,
-			@Parameter(hidden = true) @QueryParam("dateStart")
-				java.util.Date dateStart,
-			@Parameter(hidden = true) @QueryParam("slaStatuses")
-				String[] slaStatuses,
-			@Parameter(hidden = true) @QueryParam("taskNames")
-				String[] taskNames,
+			@Parameter(hidden = true) @QueryParam("completed") Boolean
+				completed,
+			@Parameter(hidden = true) @QueryParam("dateEnd") java.util.Date
+				dateEnd,
+			@Parameter(hidden = true) @QueryParam("dateStart") java.util.Date
+				dateStart,
+			@Parameter(hidden = true) @QueryParam("slaStatuses") String[]
+				slaStatuses,
+			@Parameter(hidden = true) @QueryParam("taskNames") String[]
+				taskNames,
 			@Context Pagination pagination)
 		throws Exception {
 
@@ -140,8 +140,8 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public Instance postProcessInstance(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			Instance instance)
 		throws Exception {
 
@@ -166,10 +166,10 @@ public abstract class BaseInstanceResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Instance")})
 	public Response postProcessInstanceBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -206,10 +206,10 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public void deleteProcessInstance(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@NotNull @Parameter(hidden = true) @PathParam("instanceId")
-				Long instanceId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@NotNull @Parameter(hidden = true) @PathParam("instanceId") Long
+				instanceId)
 		throws Exception {
 	}
 
@@ -230,10 +230,10 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public Instance getProcessInstance(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@NotNull @Parameter(hidden = true) @PathParam("instanceId")
-				Long instanceId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@NotNull @Parameter(hidden = true) @PathParam("instanceId") Long
+				instanceId)
 		throws Exception {
 
 		return new Instance();
@@ -257,10 +257,10 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public void patchProcessInstance(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@NotNull @Parameter(hidden = true) @PathParam("instanceId")
-				Long instanceId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@NotNull @Parameter(hidden = true) @PathParam("instanceId") Long
+				instanceId,
 			Instance instance)
 		throws Exception {
 	}
@@ -283,10 +283,10 @@ public abstract class BaseInstanceResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Instance")})
 	public void patchProcessInstanceComplete(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@NotNull @Parameter(hidden = true) @PathParam("instanceId")
-				Long instanceId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@NotNull @Parameter(hidden = true) @PathParam("instanceId") Long
+				instanceId,
 			Instance instance)
 		throws Exception {
 	}

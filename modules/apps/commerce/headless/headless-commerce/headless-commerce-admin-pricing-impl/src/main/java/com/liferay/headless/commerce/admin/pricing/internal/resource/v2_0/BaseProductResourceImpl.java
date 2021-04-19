@@ -108,8 +108,8 @@ public abstract class BaseProductResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Product")})
 	public Product getPriceEntryIdProduct(
-			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId")
-				Long priceEntryId)
+			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId") Long
+				priceEntryId)
 		throws Exception {
 
 		return new Product();
@@ -133,7 +133,7 @@ public abstract class BaseProductResourceImpl
 	public Product getPriceModifierProductProduct(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceModifierProductId")
-				Long priceModifierProductId)
+			Long priceModifierProductId)
 		throws Exception {
 
 		return new Product();

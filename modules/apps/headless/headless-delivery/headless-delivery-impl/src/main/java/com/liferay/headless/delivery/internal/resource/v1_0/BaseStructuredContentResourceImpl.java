@@ -114,12 +114,12 @@ public abstract class BaseStructuredContentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Page<StructuredContent> getAssetLibraryStructuredContentsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -142,8 +142,8 @@ public abstract class BaseStructuredContentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public StructuredContent postAssetLibraryStructuredContent(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			StructuredContent structuredContent)
 		throws Exception {
 
@@ -168,10 +168,10 @@ public abstract class BaseStructuredContentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Response postAssetLibraryStructuredContentBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -218,8 +218,8 @@ public abstract class BaseStructuredContentResourceImpl
 			@NotNull @Parameter(hidden = true) @PathParam("contentStructureId")
 				Long contentStructureId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -255,8 +255,8 @@ public abstract class BaseStructuredContentResourceImpl
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -304,8 +304,8 @@ public abstract class BaseStructuredContentResourceImpl
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Response postSiteStructuredContentBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -395,10 +395,10 @@ public abstract class BaseStructuredContentResourceImpl
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Page<com.liferay.portal.vulcan.permission.Permission>
 			getSiteStructuredContentPermissionsPage(
-				@NotNull @Parameter(hidden = true) @PathParam("siteId")
-					Long siteId,
-				@Parameter(hidden = true) @QueryParam("roleNames")
-					String roleNames)
+				@NotNull @Parameter(hidden = true) @PathParam("siteId") Long
+					siteId,
+				@Parameter(hidden = true) @QueryParam("roleNames") String
+					roleNames)
 		throws Exception {
 
 		String portletName = getPermissionCheckerPortletName(siteId);
@@ -473,12 +473,11 @@ public abstract class BaseStructuredContentResourceImpl
 			getStructuredContentFolderStructuredContentsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("structuredContentFolderId")
-					Long structuredContentFolderId,
-				@Parameter(hidden = true) @QueryParam("flatten")
-					Boolean flatten,
+				Long structuredContentFolderId,
+				@Parameter(hidden = true) @QueryParam("flatten") Boolean
+					flatten,
 				@Parameter(hidden = true) @QueryParam("search") String search,
-				@Context
-					com.liferay.portal.vulcan.aggregation.Aggregation
+				@Context com.liferay.portal.vulcan.aggregation.Aggregation
 					aggregation,
 				@Context Filter filter, @Context Pagination pagination,
 				@Context Sort[] sorts)
@@ -511,7 +510,7 @@ public abstract class BaseStructuredContentResourceImpl
 	public StructuredContent postStructuredContentFolderStructuredContent(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("structuredContentFolderId")
-				Long structuredContentFolderId,
+			Long structuredContentFolderId,
 			StructuredContent structuredContent)
 		throws Exception {
 
@@ -542,9 +541,9 @@ public abstract class BaseStructuredContentResourceImpl
 	public Response postStructuredContentFolderStructuredContentBatch(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("structuredContentFolderId")
-				Long structuredContentFolderId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			Long structuredContentFolderId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -603,8 +602,8 @@ public abstract class BaseStructuredContentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Response deleteStructuredContentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -826,8 +825,8 @@ public abstract class BaseStructuredContentResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Response putStructuredContentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -969,9 +968,9 @@ public abstract class BaseStructuredContentResourceImpl
 			getStructuredContentPermissionsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("structuredContentId")
-					Long structuredContentId,
-				@Parameter(hidden = true) @QueryParam("roleNames")
-					String roleNames)
+				Long structuredContentId,
+				@Parameter(hidden = true) @QueryParam("roleNames") String
+					roleNames)
 		throws Exception {
 
 		String resourceName = getPermissionCheckerResourceName(
@@ -1048,7 +1047,7 @@ public abstract class BaseStructuredContentResourceImpl
 			getStructuredContentRenderedContentByDisplayPageDisplayPageKey(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("structuredContentId")
-					Long structuredContentId,
+				Long structuredContentId,
 				@NotNull @Parameter(hidden = true) @PathParam("displayPageKey")
 					String displayPageKey)
 		throws Exception {

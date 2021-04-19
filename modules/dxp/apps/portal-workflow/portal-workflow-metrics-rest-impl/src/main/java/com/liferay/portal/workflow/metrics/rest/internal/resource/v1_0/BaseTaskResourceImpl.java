@@ -94,8 +94,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public Page<Task> getProcessTasksPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -114,8 +114,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public Task postProcessTask(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			Task task)
 		throws Exception {
 
@@ -140,10 +140,10 @@ public abstract class BaseTaskResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Task")})
 	public Response postProcessTaskBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -180,8 +180,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public void deleteProcessTask(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@NotNull @Parameter(hidden = true) @PathParam("taskId") Long taskId)
 		throws Exception {
 	}
@@ -203,8 +203,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public Task getProcessTask(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@NotNull @Parameter(hidden = true) @PathParam("taskId") Long taskId)
 		throws Exception {
 
@@ -229,8 +229,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public void patchProcessTask(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@NotNull @Parameter(hidden = true) @PathParam("taskId") Long taskId,
 			Task task)
 		throws Exception {
@@ -254,8 +254,8 @@ public abstract class BaseTaskResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Task")})
 	public void patchProcessTaskComplete(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@NotNull @Parameter(hidden = true) @PathParam("taskId") Long taskId,
 			Task task)
 		throws Exception {

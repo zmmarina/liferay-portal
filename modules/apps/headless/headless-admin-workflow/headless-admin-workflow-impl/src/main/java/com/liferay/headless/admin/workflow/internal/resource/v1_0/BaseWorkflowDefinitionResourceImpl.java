@@ -165,8 +165,8 @@ public abstract class BaseWorkflowDefinitionResourceImpl
 	@Tags(value = {@Tag(name = "WorkflowDefinition")})
 	public void deleteWorkflowDefinitionUndeploy(
 			@NotNull @Parameter(hidden = true) @QueryParam("name") String name,
-			@NotNull @Parameter(hidden = true) @QueryParam("version")
-				String version)
+			@NotNull @Parameter(hidden = true) @QueryParam("version") String
+				version)
 		throws Exception {
 	}
 
@@ -188,11 +188,11 @@ public abstract class BaseWorkflowDefinitionResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "WorkflowDefinition")})
 	public WorkflowDefinition postWorkflowDefinitionUpdateActive(
-			@NotNull @Parameter(hidden = true) @QueryParam("active")
-				Boolean active,
+			@NotNull @Parameter(hidden = true) @QueryParam("active") Boolean
+				active,
 			@NotNull @Parameter(hidden = true) @QueryParam("name") String name,
-			@NotNull @Parameter(hidden = true) @QueryParam("version")
-				String version)
+			@NotNull @Parameter(hidden = true) @QueryParam("version") String
+				version)
 		throws Exception {
 
 		return new WorkflowDefinition();

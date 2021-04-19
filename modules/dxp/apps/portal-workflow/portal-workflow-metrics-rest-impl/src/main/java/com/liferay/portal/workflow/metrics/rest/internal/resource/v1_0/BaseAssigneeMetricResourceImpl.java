@@ -97,8 +97,8 @@ public abstract class BaseAssigneeMetricResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "AssigneeMetric")})
 	public Page<AssigneeMetric> postProcessAssigneeMetricsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@Context Pagination pagination, @Context Sort[] sorts,
 			AssigneeMetricBulkSelection assigneeMetricBulkSelection)
 		throws Exception {

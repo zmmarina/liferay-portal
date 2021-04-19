@@ -119,8 +119,8 @@ public abstract class BaseNavigationMenuResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "NavigationMenu")})
 	public Response deleteNavigationMenuBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -203,8 +203,8 @@ public abstract class BaseNavigationMenuResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "NavigationMenu")})
 	public Response putNavigationMenuBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -290,8 +290,8 @@ public abstract class BaseNavigationMenuResourceImpl
 	@Tags(value = {@Tag(name = "NavigationMenu")})
 	public Response postSiteNavigationMenuBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

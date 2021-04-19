@@ -91,13 +91,12 @@ public abstract class BaseStructuredContentResourceImpl
 	@Tags(value = {@Tag(name = "StructuredContent")})
 	public Page<com.liferay.headless.delivery.dto.v1_0.StructuredContent>
 			getSiteStructuredContentsPage(
-				@NotNull @Parameter(hidden = true) @PathParam("siteId")
-					Long siteId,
-				@Parameter(hidden = true) @QueryParam("flatten")
-					Boolean flatten,
+				@NotNull @Parameter(hidden = true) @PathParam("siteId") Long
+					siteId,
+				@Parameter(hidden = true) @QueryParam("flatten") Boolean
+					flatten,
 				@Parameter(hidden = true) @QueryParam("search") String search,
-				@Context
-					com.liferay.portal.vulcan.aggregation.Aggregation
+				@Context com.liferay.portal.vulcan.aggregation.Aggregation
 					aggregation,
 				@Context Filter filter, @Context Pagination pagination,
 				@Context Sort[] sorts)
@@ -128,7 +127,7 @@ public abstract class BaseStructuredContentResourceImpl
 			getStructuredContentsVersionsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("structuredContentId")
-					Long structuredContentId)
+				Long structuredContentId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

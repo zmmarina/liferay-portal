@@ -112,7 +112,7 @@ public abstract class BaseCategoryResourceImpl
 	public Category getPriceModifierCategoryCategory(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("priceModifierCategoryId")
-				Long priceModifierCategoryId)
+			Long priceModifierCategoryId)
 		throws Exception {
 
 		return new Category();

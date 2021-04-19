@@ -132,9 +132,9 @@ public abstract class BaseDataRecordCollectionResourceImpl
 			getDataDefinitionDataRecordCollectionsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("dataDefinitionId")
-					Long dataDefinitionId,
-				@Parameter(hidden = true) @QueryParam("keywords")
-					String keywords,
+				Long dataDefinitionId,
+				@Parameter(hidden = true) @QueryParam("keywords") String
+					keywords,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -184,8 +184,8 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public Response postDataDefinitionDataRecordCollectionBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("dataDefinitionId")
 				Long dataDefinitionId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -223,7 +223,7 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public void deleteDataRecordCollection(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("dataRecordCollectionId")
-				Long dataRecordCollectionId)
+			Long dataRecordCollectionId)
 		throws Exception {
 	}
 
@@ -242,8 +242,8 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "DataRecordCollection")})
 	public Response deleteDataRecordCollectionBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -281,7 +281,7 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public DataRecordCollection getDataRecordCollection(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("dataRecordCollectionId")
-				Long dataRecordCollectionId)
+			Long dataRecordCollectionId)
 		throws Exception {
 
 		return new DataRecordCollection();
@@ -306,7 +306,7 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public DataRecordCollection putDataRecordCollection(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("dataRecordCollectionId")
-				Long dataRecordCollectionId,
+			Long dataRecordCollectionId,
 			DataRecordCollection dataRecordCollection)
 		throws Exception {
 
@@ -328,8 +328,8 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "DataRecordCollection")})
 	public Response putDataRecordCollectionBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -369,9 +369,9 @@ public abstract class BaseDataRecordCollectionResourceImpl
 			getDataRecordCollectionPermissionsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("dataRecordCollectionId")
-					Long dataRecordCollectionId,
-				@Parameter(hidden = true) @QueryParam("roleNames")
-					String roleNames)
+				Long dataRecordCollectionId,
+				@Parameter(hidden = true) @QueryParam("roleNames") String
+					roleNames)
 		throws Exception {
 
 		String resourceName = getPermissionCheckerResourceName(
@@ -404,7 +404,7 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public void putDataRecordCollectionPermission(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("dataRecordCollectionId")
-				Long dataRecordCollectionId,
+			Long dataRecordCollectionId,
 			com.liferay.portal.vulcan.permission.Permission[] permissions)
 		throws Exception {
 
@@ -446,7 +446,7 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	public String getDataRecordCollectionPermissionByCurrentUser(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("dataRecordCollectionId")
-				Long dataRecordCollectionId)
+			Long dataRecordCollectionId)
 		throws Exception {
 
 		return StringPool.BLANK;
@@ -472,11 +472,11 @@ public abstract class BaseDataRecordCollectionResourceImpl
 	@Tags(value = {@Tag(name = "DataRecordCollection")})
 	public DataRecordCollection
 			getSiteDataRecordCollectionByDataRecordCollectionKey(
-				@NotNull @Parameter(hidden = true) @PathParam("siteId")
-					Long siteId,
+				@NotNull @Parameter(hidden = true) @PathParam("siteId") Long
+					siteId,
 				@NotNull @Parameter(hidden = true)
 				@PathParam("dataRecordCollectionKey")
-					String dataRecordCollectionKey)
+				String dataRecordCollectionKey)
 		throws Exception {
 
 		return new DataRecordCollection();

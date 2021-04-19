@@ -141,8 +141,8 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void deleteRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 	}
 
@@ -165,8 +165,8 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void postRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 	}
 
@@ -194,10 +194,10 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void deleteOrganizationRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
-			@NotNull @Parameter(hidden = true) @PathParam("organizationId")
-				Long organizationId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("organizationId") Long
+				organizationId)
 		throws Exception {
 	}
 
@@ -225,10 +225,10 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void postOrganizationRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
-			@NotNull @Parameter(hidden = true) @PathParam("organizationId")
-				Long organizationId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("organizationId") Long
+				organizationId)
 		throws Exception {
 	}
 
@@ -254,8 +254,8 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void deleteSiteRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId)
 		throws Exception {
 	}
@@ -282,8 +282,8 @@ public abstract class BaseRoleResourceImpl
 	@Tags(value = {@Tag(name = "Role")})
 	public void postSiteRoleUserAccountAssociation(
 			@NotNull @Parameter(hidden = true) @PathParam("roleId") Long roleId,
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId,
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId,
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId)
 		throws Exception {
 	}

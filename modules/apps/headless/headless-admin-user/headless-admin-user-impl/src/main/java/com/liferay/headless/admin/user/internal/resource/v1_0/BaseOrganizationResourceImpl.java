@@ -149,8 +149,8 @@ public abstract class BaseOrganizationResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Organization")})
 	public Response postOrganizationBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -205,8 +205,8 @@ public abstract class BaseOrganizationResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Organization")})
 	public Response deleteOrganizationBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -358,8 +358,8 @@ public abstract class BaseOrganizationResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Organization")})
 	public Response putOrganizationBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -406,7 +406,7 @@ public abstract class BaseOrganizationResourceImpl
 	public Page<Organization> getOrganizationOrganizationsPage(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("parentOrganizationId")
-				String parentOrganizationId,
+			String parentOrganizationId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
 			@Context Filter filter, @Context Pagination pagination,

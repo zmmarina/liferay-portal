@@ -114,8 +114,8 @@ public abstract class BaseDiscountProductResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "DiscountProduct")})
 	public Response deleteDiscountProductBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -158,7 +158,7 @@ public abstract class BaseDiscountProductResourceImpl
 			getDiscountByExternalReferenceCodeDiscountProductsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -186,7 +186,7 @@ public abstract class BaseDiscountProductResourceImpl
 	public DiscountProduct postDiscountByExternalReferenceCodeDiscountProduct(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			DiscountProduct discountProduct)
 		throws Exception {
 
@@ -262,8 +262,8 @@ public abstract class BaseDiscountProductResourceImpl
 	@Tags(value = {@Tag(name = "DiscountProduct")})
 	public Response postDiscountIdDiscountProductBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

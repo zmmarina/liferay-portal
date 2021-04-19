@@ -112,8 +112,8 @@ public abstract class BaseWebUrlResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "WebUrl")})
 	public Page<WebUrl> getUserAccountWebUrlsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("userAccountId")
-				Long userAccountId)
+			@NotNull @Parameter(hidden = true) @PathParam("userAccountId") Long
+				userAccountId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -132,8 +132,8 @@ public abstract class BaseWebUrlResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "WebUrl")})
 	public WebUrl getWebUrl(
-			@NotNull @Parameter(hidden = true) @PathParam("webUrlId")
-				Long webUrlId)
+			@NotNull @Parameter(hidden = true) @PathParam("webUrlId") Long
+				webUrlId)
 		throws Exception {
 
 		return new WebUrl();

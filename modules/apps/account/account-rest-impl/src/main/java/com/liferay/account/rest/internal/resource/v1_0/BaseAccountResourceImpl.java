@@ -145,8 +145,8 @@ public abstract class BaseAccountResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Account")})
 	public Response postAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -185,7 +185,7 @@ public abstract class BaseAccountResourceImpl
 	public void deleteAccountByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode)
+			String externalReferenceCode)
 		throws Exception {
 	}
 
@@ -208,7 +208,7 @@ public abstract class BaseAccountResourceImpl
 	public Account getAccountByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode)
+			String externalReferenceCode)
 		throws Exception {
 
 		return new Account();
@@ -236,7 +236,7 @@ public abstract class BaseAccountResourceImpl
 	public Account patchAccountByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			Account account)
 		throws Exception {
 
@@ -300,7 +300,7 @@ public abstract class BaseAccountResourceImpl
 	public Account putAccountByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			Account account)
 		throws Exception {
 
@@ -320,8 +320,8 @@ public abstract class BaseAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Account")})
 	public void deleteAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId)
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId)
 		throws Exception {
 	}
 
@@ -340,8 +340,8 @@ public abstract class BaseAccountResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Account")})
 	public Response deleteAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -374,8 +374,8 @@ public abstract class BaseAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Account")})
 	public Account getAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId)
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId)
 		throws Exception {
 
 		return new Account();
@@ -397,8 +397,8 @@ public abstract class BaseAccountResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Account")})
 	public Account patchAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
 			Account account)
 		throws Exception {
 
@@ -454,8 +454,8 @@ public abstract class BaseAccountResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Account")})
 	public Account putAccount(
-			@NotNull @Parameter(hidden = true) @PathParam("accountId")
-				Long accountId,
+			@NotNull @Parameter(hidden = true) @PathParam("accountId") Long
+				accountId,
 			Account account)
 		throws Exception {
 
@@ -477,8 +477,8 @@ public abstract class BaseAccountResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Account")})
 	public Response putAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

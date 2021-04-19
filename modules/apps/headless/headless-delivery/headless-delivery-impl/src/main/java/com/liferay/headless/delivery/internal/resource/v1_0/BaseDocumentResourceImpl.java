@@ -108,12 +108,12 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Page<Document> getAssetLibraryDocumentsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -136,8 +136,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Document postAssetLibraryDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			MultipartBody multipartBody)
 		throws Exception {
 
@@ -162,11 +162,11 @@ public abstract class BaseDocumentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Document")})
 	public Response postAssetLibraryDocumentBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			MultipartBody multipartBody,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -215,8 +215,8 @@ public abstract class BaseDocumentResourceImpl
 				Long documentFolderId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -271,8 +271,8 @@ public abstract class BaseDocumentResourceImpl
 			@NotNull @Parameter(hidden = true) @PathParam("documentFolderId")
 				Long documentFolderId,
 			MultipartBody multipartBody,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -309,8 +309,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public void deleteDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId)
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId)
 		throws Exception {
 	}
 
@@ -329,8 +329,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Document")})
 	public Response deleteDocumentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -365,8 +365,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Document getDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId)
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId)
 		throws Exception {
 
 		return new Document();
@@ -390,8 +390,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Document patchDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId,
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId,
 			MultipartBody multipartBody)
 		throws Exception {
 
@@ -416,8 +416,8 @@ public abstract class BaseDocumentResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Document")})
 	public Document putDocument(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId,
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId,
 			MultipartBody multipartBody)
 		throws Exception {
 
@@ -440,8 +440,8 @@ public abstract class BaseDocumentResourceImpl
 	@Tags(value = {@Tag(name = "Document")})
 	public Response putDocumentBatch(
 			MultipartBody multipartBody,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -478,8 +478,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public void deleteDocumentMyRating(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId)
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId)
 		throws Exception {
 	}
 
@@ -498,8 +498,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Rating getDocumentMyRating(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId)
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId)
 		throws Exception {
 
 		return new Rating();
@@ -523,8 +523,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Document")})
 	public Rating postDocumentMyRating(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId,
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId,
 			Rating rating)
 		throws Exception {
 
@@ -549,8 +549,8 @@ public abstract class BaseDocumentResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "Document")})
 	public Rating putDocumentMyRating(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId,
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId,
 			Rating rating)
 		throws Exception {
 
@@ -577,8 +577,8 @@ public abstract class BaseDocumentResourceImpl
 	@Produces("text/html")
 	@Tags(value = {@Tag(name = "Document")})
 	public String getDocumentRenderedContentByDisplayPageDisplayPageKey(
-			@NotNull @Parameter(hidden = true) @PathParam("documentId")
-				Long documentId,
+			@NotNull @Parameter(hidden = true) @PathParam("documentId") Long
+				documentId,
 			@NotNull @Parameter(hidden = true) @PathParam("displayPageKey")
 				String displayPageKey)
 		throws Exception {
@@ -614,8 +614,8 @@ public abstract class BaseDocumentResourceImpl
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
 			@Parameter(hidden = true) @QueryParam("flatten") Boolean flatten,
 			@Parameter(hidden = true) @QueryParam("search") String search,
-			@Context
-				com.liferay.portal.vulcan.aggregation.Aggregation aggregation,
+			@Context com.liferay.portal.vulcan.aggregation.Aggregation
+				aggregation,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
 		throws Exception {
@@ -666,8 +666,8 @@ public abstract class BaseDocumentResourceImpl
 	public Response postSiteDocumentBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
 			MultipartBody multipartBody,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

@@ -91,8 +91,8 @@ public abstract class BaseExperimentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Experiment")})
 	public void deleteExperiment(
-			@NotNull @Parameter(hidden = true) @PathParam("experimentId")
-				String experimentId)
+			@NotNull @Parameter(hidden = true) @PathParam("experimentId") String
+				experimentId)
 		throws Exception {
 	}
 
@@ -111,8 +111,8 @@ public abstract class BaseExperimentResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "Experiment")})
 	public Response deleteExperimentBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -146,8 +146,8 @@ public abstract class BaseExperimentResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Experiment")})
 	public Experiment getExperiment(
-			@NotNull @Parameter(hidden = true) @PathParam("experimentId")
-				String experimentId)
+			@NotNull @Parameter(hidden = true) @PathParam("experimentId") String
+				experimentId)
 		throws Exception {
 
 		return new Experiment();

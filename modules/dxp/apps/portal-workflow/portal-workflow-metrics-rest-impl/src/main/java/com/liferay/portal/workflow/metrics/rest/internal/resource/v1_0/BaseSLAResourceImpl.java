@@ -100,8 +100,8 @@ public abstract class BaseSLAResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "SLA")})
 	public Page<SLA> getProcessSLAsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			@Parameter(hidden = true) @QueryParam("status") Integer status,
 			@Context Pagination pagination)
 		throws Exception {
@@ -122,8 +122,8 @@ public abstract class BaseSLAResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "SLA")})
 	public SLA postProcessSLA(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			SLA sla)
 		throws Exception {
 
@@ -148,11 +148,11 @@ public abstract class BaseSLAResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "SLA")})
 	public Response postProcessSLABatch(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
 			SLA sla,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -207,8 +207,8 @@ public abstract class BaseSLAResourceImpl
 	@Tags(value = {@Tag(name = "SLA")})
 	public Response deleteSLABatch(
 			@NotNull @Parameter(hidden = true) @PathParam("slaId") Long slaId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -286,8 +286,8 @@ public abstract class BaseSLAResourceImpl
 	public Response putSLABatch(
 			@NotNull @Parameter(hidden = true) @PathParam("slaId") Long slaId,
 			SLA sla,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

@@ -136,7 +136,7 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	public Page<TaxonomyCategory> getTaxonomyCategoryTaxonomyCategoriesPage(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("parentTaxonomyCategoryId")
-				String parentTaxonomyCategoryId,
+			String parentTaxonomyCategoryId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
@@ -165,7 +165,7 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	public TaxonomyCategory postTaxonomyCategoryTaxonomyCategory(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("parentTaxonomyCategoryId")
-				String parentTaxonomyCategoryId,
+			String parentTaxonomyCategoryId,
 			TaxonomyCategory taxonomyCategory)
 		throws Exception {
 
@@ -209,8 +209,8 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "TaxonomyCategory")})
 	public Response deleteTaxonomyCategoryBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -383,8 +383,8 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "TaxonomyCategory")})
 	public Response putTaxonomyCategoryBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -430,7 +430,7 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	public Page<TaxonomyCategory> getTaxonomyVocabularyTaxonomyCategoriesPage(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId,
+			Long taxonomyVocabularyId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
@@ -461,7 +461,7 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	public TaxonomyCategory postTaxonomyVocabularyTaxonomyCategory(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId,
+			Long taxonomyVocabularyId,
 			TaxonomyCategory taxonomyCategory)
 		throws Exception {
 
@@ -490,9 +490,9 @@ public abstract class BaseTaxonomyCategoryResourceImpl
 	public Response postTaxonomyVocabularyTaxonomyCategoryBatch(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			Long taxonomyVocabularyId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

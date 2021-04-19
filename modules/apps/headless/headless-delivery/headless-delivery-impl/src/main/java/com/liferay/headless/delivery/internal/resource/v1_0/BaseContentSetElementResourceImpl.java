@@ -131,8 +131,8 @@ public abstract class BaseContentSetElementResourceImpl
 			getAssetLibraryContentSetByUuidContentSetElementsPage(
 				@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
 					Long assetLibraryId,
-				@NotNull @Parameter(hidden = true) @PathParam("uuid")
-					String uuid,
+				@NotNull @Parameter(hidden = true) @PathParam("uuid") String
+					uuid,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -160,8 +160,8 @@ public abstract class BaseContentSetElementResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "ContentSetElement")})
 	public Page<ContentSetElement> getContentSetContentSetElementsPage(
-			@NotNull @Parameter(hidden = true) @PathParam("contentSetId")
-				Long contentSetId,
+			@NotNull @Parameter(hidden = true) @PathParam("contentSetId") Long
+				contentSetId,
 			@Context Pagination pagination)
 		throws Exception {
 
@@ -221,10 +221,10 @@ public abstract class BaseContentSetElementResourceImpl
 	@Tags(value = {@Tag(name = "ContentSetElement")})
 	public Page<ContentSetElement>
 			getSiteContentSetByUuidContentSetElementsPage(
-				@NotNull @Parameter(hidden = true) @PathParam("siteId")
-					Long siteId,
-				@NotNull @Parameter(hidden = true) @PathParam("uuid")
-					String uuid,
+				@NotNull @Parameter(hidden = true) @PathParam("siteId") Long
+					siteId,
+				@NotNull @Parameter(hidden = true) @PathParam("uuid") String
+					uuid,
 				@Context Pagination pagination)
 		throws Exception {
 

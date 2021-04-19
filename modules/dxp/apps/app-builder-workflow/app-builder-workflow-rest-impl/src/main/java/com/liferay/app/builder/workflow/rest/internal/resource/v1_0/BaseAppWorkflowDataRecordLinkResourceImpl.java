@@ -76,8 +76,8 @@ public abstract class BaseAppWorkflowDataRecordLinkResourceImpl
 	@Tags(value = {@Tag(name = "AppWorkflowDataRecordLink")})
 	public Page<AppWorkflowDataRecordLink>
 			postAppAppWorkflowDataRecordLinksPage(
-				@NotNull @Parameter(hidden = true) @PathParam("appId")
-					Long appId,
+				@NotNull @Parameter(hidden = true) @PathParam("appId") Long
+					appId,
 				DataRecordIds dataRecordIds)
 		throws Exception {
 

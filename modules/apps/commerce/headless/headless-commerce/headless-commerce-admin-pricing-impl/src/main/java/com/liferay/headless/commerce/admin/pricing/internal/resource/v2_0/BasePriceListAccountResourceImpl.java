@@ -114,8 +114,8 @@ public abstract class BasePriceListAccountResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "PriceListAccount")})
 	public Response deletePriceListAccountBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -158,7 +158,7 @@ public abstract class BasePriceListAccountResourceImpl
 			getPriceListByExternalReferenceCodePriceListAccountsPage(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				@Context Pagination pagination)
 		throws Exception {
 
@@ -187,7 +187,7 @@ public abstract class BasePriceListAccountResourceImpl
 			postPriceListByExternalReferenceCodePriceListAccount(
 				@NotNull @Parameter(hidden = true)
 				@PathParam("externalReferenceCode")
-					String externalReferenceCode,
+				String externalReferenceCode,
 				PriceListAccount priceListAccount)
 		throws Exception {
 
@@ -263,8 +263,8 @@ public abstract class BasePriceListAccountResourceImpl
 	@Tags(value = {})
 	public Response postPriceListIdPriceListAccountBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

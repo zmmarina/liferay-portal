@@ -92,10 +92,10 @@ public abstract class BaseRoleResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "Role")})
 	public Page<Role> getProcessRolesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("processId")
-				Long processId,
-			@Parameter(hidden = true) @QueryParam("completed")
-				Boolean completed)
+			@NotNull @Parameter(hidden = true) @PathParam("processId") Long
+				processId,
+			@Parameter(hidden = true) @QueryParam("completed") Boolean
+				completed)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

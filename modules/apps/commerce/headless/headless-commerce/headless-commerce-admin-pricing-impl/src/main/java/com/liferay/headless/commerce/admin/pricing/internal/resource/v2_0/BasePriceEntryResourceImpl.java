@@ -99,7 +99,7 @@ public abstract class BasePriceEntryResourceImpl
 	public void deletePriceEntryByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode)
+			String externalReferenceCode)
 		throws Exception {
 	}
 
@@ -121,7 +121,7 @@ public abstract class BasePriceEntryResourceImpl
 	public PriceEntry getPriceEntryByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode)
+			String externalReferenceCode)
 		throws Exception {
 
 		return new PriceEntry();
@@ -146,7 +146,7 @@ public abstract class BasePriceEntryResourceImpl
 	public PriceEntry patchPriceEntryByExternalReferenceCode(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			PriceEntry priceEntry)
 		throws Exception {
 
@@ -167,8 +167,8 @@ public abstract class BasePriceEntryResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "PriceEntry")})
 	public void deletePriceEntry(
-			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId")
-				Long priceEntryId)
+			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId") Long
+				priceEntryId)
 		throws Exception {
 	}
 
@@ -187,8 +187,8 @@ public abstract class BasePriceEntryResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "PriceEntry")})
 	public Response deletePriceEntryBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -222,8 +222,8 @@ public abstract class BasePriceEntryResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "PriceEntry")})
 	public PriceEntry getPriceEntry(
-			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId")
-				Long priceEntryId)
+			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId") Long
+				priceEntryId)
 		throws Exception {
 
 		return new PriceEntry();
@@ -244,8 +244,8 @@ public abstract class BasePriceEntryResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "PriceEntry")})
 	public PriceEntry patchPriceEntry(
-			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId")
-				Long priceEntryId,
+			@NotNull @Parameter(hidden = true) @PathParam("priceEntryId") Long
+				priceEntryId,
 			PriceEntry priceEntry)
 		throws Exception {
 
@@ -274,7 +274,7 @@ public abstract class BasePriceEntryResourceImpl
 	public Page<PriceEntry> getPriceListByExternalReferenceCodePriceEntriesPage(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			@Context Pagination pagination)
 		throws Exception {
 
@@ -302,7 +302,7 @@ public abstract class BasePriceEntryResourceImpl
 	public PriceEntry postPriceListByExternalReferenceCodePriceEntry(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("externalReferenceCode")
-				String externalReferenceCode,
+			String externalReferenceCode,
 			PriceEntry priceEntry)
 		throws Exception {
 
@@ -378,8 +378,8 @@ public abstract class BasePriceEntryResourceImpl
 	@Tags(value = {@Tag(name = "PriceEntry")})
 	public Response postPriceListIdPriceEntryBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("id") Long id,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 

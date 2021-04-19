@@ -104,8 +104,8 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public Page<TaxonomyVocabulary> getAssetLibraryTaxonomyVocabulariesPage(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			@Parameter(hidden = true) @QueryParam("search") String search,
 			@Context Filter filter, @Context Pagination pagination,
 			@Context Sort[] sorts)
@@ -129,8 +129,8 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public TaxonomyVocabulary postAssetLibraryTaxonomyVocabulary(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
 			TaxonomyVocabulary taxonomyVocabulary)
 		throws Exception {
 
@@ -155,10 +155,10 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public Response postAssetLibraryTaxonomyVocabularyBatch(
-			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId")
-				Long assetLibraryId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@NotNull @Parameter(hidden = true) @PathParam("assetLibraryId") Long
+				assetLibraryId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -251,8 +251,8 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public Response postSiteTaxonomyVocabularyBatch(
 			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -293,7 +293,7 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	public void deleteTaxonomyVocabulary(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId)
+			Long taxonomyVocabularyId)
 		throws Exception {
 	}
 
@@ -312,8 +312,8 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@Produces("application/json")
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public Response deleteTaxonomyVocabularyBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
@@ -352,7 +352,7 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	public TaxonomyVocabulary getTaxonomyVocabulary(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId)
+			Long taxonomyVocabularyId)
 		throws Exception {
 
 		return new TaxonomyVocabulary();
@@ -380,7 +380,7 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	public TaxonomyVocabulary patchTaxonomyVocabulary(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId,
+			Long taxonomyVocabularyId,
 			TaxonomyVocabulary taxonomyVocabulary)
 		throws Exception {
 
@@ -474,7 +474,7 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	public TaxonomyVocabulary putTaxonomyVocabulary(
 			@NotNull @Parameter(hidden = true)
 			@PathParam("taxonomyVocabularyId")
-				Long taxonomyVocabularyId,
+			Long taxonomyVocabularyId,
 			TaxonomyVocabulary taxonomyVocabulary)
 		throws Exception {
 
@@ -496,8 +496,8 @@ public abstract class BaseTaxonomyVocabularyResourceImpl
 	@PUT
 	@Tags(value = {@Tag(name = "TaxonomyVocabulary")})
 	public Response putTaxonomyVocabularyBatch(
-			@Parameter(hidden = true) @QueryParam("callbackURL")
-				String callbackURL,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
 			Object object)
 		throws Exception {
 
