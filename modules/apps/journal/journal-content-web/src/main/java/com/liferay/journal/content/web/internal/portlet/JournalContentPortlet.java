@@ -25,6 +25,7 @@ import com.liferay.journal.model.JournalArticleDisplay;
 import com.liferay.journal.service.JournalArticleLocalService;
 import com.liferay.journal.util.ExportArticleHelper;
 import com.liferay.journal.util.JournalContent;
+import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
@@ -120,7 +121,7 @@ public class JournalContentPortlet extends MVCPortlet {
 		JournalContentDisplayContext journalContentDisplayContext =
 			(JournalContentDisplayContext)renderRequest.getAttribute(
 				JournalContentWebKeys.JOURNAL_CONTENT_DISPLAY_CONTEXT +
-					portletDisplay.getId());
+					StringPool.POUND + portletDisplay.getId());
 
 		if (journalContentDisplayContext != null) {
 			try {

@@ -117,7 +117,7 @@ public class JournalContentDisplayContext {
 		JournalContentDisplayContext journalContentDisplayContext =
 			(JournalContentDisplayContext)portletRequest.getAttribute(
 				JournalContentWebKeys.JOURNAL_CONTENT_DISPLAY_CONTEXT +
-					portletDisplay.getId());
+					StringPool.POUND + portletDisplay.getId());
 
 		if (journalContentDisplayContext == null) {
 			JournalContentPortletInstanceConfiguration
@@ -132,7 +132,7 @@ public class JournalContentDisplayContext {
 
 			portletRequest.setAttribute(
 				JournalContentWebKeys.JOURNAL_CONTENT_DISPLAY_CONTEXT +
-					portletDisplay.getId(),
+					StringPool.POUND + portletDisplay.getId(),
 				journalContentDisplayContext);
 		}
 
