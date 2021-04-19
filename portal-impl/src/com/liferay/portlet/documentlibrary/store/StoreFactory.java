@@ -237,7 +237,7 @@ public class StoreFactory {
 			String storeType = GetterUtil.getString(
 				serviceReference.getProperty("store.type"));
 
-			final Store store = _getStore(serviceReference, storeType);
+			Store store = _getStore(serviceReference, storeType);
 
 			if (StringUtil.equals(storeType, PropsValues.DL_STORE_IMPL)) {
 				Map<String, Object> properties =
