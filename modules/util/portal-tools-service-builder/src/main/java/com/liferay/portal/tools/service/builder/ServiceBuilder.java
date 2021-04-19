@@ -5072,6 +5072,7 @@ public class ServiceBuilder {
 
 	/**
 	 * @see #_createDSLTable(List, String, String, boolean, boolean)
+	 * @see com.liferay.object.service.internal.petra.sql.dsl.DynamicObjectDefinitionTable#getCreateTableSQL
 	 */
 	private String _getCreateTableSQL(Entity entity) {
 		List<EntityColumn> databaseRegularEntityColumns =

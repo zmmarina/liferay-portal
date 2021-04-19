@@ -424,6 +424,16 @@ public class ObjectEntryLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<java.util.Map<String, java.io.Serializable>>
+			getValuesList(
+				long objectDefinitionId, int[] statuses, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _objectEntryLocalService.getValuesList(
+			objectDefinitionId, statuses, start, end);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.search.BaseModelSearchResult
 		<com.liferay.object.model.ObjectEntry> searchObjectEntries(
 				long objectDefinitionId, String keywords, int cur, int delta)

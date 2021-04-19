@@ -336,6 +336,11 @@ public interface ObjectEntryLocalService
 		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Map<String, Serializable>> getValuesList(
+			long objectDefinitionId, int[] statuses, int start, int end)
+		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public BaseModelSearchResult<ObjectEntry> searchObjectEntries(
 			long objectDefinitionId, String keywords, int cur, int delta)
 		throws PortalException;

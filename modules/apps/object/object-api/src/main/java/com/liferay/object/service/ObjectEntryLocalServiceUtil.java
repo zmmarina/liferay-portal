@@ -376,6 +376,14 @@ public class ObjectEntryLocalServiceUtil {
 		return getService().getValues(objectEntry);
 	}
 
+	public static List<Map<String, Serializable>> getValuesList(
+			long objectDefinitionId, int[] statuses, int start, int end)
+		throws PortalException {
+
+		return getService().getValuesList(
+			objectDefinitionId, statuses, start, end);
+	}
+
 	public static com.liferay.portal.kernel.search.BaseModelSearchResult
 		<ObjectEntry> searchObjectEntries(
 				long objectDefinitionId, String keywords, int cur, int delta)
