@@ -36,7 +36,6 @@ import com.liferay.portal.kernel.security.pwd.PasswordEncryptorUtil;
 import com.liferay.portal.kernel.service.ImageLocalService;
 import com.liferay.portal.kernel.service.ListTypeService;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.HashMapBuilder;
 import com.liferay.portal.kernel.util.Props;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.Validator;
@@ -732,16 +731,21 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 	private Object _getAttributeValue(Object object, String fieldName)
 		throws PortalException {
 
-		boolean listTypeField = _listTypeFields.containsKey(fieldName);
+		boolean listTypeFieldName = false;
 
-		if (listTypeField) {
-			fieldName = _listTypeFields.get(fieldName);
+		if (fieldName.equals("prefix")) {
+			fieldName = "prefixId";
+			listTypeFieldName = true;
+		}
+		else if (fieldName.equals("suffix")) {
+			fieldName = "suffixId";
+			listTypeFieldName = true;
 		}
 
 		Object attributeValue = BeanPropertiesUtil.getObjectSilent(
 			object, fieldName);
 
-		if ((attributeValue != null) && listTypeField) {
+		if ((attributeValue != null) && listTypeFieldName) {
 			ListType listType = _listTypeService.getListType(
 				(Long)attributeValue);
 
@@ -757,13 +761,6 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		DefaultPortalToLDAPConverter.class);
-
-	private static final Map<String, String> _listTypeFields =
-		HashMapBuilder.put(
-			"prefix", "prefixId"
-		).put(
-			"suffix", "suffixId"
-		).build();
 
 	private ImageLocalService _imageLocalService;
 	private ConfigurationProvider<LDAPAuthConfiguration>
