@@ -31,7 +31,7 @@ export default function Sidebar() {
 			) : (
 				<ClayAlert className="m-3" displayType="info">
 					{Liferay.Language.get(
-						'this-theme-does-not-include-token-definition'
+						'this-theme-does-not-include-a-token-definition'
 					)}
 				</ClayAlert>
 			)}
