@@ -224,8 +224,8 @@ public class CPDefinitionsDisplayContext
 			PortletURLFactoryUtil.create(
 				cpRequestHelper.getRenderRequest(),
 				cpRequestHelper.getPortletId(), PortletRequest.RENDER_PHASE)
-		).setParameter(
-			"mvcRenderCommandName", "/cp_definitions/duplicate_cp_definition"
+		).setMVCRenderCommandName(
+			"/cp_definitions/duplicate_cp_definition"
 		).setParameter(
 			"cpDefinitionId", "{id}"
 		).setWindowState(
