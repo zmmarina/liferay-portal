@@ -220,7 +220,6 @@ public class AssetDisplayPageFormProcessorTest {
 						fetchAssetDisplayPageEntry(
 							_group.getGroupId(), classNameId,
 							fileEntry.getFileEntryId()));
-
 				Assert.assertTrue(
 					AssetDisplayPageUtil.hasAssetDisplayPage(
 						fileEntry.getGroupId(), classNameId,

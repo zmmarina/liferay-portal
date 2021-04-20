@@ -439,7 +439,6 @@ public class AssetCategoriesDisplayContext {
 		sb.append(group.getFriendlyURL());
 
 		sb.append(_layoutDisplayPageProvider.getURLSeparator());
-
 		sb.append(category.getCategoryId());
 
 		return sb.toString();
