@@ -210,7 +210,7 @@ public class LocalizationImplTest {
 			preferences, new MockPortletRequest(), "test", "testValue");
 
 		Assert.assertTrue(
-			"PortletPreferences not properly applied to XML: " + xml,
+			"Portlet preferences were not properly applied to XML: " + xml,
 			xml.contains(
 				"<test language-id=\"" + _ENGLISH_LANGUAGE_ID +
 					"\">changedValue</test>"));
@@ -224,7 +224,7 @@ public class LocalizationImplTest {
 			preferences, new MockPortletRequest(), "test", "testValue");
 
 		Assert.assertTrue(
-			"Default values not included in XML: " + xml,
+			"Default values were not included in XML: " + xml,
 			xml.contains(
 				"<test language-id=\"" + LocaleUtil.getDefault() +
 					"\">testValue</test>"));
