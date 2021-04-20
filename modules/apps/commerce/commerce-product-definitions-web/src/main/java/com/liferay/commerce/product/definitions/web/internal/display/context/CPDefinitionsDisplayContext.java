@@ -220,21 +220,21 @@ public class CPDefinitionsDisplayContext
 				LanguageUtil.get(httpServletRequest, "delete"), "delete",
 				"delete", "async"));
 
-		PortletURL duplicateURL = PortletURLBuilder.create(
-			PortletURLFactoryUtil.create(
-				cpRequestHelper.getRenderRequest(),
-				cpRequestHelper.getPortletId(), PortletRequest.RENDER_PHASE)
-		).setMVCRenderCommandName(
-			"/cp_definitions/duplicate_cp_definition"
-		).setParameter(
-			"cpDefinitionId", "{id}"
-		).setWindowState(
-			LiferayWindowState.POP_UP
-		).build();
-
 		clayDataSetActionDropdownItems.add(
 			new ClayDataSetActionDropdownItem(
-				duplicateURL.toString(), "paste", "duplicate",
+				PortletURLBuilder.create(
+					PortletURLFactoryUtil.create(
+						cpRequestHelper.getRenderRequest(),
+						cpRequestHelper.getPortletId(),
+						PortletRequest.RENDER_PHASE)
+				).setMVCRenderCommandName(
+					"/cp_definitions/duplicate_cp_definition"
+				).setParameter(
+					"cpDefinitionId", "{id}"
+				).setWindowState(
+					LiferayWindowState.POP_UP
+				).buildString(),
+				"paste", "duplicate",
 				LanguageUtil.get(httpServletRequest, "duplicate"), "post",
 				"update", "modal"));
 
