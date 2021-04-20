@@ -311,10 +311,13 @@ public class GraphQLServletExtender {
 
 				GraphQLType graphQLType = graphQLTypes.get(typeName);
 
-				String classNameKey = clazz.getName() + "_" + input;
+				String registeredClassNamesKey = clazz.getName() + "_" + input;
 
-				if (_registeredClassNames.containsKey(classNameKey)) {
-					typeName = _registeredClassNames.get(classNameKey);
+				if (_registeredClassNames.containsKey(
+						registeredClassNamesKey)) {
+
+					typeName = _registeredClassNames.get(
+						registeredClassNamesKey);
 				}
 				else if (graphQLType != null) {
 					String name = clazz.getName();
@@ -341,7 +344,7 @@ public class GraphQLServletExtender {
 
 				processingStack.push(typeName);
 
-				_registeredClassNames.put(classNameKey, typeName);
+				_registeredClassNames.put(registeredClassNamesKey, typeName);
 
 				if (clazz.getAnnotation(GraphQLUnion.class) != null) {
 					graphQLType = new UnionBuilder(
