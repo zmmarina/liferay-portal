@@ -9205,100 +9205,100 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		</if>
 
 		<if>
-			<isset property="chat.chatwoot.password" />
+			<isset property="click.to.chat.chatwoot.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.chatwoot.password=${chat.chatwoot.password}
+					click.to.chat.chatwoot.password=${click.to.chat.chatwoot.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.crisp.password" />
+			<isset property="click.to.chat.crisp.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.crisp.password=${chat.crisp.password}
+					click.to.chat.crisp.password=${click.to.chat.crisp.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.hubspot.password" />
+			<isset property="click.to.chat.hubspot.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.hubspot.password=${chat.hubspot.password}
+					click.to.chat.hubspot.password=${click.to.chat.hubspot.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.jivochat.password" />
+			<isset property="click.to.chat.jivoclick.to.chat.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.jivochat.password=${chat.jivochat.password}
+					click.to.chat.jivoclick.to.chat.password=${click.to.chat.jivoclick.to.chat.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.livechat.password" />
+			<isset property="click.to.chat.liveclick.to.chat.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.livechat.password=${chat.livechat.password}
+					click.to.chat.liveclick.to.chat.password=${click.to.chat.liveclick.to.chat.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.liveperson.password" />
+			<isset property="click.to.chat.liveperson.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.liveperson.password=${chat.liveperson.password}
+					click.to.chat.liveperson.password=${click.to.chat.liveperson.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.smartsupp.password" />
+			<isset property="click.to.chat.smartsupp.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.smartsupp.password=${chat.smartsupp.password}
+					click.to.chat.smartsupp.password=${click.to.chat.smartsupp.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.tawkto.password" />
+			<isset property="click.to.chat.tawkto.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.tawkto.password=${chat.tawkto.password}
+					click.to.chat.tawkto.password=${click.to.chat.tawkto.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.tidio.password" />
+			<isset property="click.to.chat.tidio.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.tidio.password=${chat.tidio.password}
+					click.to.chat.tidio.password=${click.to.chat.tidio.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.tolvnow.password" />
+			<isset property="click.to.chat.tolvnow.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.tolvnow.password=${chat.tolvnow.password}
+					click.to.chat.tolvnow.password=${click.to.chat.tolvnow.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="chat.zendesk.password" />
+			<isset property="click.to.chat.zendesk.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					chat.zendesk.password=${chat.zendesk.password}
+					click.to.chat.zendesk.password=${click.to.chat.zendesk.password}
 				</echo>
 			</then>
 		</if>
