@@ -188,12 +188,12 @@ public class StagingImplTest {
 			ConfigurationProviderUtil.getCompanyConfiguration(
 				StagingConfiguration.class, companyId);
 
-		boolean stagingDeleteTempLarOnSuccess =
-			stagingConfiguration.stagingDeleteTempLarOnSuccess();
+		boolean stagingDeleteTempLAROnSuccess =
+			stagingConfiguration.stagingDeleteTempLAROnSuccess();
 
 		Dictionary<String, Object> properties = new Hashtable<>();
 
-		properties.put("stagingDeleteTempLarOnSuccess", false);
+		properties.put("stagingDeleteTempLAROnSuccess", false);
 
 		ConfigurationProviderUtil.saveCompanyConfiguration(
 			StagingConfiguration.class, companyId, properties);
@@ -203,7 +203,7 @@ public class StagingImplTest {
 		}
 		finally {
 			properties.put(
-				"stagingDeleteTempLarOnSuccess", stagingDeleteTempLarOnSuccess);
+				"stagingDeleteTempLAROnSuccess", stagingDeleteTempLAROnSuccess);
 
 			ConfigurationProviderUtil.saveCompanyConfiguration(
 				StagingConfiguration.class, companyId, properties);

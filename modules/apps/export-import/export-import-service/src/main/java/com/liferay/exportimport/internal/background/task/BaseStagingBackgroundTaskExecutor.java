@@ -82,7 +82,7 @@ public abstract class BaseStagingBackgroundTaskExecutor
 		StagingConfiguration stagingConfiguration = getStagingConfiguration();
 
 		if ((stagingConfiguration == null) ||
-			stagingConfiguration.stagingDeleteTempLarOnFailure()) {
+			stagingConfiguration.stagingDeleteTempLAROnFailure()) {
 
 			FileUtil.delete(file);
 		}
@@ -95,7 +95,7 @@ public abstract class BaseStagingBackgroundTaskExecutor
 		StagingConfiguration stagingConfiguration = getStagingConfiguration();
 
 		if ((stagingConfiguration == null) ||
-			stagingConfiguration.stagingDeleteTempLarOnSuccess()) {
+			stagingConfiguration.stagingDeleteTempLAROnSuccess()) {
 
 			FileUtil.delete(file);
 		}

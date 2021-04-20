@@ -42,13 +42,13 @@ public interface StagingConfiguration {
 		deflt = "true", description = "staging-delete-temp-lar-on-failure-help",
 		name = "staging-delete-temp-lar-on-failure", required = false
 	)
-	public boolean stagingDeleteTempLarOnFailure();
+	public boolean stagingDeleteTempLAROnFailure();
 
 	@Meta.AD(
 		deflt = "true", description = "staging-delete-temp-lar-on-success-help",
 		name = "staging-delete-temp-lar-on-success", required = false
 	)
-	public boolean stagingDeleteTempLarOnSuccess();
+	public boolean stagingDeleteTempLAROnSuccess();
 
 	@Meta.AD(
 		deflt = "false",

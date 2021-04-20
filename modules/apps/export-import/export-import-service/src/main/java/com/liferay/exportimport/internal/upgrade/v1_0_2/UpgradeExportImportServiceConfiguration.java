@@ -74,16 +74,16 @@ public class UpgradeExportImportServiceConfiguration extends UpgradeProcess {
 						"publishParentLayoutsByDefault"),
 					true));
 			stagingProperties.put(
-				"stagingDeleteTempLarOnFailure",
+				"stagingDeleteTempLAROnFailure",
 				GetterUtil.getBoolean(
 					exportImportProperties.remove(
-						"stagingDeleteTempLarOnFailure"),
+						"stagingDeleteTempLAROnFailure"),
 					true));
 			stagingProperties.put(
-				"stagingDeleteTempLarOnSuccess",
+				"stagingDeleteTempLAROnSuccess",
 				GetterUtil.getBoolean(
 					exportImportProperties.remove(
-						"stagingDeleteTempLarOnSuccess"),
+						"stagingDeleteTempLAROnSuccess"),
 					true));
 			stagingProperties.put(
 				"stagingUseVirtualHostForRemoteSite",

@@ -1254,8 +1254,8 @@ public class ExportImportHelperImpl implements ExportImportHelper {
 		}
 
 		if (!ExportImportThreadLocal.isStagingInProcess() ||
-			(_stagingConfiguration.stagingDeleteTempLarOnFailure() &&
-			 _stagingConfiguration.stagingDeleteTempLarOnSuccess())) {
+			(_stagingConfiguration.stagingDeleteTempLAROnFailure() &&
+			 _stagingConfiguration.stagingDeleteTempLAROnSuccess())) {
 
 			return ZipWriterFactoryUtil.getZipWriter();
 		}
