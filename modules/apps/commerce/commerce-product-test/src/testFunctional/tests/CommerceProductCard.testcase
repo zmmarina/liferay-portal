@@ -209,12 +209,24 @@ definition {
 	}
 
 	@description = "COMMERCE-5873. As a buyer, I want to be able to navigate to the product detail page via primary CTA, to check its variants"
-	@ignore = "true"
 	@priority = "3"
 	test AssertViewAllVariantsButtonRedirectsToProductDetailsPage {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-5873 AssertViewAllVariantsButtonRedirectsToProductDetailsPage pending implementation
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		CommerceAcceleratorsInitializer.changeProductsSorting(sortingType = "Name Ascending");
+
+		Click(locator1 = "CommerceAccelerators#PRODUCT_CARD_VIEW_ALL_VARIANTS",
+		key_productName = "brake-fluid");
+
+		AssertTextEquals(
+			locator1 = "CommerceFrontStore#FS_PRODUCT_SKU",
+			value1 = "MIN93016A");
+			
+
 	}
 
 	@description = "COMMERCE-5868. As a buyer, I want to be able to compare a product with other ones in a product comparison items list, by checking the product via checkbox"
