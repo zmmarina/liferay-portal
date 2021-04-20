@@ -116,10 +116,10 @@ public class LayoutPrototypeUpgradeProcess extends UpgradeProcess {
 				ps.setLong(5, layoutPrototype.getUserId());
 				ps.setString(6, layoutPrototype.getUserName());
 
-				Date now = new Date(System.currentTimeMillis());
+				Date date = new Date(System.currentTimeMillis());
 
-				ps.setDate(7, now);
-				ps.setDate(8, now);
+				ps.setDate(7, date);
+				ps.setDate(8, date);
 
 				ps.setLong(9, 0);
 				ps.setString(10, name);
