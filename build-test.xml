@@ -9205,6 +9205,105 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		</if>
 
 		<if>
+			<isset property="chat.chatwoot.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.chatwoot.password=${chat.chatwoot.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.crisp.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.crisp.password=${chat.crisp.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.hubspot.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.hubspot.password=${chat.hubspot.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.jivochat.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.jivochat.password=${chat.jivochat.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.livechat.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.livechat.password=${chat.livechat.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.liveperson.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.liveperson.password=${chat.liveperson.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.smartsupp.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.smartsupp.password=${chat.smartsupp.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.tawkto.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.tawkto.password=${chat.tawkto.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.tidio.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.tidio.password=${chat.tidio.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.tolvnow.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.tolvnow.password=${chat.tolvnow.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
+			<isset property="chat.zendesk.password" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					chat.zendesk.password=${chat.zendesk.password}
+				</echo>
+			</then>
+		</if>
+
+		<if>
 			<isset property="print.java.process.on.fail" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
