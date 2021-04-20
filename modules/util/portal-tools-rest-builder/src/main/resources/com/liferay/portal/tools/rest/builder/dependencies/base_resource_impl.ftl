@@ -94,6 +94,7 @@ public abstract class Base${schemaName}ResourceImpl
 
 	<#assign
 		javaDataType = freeMarkerTool.getJavaDataType(configYAML, openAPIYAML, schemaName)
+
 		generateBatch = configYAML.generateBatch && javaDataType??
 	/>
 
