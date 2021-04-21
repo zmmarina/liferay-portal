@@ -14,9 +14,14 @@
 
 import ClayAlert from '@clayui/alert';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
-import {useEventListener, useIsMounted} from '@liferay/frontend-js-react-web';
+import {useIsMounted} from '@liferay/frontend-js-react-web';
 import {fetch} from 'frontend-js-web';
-import React, {useCallback, useEffect, useReducer} from 'react';
+import React, {
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useReducer,
+} from 'react';
 
 import BasicInformation from './components/BasicInformation';
 import EmptyLayoutReports from './components/EmptyLayoutReports';
@@ -65,52 +70,56 @@ export default function ({
 
 	const [state, dispatch] = useReducer(dataReducer, initialState);
 
-	const safeDispatch = useCallback(
-		(action) => {
-			if (isMounted()) {
-				dispatch(action);
-			}
-		},
-		[isMounted]
-	);
+	const safeDispatch = (action) => {
+		if (isMounted()) {
+			dispatch(action);
+		}
+	};
 
-	const getData = useCallback(
-		(fetchURL) => {
-			safeDispatch({type: 'LOAD_DATA'});
+	const getData = (fetchURL) => {
+		safeDispatch({type: 'LOAD_DATA'});
 
-			fetch(fetchURL, {
-				method: 'GET',
-			})
-				.then((response) =>
-					response.json().then((data) =>
-						safeDispatch({
-							data,
-							type: 'SET_DATA',
-						})
-					)
-				)
-				.catch(() => {
+		fetch(fetchURL, {
+			method: 'GET',
+		})
+			.then((response) =>
+				response.json().then((data) =>
 					safeDispatch({
-						error: Liferay.Language.get(
-							'an-unexpected-error-occurred'
-						),
-						type: 'SET_ERROR',
-					});
+						data,
+						type: 'SET_DATA',
+					})
+				)
+			)
+			.catch(() => {
+				safeDispatch({
+					error: Liferay.Language.get('an-unexpected-error-occurred'),
+					type: 'SET_ERROR',
 				});
-		},
-		[safeDispatch]
-	);
+			});
+	};
 
 	const handlePageAuditData = useCallback(() => {
 		getData(layoutReportsDataURL);
-	}, [layoutReportsDataURL, getData]);
-
-	const layoutReportsPanelToggle = document.getElementById(
-		`${portletNamespace}layoutReportsPanelToggleId`
-	);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [layoutReportsDataURL]);
 
 	useEffect(() => {
-		const sidenavInstance = Liferay.SideNavigation.initialize(
+		var layoutReportsPanelToggle = document.getElementById(
+			`${portletNamespace}layoutReportsPanelToggleId`
+		);
+
+		layoutReportsPanelToggle.addEventListener(
+			'mouseenter',
+			handlePageAuditData,
+			{once: true}
+		);
+		layoutReportsPanelToggle.addEventListener(
+			'focus',
+			handlePageAuditData,
+			{once: true}
+		);
+
+		var sidenavInstance = Liferay.SideNavigation.initialize(
 			layoutReportsPanelToggle
 		);
 
@@ -131,27 +140,14 @@ export default function ({
 		Liferay.once('screenLoad', () => {
 			Liferay.SideNavigation.destroy(layoutReportsPanelToggle);
 		});
-	}, [handlePageAuditData, layoutReportsPanelToggle, portletNamespace]);
+	}, [handlePageAuditData, portletNamespace]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (isPanelStateOpen) {
 			getData(layoutReportsDataURL);
 		}
-	}, [isPanelStateOpen, layoutReportsDataURL, getData]);
-
-	useEventListener(
-		'mouseenter',
-		handlePageAuditData,
-		{once: true},
-		layoutReportsPanelToggle
-	);
-
-	useEventListener(
-		'focus',
-		handlePageAuditData,
-		{once: true},
-		layoutReportsPanelToggle
-	);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [layoutReportsDataURL]);
 
 	return state.loading ? (
 		<ClayLoadingIndicator small />
