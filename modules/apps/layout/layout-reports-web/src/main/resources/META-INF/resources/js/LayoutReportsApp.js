@@ -13,6 +13,8 @@
  */
 
 import ClayAlert from '@clayui/alert';
+import {ClayButtonWithIcon} from '@clayui/button';
+import ClayLayout from '@clayui/layout';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 import {useIsMounted} from '@liferay/frontend-js-react-web';
 import {fetch} from 'frontend-js-web';
@@ -103,6 +105,13 @@ export default function ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [layoutReportsDataURL]);
 
+	const handlePanelClose = useCallback(() => {
+		Liferay.Util.Session.set(
+			'com.liferay.layout.reports.web_layoutReportsPanelState',
+			'closed'
+		);
+	}, []);
+
 	useEffect(() => {
 		var layoutReportsPanelToggle = document.getElementById(
 			`${portletNamespace}layoutReportsPanelToggleId`
@@ -149,29 +158,55 @@ export default function ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [layoutReportsDataURL]);
 
-	return state.loading ? (
-		<ClayLoadingIndicator small />
-	) : state.error ? (
-		<ClayAlert displayType="danger" variant="stripe">
-			{state.error}
-		</ClayAlert>
-	) : (
-		state.data && (
-			<>
-				<BasicInformation
-					canonicalURLs={state.data.canonicalURLs}
-					defaultLanguageId={state.data.defaultLanguageId}
-				/>
+	return (
+		<>
+			<div className="sidebar-header">
+				<ClayLayout.ContentRow>
+					<ClayLayout.ContentCol expand>
+						<h1 className="sr-only">
+							{Liferay.Language.get('page-audit')}
+						</h1>
+						<span>{Liferay.Language.get('page-audit')}</span>
+					</ClayLayout.ContentCol>
+					<ClayLayout.ContentCol>
+						<ClayButtonWithIcon
+							className="sidenav-close"
+							displayType="unstyled"
+							monospaced
+							onClick={handlePanelClose}
+							symbol="times"
+							type="button"
+						/>
+					</ClayLayout.ContentCol>
+				</ClayLayout.ContentRow>
+			</div>
+			<div className="p-3 sidebar-body">
+				{state.loading ? (
+					<ClayLoadingIndicator small />
+				) : state.error ? (
+					<ClayAlert displayType="danger" variant="stripe">
+						{state.error}
+					</ClayAlert>
+				) : (
+					state.data && (
+						<>
+							<BasicInformation
+								canonicalURLs={state.data.canonicalURLs}
+								defaultLanguageId={state.data.defaultLanguageId}
+							/>
 
-				{state.data.validConnection || (
-					<EmptyLayoutReports
-						assetsPath={state.data.assetsPath}
-						configureGooglePageSpeedURL={
-							state.data.configureGooglePageSpeedURL
-						}
-					/>
+							{state.data.validConnection || (
+								<EmptyLayoutReports
+									assetsPath={state.data.assetsPath}
+									configureGooglePageSpeedURL={
+										state.data.configureGooglePageSpeedURL
+									}
+								/>
+							)}
+						</>
+					)
 				)}
-			</>
-		)
+			</div>
+		</>
 	);
 }
