@@ -9232,19 +9232,19 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		</if>
 
 		<if>
-			<isset property="click.to.chat.jivoclick.to.chat.password" />
+			<isset property="click.to.chat.jivochat.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					click.to.chat.jivoclick.to.chat.password=${click.to.chat.jivoclick.to.chat.password}
+					click.to.chat.jivochat.password=${click.to.chat.jivochat.password}
 				</echo>
 			</then>
 		</if>
 
 		<if>
-			<isset property="click.to.chat.liveclick.to.chat.password" />
+			<isset property="click.to.chat.livechat.password" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
-					click.to.chat.liveclick.to.chat.password=${click.to.chat.liveclick.to.chat.password}
+					click.to.chat.livechat.password=${click.to.chat.livechat.password}
 				</echo>
 			</then>
 		</if>
