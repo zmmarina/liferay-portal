@@ -352,28 +352,34 @@ public class LayoutReportsProductNavigationControlMenuEntry
 
 		JspWriter jspWriter = pageContext.getOut();
 
-		StringBundler sb = new StringBundler(21);
-
-		sb.append("<div class=\"");
+		jspWriter.write("<div class=\"");
 
 		if (_isPanelStateOpen(httpServletRequest)) {
-			sb.append("lfr-has-layout-reports-panel open-admin-panel ");
+			jspWriter.write("lfr-has-layout-reports-panel open-admin-panel ");
 		}
 
-		sb.append("d-print-none lfr-admin-panel lfr-product-menu-panel ");
-		sb.append("lfr-layout-reports-panel sidenav-fixed ");
-		sb.append("sidenav-menu-slider sidenav-right\" id=\"");
-		sb.append(_portletNamespace);
-		sb.append("layoutReportsPanelId\"><div class=\"sidebar sidebar-light ");
-		sb.append("sidenav-menu sidebar-sm\"><div class=\"sidebar-header\">");
-		sb.append("<div class=\"autofit-row autofit-row-center\"><div ");
-		sb.append("class=\"autofit-col autofit-col-expand\">");
-		sb.append("<h1 class=\"sr-only\">");
-		sb.append(_html.escape(_language.get(resourceBundle, "page-audit")));
-		sb.append("</h1><span>");
-		sb.append(_html.escape(_language.get(resourceBundle, "page-audit")));
-		sb.append("</span></div>");
-		sb.append("<div class=\"autofit-col\">");
+		jspWriter.write(
+			StringBundler.concat(
+				"d-print-none lfr-admin-panel lfr-product-menu-panel ",
+				"lfr-layout-reports-panel sidenav-fixed sidenav-menu-slider ",
+				"sidenav-right\" id=\""));
+		jspWriter.write(_portletNamespace);
+		jspWriter.write("layoutReportsPanelId\">");
+		jspWriter.write(
+			"<div class=\"sidebar sidebar-light sidenav-menu sidebar-sm\">");
+		jspWriter.write("<div class=\"sidebar-header\">");
+		jspWriter.write("<div class=\"autofit-row autofit-row-center\">");
+
+		jspWriter.write("<div class=\"autofit-col autofit-col-expand\">");
+		jspWriter.write("<h1 class=\"sr-only\">");
+		jspWriter.write(
+			_html.escape(_language.get(resourceBundle, "page-audit")));
+		jspWriter.write("</h1><span>");
+		jspWriter.write(
+			_html.escape(_language.get(resourceBundle, "page-audit")));
+		jspWriter.write("</span></div>");
+
+		jspWriter.write("<div class=\"autofit-col\">");
 
 		IconTag iconTag = new IconTag();
 
@@ -382,11 +388,15 @@ public class LayoutReportsProductNavigationControlMenuEntry
 		iconTag.setMarkupView("lexicon");
 		iconTag.setUrl("javascript:;");
 
-		sb.append(iconTag.doTagAsString(pageContext));
+		jspWriter.write(iconTag.doTagAsString(pageContext));
 
-		sb.append("</div></div></div><div class=\"p-3 sidebar-body\"><span ");
-		sb.append("aria-hidden=\"true\" class=\"loading-animation ");
-		sb.append("loading-animation-sm\"></span>");
+		jspWriter.write("</div></div></div>");
+
+		jspWriter.write("<div class=\"p-3 sidebar-body\">");
+
+		jspWriter.write(
+			"<span aria-hidden=\"true\" class=\"loading-animation " +
+				"loading-animation-sm\"></span>");
 
 		try {
 			_reactRenderer.renderReact(
@@ -407,9 +417,7 @@ public class LayoutReportsProductNavigationControlMenuEntry
 			throw new IOException(exception);
 		}
 
-		sb.append("</div></div></div>");
-
-		jspWriter.write(sb.toString());
+		jspWriter.write("</div></div></div>");
 	}
 
 	private static final String _ICON_TMPL_CONTENT = StringUtil.read(
