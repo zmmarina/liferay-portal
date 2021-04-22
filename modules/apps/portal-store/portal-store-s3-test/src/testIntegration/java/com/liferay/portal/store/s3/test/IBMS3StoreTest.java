@@ -30,6 +30,8 @@ import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 
 import java.util.Dictionary;
 
+import javax.annotation.Generated;
+
 import org.junit.AfterClass;
 import org.junit.Assume;
 import org.junit.BeforeClass;
@@ -44,6 +46,7 @@ import org.osgi.service.cm.ConfigurationAdmin;
  * @author Preston Crary
  * @author Manuel de la Peña
  */
+@Generated("")
 @RunWith(Arquillian.class)
 public class IBMS3StoreTest extends BaseStoreTestCase {
 
