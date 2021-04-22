@@ -16,9 +16,12 @@ package com.liferay.portal.search.rescore;
 
 import com.liferay.portal.search.query.Query;
 
+import org.osgi.annotation.versioning.ProviderType;
+
 /**
  * @author Bryan Engler
  */
+@ProviderType
 public interface RescoreBuilder {
 
 	public Rescore build();
