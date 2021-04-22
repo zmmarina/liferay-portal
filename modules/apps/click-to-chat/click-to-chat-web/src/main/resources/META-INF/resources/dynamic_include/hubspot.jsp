@@ -22,7 +22,7 @@ String[] credentials = clickToChatChatProviderAccountId.split("/");
 
 <script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= credentials[0] %>.js" type="text/javascript"></script>
 
-<c:if test="<%= themeDisplay.isSignedIn() %>">
+<c:if test="<%= themeDisplay.isSignedIn() && (credentials.length > 1) %>">
 	<script type="text/javascript">
 		window.hsConversationsSettings = {
 			loadImmediately: false,

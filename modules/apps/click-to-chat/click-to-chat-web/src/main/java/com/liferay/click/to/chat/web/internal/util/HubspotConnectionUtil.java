@@ -14,7 +14,6 @@
 
 package com.liferay.click.to.chat.web.internal.util;
 
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSONException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
@@ -50,6 +49,7 @@ public class HubspotConnectionUtil {
 
 			HttpURLConnection httpURLConnection =
 				(HttpURLConnection)url.openConnection();
+
 			httpURLConnection.setRequestMethod(HttpMethods.POST);
 			httpURLConnection.setRequestProperty(
 				HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
@@ -80,6 +80,7 @@ public class HubspotConnectionUtil {
 						StandardCharsets.UTF_8))) {
 
 				StringBuilder responseStringBuilder = new StringBuilder();
+
 				String responseLine;
 
 				while ((responseLine = bufferedReader.readLine()) != null) {
@@ -98,7 +99,7 @@ public class HubspotConnectionUtil {
 				_log.debug(exception, exception);
 			}
 
-			throw new SystemException(exception);
+			return null;
 		}
 	}
 
