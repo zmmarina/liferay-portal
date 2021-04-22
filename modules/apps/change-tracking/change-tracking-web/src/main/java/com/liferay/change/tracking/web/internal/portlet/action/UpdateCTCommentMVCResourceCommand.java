@@ -47,11 +47,15 @@ public class UpdateCTCommentMVCResourceCommand
 			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 		throws Exception {
 
-		String value = ParamUtil.getString(resourceRequest, "value");
+		ThemeDisplay themeDisplay =
+			(ThemeDisplay)resourceRequest.getAttribute(
+				WebKeys.THEME_DISPLAY);
 
 		CTComment ctComment = null;
 
 		long ctCommentId = ParamUtil.getLong(resourceRequest, "ctCommentId");
+
+		String value = ParamUtil.getString(resourceRequest, "value");
 
 		if (ctCommentId > 0) {
 			ctComment = ctCommentLocalService.updateCTComment(
@@ -61,9 +65,6 @@ public class UpdateCTCommentMVCResourceCommand
 			long ctCollectionId = ParamUtil.getLong(
 				resourceRequest, "ctCollectionId");
 			long ctEntryId = ParamUtil.getLong(resourceRequest, "ctEntryId");
-			ThemeDisplay themeDisplay =
-				(ThemeDisplay)resourceRequest.getAttribute(
-					WebKeys.THEME_DISPLAY);
 
 			ctComment = ctCommentLocalService.addCTComment(
 				ctCollectionId, ctEntryId, themeDisplay.getUserId(), value);

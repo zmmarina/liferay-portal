@@ -74,6 +74,7 @@ public class GetCTCommentsMVCResourceCommand extends BaseMVCResourceCommand {
 		ResourceRequest resourceRequest) {
 
 		JSONArray commentsJSONArray = JSONFactoryUtil.createJSONArray();
+
 		ThemeDisplay themeDisplay = (ThemeDisplay)resourceRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
@@ -89,7 +90,7 @@ public class GetCTCommentsMVCResourceCommand extends BaseMVCResourceCommand {
 			ctEntryId, Collections.emptyList());
 
 		for (CTComment ctComment : ctComments) {
-			Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(
+			Format format = FastDateFormatFactoryUtil.getDateTime(
 				themeDisplay.getLocale(), themeDisplay.getTimeZone());
 
 			Date createDate = ctComment.getCreateDate();
@@ -100,7 +101,7 @@ public class GetCTCommentsMVCResourceCommand extends BaseMVCResourceCommand {
 
 			commentsJSONArray.put(
 				JSONUtil.put(
-					"createDate", dateFormatDateTime.format(createDate)
+					"createDate", format.format(createDate)
 				).put(
 					"createTime", createDate.getTime()
 				).put(
