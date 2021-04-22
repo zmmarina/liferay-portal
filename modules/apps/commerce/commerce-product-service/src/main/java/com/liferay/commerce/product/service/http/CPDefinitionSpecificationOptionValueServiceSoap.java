@@ -101,6 +101,21 @@ public class CPDefinitionSpecificationOptionValueServiceSoap {
 		}
 	}
 
+	public static void deleteCPDefinitionSpecificationOptionValues(
+			long cpDefinitionId)
+		throws RemoteException {
+
+		try {
+			CPDefinitionSpecificationOptionValueServiceUtil.
+				deleteCPDefinitionSpecificationOptionValues(cpDefinitionId);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
 	public static void deleteCPDefinitionSpecificationOptionValue(
 			long cpDefinitionSpecificationOptionValueId)
 		throws RemoteException {
