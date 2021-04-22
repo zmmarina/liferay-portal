@@ -67,7 +67,7 @@ public class UpdateCTCommentMVCResourceCommand
 			long ctEntryId = ParamUtil.getLong(resourceRequest, "ctEntryId");
 
 			ctComment = ctCommentLocalService.addCTComment(
-				ctCollectionId, ctEntryId, themeDisplay.getUserId(), value);
+				themeDisplay.getUserId(), ctCollectionId, ctEntryId, value);
 		}
 
 		JSONObject jsonObject = getCTCommentsJSONObject(resourceRequest);

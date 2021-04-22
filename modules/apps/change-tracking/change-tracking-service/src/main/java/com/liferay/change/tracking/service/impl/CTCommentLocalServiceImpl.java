@@ -38,7 +38,7 @@ public class CTCommentLocalServiceImpl extends CTCommentLocalServiceBaseImpl {
 
 	@Override
 	public CTComment addCTComment(
-			long ctCollectionId, long ctEntryId, long userId, String value)
+			long userId, long ctCollectionId, long ctEntryId, String value)
 		throws PortalException {
 
 		CTCollection ctCollection = ctCollectionPersistence.findByPrimaryKey(
