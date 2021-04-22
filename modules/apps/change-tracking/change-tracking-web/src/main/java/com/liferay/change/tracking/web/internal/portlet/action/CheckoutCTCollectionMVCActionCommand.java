@@ -58,8 +58,8 @@ public class CheckoutCTCollectionMVCActionCommand extends BaseMVCActionCommand {
 
 		CTPreferences ctPreferences =
 			_ctPreferencesService.checkoutCTCollection(
-				themeDisplay.getCompanyId(), ctCollectionId,
-				themeDisplay.getUserId());
+				themeDisplay.getCompanyId(), themeDisplay.getUserId(),
+				ctCollectionId);
 
 		if (ctPreferences == null) {
 			return;

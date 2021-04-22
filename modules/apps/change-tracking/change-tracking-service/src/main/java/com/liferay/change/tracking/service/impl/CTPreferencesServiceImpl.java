@@ -42,7 +42,7 @@ public class CTPreferencesServiceImpl extends CTPreferencesServiceBaseImpl {
 
 	@Override
 	public CTPreferences checkoutCTCollection(
-			long companyId, long ctCollectionId, long userId)
+			long companyId, long userId, long ctCollectionId)
 		throws PortalException {
 
 		if (ctCollectionId != CTConstants.CT_COLLECTION_ID_PRODUCTION) {
