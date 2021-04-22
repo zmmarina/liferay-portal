@@ -106,7 +106,6 @@ definition {
 	test GetSKUStockQuantity {
 		property portal.acceptance = "false";
 
-
 		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
 
 		CommerceNavigator.gotoPortlet(
