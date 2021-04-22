@@ -486,8 +486,8 @@ public class PortletURLBuilder {
 				if (key.equals(reservedKey)) {
 					throw new RuntimeException(
 						StringBundler.concat(
-							"Use method '", reservedKeywordArray[1],
-							"' when setting value for '", reservedKey, "'"));
+							"Use method \"", reservedKeywordArray[1],
+							"\" when setting value for \"", reservedKey, "\""));
 				}
 			}
 		}
