@@ -801,11 +801,7 @@ public class ContentPageEditorDisplayContext {
 	protected boolean isPublicLayout() {
 		Layout publishedLayout = _getPublishedLayout();
 
-		if (publishedLayout.isPrivateLayout()) {
-			return false;
-		}
-
-		return true;
+		return !publishedLayout.isPrivateLayout();
 	}
 
 	protected final HttpServletRequest httpServletRequest;
