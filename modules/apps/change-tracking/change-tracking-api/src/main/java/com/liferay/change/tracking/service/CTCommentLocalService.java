@@ -77,7 +77,7 @@ public interface CTCommentLocalService
 	public CTComment addCTComment(CTComment ctComment);
 
 	public CTComment addCTComment(
-			long ctCollectionId, long ctEntryId, long userId, String value)
+			long userId, long ctCollectionId, long ctEntryId, String value)
 		throws PortalException;
 
 	/**

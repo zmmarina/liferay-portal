@@ -61,11 +61,11 @@ public class CTCommentLocalServiceUtil {
 	}
 
 	public static CTComment addCTComment(
-			long ctCollectionId, long ctEntryId, long userId, String value)
+			long userId, long ctCollectionId, long ctEntryId, String value)
 		throws PortalException {
 
 		return getService().addCTComment(
-			ctCollectionId, ctEntryId, userId, value);
+			userId, ctCollectionId, ctEntryId, value);
 	}
 
 	/**

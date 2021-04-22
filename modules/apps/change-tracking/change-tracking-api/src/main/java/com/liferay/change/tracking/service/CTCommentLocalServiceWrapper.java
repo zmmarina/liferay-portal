@@ -51,11 +51,11 @@ public class CTCommentLocalServiceWrapper
 
 	@Override
 	public com.liferay.change.tracking.model.CTComment addCTComment(
-			long ctCollectionId, long ctEntryId, long userId, String value)
+			long userId, long ctCollectionId, long ctEntryId, String value)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _ctCommentLocalService.addCTComment(
-			ctCollectionId, ctEntryId, userId, value);
+			userId, ctCollectionId, ctEntryId, value);
 	}
 
 	/**

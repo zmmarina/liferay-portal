@@ -53,8 +53,8 @@ public class CTPreferencesServiceHttp {
 
 	public static com.liferay.change.tracking.model.CTPreferences
 			checkoutCTCollection(
-				HttpPrincipal httpPrincipal, long companyId,
-				long ctCollectionId, long userId)
+				HttpPrincipal httpPrincipal, long companyId, long userId,
+				long ctCollectionId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		try {
@@ -63,7 +63,7 @@ public class CTPreferencesServiceHttp {
 				_checkoutCTCollectionParameterTypes0);
 
 			MethodHandler methodHandler = new MethodHandler(
-				methodKey, companyId, ctCollectionId, userId);
+				methodKey, companyId, userId, ctCollectionId);
 
 			Object returnObj = null;
 
