@@ -25,11 +25,13 @@ import com.liferay.dynamic.data.mapping.model.DDMFormFieldValidation;
 import com.liferay.dynamic.data.mapping.model.DDMFormFieldValidationExpression;
 import com.liferay.dynamic.data.mapping.model.LocalizedValue;
 import com.liferay.dynamic.data.mapping.util.DDMFormFactory;
+import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactory;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 
 import java.util.List;
 import java.util.Locale;
@@ -117,6 +119,8 @@ public class DDMFormFieldSerializerUtil {
 		List<DDMFormField> ddmFormFields,
 		DDMFormFieldTypeServicesTracker ddmFormFieldTypeServicesTracker,
 		JSONFactory jsonFactory) {
+
+		_trimEmptyValues(ddmFormFields);
 
 		JSONArray jsonArray = jsonFactory.createJSONArray();
 
@@ -302,6 +306,45 @@ public class DDMFormFieldSerializerUtil {
 		}
 
 		return jsonObject;
+	}
+
+	private static LocalizedValue _trim(LocalizedValue rawLocalizedValue) {
+		Map<Locale, String> predefinedValuesMap = rawLocalizedValue.getValues();
+
+		LocalizedValue localizedValue = new LocalizedValue();
+
+		for (Map.Entry<Locale, String> entry : predefinedValuesMap.entrySet()) {
+			String value = entry.getValue();
+
+			value = StringUtil.trim(value);
+
+			if (value.length() == 0) {
+				localizedValue.addString(entry.getKey(), StringPool.BLANK);
+			}
+			else {
+				localizedValue.addString(entry.getKey(), entry.getValue());
+			}
+		}
+
+		return localizedValue;
+	}
+
+	private static void _trimEmptyValues(List<DDMFormField> ddmFormFields) {
+		LocalizedValue localizedValue;
+
+		for (DDMFormField ddmFormField : ddmFormFields) {
+			localizedValue = _trim(ddmFormField.getPredefinedValue());
+
+			ddmFormField.setPredefinedValue(localizedValue);
+
+			localizedValue = _trim(ddmFormField.getStyle());
+
+			ddmFormField.setStyle(localizedValue);
+
+			localizedValue = _trim(ddmFormField.getTip());
+
+			ddmFormField.setTip(localizedValue);
+		}
 	}
 
 }
