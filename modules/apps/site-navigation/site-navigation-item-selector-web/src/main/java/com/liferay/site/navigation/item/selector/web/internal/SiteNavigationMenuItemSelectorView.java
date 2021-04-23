@@ -94,7 +94,7 @@ public class SiteNavigationMenuItemSelectorView
 				SITE_NAVIGATION_MENU_ITEM_SELECTOR_DISPLAY_CONTEXT,
 			siteNavigationMenuItemSelectorViewDisplayContext);
 
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		RequestDispatcher requestDispatcher =
 			servletContext.getRequestDispatcher(
