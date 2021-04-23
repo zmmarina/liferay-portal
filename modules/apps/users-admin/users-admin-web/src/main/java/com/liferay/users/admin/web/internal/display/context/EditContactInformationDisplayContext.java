@@ -84,7 +84,7 @@ public class EditContactInformationDisplayContext {
 
 		if (!portletName.equals(UsersAdminPortletKeys.MY_ACCOUNT)) {
 			portletDisplay.setShowBackIcon(true);
-			portletDisplay.setURLBack(_redirect);
+			portletDisplay.setURLBack(getRedirect());
 
 			String portletTitle = StringPool.BLANK;
 
