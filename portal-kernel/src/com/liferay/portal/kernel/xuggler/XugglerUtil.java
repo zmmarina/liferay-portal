@@ -24,23 +24,23 @@ public class XugglerUtil {
 	}
 
 	public static void installNativeLibraries(String name) throws Exception {
-		_xuggler.installNativeLibraries(name);
+		getXuggler().installNativeLibraries(name);
 	}
 
 	public static boolean isEnabled() {
-		return _xuggler.isEnabled();
+		return getXuggler().isEnabled();
 	}
 
 	public static boolean isEnabled(boolean checkNativeLibraries) {
-		return _xuggler.isEnabled(checkNativeLibraries);
+		return getXuggler().isEnabled(checkNativeLibraries);
 	}
 
 	public static boolean isNativeLibraryCopied() {
-		return _xuggler.isNativeLibraryCopied();
+		return getXuggler().isNativeLibraryCopied();
 	}
 
 	public static boolean isNativeLibraryInstalled() {
-		return _xuggler.isNativeLibraryInstalled();
+		return getXuggler().isNativeLibraryInstalled();
 	}
 
 	public void setXuggler(Xuggler xuggler) {

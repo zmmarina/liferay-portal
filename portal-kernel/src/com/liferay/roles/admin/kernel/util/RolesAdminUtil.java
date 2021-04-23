@@ -22,7 +22,7 @@ import com.liferay.portal.kernel.model.Role;
 public class RolesAdminUtil {
 
 	public static String getIconCssClass(Role role) {
-		return _rolesAdmin.getIconCssClass(role);
+		return getRolesAdmin().getIconCssClass(role);
 	}
 
 	public static RolesAdmin getRolesAdmin() {

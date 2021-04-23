@@ -20,18 +20,18 @@ package com.liferay.portal.kernel.xmlrpc;
 public class XmlRpcUtil {
 
 	public static Fault createFault(int code, String description) {
-		return _xmlRpc.createFault(code, description);
+		return getXmlRpc().createFault(code, description);
 	}
 
 	public static Success createSuccess(String description) {
-		return _xmlRpc.createSuccess(description);
+		return getXmlRpc().createSuccess(description);
 	}
 
 	public static Response executeMethod(
 			String url, String methodName, Object[] arguments)
 		throws XmlRpcException {
 
-		return _xmlRpc.executeMethod(url, methodName, arguments);
+		return getXmlRpc().executeMethod(url, methodName, arguments);
 	}
 
 	public static XmlRpc getXmlRpc() {
