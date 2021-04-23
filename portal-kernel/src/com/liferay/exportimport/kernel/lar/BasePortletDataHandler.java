@@ -129,10 +129,10 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 			rootElement = portletDataContext.getExportDataRootElement();
 
 			portletDataContext.addDeletionSystemEventStagedModelTypes(
-				_deletionSystemEventStagedModelTypes);
+				getDeletionSystemEventStagedModelTypes());
 
 			for (PortletDataHandlerControl portletDataHandlerControl :
-					_exportControls) {
+					getExportControls()) {
 
 				addUncheckedModelAdditionCount(
 					portletDataContext, portletDataHandlerControl);
@@ -209,7 +209,7 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 			PortletDataHandlerControl[] portletDataHandlerControls = null;
 
 			if (isDisplayPortlet()) {
-				portletDataHandlerControls = _exportControls;
+				portletDataHandlerControls = getExportControls();
 			}
 
 			configurationControls.add(
@@ -261,7 +261,7 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 
 	@Override
 	public long getExportModelCount(ManifestSummary manifestSummary) {
-		return getExportModelCount(manifestSummary, _exportControls);
+		return getExportModelCount(manifestSummary, getExportControls());
 	}
 
 	@Override
@@ -288,7 +288,7 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 			PortletDataHandlerControl[] portletDataHandlerControls = null;
 
 			if (isDisplayPortlet()) {
-				portletDataHandlerControls = _exportControls;
+				portletDataHandlerControls = getExportControls();
 			}
 
 			configurationControls.add(
@@ -434,7 +434,7 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 	@Override
 	public boolean isDisplayPortlet() {
 		if (isDataPortletInstanceLevel() &&
-			!ArrayUtil.isEmpty(_dataPortletPreferences)) {
+			!ArrayUtil.isEmpty(getDataPortletPreferences())) {
 
 			return true;
 		}

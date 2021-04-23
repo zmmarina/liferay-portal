@@ -108,7 +108,7 @@ public class PortletDataHandlerControl {
 	}
 
 	public String getNamespacedControlName() {
-		return getNamespacedControlName(_namespace, _controlName);
+		return getNamespacedControlName(_namespace, getControlName());
 	}
 
 	public String getReferrerClassName() {

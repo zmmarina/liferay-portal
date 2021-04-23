@@ -25,7 +25,7 @@ public class PortletDataHandlerStatusMessageSenderUtil {
 	public static void sendStatusMessage(
 		String messageType, String portletId, ManifestSummary manifestSummary) {
 
-		_dataHandlerStatusMessageSender.sendStatusMessage(
+		_getPortletDataHandlerStatusMessageSender().sendStatusMessage(
 			messageType, portletId, manifestSummary);
 	}
 
@@ -33,18 +33,18 @@ public class PortletDataHandlerStatusMessageSenderUtil {
 		String messageType, String[] portletIds,
 		ManifestSummary manifestSummary) {
 
-		_dataHandlerStatusMessageSender.sendStatusMessage(
+		_getPortletDataHandlerStatusMessageSender().sendStatusMessage(
 			messageType, portletIds, manifestSummary);
 	}
 
 	public static <T extends StagedModel> void sendStatusMessage(
 		String messageType, T stagedModel, ManifestSummary manifestSummary) {
 
-		_dataHandlerStatusMessageSender.sendStatusMessage(
+		_getPortletDataHandlerStatusMessageSender().sendStatusMessage(
 			messageType, stagedModel, manifestSummary);
 	}
 
-	private PortletDataHandlerStatusMessageSender
+	private static PortletDataHandlerStatusMessageSender
 		_getPortletDataHandlerStatusMessageSender() {
 
 		return _dataHandlerStatusMessageSender;

@@ -25,11 +25,11 @@ public class ExpandoBridgeIndexerUtil {
 	public static void addAttributes(
 		Document doc, ExpandoBridge expandoBridge) {
 
-		_expandoBridgeIndexer.addAttributes(doc, expandoBridge);
+		getExpandoBridgeIndexer().addAttributes(doc, expandoBridge);
 	}
 
 	public static String encodeFieldName(String columnName, int indexType) {
-		return _expandoBridgeIndexer.encodeFieldName(columnName, indexType);
+		return getExpandoBridgeIndexer().encodeFieldName(columnName, indexType);
 	}
 
 	public static ExpandoBridgeIndexer getExpandoBridgeIndexer() {
