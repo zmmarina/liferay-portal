@@ -228,7 +228,7 @@ public abstract class BaseFriendlyURLMapper implements FriendlyURLMapper {
 	 * @see    PortalUtil#getPortletNamespace(String)
 	 */
 	protected String getNamespace() {
-		return PortalUtil.getPortletNamespace(_portletId);
+		return PortalUtil.getPortletNamespace(getPortletId());
 	}
 
 	protected Router router;

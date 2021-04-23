@@ -43,7 +43,7 @@ public class PortletFileRepositoryUtil {
 			List<ObjectValuePair<String, InputStream>> inputStreamOVPs)
 		throws PortalException {
 
-		_portletFileRepository.addPortletFileEntries(
+		getPortletFileRepository().addPortletFileEntries(
 			groupId, userId, className, classPK, portletId, folderId,
 			inputStreamOVPs);
 	}
@@ -54,7 +54,7 @@ public class PortletFileRepositoryUtil {
 			String mimeType, boolean indexingEnabled)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletFileEntry(
+		return getPortletFileRepository().addPortletFileEntry(
 			groupId, userId, className, classPK, portletId, folderId, bytes,
 			fileName, mimeType, indexingEnabled);
 	}
@@ -65,7 +65,7 @@ public class PortletFileRepositoryUtil {
 			String mimeType, boolean indexingEnabled)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletFileEntry(
+		return getPortletFileRepository().addPortletFileEntry(
 			groupId, userId, className, classPK, portletId, folderId, file,
 			fileName, mimeType, indexingEnabled);
 	}
@@ -76,7 +76,7 @@ public class PortletFileRepositoryUtil {
 			String fileName, String mimeType, boolean indexingEnabled)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletFileEntry(
+		return getPortletFileRepository().addPortletFileEntry(
 			groupId, userId, className, classPK, portletId, folderId,
 			inputStream, fileName, mimeType, indexingEnabled);
 	}
@@ -86,7 +86,7 @@ public class PortletFileRepositoryUtil {
 			String folderName, ServiceContext serviceContext)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletFolder(
+		return getPortletFileRepository().addPortletFolder(
 			userId, repositoryId, parentFolderId, folderName, serviceContext);
 	}
 
@@ -95,7 +95,7 @@ public class PortletFileRepositoryUtil {
 			String folderName, ServiceContext serviceContext)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletFolder(
+		return getPortletFileRepository().addPortletFolder(
 			groupId, userId, portletId, parentFolderId, folderName,
 			serviceContext);
 	}
@@ -104,68 +104,68 @@ public class PortletFileRepositoryUtil {
 			long groupId, String portletId, ServiceContext serviceContext)
 		throws PortalException {
 
-		return _portletFileRepository.addPortletRepository(
+		return getPortletFileRepository().addPortletRepository(
 			groupId, portletId, serviceContext);
 	}
 
 	public static void deletePortletFileEntries(long groupId, long folderId)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletFileEntries(groupId, folderId);
+		getPortletFileRepository().deletePortletFileEntries(groupId, folderId);
 	}
 
 	public static void deletePortletFileEntries(
 			long groupId, long folderId, int status)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletFileEntries(
+		getPortletFileRepository().deletePortletFileEntries(
 			groupId, folderId, status);
 	}
 
 	public static void deletePortletFileEntry(long fileEntryId)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletFileEntry(fileEntryId);
+		getPortletFileRepository().deletePortletFileEntry(fileEntryId);
 	}
 
 	public static void deletePortletFileEntry(
 			long groupId, long folderId, String fileName)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletFileEntry(
+		getPortletFileRepository().deletePortletFileEntry(
 			groupId, folderId, fileName);
 	}
 
 	public static void deletePortletFolder(long folderId)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletFolder(folderId);
+		getPortletFileRepository().deletePortletFolder(folderId);
 	}
 
 	public static void deletePortletRepository(long groupId, String portletId)
 		throws PortalException {
 
-		_portletFileRepository.deletePortletRepository(groupId, portletId);
+		getPortletFileRepository().deletePortletRepository(groupId, portletId);
 	}
 
 	public static FileEntry fetchPortletFileEntry(
 		long groupId, long folderId, String fileName) {
 
-		return _portletFileRepository.fetchPortletFileEntry(
+		return getPortletFileRepository().fetchPortletFileEntry(
 			groupId, folderId, fileName);
 	}
 
 	public static Repository fetchPortletRepository(
 		long groupId, String portletId) {
 
-		return _portletFileRepository.fetchPortletRepository(
+		return getPortletFileRepository().fetchPortletRepository(
 			groupId, portletId);
 	}
 
 	public static String getDownloadPortletFileEntryURL(
 		ThemeDisplay themeDisplay, FileEntry fileEntry, String queryString) {
 
-		return _portletFileRepository.getDownloadPortletFileEntryURL(
+		return getPortletFileRepository().getDownloadPortletFileEntryURL(
 			themeDisplay, fileEntry, queryString);
 	}
 
@@ -173,7 +173,7 @@ public class PortletFileRepositoryUtil {
 		ThemeDisplay themeDisplay, FileEntry fileEntry, String queryString,
 		boolean absoluteURL) {
 
-		return _portletFileRepository.getDownloadPortletFileEntryURL(
+		return getPortletFileRepository().getDownloadPortletFileEntryURL(
 			themeDisplay, fileEntry, queryString, absoluteURL);
 	}
 
@@ -181,14 +181,15 @@ public class PortletFileRepositoryUtil {
 			long groupId, long folderId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntries(groupId, folderId);
+		return getPortletFileRepository().getPortletFileEntries(
+			groupId, folderId);
 	}
 
 	public static List<FileEntry> getPortletFileEntries(
 			long groupId, long folderId, int status)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntries(
+		return getPortletFileRepository().getPortletFileEntries(
 			groupId, folderId, status);
 	}
 
@@ -197,7 +198,7 @@ public class PortletFileRepositoryUtil {
 			OrderByComparator<FileEntry> orderByComparator)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntries(
+		return getPortletFileRepository().getPortletFileEntries(
 			groupId, folderId, status, start, end, orderByComparator);
 	}
 
@@ -206,7 +207,7 @@ public class PortletFileRepositoryUtil {
 			OrderByComparator<FileEntry> orderByComparator)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntries(
+		return getPortletFileRepository().getPortletFileEntries(
 			groupId, folderId, orderByComparator);
 	}
 
@@ -215,7 +216,7 @@ public class PortletFileRepositoryUtil {
 			int start, int end, OrderByComparator<FileEntry> orderByComparator)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntries(
+		return getPortletFileRepository().getPortletFileEntries(
 			groupId, folderId, mimeTypes, status, start, end,
 			orderByComparator);
 	}
@@ -223,7 +224,7 @@ public class PortletFileRepositoryUtil {
 	public static int getPortletFileEntriesCount(long groupId, long folderId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntriesCount(
+		return getPortletFileRepository().getPortletFileEntriesCount(
 			groupId, folderId);
 	}
 
@@ -231,7 +232,7 @@ public class PortletFileRepositoryUtil {
 			long groupId, long folderId, int status)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntriesCount(
+		return getPortletFileRepository().getPortletFileEntriesCount(
 			groupId, folderId, status);
 	}
 
@@ -239,34 +240,34 @@ public class PortletFileRepositoryUtil {
 			long groupId, long folderId, String[] mimeTypes, int status)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntriesCount(
+		return getPortletFileRepository().getPortletFileEntriesCount(
 			groupId, folderId, mimeTypes, status);
 	}
 
 	public static FileEntry getPortletFileEntry(long fileEntryId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntry(fileEntryId);
+		return getPortletFileRepository().getPortletFileEntry(fileEntryId);
 	}
 
 	public static FileEntry getPortletFileEntry(
 			long groupId, long folderId, String fileName)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntry(
+		return getPortletFileRepository().getPortletFileEntry(
 			groupId, folderId, fileName);
 	}
 
 	public static FileEntry getPortletFileEntry(String uuid, long groupId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFileEntry(uuid, groupId);
+		return getPortletFileRepository().getPortletFileEntry(uuid, groupId);
 	}
 
 	public static String getPortletFileEntryURL(
 		ThemeDisplay themeDisplay, FileEntry fileEntry, String queryString) {
 
-		return _portletFileRepository.getPortletFileEntryURL(
+		return getPortletFileRepository().getPortletFileEntryURL(
 			themeDisplay, fileEntry, queryString);
 	}
 
@@ -274,7 +275,7 @@ public class PortletFileRepositoryUtil {
 		ThemeDisplay themeDisplay, FileEntry fileEntry, String queryString,
 		boolean absoluteURL) {
 
-		return _portletFileRepository.getPortletFileEntryURL(
+		return getPortletFileRepository().getPortletFileEntryURL(
 			themeDisplay, fileEntry, queryString, absoluteURL);
 	}
 
@@ -285,14 +286,14 @@ public class PortletFileRepositoryUtil {
 	public static Folder getPortletFolder(long folderId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFolder(folderId);
+		return getPortletFileRepository().getPortletFolder(folderId);
 	}
 
 	public static Folder getPortletFolder(
 			long repositoryId, long parentFolderId, String folderName)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletFolder(
+		return getPortletFileRepository().getPortletFolder(
 			repositoryId, parentFolderId, folderName);
 	}
 
@@ -300,13 +301,14 @@ public class PortletFileRepositoryUtil {
 			long groupId, String portletId)
 		throws PortalException {
 
-		return _portletFileRepository.getPortletRepository(groupId, portletId);
+		return getPortletFileRepository().getPortletRepository(
+			groupId, portletId);
 	}
 
 	public static String getUniqueFileName(
 		long groupId, long folderId, String fileName) {
 
-		return _portletFileRepository.getUniqueFileName(
+		return getPortletFileRepository().getUniqueFileName(
 			groupId, folderId, fileName);
 	}
 
@@ -314,7 +316,7 @@ public class PortletFileRepositoryUtil {
 			long userId, long fileEntryId)
 		throws PortalException {
 
-		return _portletFileRepository.movePortletFileEntryToTrash(
+		return getPortletFileRepository().movePortletFileEntryToTrash(
 			userId, fileEntryId);
 	}
 
@@ -322,7 +324,7 @@ public class PortletFileRepositoryUtil {
 			long groupId, long userId, long folderId, String fileName)
 		throws PortalException {
 
-		return _portletFileRepository.movePortletFileEntryToTrash(
+		return getPortletFileRepository().movePortletFileEntryToTrash(
 			groupId, userId, folderId, fileName);
 	}
 
@@ -331,7 +333,7 @@ public class PortletFileRepositoryUtil {
 			ServiceContext serviceContext)
 		throws PortalException {
 
-		return _portletFileRepository.movePortletFolder(
+		return getPortletFileRepository().movePortletFolder(
 			groupId, userId, folderId, parentFolderId, serviceContext);
 	}
 
@@ -339,7 +341,7 @@ public class PortletFileRepositoryUtil {
 			long userId, long fileEntryId)
 		throws PortalException {
 
-		_portletFileRepository.restorePortletFileEntryFromTrash(
+		getPortletFileRepository().restorePortletFileEntryFromTrash(
 			userId, fileEntryId);
 	}
 
@@ -347,7 +349,7 @@ public class PortletFileRepositoryUtil {
 			long groupId, long userId, long folderId, String fileName)
 		throws PortalException {
 
-		_portletFileRepository.restorePortletFileEntryFromTrash(
+		getPortletFileRepository().restorePortletFileEntryFromTrash(
 			groupId, userId, folderId, fileName);
 	}
 
@@ -355,7 +357,7 @@ public class PortletFileRepositoryUtil {
 			long repositoryId, SearchContext searchContext)
 		throws PortalException {
 
-		return _portletFileRepository.searchPortletFileEntries(
+		return getPortletFileRepository().searchPortletFileEntries(
 			repositoryId, searchContext);
 	}
 

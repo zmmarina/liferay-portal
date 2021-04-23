@@ -26,18 +26,18 @@ import javax.servlet.ServletContext;
 public class PortletInstanceFactoryUtil {
 
 	public static void clear(Portlet portlet) {
-		_portletInstanceFactory.clear(portlet);
+		getPortletInstanceFactory().clear(portlet);
 	}
 
 	public static void clear(Portlet portlet, boolean resetRemotePortletBag) {
-		_portletInstanceFactory.clear(portlet, resetRemotePortletBag);
+		getPortletInstanceFactory().clear(portlet, resetRemotePortletBag);
 	}
 
 	public static InvokerPortlet create(
 			Portlet portlet, ServletContext servletContext)
 		throws PortletException {
 
-		return _portletInstanceFactory.create(portlet, servletContext);
+		return getPortletInstanceFactory().create(portlet, servletContext);
 	}
 
 	public static InvokerPortlet create(
@@ -45,16 +45,16 @@ public class PortletInstanceFactoryUtil {
 			boolean destroyPrevious)
 		throws PortletException {
 
-		return _portletInstanceFactory.create(
+		return getPortletInstanceFactory().create(
 			portlet, servletContext, destroyPrevious);
 	}
 
 	public static void delete(Portlet portlet) {
-		_portletInstanceFactory.delete(portlet);
+		getPortletInstanceFactory().delete(portlet);
 	}
 
 	public static void destroy(Portlet portlet) {
-		_portletInstanceFactory.destroy(portlet);
+		getPortletInstanceFactory().destroy(portlet);
 	}
 
 	public static PortletInstanceFactory getPortletInstanceFactory() {

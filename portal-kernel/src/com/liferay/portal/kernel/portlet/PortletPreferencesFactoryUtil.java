@@ -38,25 +38,25 @@ public class PortletPreferencesFactoryUtil {
 			ThemeDisplay themeDisplay, Portlet portlet)
 		throws PortalException {
 
-		_portletPreferencesFactory.checkControlPanelPortletPreferences(
+		getPortletPreferencesFactory().checkControlPanelPortletPreferences(
 			themeDisplay, portlet);
 	}
 
 	public static PortletPreferences fromDefaultXML(String xml) {
-		return _portletPreferencesFactory.fromDefaultXML(xml);
+		return getPortletPreferencesFactory().fromDefaultXML(xml);
 	}
 
 	public static PortalPreferences fromXML(
 		long ownerId, int ownerType, String xml) {
 
-		return _portletPreferencesFactory.fromXML(ownerId, ownerType, xml);
+		return getPortletPreferencesFactory().fromXML(ownerId, ownerType, xml);
 	}
 
 	public static PortletPreferences fromXML(
 		long companyId, long ownerId, int ownerType, long plid,
 		String portletId, String xml) {
 
-		return _portletPreferencesFactory.fromXML(
+		return getPortletPreferencesFactory().fromXML(
 			companyId, ownerId, ownerType, plid, portletId, xml);
 	}
 
@@ -64,7 +64,7 @@ public class PortletPreferencesFactoryUtil {
 			Layout layout, String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getExistingPortletSetup(
+		return getPortletPreferencesFactory().getExistingPortletSetup(
 			layout, portletId);
 	}
 
@@ -72,21 +72,21 @@ public class PortletPreferencesFactoryUtil {
 			PortletRequest portletRequest)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getExistingPortletSetup(
+		return getPortletPreferencesFactory().getExistingPortletSetup(
 			portletRequest);
 	}
 
 	public static PortletPreferences getLayoutPortletSetup(
 		Layout layout, String portletId) {
 
-		return _portletPreferencesFactory.getLayoutPortletSetup(
+		return getPortletPreferencesFactory().getLayoutPortletSetup(
 			layout, portletId);
 	}
 
 	public static PortletPreferences getLayoutPortletSetup(
 		Layout layout, String portletId, String defaultPreferences) {
 
-		return _portletPreferencesFactory.getLayoutPortletSetup(
+		return getPortletPreferencesFactory().getLayoutPortletSetup(
 			layout, portletId, defaultPreferences);
 	}
 
@@ -94,42 +94,43 @@ public class PortletPreferencesFactoryUtil {
 		long companyId, long ownerId, int ownerType, long plid,
 		String portletId, String defaultPreferences) {
 
-		return _portletPreferencesFactory.getLayoutPortletSetup(
+		return getPortletPreferencesFactory().getLayoutPortletSetup(
 			companyId, ownerId, ownerType, plid, portletId, defaultPreferences);
 	}
 
 	public static PortalPreferences getPortalPreferences(
 		HttpServletRequest httpServletRequest) {
 
-		return _portletPreferencesFactory.getPortalPreferences(
+		return getPortletPreferencesFactory().getPortalPreferences(
 			httpServletRequest);
 	}
 
 	public static PortalPreferences getPortalPreferences(
 		HttpSession session, long userId, boolean signedIn) {
 
-		return _portletPreferencesFactory.getPortalPreferences(
+		return getPortletPreferencesFactory().getPortalPreferences(
 			session, userId, signedIn);
 	}
 
 	public static PortalPreferences getPortalPreferences(
 		long userId, boolean signedIn) {
 
-		return _portletPreferencesFactory.getPortalPreferences(
+		return getPortletPreferencesFactory().getPortalPreferences(
 			userId, signedIn);
 	}
 
 	public static PortalPreferences getPortalPreferences(
 		PortletRequest portletRequest) {
 
-		return _portletPreferencesFactory.getPortalPreferences(portletRequest);
+		return getPortletPreferencesFactory().getPortalPreferences(
+			portletRequest);
 	}
 
 	public static PortletPreferences getPortletPreferences(
 			HttpServletRequest httpServletRequest, String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletPreferences(
+		return getPortletPreferencesFactory().getPortletPreferences(
 			httpServletRequest, portletId);
 	}
 
@@ -142,7 +143,7 @@ public class PortletPreferencesFactoryUtil {
 			String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletPreferencesIds(
+		return getPortletPreferencesFactory().getPortletPreferencesIds(
 			httpServletRequest, selLayout, portletId);
 	}
 
@@ -150,7 +151,7 @@ public class PortletPreferencesFactoryUtil {
 			HttpServletRequest httpServletRequest, String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletPreferencesIds(
+		return getPortletPreferencesFactory().getPortletPreferencesIds(
 			httpServletRequest, portletId);
 	}
 
@@ -159,7 +160,7 @@ public class PortletPreferencesFactoryUtil {
 			boolean modeEditGuest)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletPreferencesIds(
+		return getPortletPreferencesFactory().getPortletPreferencesIds(
 			siteGroupId, userId, layout, portletId, modeEditGuest);
 	}
 
@@ -167,7 +168,7 @@ public class PortletPreferencesFactoryUtil {
 		long companyId, long siteGroupId, long plid, String portletId,
 		String settingsScope) {
 
-		return _portletPreferencesFactory.getPortletPreferencesIds(
+		return getPortletPreferencesFactory().getPortletPreferencesIds(
 			companyId, siteGroupId, plid, portletId, settingsScope);
 	}
 
@@ -175,7 +176,7 @@ public class PortletPreferencesFactoryUtil {
 			HttpServletRequest httpServletRequest, String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletSetup(
+		return getPortletPreferencesFactory().getPortletSetup(
 			httpServletRequest, portletId);
 	}
 
@@ -184,14 +185,14 @@ public class PortletPreferencesFactoryUtil {
 			String defaultPreferences)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletSetup(
+		return getPortletPreferencesFactory().getPortletSetup(
 			httpServletRequest, portletId, defaultPreferences);
 	}
 
 	public static PortletPreferences getPortletSetup(
 		Layout layout, String portletId, String defaultPreferences) {
 
-		return _portletPreferencesFactory.getPortletSetup(
+		return getPortletPreferencesFactory().getPortletSetup(
 			layout, portletId, defaultPreferences);
 	}
 
@@ -199,7 +200,7 @@ public class PortletPreferencesFactoryUtil {
 		long siteGroupId, Layout layout, String portletId,
 		String defaultPreferences) {
 
-		return _portletPreferencesFactory.getPortletSetup(
+		return getPortletPreferencesFactory().getPortletSetup(
 			siteGroupId, layout, portletId, defaultPreferences);
 	}
 
@@ -207,14 +208,14 @@ public class PortletPreferencesFactoryUtil {
 			PortletRequest portletRequest)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletSetup(portletRequest);
+		return getPortletPreferencesFactory().getPortletSetup(portletRequest);
 	}
 
 	public static PortletPreferences getPortletSetup(
 			PortletRequest portletRequest, String portletId)
 		throws PortalException {
 
-		return _portletPreferencesFactory.getPortletSetup(
+		return getPortletPreferencesFactory().getPortletSetup(
 			portletRequest, portletId);
 	}
 
@@ -222,40 +223,41 @@ public class PortletPreferencesFactoryUtil {
 		long companyId, long groupId, long ownerId, int ownerType,
 		String portletId, boolean privateLayout) {
 
-		return _portletPreferencesFactory.getPortletSetupMap(
+		return getPortletPreferencesFactory().getPortletSetupMap(
 			companyId, groupId, ownerId, ownerType, portletId, privateLayout);
 	}
 
 	public static PortletPreferences getPreferences(
 		HttpServletRequest httpServletRequest) {
 
-		return _portletPreferencesFactory.getPreferences(httpServletRequest);
+		return getPortletPreferencesFactory().getPreferences(
+			httpServletRequest);
 	}
 
 	public static PreferencesValidator getPreferencesValidator(
 		Portlet portlet) {
 
-		return _portletPreferencesFactory.getPreferencesValidator(portlet);
+		return getPortletPreferencesFactory().getPreferencesValidator(portlet);
 	}
 
 	public static PortletPreferences getStrictLayoutPortletSetup(
 		Layout layout, String portletId) {
 
-		return _portletPreferencesFactory.getStrictLayoutPortletSetup(
+		return getPortletPreferencesFactory().getStrictLayoutPortletSetup(
 			layout, portletId);
 	}
 
 	public static PortletPreferences getStrictPortletSetup(
 		Layout layout, String portletId) {
 
-		return _portletPreferencesFactory.getStrictPortletSetup(
+		return getPortletPreferencesFactory().getStrictPortletSetup(
 			layout, portletId);
 	}
 
 	public static PortletPreferences getStrictPortletSetup(
 		long companyId, long groupId, String portletId) {
 
-		return _portletPreferencesFactory.getStrictPortletSetup(
+		return getPortletPreferencesFactory().getStrictPortletSetup(
 			companyId, groupId, portletId);
 	}
 
@@ -263,16 +265,16 @@ public class PortletPreferencesFactoryUtil {
 		long companyId, long ownerId, int ownerType, long plid,
 		String portletId, String xml) {
 
-		return _portletPreferencesFactory.strictFromXML(
+		return getPortletPreferencesFactory().strictFromXML(
 			companyId, ownerId, ownerType, plid, portletId, xml);
 	}
 
 	public static String toXML(PortalPreferences portalPreferences) {
-		return _portletPreferencesFactory.toXML(portalPreferences);
+		return getPortletPreferencesFactory().toXML(portalPreferences);
 	}
 
 	public static String toXML(PortletPreferences portletPreferences) {
-		return _portletPreferencesFactory.toXML(portletPreferences);
+		return getPortletPreferencesFactory().toXML(portletPreferences);
 	}
 
 	public void setPortletPreferencesFactory(

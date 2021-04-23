@@ -23,11 +23,11 @@ import com.liferay.portal.kernel.xml.QName;
 public class PortletQNameUtil {
 
 	public static String getKey(QName qName) {
-		return _portletQName.getKey(qName);
+		return getPortletQName().getKey(qName);
 	}
 
 	public static String getKey(String uri, String localPart) {
-		return _portletQName.getKey(uri, localPart);
+		return getPortletQName().getKey(uri, localPart);
 	}
 
 	public static PortletQName getPortletQName() {
@@ -37,32 +37,32 @@ public class PortletQNameUtil {
 	public static String getPublicRenderParameterIdentifier(
 		String publicRenderParameterName) {
 
-		return _portletQName.getPublicRenderParameterIdentifier(
+		return getPortletQName().getPublicRenderParameterIdentifier(
 			publicRenderParameterName);
 	}
 
 	public static String getPublicRenderParameterName(QName qName) {
-		return _portletQName.getPublicRenderParameterName(qName);
+		return getPortletQName().getPublicRenderParameterName(qName);
 	}
 
 	public static QName getQName(
 		Element qNameEl, Element nameEl, String defaultNamespace) {
 
-		return _portletQName.getQName(qNameEl, nameEl, defaultNamespace);
+		return getPortletQName().getQName(qNameEl, nameEl, defaultNamespace);
 	}
 
 	public static QName getQName(String publicRenderParameterName) {
-		return _portletQName.getQName(publicRenderParameterName);
+		return getPortletQName().getQName(publicRenderParameterName);
 	}
 
 	public static String getRemovePublicRenderParameterName(QName qName) {
-		return _portletQName.getRemovePublicRenderParameterName(qName);
+		return getPortletQName().getRemovePublicRenderParameterName(qName);
 	}
 
 	public static void setPublicRenderParameterIdentifier(
 		String publicRenderParameterName, String identifier) {
 
-		_portletQName.setPublicRenderParameterIdentifier(
+		getPortletQName().setPublicRenderParameterIdentifier(
 			publicRenderParameterName, identifier);
 	}
 
