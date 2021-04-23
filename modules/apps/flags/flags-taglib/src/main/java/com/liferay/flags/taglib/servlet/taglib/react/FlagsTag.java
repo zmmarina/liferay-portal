@@ -251,6 +251,10 @@ public class FlagsTag extends IncludeTag {
 		return dataJSONObject;
 	}
 
+	private String _getElementClasses() {
+		return _elementClasses;
+	}
+
 	private String _getMessage() {
 		ResourceBundle resourceBundle = new AggregateResourceBundle(
 			TagResourceBundleUtil.getResourceBundle(pageContext),
