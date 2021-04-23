@@ -118,13 +118,12 @@ function Item({totalCount, ...instance}) {
 				<div className="table-first-element-group">
 					<ClayCheckbox
 						checked={checked}
-						className="mr-2"
 						disabled={disableCheckbox}
 						onChange={handleCheck}
 					/>
 
 					<span
-						className={`sticker sticker-sm ${slaStatusIconInfo.bgColor}`}
+						className={`ml-2 sticker sticker-sm ${slaStatusIconInfo.bgColor}`}
 					>
 						<span className="inline-item">
 							<ClayIcon
