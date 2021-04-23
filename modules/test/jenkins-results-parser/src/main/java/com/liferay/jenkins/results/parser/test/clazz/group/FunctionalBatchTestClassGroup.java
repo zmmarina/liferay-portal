@@ -108,7 +108,7 @@ public class FunctionalBatchTestClassGroup extends BatchTestClassGroup {
 
 			_poshiProperties =
 				PoshiContext.getNamespacedClassCommandNameProperties(
-					_testClassMethodName);
+					getTestClassMethodName());
 		}
 
 		private static File _getTestClassFile(String testClassMethodName) {

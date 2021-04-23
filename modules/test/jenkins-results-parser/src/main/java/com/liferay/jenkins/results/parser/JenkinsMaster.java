@@ -405,7 +405,7 @@ public class JenkinsMaster implements JenkinsNode<JenkinsMaster> {
 
 				if (itemJSONObject.has("url")) {
 					_queuedBuildURLs.put(
-						_masterURL + "/" + itemJSONObject.getString("url"),
+						getURL() + "/" + itemJSONObject.getString("url"),
 						itemJSONObject);
 				}
 			}

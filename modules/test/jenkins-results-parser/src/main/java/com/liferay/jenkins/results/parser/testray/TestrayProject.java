@@ -190,7 +190,7 @@ public class TestrayProject {
 		_testrayProductVersionsByID = new HashMap<>();
 		_testrayProductVersionsByName = new HashMap<>();
 
-		TestrayServer testrayServer = _testrayServer;
+		TestrayServer testrayServer = getTestrayServer();
 
 		int current = 1;
 
@@ -244,7 +244,7 @@ public class TestrayProject {
 
 		int current = 1;
 
-		TestrayServer testrayServer = _testrayServer;
+		TestrayServer testrayServer = getTestrayServer();
 
 		while (true) {
 			try {

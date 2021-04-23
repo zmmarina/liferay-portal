@@ -130,7 +130,7 @@ public class SlaveOfflineRule {
 				throw new RuntimeException(
 					JenkinsResultsParserUtil.combine(
 						"Unable to parse configuration in slave offline ",
-						"rule \"", name, "\"\n", configuration));
+						"rule \"", getName(), "\"\n", configuration));
 			}
 
 			String value = matcher.group(2);
@@ -152,7 +152,7 @@ public class SlaveOfflineRule {
 			throw new IllegalStateException(
 				JenkinsResultsParserUtil.combine(
 					"Unable to detect required configuration \"", parameterName,
-					" in slave offline rule \"", name, "\""));
+					" in slave offline rule \"", getName(), "\""));
 		}
 	}
 

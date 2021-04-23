@@ -31,7 +31,7 @@ public class TestrayS3Object {
 			return _exists;
 		}
 
-		_exists = JenkinsResultsParserUtil.exists(_url);
+		_exists = JenkinsResultsParserUtil.exists(getURL());
 
 		return _exists;
 	}
@@ -81,7 +81,8 @@ public class TestrayS3Object {
 		_key = key;
 
 		try {
-			_url = new URL(_testrayS3Bucket.getTestrayS3BaseURL() + "/" + _key);
+			_url = new URL(
+				_testrayS3Bucket.getTestrayS3BaseURL() + "/" + getKey());
 		}
 		catch (MalformedURLException malformedURLException) {
 			throw new RuntimeException(malformedURLException);

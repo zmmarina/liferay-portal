@@ -85,7 +85,7 @@ public abstract class BaseJob implements Job {
 			builds.add(
 				BuildFactory.newBuild(
 					JenkinsResultsParserUtil.combine(
-						jenkinsMaster.getURL(), "/job/", _jobName, "/",
+						jenkinsMaster.getURL(), "/job/", getJobName(), "/",
 						String.valueOf(buildJSONObject.getInt("number"))),
 					null));
 		}
@@ -269,7 +269,7 @@ public abstract class BaseJob implements Job {
 		}
 
 		String segmentEnabled = JenkinsResultsParserUtil.getProperty(
-			_jobProperties, "test.batch.segment.enabled", _jobName,
+			_jobProperties, "test.batch.segment.enabled", getJobName(),
 			testSuiteName);
 
 		if ((segmentEnabled != null) && segmentEnabled.equals("true")) {

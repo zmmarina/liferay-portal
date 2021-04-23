@@ -95,7 +95,7 @@ public class AxisBuild extends BaseBuild {
 		sb.append("/");
 		sb.append(getJobName());
 		sb.append("/");
-		sb.append(axisVariable);
+		sb.append(getAxisVariable());
 		sb.append("/");
 		sb.append(getBuildNumber());
 
@@ -126,13 +126,14 @@ public class AxisBuild extends BaseBuild {
 	}
 
 	public String getAxisNumber() {
-		Matcher matcher = _axisVariablePattern.matcher(axisVariable);
+		Matcher matcher = _axisVariablePattern.matcher(getAxisVariable());
 
 		if (matcher.find()) {
 			return matcher.group("axisNumber");
 		}
 
-		throw new RuntimeException("Invalid axis variable: " + axisVariable);
+		throw new RuntimeException(
+			"Invalid axis variable: " + getAxisVariable());
 	}
 
 	public String getAxisVariable() {
@@ -258,7 +259,7 @@ public class AxisBuild extends BaseBuild {
 		sb.append(jobNameRegexLiteral);
 
 		sb.append("[\\/]+");
-		sb.append(JenkinsResultsParserUtil.getRegexLiteral(axisVariable));
+		sb.append(JenkinsResultsParserUtil.getRegexLiteral(getAxisVariable()));
 		sb.append("[\\/]+");
 		sb.append(getBuildNumber());
 		sb.append("[\\/]*");
@@ -276,7 +277,7 @@ public class AxisBuild extends BaseBuild {
 	@Override
 	public String getDisplayName() {
 		return JenkinsResultsParserUtil.combine(
-			axisVariable, " #", String.valueOf(getBuildNumber()));
+			getAxisVariable(), " #", String.valueOf(getBuildNumber()));
 	}
 
 	@Override
@@ -583,7 +584,7 @@ public class AxisBuild extends BaseBuild {
 			URL_BASE_TEMP_MAP, topLevelBuildJenkinsMaster.getName(), "/",
 			topLevelBuild.getJobName(), "/",
 			String.valueOf(topLevelBuild.getBuildNumber()), "/", getJobName(),
-			"/", axisVariable, "/", getParameterValue("JOB_VARIANT"), "/",
+			"/", getAxisVariable(), "/", getParameterValue("JOB_VARIANT"), "/",
 			"stop.properties");
 	}
 

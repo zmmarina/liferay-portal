@@ -37,7 +37,7 @@ public abstract class PluginsTestSuiteJob
 
 	@Override
 	public String getTestSuiteName() {
-		return _pluginName;
+		return getPluginName();
 	}
 
 	protected PluginsTestSuiteJob(
@@ -57,7 +57,7 @@ public abstract class PluginsTestSuiteJob
 		return getSetFromString(
 			JenkinsResultsParserUtil.getProperty(
 				getJobProperties(), "test.batch.names", getJobName(),
-				_pluginName));
+				getTestSuiteName()));
 	}
 
 	private File _getPluginTestBaseDir() {
@@ -67,7 +67,7 @@ public abstract class PluginsTestSuiteJob
 		return new File(
 			pluginsGitWorkingDirectory.getWorkingDirectory(),
 			JenkinsResultsParserUtil.combine(
-				"portlets/", _pluginName, "/test/functional"));
+				"portlets/", getPluginName(), "/test/functional"));
 	}
 
 	private final String _pluginName;

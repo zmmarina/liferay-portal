@@ -81,7 +81,7 @@ public abstract class BaseTestResult implements TestResult {
 	}
 
 	protected String getAxisNumber() {
-		Build build = _build;
+		Build build = getBuild();
 
 		if (build instanceof AxisBuild) {
 			AxisBuild axisBuild = (AxisBuild)build;
@@ -135,7 +135,7 @@ public abstract class BaseTestResult implements TestResult {
 			logBaseURL = _URL_BASE_LOGS_DEFAULT;
 		}
 
-		Build build = _build;
+		Build build = getBuild();
 
 		Map<String, String> startPropertiesTempMap =
 			build.getStartPropertiesTempMap();
