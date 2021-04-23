@@ -26,11 +26,11 @@ public class FabricServerUtil {
 	}
 
 	public static void start() throws Exception {
-		_fabricServer.start();
+		getFabricServer().start();
 	}
 
 	public static Future<?> stop() throws Exception {
-		return _fabricServer.stop();
+		return getFabricServer().stop();
 	}
 
 	public void setFabricServer(FabricServer fabricServer) {

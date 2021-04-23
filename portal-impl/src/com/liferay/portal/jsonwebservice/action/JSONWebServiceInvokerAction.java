@@ -707,7 +707,7 @@ public class JSONWebServiceInvokerAction implements JSONWebServiceAction {
 				return null;
 			}
 
-			Statement statement = _parentStatement;
+			Statement statement = getParentStatement();
 
 			String statementName = statement.getName();
 
@@ -719,7 +719,7 @@ public class JSONWebServiceInvokerAction implements JSONWebServiceAction {
 
 			statement.setName(statementName);
 
-			setName(beanName + StringPool.PERIOD + _name);
+			setName(beanName + StringPool.PERIOD + getName());
 
 			BeanUtil.declared.setProperty(_pushTarget, beanName, result);
 
@@ -737,9 +737,9 @@ public class JSONWebServiceInvokerAction implements JSONWebServiceAction {
 
 			_pushTarget = result;
 
-			Statement statement = _parentStatement;
+			Statement statement = getParentStatement();
 
-			String variableName = _name;
+			String variableName = getName();
 
 			int index = variableName.indexOf(".$");
 

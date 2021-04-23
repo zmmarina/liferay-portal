@@ -22,11 +22,11 @@ import java.util.concurrent.Future;
 public class FabricClientUtil {
 
 	public static void connect() throws Exception {
-		_fabricClient.connect();
+		getFabricClient().connect();
 	}
 
 	public static Future<?> disconnect() throws Exception {
-		return _fabricClient.disconnect();
+		return getFabricClient().disconnect();
 	}
 
 	public static FabricClient getFabricClient() {

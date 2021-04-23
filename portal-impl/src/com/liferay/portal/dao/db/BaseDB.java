@@ -345,7 +345,7 @@ public abstract class BaseDB implements DB {
 						sb.append("\nSQL state: ");
 						sb.append(sqlException.getSQLState());
 						sb.append("\nVendor: ");
-						sb.append(_dbType);
+						sb.append(getDBType());
 						sb.append("\nVendor error code: ");
 						sb.append(sqlException.getErrorCode());
 						sb.append("\nVendor error message: ");
@@ -837,7 +837,7 @@ public abstract class BaseDB implements DB {
 			return template;
 		}
 
-		DBType dbType = _dbType;
+		DBType dbType = getDBType();
 
 		int stringIndexMaxLength = GetterUtil.getInteger(
 			PropsUtil.get(

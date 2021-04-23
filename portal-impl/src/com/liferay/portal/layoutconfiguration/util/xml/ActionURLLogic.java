@@ -61,7 +61,7 @@ public class ActionURLLogic extends RuntimeLogic {
 		Element root = doc.getRootElement();
 
 		LiferayPortletURL liferayPortletURL =
-			_liferayRenderResponse.createLiferayPortletURL(_LIFECYCLE);
+			_liferayRenderResponse.createLiferayPortletURL(getLifecycle());
 
 		String portletId = root.attributeValue("portlet-name");
 
