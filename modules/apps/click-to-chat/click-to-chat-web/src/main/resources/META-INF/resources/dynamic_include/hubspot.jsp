@@ -25,11 +25,9 @@ String[] credentials = clickToChatChatProviderAccountId.split("/");
 <c:if test="<%= themeDisplay.isSignedIn() && (credentials.length > 1) %>">
 	<script type="text/javascript">
 		window.hsConversationsSettings = {
-			loadImmediately: false,
-		};
-		window.hsConversationsSettings = {
 			identificationEmail: '<%= user.getEmailAddress() %>',
 			identificationToken: '<%= _getHubSpotToken(credentials[1], user) %>',
+			loadImmediately: false,
 		};
 		window.HubSpotConversations.widget.load();
 	</script>
