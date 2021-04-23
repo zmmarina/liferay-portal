@@ -803,6 +803,10 @@ public class WorkflowTaskDisplayContext {
 		return curParam;
 	}
 
+	private String[] _getDisplayViews() {
+		return _DISPLAY_VIEWS;
+	}
+
 	private PortletURL _getEditPortletURL(WorkflowTask workflowTask)
 		throws PortalException {
 
