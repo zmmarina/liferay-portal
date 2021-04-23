@@ -138,9 +138,9 @@ public class ProductMenuProductNavigationControlMenuEntry
 			values.put("dataURL", "data-url='" + portletURL.toString() + "'");
 		}
 
-		IconTag iconTag = new IconTag();
-
 		try {
+			IconTag iconTag = new IconTag();
+
 			iconTag.setCssClass("icon-monospaced icon-product-menu-closed");
 			iconTag.setImage("product-menu-closed");
 			iconTag.setMarkupView("lexicon");
