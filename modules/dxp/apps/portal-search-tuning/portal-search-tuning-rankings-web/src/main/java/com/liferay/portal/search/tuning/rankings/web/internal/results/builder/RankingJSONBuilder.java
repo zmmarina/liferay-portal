@@ -316,6 +316,10 @@ public class RankingJSONBuilder {
 		return _resourceActions.getModelResource(_locale, entryClassName);
 	}
 
+	private String _getViewURL() {
+		return _viewURL;
+	}
+
 	private boolean _isFileEntry() {
 		String entryClassName = _document.getString(Field.ENTRY_CLASS_NAME);
 
