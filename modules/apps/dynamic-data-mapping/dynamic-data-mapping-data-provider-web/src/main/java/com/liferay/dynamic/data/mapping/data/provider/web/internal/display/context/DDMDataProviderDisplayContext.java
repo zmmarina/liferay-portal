@@ -233,7 +233,7 @@ public class DDMDataProviderDisplayContext {
 
 	public String getDisplayStyle() {
 		if (_displayStyle == null) {
-			_displayStyle = getDisplayStyle(_renderRequest, _DISPLAY_VIEWS);
+			_displayStyle = getDisplayStyle(_renderRequest, getDisplayViews());
 		}
 
 		return _displayStyle;
@@ -488,7 +488,7 @@ public class DDMDataProviderDisplayContext {
 	public List<ViewTypeItem> getViewTypesItems() {
 		return new ViewTypeItemList(getPortletURL(), getDisplayStyle()) {
 			{
-				String[] viewTypes = _DISPLAY_VIEWS;
+				String[] viewTypes = getDisplayViews();
 
 				for (String viewType : viewTypes) {
 					if (viewType.equals("descriptive")) {

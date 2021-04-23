@@ -98,20 +98,22 @@ public class DDMServiceUpgrade implements UpgradeStepRegistrator {
 
 	@Override
 	public void register(Registry registry) {
-		DDMFormSerializer ddmFormSerializer = _jsonDDMFormSerializer;
+		DDMFormSerializer ddmFormSerializer = getDDMFormSerializer();
 
 		DDMFormLayoutSerializer ddmFormLayoutSerializer =
-			_jsonDDMFormLayoutSerializer;
+			getDDMFormLayoutSerializer();
 
-		DDMFormDeserializer ddmFormJSONDeserializer = _jsonDDMFormDeserializer;
+		DDMFormDeserializer ddmFormJSONDeserializer =
+			getDDMFormJSONDeserializer();
 
-		DDMFormDeserializer ddmFormXSDDeserializer = _xsdDDMFormDeserializer;
+		DDMFormDeserializer ddmFormXSDDeserializer =
+			getDDMFormXSDDeserializer();
 
 		DDMFormValuesSerializer ddmFormValuesSerializer =
-			_jsonDDMFormValuesSerializer;
+			getDDMFormValuesSerializer();
 
 		DDMFormValuesDeserializer ddmFormValuesDeserializer =
-			_jsonDDMFormValuesDeserializer;
+			getDDMFormValuesDeserializer();
 
 		registry.register("0.0.1", "0.0.2", new SchemaUpgradeProcess());
 

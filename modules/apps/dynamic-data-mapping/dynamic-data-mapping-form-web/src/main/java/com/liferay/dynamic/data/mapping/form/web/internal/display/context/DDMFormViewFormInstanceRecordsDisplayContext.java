@@ -129,7 +129,7 @@ public class DDMFormViewFormInstanceRecordsDisplayContext {
 		List<String> availableActions = new ArrayList<>();
 
 		if (DDMFormInstancePermission.contains(
-				permissionChecker, _ddmFormInstance, ActionKeys.DELETE)) {
+				permissionChecker, getDDMFormInstance(), ActionKeys.DELETE)) {
 
 			availableActions.add("deleteRecords");
 		}
@@ -138,7 +138,7 @@ public class DDMFormViewFormInstanceRecordsDisplayContext {
 	}
 
 	public int getAvailableLocalesCount() throws Exception {
-		DDMFormInstance ddmFormInstance = _ddmFormInstance;
+		DDMFormInstance ddmFormInstance = getDDMFormInstance();
 
 		DDMForm ddmForm = ddmFormInstance.getDDMForm();
 
@@ -261,7 +261,7 @@ public class DDMFormViewFormInstanceRecordsDisplayContext {
 			navigationItem -> {
 				navigationItem.setActive(true);
 
-				DDMFormInstance ddmFormInstance = _ddmFormInstance;
+				DDMFormInstance ddmFormInstance = getDDMFormInstance();
 
 				navigationItem.setLabel(
 					HtmlUtil.extractText(
@@ -473,7 +473,7 @@ public class DDMFormViewFormInstanceRecordsDisplayContext {
 	protected List<String> getHeaderNames() {
 		List<String> headerNames = new ArrayList<>();
 
-		List<DDMFormField> ddmFormFields = _ddmFormFields;
+		List<DDMFormField> ddmFormFields = getDDMFormFields();
 
 		int totalColumns = _MAX_COLUMNS;
 

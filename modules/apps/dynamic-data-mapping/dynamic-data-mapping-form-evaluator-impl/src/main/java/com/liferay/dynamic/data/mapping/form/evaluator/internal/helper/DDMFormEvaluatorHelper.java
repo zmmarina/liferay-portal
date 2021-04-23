@@ -161,7 +161,7 @@ public class DDMFormEvaluatorHelper {
 
 		DDMFormEvaluatorEvaluateResponse.Builder formEvaluatorEvaluateResponse =
 			DDMFormEvaluatorEvaluateResponse.Builder.newBuilder(
-				_ddmFormFieldsPropertyChanges);
+				getDDMFormFieldsPropertyChanges());
 
 		formEvaluatorEvaluateResponse.withDisabledPagesIndexes(
 			getDisabledPagesIndexes());

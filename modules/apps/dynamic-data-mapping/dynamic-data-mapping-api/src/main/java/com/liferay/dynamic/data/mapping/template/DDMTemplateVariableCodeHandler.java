@@ -99,7 +99,7 @@ public class DDMTemplateVariableCodeHandler
 			dataType = "common";
 		}
 
-		return _templatePath + dataType + ".ftl";
+		return getTemplatePath() + dataType + ".ftl";
 	}
 
 	protected String getTemplatePath() {
@@ -111,7 +111,7 @@ public class DDMTemplateVariableCodeHandler
 			String language, String templateContent)
 		throws Exception {
 
-		Template template = getTemplate(_templatePath + "repeatable.ftl");
+		Template template = getTemplate(getTemplatePath() + "repeatable.ftl");
 
 		templateContent = StringUtil.replace(
 			templateContent, CharPool.NEW_LINE,

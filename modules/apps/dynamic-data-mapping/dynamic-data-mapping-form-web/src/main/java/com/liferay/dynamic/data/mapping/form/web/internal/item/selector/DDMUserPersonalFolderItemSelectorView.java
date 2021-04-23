@@ -98,7 +98,7 @@ public class DDMUserPersonalFolderItemSelectorView
 			DDMUserPersonalFolderItemSelectorViewDisplayContext.class.getName(),
 			ddmUserPersonalFolderItemSelectorViewDisplayContext);
 
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		RequestDispatcher requestDispatcher =
 			servletContext.getRequestDispatcher(
