@@ -29,9 +29,32 @@ String[] credentials = clickToChatChatProviderAccountId.split("/");
 		};
 		window.hsConversationsSettings = {
 			identificationEmail: '<%= user.getEmailAddress() %>',
-			identificationToken:
-				'<%= HubspotConnectionUtil.fetchToken(user, credentials[1]) %>',
+			identificationToken: '<%= _getHubSpotToken(credentials[1], user) %>',
 		};
 		window.HubSpotConversations.widget.load();
 	</script>
 </c:if>
+
+<%!
+private String _getHubSpotToken(String hubSpotApiKey, User user) throws Exception {
+	Http.Options options = new Http.Options();
+
+	options.setBody(
+		JSONUtil.put(
+			"email", user.getEmailAddress()
+		).put(
+			"firstName", user.getFirstName()
+		).put(
+			"lastName", user.getLastName()
+		).toString(),
+		ContentTypes.APPLICATION_JSON, StringPool.UTF8);
+	options.setLocation("https://api.hubspot.com/conversations/v3/visitor-identification/tokens/create?hapikey=" + hubSpotApiKey);
+	options.setPost(true);
+
+	String json = HttpUtil.URLtoString(options);
+
+	JSONObject jsonObject = JSONFactoryUtil.createJSONObject(json);
+
+	return jsonObject.getString("token");
+}
+%>
