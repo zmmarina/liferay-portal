@@ -96,8 +96,8 @@ public class FreeMarkerTool {
 	}
 
 	public Map<String, Schema> getAllSchemas(
-		OpenAPIYAML openAPIYAML, Map<String, Schema> schemas,
-		Map<String, Schema> allExternalSchemas) {
+		Map<String, Schema> allExternalSchemas, OpenAPIYAML openAPIYAML,
+		Map<String, Schema> schemas) {
 
 		Map<String, PathItem> pathItems = openAPIYAML.getPathItems();
 

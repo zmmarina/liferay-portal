@@ -289,7 +289,7 @@ public class RESTBuilder {
 			}
 
 			schemas = freeMarkerTool.getAllSchemas(
-				openAPIYAML, schemas, allExternalSchemas);
+				allExternalSchemas, openAPIYAML, schemas);
 
 			for (Map.Entry<String, Schema> entry : schemas.entrySet()) {
 				String schemaName = entry.getKey();
