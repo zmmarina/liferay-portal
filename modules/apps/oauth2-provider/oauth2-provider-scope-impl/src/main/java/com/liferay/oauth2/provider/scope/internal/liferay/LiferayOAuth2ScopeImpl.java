@@ -79,7 +79,7 @@ public class LiferayOAuth2ScopeImpl implements LiferayOAuth2Scope {
 
 	@Override
 	public String toString() {
-		return _scope + "@" + _applicationName;
+		return getScope() + "@" + getApplicationName();
 	}
 
 	private final String _applicationName;

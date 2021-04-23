@@ -93,7 +93,7 @@ public class OrganizationItemSelectorView
 				ORGANIZATION_ITEM_SELECTOR_VIEW_DISPLAY_CONTEXT,
 			organizationItemSelectorViewDisplayContext);
 
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		RequestDispatcher requestDispatcher =
 			servletContext.getRequestDispatcher(

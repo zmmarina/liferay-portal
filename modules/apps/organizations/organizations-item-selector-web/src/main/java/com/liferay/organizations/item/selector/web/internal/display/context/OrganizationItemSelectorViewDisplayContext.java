@@ -124,7 +124,8 @@ public class OrganizationItemSelectorViewDisplayContext {
 			return _searchContainer;
 		}
 
-		_searchContainer = new OrganizationSearch(_renderRequest, _portletURL);
+		_searchContainer = new OrganizationSearch(
+			_renderRequest, getPortletURL());
 
 		_searchContainer.setEmptyResultsMessage("no-organizations-were-found");
 
