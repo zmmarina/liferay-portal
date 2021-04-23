@@ -309,6 +309,10 @@ public class DDMFormFieldSerializerUtil {
 	}
 
 	private static LocalizedValue _trim(LocalizedValue rawLocalizedValue) {
+		if (rawLocalizedValue == null) {
+			return rawLocalizedValue;
+		}
+
 		Map<Locale, String> predefinedValuesMap = rawLocalizedValue.getValues();
 
 		LocalizedValue localizedValue = new LocalizedValue();
@@ -330,20 +334,22 @@ public class DDMFormFieldSerializerUtil {
 	}
 
 	private static void _trimEmptyValues(List<DDMFormField> ddmFormFields) {
-		LocalizedValue localizedValue;
+		if (!ddmFormFields.isEmpty()) {
+			LocalizedValue localizedValue;
 
-		for (DDMFormField ddmFormField : ddmFormFields) {
-			localizedValue = _trim(ddmFormField.getPredefinedValue());
+			for (DDMFormField ddmFormField : ddmFormFields) {
+				localizedValue = _trim(ddmFormField.getPredefinedValue());
 
-			ddmFormField.setPredefinedValue(localizedValue);
+				ddmFormField.setPredefinedValue(localizedValue);
 
-			localizedValue = _trim(ddmFormField.getStyle());
+				localizedValue = _trim(ddmFormField.getStyle());
 
-			ddmFormField.setStyle(localizedValue);
+				ddmFormField.setStyle(localizedValue);
 
-			localizedValue = _trim(ddmFormField.getTip());
+				localizedValue = _trim(ddmFormField.getTip());
 
-			ddmFormField.setTip(localizedValue);
+				ddmFormField.setTip(localizedValue);
+			}
 		}
 	}
 
