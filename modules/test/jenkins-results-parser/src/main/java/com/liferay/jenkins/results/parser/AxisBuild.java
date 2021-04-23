@@ -546,7 +546,12 @@ public class AxisBuild extends BaseBuild {
 	protected void extractBuildURLComponents(Matcher matcher) {
 		super.extractBuildURLComponents(matcher);
 
-		axisVariable = matcher.group("axisVariable");
+		try {
+			axisVariable = matcher.group("axisVariable");
+		}
+		catch (IllegalArgumentException illegalArgumentException) {
+			axisVariable = null;
+		}
 	}
 
 	@Override
