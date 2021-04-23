@@ -43,7 +43,7 @@ public abstract class BasePortletParametersImpl
 	@Override
 	public T clone() {
 		return _mutablePortletParametersCreator.apply(
-			deepCopyMap(_parameterMap));
+			deepCopyMap(getParameterMap()));
 	}
 
 	@Override

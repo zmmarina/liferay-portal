@@ -205,7 +205,7 @@ public abstract class PortletResponseImpl implements LiferayPortletResponse {
 
 	@Override
 	public <T extends PortletURL & ActionURL> T createActionURL() {
-		Portlet portlet = _portlet;
+		Portlet portlet = getPortlet();
 
 		PortletApp portletApp = portlet.getPortletApp();
 
@@ -300,7 +300,7 @@ public abstract class PortletResponseImpl implements LiferayPortletResponse {
 		LiferayPortletURLPrivilegedAction liferayPortletURLPrivilegedAction =
 			new LiferayPortletURLPrivilegedAction(
 				plid, portletName, lifecycle, copy, includeLinkToLayoutUuid,
-				layout, _portlet, _portletSetup, portletRequestImpl, this,
+				layout, getPortlet(), _portletSetup, portletRequestImpl, this,
 				_plid, _constructors);
 
 		return liferayPortletURLPrivilegedAction.run();
@@ -327,7 +327,7 @@ public abstract class PortletResponseImpl implements LiferayPortletResponse {
 
 	@Override
 	public <T extends PortletURL & RenderURL> T createRenderURL() {
-		Portlet portlet = _portlet;
+		Portlet portlet = getPortlet();
 
 		PortletApp portletApp = portlet.getPortletApp();
 
