@@ -41,7 +41,8 @@ public class WikiPageTrashHandlerTestUtil {
 
 		return WikiTestUtil.addPage(
 			TestPropsValues.getUserId(), serviceContext.getScopeGroupId(),
-			(Long)parentBaseModel.getPrimaryKeyObj(), _PAGE_TITLE, approved);
+			(Long)parentBaseModel.getPrimaryKeyObj(), getSearchKeywords(),
+			approved);
 	}
 
 	public static BaseModel<?> getBaseModel(long primaryKey) throws Exception {

@@ -129,7 +129,7 @@ public class ViewCountEntryLocalServiceImpl
 			return false;
 		}
 
-		return _enabled;
+		return isViewCountEnabled();
 	}
 
 	@Activate

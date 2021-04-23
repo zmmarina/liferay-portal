@@ -37,7 +37,7 @@ public class ProcessConfig implements Serializable {
 	}
 
 	public String getBootstrapClassPath() {
-		return _merge(_bootstrapClassPathHolders);
+		return _merge(getBootstrapClassPathHolders());
 	}
 
 	public PathHolder[] getBootstrapClassPathHolders() {
@@ -61,7 +61,7 @@ public class ProcessConfig implements Serializable {
 	}
 
 	public String getRuntimeClassPath() {
-		return _merge(_runtimeClassPathHolders);
+		return _merge(getRuntimeClassPathHolders());
 	}
 
 	public PathHolder[] getRuntimeClassPathHolders() {
