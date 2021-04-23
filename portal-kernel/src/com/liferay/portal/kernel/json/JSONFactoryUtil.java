@@ -24,72 +24,72 @@ import java.util.Map;
 public class JSONFactoryUtil {
 
 	public static String convertJSONMLArrayToXML(String jsonml) {
-		return _jsonFactory.convertJSONMLArrayToXML(jsonml);
+		return getJSONFactory().convertJSONMLArrayToXML(jsonml);
 	}
 
 	public static String convertJSONMLObjectToXML(String jsonml) {
-		return _jsonFactory.convertJSONMLObjectToXML(jsonml);
+		return getJSONFactory().convertJSONMLObjectToXML(jsonml);
 	}
 
 	public static String convertXMLtoJSONMLArray(String xml) {
-		return _jsonFactory.convertXMLtoJSONMLArray(xml);
+		return getJSONFactory().convertXMLtoJSONMLArray(xml);
 	}
 
 	public static String convertXMLtoJSONMLObject(String xml) {
-		return _jsonFactory.convertXMLtoJSONMLObject(xml);
+		return getJSONFactory().convertXMLtoJSONMLObject(xml);
 	}
 
 	public static JSONTransformer createJavaScriptNormalizerJSONTransformer(
 		List<String> javaScriptAttributes) {
 
-		return _jsonFactory.createJavaScriptNormalizerJSONTransformer(
+		return getJSONFactory().createJavaScriptNormalizerJSONTransformer(
 			javaScriptAttributes);
 	}
 
 	public static JSONArray createJSONArray() {
-		return _jsonFactory.createJSONArray();
+		return getJSONFactory().createJSONArray();
 	}
 
 	public static JSONArray createJSONArray(Collection<?> collection) {
-		return _jsonFactory.createJSONArray(collection);
+		return getJSONFactory().createJSONArray(collection);
 	}
 
 	public static JSONArray createJSONArray(String json) throws JSONException {
-		return _jsonFactory.createJSONArray(json);
+		return getJSONFactory().createJSONArray(json);
 	}
 
 	public static <T> JSONArray createJSONArray(T[] array) {
-		return _jsonFactory.createJSONArray(array);
+		return getJSONFactory().createJSONArray(array);
 	}
 
 	public static <T> JSONDeserializer<T> createJSONDeserializer() {
-		return _jsonFactory.createJSONDeserializer();
+		return getJSONFactory().createJSONDeserializer();
 	}
 
 	public static JSONObject createJSONObject() {
-		return _jsonFactory.createJSONObject();
+		return getJSONFactory().createJSONObject();
 	}
 
 	public static JSONObject createJSONObject(Map<?, ?> map) {
-		return _jsonFactory.createJSONObject(map);
+		return getJSONFactory().createJSONObject(map);
 	}
 
 	public static JSONObject createJSONObject(String json)
 		throws JSONException {
 
-		return _jsonFactory.createJSONObject(json);
+		return getJSONFactory().createJSONObject(json);
 	}
 
 	public static JSONSerializer createJSONSerializer() {
-		return _jsonFactory.createJSONSerializer();
+		return getJSONFactory().createJSONSerializer();
 	}
 
 	public static Object deserialize(JSONObject jsonObject) {
-		return _jsonFactory.deserialize(jsonObject);
+		return getJSONFactory().deserialize(jsonObject);
 	}
 
 	public static Object deserialize(String json) {
-		return _jsonFactory.deserialize(json);
+		return getJSONFactory().deserialize(json);
 	}
 
 	public static JSONFactory getJSONFactory() {
@@ -97,51 +97,52 @@ public class JSONFactoryUtil {
 	}
 
 	public static String getNullJSON() {
-		return _jsonFactory.getNullJSON();
+		return getJSONFactory().getNullJSON();
 	}
 
 	public static JSONObject getUnmodifiableJSONObject() {
-		return _jsonFactory.getUnmodifiableJSONObject();
+		return getJSONFactory().getUnmodifiableJSONObject();
 	}
 
 	public static Object looseDeserialize(String json) {
-		return _jsonFactory.looseDeserialize(json);
+		return getJSONFactory().looseDeserialize(json);
 	}
 
 	public static <T> T looseDeserialize(String json, Class<T> clazz) {
-		return _jsonFactory.looseDeserialize(json, clazz);
+		return getJSONFactory().looseDeserialize(json, clazz);
 	}
 
 	public static String looseSerialize(Object object) {
-		return _jsonFactory.looseSerialize(object);
+		return getJSONFactory().looseSerialize(object);
 	}
 
 	public static String looseSerialize(
 		Object object, JSONTransformer jsonTransformer, Class<?> clazz) {
 
-		return _jsonFactory.looseSerialize(object, jsonTransformer, clazz);
+		return getJSONFactory().looseSerialize(object, jsonTransformer, clazz);
 	}
 
 	public static String looseSerialize(Object object, String... includes) {
-		return _jsonFactory.looseSerialize(object, includes);
+		return getJSONFactory().looseSerialize(object, includes);
 	}
 
 	public static String looseSerializeDeep(Object object) {
-		return _jsonFactory.looseSerializeDeep(object);
+		return getJSONFactory().looseSerializeDeep(object);
 	}
 
 	public static String looseSerializeDeep(
 		Object object, JSONTransformer jsonTransformer, Class<?> clazz) {
 
-		return _jsonFactory.looseSerializeDeep(object, jsonTransformer, clazz);
+		return getJSONFactory().looseSerializeDeep(
+			object, jsonTransformer, clazz);
 	}
 
 	public static String serialize(Object object) {
-		return _jsonFactory.serialize(object);
+		return getJSONFactory().serialize(object);
 	}
 
 	public static String serializeThrowable(Throwable throwable) {
-		return _jsonFactory.serializeThrowable(throwable);
+		return getJSONFactory().serializeThrowable(throwable);
 	}
 
 	public void setJSONFactory(JSONFactory jsonFactory) {

@@ -28,19 +28,19 @@ public class JavadocManagerUtil {
 	public static void load(
 		String servletContextName, ClassLoader classLoader) {
 
-		_javadocManager.load(servletContextName, classLoader);
+		getJavadocManager().load(servletContextName, classLoader);
 	}
 
 	public static JavadocClass lookupJavadocClass(Class<?> clazz) {
-		return _javadocManager.lookupJavadocClass(clazz);
+		return getJavadocManager().lookupJavadocClass(clazz);
 	}
 
 	public static JavadocMethod lookupJavadocMethod(Method method) {
-		return _javadocManager.lookupJavadocMethod(method);
+		return getJavadocManager().lookupJavadocMethod(method);
 	}
 
 	public static void unload(String servletContextName) {
-		_javadocManager.unload(servletContextName);
+		getJavadocManager().unload(servletContextName);
 	}
 
 	public void setJavadocManager(JavadocManager javadocManager) {

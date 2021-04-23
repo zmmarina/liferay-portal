@@ -36,11 +36,11 @@ public class ImageMagickUtil {
 	 *         documentation</a>
 	 */
 	public static Future<?> convert(List<String> arguments) throws Exception {
-		return _imageMagick.convert(arguments);
+		return getImageMagick().convert(arguments);
 	}
 
 	public static void destroy() {
-		_imageMagick.destroy();
+		getImageMagick().destroy();
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class ImageMagickUtil {
 	 * @throws Exception if an unexpected error occurred
 	 */
 	public static String getGlobalSearchPath() throws Exception {
-		return _imageMagick.getGlobalSearchPath();
+		return getImageMagick().getGlobalSearchPath();
 	}
 
 	public static ImageMagick getImageMagick() {
@@ -64,7 +64,7 @@ public class ImageMagickUtil {
 	 * @throws Exception if an unexpected error occurred
 	 */
 	public static Properties getResourceLimitsProperties() throws Exception {
-		return _imageMagick.getResourceLimitsProperties();
+		return getImageMagick().getResourceLimitsProperties();
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class ImageMagickUtil {
 	 *         documentation</a>
 	 */
 	public static String[] identify(List<String> arguments) throws Exception {
-		return _imageMagick.identify(arguments);
+		return getImageMagick().identify(arguments);
 	}
 
 	/**
@@ -88,14 +88,14 @@ public class ImageMagickUtil {
 	 *         otherwise
 	 */
 	public static boolean isEnabled() {
-		return _imageMagick.isEnabled();
+		return getImageMagick().isEnabled();
 	}
 
 	/**
 	 * Resets the global search path and resource limits for ImageMagick.
 	 */
 	public static void reset() {
-		_imageMagick.reset();
+		getImageMagick().reset();
 	}
 
 	public void setImageMagick(ImageMagick imageMagick) {
