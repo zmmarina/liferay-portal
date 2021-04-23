@@ -241,7 +241,7 @@ public class WorkflowTaskDisplayContext {
 	public String getDisplayStyle() {
 		if (_displayStyle == null) {
 			_displayStyle = WorkflowTaskPortletUtil.getWorkflowTaskDisplayStyle(
-				_liferayPortletRequest, _DISPLAY_VIEWS);
+				_liferayPortletRequest, _getDisplayViews());
 		}
 
 		return _displayStyle;

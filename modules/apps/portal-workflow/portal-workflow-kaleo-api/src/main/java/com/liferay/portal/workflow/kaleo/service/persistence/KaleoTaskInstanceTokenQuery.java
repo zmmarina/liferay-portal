@@ -59,7 +59,7 @@ public class KaleoTaskInstanceTokenQuery implements Serializable {
 	 */
 	@Deprecated
 	public Long getAssigneeClassPK() {
-		Long[] assigneeClassPKs = _assigneeClassPKs;
+		Long[] assigneeClassPKs = getAssigneeClassPKs();
 
 		if (ArrayUtil.isEmpty(assigneeClassPKs)) {
 			return null;
@@ -98,7 +98,7 @@ public class KaleoTaskInstanceTokenQuery implements Serializable {
 	 */
 	@Deprecated
 	public Long getKaleoInstanceId() {
-		Long[] kaleoInstanceIds = _kaleoInstanceIds;
+		Long[] kaleoInstanceIds = getKaleoInstanceIds();
 
 		if (ArrayUtil.isEmpty(kaleoInstanceIds)) {
 			return null;
@@ -132,7 +132,7 @@ public class KaleoTaskInstanceTokenQuery implements Serializable {
 	 */
 	@Deprecated
 	public String getTaskName() {
-		String[] taskNames = _taskNames;
+		String[] taskNames = getTaskNames();
 
 		if (ArrayUtil.isEmpty(taskNames)) {
 			return null;

@@ -136,7 +136,7 @@ public class WorkflowInstanceViewDisplayContext
 	public String getDisplayStyle() {
 		if (_displayStyle == null) {
 			_displayStyle = WorkflowInstancePortletUtil.getDisplayStyle(
-				liferayPortletRequest, _DISPLAY_VIEWS);
+				liferayPortletRequest, getDisplayViews());
 		}
 
 		return _displayStyle;

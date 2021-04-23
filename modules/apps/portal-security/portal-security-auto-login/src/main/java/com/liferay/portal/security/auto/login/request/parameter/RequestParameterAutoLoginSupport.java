@@ -48,14 +48,14 @@ public class RequestParameterAutoLoginSupport extends BaseAutoLogin {
 			HttpServletResponse httpServletResponse)
 		throws Exception {
 
-		String login = ParamUtil.getString(httpServletRequest, _LOGIN_PARAM);
+		String login = ParamUtil.getString(httpServletRequest, getLoginParam());
 
 		if (Validator.isNull(login)) {
 			return null;
 		}
 
 		String password = ParamUtil.getString(
-			httpServletRequest, _PASSWORD_PARAM);
+			httpServletRequest, getPasswordParam());
 
 		if (Validator.isNull(password)) {
 			return null;

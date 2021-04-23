@@ -724,7 +724,7 @@ public class ClusterMasterExecutorImplTest extends BaseClusterTestCase {
 
 		@Override
 		public List<ClusterNode> getClusterNodes() {
-			if (!_enabled) {
+			if (!isEnabled()) {
 				return Collections.emptyList();
 			}
 
