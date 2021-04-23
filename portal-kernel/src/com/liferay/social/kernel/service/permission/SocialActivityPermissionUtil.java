@@ -26,13 +26,14 @@ public class SocialActivityPermissionUtil {
 			PermissionChecker permissionChecker, long groupId, String actionId)
 		throws PortalException {
 
-		_socialActivityPermission.check(permissionChecker, groupId, actionId);
+		getSocialActivityPermission().check(
+			permissionChecker, groupId, actionId);
 	}
 
 	public static boolean contains(
 		PermissionChecker permissionChecker, long groupId, String actionId) {
 
-		return _socialActivityPermission.contains(
+		return getSocialActivityPermission().contains(
 			permissionChecker, groupId, actionId);
 	}
 

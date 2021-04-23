@@ -52,34 +52,35 @@ public class UsersAdminUtil {
 			RenderResponse renderResponse)
 		throws Exception {
 
-		_usersAdmin.addPortletBreadcrumbEntries(
+		getUsersAdmin().addPortletBreadcrumbEntries(
 			organization, httpServletRequest, renderResponse);
 	}
 
 	public static long[] addRequiredRoles(long userId, long[] roleIds)
 		throws PortalException {
 
-		return _usersAdmin.addRequiredRoles(userId, roleIds);
+		return getUsersAdmin().addRequiredRoles(userId, roleIds);
 	}
 
 	public static long[] addRequiredRoles(User user, long[] roleIds)
 		throws PortalException {
 
-		return _usersAdmin.addRequiredRoles(user, roleIds);
+		return getUsersAdmin().addRequiredRoles(user, roleIds);
 	}
 
 	public static List<Role> filterGroupRoles(
 			PermissionChecker permissionChecker, long groupId, List<Role> roles)
 		throws PortalException {
 
-		return _usersAdmin.filterGroupRoles(permissionChecker, groupId, roles);
+		return getUsersAdmin().filterGroupRoles(
+			permissionChecker, groupId, roles);
 	}
 
 	public static List<Group> filterGroups(
 			PermissionChecker permissionChecker, List<Group> groups)
 		throws PortalException {
 
-		return _usersAdmin.filterGroups(permissionChecker, groups);
+		return getUsersAdmin().filterGroups(permissionChecker, groups);
 	}
 
 	public static List<Organization> filterOrganizations(
@@ -87,21 +88,21 @@ public class UsersAdminUtil {
 			List<Organization> organizations)
 		throws PortalException {
 
-		return _usersAdmin.filterOrganizations(
+		return getUsersAdmin().filterOrganizations(
 			permissionChecker, organizations);
 	}
 
 	public static List<Role> filterRoles(
 		PermissionChecker permissionChecker, List<Role> roles) {
 
-		return _usersAdmin.filterRoles(permissionChecker, roles);
+		return getUsersAdmin().filterRoles(permissionChecker, roles);
 	}
 
 	public static long[] filterUnsetGroupUserIds(
 			PermissionChecker permissionChecker, long groupId, long[] userIds)
 		throws PortalException {
 
-		return _usersAdmin.filterUnsetGroupUserIds(
+		return getUsersAdmin().filterUnsetGroupUserIds(
 			permissionChecker, groupId, userIds);
 	}
 
@@ -110,7 +111,7 @@ public class UsersAdminUtil {
 			long[] userIds)
 		throws PortalException {
 
-		return _usersAdmin.filterUnsetOrganizationUserIds(
+		return getUsersAdmin().filterUnsetOrganizationUserIds(
 			permissionChecker, organizationId, userIds);
 	}
 
@@ -119,118 +120,120 @@ public class UsersAdminUtil {
 			List<UserGroupRole> userGroupRoles)
 		throws PortalException {
 
-		return _usersAdmin.filterUserGroupRoles(
+		return getUsersAdmin().filterUserGroupRoles(
 			permissionChecker, userGroupRoles);
 	}
 
 	public static List<UserGroup> filterUserGroups(
 		PermissionChecker permissionChecker, List<UserGroup> userGroups) {
 
-		return _usersAdmin.filterUserGroups(permissionChecker, userGroups);
+		return getUsersAdmin().filterUserGroups(permissionChecker, userGroups);
 	}
 
 	public static List<Address> getAddresses(ActionRequest actionRequest) {
-		return _usersAdmin.getAddresses(actionRequest);
+		return getUsersAdmin().getAddresses(actionRequest);
 	}
 
 	public static List<Address> getAddresses(
 		ActionRequest actionRequest, List<Address> defaultAddresses) {
 
-		return _usersAdmin.getAddresses(actionRequest, defaultAddresses);
+		return getUsersAdmin().getAddresses(actionRequest, defaultAddresses);
 	}
 
 	public static List<EmailAddress> getEmailAddresses(
 		ActionRequest actionRequest) {
 
-		return _usersAdmin.getEmailAddresses(actionRequest);
+		return getUsersAdmin().getEmailAddresses(actionRequest);
 	}
 
 	public static List<EmailAddress> getEmailAddresses(
 		ActionRequest actionRequest, List<EmailAddress> defaultEmailAddresses) {
 
-		return _usersAdmin.getEmailAddresses(
+		return getUsersAdmin().getEmailAddresses(
 			actionRequest, defaultEmailAddresses);
 	}
 
 	public static long[] getGroupIds(PortletRequest portletRequest)
 		throws PortalException {
 
-		return _usersAdmin.getGroupIds(portletRequest);
+		return getUsersAdmin().getGroupIds(portletRequest);
 	}
 
 	public static OrderByComparator<Group> getGroupOrderByComparator(
 		String orderByCol, String orderByType) {
 
-		return _usersAdmin.getGroupOrderByComparator(orderByCol, orderByType);
+		return getUsersAdmin().getGroupOrderByComparator(
+			orderByCol, orderByType);
 	}
 
 	public static Long[] getOrganizationIds(List<Organization> organizations) {
-		return _usersAdmin.getOrganizationIds(organizations);
+		return getUsersAdmin().getOrganizationIds(organizations);
 	}
 
 	public static long[] getOrganizationIds(PortletRequest portletRequest)
 		throws PortalException {
 
-		return _usersAdmin.getOrganizationIds(portletRequest);
+		return getUsersAdmin().getOrganizationIds(portletRequest);
 	}
 
 	public static OrderByComparator<Organization>
 		getOrganizationOrderByComparator(
 			String orderByCol, String orderByType) {
 
-		return _usersAdmin.getOrganizationOrderByComparator(
+		return getUsersAdmin().getOrganizationOrderByComparator(
 			orderByCol, orderByType);
 	}
 
 	public static List<Organization> getOrganizations(Hits hits)
 		throws PortalException {
 
-		return _usersAdmin.getOrganizations(hits);
+		return getUsersAdmin().getOrganizations(hits);
 	}
 
 	public static List<OrgLabor> getOrgLabors(ActionRequest actionRequest) {
-		return _usersAdmin.getOrgLabors(actionRequest);
+		return getUsersAdmin().getOrgLabors(actionRequest);
 	}
 
 	public static List<Phone> getPhones(ActionRequest actionRequest) {
-		return _usersAdmin.getPhones(actionRequest);
+		return getUsersAdmin().getPhones(actionRequest);
 	}
 
 	public static List<Phone> getPhones(
 		ActionRequest actionRequest, List<Phone> defaultPhones) {
 
-		return _usersAdmin.getPhones(actionRequest, defaultPhones);
+		return getUsersAdmin().getPhones(actionRequest, defaultPhones);
 	}
 
 	public static long[] getRoleIds(PortletRequest portletRequest)
 		throws PortalException {
 
-		return _usersAdmin.getRoleIds(portletRequest);
+		return getUsersAdmin().getRoleIds(portletRequest);
 	}
 
 	public static OrderByComparator<Role> getRoleOrderByComparator(
 		String orderByCol, String orderByType) {
 
-		return _usersAdmin.getRoleOrderByComparator(orderByCol, orderByType);
+		return getUsersAdmin().getRoleOrderByComparator(
+			orderByCol, orderByType);
 	}
 
 	public static <T> String getUserColumnText(
 		Locale locale, List<? extends T> list, Accessor<T, String> accessor,
 		int count) {
 
-		return _usersAdmin.getUserColumnText(locale, list, accessor, count);
+		return getUsersAdmin().getUserColumnText(locale, list, accessor, count);
 	}
 
 	public static long[] getUserGroupIds(PortletRequest portletRequest)
 		throws PortalException {
 
-		return _usersAdmin.getUserGroupIds(portletRequest);
+		return getUsersAdmin().getUserGroupIds(portletRequest);
 	}
 
 	public static OrderByComparator<UserGroup> getUserGroupOrderByComparator(
 		String orderByCol, String orderByType) {
 
-		return _usersAdmin.getUserGroupOrderByComparator(
+		return getUsersAdmin().getUserGroupOrderByComparator(
 			orderByCol, orderByType);
 	}
 
@@ -238,23 +241,24 @@ public class UsersAdminUtil {
 			PortletRequest portletRequest)
 		throws PortalException {
 
-		return _usersAdmin.getUserGroupRoles(portletRequest);
+		return getUsersAdmin().getUserGroupRoles(portletRequest);
 	}
 
 	public static List<UserGroup> getUserGroups(Hits hits)
 		throws PortalException {
 
-		return _usersAdmin.getUserGroups(hits);
+		return getUsersAdmin().getUserGroups(hits);
 	}
 
 	public static OrderByComparator<User> getUserOrderByComparator(
 		String orderByCol, String orderByType) {
 
-		return _usersAdmin.getUserOrderByComparator(orderByCol, orderByType);
+		return getUsersAdmin().getUserOrderByComparator(
+			orderByCol, orderByType);
 	}
 
 	public static List<User> getUsers(Hits hits) throws PortalException {
-		return _usersAdmin.getUsers(hits);
+		return getUsersAdmin().getUsers(hits);
 	}
 
 	public static UsersAdmin getUsersAdmin() {
@@ -262,13 +266,13 @@ public class UsersAdminUtil {
 	}
 
 	public static List<Website> getWebsites(ActionRequest actionRequest) {
-		return _usersAdmin.getWebsites(actionRequest);
+		return getUsersAdmin().getWebsites(actionRequest);
 	}
 
 	public static List<Website> getWebsites(
 		ActionRequest actionRequest, List<Website> defaultWebsites) {
 
-		return _usersAdmin.getWebsites(actionRequest, defaultWebsites);
+		return getUsersAdmin().getWebsites(actionRequest, defaultWebsites);
 	}
 
 	public static boolean hasUpdateFieldPermission(
@@ -276,54 +280,55 @@ public class UsersAdminUtil {
 			User updatedUser, String field)
 		throws PortalException {
 
-		return _usersAdmin.hasUpdateFieldPermission(
+		return getUsersAdmin().hasUpdateFieldPermission(
 			permissionChecker, updatingUser, updatedUser, field);
 	}
 
 	public static long[] removeRequiredRoles(long userId, long[] roleIds)
 		throws PortalException {
 
-		return _usersAdmin.removeRequiredRoles(userId, roleIds);
+		return getUsersAdmin().removeRequiredRoles(userId, roleIds);
 	}
 
 	public static long[] removeRequiredRoles(User user, long[] roleIds)
 		throws PortalException {
 
-		return _usersAdmin.removeRequiredRoles(user, roleIds);
+		return getUsersAdmin().removeRequiredRoles(user, roleIds);
 	}
 
 	public static void updateAddresses(
 			String className, long classPK, List<Address> addresses)
 		throws PortalException {
 
-		_usersAdmin.updateAddresses(className, classPK, addresses);
+		getUsersAdmin().updateAddresses(className, classPK, addresses);
 	}
 
 	public static void updateEmailAddresses(
 			String className, long classPK, List<EmailAddress> emailAddresses)
 		throws PortalException {
 
-		_usersAdmin.updateEmailAddresses(className, classPK, emailAddresses);
+		getUsersAdmin().updateEmailAddresses(
+			className, classPK, emailAddresses);
 	}
 
 	public static void updateOrgLabors(long classPK, List<OrgLabor> orgLabors)
 		throws PortalException {
 
-		_usersAdmin.updateOrgLabors(classPK, orgLabors);
+		getUsersAdmin().updateOrgLabors(classPK, orgLabors);
 	}
 
 	public static void updatePhones(
 			String className, long classPK, List<Phone> phones)
 		throws PortalException {
 
-		_usersAdmin.updatePhones(className, classPK, phones);
+		getUsersAdmin().updatePhones(className, classPK, phones);
 	}
 
 	public static void updateWebsites(
 			String className, long classPK, List<Website> websites)
 		throws PortalException {
 
-		_usersAdmin.updateWebsites(className, classPK, websites);
+		getUsersAdmin().updateWebsites(className, classPK, websites);
 	}
 
 	public void setUsersAdmin(UsersAdmin usersAdmin) {

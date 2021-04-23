@@ -24,41 +24,42 @@ import java.util.List;
 public class SocialConfigurationUtil {
 
 	public static List<String> getActivityCounterNames() {
-		return _socialConfiguration.getActivityCounterNames();
+		return getSocialConfiguration().getActivityCounterNames();
 	}
 
 	public static List<String> getActivityCounterNames(
 		boolean transientCounter) {
 
-		return _socialConfiguration.getActivityCounterNames(transientCounter);
+		return getSocialConfiguration().getActivityCounterNames(
+			transientCounter);
 	}
 
 	public static List<String> getActivityCounterNames(int ownerType) {
-		return _socialConfiguration.getActivityCounterNames(ownerType);
+		return getSocialConfiguration().getActivityCounterNames(ownerType);
 	}
 
 	public static List<String> getActivityCounterNames(
 		int ownerType, boolean transientCounter) {
 
-		return _socialConfiguration.getActivityCounterNames(
+		return getSocialConfiguration().getActivityCounterNames(
 			ownerType, transientCounter);
 	}
 
 	public static SocialActivityDefinition getActivityDefinition(
 		String modelName, int activityType) {
 
-		return _socialConfiguration.getActivityDefinition(
+		return getSocialConfiguration().getActivityDefinition(
 			modelName, activityType);
 	}
 
 	public static List<SocialActivityDefinition> getActivityDefinitions(
 		String modelName) {
 
-		return _socialConfiguration.getActivityDefinitions(modelName);
+		return getSocialConfiguration().getActivityDefinitions(modelName);
 	}
 
 	public static String[] getActivityModelNames() {
-		return _socialConfiguration.getActivityModelNames();
+		return getSocialConfiguration().getActivityModelNames();
 	}
 
 	public static SocialConfiguration getSocialConfiguration() {
@@ -68,13 +69,13 @@ public class SocialConfigurationUtil {
 	public static List<Object> read(ClassLoader classLoader, String[] xmls)
 		throws Exception {
 
-		return _socialConfiguration.read(classLoader, xmls);
+		return getSocialConfiguration().read(classLoader, xmls);
 	}
 
 	public static void removeActivityDefinition(
 		SocialActivityDefinition activityDefinition) {
 
-		_socialConfiguration.removeActivityDefinition(activityDefinition);
+		getSocialConfiguration().removeActivityDefinition(activityDefinition);
 	}
 
 	public void setSocialConfiguration(
