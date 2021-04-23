@@ -155,7 +155,7 @@ public class FlagsTag extends IncludeTag {
 				"liferay-flags:flags:data", _getData(message));
 
 			httpServletRequest.setAttribute(
-				"liferay-flags:flags:elementClasses", _elementClasses);
+				"liferay-flags:flags:elementClasses", _getElementClasses());
 			httpServletRequest.setAttribute(
 				"liferay-flags:flags:message", message);
 			httpServletRequest.setAttribute(

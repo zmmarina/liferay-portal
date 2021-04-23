@@ -194,7 +194,7 @@ public class ComponentTag extends ParamAndPropertyAncestorTagImpl {
 		StringBundler sb = new StringBundler(14);
 
 		sb.append("Liferay.component('");
-		sb.append(_componentId);
+		sb.append(getComponentId());
 		sb.append("', new ");
 
 		sb.append(variableName);
@@ -209,7 +209,7 @@ public class ComponentTag extends ParamAndPropertyAncestorTagImpl {
 		sb.append(
 			_jsonSerializer.serializeDeep(
 				HashMapBuilder.putAll(
-					_context
+					getContext()
 				).put(
 					"namespace", portletDisplay.getNamespace()
 				).put(
@@ -217,7 +217,7 @@ public class ComponentTag extends ParamAndPropertyAncestorTagImpl {
 					themeDisplay.getPathThemeImages() + "/clay/icons.svg"
 				).build()));
 
-		String containerId = _containerId;
+		String containerId = getContainerId();
 
 		if (Validator.isNotNull(containerId)) {
 			sb.append(", '");

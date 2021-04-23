@@ -512,8 +512,8 @@ public class FriendlyURLServlet extends HttpServlet {
 			Redirect redirect = (Redirect)object;
 
 			if (Objects.equals(getPath(), redirect.getPath()) &&
-				(_force == redirect.isForce()) &&
-				(_permanent == redirect.isPermanent())) {
+				(isForce() == redirect.isForce()) &&
+				(isPermanent() == redirect.isPermanent())) {
 
 				return true;
 			}
@@ -548,7 +548,7 @@ public class FriendlyURLServlet extends HttpServlet {
 		}
 
 		public boolean isValidForward() {
-			if (_force) {
+			if (isForce()) {
 				return false;
 			}
 

@@ -115,7 +115,7 @@ public abstract class BaseBuiltInJSModule implements JSModule {
 		StringBundler sb = new StringBundler(2);
 
 		sb.append("/o/js/resolved-module/");
-		sb.append(_resolvedId);
+		sb.append(getResolvedId());
 
 		return sb.toString();
 	}
@@ -132,7 +132,7 @@ public abstract class BaseBuiltInJSModule implements JSModule {
 
 	@Override
 	public String toString() {
-		return _id;
+		return getId();
 	}
 
 	private final Collection<String> _dependencies;

@@ -119,7 +119,7 @@ public class ManagementToolbarTag extends BaseContainerTag {
 	 */
 	@Deprecated
 	public ManagementToolbarDisplayContext getDisplayContext() {
-		return _managementToolbarDisplayContext;
+		return getManagementToolbarDisplayContext();
 	}
 
 	public List<DropdownItem> getFilterDropdownItems() {
@@ -610,7 +610,7 @@ public class ManagementToolbarTag extends BaseContainerTag {
 
 	@Override
 	protected Map<String, Object> prepareProps(Map<String, Object> props) {
-		props.put("clearSelectionURL", _clearSelectionURL);
+		props.put("clearSelectionURL", getClearSelectionURL());
 		props.put("clearResultsURL", getClearResultsURL());
 		props.put("creationMenu", getCreationMenu());
 		props.put("disabled", isDisabled());
@@ -622,8 +622,8 @@ public class ManagementToolbarTag extends BaseContainerTag {
 		props.put("infoPanelId", _namespace(namespace, getInfoPanelId()));
 
 		props.put("initialActionDropdownItems", getActionDropdownItems());
-		props.put("initialCheckboxStatus", _checkboxStatus);
-		props.put("initialSelectAllButtonVisible", _showSelectAllButton);
+		props.put("initialCheckboxStatus", getCheckboxStatus());
+		props.put("initialSelectAllButtonVisible", isShowSelectAllButton());
 		props.put("initialSelectedItems", getSelectedItems());
 		props.put("itemsTotal", getItemsTotal());
 
@@ -646,11 +646,11 @@ public class ManagementToolbarTag extends BaseContainerTag {
 		props.put(
 			"searchInputName", _namespace(namespace, getSearchInputName()));
 		props.put("searchValue", getSearchValue());
-		props.put("selectAllURL", _selectAllURL);
+		props.put("selectAllURL", getSelectAllURL());
 		props.put("selectable", isSelectable());
 		props.put("showCreationMenu", isShowCreationMenu());
 		props.put("showInfoButton", isShowInfoButton());
-		props.put("showResultsBar", _showResultsBar);
+		props.put("showResultsBar", isShowResultsBar());
 		props.put("showSearch", isShowSearch());
 		props.put("sortingOrder", getSortingOrder());
 		props.put("sortingURL", getSortingURL());
@@ -666,7 +666,7 @@ public class ManagementToolbarTag extends BaseContainerTag {
 
 		JspWriter jspWriter = pageContext.getOut();
 
-		Boolean active = !_checkboxStatus.equals("unchecked");
+		Boolean active = !getCheckboxStatus().equals("unchecked");
 
 		jspWriter.write("<nav class=\"management-bar navbar navbar-expand-md");
 
@@ -730,7 +730,7 @@ public class ManagementToolbarTag extends BaseContainerTag {
 			if (isSupportsBulkActions()) {
 				jspWriter.write("<li class=\"nav-item nav-item-shrink\">");
 
-				String clearSelectionURL = _clearSelectionURL;
+				String clearSelectionURL = getClearSelectionURL();
 
 				if (clearSelectionURL == null) {
 					jspWriter.write("<button class=\"btn btn-unstyled");
@@ -754,10 +754,10 @@ public class ManagementToolbarTag extends BaseContainerTag {
 
 				jspWriter.write("</li>");
 
-				if (_showSelectAllButton) {
+				if (isShowSelectAllButton()) {
 					jspWriter.write("<li class=\"nav-item nav-item-shrink\">");
 
-					String selectAllURL = _selectAllURL;
+					String selectAllURL = getSelectAllURL();
 
 					if (selectAllURL == null) {
 						jspWriter.write("<button class=\"btn btn-unstyled");
@@ -1035,7 +1035,7 @@ public class ManagementToolbarTag extends BaseContainerTag {
 
 		jspWriter.write("</div></nav>");
 
-		if (_showResultsBar) {
+		if (isShowResultsBar()) {
 			jspWriter.write("<nav class=\"subnav-tbar subnav-tbar-primary");
 			jspWriter.write(" tbar tbar-inline-xs-down\"><div class=\"");
 			jspWriter.write("container-fluid container-fluid-max-xl\">");

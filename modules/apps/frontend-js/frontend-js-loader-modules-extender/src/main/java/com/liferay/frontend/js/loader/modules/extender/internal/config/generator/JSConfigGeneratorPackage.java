@@ -172,14 +172,14 @@ public class JSConfigGeneratorPackage {
 
 			String moduleName = name.substring(0, index);
 
-			if (!moduleName.equals(_name)) {
+			if (!moduleName.equals(getName())) {
 				continue;
 			}
 
 			String modulePath = name.substring(index);
 
 			moduleName = StringBundler.concat(
-				_name, StringPool.AT, _version, modulePath);
+				getName(), StringPool.AT, getVersion(), modulePath);
 
 			JSONObject nameJSONObject = jsonObject.getJSONObject(name);
 
@@ -198,9 +198,9 @@ public class JSConfigGeneratorPackage {
 				String dependencyName = dependency.substring(0, index);
 				String dependencyPath = dependency.substring(index);
 
-				if (dependencyName.equals(_name)) {
+				if (dependencyName.equals(getName())) {
 					dependencyName = StringBundler.concat(
-						_name, StringPool.AT, _version, dependencyPath);
+						getName(), StringPool.AT, getVersion(), dependencyPath);
 
 					dependenciesJSONArray.put(j, dependencyName);
 				}

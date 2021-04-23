@@ -76,7 +76,7 @@ public class BaseContainerTag extends AttributesTagSupport {
 	 */
 	@Deprecated
 	public String getClassName() {
-		return _cssClass;
+		return getCssClass();
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class BaseContainerTag extends AttributesTagSupport {
 	 */
 	@Deprecated
 	public String getElementClasses() {
-		return _cssClass;
+		return getCssClass();
 	}
 
 	public String getHydratedContainerElement() {
@@ -266,15 +266,15 @@ public class BaseContainerTag extends AttributesTagSupport {
 			props.put("additionalProps", _additionalProps);
 		}
 
-		props.put("cssClass", _cssClass);
+		props.put("cssClass", getCssClass());
 
-		String defaultEventHandler = _defaultEventHandler;
+		String defaultEventHandler = getDefaultEventHandler();
 
 		if (Validator.isNotNull(defaultEventHandler)) {
 			props.put("defaultEventHandler", defaultEventHandler);
 		}
 
-		props.put("id", _id);
+		props.put("id", getId());
 
 		props.putAll(getDynamicAttributes());
 
@@ -282,7 +282,7 @@ public class BaseContainerTag extends AttributesTagSupport {
 	}
 
 	protected String processCssClasses(Set<String> cssClasses) {
-		String cssClass = _cssClass;
+		String cssClass = getCssClass();
 
 		if (Validator.isNotNull(cssClass)) {
 			cssClasses.addAll(StringUtil.split(cssClass, CharPool.SPACE));
@@ -336,14 +336,14 @@ public class BaseContainerTag extends AttributesTagSupport {
 				propsTransformer =
 					resolvedPackageName + "/" + _propsTransformer;
 			}
-			else if (Validator.isNotNull(_defaultEventHandler)) {
+			else if (Validator.isNotNull(getDefaultEventHandler())) {
 				propsTransformer = npmResolver.resolveModuleName(
 					"frontend-taglib-clay" +
 						"/DefaultEventHandlersPropsTransformer");
 			}
 
 			ComponentDescriptor componentDescriptor = new ComponentDescriptor(
-				moduleName, _id, new LinkedHashSet<>(), false,
+				moduleName, getId(), new LinkedHashSet<>(), false,
 				propsTransformer);
 
 			ReactRenderer reactRenderer = ServicesProvider.getReactRenderer();
@@ -378,7 +378,7 @@ public class BaseContainerTag extends AttributesTagSupport {
 
 		writeCssClassAttribute();
 
-		if (Validator.isNotNull(_id)) {
+		if (Validator.isNotNull(getId())) {
 			writeIdAttribute();
 		}
 
@@ -412,7 +412,7 @@ public class BaseContainerTag extends AttributesTagSupport {
 		JspWriter jspWriter = pageContext.getOut();
 
 		jspWriter.write(" id=\"");
-		jspWriter.write(_id);
+		jspWriter.write(getId());
 		jspWriter.write("\"");
 	}
 
