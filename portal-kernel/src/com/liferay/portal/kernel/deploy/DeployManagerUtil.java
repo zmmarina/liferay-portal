@@ -30,11 +30,11 @@ public class DeployManagerUtil {
 	public static void deploy(AutoDeploymentContext autoDeploymentContext)
 		throws Exception {
 
-		_deployManager.deploy(autoDeploymentContext);
+		getDeployManager().deploy(autoDeploymentContext);
 	}
 
 	public static String getDeployDir() throws Exception {
-		return _deployManager.getDeployDir();
+		return getDeployManager().getDeployDir();
 	}
 
 	public static DeployManager getDeployManager() {
@@ -42,48 +42,48 @@ public class DeployManagerUtil {
 	}
 
 	public static String getInstalledDir() throws Exception {
-		return _deployManager.getInstalledDir();
+		return getDeployManager().getInstalledDir();
 	}
 
 	public static PluginPackage getInstalledPluginPackage(String context) {
-		return _deployManager.getInstalledPluginPackage(context);
+		return getDeployManager().getInstalledPluginPackage(context);
 	}
 
 	public static List<PluginPackage> getInstalledPluginPackages() {
-		return _deployManager.getInstalledPluginPackages();
+		return getDeployManager().getInstalledPluginPackages();
 	}
 
 	public static List<String[]> getLevelsRequiredDeploymentContexts() {
-		return _deployManager.getLevelsRequiredDeploymentContexts();
+		return getDeployManager().getLevelsRequiredDeploymentContexts();
 	}
 
 	public static List<String[]> getLevelsRequiredDeploymentWARFileNames() {
-		return _deployManager.getLevelsRequiredDeploymentWARFileNames();
+		return getDeployManager().getLevelsRequiredDeploymentWARFileNames();
 	}
 
 	public static boolean isDeployed(String context) {
-		return _deployManager.isDeployed(context);
+		return getDeployManager().isDeployed(context);
 	}
 
 	public static boolean isRequiredDeploymentContext(String context) {
-		return _deployManager.isRequiredDeploymentContext(context);
+		return getDeployManager().isRequiredDeploymentContext(context);
 	}
 
 	public static PluginPackage readPluginPackageProperties(
 		String displayName, Properties properties) {
 
-		return _deployManager.readPluginPackageProperties(
+		return getDeployManager().readPluginPackageProperties(
 			displayName, properties);
 	}
 
 	public static PluginPackage readPluginPackageXml(String xml)
 		throws Exception {
 
-		return _deployManager.readPluginPackageXml(xml);
+		return getDeployManager().readPluginPackageXml(xml);
 	}
 
 	public static void redeploy(String context) throws Exception {
-		_deployManager.redeploy(context);
+		getDeployManager().redeploy(context);
 	}
 
 	public static void reset() {
@@ -91,7 +91,7 @@ public class DeployManagerUtil {
 	}
 
 	public static void undeploy(String context) throws Exception {
-		_deployManager.undeploy(context);
+		getDeployManager().undeploy(context);
 	}
 
 	public void setDeployManager(DeployManager deployManager) {
