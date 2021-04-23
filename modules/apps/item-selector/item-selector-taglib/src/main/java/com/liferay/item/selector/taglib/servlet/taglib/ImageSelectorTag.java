@@ -71,7 +71,7 @@ public class ImageSelectorTag extends IncludeTag {
 	 */
 	@Deprecated
 	public String getDraggableImage() {
-		return _imageCropDirection;
+		return getImageCropDirection();
 	}
 
 	public long getFileEntryId() {

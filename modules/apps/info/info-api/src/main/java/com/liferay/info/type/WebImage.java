@@ -108,7 +108,7 @@ public class WebImage {
 
 	@Override
 	public String toString() {
-		return _url;
+		return getUrl();
 	}
 
 	private InfoLocalizedValue<String> _altInfoLocalizedValue;

@@ -116,7 +116,7 @@ public class KBArchiveFactory {
 
 		@Override
 		public String getContent() {
-			return _zipReader.getEntryAsString(_name);
+			return _zipReader.getEntryAsString(getName());
 		}
 
 		@Override

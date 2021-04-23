@@ -82,11 +82,11 @@ public class InfoDisplayField {
 
 	public JSONObject toJSONObject() {
 		return JSONUtil.put(
-			"key", _key
+			"key", getKey()
 		).put(
-			"label", _label
+			"label", getLabel()
 		).put(
-			"type", _type
+			"type", getType()
 		);
 	}
 

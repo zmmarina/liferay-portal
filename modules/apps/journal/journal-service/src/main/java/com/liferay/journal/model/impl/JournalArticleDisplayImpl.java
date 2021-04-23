@@ -60,18 +60,18 @@ public class JournalArticleDisplayImpl implements JournalArticleDisplay {
 
 	@Override
 	public String getArticleDisplayImageURL(ThemeDisplay themeDisplay) {
-		if (!_smallImage) {
+		if (!isSmallImage()) {
 			return null;
 		}
 
-		if (Validator.isNotNull(_smallImageURL)) {
-			return _smallImageURL;
+		if (Validator.isNotNull(getSmallImageURL())) {
+			return getSmallImageURL();
 		}
 
 		return StringBundler.concat(
 			themeDisplay.getPathImage(), "/journal/article?img_id=",
-			_smallImageId, "&t=",
-			WebServerServletTokenUtil.getToken(_smallImageId));
+			getSmallImageId(), "&t=",
+			WebServerServletTokenUtil.getToken(getSmallImageId()));
 	}
 
 	@Override

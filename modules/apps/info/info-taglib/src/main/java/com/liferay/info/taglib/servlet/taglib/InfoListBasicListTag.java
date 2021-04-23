@@ -102,7 +102,8 @@ public class InfoListBasicListTag extends IncludeTag {
 			"liferay-info:info-list-grid:infoItemRenderer",
 			_getInfoItemRenderer());
 		httpServletRequest.setAttribute(
-			"liferay-info:info-list-grid:infoListObjects", _infoListObjects);
+			"liferay-info:info-list-grid:infoListObjects",
+			getInfoListObjects());
 		httpServletRequest.setAttribute(
 			"liferay-info:info-list-grid:listStyleKey", _listStyleKey);
 		httpServletRequest.setAttribute(
@@ -113,7 +114,8 @@ public class InfoListBasicListTag extends IncludeTag {
 		InfoItemRendererTracker infoItemRendererTracker =
 			ServletContextUtil.getInfoItemRendererTracker();
 
-		return infoItemRendererTracker.getInfoItemRenderer(_itemRendererKey);
+		return infoItemRendererTracker.getInfoItemRenderer(
+			getItemRendererKey());
 	}
 
 	private static final String _PAGE = "/info_list_basic_list/page.jsp";

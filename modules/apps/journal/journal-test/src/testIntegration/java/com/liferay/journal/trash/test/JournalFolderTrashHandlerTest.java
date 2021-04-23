@@ -194,7 +194,7 @@ public class JournalFolderTrashHandlerTest
 
 		JournalFolder parentFolder = (JournalFolder)parentBaseModel;
 
-		String name = _FOLDER_NAME;
+		String name = getSearchKeywords();
 
 		name += RandomTestUtil.randomString(
 			_FOLDER_NAME_MAX_LENGTH - name.length());
@@ -210,7 +210,8 @@ public class JournalFolderTrashHandlerTest
 
 		return _journalFolderFixture.addFolder(
 			serviceContext.getScopeGroupId(),
-			JournalFolderConstants.DEFAULT_PARENT_FOLDER_ID, _FOLDER_NAME);
+			JournalFolderConstants.DEFAULT_PARENT_FOLDER_ID,
+			getSearchKeywords());
 	}
 
 	@Override
