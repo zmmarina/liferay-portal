@@ -22,7 +22,7 @@ public class ConfigurationFactoryUtil {
 	public static Configuration getConfiguration(
 		ClassLoader classLoader, String name) {
 
-		return _configurationFactory.getConfiguration(classLoader, name);
+		return getConfigurationFactory().getConfiguration(classLoader, name);
 	}
 
 	public static ConfigurationFactory getConfigurationFactory() {
