@@ -87,7 +87,7 @@ public class MBCommentImpl implements WorkflowableComment {
 
 	@Override
 	public long getParentCommentId() {
-		MBMessage message = _message;
+		MBMessage message = getMessage();
 
 		return message.getParentMessageId();
 	}
@@ -104,7 +104,7 @@ public class MBCommentImpl implements WorkflowableComment {
 
 	@Override
 	public String getTranslatedBody(String pathThemeImages) {
-		MBMessage message = _message;
+		MBMessage message = getMessage();
 
 		if (message.isFormatBBCode()) {
 			return MBUtil.getBBCodeHTML(getBody(), pathThemeImages);
@@ -135,7 +135,7 @@ public class MBCommentImpl implements WorkflowableComment {
 
 	@Override
 	public boolean isRoot() {
-		MBMessage message = _message;
+		MBMessage message = getMessage();
 
 		return message.isRoot();
 	}

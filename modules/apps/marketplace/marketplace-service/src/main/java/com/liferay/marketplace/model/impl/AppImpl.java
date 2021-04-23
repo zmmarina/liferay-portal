@@ -82,7 +82,7 @@ public class AppImpl extends AppBaseImpl {
 
 	@Override
 	public String getFilePath() {
-		return _DIR_NAME + StringPool.SLASH + getFileName();
+		return getFileDir() + StringPool.SLASH + getFileName();
 	}
 
 	@Override
