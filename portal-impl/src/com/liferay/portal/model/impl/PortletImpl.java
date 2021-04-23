@@ -403,49 +403,58 @@ public class PortletImpl extends PortletBaseImpl {
 	@Override
 	public Object clone() {
 		PortletImpl portletImpl = new PortletImpl(
-			getPortletId(), _rootPortlet, _pluginPackage, _defaultPluginSetting,
-			getCompanyId(), _icon, _virtualPath, _strutsPath, _parentStrutsPath,
-			_portletName, getDisplayName(), _portletClass,
-			_configurationActionClass, _indexerClasses, _openSearchClass,
-			_schedulerEntries, _portletURLClass, _friendlyURLMapperClass,
-			getFriendlyURLMapping(), _friendlyURLRoutes, _urlEncoderClass,
-			_portletDataHandlerClass, _stagedModelDataHandlerClasses,
-			_templateHandlerClass, _portletLayoutListenerClass,
-			_pollerProcessorClass, _popMessageListenerClass,
-			_socialActivityInterpreterClasses, _socialRequestInterpreterClass,
-			_userNotificationDefinitions, _userNotificationHandlerClasses,
-			_webDAVStorageToken, _webDAVStorageClass, _xmlRpcMethodClass,
-			_controlPanelEntryCategory, _controlPanelEntryWeight,
-			_controlPanelEntryClass, _assetRendererFactoryClasses,
-			_atomCollectionAdapterClasses, _customAttributesDisplayClasses,
-			_permissionPropagatorClass, _trashHandlerClasses,
-			_workflowHandlerClasses, getDefaultPreferences(),
-			_preferencesValidator, _preferencesCompanyWide,
-			_preferencesUniquePerLayout, _preferencesOwnedByGroup,
-			_useDefaultTemplate, _showPortletAccessDenied, _showPortletInactive,
-			_actionURLRedirect, _restoreCurrentView, _maximizeEdit,
-			_maximizeHelp, _popUpPrint, _layoutCacheable, _instanceable,
-			_scopeable, _singlePageApplication, _userPrincipalStrategy,
-			_privateRequestAttributes, _privateSessionAttributes,
-			_autopropagatedParameters, _requiresNamespacedParameters,
-			_actionTimeout, _renderTimeout, _renderWeight, _ajaxable,
-			_headerPortalCss, _headerPortletCss, _headerPortalJavaScript,
-			_headerPortletJavaScript, _headerRequestAttributePrefixes,
-			_headerTimeout, _footerPortalCss, _footerPortletCss,
-			_footerPortalJavaScript, _footerPortletJavaScript,
-			_partialActionServeResource, _portletDependencyCssEnabled,
-			_portletDependencyJavaScriptEnabled, _portletDependencies,
-			_cssClassWrapper, _addDefaultResource, getRoles(), _unlinkedRoles,
-			_roleMappers, _system, isActive(), _include, _initParams, _expCache,
-			_asyncSupported, _multipartFileSizeThreshold, _multipartLocation,
-			_multipartMaxFileSize, _multipartMaxRequestSize, _portletModes,
-			_windowStates, _supportedLocales, _resourceBundle, _portletInfo,
-			_portletFilters, _processingEvents, _publishingEvents,
-			_publicRenderParameters, _portletApp);
+			getPortletId(), getRootPortlet(), getPluginPackage(),
+			getDefaultPluginSetting(), getCompanyId(), getIcon(),
+			getVirtualPath(), getStrutsPath(), getParentStrutsPath(),
+			getPortletName(), getDisplayName(), getPortletClass(),
+			getConfigurationActionClass(), getIndexerClasses(),
+			getOpenSearchClass(), getSchedulerEntries(), getPortletURLClass(),
+			getFriendlyURLMapperClass(), getFriendlyURLMapping(),
+			getFriendlyURLRoutes(), getURLEncoderClass(),
+			getPortletDataHandlerClass(), getStagedModelDataHandlerClasses(),
+			getTemplateHandlerClass(), getPortletLayoutListenerClass(),
+			getPollerProcessorClass(), getPopMessageListenerClass(),
+			getSocialActivityInterpreterClasses(),
+			getSocialRequestInterpreterClass(),
+			getUserNotificationDefinitions(),
+			getUserNotificationHandlerClasses(), getWebDAVStorageToken(),
+			getWebDAVStorageClass(), getXmlRpcMethodClass(),
+			getControlPanelEntryCategory(), getControlPanelEntryWeight(),
+			getControlPanelEntryClass(), getAssetRendererFactoryClasses(),
+			getAtomCollectionAdapterClasses(),
+			getCustomAttributesDisplayClasses(), getPermissionPropagatorClass(),
+			getTrashHandlerClasses(), getWorkflowHandlerClasses(),
+			getDefaultPreferences(), getPreferencesValidator(),
+			isPreferencesCompanyWide(), isPreferencesUniquePerLayout(),
+			isPreferencesOwnedByGroup(), isUseDefaultTemplate(),
+			isShowPortletAccessDenied(), isShowPortletInactive(),
+			isActionURLRedirect(), isRestoreCurrentView(), isMaximizeEdit(),
+			isMaximizeHelp(), isPopUpPrint(), isLayoutCacheable(),
+			isInstanceable(), isScopeable(), isSinglePageApplication(),
+			getUserPrincipalStrategy(), isPrivateRequestAttributes(),
+			isPrivateSessionAttributes(), getAutopropagatedParameters(),
+			isRequiresNamespacedParameters(), getActionTimeout(),
+			getRenderTimeout(), getRenderWeight(), isAjaxable(),
+			getHeaderPortalCss(), getHeaderPortletCss(),
+			getHeaderPortalJavaScript(), getHeaderPortletJavaScript(),
+			getHeaderRequestAttributePrefixes(), getHeaderTimeout(),
+			getFooterPortalCss(), getFooterPortletCss(),
+			getFooterPortalJavaScript(), getFooterPortletJavaScript(),
+			isPartialActionServeResource(), isPortletDependencyCssEnabled(),
+			isPortletDependencyJavaScriptEnabled(), getPortletDependencies(),
+			getCssClassWrapper(), isAddDefaultResource(), getRoles(),
+			getUnlinkedRoles(), getRoleMappers(), isSystem(), isActive(),
+			isInclude(), getInitParams(), getExpCache(), isAsyncSupported(),
+			getMultipartFileSizeThreshold(), getMultipartLocation(),
+			getMultipartMaxFileSize(), getMultipartMaxRequestSize(),
+			getPortletModes(), getWindowStates(), getSupportedLocales(),
+			getResourceBundle(), getPortletInfo(), getPortletFilters(),
+			getProcessingEvents(), getPublishingEvents(),
+			getPublicRenderParameters(), getPortletApp());
 
-		portletImpl.setApplicationTypes(_applicationTypes);
+		portletImpl.setApplicationTypes(getApplicationTypes());
 		portletImpl.setId(getId());
-		portletImpl.setUndeployedPortlet(_undeployedPortlet);
+		portletImpl.setUndeployedPortlet(isUndeployedPortlet());
 
 		portletImpl._rootPortletId = _rootPortletId;
 
@@ -608,7 +617,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getAssetRendererFactoryInstances();
 	}
@@ -636,7 +645,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getAtomCollectionAdapterInstances();
 	}
@@ -685,7 +694,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public ConfigurationAction getConfigurationActionInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return null;
@@ -758,7 +767,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public ControlPanelEntry getControlPanelEntryInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return _controlPanelEntry;
@@ -817,7 +826,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public List<CustomAttributesDisplay> getCustomAttributesDisplayInstances() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getCustomAttributesDisplayInstances();
 	}
@@ -931,7 +940,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public FriendlyURLMapper getFriendlyURLMapperInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return null;
@@ -1092,7 +1101,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public List<Indexer<?>> getIndexerInstances() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getIndexerInstances();
 	}
@@ -1221,7 +1230,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public OpenSearch getOpenSearchInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<OpenSearch> openSearchInstances =
 			portletBag.getOpenSearchInstances();
@@ -1260,7 +1269,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public PermissionPropagator getPermissionPropagatorInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<PermissionPropagator> permissionPropagatorInstances =
 			portletBag.getPermissionPropagatorInstances();
@@ -1279,7 +1288,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public String getPluginId() {
-		return _rootPortletId;
+		return getRootPortletId();
 	}
 
 	/**
@@ -1319,7 +1328,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public PollerProcessor getPollerProcessorInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<PollerProcessor> pollerProcessorInstances =
 			portletBag.getPollerProcessorInstances();
@@ -1348,7 +1357,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public MessageListener getPopMessageListenerInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<MessageListener> popMessageListenerInstances =
 			portletBag.getPopMessageListenerInstances();
@@ -1409,7 +1418,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public PortletDataHandler getPortletDataHandlerInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			_log.error("No portlet bag for " + toString());
@@ -1474,7 +1483,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public PortletLayoutListener getPortletLayoutListenerInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return null;
@@ -1831,7 +1840,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getSocialActivityInterpreterInstances();
 	}
@@ -1855,7 +1864,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public SocialRequestInterpreter getSocialRequestInterpreterInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<SocialRequestInterpreter> socialRequestInterpreterInstances =
 			portletBag.getSocialRequestInterpreterInstances();
@@ -1892,7 +1901,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getStagedModelDataHandlerInstances();
 	}
@@ -1930,7 +1939,7 @@ public class PortletImpl extends PortletBaseImpl {
 	public String getStaticResourcePath() {
 		String proxyPath = PortalUtil.getPathProxy();
 
-		String virtualPath = _virtualPath;
+		String virtualPath = getVirtualPath();
 
 		if (Validator.isNotNull(virtualPath)) {
 			return proxyPath.concat(virtualPath);
@@ -2006,7 +2015,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public TemplateHandler getTemplateHandlerInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<TemplateHandler> templateHandlerInstances =
 			portletBag.getTemplateHandlerInstances();
@@ -2026,7 +2035,7 @@ public class PortletImpl extends PortletBaseImpl {
 	@Override
 	public long getTimestamp() {
 		if (_timestamp == null) {
-			PortletApp portletApp = _portletApp;
+			PortletApp portletApp = getPortletApp();
 
 			_timestamp = ServletContextUtil.getLastModified(
 				portletApp.getServletContext(), StringPool.SLASH, true);
@@ -2058,7 +2067,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getTrashHandlerInstances();
 	}
@@ -2101,7 +2110,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public URLEncoder getURLEncoderInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return null;
@@ -2173,7 +2182,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getUserNotificationHandlerInstances();
 	}
@@ -2215,7 +2224,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public WebDAVStorage getWebDAVStorageInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		if (portletBag == null) {
 			return null;
@@ -2274,7 +2283,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return null;
 		}
 
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		return portletBag.getWorkflowHandlerInstances();
 	}
@@ -2296,7 +2305,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public Method getXmlRpcMethodInstance() {
-		PortletBag portletBag = PortletBagPool.get(_rootPortletId);
+		PortletBag portletBag = PortletBagPool.get(getRootPortletId());
 
 		List<Method> xmlRpcMethodInstances =
 			portletBag.getXmlRpcMethodInstances();
@@ -2330,7 +2339,7 @@ public class PortletImpl extends PortletBaseImpl {
 			}
 
 			if (PortletPermissionUtil.contains(
-					permissionChecker, _rootPortletId,
+					permissionChecker, getRootPortletId(),
 					ActionKeys.ADD_TO_PAGE)) {
 
 				return true;
@@ -2747,7 +2756,7 @@ public class PortletImpl extends PortletBaseImpl {
 			return true;
 		}
 
-		Readiness readiness = _readinessMap.get(_rootPortletId);
+		Readiness readiness = _readinessMap.get(getRootPortletId());
 
 		if (readiness == null) {
 			return false;
@@ -3823,7 +3832,7 @@ public class PortletImpl extends PortletBaseImpl {
 		Readiness readiness = new Readiness(
 			ready, registry.getServiceRegistrar(Portlet.class));
 
-		String rootPortletId = _rootPortletId;
+		String rootPortletId = getRootPortletId();
 
 		Readiness previousReadiness = _readinessMap.putIfAbsent(
 			rootPortletId, readiness);
@@ -3853,7 +3862,7 @@ public class PortletImpl extends PortletBaseImpl {
 				serviceRegistrar.registerService(
 					Portlet.class, this,
 					HashMapBuilder.<String, Object>put(
-						"javax.portlet.name", _portletName
+						"javax.portlet.name", getPortletName()
 					).build());
 			}
 			else {
@@ -4280,7 +4289,7 @@ public class PortletImpl extends PortletBaseImpl {
 
 	@Override
 	public void unsetReady() {
-		Readiness readiness = _readinessMap.remove(_rootPortletId);
+		Readiness readiness = _readinessMap.remove(getRootPortletId());
 
 		if (readiness != null) {
 			synchronized (readiness) {

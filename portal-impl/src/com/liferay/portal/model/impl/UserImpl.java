@@ -414,8 +414,8 @@ public class UserImpl extends UserBaseImpl {
 		}
 
 		return fullNameGenerator.getLocalizedFullName(
-			getFirstName(), getMiddleName(), getLastName(), _locale, prefixId,
-			suffixId);
+			getFirstName(), getMiddleName(), getLastName(), getLocale(),
+			prefixId, suffixId);
 	}
 
 	@Override
