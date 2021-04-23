@@ -160,6 +160,10 @@ public class RsyncTestrayAttachmentUploader
 		}
 	}
 
+	private URL _getTestrayServerURL() {
+		return _testrayServerURL;
+	}
+
 	private List<File> _sourceTestrayLogsFiles;
 	private final URL _testrayServerURL;
 	private boolean _uploaded;
