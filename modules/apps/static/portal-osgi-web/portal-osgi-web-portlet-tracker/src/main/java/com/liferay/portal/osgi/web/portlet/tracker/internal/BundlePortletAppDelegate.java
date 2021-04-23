@@ -55,7 +55,7 @@ public class BundlePortletAppDelegate {
 	}
 
 	public String getContextPath() {
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		return servletContext.getContextPath();
 	}
@@ -85,7 +85,7 @@ public class BundlePortletAppDelegate {
 	}
 
 	public String getServletContextName() {
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		return servletContext.getServletContextName();
 	}
