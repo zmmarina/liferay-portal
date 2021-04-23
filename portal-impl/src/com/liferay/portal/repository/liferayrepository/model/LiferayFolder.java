@@ -408,7 +408,7 @@ public class LiferayFolder extends LiferayModel implements Folder {
 
 	@Override
 	public Folder toEscapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return this;
 		}
 
@@ -422,7 +422,7 @@ public class LiferayFolder extends LiferayModel implements Folder {
 
 	@Override
 	public Folder toUnescapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return new LiferayFolder(_dlFolder.toUnescapedModel(), true);
 		}
 

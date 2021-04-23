@@ -27,20 +27,20 @@ public class RepositoryClassDefinitionCatalogUtil {
 	public static Iterable<RepositoryClassDefinition>
 		getExternalRepositoryClassDefinitions() {
 
-		return _repositoryClassDefinitionCatalog.
+		return getRepositoryClassDefinitionCatalog().
 			getExternalRepositoryClassDefinitions();
 	}
 
 	public static Collection<String> getExternalRepositoryClassNames() {
-		return _repositoryClassDefinitionCatalog.
+		return getRepositoryClassDefinitionCatalog().
 			getExternalRepositoryClassNames();
 	}
 
 	public static RepositoryClassDefinition getRepositoryClassDefinition(
 		String repositoryTypeKey) {
 
-		return _repositoryClassDefinitionCatalog.getRepositoryClassDefinition(
-			repositoryTypeKey);
+		return getRepositoryClassDefinitionCatalog().
+			getRepositoryClassDefinition(repositoryTypeKey);
 	}
 
 	public static RepositoryClassDefinitionCatalog
@@ -53,7 +53,7 @@ public class RepositoryClassDefinitionCatalogUtil {
 		String className, ExternalRepositoryFactory externalRepositoryFactory,
 		ResourceBundleLoader resourceBundleLoader) {
 
-		_repositoryClassDefinitionCatalog.
+		getRepositoryClassDefinitionCatalog().
 			registerLegacyExternalRepositoryFactory(
 				className, externalRepositoryFactory, resourceBundleLoader);
 	}
@@ -61,7 +61,7 @@ public class RepositoryClassDefinitionCatalogUtil {
 	public static void unregisterLegacyExternalRepositoryFactory(
 		String className) {
 
-		_repositoryClassDefinitionCatalog.
+		getRepositoryClassDefinitionCatalog().
 			unregisterLegacyExternalRepositoryFactory(className);
 	}
 

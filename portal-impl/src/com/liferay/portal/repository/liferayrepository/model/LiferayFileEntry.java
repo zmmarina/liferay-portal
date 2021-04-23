@@ -526,7 +526,7 @@ public class LiferayFileEntry extends LiferayModel implements FileEntry {
 
 	@Override
 	public FileEntry toEscapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return this;
 		}
 
@@ -540,7 +540,7 @@ public class LiferayFileEntry extends LiferayModel implements FileEntry {
 
 	@Override
 	public FileEntry toUnescapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return new LiferayFileEntry(_dlFileEntry.toUnescapedModel(), true);
 		}
 

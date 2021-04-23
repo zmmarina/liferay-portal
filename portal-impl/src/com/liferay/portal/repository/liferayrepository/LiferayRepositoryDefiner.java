@@ -115,7 +115,7 @@ public class LiferayRepositoryDefiner extends BaseRepositoryDefiner {
 		capabilityRegistry.addSupportedCapability(
 			DynamicCapability.class,
 			_portalCapabilityLocator.getDynamicCapability(
-				documentRepository, CLASS_NAME));
+				documentRepository, getClassName()));
 		capabilityRegistry.addSupportedCapability(
 			ProcessorCapability.class,
 			_portalCapabilityLocator.getProcessorCapability(

@@ -90,7 +90,7 @@ public abstract class LiferayRepositoryBase implements CapabilityProvider {
 		throw new IllegalArgumentException(
 			String.format(
 				"Capability %s is not supported by repository %s",
-				capabilityClass.getName(), _repositoryId));
+				capabilityClass.getName(), getRepositoryId()));
 	}
 
 	public long getRepositoryId() {

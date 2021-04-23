@@ -280,7 +280,7 @@ public class LiferayFileShortcut extends LiferayModel implements FileShortcut {
 
 	@Override
 	public FileShortcut toEscapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return this;
 		}
 
@@ -289,7 +289,7 @@ public class LiferayFileShortcut extends LiferayModel implements FileShortcut {
 
 	@Override
 	public FileShortcut toUnescapedModel() {
-		if (_escapedModel) {
+		if (isEscapedModel()) {
 			return new LiferayFileShortcut(
 				_dlFileShortcut.toUnescapedModel(), true);
 		}
