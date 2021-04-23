@@ -30,7 +30,8 @@ public class DelegatingBackgroundTaskExecutor
 
 	@Override
 	public BackgroundTaskExecutor clone() {
-		return new DelegatingBackgroundTaskExecutor(_backgroundTaskExecutor);
+		return new DelegatingBackgroundTaskExecutor(
+			getBackgroundTaskExecutor());
 	}
 
 	@Override

@@ -25,18 +25,20 @@ public class BackgroundTaskDisplayFactoryUtil {
 	public static BackgroundTaskDisplay getBackgroundTaskDisplay(
 		BackgroundTask backgroundTask) {
 
-		return _backgroundTaskDisplayFactory.getBackgroundTaskDisplay(
+		return _getBackgroundTaskDisplayFactory().getBackgroundTaskDisplay(
 			backgroundTask);
 	}
 
 	public static BackgroundTaskDisplay getBackgroundTaskDisplay(
 		long backgroundTaskId) {
 
-		return _backgroundTaskDisplayFactory.getBackgroundTaskDisplay(
+		return _getBackgroundTaskDisplayFactory().getBackgroundTaskDisplay(
 			backgroundTaskId);
 	}
 
-	private BackgroundTaskDisplayFactory _getBackgroundTaskDisplayFactory() {
+	private static BackgroundTaskDisplayFactory
+		_getBackgroundTaskDisplayFactory() {
+
 		return _backgroundTaskDisplayFactory;
 	}
 

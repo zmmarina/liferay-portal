@@ -24,25 +24,27 @@ public class BackgroundTaskStatusRegistryUtil {
 	public static BackgroundTaskStatus getBackgroundTaskStatus(
 		long backgroundTaskId) {
 
-		return _backgroundTaskStatusRegistry.getBackgroundTaskStatus(
+		return _getBackgroundTaskStatusRegistry().getBackgroundTaskStatus(
 			backgroundTaskId);
 	}
 
 	public static BackgroundTaskStatus registerBackgroundTaskStatus(
 		long backgroundTaskId) {
 
-		return _backgroundTaskStatusRegistry.registerBackgroundTaskStatus(
+		return _getBackgroundTaskStatusRegistry().registerBackgroundTaskStatus(
 			backgroundTaskId);
 	}
 
 	public static BackgroundTaskStatus unregisterBackgroundTaskStatus(
 		long backgroundTaskId) {
 
-		return _backgroundTaskStatusRegistry.unregisterBackgroundTaskStatus(
-			backgroundTaskId);
+		return _getBackgroundTaskStatusRegistry().
+			unregisterBackgroundTaskStatus(backgroundTaskId);
 	}
 
-	private BackgroundTaskStatusRegistry _getBackgroundTaskStatusRegistry() {
+	private static BackgroundTaskStatusRegistry
+		_getBackgroundTaskStatusRegistry() {
+
 		return _backgroundTaskStatusRegistry;
 	}
 

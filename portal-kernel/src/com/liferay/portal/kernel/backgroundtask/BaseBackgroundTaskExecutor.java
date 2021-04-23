@@ -37,7 +37,7 @@ public abstract class BaseBackgroundTaskExecutor
 	@Override
 	public String generateLockKey(BackgroundTask backgroundTask) {
 		return backgroundTask.getTaskExecutorClassName() + StringPool.POUND +
-			_isolationLevel;
+			getIsolationLevel();
 	}
 
 	@Override
