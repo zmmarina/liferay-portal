@@ -252,14 +252,15 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// com.liferay
 
-		String displayCategory = _displayCategory;
+		String displayCategory = getDisplayCategory();
 
 		if (displayCategory != null) {
 			dictionary.put(
 				"com.liferay.portlet.display-category", displayCategory);
 		}
 
-		Map<String, Set<String>> liferayConfiguration = _liferayConfiguration;
+		Map<String, Set<String>> liferayConfiguration =
+			getLiferayConfiguration();
 
 		if (liferayConfiguration != null) {
 			for (Map.Entry<String, Set<String>> entry :
@@ -281,14 +282,14 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.async-supported
 
-		dictionary.put("javax.portlet.async-supported", _asyncSupported);
+		dictionary.put("javax.portlet.async-supported", isAsyncSupported());
 
 		// javax.portlet.container-runtime-options
 
 		Map<String, List<String>> containerRuntimeOptions = new HashMap<>(
 			beanApp.getContainerRuntimeOptions());
 
-		containerRuntimeOptions.putAll(_containerRuntimeOptions);
+		containerRuntimeOptions.putAll(getContainerRuntimeOptions());
 
 		for (Map.Entry<String, List<String>> entry :
 				containerRuntimeOptions.entrySet()) {
@@ -309,7 +310,7 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.dependency
 
-		Set<PortletDependency> portletDependencies = _portletDependencies;
+		Set<PortletDependency> portletDependencies = getPortletDependencies();
 
 		if (!portletDependencies.isEmpty()) {
 			List<String> tokenizedPortletDependencies = new ArrayList<>();
@@ -359,11 +360,11 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.expiration-cache
 
-		dictionary.put("javax.portlet.expiration-cache", _expirationCache);
+		dictionary.put("javax.portlet.expiration-cache", getExpirationCache());
 
 		// javax.portlet.init-param
 
-		Map<String, String> initParams = _initParams;
+		Map<String, String> initParams = getInitParams();
 
 		for (Map.Entry<String, String> entry : initParams.entrySet()) {
 			String value = entry.getValue();
@@ -376,32 +377,35 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.description
 
-		_putEnglishText(_descriptions, dictionary, "javax.portlet.description");
+		_putEnglishText(
+			getDescriptions(), dictionary, "javax.portlet.description");
 
 		// javax.portlet.display-name
 
 		_putEnglishText(
-			_displayNames, dictionary, "javax.portlet.display-name");
+			getDisplayNames(), dictionary, "javax.portlet.display-name");
 
 		// javax.portlet.info.keywords
 
-		_putEnglishText(_keywords, dictionary, "javax.portlet.info.keywords");
+		_putEnglishText(
+			getKeywords(), dictionary, "javax.portlet.info.keywords");
 
 		// javax.portlet.info.short-title
 
 		_putEnglishText(
-			_shortTitles, dictionary, "javax.portlet.info.short-title");
+			getShortTitles(), dictionary, "javax.portlet.info.short-title");
 
 		// javax.portlet.info.title
 
-		Map<String, String> titles = _titles;
+		Map<String, String> titles = getTitles();
 
 		if (titles.isEmpty()) {
-			dictionary.put("javax.portlet.info.title", _portletName);
+			dictionary.put("javax.portlet.info.title", getPortletName());
 		}
 		else {
 			_putEnglishText(
-				titles, _portletName, dictionary, "javax.portlet.info.title");
+				titles, getPortletName(), dictionary,
+				"javax.portlet.info.title");
 		}
 
 		// javax.portlet.multipart
@@ -433,7 +437,7 @@ public class BeanPortletImpl implements BeanPortlet {
 		List<String> supportedPortletModes = new ArrayList<>();
 
 		Map<String, Set<String>> supportedPortletModesMap =
-			_supportedPortletModes;
+			getSupportedPortletModes();
 
 		for (Map.Entry<String, Set<String>> entry :
 				supportedPortletModesMap.entrySet()) {
@@ -470,7 +474,7 @@ public class BeanPortletImpl implements BeanPortlet {
 		portletPreferencesSB.append("<?xml version=\"1.0\"?>");
 		portletPreferencesSB.append("<portlet-preferences>");
 
-		Map<String, Preference> preferences = _preferences;
+		Map<String, Preference> preferences = getPreferences();
 
 		for (Map.Entry<String, Preference> entry : preferences.entrySet()) {
 			portletPreferencesSB.append("<preference>");
@@ -500,7 +504,7 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.preferences-validator
 
-		String preferencesValidator = _preferencesValidator;
+		String preferencesValidator = getPreferencesValidator();
 
 		if (preferencesValidator != null) {
 			dictionary.put(
@@ -509,15 +513,16 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.resource-bundle
 
-		if (Validator.isNotNull(_resourceBundle)) {
-			dictionary.put("javax.portlet.resource-bundle", _resourceBundle);
+		if (Validator.isNotNull(getResourceBundle())) {
+			dictionary.put(
+				"javax.portlet.resource-bundle", getResourceBundle());
 		}
 
 		// javax.portlet.security-role-ref
 
 		StringBundler roleNamesSB = new StringBundler();
 
-		Map<String, String> securityRoleRefs = _securityRoleRefs;
+		Map<String, String> securityRoleRefs = getSecurityRoleRefs();
 
 		for (Map.Entry<String, String> entry : securityRoleRefs.entrySet()) {
 			roleNamesSB.append(entry.getKey());
@@ -533,13 +538,14 @@ public class BeanPortletImpl implements BeanPortlet {
 
 		// javax.portlet.supported-locale
 
-		if (!_supportedLocales.isEmpty()) {
-			dictionary.put("javax.portlet.supported-locale", _supportedLocales);
+		if (!getSupportedLocales().isEmpty()) {
+			dictionary.put(
+				"javax.portlet.supported-locale", getSupportedLocales());
 		}
 
 		List<String> supportedPublicRenderParameters = new ArrayList<>();
 
-		for (String identifier : _supportedPublicRenderParameters) {
+		for (String identifier : getSupportedPublicRenderParameters()) {
 			supportedPublicRenderParameters.add(
 				_toNameValuePair(
 					identifier,
@@ -556,7 +562,7 @@ public class BeanPortletImpl implements BeanPortlet {
 		List<String> supportedWindowStates = new ArrayList<>();
 
 		Map<String, Set<String>> supportedWindowStatesMap =
-			_supportedWindowStates;
+			getSupportedWindowStates();
 
 		for (Map.Entry<String, Set<String>> entry :
 				supportedWindowStatesMap.entrySet()) {

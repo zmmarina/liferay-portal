@@ -42,7 +42,7 @@ public class ModificationConflictInfo extends BaseConflictInfo {
 	public String getResolutionDescription(ResourceBundle resourceBundle) {
 		String message = "the-conflict-cannot-be-automatically-resolved";
 
-		if (_resolved) {
+		if (isResolved()) {
 			message = "the-conflict-was-automatically-resolved";
 		}
 

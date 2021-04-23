@@ -66,14 +66,14 @@ public class ConfigurationImpl implements Configuration {
 
 	@Override
 	public Object getProperty(String name) {
-		Map<String, Object> properties = _properties;
+		Map<String, Object> properties = getProperties();
 
 		return properties.get(name);
 	}
 
 	@Override
 	public Collection<String> getPropertyNames() {
-		Map<String, Object> properties = _properties;
+		Map<String, Object> properties = getProperties();
 
 		return properties.keySet();
 	}

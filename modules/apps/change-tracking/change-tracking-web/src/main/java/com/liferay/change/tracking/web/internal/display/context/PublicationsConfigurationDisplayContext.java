@@ -71,7 +71,7 @@ public class PublicationsConfigurationDisplayContext {
 			return _navigation;
 		}
 
-		if (_publicationsEnabled) {
+		if (isPublicationsEnabled()) {
 			_navigation = ParamUtil.getString(
 				_httpServletRequest, "navigation", "global-settings");
 		}
