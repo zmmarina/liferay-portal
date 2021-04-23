@@ -275,9 +275,9 @@ public abstract class BaseIndexingTestCase {
 		).setLong(
 			Field.COMPANY_ID, getCompanyId()
 		).setString(
-			Field.ENTRY_CLASS_NAME, _entryClassName
+			Field.ENTRY_CLASS_NAME, getEntryClassName()
 		).setLong(
-			Field.GROUP_ID, GROUP_ID
+			Field.GROUP_ID, getGroupId()
 		);
 	}
 

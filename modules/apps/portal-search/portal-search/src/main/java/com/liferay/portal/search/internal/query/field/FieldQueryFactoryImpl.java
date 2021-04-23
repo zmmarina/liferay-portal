@@ -68,7 +68,7 @@ public class FieldQueryFactoryImpl implements FieldQueryFactory {
 			}
 		}
 
-		return descriptionFieldQueryBuilder;
+		return getDefaultQueryBuilder();
 	}
 
 	protected void removeFieldQueryBuilderFactory(

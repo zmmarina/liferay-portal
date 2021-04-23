@@ -107,7 +107,7 @@ public class ComplexQueryBuilderImpl implements ComplexQueryBuilder {
 		public Query build() {
 			_complexQueryParts.forEach(this::hydrate);
 
-			return _rootBooleanQuery;
+			return getRootBooleanQuery();
 		}
 
 		protected Query addQuery(ComplexQueryPart complexQueryPart) {
@@ -321,7 +321,7 @@ public class ComplexQueryBuilderImpl implements ComplexQueryBuilder {
 				}
 			}
 
-			return _rootBooleanQuery;
+			return getRootBooleanQuery();
 		}
 
 		protected Query getQuery(ComplexQueryPart complexQueryPart) {

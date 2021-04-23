@@ -103,7 +103,7 @@ public class SummaryBuilderImpl implements SummaryBuilder {
 			return buildTitleHighlighted();
 		}
 
-		return _title;
+		return buildTitlePlain();
 	}
 
 	protected String buildTitleHighlighted() {
