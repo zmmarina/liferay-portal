@@ -193,10 +193,10 @@ public class StructuredContentResourceTest
 					StructuredContent() {
 
 					{
-						setTitle(structuredContent.getTitle());
-						setSiteId(structuredContent.getSiteId());
 						setContentStructureId(
 							structuredContent.getContentStructureId());
+						setSiteId(structuredContent.getSiteId());
+						setTitle(structuredContent.getTitle());
 					}
 				}));
 	}
@@ -231,10 +231,10 @@ public class StructuredContentResourceTest
 			StructuredContent() {
 
 			{
-				setTitle(structuredContent.getTitle());
-				setSiteId(structuredContent.getSiteId());
 				setContentStructureId(
 					structuredContent.getContentStructureId());
+				setSiteId(structuredContent.getSiteId());
+				setTitle(structuredContent.getTitle());
 			}
 		};
 	}
