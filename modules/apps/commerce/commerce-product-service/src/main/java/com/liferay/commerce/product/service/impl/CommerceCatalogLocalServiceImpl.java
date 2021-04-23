@@ -218,20 +218,18 @@ public class CommerceCatalogLocalServiceImpl
 			CommerceCatalog commerceCatalog)
 		throws PortalException {
 
-		long groupId = commerceCatalog.getGroupId();
-
 		// Commerce catalog
 
 		commerceCatalogPersistence.remove(commerceCatalog);
-
-		// Group
-
-		groupLocalService.deleteGroup(groupId);
 
 		// Resources
 
 		resourceLocalService.deleteResource(
 			commerceCatalog, ResourceConstants.SCOPE_INDIVIDUAL);
+
+		// Group
+
+		groupLocalService.deleteGroup(commerceCatalog.getGroupId());
 
 		return commerceCatalog;
 	}
