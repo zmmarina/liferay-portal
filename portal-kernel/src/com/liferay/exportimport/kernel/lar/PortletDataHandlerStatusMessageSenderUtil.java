@@ -44,6 +44,12 @@ public class PortletDataHandlerStatusMessageSenderUtil {
 			messageType, stagedModel, manifestSummary);
 	}
 
+	private PortletDataHandlerStatusMessageSender
+		_getPortletDataHandlerStatusMessageSender() {
+
+		return _dataHandlerStatusMessageSender;
+	}
+
 	private static volatile PortletDataHandlerStatusMessageSender
 		_dataHandlerStatusMessageSender =
 			ServiceProxyFactory.newServiceTrackedInstance(

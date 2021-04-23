@@ -53,6 +53,10 @@ public class ClusterLinkUtil {
 		return message;
 	}
 
+	private ClusterLink _getClusterLink() {
+		return _clusterLink;
+	}
+
 	private static final String _ADDRESS = "CLUSTER_ADDRESS";
 
 	private static volatile ClusterLink _clusterLink =
