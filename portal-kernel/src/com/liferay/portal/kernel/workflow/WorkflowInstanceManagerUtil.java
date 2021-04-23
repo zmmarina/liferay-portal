@@ -35,7 +35,7 @@ public class WorkflowInstanceManagerUtil {
 			long companyId, long workflowInstanceId)
 		throws WorkflowException {
 
-		_workflowInstanceManager.deleteWorkflowInstance(
+		getWorkflowInstanceManager().deleteWorkflowInstance(
 			companyId, workflowInstanceId);
 	}
 
@@ -43,7 +43,7 @@ public class WorkflowInstanceManagerUtil {
 			long companyId, long userId, long workflowInstanceId)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getNextTransitionNames(
+		return getWorkflowInstanceManager().getNextTransitionNames(
 			companyId, userId, workflowInstanceId);
 	}
 
@@ -51,7 +51,7 @@ public class WorkflowInstanceManagerUtil {
 			long companyId, long workflowInstanceId)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstance(
+		return getWorkflowInstanceManager().getWorkflowInstance(
 			companyId, workflowInstanceId);
 	}
 
@@ -59,7 +59,7 @@ public class WorkflowInstanceManagerUtil {
 			long companyId, long userId, long workflowInstanceId)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstance(
+		return getWorkflowInstanceManager().getWorkflowInstance(
 			companyId, userId, workflowInstanceId);
 	}
 
@@ -68,7 +68,7 @@ public class WorkflowInstanceManagerUtil {
 			Long assetClassPK, Boolean completed)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstanceCount(
+		return getWorkflowInstanceManager().getWorkflowInstanceCount(
 			companyId, userId, assetClassName, assetClassPK, completed);
 	}
 
@@ -77,7 +77,7 @@ public class WorkflowInstanceManagerUtil {
 			Boolean completed)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstanceCount(
+		return getWorkflowInstanceManager().getWorkflowInstanceCount(
 			companyId, userId, assetClassNames, completed);
 	}
 
@@ -86,7 +86,7 @@ public class WorkflowInstanceManagerUtil {
 			Integer workflowDefinitionVersion, Boolean completed)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstanceCount(
+		return getWorkflowInstanceManager().getWorkflowInstanceCount(
 			companyId, workflowDefinitionName, workflowDefinitionVersion,
 			completed);
 	}
@@ -101,7 +101,7 @@ public class WorkflowInstanceManagerUtil {
 			OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstances(
+		return getWorkflowInstanceManager().getWorkflowInstances(
 			companyId, userId, assetClassName, assetClassPK, completed, start,
 			end, orderByComparator);
 	}
@@ -112,7 +112,7 @@ public class WorkflowInstanceManagerUtil {
 			OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstances(
+		return getWorkflowInstanceManager().getWorkflowInstances(
 			companyId, userId, assetClassNames, completed, start, end,
 			orderByComparator);
 	}
@@ -123,7 +123,7 @@ public class WorkflowInstanceManagerUtil {
 			int end, OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.getWorkflowInstances(
+		return getWorkflowInstanceManager().getWorkflowInstances(
 			companyId, workflowDefinitionName, workflowDefinitionVersion,
 			completed, start, end, orderByComparator);
 	}
@@ -140,7 +140,7 @@ public class WorkflowInstanceManagerUtil {
 			OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.search(
+		return getWorkflowInstanceManager().search(
 			companyId, userId, assetType, nodeName, kaleoDefinitionName,
 			completed, start, end, orderByComparator);
 	}
@@ -152,7 +152,7 @@ public class WorkflowInstanceManagerUtil {
 			OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.search(
+		return getWorkflowInstanceManager().search(
 			companyId, userId, assetClassName, assetTitle, assetDescription,
 			nodeName, kaleoDefinitionName, completed, start, end,
 			orderByComparator);
@@ -168,7 +168,7 @@ public class WorkflowInstanceManagerUtil {
 			String kaleoDefinitionName, Boolean completed)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.searchCount(
+		return getWorkflowInstanceManager().searchCount(
 			companyId, userId, assetType, nodeName, kaleoDefinitionName,
 			completed);
 	}
@@ -179,7 +179,7 @@ public class WorkflowInstanceManagerUtil {
 			String kaleoDefinitionName, Boolean completed)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.searchCount(
+		return getWorkflowInstanceManager().searchCount(
 			companyId, userId, assetClassName, assetTitle, assetDescription,
 			nodeName, kaleoDefinitionName, completed);
 	}
@@ -192,7 +192,7 @@ public class WorkflowInstanceManagerUtil {
 				int end, OrderByComparator<WorkflowInstance> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.searchWorkflowInstances(
+		return getWorkflowInstanceManager().searchWorkflowInstances(
 			companyId, userId, assetClassName, assetTitle, assetDescription,
 			nodeName, kaleoDefinitionName, completed, start, end,
 			orderByComparator);
@@ -203,7 +203,7 @@ public class WorkflowInstanceManagerUtil {
 			String transitionName, Map<String, Serializable> workflowContext)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.signalWorkflowInstance(
+		return getWorkflowInstanceManager().signalWorkflowInstance(
 			companyId, userId, workflowInstanceId, transitionName,
 			workflowContext);
 	}
@@ -214,7 +214,7 @@ public class WorkflowInstanceManagerUtil {
 			String transitionName, Map<String, Serializable> workflowContext)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.startWorkflowInstance(
+		return getWorkflowInstanceManager().startWorkflowInstance(
 			companyId, groupId, userId, workflowDefinitionName,
 			workflowDefinitionVersion, transitionName, workflowContext);
 	}
@@ -224,7 +224,7 @@ public class WorkflowInstanceManagerUtil {
 			Map<String, Serializable> workflowContext)
 		throws WorkflowException {
 
-		return _workflowInstanceManager.updateWorkflowContext(
+		return getWorkflowInstanceManager().updateWorkflowContext(
 			companyId, workflowInstanceId, workflowContext);
 	}
 

@@ -33,7 +33,7 @@ public class WorkflowDefinitionManagerUtil {
 			byte[] bytes)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.deployWorkflowDefinition(
+		return getWorkflowDefinitionManager().deployWorkflowDefinition(
 			companyId, userId, title, name, bytes);
 	}
 
@@ -45,7 +45,7 @@ public class WorkflowDefinitionManagerUtil {
 	public static int getActiveWorkflowDefinitionCount(long companyId)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getActiveWorkflowDefinitionCount(
+		return getWorkflowDefinitionManager().getActiveWorkflowDefinitionCount(
 			companyId);
 	}
 
@@ -57,7 +57,7 @@ public class WorkflowDefinitionManagerUtil {
 			long companyId, String name)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getActiveWorkflowDefinitionCount(
+		return getWorkflowDefinitionManager().getActiveWorkflowDefinitionCount(
 			companyId, name);
 	}
 
@@ -66,7 +66,7 @@ public class WorkflowDefinitionManagerUtil {
 			OrderByComparator<WorkflowDefinition> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getActiveWorkflowDefinitions(
+		return getWorkflowDefinitionManager().getActiveWorkflowDefinitions(
 			companyId, start, end, orderByComparator);
 	}
 
@@ -75,14 +75,14 @@ public class WorkflowDefinitionManagerUtil {
 			OrderByComparator<WorkflowDefinition> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getActiveWorkflowDefinitions(
+		return getWorkflowDefinitionManager().getActiveWorkflowDefinitions(
 			companyId, name, start, end, orderByComparator);
 	}
 
 	public static int getActiveWorkflowDefinitionsCount(long companyId)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getActiveWorkflowDefinitionsCount(
+		return getWorkflowDefinitionManager().getActiveWorkflowDefinitionsCount(
 			companyId);
 	}
 
@@ -90,7 +90,7 @@ public class WorkflowDefinitionManagerUtil {
 			long companyId, String name)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getLatestWorkflowDefinition(
+		return getWorkflowDefinitionManager().getLatestWorkflowDefinition(
 			companyId, name);
 	}
 
@@ -99,14 +99,14 @@ public class WorkflowDefinitionManagerUtil {
 			OrderByComparator<WorkflowDefinition> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getLatestWorkflowDefinitions(
+		return getWorkflowDefinitionManager().getLatestWorkflowDefinitions(
 			companyId, start, end, orderByComparator);
 	}
 
 	public static int getLatestWorkflowDefinitionsCount(long companyId)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getLatestWorkflowDefinitionsCount(
+		return getWorkflowDefinitionManager().getLatestWorkflowDefinitionsCount(
 			companyId);
 	}
 
@@ -114,7 +114,7 @@ public class WorkflowDefinitionManagerUtil {
 			long companyId, String name, int version)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinition(
+		return getWorkflowDefinitionManager().getWorkflowDefinition(
 			companyId, name, version);
 	}
 
@@ -125,7 +125,8 @@ public class WorkflowDefinitionManagerUtil {
 	public static int getWorkflowDefinitionCount(long companyId)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinitionCount(companyId);
+		return getWorkflowDefinitionManager().getWorkflowDefinitionCount(
+			companyId);
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class WorkflowDefinitionManagerUtil {
 	public static int getWorkflowDefinitionCount(long companyId, String name)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinitionCount(
+		return getWorkflowDefinitionManager().getWorkflowDefinitionCount(
 			companyId, name);
 	}
 
@@ -153,7 +154,7 @@ public class WorkflowDefinitionManagerUtil {
 			OrderByComparator<WorkflowDefinition> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinitions(
+		return getWorkflowDefinitionManager().getWorkflowDefinitions(
 			companyId, start, end, orderByComparator);
 	}
 
@@ -162,14 +163,14 @@ public class WorkflowDefinitionManagerUtil {
 			OrderByComparator<WorkflowDefinition> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinitions(
+		return getWorkflowDefinitionManager().getWorkflowDefinitions(
 			companyId, name, start, end, orderByComparator);
 	}
 
 	public static int getWorkflowDefinitionsCount(long companyId, String name)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.getWorkflowDefinitionsCount(
+		return getWorkflowDefinitionManager().getWorkflowDefinitionsCount(
 			companyId, name);
 	}
 
@@ -192,7 +193,7 @@ public class WorkflowDefinitionManagerUtil {
 			byte[] bytes)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.saveWorkflowDefinition(
+		return getWorkflowDefinitionManager().saveWorkflowDefinition(
 			companyId, userId, title, name, bytes);
 	}
 
@@ -200,7 +201,7 @@ public class WorkflowDefinitionManagerUtil {
 			long companyId, long userId, String name, int version)
 		throws WorkflowException {
 
-		_workflowDefinitionManager.undeployWorkflowDefinition(
+		getWorkflowDefinitionManager().undeployWorkflowDefinition(
 			companyId, userId, name, version);
 	}
 
@@ -209,7 +210,7 @@ public class WorkflowDefinitionManagerUtil {
 			boolean active)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.updateActive(
+		return getWorkflowDefinitionManager().updateActive(
 			companyId, userId, name, version, active);
 	}
 
@@ -221,14 +222,14 @@ public class WorkflowDefinitionManagerUtil {
 			long companyId, long userId, String name, int version, String title)
 		throws WorkflowException {
 
-		return _workflowDefinitionManager.updateTitle(
+		return getWorkflowDefinitionManager().updateTitle(
 			companyId, userId, name, version, title);
 	}
 
 	public static void validateWorkflowDefinition(byte[] bytes)
 		throws WorkflowException {
 
-		_workflowDefinitionManager.validateWorkflowDefinition(bytes);
+		getWorkflowDefinitionManager().validateWorkflowDefinition(bytes);
 	}
 
 	public void setWorkflowDefinitionManager(

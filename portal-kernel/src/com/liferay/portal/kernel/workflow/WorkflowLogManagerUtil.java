@@ -30,7 +30,7 @@ public class WorkflowLogManagerUtil {
 			long companyId, long workflowInstanceId, List<Integer> logTypes)
 		throws WorkflowException {
 
-		return _workflowLogManager.getWorkflowLogCountByWorkflowInstance(
+		return getWorkflowLogManager().getWorkflowLogCountByWorkflowInstance(
 			companyId, workflowInstanceId, logTypes);
 	}
 
@@ -38,7 +38,7 @@ public class WorkflowLogManagerUtil {
 			long companyId, long workflowTaskId, List<Integer> logTypes)
 		throws WorkflowException {
 
-		return _workflowLogManager.getWorkflowLogCountByWorkflowTask(
+		return getWorkflowLogManager().getWorkflowLogCountByWorkflowTask(
 			companyId, workflowTaskId, logTypes);
 	}
 
@@ -52,7 +52,7 @@ public class WorkflowLogManagerUtil {
 			OrderByComparator<WorkflowLog> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowLogManager.getWorkflowLogsByWorkflowInstance(
+		return getWorkflowLogManager().getWorkflowLogsByWorkflowInstance(
 			companyId, workflowInstanceId, logTypes, start, end,
 			orderByComparator);
 	}
@@ -63,7 +63,7 @@ public class WorkflowLogManagerUtil {
 			OrderByComparator<WorkflowLog> orderByComparator)
 		throws WorkflowException {
 
-		return _workflowLogManager.getWorkflowLogsByWorkflowTask(
+		return getWorkflowLogManager().getWorkflowLogsByWorkflowTask(
 			companyId, workflowTaskId, logTypes, start, end, orderByComparator);
 	}
 
