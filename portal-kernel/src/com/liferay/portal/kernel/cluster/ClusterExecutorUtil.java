@@ -27,38 +27,38 @@ public class ClusterExecutorUtil {
 	public static void addClusterEventListener(
 		ClusterEventListener clusterEventListener) {
 
-		_clusterExecutor.addClusterEventListener(clusterEventListener);
+		_getClusterExecutor().addClusterEventListener(clusterEventListener);
 	}
 
 	public static FutureClusterResponses execute(
 		ClusterRequest clusterRequest) {
 
-		return _clusterExecutor.execute(clusterRequest);
+		return _getClusterExecutor().execute(clusterRequest);
 	}
 
 	public static List<ClusterNode> getClusterNodes() {
-		return _clusterExecutor.getClusterNodes();
+		return _getClusterExecutor().getClusterNodes();
 	}
 
 	public static ClusterNode getLocalClusterNode() {
-		return _clusterExecutor.getLocalClusterNode();
+		return _getClusterExecutor().getLocalClusterNode();
 	}
 
 	public static boolean isClusterNodeAlive(String clusterNodeId) {
-		return _clusterExecutor.isClusterNodeAlive(clusterNodeId);
+		return _getClusterExecutor().isClusterNodeAlive(clusterNodeId);
 	}
 
 	public static boolean isEnabled() {
-		return _clusterExecutor.isEnabled();
+		return _getClusterExecutor().isEnabled();
 	}
 
 	public static void removeClusterEventListener(
 		ClusterEventListener clusterEventListener) {
 
-		_clusterExecutor.removeClusterEventListener(clusterEventListener);
+		_getClusterExecutor().removeClusterEventListener(clusterEventListener);
 	}
 
-	private ClusterExecutor _getClusterExecutor() {
+	private static ClusterExecutor _getClusterExecutor() {
 		return _clusterExecutor;
 	}
 

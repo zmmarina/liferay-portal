@@ -30,7 +30,7 @@ public class ClusterLinkUtil {
 	public static void sendMulticastMessage(
 		Message message, Priority priority) {
 
-		_clusterLink.sendMulticastMessage(message, priority);
+		_getClusterLink().sendMulticastMessage(message, priority);
 	}
 
 	public static void sendMulticastMessage(Object payload, Priority priority) {
@@ -44,7 +44,7 @@ public class ClusterLinkUtil {
 	public static void sendUnicastMessage(
 		Address address, Message message, Priority priority) {
 
-		_clusterLink.sendUnicastMessage(address, message, priority);
+		_getClusterLink().sendUnicastMessage(address, message, priority);
 	}
 
 	public static Message setAddress(Message message, Address address) {
@@ -53,7 +53,7 @@ public class ClusterLinkUtil {
 		return message;
 	}
 
-	private ClusterLink _getClusterLink() {
+	private static ClusterLink _getClusterLink() {
 		return _clusterLink;
 	}
 
