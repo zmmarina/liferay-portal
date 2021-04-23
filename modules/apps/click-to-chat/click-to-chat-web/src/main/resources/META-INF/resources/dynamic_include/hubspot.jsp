@@ -50,10 +50,10 @@ private String _getHubSpotToken(String hubSpotApiKey, User user) throws Exceptio
 	options.setLocation("https://api.hubspot.com/conversations/v3/visitor-identification/tokens/create?hapikey=" + hubSpotApiKey);
 	options.setPost(true);
 
-	String json = HttpUtil.URLtoString(options);
+	String responseJSON = HttpUtil.URLtoString(options);
 
-	JSONObject jsonObject = JSONFactoryUtil.createJSONObject(json);
+	JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
-	return jsonObject.getString("token");
+	return responseJSONObject.getString("token");
 }
 %>
