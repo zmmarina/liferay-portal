@@ -29,6 +29,7 @@ String[] credentials = clickToChatChatProviderAccountId.split("/");
 			identificationToken: '<%= _getHubSpotToken(credentials[1], user) %>',
 			loadImmediately: false,
 		};
+
 		window.HubSpotConversations.widget.load();
 	</script>
 </c:if>
