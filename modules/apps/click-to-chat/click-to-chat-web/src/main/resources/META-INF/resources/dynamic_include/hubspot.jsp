@@ -17,16 +17,16 @@
 <%@ include file="/dynamic_include/init.jsp" %>
 
 <%
-String[] credentials = clickToChatChatProviderAccountId.split("/");
+String[] parts = clickToChatChatProviderAccountId.split("/");
 %>
 
-<script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= credentials[0] %>.js" type="text/javascript"></script>
+<script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= parts[0] %>.js" type="text/javascript"></script>
 
-<c:if test="<%= themeDisplay.isSignedIn() && (credentials.length > 1) %>">
+<c:if test="<%= themeDisplay.isSignedIn() && (parts.length > 1) %>">
 	<script type="text/javascript">
 		window.hsConversationsSettings = {
 			identificationEmail: '<%= user.getEmailAddress() %>',
-			identificationToken: '<%= _getHubSpotToken(credentials[1], user) %>',
+			identificationToken: '<%= _getHubSpotToken(parts[1], user) %>',
 			loadImmediately: false,
 		};
 
