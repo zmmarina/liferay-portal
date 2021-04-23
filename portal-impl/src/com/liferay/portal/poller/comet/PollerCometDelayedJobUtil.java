@@ -22,7 +22,7 @@ public class PollerCometDelayedJobUtil {
 	public static void addPollerCometDelayedTask(
 		PollerCometDelayedTask pollerCometDelayedTask) {
 
-		_pollerCometDelayedJob.addPollerCometDelayedTask(
+		getPollerCometDelayedJob().addPollerCometDelayedTask(
 			pollerCometDelayedTask);
 	}
 

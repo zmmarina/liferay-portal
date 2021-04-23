@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 public class PollerRequestHandlerUtil {
 
 	public static PollerHeader getPollerHeader(String pollerRequestString) {
-		return _pollerRequestHandler.getPollerHeader(pollerRequestString);
+		return getPollerRequestHandler().getPollerHeader(pollerRequestString);
 	}
 
 	public static PollerRequestHandler getPollerRequestHandler() {
@@ -36,7 +36,7 @@ public class PollerRequestHandlerUtil {
 			HttpServletRequest httpServletRequest, String pollerRequestString)
 		throws Exception {
 
-		return _pollerRequestHandler.processRequest(
+		return getPollerRequestHandler().processRequest(
 			httpServletRequest, pollerRequestString);
 	}
 

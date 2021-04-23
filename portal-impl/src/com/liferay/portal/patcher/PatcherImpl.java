@@ -139,7 +139,8 @@ public class PatcherImpl implements Patcher {
 			return _patchingToolVersionDisplayName;
 		}
 
-		String patchingToolVersionDisplayName = "1.0." + _patchingToolVersion;
+		String patchingToolVersionDisplayName =
+			"1.0." + getPatchingToolVersion();
 
 		if (_properties.containsKey(
 				PROPERTY_PATCHING_TOOL_VERSION_DISPLAY_NAME)) {
@@ -234,7 +235,7 @@ public class PatcherImpl implements Patcher {
 
 	private String[] _getInstalledPatches(Properties properties) {
 		if (properties == null) {
-			properties = _properties;
+			properties = getProperties();
 		}
 
 		return StringUtil.split(
