@@ -143,7 +143,7 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 	@Override
 	public boolean isOmniadmin() {
 		if (omniadmin == null) {
-			omniadmin = Boolean.valueOf(OmniadminUtil.isOmniadmin(user));
+			omniadmin = Boolean.valueOf(OmniadminUtil.isOmniadmin(getUser()));
 		}
 
 		return omniadmin.booleanValue();
