@@ -183,9 +183,9 @@ public class LicenseUtil {
 		return HashMapBuilder.put(
 			"hostName", PortalUtil.getComputerName()
 		).put(
-			"ipAddresses", StringUtil.merge(_ipAddresses)
+			"ipAddresses", StringUtil.merge(getIpAddresses())
 		).put(
-			"macAddresses", StringUtil.merge(_macAddresses)
+			"macAddresses", StringUtil.merge(getMacAddresses())
 		).put(
 			"processorCores", String.valueOf(getProcessorCores())
 		).build();
@@ -446,9 +446,9 @@ public class LicenseUtil {
 			jsonObject.put(
 				"hostName", PortalUtil.getComputerName()
 			).put(
-				"ipAddresses", StringUtil.merge(_ipAddresses)
+				"ipAddresses", StringUtil.merge(getIpAddresses())
 			).put(
-				"macAddresses", StringUtil.merge(_macAddresses)
+				"macAddresses", StringUtil.merge(getMacAddresses())
 			).put(
 				"processorCores", getProcessorCores()
 			).put(
