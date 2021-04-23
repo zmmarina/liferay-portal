@@ -65,7 +65,7 @@ public class FinderCacheUtil {
 	}
 
 	public static void invalidate() {
-		_finderCache.invalidate();
+		getFinderCache().invalidate();
 	}
 
 	public static void putResult(

@@ -319,7 +319,7 @@ public class DefaultActionableDynamicQuery implements ActionableDynamicQuery {
 
 		};
 
-		TransactionConfig transactionConfig = _transactionConfig;
+		TransactionConfig transactionConfig = getTransactionConfig();
 
 		try {
 			if (transactionConfig == null) {

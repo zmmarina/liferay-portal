@@ -20,7 +20,7 @@ package com.liferay.portal.kernel.dao.orm;
 public class PortalCustomSQLUtil {
 
 	public static String get(String id) {
-		return _portalCustomSQL.get(id);
+		return getPortalCustomSQL().get(id);
 	}
 
 	public static PortalCustomSQL getPortalCustomSQL() {

@@ -77,7 +77,7 @@ public class RowChecker {
 	}
 
 	public String getAllRowsId() {
-		return _allRowIds;
+		return getAllRowIds();
 	}
 
 	public int getColspan() {
@@ -119,7 +119,7 @@ public class RowChecker {
 	}
 
 	public String getRowId() {
-		return _rowIds;
+		return getRowIds();
 	}
 
 	public String getRowIds() {
