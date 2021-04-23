@@ -163,7 +163,7 @@ public class SelectAssetCategoryTreeNodeDisplayContext {
 			liferayPortletResponse.getNamespace() +
 				"assetCategoryTreeNodeSelector"
 		).put(
-			"eventName", _itemSelectedEventName
+			"eventName", getItemSelectedEventName()
 		).put(
 			"returnType",
 			AssetCategoryTreeNodeItemSelectorReturnType.class.toString()

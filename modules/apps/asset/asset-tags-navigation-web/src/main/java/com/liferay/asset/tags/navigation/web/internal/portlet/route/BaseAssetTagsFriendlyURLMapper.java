@@ -47,7 +47,7 @@ public class BaseAssetTagsFriendlyURLMapper extends DefaultFriendlyURLMapper {
 		addParametersIncludedInPath(liferayPortletURL, routeParameters);
 
 		return StringBundler.concat(
-			StringPool.SLASH, _MAPPING, friendlyURLPath);
+			StringPool.SLASH, getMapping(), friendlyURLPath);
 	}
 
 	@Override

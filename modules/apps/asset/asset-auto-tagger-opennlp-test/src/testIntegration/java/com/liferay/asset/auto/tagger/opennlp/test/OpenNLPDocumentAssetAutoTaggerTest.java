@@ -94,7 +94,8 @@ public class OpenNLPDocumentAssetAutoTaggerTest
 	@Override
 	protected AssetEntry getAssetEntry(String text) throws Exception {
 		_registerAssetRendererFactory(
-			new TestAssetRendererFactory(group.getGroupId(), _className, text));
+			new TestAssetRendererFactory(
+				group.getGroupId(), getClassName(), text));
 
 		_registerTextExtractor(
 			new TextExtractor<String>() {
@@ -117,14 +118,14 @@ public class OpenNLPDocumentAssetAutoTaggerTest
 		String[] assetTagNames = new String[0];
 
 		assetEntryLocalService.updateEntry(
-			TestPropsValues.getUserId(), group.getGroupId(), _className,
+			TestPropsValues.getUserId(), group.getGroupId(), getClassName(),
 			classPK, assetCategoryIds, assetTagNames);
 
 		return assetEntryLocalService.updateEntry(
 			TestPropsValues.getUserId(), group.getGroupId(), null, null,
-			_className, classPK, null, 0, assetCategoryIds, assetTagNames, true,
-			true, null, null, new Date(), null, ContentTypes.TEXT_PLAIN, null,
-			null, null, null, null, 0, 0, (Double)null);
+			getClassName(), classPK, null, 0, assetCategoryIds, assetTagNames,
+			true, true, null, null, new Date(), null, ContentTypes.TEXT_PLAIN,
+			null, null, null, null, null, 0, 0, (Double)null);
 	}
 
 	@Override
