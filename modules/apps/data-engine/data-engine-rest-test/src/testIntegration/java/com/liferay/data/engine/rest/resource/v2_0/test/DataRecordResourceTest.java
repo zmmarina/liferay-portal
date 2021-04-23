@@ -102,7 +102,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 
 		_dataRecordCollectionId = dataDefinitionDataRecordCollection.getId();
 
-		Long dataRecordCollectionId = _dataRecordCollectionId;
+		Long dataRecordCollectionId =
+			testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId();
 
 		DataRecord dataRecord1 =
 			testGetDataRecordCollectionDataRecordsPage_addDataRecord(
@@ -214,7 +215,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 				LocaleUtil.getDefault()
 			).build();
 
-		Long dataRecordCollectionId = _dataRecordCollectionId;
+		Long dataRecordCollectionId =
+			testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId();
 
 		DataRecord dataRecord1 =
 			testGetDataRecordCollectionDataRecordsPage_addDataRecord(
@@ -268,8 +270,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 
 		Page<DataRecord> singleSelectionFixedFilterPage =
 			dataRecordResource.getDataRecordCollectionDataRecordsPage(
-				_dataRecordCollectionId, dataListView.getId(), null,
-				Pagination.of(1, 2), null);
+				testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId(),
+				dataListView.getId(), null, Pagination.of(1, 2), null);
 
 		assertEqualsIgnoringOrder(
 			Arrays.asList(dataRecord1),
@@ -279,8 +281,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 
 		Page<DataRecord> searchFullTermPage =
 			dataRecordResource.getDataRecordCollectionDataRecordsPage(
-				_dataRecordCollectionId, null, "Boat", Pagination.of(1, 2),
-				null);
+				testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId(),
+				null, "Boat", Pagination.of(1, 2), null);
 
 		assertEqualsIgnoringOrder(
 			Arrays.asList(dataRecord2),
@@ -290,7 +292,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 
 		Page<DataRecord> searchPartialTermPage =
 			dataRecordResource.getDataRecordCollectionDataRecordsPage(
-				_dataRecordCollectionId, null, "Bo", Pagination.of(1, 2), null);
+				testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId(),
+				null, "Bo", Pagination.of(1, 2), null);
 
 		assertEqualsIgnoringOrder(
 			Arrays.asList(dataRecord2),
@@ -328,7 +331,8 @@ public class DataRecordResourceTest extends BaseDataRecordResourceTestCase {
 
 		super.testGetDataRecordCollectionDataRecordsPageWithSortString();
 
-		Long dataRecordCollectionId = _dataRecordCollectionId;
+		Long dataRecordCollectionId =
+			testGetDataRecordCollectionDataRecordsPage_getDataRecordCollectionId();
 
 		DataRecord dataRecord1 =
 			testGetDataRecordCollectionDataRecordsPage_addDataRecord(

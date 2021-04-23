@@ -181,7 +181,7 @@ public class DepotItemSelectorView
 			try {
 				return _depotAdminGroupSearchProvider.getGroupSearch(
 					_groupItemSelectorCriterion, getPortletRequest(),
-					_portletURL);
+					getPortletURL());
 			}
 			catch (PortalException portalException) {
 				return ReflectionUtil.throwException(portalException);

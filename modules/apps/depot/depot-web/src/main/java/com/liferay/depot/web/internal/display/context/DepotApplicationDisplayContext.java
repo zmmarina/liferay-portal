@@ -99,7 +99,7 @@ public class DepotApplicationDisplayContext {
 	private String _getViewGroupSelectorURL() throws PortletException {
 		return PortletURLBuilder.create(
 			PortletURLUtil.clone(
-				_portletURL,
+				getPortletURL(),
 				_portal.getLiferayPortletResponse(_portletResponse))
 		).setParameter(
 			"groupType", "site"

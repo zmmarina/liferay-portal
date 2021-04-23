@@ -84,7 +84,7 @@ public class DepotAdminPortletDataHandler extends BasePortletDataHandler {
 			new StagedModelType(DepotEntryGroupRel.class));
 		setExportControls(
 			new PortletDataHandlerBoolean(
-				NAMESPACE, "site-connections", true, true, null,
+				getNamespace(), "site-connections", true, true, null,
 				DepotEntryGroupRel.class.getName()));
 		setPublishToLiveByDefault(true);
 		setStagingControls(getExportControls());

@@ -144,7 +144,8 @@ public class DataDefinitionResourceTest
 			dataDefinitionResource.
 				getSiteDataDefinitionByContentTypeContentTypePage(
 					testGetSiteDataDefinitionByContentTypeContentTypePage_getSiteId(),
-					_CONTENT_TYPE, "definition", Pagination.of(1, 2), null);
+					testGetSiteDataDefinitionByContentTypeContentTypePage_getContentType(),
+					"definition", Pagination.of(1, 2), null);
 
 		Assert.assertEquals(0, page.getTotalCount());
 
@@ -163,13 +164,16 @@ public class DataDefinitionResourceTest
 			"description", "nam", "definition name");
 
 		dataDefinitionResource.postSiteDataDefinitionByContentType(
-			testGroup.getGroupId(), _CONTENT_TYPE, randomDataDefinition());
+			testGroup.getGroupId(),
+			testGetSiteDataDefinitionByContentTypeContentTypePage_getContentType(),
+			randomDataDefinition());
 
 		page =
 			dataDefinitionResource.
 				getSiteDataDefinitionByContentTypeContentTypePage(
 					testGetSiteDataDefinitionByContentTypeContentTypePage_getSiteId(),
-					_CONTENT_TYPE, null, Pagination.of(1, 2), null);
+					testGetSiteDataDefinitionByContentTypeContentTypePage_getContentType(),
+					null, Pagination.of(1, 2), null);
 
 		Assert.assertEquals(1, page.getTotalCount());
 	}
@@ -785,13 +789,16 @@ public class DataDefinitionResourceTest
 
 		DataDefinition dataDefinition =
 			testGetSiteDataDefinitionByContentTypeContentTypePage_addDataDefinition(
-				siteId, _CONTENT_TYPE,
+				siteId,
+				testGetSiteDataDefinitionByContentTypeContentTypePage_getContentType(),
 				_createDataDefinition(description, name));
 
 		Page<DataDefinition> page =
 			dataDefinitionResource.
 				getSiteDataDefinitionByContentTypeContentTypePage(
-					siteId, _CONTENT_TYPE, keywords, Pagination.of(1, 2), null);
+					siteId,
+					testGetSiteDataDefinitionByContentTypeContentTypePage_getContentType(),
+					keywords, Pagination.of(1, 2), null);
 
 		Assert.assertEquals(1, page.getTotalCount());
 
