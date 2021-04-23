@@ -22,7 +22,7 @@ import com.liferay.portal.kernel.util.ServiceProxyFactory;
 public class MicrosoftTranslatorFactoryUtil {
 
 	public static MicrosoftTranslator getMicrosoftTranslator() {
-		return _microsoftTranslatorFactory.getMicrosoftTranslator();
+		return getMicrosoftTranslatorFactory().getMicrosoftTranslator();
 	}
 
 	public static MicrosoftTranslatorFactory getMicrosoftTranslatorFactory() {

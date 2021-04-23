@@ -91,7 +91,7 @@ public class VirtualLayout extends LayoutWrapper {
 
 	@Override
 	public Group getGroup() {
-		return _targetGroup;
+		return getHostGroup();
 	}
 
 	@Override

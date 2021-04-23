@@ -42,14 +42,15 @@ public class PermissionDisplay
 
 	@Override
 	public int compareTo(PermissionDisplay permissionDisplay) {
-		int value = _portletLabel.compareTo(
+		int value = getPortletLabel().compareTo(
 			permissionDisplay.getPortletLabel());
 
 		if (value == 0) {
-			value = _modelLabel.compareTo(permissionDisplay.getModelLabel());
+			value = getModelLabel().compareTo(
+				permissionDisplay.getModelLabel());
 
 			if (value == 0) {
-				value = _actionLabel.compareTo(
+				value = getActionLabel().compareTo(
 					permissionDisplay.getActionLabel());
 			}
 		}

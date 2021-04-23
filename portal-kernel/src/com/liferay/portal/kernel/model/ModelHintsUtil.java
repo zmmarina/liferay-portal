@@ -27,23 +27,23 @@ import java.util.Map;
 public class ModelHintsUtil {
 
 	public static String buildCustomValidatorName(String validatorName) {
-		return _modelHints.buildCustomValidatorName(validatorName);
+		return getModelHints().buildCustomValidatorName(validatorName);
 	}
 
 	public static Map<String, String> getDefaultHints(String model) {
-		return _modelHints.getDefaultHints(model);
+		return getModelHints().getDefaultHints(model);
 	}
 
 	public static Object getFieldsElement(String model, String field) {
-		return _modelHints.getFieldsElement(model, field);
+		return getModelHints().getFieldsElement(model, field);
 	}
 
 	public static Map<String, String> getHints(String model, String field) {
-		return _modelHints.getHints(model, field);
+		return getModelHints().getHints(model, field);
 	}
 
 	public static int getMaxLength(String model, String field) {
-		return _modelHints.getMaxLength(model, field);
+		return getModelHints().getMaxLength(model, field);
 	}
 
 	public static ModelHints getModelHints() {
@@ -51,57 +51,57 @@ public class ModelHintsUtil {
 	}
 
 	public static List<String> getModels() {
-		return _modelHints.getModels();
+		return getModelHints().getModels();
 	}
 
 	public static Tuple getSanitizeTuple(String model, String field) {
-		return _modelHints.getSanitizeTuple(model, field);
+		return getModelHints().getSanitizeTuple(model, field);
 	}
 
 	public static List<Tuple> getSanitizeTuples(String model) {
-		return _modelHints.getSanitizeTuples(model);
+		return getModelHints().getSanitizeTuples(model);
 	}
 
 	public static String getType(String model, String field) {
-		return _modelHints.getType(model, field);
+		return getModelHints().getType(model, field);
 	}
 
 	public static List<Tuple> getValidators(String model, String field) {
-		return _modelHints.getValidators(model, field);
+		return getModelHints().getValidators(model, field);
 	}
 
 	public static String getValue(
 		String model, String field, String name, String defaultValue) {
 
-		return _modelHints.getValue(model, field, name, defaultValue);
+		return getModelHints().getValue(model, field, name, defaultValue);
 	}
 
 	public static boolean hasField(String model, String field) {
-		return _modelHints.hasField(model, field);
+		return getModelHints().hasField(model, field);
 	}
 
 	public static boolean isCustomValidator(String validatorName) {
-		return _modelHints.isCustomValidator(validatorName);
+		return getModelHints().isCustomValidator(validatorName);
 	}
 
 	public static boolean isLocalized(String model, String field) {
-		return _modelHints.isLocalized(model, field);
+		return getModelHints().isLocalized(model, field);
 	}
 
 	public static void read(ClassLoader classLoader, InputStream inputStream)
 		throws Exception {
 
-		_modelHints.read(classLoader, inputStream);
+		getModelHints().read(classLoader, inputStream);
 	}
 
 	public static void read(ClassLoader classLoader, String source)
 		throws Exception {
 
-		_modelHints.read(classLoader, source);
+		getModelHints().read(classLoader, source);
 	}
 
 	public static String trimString(String model, String field, String value) {
-		return _modelHints.trimString(model, field, value);
+		return getModelHints().trimString(model, field, value);
 	}
 
 	public void setModelHints(ModelHints modelHints) {

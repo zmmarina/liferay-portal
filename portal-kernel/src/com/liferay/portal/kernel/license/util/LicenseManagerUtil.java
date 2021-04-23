@@ -27,25 +27,25 @@ import java.util.Set;
 public class LicenseManagerUtil {
 
 	public static void checkLicense(String productId) {
-		_licenseManager.checkLicense(productId);
+		getLicenseManager().checkLicense(productId);
 	}
 
 	public static List<Map<String, String>> getClusterLicenseProperties(
 		String clusterNodeId) {
 
-		return _licenseManager.getClusterLicenseProperties(clusterNodeId);
+		return getLicenseManager().getClusterLicenseProperties(clusterNodeId);
 	}
 
 	public static String getHostName() {
-		return _licenseManager.getHostName();
+		return getLicenseManager().getHostName();
 	}
 
 	public static Set<String> getIpAddresses() {
-		return _licenseManager.getIpAddresses();
+		return getLicenseManager().getIpAddresses();
 	}
 
 	public static LicenseInfo getLicenseInfo(String productId) {
-		return _licenseManager.getLicenseInfo(productId);
+		return getLicenseManager().getLicenseInfo(productId);
 	}
 
 	public static LicenseManager getLicenseManager() {
@@ -53,27 +53,27 @@ public class LicenseManagerUtil {
 	}
 
 	public static List<Map<String, String>> getLicenseProperties() {
-		return _licenseManager.getLicenseProperties();
+		return getLicenseManager().getLicenseProperties();
 	}
 
 	public static Map<String, String> getLicenseProperties(String productId) {
-		return _licenseManager.getLicenseProperties(productId);
+		return getLicenseManager().getLicenseProperties(productId);
 	}
 
 	public static int getLicenseState(Map<String, String> licenseProperties) {
-		return _licenseManager.getLicenseState(licenseProperties);
+		return getLicenseManager().getLicenseState(licenseProperties);
 	}
 
 	public static int getLicenseState(String productId) {
-		return _licenseManager.getLicenseState(productId);
+		return getLicenseManager().getLicenseState(productId);
 	}
 
 	public static Set<String> getMacAddresses() {
-		return _licenseManager.getMacAddresses();
+		return getLicenseManager().getMacAddresses();
 	}
 
 	public static void registerLicense(JSONObject jsonObject) throws Exception {
-		_licenseManager.registerLicense(jsonObject);
+		getLicenseManager().registerLicense(jsonObject);
 	}
 
 	public void setLicenseManager(LicenseManager licenseManager) {
