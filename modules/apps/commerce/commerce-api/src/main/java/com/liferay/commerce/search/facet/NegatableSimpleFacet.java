@@ -43,7 +43,7 @@ public class NegatableSimpleFacet extends SimpleFacet {
 		BooleanClause<Filter> booleanClause =
 			super.doGetFacetFilterBooleanClause();
 
-		if (_negated) {
+		if (isNegated()) {
 			booleanClause = BooleanClauseFactoryUtil.createFilter(
 				booleanClause.getClause(), BooleanClauseOccur.MUST_NOT);
 		}

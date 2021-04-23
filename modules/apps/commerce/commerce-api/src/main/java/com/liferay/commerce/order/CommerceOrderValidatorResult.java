@@ -51,7 +51,7 @@ public class CommerceOrderValidatorResult implements Serializable {
 	}
 
 	public boolean hasMessageResult() {
-		if (Validator.isNotNull(_localizedMessage)) {
+		if (Validator.isNotNull(getLocalizedMessage())) {
 			return true;
 		}
 

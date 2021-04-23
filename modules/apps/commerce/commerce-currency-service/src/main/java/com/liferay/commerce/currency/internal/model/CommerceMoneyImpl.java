@@ -39,13 +39,14 @@ public class CommerceMoneyImpl implements CommerceMoney {
 
 	@Override
 	public String format(Locale locale) throws PortalException {
-		BigDecimal price = _price;
+		BigDecimal price = getPrice();
 
 		if (price == null) {
 			price = BigDecimal.ZERO;
 		}
 
-		return _commercePriceFormatter.format(_commerceCurrency, price, locale);
+		return _commercePriceFormatter.format(
+			getCommerceCurrency(), price, locale);
 	}
 
 	@Override

@@ -74,7 +74,7 @@ public class CommerceOrderItemVirtualSettingsScreenNavigationCategory
 
 	@Override
 	public String getEntryKey() {
-		return CATEGORY_KEY_COMMERCE_ORDER_ITEM_VIRTUAL_SETTINGS;
+		return getCategoryKey();
 	}
 
 	@Override
@@ -82,8 +82,7 @@ public class CommerceOrderItemVirtualSettingsScreenNavigationCategory
 		ResourceBundle resourceBundle = ResourceBundleUtil.getBundle(
 			"content.Language", locale, getClass());
 
-		return LanguageUtil.get(
-			resourceBundle, CATEGORY_KEY_COMMERCE_ORDER_ITEM_VIRTUAL_SETTINGS);
+		return LanguageUtil.get(resourceBundle, getCategoryKey());
 	}
 
 	@Override

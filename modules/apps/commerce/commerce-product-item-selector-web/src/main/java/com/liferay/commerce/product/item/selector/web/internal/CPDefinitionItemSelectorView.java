@@ -98,7 +98,7 @@ public class CPDefinitionItemSelectorView
 			WebKeys.PORTLET_DISPLAY_CONTEXT,
 			cpDefinitionItemSelectorViewDisplayContext);
 
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		RequestDispatcher requestDispatcher =
 			servletContext.getRequestDispatcher(

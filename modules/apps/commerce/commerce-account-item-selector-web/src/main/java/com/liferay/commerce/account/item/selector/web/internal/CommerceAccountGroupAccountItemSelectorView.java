@@ -96,7 +96,7 @@ public class CommerceAccountGroupAccountItemSelectorView
 			WebKeys.PORTLET_DISPLAY_CONTEXT,
 			commerceAccountGroupAccountItemSelectorViewDisplayContext);
 
-		ServletContext servletContext = _servletContext;
+		ServletContext servletContext = getServletContext();
 
 		RequestDispatcher requestDispatcher =
 			servletContext.getRequestDispatcher(

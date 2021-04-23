@@ -111,7 +111,7 @@ public class OrderSummaryCheckoutStepDisplayContext {
 	public CommerceOrderPrice getCommerceOrderPrice() throws PortalException {
 		CommerceOrderPrice commerceOrderPrice =
 			_commerceOrderPriceCalculation.getCommerceOrderPrice(
-				_commerceOrder, _commerceContext);
+				getCommerceOrder(), _commerceContext);
 
 		if (commerceOrderPrice != null) {
 			return commerceOrderPrice;
@@ -135,7 +135,7 @@ public class OrderSummaryCheckoutStepDisplayContext {
 	}
 
 	public String getCommercePriceDisplayType() throws PortalException {
-		CommerceOrder commerceOrder = _commerceOrder;
+		CommerceOrder commerceOrder = getCommerceOrder();
 
 		CommerceChannel commerceChannel =
 			_commerceChannelLocalService.getCommerceChannelByOrderGroupId(
@@ -165,7 +165,7 @@ public class OrderSummaryCheckoutStepDisplayContext {
 	public String getLocalizedPercentage(BigDecimal percentage, Locale locale)
 		throws PortalException {
 
-		CommerceOrder commerceOrder = _commerceOrder;
+		CommerceOrder commerceOrder = getCommerceOrder();
 
 		CommerceCurrency commerceCurrency = commerceOrder.getCommerceCurrency();
 

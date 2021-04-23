@@ -42,7 +42,7 @@ public class MonthlyCPSubscriptionTypeDisplayContext {
 			return 1;
 		}
 
-		if (_payment) {
+		if (isPayment()) {
 			return GetterUtil.getInteger(
 				subscriptionTypeSettingsUnicodeProperties.get("monthDay"));
 		}
@@ -60,7 +60,7 @@ public class MonthlyCPSubscriptionTypeDisplayContext {
 			return CPSubscriptionTypeConstants.MODE_ORDER_DATE;
 		}
 
-		if (_payment) {
+		if (isPayment()) {
 			return GetterUtil.getInteger(
 				subscriptionTypeSettingsUnicodeProperties.get("monthlyMode"));
 		}
