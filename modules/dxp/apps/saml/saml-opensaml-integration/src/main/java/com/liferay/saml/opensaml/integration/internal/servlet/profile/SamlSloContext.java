@@ -189,7 +189,7 @@ public class SamlSloContext implements Serializable {
 		return JSONUtil.put(
 			"samlSloRequestInfos", jsonArray
 		).put(
-			"userId", _userId
+			"userId", getUserId()
 		);
 	}
 

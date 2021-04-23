@@ -91,13 +91,13 @@ public class AcquisitionChannel {
 		return JSONUtil.put(
 			"helpMessage", helpMessage
 		).put(
-			"name", _name
+			"name", getName()
 		).put(
-			"share", String.format("%.1f", _trafficShare)
+			"share", String.format("%.1f", getTrafficShare())
 		).put(
 			"title", title
 		).put(
-			"value", Math.toIntExact(_trafficAmount)
+			"value", Math.toIntExact(getTrafficAmount())
 		);
 	}
 

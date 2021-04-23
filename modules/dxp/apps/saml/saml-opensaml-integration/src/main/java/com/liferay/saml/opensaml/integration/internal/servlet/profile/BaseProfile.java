@@ -212,7 +212,7 @@ public abstract class BaseProfile {
 	public String generateIdentifier(int length) {
 		IdentifierGenerationStrategyFactory
 			identifierGenerationStrategyFactory =
-				_identifierGenerationStrategyFactory;
+				getIdentifierGenerationStrategyFactory();
 
 		IdentifierGenerationStrategy identifierGenerationStrategy =
 			identifierGenerationStrategyFactory.create(length);

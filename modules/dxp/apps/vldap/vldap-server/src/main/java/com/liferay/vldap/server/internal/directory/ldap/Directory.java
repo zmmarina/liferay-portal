@@ -92,7 +92,7 @@ public abstract class Directory {
 	public List<Attribute> getAttributes(String attributeId) {
 		List<Attribute> attributes = new ArrayList<>();
 
-		for (Attribute attribute : _attributes) {
+		for (Attribute attribute : getAttributes()) {
 			if (StringUtil.equalsIgnoreCase(
 					attributeId, attribute.getAttributeId())) {
 
@@ -143,7 +143,7 @@ public abstract class Directory {
 			returnAllAttributes = true;
 		}
 
-		for (Attribute attribute : _attributes) {
+		for (Attribute attribute : getAttributes()) {
 			if (returnAllAttributes ||
 				containsIgnoreCase(
 					searchRequestAttributes, attribute.getAttributeId())) {
@@ -165,7 +165,7 @@ public abstract class Directory {
 	}
 
 	protected Dn getDn() throws LdapInvalidDnException {
-		String name = _name;
+		String name = getName();
 
 		try {
 			return new Dn(name);

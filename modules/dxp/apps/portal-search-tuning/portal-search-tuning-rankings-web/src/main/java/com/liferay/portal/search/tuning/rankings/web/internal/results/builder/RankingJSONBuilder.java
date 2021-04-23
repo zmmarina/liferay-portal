@@ -96,7 +96,7 @@ public class RankingJSONBuilder {
 		).put(
 			"type", _getType()
 		).put(
-			"viewURL", _viewURL
+			"viewURL", _getViewURL()
 		);
 	}
 
