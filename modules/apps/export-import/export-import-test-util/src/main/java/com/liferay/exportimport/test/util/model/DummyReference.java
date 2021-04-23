@@ -79,7 +79,7 @@ public class DummyReference implements Serializable, StagedGroupedModel {
 
 		long primaryKey = dummyReference.getPrimaryKey();
 
-		if (_id == primaryKey) {
+		if (getPrimaryKey() == primaryKey) {
 			return true;
 		}
 
@@ -99,7 +99,7 @@ public class DummyReference implements Serializable, StagedGroupedModel {
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(
-			_companyId, DummyReference.class.getName(), _id);
+			getCompanyId(), DummyReference.class.getName(), getPrimaryKey());
 	}
 
 	@Override
@@ -167,7 +167,7 @@ public class DummyReference implements Serializable, StagedGroupedModel {
 
 	@Override
 	public int hashCode() {
-		return (int)_id;
+		return (int)getPrimaryKey();
 	}
 
 	@Override
