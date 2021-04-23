@@ -256,7 +256,7 @@ public class PortletConfigurationCSSPortletDisplayContext {
 	}
 
 	public boolean hasAccess() throws PortalException {
-		if (Validator.isNull(_portletResource)) {
+		if (Validator.isNull(getPortletResource())) {
 			return false;
 		}
 
@@ -265,7 +265,7 @@ public class PortletConfigurationCSSPortletDisplayContext {
 
 		if (!PortletPermissionUtil.contains(
 				themeDisplay.getPermissionChecker(), themeDisplay.getLayout(),
-				_portletResource, ActionKeys.CONFIGURATION)) {
+				getPortletResource(), ActionKeys.CONFIGURATION)) {
 
 			return false;
 		}

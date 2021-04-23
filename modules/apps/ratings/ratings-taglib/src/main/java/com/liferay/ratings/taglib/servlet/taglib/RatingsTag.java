@@ -196,7 +196,7 @@ public class RatingsTag extends IncludeTag {
 				).put(
 					"inTrash", inTrash
 				).put(
-					"numberOfStars", _numberOfStars
+					"numberOfStars", getNumberOfStars()
 				).put(
 					"positiveVotes", positiveVotes
 				).put(
