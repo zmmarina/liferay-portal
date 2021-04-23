@@ -43,15 +43,15 @@ public class JabberUtil {
 			return;
 		}
 
-		_jabber.disconnect(userId);
+		getJabber().disconnect(userId);
 	}
 
 	public static String getResource(String jabberId) {
-		return _jabber.getResource(jabberId);
+		return getJabber().getResource(jabberId);
 	}
 
 	public static String getScreenName(String jabberId) {
-		return _jabber.getScreenName(jabberId);
+		return getJabber().getScreenName(jabberId);
 	}
 
 	public static List<Object[]> getStatuses(
@@ -61,7 +61,7 @@ public class JabberUtil {
 			return buddies;
 		}
 
-		return _jabber.getStatuses(companyId, userId, buddies);
+		return getJabber().getStatuses(companyId, userId, buddies);
 	}
 
 	public static void login(long userId, String password) {
@@ -69,7 +69,7 @@ public class JabberUtil {
 			return;
 		}
 
-		_jabber.login(userId, password);
+		getJabber().login(userId, password);
 	}
 
 	public static void sendMessage(
@@ -79,7 +79,7 @@ public class JabberUtil {
 			return;
 		}
 
-		_jabber.sendMessage(fromUserId, toUserId, content);
+		getJabber().sendMessage(fromUserId, toUserId, content);
 	}
 
 	public static void updatePassword(long userId, String password) {
@@ -87,7 +87,7 @@ public class JabberUtil {
 			return;
 		}
 
-		_jabber.updatePassword(userId, password);
+		getJabber().updatePassword(userId, password);
 	}
 
 	public static void updateStatus(long userId, int online) {
@@ -95,7 +95,7 @@ public class JabberUtil {
 			return;
 		}
 
-		_jabber.updateStatus(userId, online);
+		getJabber().updateStatus(userId, online);
 	}
 
 	protected static Jabber getJabber() {

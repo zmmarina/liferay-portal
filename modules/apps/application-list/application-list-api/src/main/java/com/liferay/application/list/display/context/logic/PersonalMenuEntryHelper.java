@@ -34,7 +34,7 @@ public class PersonalMenuEntryHelper {
 	public List<BasePersonalMenuEntry> getBasePersonalMenuEntries() {
 		List<BasePersonalMenuEntry> basePersonalMenuEntries = new ArrayList<>();
 
-		for (PersonalMenuEntry personalMenuEntry : _personalMenuEntries) {
+		for (PersonalMenuEntry personalMenuEntry : getPersonalMenuEntries()) {
 			if (personalMenuEntry instanceof BasePersonalMenuEntry) {
 				basePersonalMenuEntries.add(
 					(BasePersonalMenuEntry)personalMenuEntry);

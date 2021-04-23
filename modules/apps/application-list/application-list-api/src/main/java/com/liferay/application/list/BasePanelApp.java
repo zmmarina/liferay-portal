@@ -158,7 +158,7 @@ public abstract class BasePanelApp implements PanelApp {
 			}
 
 			return controlPanelEntry.hasAccessPermission(
-				permissionChecker, group, _portlet);
+				permissionChecker, group, getPortlet());
 		}
 		catch (PortalException | RuntimeException exception) {
 			throw exception;
@@ -179,7 +179,7 @@ public abstract class BasePanelApp implements PanelApp {
 	}
 
 	protected ControlPanelEntry getControlPanelEntry() {
-		Portlet portlet = _portlet;
+		Portlet portlet = getPortlet();
 
 		if (portlet == null) {
 			return null;
@@ -199,7 +199,7 @@ public abstract class BasePanelApp implements PanelApp {
 			return null;
 		}
 
-		Portlet portlet = _portlet;
+		Portlet portlet = getPortlet();
 
 		String controlPanelEntryCategory =
 			portlet.getControlPanelEntryCategory();

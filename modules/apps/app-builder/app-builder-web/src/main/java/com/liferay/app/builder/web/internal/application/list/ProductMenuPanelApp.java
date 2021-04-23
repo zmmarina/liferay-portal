@@ -69,7 +69,7 @@ public class ProductMenuPanelApp extends BasePanelApp {
 	@Override
 	public PortletURL getPortletURL(HttpServletRequest httpServletRequest) {
 		PortletURL portletURL = PortalUtil.getControlPanelPortletURL(
-			httpServletRequest, _portletId, PortletRequest.RENDER_PHASE);
+			httpServletRequest, getPortletId(), PortletRequest.RENDER_PHASE);
 
 		Group group = groupProvider.getGroup(httpServletRequest);
 

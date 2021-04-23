@@ -120,7 +120,7 @@ public class AccountEntryDisplay {
 
 		sb.append(themeDisplay.getPathImage());
 		sb.append("/account_entry_logo?img_id=");
-		sb.append(_logoId);
+		sb.append(getLogoId());
 		sb.append("&t=");
 		sb.append(WebServerServletTokenUtil.getToken(_logoId));
 
@@ -184,7 +184,7 @@ public class AccountEntryDisplay {
 
 	public boolean isValidateUserEmailAddress(ThemeDisplay themeDisplay) {
 		if (isEmailDomainValidationEnabled(themeDisplay) &&
-			ListUtil.isNotEmpty(_domains)) {
+			ListUtil.isNotEmpty(getDomains())) {
 
 			return true;
 		}

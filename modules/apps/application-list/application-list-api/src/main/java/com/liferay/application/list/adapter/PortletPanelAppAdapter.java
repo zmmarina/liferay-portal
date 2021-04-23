@@ -37,12 +37,13 @@ public class PortletPanelAppAdapter extends BasePanelApp {
 
 	@Override
 	public String getKey() {
-		return "portlet-adapter-" + _portletId;
+		return "portlet-adapter-" + getPortletId();
 	}
 
 	@Override
 	public String getLabel(Locale locale) {
-		PortletConfig portletConfig = PortletConfigFactoryUtil.get(_portletId);
+		PortletConfig portletConfig = PortletConfigFactoryUtil.get(
+			getPortletId());
 
 		ResourceBundle resourceBundle = portletConfig.getResourceBundle(locale);
 
