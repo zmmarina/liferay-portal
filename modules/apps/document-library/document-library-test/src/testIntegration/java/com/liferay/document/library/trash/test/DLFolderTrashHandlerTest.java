@@ -219,8 +219,8 @@ public class DLFolderTrashHandlerTest
 				groupId, TestPropsValues.getUserId());
 
 		Folder folder = DLAppServiceUtil.addFolder(
-			groupId, folderId, _FOLDER_NAME, RandomTestUtil.randomString(),
-			serviceContext);
+			groupId, folderId, getSearchKeywords(),
+			RandomTestUtil.randomString(), serviceContext);
 
 		return (DLFolder)folder.getModel();
 	}

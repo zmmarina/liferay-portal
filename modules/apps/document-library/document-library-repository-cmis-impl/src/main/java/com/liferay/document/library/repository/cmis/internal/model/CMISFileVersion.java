@@ -70,7 +70,7 @@ public class CMISFileVersion extends CMISModel implements FileVersion {
 			_cmisRepository, _fileEntry, _uuid, _fileVersionId, _document);
 
 		cmisFileVersion.setCompanyId(getCompanyId());
-		cmisFileVersion.setFileVersionId(_fileVersionId);
+		cmisFileVersion.setFileVersionId(getFileVersionId());
 		cmisFileVersion.setGroupId(getGroupId());
 
 		try {
@@ -82,7 +82,7 @@ public class CMISFileVersion extends CMISModel implements FileVersion {
 			}
 		}
 
-		cmisFileVersion.setPrimaryKey(_fileVersionId);
+		cmisFileVersion.setPrimaryKey(getPrimaryKey());
 
 		return cmisFileVersion;
 	}
@@ -256,7 +256,7 @@ public class CMISFileVersion extends CMISModel implements FileVersion {
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _fileVersionId;
+		return getPrimaryKey();
 	}
 
 	@Override

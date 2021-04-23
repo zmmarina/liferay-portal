@@ -69,7 +69,7 @@ public class CMISFolder extends CMISModel implements Folder {
 			_cmisRepository, _uuid, _folderId, _cmisFolder);
 
 		cmisFolder.setCompanyId(getCompanyId());
-		cmisFolder.setFolderId(_folderId);
+		cmisFolder.setFolderId(getFolderId());
 		cmisFolder.setGroupId(getGroupId());
 
 		try {
@@ -81,7 +81,7 @@ public class CMISFolder extends CMISModel implements Folder {
 			}
 		}
 
-		cmisFolder.setPrimaryKey(_folderId);
+		cmisFolder.setPrimaryKey(getPrimaryKey());
 
 		return cmisFolder;
 	}
@@ -311,7 +311,7 @@ public class CMISFolder extends CMISModel implements Folder {
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _folderId;
+		return getPrimaryKey();
 	}
 
 	@Override
@@ -528,7 +528,7 @@ public class CMISFolder extends CMISModel implements Folder {
 		}
 		catch (PortalException portalException) {
 			throw new SystemException(
-				"Unable to get repository for folder " + _folderId,
+				"Unable to get repository for folder " + getFolderId(),
 				portalException);
 		}
 	}
