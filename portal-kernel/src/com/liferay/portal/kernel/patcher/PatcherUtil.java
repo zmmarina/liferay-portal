@@ -25,19 +25,19 @@ import java.util.Properties;
 public class PatcherUtil {
 
 	public static boolean applyPatch(File patchFile) {
-		return _patcher.applyPatch(patchFile);
+		return getPatcher().applyPatch(patchFile);
 	}
 
 	public static String[] getFixedIssues() {
-		return _patcher.getFixedIssues();
+		return getPatcher().getFixedIssues();
 	}
 
 	public static String[] getInstalledPatches() {
-		return _patcher.getInstalledPatches();
+		return getPatcher().getInstalledPatches();
 	}
 
 	public static File getPatchDirectory() {
-		return _patcher.getPatchDirectory();
+		return getPatcher().getPatchDirectory();
 	}
 
 	public static Patcher getPatcher() {
@@ -45,39 +45,39 @@ public class PatcherUtil {
 	}
 
 	public static int getPatchingToolVersion() {
-		return _patcher.getPatchingToolVersion();
+		return getPatcher().getPatchingToolVersion();
 	}
 
 	public static String getPatchingToolVersionDisplayName() {
-		return _patcher.getPatchingToolVersionDisplayName();
+		return getPatcher().getPatchingToolVersionDisplayName();
 	}
 
 	public static String[] getPatchLevels() {
-		return _patcher.getPatchLevels();
+		return getPatcher().getPatchLevels();
 	}
 
 	public static Properties getProperties() {
-		return _patcher.getProperties();
+		return getPatcher().getProperties();
 	}
 
 	public static String getSeparationId() {
-		return _patcher.getSeparationId();
+		return getPatcher().getSeparationId();
 	}
 
 	public static boolean hasInconsistentPatchLevels() {
-		return _patcher.hasInconsistentPatchLevels();
+		return getPatcher().hasInconsistentPatchLevels();
 	}
 
 	public static boolean isConfigured() {
-		return _patcher.isConfigured();
+		return getPatcher().isConfigured();
 	}
 
 	public static boolean isSeparated() {
-		return _patcher.isSeparated();
+		return getPatcher().isSeparated();
 	}
 
 	public static void verifyPatchLevels() throws PatchInconsistencyException {
-		_patcher.verifyPatchLevels();
+		getPatcher().verifyPatchLevels();
 	}
 
 	public void setPatcher(Patcher patcher) {

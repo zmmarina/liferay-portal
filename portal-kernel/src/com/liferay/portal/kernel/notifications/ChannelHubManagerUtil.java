@@ -27,7 +27,7 @@ public class ChannelHubManagerUtil {
 			Collection<String> notificationEventUuids)
 		throws ChannelException {
 
-		_channelHubManager.confirmDelivery(
+		getChannelHubManager().confirmDelivery(
 			companyId, userId, notificationEventUuids);
 	}
 
@@ -36,7 +36,7 @@ public class ChannelHubManagerUtil {
 			Collection<String> notificationEventUuids, boolean archived)
 		throws ChannelException {
 
-		_channelHubManager.confirmDelivery(
+		getChannelHubManager().confirmDelivery(
 			companyId, userId, notificationEventUuids, archived);
 	}
 
@@ -44,7 +44,7 @@ public class ChannelHubManagerUtil {
 			long companyId, long userId, String notificationEventUuid)
 		throws ChannelException {
 
-		_channelHubManager.confirmDelivery(
+		getChannelHubManager().confirmDelivery(
 			companyId, userId, notificationEventUuid);
 	}
 
@@ -53,27 +53,27 @@ public class ChannelHubManagerUtil {
 			boolean archived)
 		throws ChannelException {
 
-		_channelHubManager.confirmDelivery(
+		getChannelHubManager().confirmDelivery(
 			companyId, userId, notificationEventUuid, archived);
 	}
 
 	public static Channel createChannel(long companyId, long userId)
 		throws ChannelException {
 
-		return _channelHubManager.createChannel(companyId, userId);
+		return getChannelHubManager().createChannel(companyId, userId);
 	}
 
 	public static ChannelHub createChannelHub(long companyId)
 		throws ChannelException {
 
-		return _channelHubManager.createChannelHub(companyId);
+		return getChannelHubManager().createChannelHub(companyId);
 	}
 
 	public static void deleteUserNotificiationEvent(
 			long companyId, long userId, String notificationEventUuid)
 		throws ChannelException {
 
-		_channelHubManager.deleteUserNotificiationEvent(
+		getChannelHubManager().deleteUserNotificiationEvent(
 			companyId, userId, notificationEventUuid);
 	}
 
@@ -82,81 +82,83 @@ public class ChannelHubManagerUtil {
 			Collection<String> notificationEventUuids)
 		throws ChannelException {
 
-		_channelHubManager.deleteUserNotificiationEvents(
+		getChannelHubManager().deleteUserNotificiationEvents(
 			companyId, userId, notificationEventUuids);
 	}
 
 	public static void destroyChannel(long companyId, long userId)
 		throws ChannelException {
 
-		_channelHubManager.destroyChannel(companyId, userId);
+		getChannelHubManager().destroyChannel(companyId, userId);
 	}
 
 	public static void destroyChannelHub(long companyId)
 		throws ChannelException {
 
-		_channelHubManager.destroyChannelHub(companyId);
+		getChannelHubManager().destroyChannelHub(companyId);
 	}
 
 	public static ChannelHub fetchChannelHub(long companyId)
 		throws ChannelException {
 
-		return _channelHubManager.fetchChannelHub(companyId);
+		return getChannelHubManager().fetchChannelHub(companyId);
 	}
 
 	public static ChannelHub fetchChannelHub(
 			long companyId, boolean createIfAbsent)
 		throws ChannelException {
 
-		return _channelHubManager.fetchChannelHub(companyId, createIfAbsent);
+		return getChannelHubManager().fetchChannelHub(
+			companyId, createIfAbsent);
 	}
 
 	public static List<NotificationEvent> fetchNotificationEvents(
 			long companyId, long userId, boolean flush)
 		throws ChannelException {
 
-		return _channelHubManager.fetchNotificationEvents(
+		return getChannelHubManager().fetchNotificationEvents(
 			companyId, userId, flush);
 	}
 
 	public static void flush() throws ChannelException {
-		_channelHubManager.flush();
+		getChannelHubManager().flush();
 	}
 
 	public static void flush(long companyId) throws ChannelException {
-		_channelHubManager.flush(companyId);
+		getChannelHubManager().flush(companyId);
 	}
 
 	public static void flush(long companyId, long userId, long timestamp)
 		throws ChannelException {
 
-		_channelHubManager.flush(companyId, userId, timestamp);
+		getChannelHubManager().flush(companyId, userId, timestamp);
 	}
 
 	public static Channel getChannel(long companyId, long userId)
 		throws ChannelException {
 
-		return _channelHubManager.getChannel(companyId, userId);
+		return getChannelHubManager().getChannel(companyId, userId);
 	}
 
 	public static Channel getChannel(
 			long companyId, long userId, boolean createIfAbsent)
 		throws ChannelException {
 
-		return _channelHubManager.getChannel(companyId, userId, createIfAbsent);
+		return getChannelHubManager().getChannel(
+			companyId, userId, createIfAbsent);
 	}
 
 	public static ChannelHub getChannelHub(long companyId)
 		throws ChannelException {
 
-		return _channelHubManager.getChannelHub(companyId);
+		return getChannelHubManager().getChannelHub(companyId);
 	}
 
 	public static ChannelHub getChannelHub(
 			long companyId, boolean createIfAbsent)
 		throws ChannelException {
 
-		return _channelHubManager.getChannelHub(companyId, createIfAbsent);
+		return getChannelHubManager().getChannelHub(companyId, createIfAbsent);
 	}
 
 	public static ChannelHubManager getChannelHubManager() {
@@ -167,28 +169,28 @@ public class ChannelHubManagerUtil {
 			long companyId, long userId)
 		throws ChannelException {
 
-		return _channelHubManager.getNotificationEvents(companyId, userId);
+		return getChannelHubManager().getNotificationEvents(companyId, userId);
 	}
 
 	public static List<NotificationEvent> getNotificationEvents(
 			long companyId, long userId, boolean flush)
 		throws ChannelException {
 
-		return _channelHubManager.getNotificationEvents(
+		return getChannelHubManager().getNotificationEvents(
 			companyId, userId, flush);
 	}
 
 	public static Collection<Long> getUserIds(long companyId)
 		throws ChannelException {
 
-		return _channelHubManager.getUserIds(companyId);
+		return getChannelHubManager().getUserIds(companyId);
 	}
 
 	public static void registerChannelListener(
 			long companyId, long userId, ChannelListener channelListener)
 		throws ChannelException {
 
-		_channelHubManager.registerChannelListener(
+		getChannelHubManager().registerChannelListener(
 			companyId, userId, channelListener);
 	}
 
@@ -197,7 +199,7 @@ public class ChannelHubManagerUtil {
 			Collection<NotificationEvent> notificationEvents)
 		throws ChannelException {
 
-		_channelHubManager.removeTransientNotificationEvents(
+		getChannelHubManager().removeTransientNotificationEvents(
 			companyId, userId, notificationEvents);
 	}
 
@@ -206,7 +208,7 @@ public class ChannelHubManagerUtil {
 			Collection<String> notificationEventUuids)
 		throws ChannelException {
 
-		_channelHubManager.removeTransientNotificationEventsByUuid(
+		getChannelHubManager().removeTransientNotificationEventsByUuid(
 			companyId, userId, notificationEventUuids);
 	}
 
@@ -214,7 +216,7 @@ public class ChannelHubManagerUtil {
 			long companyId, long userId, NotificationEvent notificationEvent)
 		throws ChannelException {
 
-		_channelHubManager.sendNotificationEvent(
+		getChannelHubManager().sendNotificationEvent(
 			companyId, userId, notificationEvent);
 	}
 
@@ -223,7 +225,7 @@ public class ChannelHubManagerUtil {
 			Collection<NotificationEvent> notificationEvents)
 		throws ChannelException {
 
-		_channelHubManager.sendNotificationEvents(
+		getChannelHubManager().sendNotificationEvents(
 			companyId, userId, notificationEvents);
 	}
 
@@ -231,7 +233,7 @@ public class ChannelHubManagerUtil {
 			long companyId, long userId, NotificationEvent notificationEvent)
 		throws ChannelException {
 
-		_channelHubManager.storeNotificationEvent(
+		getChannelHubManager().storeNotificationEvent(
 			companyId, userId, notificationEvent);
 	}
 
@@ -239,7 +241,7 @@ public class ChannelHubManagerUtil {
 			long companyId, long userId, ChannelListener channelListener)
 		throws ChannelException {
 
-		_channelHubManager.unregisterChannelListener(
+		getChannelHubManager().unregisterChannelListener(
 			companyId, userId, channelListener);
 	}
 

@@ -24,26 +24,26 @@ public class OAuthFactoryUtil {
 			String callbackURL, String scope)
 		throws OAuthException {
 
-		return _oAuthFactory.createOAuthManager(
+		return getOAuthFactory().createOAuthManager(
 			key, secret, accessURL, requestURL, callbackURL, scope);
 	}
 
 	public static OAuthRequest createOAuthRequest(Verb verb, String url)
 		throws OAuthException {
 
-		return _oAuthFactory.createOAuthRequest(verb, url);
+		return getOAuthFactory().createOAuthRequest(verb, url);
 	}
 
 	public static Token createToken(String token, String secret)
 		throws OAuthException {
 
-		return _oAuthFactory.createToken(token, secret);
+		return getOAuthFactory().createToken(token, secret);
 	}
 
 	public static Verifier createVerifier(String verifier)
 		throws OAuthException {
 
-		return _oAuthFactory.createVerifier(verifier);
+		return getOAuthFactory().createVerifier(verifier);
 	}
 
 	public static OAuthFactory getOAuthFactory() {
