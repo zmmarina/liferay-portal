@@ -61,7 +61,7 @@ public class WorkflowInstanceStateComparator
 
 	@Override
 	public String getOrderBy() {
-		if (_ascending) {
+		if (isAscending()) {
 			return _orderByAsc;
 		}
 

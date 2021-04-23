@@ -56,7 +56,7 @@ public class WorkflowTaskUserIdComparator
 
 	@Override
 	public String getOrderBy() {
-		if (_ascending) {
+		if (isAscending()) {
 			return _orderByAsc;
 		}
 

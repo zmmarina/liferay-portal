@@ -63,7 +63,7 @@ public class WorkflowInstanceStartDateComparator
 
 	@Override
 	public String getOrderBy() {
-		if (_ascending) {
+		if (isAscending()) {
 			return _orderByAsc;
 		}
 
