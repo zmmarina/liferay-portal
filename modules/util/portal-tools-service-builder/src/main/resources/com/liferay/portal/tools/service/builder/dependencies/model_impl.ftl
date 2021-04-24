@@ -1043,13 +1043,13 @@ public class ${entity.name}ModelImpl extends BaseModelImpl<${entity.name}> imple
 		<#assign
 			variableName = serviceBuilder.getVariableName(cacheField)
 			methodName = serviceBuilder.getCacheFieldMethodName(cacheField)
-			typeName = serviceBuilder.getGenericValue(cacheField.getType())
+			typeGenericsName = serviceBuilder.getTypeGenericsName(cacheField.getType())
 		/>
 
 		<#if !stringUtil.equals(methodName, "DefaultLanguageId")>
-			public ${typeName} get${methodName}() {
+			public ${typeGenericsName} get${methodName}() {
 				<#if cacheField.getType().isPrimitive()>
-					<#if stringUtil.equals(typeName, "boolean")>
+					<#if stringUtil.equals(typeGenericsName, "boolean")>
 						return false;
 					<#else>
 						return 0;
@@ -1060,7 +1060,7 @@ public class ${entity.name}ModelImpl extends BaseModelImpl<${entity.name}> imple
 			}
 		</#if>
 
-		public void set${methodName}(${typeName} ${variableName}) {
+		public void set${methodName}(${typeGenericsName} ${variableName}) {
 		}
 	</#list>
 
