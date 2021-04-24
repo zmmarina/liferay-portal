@@ -23,6 +23,7 @@ import com.liferay.info.list.provider.InfoListProviderContext;
 import com.liferay.info.pagination.InfoPage;
 import com.liferay.info.pagination.Pagination;
 import com.liferay.info.sort.Sort;
+import com.liferay.petra.reflect.ReflectionUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.search.Field;
@@ -66,8 +67,7 @@ public class RelatedAssetsInfoItemRelatedListProvider
 				() -> _getTotalCount(assetEntry, sort));
 		}
 		catch (PortalException portalException) {
-			throw new RuntimeException(
-				"Unable to get asset entries", portalException);
+			return ReflectionUtil.throwException(portalException);
 		}
 	}
 
@@ -130,8 +130,7 @@ public class RelatedAssetsInfoItemRelatedListProvider
 			return _assetEntryService.getEntriesCount(assetEntryQuery);
 		}
 		catch (PortalException portalException) {
-			throw new RuntimeException(
-				"Unable to get asset entries", portalException);
+			return ReflectionUtil.throwException(portalException);
 		}
 	}
 
