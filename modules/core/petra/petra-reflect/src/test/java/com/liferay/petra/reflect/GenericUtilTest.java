@@ -41,6 +41,9 @@ public class GenericUtilTest {
 
 	@Test
 	public void testGetGenericClass() {
+
+		// Index 0
+
 		Assert.assertEquals(
 			String.class,
 			GenericUtil.getGenericClass(new StringParameterizedType()));
@@ -56,20 +59,9 @@ public class GenericUtilTest {
 		Assert.assertEquals(
 			String.class,
 			GenericUtil.getGenericClass(StringParameterizedType.class));
-	}
 
-	@Test
-	public void testGetGenericClassName() {
-		Assert.assertEquals(
-			Object.class.getCanonicalName(),
-			GenericUtil.getGenericClassName(new NoParameterizedTypeImpl()));
-		Assert.assertEquals(
-			String.class.getCanonicalName(),
-			GenericUtil.getGenericClassName(new StringParameterizedType()));
-	}
+		// Index 1
 
-	@Test
-	public void testGetSecondGenericClass() {
 		Assert.assertEquals(
 			String.class,
 			GenericUtil.getGenericClass(
@@ -87,6 +79,16 @@ public class GenericUtilTest {
 		Assert.assertEquals(
 			Object.class,
 			GenericUtil.getGenericClass(StringParameterizedType.class, 1));
+	}
+
+	@Test
+	public void testGetGenericClassName() {
+		Assert.assertEquals(
+			Object.class.getCanonicalName(),
+			GenericUtil.getGenericClassName(new NoParameterizedTypeImpl()));
+		Assert.assertEquals(
+			String.class.getCanonicalName(),
+			GenericUtil.getGenericClassName(new StringParameterizedType()));
 	}
 
 	public static class ExtendsNoParameterizedTypeImpl
