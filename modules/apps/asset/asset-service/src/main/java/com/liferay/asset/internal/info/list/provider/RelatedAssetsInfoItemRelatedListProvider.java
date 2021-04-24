@@ -78,38 +78,35 @@ public class RelatedAssetsInfoItemRelatedListProvider
 
 		AssetEntryQuery assetEntryQuery = new AssetEntryQuery();
 
-		long[] availableClassNameIds =
-			AssetRendererFactoryRegistryUtil.getClassNameIds(companyId, true);
+		assetEntryQuery.setClassNameIds(
+			ArrayUtil.filter(
+				AssetRendererFactoryRegistryUtil.getClassNameIds(
+					companyId, true),
+				availableClassNameId -> {
+					Indexer<?> indexer = IndexerRegistryUtil.getIndexer(
+						_portal.getClassName(availableClassNameId));
 
-		availableClassNameIds = ArrayUtil.filter(
-			availableClassNameIds,
-			availableClassNameId -> {
-				Indexer<?> indexer = IndexerRegistryUtil.getIndexer(
-					_portal.getClassName(availableClassNameId));
+					if (indexer == null) {
+						return false;
+					}
 
-				if (indexer == null) {
-					return false;
-				}
-
-				return true;
-			});
-
-		assetEntryQuery.setClassNameIds(availableClassNameIds);
-
+					return true;
+				}));
 		assetEntryQuery.setEnablePermissions(true);
 
-		assetEntryQuery.setGroupIds(new long[] {groupId});
-
 		if (pagination != null) {
-			assetEntryQuery.setStart(pagination.getStart());
 			assetEntryQuery.setEnd(pagination.getEnd());
 		}
 
+		assetEntryQuery.setGroupIds(new long[] {groupId});
 		assetEntryQuery.setOrderByCol1(orderByCol);
-		assetEntryQuery.setOrderByType1(orderByType);
-
 		assetEntryQuery.setOrderByCol2(Field.CREATE_DATE);
+		assetEntryQuery.setOrderByType1(orderByType);
 		assetEntryQuery.setOrderByType2("DESC");
+
+		if (pagination != null) {
+			assetEntryQuery.setStart(pagination.getStart());
+		}
 
 		return assetEntryQuery;
 	}
