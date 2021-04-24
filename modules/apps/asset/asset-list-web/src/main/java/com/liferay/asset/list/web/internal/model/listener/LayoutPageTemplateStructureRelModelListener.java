@@ -149,21 +149,21 @@ public class LayoutPageTemplateStructureRelModelListener
 				continue;
 			}
 
-			if (collectionJSONObject.has("key")) {
-				_addAssetListEntryUsage(
-					_portal.getClassNameId(InfoListProvider.class),
-					layoutPageTemplateStructure.getGroupId(),
-					collectionJSONObject.getString("key"),
-					layoutPageTemplateStructure.
-						getLayoutPageTemplateStructureId(),
-					layoutPageTemplateStructure.getPlid());
-			}
-
 			if (collectionJSONObject.has("classPK")) {
 				_addAssetListEntryUsage(
 					_portal.getClassNameId(AssetListEntry.class),
 					layoutPageTemplateStructure.getGroupId(),
 					collectionJSONObject.getString("classPK"),
+					layoutPageTemplateStructure.
+						getLayoutPageTemplateStructureId(),
+					layoutPageTemplateStructure.getPlid());
+			}
+
+			if (collectionJSONObject.has("key")) {
+				_addAssetListEntryUsage(
+					_portal.getClassNameId(InfoListProvider.class),
+					layoutPageTemplateStructure.getGroupId(),
+					collectionJSONObject.getString("key"),
 					layoutPageTemplateStructure.
 						getLayoutPageTemplateStructureId(),
 					layoutPageTemplateStructure.getPlid());
