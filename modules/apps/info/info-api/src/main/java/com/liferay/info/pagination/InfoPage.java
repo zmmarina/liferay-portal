@@ -84,8 +84,7 @@ public class InfoPage<T> {
 	}
 
 	private Supplier<Integer> _getCachedSupplier(Supplier<Integer> supplier) {
-		final AtomicReference<Integer> atomicReference =
-			new AtomicReference<>();
+		AtomicReference<Integer> atomicReference = new AtomicReference<>();
 
 		return () -> {
 			if (atomicReference.get() != null) {
