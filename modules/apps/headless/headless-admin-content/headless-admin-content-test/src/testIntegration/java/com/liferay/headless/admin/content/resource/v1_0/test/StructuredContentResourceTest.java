@@ -168,9 +168,6 @@ public class StructuredContentResourceTest
 	public void testGraphQLGetStructuredContentByVersionNotFound()
 		throws Exception {
 
-		Long irrelevantStructuredContentId = RandomTestUtil.randomLong();
-		Double irrelevantVersion = RandomTestUtil.randomDouble();
-
 		Assert.assertEquals(
 			"null",
 			JSONUtil.getValueAsString(
@@ -181,9 +178,9 @@ public class StructuredContentResourceTest
 							"structuredContentByVersion",
 							HashMapBuilder.<String, Object>put(
 								"structuredContentId",
-								irrelevantStructuredContentId
+								RandomTestUtil.randomLong()
 							).put(
-								"version", irrelevantVersion
+								"version", RandomTestUtil.randomDouble()
 							).build(),
 							getGraphQLFields()))),
 				"JSONObject/data", "JSONObject/admin",
