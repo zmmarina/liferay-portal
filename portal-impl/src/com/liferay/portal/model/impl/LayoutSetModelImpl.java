@@ -752,11 +752,12 @@ public class LayoutSetModelImpl
 		String companyFallbackVirtualHostname) {
 	}
 
-	public java.util.TreeMap getVirtualHostnames() {
+	public java.util.TreeMap<String, String> getVirtualHostnames() {
 		return null;
 	}
 
-	public void setVirtualHostnames(java.util.TreeMap virtualHostnames) {
+	public void setVirtualHostnames(
+		java.util.TreeMap<String, String> virtualHostnames) {
 	}
 
 	public long getColumnBitmask() {
