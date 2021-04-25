@@ -39,6 +39,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.model.SystemEventConstants;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.search.BaseModelSearchResult;
@@ -47,12 +48,15 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.security.permission.InlineSQLHelper;
 import com.liferay.portal.kernel.security.permission.PermissionThreadLocal;
+import com.liferay.portal.kernel.service.CompanyLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 import com.liferay.portal.search.document.Document;
 import com.liferay.portal.search.hits.SearchHits;
 import com.liferay.portal.search.searcher.SearchRequestBuilder;
@@ -96,7 +100,7 @@ public class ObjectEntryLocalServiceImpl
 	@Override
 	public ObjectEntry addObjectEntry(
 			long userId, long groupId, long objectDefinitionId,
-			Map<String, Serializable> values)
+			Map<String, Serializable> values, ServiceContext serviceContext)
 		throws PortalException {
 
 		long objectEntryId = counterLocalService.increment();
@@ -118,9 +122,13 @@ public class ObjectEntryLocalServiceImpl
 		objectEntry.setObjectDefinitionId(objectDefinitionId);
 		objectEntry.setStatus(WorkflowConstants.STATUS_DRAFT);
 		objectEntry.setStatusByUserId(user.getUserId());
-		objectEntry.setStatusDate(new Date());
+		objectEntry.setStatusDate(serviceContext.getModifiedDate(null));
 
-		return objectEntryPersistence.update(objectEntry);
+		objectEntry = objectEntryPersistence.update(objectEntry);
+
+		_startWorkflowInstance(userId, objectEntry, serviceContext);
+
+		return objectEntry;
 	}
 
 	@Override
@@ -328,7 +336,8 @@ public class ObjectEntryLocalServiceImpl
 	@Indexable(type = IndexableType.REINDEX)
 	@Override
 	public ObjectEntry updateObjectEntry(
-			long objectEntryId, Map<String, Serializable> values)
+			long userId, long objectEntryId, Map<String, Serializable> values,
+			ServiceContext serviceContext)
 		throws PortalException {
 
 		ObjectEntry objectEntry = objectEntryPersistence.findByPrimaryKey(
@@ -339,7 +348,34 @@ public class ObjectEntryLocalServiceImpl
 				objectEntry.getObjectDefinitionId()),
 			objectEntryId, values);
 
-		objectEntry.setModifiedDate(new Date());
+		objectEntry.setModifiedDate(serviceContext.getModifiedDate(null));
+
+		objectEntry = objectEntryPersistence.update(objectEntry);
+
+		_startWorkflowInstance(userId, objectEntry, serviceContext);
+
+		return objectEntry;
+	}
+
+	@Indexable(type = IndexableType.REINDEX)
+	@Override
+	public ObjectEntry updateStatus(
+			long userId, long objectEntryId, int status,
+			ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext)
+		throws PortalException {
+
+		ObjectEntry objectEntry = objectEntryPersistence.findByPrimaryKey(
+			objectEntryId);
+
+		objectEntry.setStatus(status);
+
+		User user = _userLocalService.getUser(userId);
+
+		objectEntry.setStatusByUserId(user.getUserId());
+		objectEntry.setStatusByUserName(user.getFullName());
+
+		objectEntry.setStatusDate(serviceContext.getModifiedDate(null));
 
 		return objectEntryPersistence.update(objectEntry);
 	}
@@ -641,6 +677,29 @@ public class ObjectEntryLocalServiceImpl
 		}
 	}
 
+	private void _startWorkflowInstance(
+			long userId, ObjectEntry objectEntry, ServiceContext serviceContext)
+		throws PortalException {
+
+		long groupId = objectEntry.getGroupId();
+
+		if (groupId == 0) {
+			Company company = _companyLocalService.getCompany(
+				objectEntry.getCompanyId());
+
+			groupId = company.getGroupId();
+		}
+
+		ObjectDefinition objectDefinition =
+			_objectDefinitionPersistence.findByPrimaryKey(
+				objectEntry.getObjectDefinitionId());
+
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(
+			objectEntry.getCompanyId(), groupId, userId,
+			objectDefinition.getDBTableName(), objectEntry.getObjectEntryId(),
+			objectEntry, serviceContext);
+	}
+
 	private void _updateTable(
 			ObjectDefinition objectDefinition, long objectEntryId,
 			Map<String, Serializable> values)
@@ -733,6 +792,9 @@ public class ObjectEntryLocalServiceImpl
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		ObjectEntryLocalServiceImpl.class);
+
+	@Reference
+	private CompanyLocalService _companyLocalService;
 
 	@Reference
 	private InlineSQLHelper _inlineSQLHelper;

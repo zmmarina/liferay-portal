@@ -17,6 +17,7 @@ package com.liferay.object.service.impl;
 import com.liferay.object.exception.DuplicateObjectDefinitionException;
 import com.liferay.object.exception.ObjectDefinitionNameException;
 import com.liferay.object.internal.petra.sql.dsl.DynamicObjectDefinitionTable;
+import com.liferay.object.internal.workflow.ObjectEntryWorkflowHandler;
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectEntry;
 import com.liferay.object.model.ObjectField;
@@ -32,11 +33,18 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowHandler;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -84,6 +92,8 @@ public class ObjectDefinitionLocalServiceImpl
 
 		_createTable(objectDefinition, objectFields);
 
+		objectDefinitionLocalService.registerObjectDefinition(objectDefinition);
+
 		return objectDefinition;
 	}
 
@@ -117,6 +127,9 @@ public class ObjectDefinitionLocalServiceImpl
 
 		_dropTable(objectDefinition);
 
+		objectDefinitionLocalService.unregisterObjectDefinition(
+			objectDefinition.getObjectDefinitionId());
+
 		return objectDefinition;
 	}
 
@@ -128,11 +141,46 @@ public class ObjectDefinitionLocalServiceImpl
 	}
 
 	@Clusterable
-	public void registerObjectDefinition(long objectDefinitionId) {
+	@Override
+	public void registerObjectDefinition(ObjectDefinition objectDefinition) {
+		_registerObjectDefinition(objectDefinition);
+	}
+
+	@Override
+	public void registerObjectDefinitions() {
+		List<ObjectDefinition> objectDefinitions =
+			objectDefinitionPersistence.findAll();
+
+		for (ObjectDefinition objectDefinition : objectDefinitions) {
+			_registerObjectDefinition(objectDefinition);
+		}
 	}
 
 	@Clusterable
+	@Override
 	public void unregisterObjectDefinition(long objectDefinitionId) {
+		ServiceRegistration<WorkflowHandler<?>> serviceRegistration =
+			_serviceRegistrations.remove(objectDefinitionId);
+
+		if (serviceRegistration != null) {
+			serviceRegistration.unregister();
+		}
+	}
+
+	@Override
+	public void unregisterObjectDefinitions() {
+		for (ServiceRegistration<WorkflowHandler<?>> serviceRegistration :
+				_serviceRegistrations.values()) {
+
+			serviceRegistration.unregister();
+		}
+
+		_serviceRegistrations.clear();
+	}
+
+	@Activate
+	protected void activate(BundleContext bundleContext) {
+		_bundleContext = bundleContext;
 	}
 
 	private void _createTable(
@@ -152,6 +200,18 @@ public class ObjectDefinitionLocalServiceImpl
 		}
 
 		runSQL(sql);
+	}
+
+	private void _registerObjectDefinition(ObjectDefinition objectDefinition) {
+		_serviceRegistrations.put(
+			objectDefinition.getObjectDefinitionId(),
+			_bundleContext.registerService(
+				(Class<WorkflowHandler<?>>)(Class<?>)WorkflowHandler.class,
+				new ObjectEntryWorkflowHandler(
+					objectDefinition, _objectEntryLocalService),
+				HashMapDictionaryBuilder.<String, Object>put(
+					"model.class.name", objectDefinition.getDBTableName()
+				).build()));
 	}
 
 	private void _validateName(long companyId, String name)
@@ -189,6 +249,8 @@ public class ObjectDefinitionLocalServiceImpl
 	private static final Log _log = LogFactoryUtil.getLog(
 		ObjectDefinitionLocalServiceImpl.class);
 
+	private BundleContext _bundleContext;
+
 	@Reference
 	private ObjectEntryLocalService _objectEntryLocalService;
 
@@ -200,6 +262,9 @@ public class ObjectDefinitionLocalServiceImpl
 
 	@Reference
 	private ObjectFieldPersistence _objectFieldPersistence;
+
+	private final Map<Long, ServiceRegistration<WorkflowHandler<?>>>
+		_serviceRegistrations = new HashMap<>();
 
 	@Reference
 	private UserLocalService _userLocalService;
