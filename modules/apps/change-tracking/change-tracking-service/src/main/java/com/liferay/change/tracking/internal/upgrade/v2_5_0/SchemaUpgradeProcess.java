@@ -24,13 +24,11 @@ public class SchemaUpgradeProcess extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
-		if (!hasTable("CTComment")) {
-			String template = StringUtil.read(
-				SchemaUpgradeProcess.class.getResourceAsStream(
-					"dependencies/update.sql"));
+		String template = StringUtil.read(
+			SchemaUpgradeProcess.class.getResourceAsStream(
+				"dependencies/update.sql"));
 
-			runSQLTemplateString(template, true);
-		}
+		runSQLTemplateString(template, true);
 	}
 
 }
