@@ -45,7 +45,7 @@ public class ObjectEntryWorkflowHandler
 
 	@Override
 	public String getClassName() {
-		return _objectDefinition.getDBTableName();
+		return _objectDefinition.getClassName();
 	}
 
 	@Override

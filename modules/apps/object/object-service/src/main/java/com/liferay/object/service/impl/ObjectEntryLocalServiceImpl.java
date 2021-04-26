@@ -166,7 +166,7 @@ public class ObjectEntryLocalServiceImpl
 				objectEntry.getObjectDefinitionId());
 
 		_assetEntryLocalService.deleteEntry(
-			objectDefinition.getDBTableName(), objectEntry.getObjectEntryId());
+			objectDefinition.getClassName(), objectEntry.getObjectEntryId());
 
 		_deleteFromTable(objectDefinition, objectEntry);
 
@@ -370,7 +370,7 @@ public class ObjectEntryLocalServiceImpl
 
 		AssetEntry assetEntry = _assetEntryLocalService.updateEntry(
 			userId, _getGroupId(objectEntry), objectEntry.getCreateDate(),
-			objectEntry.getModifiedDate(), objectDefinition.getDBTableName(),
+			objectEntry.getModifiedDate(), objectDefinition.getClassName(),
 			objectEntry.getObjectEntryId(), objectEntry.getUuid(), 0,
 			assetCategoryIds, assetTagNames, true, visible, null, null, null,
 			null, ContentTypes.TEXT_PLAIN,
@@ -758,7 +758,7 @@ public class ObjectEntryLocalServiceImpl
 
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
 			objectEntry.getCompanyId(), _getGroupId(objectEntry), userId,
-			objectDefinition.getDBTableName(), objectEntry.getObjectEntryId(),
+			objectDefinition.getClassName(), objectEntry.getObjectEntryId(),
 			objectEntry, serviceContext);
 	}
 

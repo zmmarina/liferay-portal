@@ -15,7 +15,7 @@
 package com.liferay.object.internal.search.spi.model.query.contributor;
 
 import com.liferay.object.model.ObjectField;
-import com.liferay.object.service.ObjectFieldLocalServiceUtil;
+import com.liferay.object.service.ObjectFieldLocalService;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.BooleanQuery;
@@ -71,7 +71,7 @@ public class ObjectEntryKeywordQueryContributor
 		}
 
 		List<ObjectField> objectFields =
-			ObjectFieldLocalServiceUtil.getObjectFields(objectDefinitionId);
+			_objectFieldLocalService.getObjectFields(objectDefinitionId);
 
 		for (ObjectField objectField : objectFields) {
 			if (_log.isDebugEnabled()) {
@@ -87,6 +87,9 @@ public class ObjectEntryKeywordQueryContributor
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		ObjectEntryKeywordQueryContributor.class);
+
+	@Reference
+	private ObjectFieldLocalService _objectFieldLocalService;
 
 	@Reference
 	private QueryHelper _queryHelper;

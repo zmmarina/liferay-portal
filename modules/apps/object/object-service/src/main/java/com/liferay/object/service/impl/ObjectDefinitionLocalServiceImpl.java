@@ -14,9 +14,13 @@
 
 package com.liferay.object.service.impl;
 
+import com.liferay.application.list.PanelApp;
+import com.liferay.application.list.constants.PanelCategoryKeys;
 import com.liferay.object.exception.DuplicateObjectDefinitionException;
 import com.liferay.object.exception.ObjectDefinitionNameException;
+import com.liferay.object.internal.application.list.ObjectDefinitionPanelApp;
 import com.liferay.object.internal.petra.sql.dsl.DynamicObjectDefinitionTable;
+import com.liferay.object.internal.portlet.ObjectDefinitionPortlet;
 import com.liferay.object.internal.workflow.ObjectEntryWorkflowHandler;
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectEntry;
@@ -41,6 +45,8 @@ import com.liferay.portal.kernel.workflow.WorkflowHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.portlet.Portlet;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -140,6 +146,13 @@ public class ObjectDefinitionLocalServiceImpl
 		return objectDefinitionPersistence.findByPrimaryKey(objectDefinitionId);
 	}
 
+	@Override
+	public int getObjectDefinitionsCount(long companyId)
+		throws PortalException {
+
+		return objectDefinitionPersistence.countByCompanyId(companyId);
+	}
+
 	@Clusterable
 	@Override
 	public void registerObjectDefinition(ObjectDefinition objectDefinition) {
@@ -159,23 +172,31 @@ public class ObjectDefinitionLocalServiceImpl
 	@Clusterable
 	@Override
 	public void unregisterObjectDefinition(long objectDefinitionId) {
-		ServiceRegistration<WorkflowHandler<?>> serviceRegistration =
-			_serviceRegistrations.remove(objectDefinitionId);
+		ServiceRegistration<?>[] serviceRegistrations =
+			_serviceRegistrationsMap.remove(objectDefinitionId);
 
-		if (serviceRegistration != null) {
-			serviceRegistration.unregister();
+		if (serviceRegistrations != null) {
+			for (ServiceRegistration<?> serviceRegistration :
+					serviceRegistrations) {
+
+				serviceRegistration.unregister();
+			}
 		}
 	}
 
 	@Override
 	public void unregisterObjectDefinitions() {
-		for (ServiceRegistration<WorkflowHandler<?>> serviceRegistration :
-				_serviceRegistrations.values()) {
+		for (ServiceRegistration<?>[] serviceRegistrations :
+				_serviceRegistrationsMap.values()) {
 
-			serviceRegistration.unregister();
+			for (ServiceRegistration<?> serviceRegistration :
+					serviceRegistrations) {
+
+				serviceRegistration.unregister();
+			}
 		}
 
-		_serviceRegistrations.clear();
+		_serviceRegistrationsMap.clear();
 	}
 
 	@Activate
@@ -203,15 +224,38 @@ public class ObjectDefinitionLocalServiceImpl
 	}
 
 	private void _registerObjectDefinition(ObjectDefinition objectDefinition) {
-		_serviceRegistrations.put(
+		_serviceRegistrationsMap.put(
 			objectDefinition.getObjectDefinitionId(),
-			_bundleContext.registerService(
-				(Class<WorkflowHandler<?>>)(Class<?>)WorkflowHandler.class,
-				new ObjectEntryWorkflowHandler(
-					objectDefinition, _objectEntryLocalService),
-				HashMapDictionaryBuilder.<String, Object>put(
-					"model.class.name", objectDefinition.getDBTableName()
-				).build()));
+			new ServiceRegistration<?>[] {
+				_bundleContext.registerService(
+					PanelApp.class,
+					new ObjectDefinitionPanelApp(objectDefinition),
+					HashMapDictionaryBuilder.<String, Object>put(
+						"panel.app.order:Integer", "300"
+					).put(
+						"panel.category.key",
+						PanelCategoryKeys.CONTROL_PANEL_USERS
+					).build()),
+				_bundleContext.registerService(
+					Portlet.class, new ObjectDefinitionPortlet(),
+					HashMapDictionaryBuilder.<String, Object>put(
+						"com.liferay.portlet.display-category",
+						"category.hidden"
+					).put(
+						"javax.portlet.display-name", objectDefinition.getName()
+					).put(
+						"javax.portlet.name", objectDefinition.getPortletId()
+					).put(
+						"javax.portlet.init-param.view-template", "/view.jsp"
+					).build()),
+				_bundleContext.registerService(
+					WorkflowHandler.class,
+					new ObjectEntryWorkflowHandler(
+						objectDefinition, _objectEntryLocalService),
+					HashMapDictionaryBuilder.<String, Object>put(
+						"model.class.name", objectDefinition.getClassName()
+					).build())
+			});
 	}
 
 	private void _validateName(long companyId, String name)
@@ -263,8 +307,8 @@ public class ObjectDefinitionLocalServiceImpl
 	@Reference
 	private ObjectFieldPersistence _objectFieldPersistence;
 
-	private final Map<Long, ServiceRegistration<WorkflowHandler<?>>>
-		_serviceRegistrations = new HashMap<>();
+	private final Map<Long, ServiceRegistration<?>[]> _serviceRegistrationsMap =
+		new HashMap<>();
 
 	@Reference
 	private UserLocalService _userLocalService;

@@ -28,6 +28,11 @@ public class ObjectDefinitionImpl extends ObjectDefinitionBaseImpl {
 	}
 
 	@Override
+	public String getClassName() {
+		return getDBTableName();
+	}
+
+	@Override
 	public String getDBPrimaryKeyColumnName() {
 		return getPrimaryKeyColumnName() + StringPool.UNDERLINE;
 	}
@@ -36,6 +41,11 @@ public class ObjectDefinitionImpl extends ObjectDefinitionBaseImpl {
 	public String getDBTableName() {
 		return StringBundler.concat(
 			"O_", getCompanyId(), StringPool.UNDERLINE, getName());
+	}
+
+	@Override
+	public String getPortletId() {
+		return getDBTableName();
 	}
 
 	@Override

@@ -24,6 +24,9 @@
 
 		<!-- Finder methods -->
 
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
 		<finder name="C_N" return-type="ObjectDefinition">
 			<finder-column name="companyId" />
 			<finder-column name="name" />
