@@ -64,11 +64,11 @@ public class MiniCartTag extends IncludeTag {
 			(ThemeDisplay)httpServletRequest.getAttribute(
 				WebKeys.THEME_DISPLAY);
 
+		_siteDefaultURL = _getSiteDefaultURL(themeDisplay);
+
 		if (Validator.isNull(_spritemap)) {
 			_spritemap = themeDisplay.getPathThemeImages() + "/clay/icons.svg";
 		}
-
-		_siteDefaultURL = _getSiteDefaultURL(themeDisplay);
 
 		try {
 			CommerceOrder commerceOrder = commerceContext.getCommerceOrder();
