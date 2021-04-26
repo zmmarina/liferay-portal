@@ -325,11 +325,7 @@ public class ObjectEntryLocalServiceImpl
 		).size(
 			delta
 		).sorts(
-			_sorts.field(
-				_sortFieldBuilder.getSortField(
-					ObjectEntry.class.getName(),
-					objectDefinition.getPrimaryKeyColumnName()),
-				SortOrder.DESC)
+			_sorts.field(Field.ENTRY_CLASS_PK, SortOrder.ASC)
 		).withSearchContext(
 			searchContext -> {
 				searchContext.setAttribute(
