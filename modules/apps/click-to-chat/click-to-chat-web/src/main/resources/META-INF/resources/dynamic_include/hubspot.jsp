@@ -39,9 +39,9 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 		options.setLocation("https://api.hubspot.com/conversations/v3/visitor-identification/tokens/create?hapikey=" + parts[1]);
 		options.setPost(true);
 
-		String jsonResponse = HttpUtil.URLtoString(options);
+		String responseJSON = HttpUtil.URLtoString(options);
 
-		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(jsonResponse);
+		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
 		httpResponse = options.getResponse();
 
