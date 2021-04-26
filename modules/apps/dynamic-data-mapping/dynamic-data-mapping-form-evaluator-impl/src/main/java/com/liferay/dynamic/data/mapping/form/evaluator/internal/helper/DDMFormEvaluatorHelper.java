@@ -596,11 +596,8 @@ public class DDMFormEvaluatorHelper {
 
 	protected void validateFields() {
 		validateFieldsMarkedAsRequired();
-
 		validateFieldsWithConfirmationField();
-
 		validateFieldsWithDDMFormFieldValidation();
-
 		validateFieldsWithRegex();
 	}
 
