@@ -49,7 +49,6 @@ import com.liferay.translation.info.field.TranslationInfoFieldChecker;
 import com.liferay.translation.model.TranslationEntry;
 import com.liferay.translation.service.TranslationEntryLocalServiceUtil;
 import com.liferay.translation.web.internal.configuration.FFAutoTranslateConfiguration;
-import com.liferay.translation.web.internal.constants.TranslationWebConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,8 +107,7 @@ public class TranslateDisplayContext {
 
 	public String getAutoTranslateURL() {
 		return PortalUtil.getPortalURL(_httpServletRequest) +
-			Portal.PATH_MODULE +
-				TranslationWebConstants.AUTO_TRANSLATE_SERVLET_PATH;
+			Portal.PATH_MODULE + "/translation/auto_translate";
 	}
 
 	public boolean getBooleanValue(

@@ -28,7 +28,6 @@ import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.translation.translator.JSONTranslatorPacket;
 import com.liferay.translation.translator.Translator;
 import com.liferay.translation.translator.TranslatorPacket;
-import com.liferay.translation.web.internal.constants.TranslationWebConstants;
 
 import java.io.IOException;
 
@@ -48,7 +47,7 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
 	property = {
 		"osgi.http.whiteboard.servlet.name=com.liferay.translation.web.internal.servlet.AutoTranslateServlet",
-		"osgi.http.whiteboard.servlet.pattern=" + TranslationWebConstants.AUTO_TRANSLATE_SERVLET_PATH,
+		"osgi.http.whiteboard.servlet.pattern=/translation/auto_translate",
 		"servlet.init.httpMethods=POST"
 	},
 	service = Servlet.class
