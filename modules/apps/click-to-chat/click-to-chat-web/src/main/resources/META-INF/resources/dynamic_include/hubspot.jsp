@@ -17,8 +17,8 @@
 <%@ include file="/dynamic_include/init.jsp" %>
 
 <%
-String identificationToken = null;
 Http.Response httpResponse = null;
+String identificationToken = null;
 
 String[] parts = clickToChatChatProviderAccountId.split(StringPool.SLASH);
 
