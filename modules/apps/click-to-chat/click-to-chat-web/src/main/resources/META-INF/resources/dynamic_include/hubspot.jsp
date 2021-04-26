@@ -43,9 +43,9 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 
 		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
-		httpResponse = options.getResponse();
-
 		identificationToken = responseJSONObject.getString("token");
+
+		httpResponse = options.getResponse();
 	}
 	catch (Exception exception) {
 		Log log = LogFactoryUtil.getLog("com_liferay_click_to_chat_web.hubspot_jsp");
