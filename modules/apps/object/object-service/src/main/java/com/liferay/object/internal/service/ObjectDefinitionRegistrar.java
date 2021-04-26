@@ -43,7 +43,7 @@ public class ObjectDefinitionRegistrar {
 	protected void activate(BundleContext bundleContext) throws Exception {
 		_objectDefinitionLocalService.registerObjectDefinitions();
 
-		if (true) {
+		if (false) {
 			_addSampleObjectDefinition();
 		}
 	}
