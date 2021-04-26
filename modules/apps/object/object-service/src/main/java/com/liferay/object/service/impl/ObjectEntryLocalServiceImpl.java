@@ -14,6 +14,10 @@
 
 package com.liferay.object.service.impl;
 
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetLinkConstants;
+import com.liferay.asset.kernel.service.AssetEntryLocalService;
+import com.liferay.asset.kernel.service.AssetLinkLocalService;
 import com.liferay.object.exception.ObjectEntryValuesException;
 import com.liferay.object.internal.petra.sql.dsl.DynamicObjectDefinitionTable;
 import com.liferay.object.model.ObjectDefinition;
@@ -53,6 +57,7 @@ import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.ArrayUtil;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
@@ -126,6 +131,13 @@ public class ObjectEntryLocalServiceImpl
 
 		objectEntry = objectEntryPersistence.update(objectEntry);
 
+		updateAsset(
+			serviceContext.getUserId(), objectEntry,
+			serviceContext.getAssetCategoryIds(),
+			serviceContext.getAssetTagNames(),
+			serviceContext.getAssetLinkEntryIds(),
+			serviceContext.getAssetPriority());
+
 		_startWorkflowInstance(userId, objectEntry, serviceContext);
 
 		return objectEntry;
@@ -149,7 +161,14 @@ public class ObjectEntryLocalServiceImpl
 
 		objectEntry = objectEntryPersistence.remove(objectEntry);
 
-		_deleteFromTable(objectEntry);
+		ObjectDefinition objectDefinition =
+			_objectDefinitionPersistence.findByPrimaryKey(
+				objectEntry.getObjectDefinitionId());
+
+		_assetEntryLocalService.deleteEntry(
+			objectDefinition.getDBTableName(), objectEntry.getObjectEntryId());
+
+		_deleteFromTable(objectDefinition, objectEntry);
 
 		return objectEntry;
 	}
@@ -333,6 +352,37 @@ public class ObjectEntryLocalServiceImpl
 			objectEntries, searchResponse.getTotalHits());
 	}
 
+	@Override
+	public void updateAsset(
+			long userId, ObjectEntry objectEntry, long[] assetCategoryIds,
+			String[] assetTagNames, long[] assetLinkEntryIds, Double priority)
+		throws PortalException {
+
+		ObjectDefinition objectDefinition =
+			_objectDefinitionPersistence.findByPrimaryKey(
+				objectEntry.getObjectDefinitionId());
+
+		boolean visible = false;
+
+		if (objectEntry.isApproved()) {
+			visible = true;
+		}
+
+		AssetEntry assetEntry = _assetEntryLocalService.updateEntry(
+			userId, _getGroupId(objectEntry), objectEntry.getCreateDate(),
+			objectEntry.getModifiedDate(), objectDefinition.getDBTableName(),
+			objectEntry.getObjectEntryId(), objectEntry.getUuid(), 0,
+			assetCategoryIds, assetTagNames, true, visible, null, null, null,
+			null, ContentTypes.TEXT_PLAIN,
+			String.valueOf(objectEntry.getObjectEntryId()),
+			String.valueOf(objectEntry.getObjectEntryId()), null, null, null, 0,
+			0, priority);
+
+		_assetLinkLocalService.updateLinks(
+			userId, assetEntry.getEntryId(), assetLinkEntryIds,
+			AssetLinkConstants.TYPE_RELATED);
+	}
+
 	@Indexable(type = IndexableType.REINDEX)
 	@Override
 	public ObjectEntry updateObjectEntry(
@@ -351,6 +401,13 @@ public class ObjectEntryLocalServiceImpl
 		objectEntry.setModifiedDate(serviceContext.getModifiedDate(null));
 
 		objectEntry = objectEntryPersistence.update(objectEntry);
+
+		updateAsset(
+			serviceContext.getUserId(), objectEntry,
+			serviceContext.getAssetCategoryIds(),
+			serviceContext.getAssetTagNames(),
+			serviceContext.getAssetLinkEntryIds(),
+			serviceContext.getAssetPriority());
 
 		_startWorkflowInstance(userId, objectEntry, serviceContext);
 
@@ -380,12 +437,9 @@ public class ObjectEntryLocalServiceImpl
 		return objectEntryPersistence.update(objectEntry);
 	}
 
-	private void _deleteFromTable(ObjectEntry objectEntry)
+	private void _deleteFromTable(
+			ObjectDefinition objectDefinition, ObjectEntry objectEntry)
 		throws PortalException {
-
-		ObjectDefinition objectDefinition =
-			_objectDefinitionPersistence.findByPrimaryKey(
-				objectEntry.getObjectDefinitionId());
 
 		runSQL(
 			StringBundler.concat(
@@ -405,6 +459,23 @@ public class ObjectEntryLocalServiceImpl
 			_objectDefinitionPersistence.findByPrimaryKey(objectDefinitionId),
 			_objectFieldPersistence.findByObjectDefinitionId(
 				objectDefinitionId));
+	}
+
+	private long _getGroupId(ObjectEntry objectEntry) throws PortalException {
+
+		// TODO If permission checking works with the group's company ID, then
+		// we should ensure it is always set and remove this workaround
+
+		long groupId = objectEntry.getGroupId();
+
+		if (groupId == 0) {
+			Company company = _companyLocalService.getCompany(
+				objectEntry.getCompanyId());
+
+			groupId = company.getGroupId();
+		}
+
+		return groupId;
 	}
 
 	private Map<String, Serializable> _getValues(
@@ -681,21 +752,12 @@ public class ObjectEntryLocalServiceImpl
 			long userId, ObjectEntry objectEntry, ServiceContext serviceContext)
 		throws PortalException {
 
-		long groupId = objectEntry.getGroupId();
-
-		if (groupId == 0) {
-			Company company = _companyLocalService.getCompany(
-				objectEntry.getCompanyId());
-
-			groupId = company.getGroupId();
-		}
-
 		ObjectDefinition objectDefinition =
 			_objectDefinitionPersistence.findByPrimaryKey(
 				objectEntry.getObjectDefinitionId());
 
 		WorkflowHandlerRegistryUtil.startWorkflowInstance(
-			objectEntry.getCompanyId(), groupId, userId,
+			objectEntry.getCompanyId(), _getGroupId(objectEntry), userId,
 			objectDefinition.getDBTableName(), objectEntry.getObjectEntryId(),
 			objectEntry, serviceContext);
 	}
@@ -792,6 +854,12 @@ public class ObjectEntryLocalServiceImpl
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		ObjectEntryLocalServiceImpl.class);
+
+	@Reference
+	private AssetEntryLocalService _assetEntryLocalService;
+
+	@Reference
+	private AssetLinkLocalService _assetLinkLocalService;
 
 	@Reference
 	private CompanyLocalService _companyLocalService;
