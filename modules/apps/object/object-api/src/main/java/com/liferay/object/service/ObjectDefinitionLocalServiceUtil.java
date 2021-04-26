@@ -313,6 +313,12 @@ public class ObjectDefinitionLocalServiceUtil {
 		return getService().getObjectDefinitionsCount();
 	}
 
+	public static int getObjectDefinitionsCount(long companyId)
+		throws PortalException {
+
+		return getService().getObjectDefinitionsCount(companyId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

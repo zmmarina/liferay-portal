@@ -344,6 +344,14 @@ public class ObjectDefinitionLocalServiceWrapper
 		return _objectDefinitionLocalService.getObjectDefinitionsCount();
 	}
 
+	@Override
+	public int getObjectDefinitionsCount(long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _objectDefinitionLocalService.getObjectDefinitionsCount(
+			companyId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

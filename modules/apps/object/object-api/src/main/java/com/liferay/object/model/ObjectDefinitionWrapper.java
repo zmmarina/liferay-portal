@@ -113,6 +113,11 @@ public class ObjectDefinitionWrapper
 		}
 	}
 
+	@Override
+	public String getClassName() {
+		return model.getClassName();
+	}
+
 	/**
 	 * Returns the company ID of this object definition.
 	 *
@@ -181,6 +186,11 @@ public class ObjectDefinitionWrapper
 	@Override
 	public long getObjectDefinitionId() {
 		return model.getObjectDefinitionId();
+	}
+
+	@Override
+	public String getPortletId() {
+		return model.getPortletId();
 	}
 
 	/**
