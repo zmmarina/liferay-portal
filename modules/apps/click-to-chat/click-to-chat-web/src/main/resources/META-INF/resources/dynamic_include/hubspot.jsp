@@ -17,7 +17,7 @@
 <%@ include file="/dynamic_include/init.jsp" %>
 
 <%
-Http.Response httpResponse = null;
+String errorMessage = null;
 String identificationToken = null;
 
 String[] parts = clickToChatChatProviderAccountId.split(StringPool.SLASH);
@@ -43,9 +43,8 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 
 		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
+		errorMessage = responseJSONObject.getString("message");
 		identificationToken = responseJSONObject.getString("token");
-
-		httpResponse = options.getResponse();
 	}
 	catch (Exception exception) {
 		if (_log.isWarnEnabled()) {
@@ -58,25 +57,11 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 <script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= parts[0] %>.js" type="text/javascript"></script>
 
 <c:choose>
-	<c:when test="<%= (httpResponse == null) || (httpResponse.getResponseCode() >= 400) %>">
-
-		<%
-		String message = "your-request-failed-to-complete";
-
-		if (httpResponse == null) {
-			message = "invalid-chat-authentication";
-		}
-		else if (httpResponse.getResponseCode() == 401) {
-			message = "not-authorized-chat-request";
-		}
-		else if (httpResponse.getResponseCode() == 403) {
-			message = "no-access-chat-request";
-		}
-		%>
-
+	<c:when test="<%= identificationToken == null %>">
 		<script>
 			Liferay.Util.openToast({
-				message: '<%= LanguageUtil.get(resourceBundle, message) %>',
+				message:
+					'<%= (errorMessage != null) ? errorMessage : LanguageUtil.get(resourceBundle, "an-unexpected-error-occurred") %>',
 				type: 'danger',
 			});
 		</script>
