@@ -68,7 +68,7 @@ public class SchemaUpgradeProcess extends UpgradeProcess {
 			sb2.append("pauseNodeKeys, processId, processVersion, ");
 			sb2.append("startNodeKeys, stopNodeKeys, version, ");
 			sb2.append("wmSLADefinitionId, status, statusByUserId, ");
-			sb2.append("statusByUserName, statusDate) values(?, ?, ?, ?, ?, ");
+			sb2.append("statusByUserName, statusDate) values (?, ?, ?, ?, ?, ");
 			sb2.append("?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ");
 			sb2.append("?, ?, ?)");
 
