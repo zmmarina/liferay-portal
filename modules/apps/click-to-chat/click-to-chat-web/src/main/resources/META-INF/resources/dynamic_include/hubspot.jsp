@@ -48,10 +48,8 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 		httpResponse = options.getResponse();
 	}
 	catch (Exception exception) {
-		Log log = LogFactoryUtil.getLog("com_liferay_click_to_chat_web.hubspot_jsp");
-
-		if (log.isErrorEnabled()) {
-			log.error(exception, exception);
+		if (_log.isWarnEnabled()) {
+			_log.warn(exception, exception);
 		}
 	}
 }
