@@ -157,7 +157,7 @@ const Translate = ({
 					dispatch({
 						payload: {
 							message: Liferay.Language.get(
-								'success-translations-received'
+								'successfully-received-translations'
 							),
 							status: FETCH_STATUS.SUCCESS,
 						},
