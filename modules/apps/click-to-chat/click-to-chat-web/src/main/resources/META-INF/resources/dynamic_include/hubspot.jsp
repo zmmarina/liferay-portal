@@ -94,3 +94,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 		</script>
 	</c:otherwise>
 </c:choose>
+
+<%!
+private static Log _log = LogFactoryUtil.getLog("com_liferay_click_to_chat_web.dynamic_include.hubspot_jsp");
+%>
