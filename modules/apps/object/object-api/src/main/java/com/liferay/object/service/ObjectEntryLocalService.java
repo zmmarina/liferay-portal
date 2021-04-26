@@ -345,6 +345,11 @@ public interface ObjectEntryLocalService
 			long objectDefinitionId, String keywords, int cur, int delta)
 		throws PortalException;
 
+	public void updateAsset(
+			long userId, ObjectEntry objectEntry, long[] assetCategoryIds,
+			String[] assetTagNames, long[] assetLinkEntryIds, Double priority)
+		throws PortalException;
+
 	@Indexable(type = IndexableType.REINDEX)
 	public ObjectEntry updateObjectEntry(
 			long userId, long objectEntryId, Map<String, Serializable> values,

@@ -444,6 +444,18 @@ public class ObjectEntryLocalServiceWrapper
 	}
 
 	@Override
+	public void updateAsset(
+			long userId, com.liferay.object.model.ObjectEntry objectEntry,
+			long[] assetCategoryIds, String[] assetTagNames,
+			long[] assetLinkEntryIds, Double priority)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		_objectEntryLocalService.updateAsset(
+			userId, objectEntry, assetCategoryIds, assetTagNames,
+			assetLinkEntryIds, priority);
+	}
+
+	@Override
 	public com.liferay.object.model.ObjectEntry updateObjectEntry(
 			long userId, long objectEntryId,
 			java.util.Map<String, java.io.Serializable> values,

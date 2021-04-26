@@ -393,6 +393,16 @@ public class ObjectEntryLocalServiceUtil {
 			objectDefinitionId, keywords, cur, delta);
 	}
 
+	public static void updateAsset(
+			long userId, ObjectEntry objectEntry, long[] assetCategoryIds,
+			String[] assetTagNames, long[] assetLinkEntryIds, Double priority)
+		throws PortalException {
+
+		getService().updateAsset(
+			userId, objectEntry, assetCategoryIds, assetTagNames,
+			assetLinkEntryIds, priority);
+	}
+
 	public static ObjectEntry updateObjectEntry(
 			long userId, long objectEntryId, Map<String, Serializable> values,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
