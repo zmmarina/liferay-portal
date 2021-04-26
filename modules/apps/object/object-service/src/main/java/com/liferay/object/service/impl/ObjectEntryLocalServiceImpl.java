@@ -634,7 +634,10 @@ public class ObjectEntryLocalServiceImpl
 					Class<?> objectClass = object.getClass();
 
 					throw new IllegalArgumentException(
-						"Unknown object class " + objectClass.getName());
+						StringBundler.concat(
+							"Unable to put \"", name,
+							"\" with unknown object class ",
+							objectClass.getName()));
 				}
 			}
 
