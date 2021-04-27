@@ -340,12 +340,38 @@ definition {
 	}
 
 	@description = "COMMERCE-5869. As a buyer, I want to be able to remove a product from a product comparison items list, by unchecking the product via checkbox"
-	@ignore = "true"
 	@priority = "3"
 	test RemoveProductFromComparisonItems {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-5869 RemoveProductFromComparisonItems pending implementation
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		Check.checkToggleSwitch(
+			key_productName = "U-Joint",
+			locator1 = "CommerceEntry#PRODUCT_CARD_COMPARE_CHECKBOX");
+
+		Refresh();
+
+		AssertChecked.assertCheckedNotVisible(
+			key_productName = "U-Joint",
+			locator1 = "CommerceEntry#PRODUCT_CARD_COMPARE_CHECKBOX");
+
+
+		AssertElementPresent(locator1 = "CommerceEntry#MINI_COMPARE_ITEM_ACTIVE");
+
+
+		Uncheck.uncheckToggleSwitch(
+			key_productName = "U-Joint",
+			locator1 = "CommerceEntry#PRODUCT_CARD_COMPARE_CHECKBOX");
+			
+
+		AssertElementNotPresent(locator1 = "CommerceEntry#MINI_COMPARE_ITEM_ACTIVE");
+
+
+
+
 	}
 
 	@description = "COMMERCE-5867. As a buyer, I want to be able to remove a product from my wish list, by clicking on an Add To Wish List button, if already active"
