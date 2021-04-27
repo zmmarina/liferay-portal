@@ -58,7 +58,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 <script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= parts[0] %>.js" type="text/javascript"></script>
 
 <c:choose>
-	<c:when test="<%= Validator.isNotNull(identificationToken) %>">
+	<c:when test="<%= Validator.isNull(identificationToken) %>">
 		<script>
 			Liferay.Util.openToast({
 				message:
