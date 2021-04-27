@@ -18,7 +18,7 @@
 
 <%
 String errorMessage = null;
-String identificationToken = StringPool.BLANK;
+String identificationToken = null;
 
 String[] parts = clickToChatChatProviderAccountId.split(StringPool.SLASH);
 
@@ -43,7 +43,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 
 		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
-		errorMessage = StringUtil.replace(responseJSONObject.getString("message"), '\'', "\\'");
+		errorMessage = HtmlUtil.escapeJS(responseJSONObject.getString("message"));
 
 		identificationToken = responseJSONObject.getString("token");
 	}
@@ -58,7 +58,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 <script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= parts[0] %>.js" type="text/javascript"></script>
 
 <c:choose>
-	<c:when test="<%= StringPool.BLANK.equals(identificationToken) %>">
+	<c:when test="<%= Validator.isNotNull(identificationToken) %>">
 		<script>
 			Liferay.Util.openToast({
 				message:
