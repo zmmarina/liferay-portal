@@ -418,5 +418,5 @@ for (AssetEntry assetEntry : assetEntryResult.getAssetEntries()) {
 %>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_asset_publisher_web.view_asset_entries_abstract_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_asset_publisher_web.view_asset_entries_abstract_jsp");
 %>

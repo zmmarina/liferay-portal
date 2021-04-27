@@ -126,5 +126,5 @@ catch (Exception exception) {
 </script>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_questions_web.configuarion_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_questions_web.configuarion_jsp");
 %>

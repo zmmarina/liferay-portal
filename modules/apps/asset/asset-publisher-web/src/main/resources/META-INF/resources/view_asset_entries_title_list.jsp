@@ -142,5 +142,5 @@ AssetEntryResult assetEntryResult = (AssetEntryResult)request.getAttribute("view
 </ul>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_asset_publisher_web.view_asset_entries_title_list_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_asset_publisher_web.view_asset_entries_title_list_jsp");
 %>

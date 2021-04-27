@@ -299,5 +299,5 @@
 </c:choose>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_asset_browser_web.view_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_asset_browser_web.view_jsp");
 %>

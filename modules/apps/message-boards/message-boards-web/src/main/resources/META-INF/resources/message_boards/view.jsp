@@ -564,5 +564,5 @@ request.setAttribute("view.jsp-viewCategory", Boolean.TRUE.toString());
 </c:choose>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_message_boards_web.message_boards.view_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_message_boards_web.message_boards.view_jsp");
 %>
