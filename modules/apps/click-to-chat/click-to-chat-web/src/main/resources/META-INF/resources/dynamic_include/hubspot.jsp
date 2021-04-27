@@ -18,7 +18,7 @@
 
 <%
 String errorMessage = null;
-String identificationToken = null;
+String identificationToken = StringPool.BLANK;
 
 String[] parts = clickToChatChatProviderAccountId.split(StringPool.SLASH);
 
@@ -43,7 +43,8 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 
 		JSONObject responseJSONObject = JSONFactoryUtil.createJSONObject(responseJSON);
 
-		errorMessage = responseJSONObject.getString("message");
+		errorMessage = StringUtil.replace(responseJSONObject.getString("message"), '\'', "\\'");
+
 		identificationToken = responseJSONObject.getString("token");
 	}
 	catch (Exception exception) {
@@ -57,7 +58,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 <script async defer id="hs-script-loader" src="//js-na1.hs-scripts.com/<%= parts[0] %>.js" type="text/javascript"></script>
 
 <c:choose>
-	<c:when test="<%= identificationToken == null %>">
+	<c:when test="<%= StringPool.BLANK.equals(identificationToken) %>">
 		<script>
 			Liferay.Util.openToast({
 				message:
@@ -79,5 +80,5 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 </c:choose>
 
 <%!
-private static Log _log = LogFactoryUtil.getLog("com_liferay_click_to_chat_web.dynamic_include.hubspot_jsp");
+private static final Log _log = LogFactoryUtil.getLog("com_liferay_click_to_chat_web.dynamic_include.hubspot_jsp");
 %>
