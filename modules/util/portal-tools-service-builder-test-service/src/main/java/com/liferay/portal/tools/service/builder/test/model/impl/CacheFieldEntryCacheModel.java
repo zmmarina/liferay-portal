@@ -89,7 +89,7 @@ public class CacheFieldEntryCacheModel
 
 		cacheFieldEntryImpl.resetOriginalValues();
 
-		cacheFieldEntryImpl.setNickName(_nickName);
+		cacheFieldEntryImpl.setNickname(_nickname);
 
 		return cacheFieldEntryImpl;
 	}
@@ -103,7 +103,7 @@ public class CacheFieldEntryCacheModel
 		groupId = objectInput.readLong();
 		name = objectInput.readUTF();
 
-		_nickName = (String)objectInput.readObject();
+		_nickname = (String)objectInput.readObject();
 	}
 
 	@Override
@@ -119,12 +119,12 @@ public class CacheFieldEntryCacheModel
 			objectOutput.writeUTF(name);
 		}
 
-		objectOutput.writeObject(_nickName);
+		objectOutput.writeObject(_nickname);
 	}
 
 	public long cacheFieldEntryId;
 	public long groupId;
 	public String name;
-	public String _nickName;
+	public String _nickname;
 
 }
