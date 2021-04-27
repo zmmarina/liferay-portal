@@ -101,18 +101,19 @@ public class CPDefinitionSpecificationOptionValueServiceHttp {
 		}
 	}
 
-	public static void deleteCPDefinitionSpecificationOptionValues(
-			HttpPrincipal httpPrincipal, long cpDefinitionId)
+	public static void deleteCPDefinitionSpecificationOptionValue(
+			HttpPrincipal httpPrincipal,
+			long cpDefinitionSpecificationOptionValueId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		try {
 			MethodKey methodKey = new MethodKey(
 				CPDefinitionSpecificationOptionValueServiceUtil.class,
-				"deleteCPDefinitionSpecificationOptionValues",
-				_deleteCPDefinitionSpecificationOptionValuesParameterTypes1);
+				"deleteCPDefinitionSpecificationOptionValue",
+				_deleteCPDefinitionSpecificationOptionValueParameterTypes1);
 
 			MethodHandler methodHandler = new MethodHandler(
-				methodKey, cpDefinitionId);
+				methodKey, cpDefinitionSpecificationOptionValueId);
 
 			try {
 				TunnelUtil.invoke(httpPrincipal, methodHandler);
@@ -138,19 +139,18 @@ public class CPDefinitionSpecificationOptionValueServiceHttp {
 		}
 	}
 
-	public static void deleteCPDefinitionSpecificationOptionValue(
-			HttpPrincipal httpPrincipal,
-			long cpDefinitionSpecificationOptionValueId)
+	public static void deleteCPDefinitionSpecificationOptionValues(
+			HttpPrincipal httpPrincipal, long cpDefinitionId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		try {
 			MethodKey methodKey = new MethodKey(
 				CPDefinitionSpecificationOptionValueServiceUtil.class,
-				"deleteCPDefinitionSpecificationOptionValue",
-				_deleteCPDefinitionSpecificationOptionValueParameterTypes2);
+				"deleteCPDefinitionSpecificationOptionValues",
+				_deleteCPDefinitionSpecificationOptionValuesParameterTypes2);
 
 			MethodHandler methodHandler = new MethodHandler(
-				methodKey, cpDefinitionSpecificationOptionValueId);
+				methodKey, cpDefinitionId);
 
 			try {
 				TunnelUtil.invoke(httpPrincipal, methodHandler);
@@ -465,10 +465,10 @@ public class CPDefinitionSpecificationOptionValueServiceHttp {
 			double.class, com.liferay.portal.kernel.service.ServiceContext.class
 		};
 	private static final Class<?>[]
-		_deleteCPDefinitionSpecificationOptionValuesParameterTypes1 =
+		_deleteCPDefinitionSpecificationOptionValueParameterTypes1 =
 			new Class[] {long.class};
 	private static final Class<?>[]
-		_deleteCPDefinitionSpecificationOptionValueParameterTypes2 =
+		_deleteCPDefinitionSpecificationOptionValuesParameterTypes2 =
 			new Class[] {long.class};
 	private static final Class<?>[]
 		_fetchCPDefinitionSpecificationOptionValueParameterTypes3 =
