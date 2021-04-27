@@ -358,20 +358,13 @@ definition {
 			key_productName = "U-Joint",
 			locator1 = "CommerceEntry#PRODUCT_CARD_COMPARE_CHECKBOX");
 
-
 		AssertElementPresent(locator1 = "CommerceEntry#MINI_COMPARE_ITEM_ACTIVE");
-
 
 		Uncheck.uncheckToggleSwitch(
 			key_productName = "U-Joint",
 			locator1 = "CommerceEntry#PRODUCT_CARD_COMPARE_CHECKBOX");
-			
 
 		AssertElementNotPresent(locator1 = "CommerceEntry#MINI_COMPARE_ITEM_ACTIVE");
-
-
-
-
 	}
 
 	@description = "COMMERCE-5867. As a buyer, I want to be able to remove a product from my wish list, by clicking on an Add To Wish List button, if already active"
