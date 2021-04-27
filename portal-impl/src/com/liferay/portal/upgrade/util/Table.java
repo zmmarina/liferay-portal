@@ -343,6 +343,9 @@ public class Table {
 		return _totalRows;
 	}
 
+	/**
+	 * @see com.liferay.object.service.impl.ObjectEntryLocalServiceImpl#_getValue
+	 */
 	public Object getValue(ResultSet rs, String name, Integer type)
 		throws Exception {
 

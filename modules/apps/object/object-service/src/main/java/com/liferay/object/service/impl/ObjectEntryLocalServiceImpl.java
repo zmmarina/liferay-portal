@@ -37,14 +37,10 @@ import com.liferay.petra.string.StringBundler;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.dao.jdbc.postgresql.PostgreSQLJDBCUtil;
-import com.liferay.portal.kernel.dao.db.DB;
-import com.liferay.portal.kernel.dao.db.DBManagerUtil;
-import com.liferay.portal.kernel.dao.db.DBType;
 import com.liferay.portal.kernel.dao.jdbc.CurrentConnectionUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.io.unsync.UnsyncCharArrayWriter;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Company;
@@ -60,7 +56,6 @@ import com.liferay.portal.kernel.service.CompanyLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.systemevent.SystemEvent;
-import com.liferay.portal.kernel.upgrade.UpgradeException;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -78,13 +73,11 @@ import com.liferay.portal.search.sort.SortOrder;
 import com.liferay.portal.search.sort.Sorts;
 import com.liferay.portal.vulcan.util.TransformUtil;
 
-import java.io.Reader;
 import java.io.Serializable;
 
 import java.math.BigDecimal;
 
 import java.sql.Blob;
-import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -217,18 +210,18 @@ public class ObjectEntryLocalServiceImpl
 			_getDynamicObjectDefinitionTable(
 				objectEntry.getObjectDefinitionId());
 
-		DSLQuery dslQuery = DSLQueryFactoryUtil.selectDistinct(
-			dynamicObjectDefinitionTable.getSelectExpressions()
-		).from(
-			dynamicObjectDefinitionTable
-		).where(
-			dynamicObjectDefinitionTable.getPrimaryKeyColumn(
-			).eq(
-				objectEntry.getObjectEntryId()
-			)
-		);
-
-		List<Object[]> rows = _list(dynamicObjectDefinitionTable, dslQuery);
+		List<Object[]> rows = _list(
+			DSLQueryFactoryUtil.selectDistinct(
+				dynamicObjectDefinitionTable.getSelectExpressions()
+			).from(
+				dynamicObjectDefinitionTable
+			).where(
+				dynamicObjectDefinitionTable.getPrimaryKeyColumn(
+				).eq(
+					objectEntry.getObjectEntryId()
+				)
+			),
+			dynamicObjectDefinitionTable);
 
 		if (ListUtil.isEmpty(rows)) {
 			throw new ObjectEntryValuesException(
@@ -263,21 +256,21 @@ public class ObjectEntryLocalServiceImpl
 					dynamicObjectDefinitionTable.getPrimaryKeyColumn()));
 		}
 
-		DSLQuery dslQuery = DSLQueryFactoryUtil.selectDistinct(
-			dynamicObjectDefinitionTable.getSelectExpressions()
-		).from(
-			dynamicObjectDefinitionTable
-		).innerJoinON(
-			ObjectEntryTable.INSTANCE,
-			ObjectEntryTable.INSTANCE.objectEntryId.eq(
-				dynamicObjectDefinitionTable.getPrimaryKeyColumn())
-		).where(
-			predicate
-		).limit(
-			start, end
-		);
-
-		List<Object[]> rows = _list(dynamicObjectDefinitionTable, dslQuery);
+		List<Object[]> rows = _list(
+			DSLQueryFactoryUtil.selectDistinct(
+				dynamicObjectDefinitionTable.getSelectExpressions()
+			).from(
+				dynamicObjectDefinitionTable
+			).innerJoinON(
+				ObjectEntryTable.INSTANCE,
+				ObjectEntryTable.INSTANCE.objectEntryId.eq(
+					dynamicObjectDefinitionTable.getPrimaryKeyColumn())
+			).where(
+				predicate
+			).limit(
+				start, end
+			),
+			dynamicObjectDefinitionTable);
 
 		List<Map<String, Serializable>> valuesList = new ArrayList<>(
 			rows.size());
@@ -440,97 +433,6 @@ public class ObjectEntryLocalServiceImpl
 				objectEntry.getObjectEntryId()));
 	}
 
-	/**
-	 * @see com.liferay.portal.upgrade.util.Table#getValue
-	 */
-	private Object _getColumn(ResultSet rs, String name, Integer type)
-		throws Exception {
-
-		Object value = null;
-
-		int t = type.intValue();
-
-		if (t == Types.BIGINT) {
-			value = rs.getLong(name);
-		}
-		else if (t == Types.BIT) {
-			value = rs.getBoolean(name);
-		}
-		else if ((t == Types.BLOB) || (t == Types.LONGVARBINARY)) {
-			DB db = DBManagerUtil.getDB();
-
-			DBType dbType = db.getDBType();
-
-			if (dbType.equals(DBType.POSTGRESQL) &&
-				PostgreSQLJDBCUtil.isPGStatement(rs.getStatement())) {
-
-				value = PostgreSQLJDBCUtil.getLargeObject(rs, name);
-			}
-			else {
-				value = rs.getBytes(name);
-			}
-		}
-		else if (t == Types.BOOLEAN) {
-			value = rs.getBoolean(name);
-		}
-		else if (t == Types.CLOB) {
-			Clob clob = rs.getClob(name);
-
-			if (clob != null) {
-				try (Reader reader = clob.getCharacterStream();
-					UnsyncCharArrayWriter unsyncCharArrayWriter =
-						new UnsyncCharArrayWriter()) {
-
-					char[] chars = new char[1024];
-
-					int count = -1;
-
-					while ((count = reader.read(chars)) != -1) {
-						unsyncCharArrayWriter.write(chars, 0, count);
-					}
-
-					value = unsyncCharArrayWriter.toString();
-				}
-			}
-		}
-		else if (t == Types.DECIMAL) {
-			value = rs.getBigDecimal(name);
-		}
-		else if (t == Types.DOUBLE) {
-			value = rs.getDouble(name);
-		}
-		else if (t == Types.FLOAT) {
-			value = rs.getFloat(name);
-		}
-		else if (t == Types.INTEGER) {
-			value = rs.getInt(name);
-		}
-		else if (t == Types.LONGVARCHAR) {
-			value = rs.getString(name);
-		}
-		else if (t == Types.NUMERIC) {
-			value = rs.getLong(name);
-		}
-		else if (t == Types.SMALLINT) {
-			value = rs.getShort(name);
-		}
-		else if (t == Types.DATE) {
-			value = rs.getTimestamp(name);
-		}
-		else if (t == Types.TINYINT) {
-			value = rs.getShort(name);
-		}
-		else if (t == Types.VARCHAR) {
-			value = rs.getString(name);
-		}
-		else {
-			throw new UpgradeException(
-				"Upgrade code using unsupported class type " + type);
-		}
-
-		return value;
-	}
-
 	private DynamicObjectDefinitionTable _getDynamicObjectDefinitionTable(
 			long objectDefinitionId)
 		throws PortalException {
@@ -559,6 +461,46 @@ public class ObjectEntryLocalServiceImpl
 		}
 
 		return groupId;
+	}
+
+	/**
+	 * @see com.liferay.portal.upgrade.util.Table#getValue
+	 */
+	private Object _getValue(ResultSet resultSet, String name, int sqlType)
+		throws Exception {
+
+		if (sqlType == Types.BIGINT) {
+			return resultSet.getLong(name);
+		}
+		else if (sqlType == Types.BLOB) {
+			if (PostgreSQLJDBCUtil.isPGStatement(resultSet.getStatement())) {
+				return PostgreSQLJDBCUtil.getLargeObject(resultSet, name);
+			}
+
+			return resultSet.getBytes(name);
+		}
+		else if (sqlType == Types.BOOLEAN) {
+			return resultSet.getBoolean(name);
+		}
+		else if (sqlType == Types.DATE) {
+			return resultSet.getTimestamp(name);
+		}
+		else if (sqlType == Types.DECIMAL) {
+			return resultSet.getBigDecimal(name);
+		}
+		else if (sqlType == Types.DOUBLE) {
+			return resultSet.getDouble(name);
+		}
+		else if (sqlType == Types.INTEGER) {
+			return resultSet.getInt(name);
+		}
+		else if (sqlType == Types.VARCHAR) {
+			return resultSet.getString(name);
+		}
+		else {
+			throw new IllegalArgumentException(
+				"Unable to get value with SQL type " + sqlType);
+		}
 	}
 
 	private Map<String, Serializable> _getValues(
@@ -676,9 +618,54 @@ public class ObjectEntryLocalServiceImpl
 		}
 	}
 
+	private void _list(
+			Connection connection, DSLQuery dslQuery,
+			DynamicObjectDefinitionTable dynamicObjectDefinitionTable,
+			List<Object[]> results)
+		throws SQLException {
+
+		DefaultASTNodeListener defaultASTNodeListener =
+			new DefaultASTNodeListener();
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(
+				dslQuery.toSQL(defaultASTNodeListener))) {
+
+			List<Object> scalarValues =
+				defaultASTNodeListener.getScalarValues();
+
+			for (int i = 0; i < scalarValues.size(); i++) {
+				preparedStatement.setObject(i + 1, scalarValues.get(i));
+			}
+
+			Expression<?>[] selectExpressions =
+				dynamicObjectDefinitionTable.getSelectExpressions();
+
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				while (resultSet.next()) {
+					Object[] result = new Object[selectExpressions.length];
+
+					for (int i = 0; i < selectExpressions.length; i++) {
+						Column<?, ?> column =
+							(Column<?, ?>)selectExpressions[i];
+
+						String columnName = column.getName();
+
+						result[i] = _getValue(
+							resultSet, columnName, column.getSQLType());
+					}
+
+					results.add(result);
+				}
+			}
+		}
+		catch (Exception exception) {
+			throw new SQLException(exception);
+		}
+	}
+
 	private List<Object[]> _list(
-		DynamicObjectDefinitionTable dynamicObjectDefinitionTable,
-		DSLQuery dslQuery) {
+		DSLQuery dslQuery,
+		DynamicObjectDefinitionTable dynamicObjectDefinitionTable) {
 
 		List<Object[]> results = new ArrayList<>();
 
@@ -686,48 +673,9 @@ public class ObjectEntryLocalServiceImpl
 
 		try {
 			session.apply(
-				connection -> {
-					DefaultASTNodeListener defaultASTNodeListener =
-						new DefaultASTNodeListener();
-
-					try (PreparedStatement ps = connection.prepareStatement(
-							dslQuery.toSQL(defaultASTNodeListener))) {
-
-						List<Object> scalarValues =
-							defaultASTNodeListener.getScalarValues();
-
-						for (int i = 0; i < scalarValues.size(); i++) {
-							ps.setObject(i + 1, scalarValues.get(i));
-						}
-
-						Expression<?>[] selectExpressions =
-							dynamicObjectDefinitionTable.getSelectExpressions();
-
-						try (ResultSet rs = ps.executeQuery()) {
-							while (rs.next()) {
-								Object[] result =
-									new Object[selectExpressions.length];
-
-								for (int i = 0; i < selectExpressions.length;
-									 i++) {
-
-									Column<?, ?> column =
-										(Column<?, ?>)selectExpressions[i];
-
-									String columnName = column.getName();
-
-									result[i] = _getColumn(
-										rs, columnName, column.getSQLType());
-								}
-
-								results.add(result);
-							}
-						}
-					}
-					catch (Exception exception) {
-						throw new SQLException(exception);
-					}
-				});
+				connection -> _list(
+					connection, dslQuery, dynamicObjectDefinitionTable,
+					results));
 		}
 		finally {
 			objectEntryPersistence.closeSession(session);
@@ -843,7 +791,7 @@ public class ObjectEntryLocalServiceImpl
 		}
 		else {
 			throw new IllegalArgumentException(
-				"Unknown class " + clazz.getName());
+				"Unable to put value with class " + clazz.getName());
 		}
 	}
 
@@ -890,7 +838,8 @@ public class ObjectEntryLocalServiceImpl
 			preparedStatement.setString(index, String.valueOf(value));
 		}
 		else {
-			throw new IllegalArgumentException("Unknown SQL type " + sqlType);
+			throw new IllegalArgumentException(
+				"Unable to set column with SQL type " + sqlType);
 		}
 	}
 
