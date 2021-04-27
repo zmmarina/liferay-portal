@@ -15,6 +15,8 @@
 package com.liferay.object.service.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
+import com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil;
+import com.liferay.asset.kernel.service.persistence.AssetEntryQuery;
 import com.liferay.object.exception.NoSuchEntryException;
 import com.liferay.object.exception.ObjectEntryValuesException;
 import com.liferay.object.model.ObjectDefinition;
@@ -714,6 +716,15 @@ public class ObjectEntryLocalServiceTest {
 	}
 
 	private void _assertCount(int count) throws Exception {
+		Assert.assertEquals(
+			count,
+			AssetEntryLocalServiceUtil.getEntriesCount(
+				new AssetEntryQuery() {
+					{
+						setClassName(_objectDefinition.getClassName());
+						setVisible(null);
+					}
+				}));
 		Assert.assertEquals(
 			count,
 			ObjectEntryLocalServiceUtil.getObjectEntriesCount(
