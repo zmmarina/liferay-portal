@@ -64,10 +64,10 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 			<aui:option label="" value="" />
 
 			<%
-			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
+			for (String curClickToChatChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 			%>
 
-				<aui:option label='<%= "chat-provider-" + curClickToChatProviderId %>' value="<%= curClickToChatProviderId %>" />
+				<aui:option label='<%= "chat-provider-" + curClickToChatChatProviderId %>' value="<%= curClickToChatChatProviderId %>" />
 
 			<%
 			}
@@ -86,12 +86,12 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		<aui:input label="chat-provider-account-id" name="TypeSettingsProperties--clickToChatChatProviderAccountId--" type="text" value="<%= GetterUtil.getString(request.getAttribute(ClickToChatWebKeys.CLICK_TO_CHAT_CHAT_PROVIDER_ACCOUNT_ID)) %>" />
 
 		<%
-		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
+		for (String curClickToChatChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 		%>
 
-			<div class="hide mb-2" id="<portlet:namespace />clickToChatProviderLearnMessage<%= curClickToChatProviderId %>">
+			<div class="hide mb-2" id="<portlet:namespace />clickToChatChatProviderLearnMessage<%= curClickToChatChatProviderId %>">
 				<liferay-learn:message
-					key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
+					key='<%= "chat-provider-account-id-help-" + curClickToChatChatProviderId %>'
 					resource="click-to-chat-web"
 				/>
 			</div>
@@ -114,28 +114,27 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+			<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 				option.value,
 				false
 			);
 		});
 	}
 
+	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
+		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
+		<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+			event.target.value,
+			true
+		);
+	}
+
 	function <portlet:namespace />onChangeClickToChatEnabled() {
 		var clickToChatChatProviderAccountIdElement = document.getElementById(
 			'<portlet:namespace />clickToChatChatProviderAccountId'
 		);
-
-		var clickToChatChatProviderIdElement = document.getElementById(
-			'<portlet:namespace />clickToChatChatProviderId'
-		);
-
 		var clickToChatEnabledElement = document.getElementById(
 			'<portlet:namespace />clickToChatEnabled'
-		);
-
-		var clickToChatGuestUsersAllowedElement = document.getElementById(
-			'<portlet:namespace />clickToChatGuestUsersAllowed'
 		);
 
 		Liferay.Util.toggleDisabled(
@@ -143,9 +142,17 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 			!clickToChatEnabledElement.checked
 		);
 
+		var clickToChatChatProviderIdElement = document.getElementById(
+			'<portlet:namespace />clickToChatChatProviderId'
+		);
+
 		Liferay.Util.toggleDisabled(
 			clickToChatChatProviderIdElement,
 			!clickToChatEnabledElement.checked
+		);
+
+		var clickToChatGuestUsersAllowedElement = document.getElementById(
+			'<portlet:namespace />clickToChatGuestUsersAllowed'
 		);
 
 		Liferay.Util.toggleDisabled(
@@ -154,61 +161,54 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 	}
 
-	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
-		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
-
-		<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
-			event.target.value,
-			true
-		);
-	}
-
 	function <portlet:namespace />toggleClickToChatProviders() {
-		var clickToChatChatProviderAccountIdElement = document.getElementById(
-			'<portlet:namespace />clickToChatChatProviderAccountId'
-		);
-
-		var clickToChatChatProviderIdElement = document.getElementById(
-			'<portlet:namespace />clickToChatChatProviderId'
-		);
-
 		var clickToChatEnabledElement = document.getElementById(
 			'<portlet:namespace />clickToChatEnabled'
 		);
 
-		var clickToChatGuestUsersAllowedElement = document.getElementById(
-			'<portlet:namespace />clickToChatGuestUsersAllowed'
-		);
-
 		if (<%= disabled %> || !clickToChatEnabledElement.checked) {
+			var clickToChatChatProviderAccountIdElement = document.getElementById(
+				'<portlet:namespace />clickToChatChatProviderAccountId'
+			);
+
 			Liferay.Util.toggleDisabled(
 				clickToChatChatProviderAccountIdElement,
 				true
 			);
+
+			var clickToChatChatProviderIdElement = document.getElementById(
+				'<portlet:namespace />clickToChatChatProviderId'
+			);
+
 			Liferay.Util.toggleDisabled(clickToChatChatProviderIdElement, true);
+
+			var clickToChatGuestUsersAllowedElement = document.getElementById(
+				'<portlet:namespace />clickToChatGuestUsersAllowed'
+			);
+
 			Liferay.Util.toggleDisabled(clickToChatGuestUsersAllowedElement, true);
 		}
 	}
 
-	function <portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+	function <portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 		clickToChatChatProviderAccountId,
 		visible
 	) {
-		var clickToChatProviderLearnMessage = document.getElementById(
-			'<portlet:namespace />clickToChatProviderLearnMessage' +
+		var clickToChatChatProviderLearnMessage = document.getElementById(
+			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
 				clickToChatChatProviderAccountId
 		);
 
-		if (clickToChatProviderLearnMessage) {
+		if (clickToChatChatProviderLearnMessage) {
 			if (visible) {
-				return clickToChatProviderLearnMessage.classList.remove('hide');
+				return clickToChatChatProviderLearnMessage.classList.remove('hide');
 			}
 
-			clickToChatProviderLearnMessage.classList.add('hide');
+			clickToChatChatProviderLearnMessage.classList.add('hide');
 		}
 	}
 
-	<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+	<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
 		true
 	);

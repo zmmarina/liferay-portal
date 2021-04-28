@@ -22,12 +22,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 <div class="row">
 	<div class="col-md-12">
-
-		<%
-		boolean clickToChatEnabled = clickToChatConfiguration.enabled();
-		%>
-
-		<aui:input checked="<%= clickToChatEnabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="enabled" type="toggle-switch" value="<%= clickToChatEnabled %>" />
+		<aui:input checked="<%= clickToChatConfiguration.enabled() %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="enabled" type="toggle-switch" value="<%= clickToChatConfiguration.enabled() %>" />
 	</div>
 </div>
 
@@ -37,10 +32,10 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 			<aui:option label="" value="" />
 
 			<%
-			for (String curClickToChatSiteSettingsStrategy : ClickToChatConstants.CLICK_TO_CHAT_SITE_SETTINGS_STRATEGIES) {
+			for (String clickToChatSiteSettingsStrategy : ClickToChatConstants.CLICK_TO_CHAT_SITE_SETTINGS_STRATEGIES) {
 			%>
 
-				<aui:option label='<%= "site-settings-strategy-" + curClickToChatSiteSettingsStrategy %>' value="<%= curClickToChatSiteSettingsStrategy %>" />
+				<aui:option label='<%= "site-settings-strategy-" + clickToChatSiteSettingsStrategy %>' value="<%= clickToChatSiteSettingsStrategy %>" />
 
 			<%
 			}
@@ -54,21 +49,16 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 	</div>
 </div>
 
-<div class="form-group row" id="<%= liferayPortletResponse.getNamespace() + "clickToChatDivProviderFields" %>">
+<div class="form-group row" id="<%= liferayPortletResponse.getNamespace() + "clickToChatProviders" %>">
 	<div class="col-md-6">
-
-		<%
-		String clickToChatChatProviderId = clickToChatConfiguration.chatProviderId();
-		%>
-
-		<aui:select label="chat-provider" name="chatProviderId" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatChatProviderId(event);" %>' value="<%= clickToChatChatProviderId %>">
+		<aui:select label="chat-provider" name="chatProviderId" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatChatProviderId(event);" %>' value="<%= clickToChatConfiguration.chatProviderId() %>">
 			<aui:option label="" value="" />
 
 			<%
-			for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
+			for (String clickToChatChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 			%>
 
-				<aui:option label='<%= "chat-provider-" + curClickToChatProviderId %>' value="<%= curClickToChatProviderId %>" />
+				<aui:option label='<%= "chat-provider-" + clickToChatChatProviderId %>' value="<%= clickToChatChatProviderId %>" />
 
 			<%
 			}
@@ -76,23 +66,19 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 		</aui:select>
 
-		<%
-		boolean clickToChatGuestUsersAllowed = clickToChatConfiguration.guestUsersAllowed();
-		%>
-
-		<aui:input checked="<%= clickToChatGuestUsersAllowed %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "guest-users-allowed") %>' labelCssClass="simple-toggle-switch" name="guestUsersAllowed" type="toggle-switch" value="<%= clickToChatGuestUsersAllowed %>" />
+		<aui:input checked="<%= clickToChatConfiguration.guestUsersAllowed() %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "guest-users-allowed") %>' labelCssClass="simple-toggle-switch" name="guestUsersAllowed" type="toggle-switch" value="<%= clickToChatConfiguration.guestUsersAllowed() %>" />
 	</div>
 
 	<div class="col-md-6">
 		<aui:input label="chat-provider-account-id" name="chatProviderAccountId" type="text" value="<%= clickToChatConfiguration.chatProviderAccountId() %>" />
 
 		<%
-		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
+		for (String clickToChatChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
 		%>
 
-			<div class="hide mb-2" id="<portlet:namespace />clickToChatProviderLearnMessage<%= curClickToChatProviderId %>">
+			<div class="hide mb-2" id="<portlet:namespace />clickToChatChatProviderLearnMessage<%= clickToChatChatProviderId %>">
 				<liferay-learn:message
-					key='<%= "chat-provider-account-id-help-" + curClickToChatProviderId %>'
+					key='<%= "chat-provider-account-id-help-" + clickToChatChatProviderId %>'
 					resource="click-to-chat-web"
 				/>
 			</div>
@@ -115,7 +101,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+			<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 				option.value,
 				false
 			);
@@ -124,52 +110,50 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
 		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
-
-		<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+		<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 			event.target.value,
 			true
 		);
 	}
 
 	function <portlet:namespace />onChangeClickToChatSiteSettingsStrategy(event) {
+		var clickToChatProvidersElement = document.getElementById(
+			'<portlet:namespace />clickToChatProviders'
+		);
+
 		var clickToChatSiteSettingsStrategyElement = document.getElementById(
 			'<portlet:namespace />clickToChatSiteSettingsStrategy'
 		);
 
-		var clickToChatDivProviderFieldsElement = document.getElementById(
-			'<portlet:namespace />clickToChatDivProviderFields'
-		);
-
 		if (clickToChatSiteSettingsStrategyElement.value === 'always-override') {
-			clickToChatDivProviderFieldsElement.classList.add('hide');
+			clickToChatProvidersElement.classList.add('hide');
 		}
 		else {
-			clickToChatDivProviderFieldsElement.classList.remove('hide');
+			clickToChatProvidersElement.classList.remove('hide');
 		}
 	}
 
-	function <portlet:namespace />setVisibleClickToChatProviderLearnMessage(
+	function <portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
 		clickToChatChatProviderAccountId,
 		visible
 	) {
-		var clickToChatProviderLearnMessage = document.getElementById(
-			'<portlet:namespace />clickToChatProviderLearnMessage' +
+		var clickToChatChatProviderLearnMessage = document.getElementById(
+			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
 				clickToChatChatProviderAccountId
 		);
 
-		if (clickToChatProviderLearnMessage) {
+		if (clickToChatChatProviderLearnMessage) {
 			if (visible) {
-				return clickToChatProviderLearnMessage.classList.remove('hide');
+				return clickToChatChatProviderLearnMessage.classList.remove('hide');
 			}
 
-			clickToChatProviderLearnMessage.classList.add('hide');
+			clickToChatChatProviderLearnMessage.classList.add('hide');
 		}
 	}
 
 	<portlet:namespace />onChangeClickToChatSiteSettingsStrategy();
-
-	<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
-		'<%= clickToChatChatProviderId %>',
+	<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+		'<%= clickToChatConfiguration.chatProviderId() %>',
 		true
 	);
 </script>
