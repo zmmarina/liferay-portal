@@ -163,17 +163,17 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 	}
 
-	function <portlet:namespace />toggleClickToChatProviderFields() {
-		var clickToChatEnabledElement = document.getElementById(
-			'<portlet:namespace />clickToChatEnabled'
-		);
-
+	function <portlet:namespace />toggleClickToChatProviders() {
 		var clickToChatChatProviderAccountIdElement = document.getElementById(
 			'<portlet:namespace />clickToChatChatProviderAccountId'
 		);
 
 		var clickToChatChatProviderIdElement = document.getElementById(
 			'<portlet:namespace />clickToChatChatProviderId'
+		);
+
+		var clickToChatEnabledElement = document.getElementById(
+			'<portlet:namespace />clickToChatEnabled'
 		);
 
 		var clickToChatGuestUsersAllowedElement = document.getElementById(
@@ -208,7 +208,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		}
 	}
 
-	<portlet:namespace />toggleClickToChatProviderFields();
+	<portlet:namespace />toggleClickToChatProviders();
 
 	<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
