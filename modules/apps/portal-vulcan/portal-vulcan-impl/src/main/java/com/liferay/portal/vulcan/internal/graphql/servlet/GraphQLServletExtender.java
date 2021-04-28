@@ -1516,7 +1516,7 @@ public class GraphQLServletExtender {
 				graphQLSchemaBuilder, true, processingElementsContainer,
 				servletDatas);
 
-			_registerObjectEndpoints(
+			_registerObjectDefinitionGraphQLs(
 				mutationBuilder, processingElementsContainer,
 				graphQLObjectTypeBuilder, graphQLSchemaBuilder);
 
@@ -2036,23 +2036,23 @@ public class GraphQLServletExtender {
 		}
 	}
 
-	private void _registerObjectEndpoints(
+	private void _registerObjectDefinitionGraphQLs(
 		GraphQLObjectType.Builder mutationBuilder,
 		ProcessingElementsContainer processingElementsContainer,
 		GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder) {
 
-		for (ObjectDefinitionGraphQL graphQLObjectDefinition :
+		for (ObjectDefinitionGraphQL objectDefinitionGraphQL :
 				_objectDefinitionGraphQLServiceTrackerMap.values()) {
 
 			ObjectDefinition objectDefinition =
-				graphQLObjectDefinition.getObjectDefinition();
+				objectDefinitionGraphQL.getObjectDefinition();
 
 			String idName = StringUtil.removeSubstring(
 				objectDefinition.getDBPrimaryKeyColumnName(), "_");
 
 			List<com.liferay.object.model.ObjectField> objectFields =
-				graphQLObjectDefinition.getObjectFields();
+				objectDefinitionGraphQL.getObjectFields();
 
 			GraphQLObjectType objectType = _getObjectGraphQLObjectType(
 				idName, objectDefinition, objectFields);
