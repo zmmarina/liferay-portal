@@ -208,10 +208,9 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		}
 	}
 
-	<portlet:namespace />toggleClickToChatProviders();
-
 	<portlet:namespace />setVisibleClickToChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
 		true
 	);
+	<portlet:namespace />toggleClickToChatProviders();
 </script>
