@@ -161,7 +161,25 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 	}
 
-	function <portlet:namespace />toggleClickToChatProviders() {
+	function <portlet:namespace />toggleClickToChatChatProviderLearnMessage(
+		clickToChatChatProviderAccountId,
+		visible
+	) {
+		var clickToChatChatProviderLearnMessageElement = document.getElementById(
+			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
+				clickToChatChatProviderAccountId
+		);
+
+		if (clickToChatChatProviderLearnMessageElement) {
+			if (visible) {
+				return clickToChatChatProviderLearnMessageElement.classList.remove('hide');
+			}
+
+			clickToChatChatProviderLearnMessageElement.classList.add('hide');
+		}
+	}
+
+	function <portlet:namespace />toggleClickToChatChatProviders() {
 		var clickToChatEnabledElement = document.getElementById(
 			'<portlet:namespace />clickToChatEnabled'
 		);
@@ -190,27 +208,9 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		}
 	}
 
-	function <portlet:namespace />toggleClickToChatChatProviderLearnMessage(
-		clickToChatChatProviderAccountId,
-		visible
-	) {
-		var clickToChatChatProviderLearnMessageElement = document.getElementById(
-			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
-				clickToChatChatProviderAccountId
-		);
-
-		if (clickToChatChatProviderLearnMessageElement) {
-			if (visible) {
-				return clickToChatChatProviderLearnMessageElement.classList.remove('hide');
-			}
-
-			clickToChatChatProviderLearnMessageElement.classList.add('hide');
-		}
-	}
-
 	<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
 		true
 	);
-	<portlet:namespace />toggleClickToChatProviders();
+	<portlet:namespace />toggleClickToChatChatProviders();
 </script>

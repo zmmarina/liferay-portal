@@ -101,7 +101,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+			<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 				option.value,
 				false
 			);
@@ -110,7 +110,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
 		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
-		<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+		<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 			event.target.value,
 			true
 		);
@@ -133,7 +133,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		}
 	}
 
-	function <portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+	function <portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 		clickToChatChatProviderAccountId,
 		visible
 	) {
@@ -152,7 +152,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 	}
 
 	<portlet:namespace />onChangeClickToChatSiteSettingsStrategy();
-	<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+	<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 		'<%= clickToChatConfiguration.chatProviderId() %>',
 		true
 	);
