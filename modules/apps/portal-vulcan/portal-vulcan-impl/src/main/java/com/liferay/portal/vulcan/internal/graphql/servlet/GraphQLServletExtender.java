@@ -1782,7 +1782,7 @@ public class GraphQLServletExtender {
 
 		GraphQLObjectType.Builder builder = new GraphQLObjectType.Builder();
 
-		builder.field(_addField("actions", _mapGraphQLType));
+		builder.field(_addField("actions", _mapGraphQLScalarType));
 		builder.field(_addField("facets", GraphQLList.list(facetGraphQLType)));
 		builder.field(_addField("items", GraphQLList.list(objectGraphQLType)));
 		builder.field(_addField("lastPage", GraphQLLong));
@@ -2192,7 +2192,7 @@ public class GraphQLServletExtender {
 		GraphQLServletExtender.class);
 
 	private static final GraphQLScalarType _dateGraphQLScalarType;
-	private static final GraphQLScalarType _mapGraphQLType;
+	private static final GraphQLScalarType _mapGraphQLScalarType;
 	private static final GraphQLScalarType _objectGraphQLScalarType;
 	private static final ObjectMapper _objectMapper = new ObjectMapper();
 
@@ -2256,7 +2256,7 @@ public class GraphQLServletExtender {
 		GraphQLScalarType.Builder objectBuilder =
 			new GraphQLScalarType.Builder();
 
-		_mapGraphQLType = objectBuilder.name(
+		_mapGraphQLScalarType = objectBuilder.name(
 			"Map"
 		).description(
 			"Any kind of object supported by a Map"
@@ -2785,7 +2785,7 @@ public class GraphQLServletExtender {
 			boolean input, Class<?> clazz, AnnotatedType annotatedType,
 			ProcessingElementsContainer processingElementsContainer) {
 
-			return _mapGraphQLType;
+			return _mapGraphQLScalarType;
 		}
 
 		@Override
