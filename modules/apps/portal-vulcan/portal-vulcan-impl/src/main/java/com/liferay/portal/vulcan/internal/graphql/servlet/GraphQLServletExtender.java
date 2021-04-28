@@ -581,8 +581,10 @@ public class GraphQLServletExtender {
 					public void keyEmitted(
 						ServiceTrackerMap<String, ObjectDefinitionGraphQL>
 							serviceTrackerMap,
-						String key, ObjectDefinitionGraphQL service,
-						ObjectDefinitionGraphQL content) {
+						String key,
+						ObjectDefinitionGraphQL serviceObjectDefinitionGraphQL,
+						ObjectDefinitionGraphQL
+							contentObjectDefinitionGraphQL) {
 
 						_servlet = null;
 					}
@@ -591,14 +593,15 @@ public class GraphQLServletExtender {
 					public void keyRemoved(
 						ServiceTrackerMap<String, ObjectDefinitionGraphQL>
 							serviceTrackerMap,
-						String key, ObjectDefinitionGraphQL service,
-						ObjectDefinitionGraphQL content) {
+						String key,
+						ObjectDefinitionGraphQL serviceObjectDefinitionGraphQL,
+						ObjectDefinitionGraphQL
+							contentObjectDefinitionGraphQL) {
 
 						_servlet = null;
 					}
 
 				});
-
 		_servletContextHelperServiceRegistration =
 			bundleContext.registerService(
 				ServletContextHelper.class,
