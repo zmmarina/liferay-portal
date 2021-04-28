@@ -773,23 +773,23 @@ public class GraphQLServletExtender {
 	private GraphQLArgument _addArgument(
 		GraphQLInputType graphQLInputType, String name) {
 
-		return _addArgument(graphQLInputType, name, null);
+		return _addArgument(null, graphQLInputType, name);
 	}
 
 	private GraphQLArgument _addArgument(
-		GraphQLInputType graphQLInputType, String name, Object defaultValue) {
+		Object defaultValue, GraphQLInputType graphQLInputType, String name) {
 
 		GraphQLArgument.Builder argumentBuilder = GraphQLArgument.newArgument();
+
+		if (defaultValue != null) {
+			argumentBuilder.defaultValue(defaultValue);
+		}
 
 		argumentBuilder.name(
 			name
 		).type(
 			graphQLInputType
 		);
-
-		if (defaultValue != null) {
-			argumentBuilder.defaultValue(defaultValue);
-		}
 
 		return argumentBuilder.build();
 	}
@@ -881,8 +881,8 @@ public class GraphQLServletExtender {
 				_addArgument(
 					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
 				_addArgument(Scalars.GraphQLString, "filter"),
-				_addArgument(Scalars.GraphQLInt, "page", 1),
-				_addArgument(Scalars.GraphQLInt, "pageSize", 20),
+				_addArgument(1, Scalars.GraphQLInt, "page"),
+				_addArgument(20, Scalars.GraphQLInt, "pageSize"),
 				_addArgument(Scalars.GraphQLString, "search"),
 				_addArgument(Scalars.GraphQLString, "sort")));
 
