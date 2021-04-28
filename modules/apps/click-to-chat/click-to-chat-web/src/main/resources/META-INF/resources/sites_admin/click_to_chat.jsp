@@ -114,7 +114,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 
 		clickToChatProviderIdOptions.forEach((option) => {
-			<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+			<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 				option.value,
 				false
 			);
@@ -123,7 +123,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 	function <portlet:namespace />onChangeClickToChatChatProviderId(event) {
 		<portlet:namespace />hideUnselectedClickToChatProviderLearnMessages();
-		<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+		<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 			event.target.value,
 			true
 		);
@@ -190,25 +190,25 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		}
 	}
 
-	function <portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+	function <portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 		clickToChatChatProviderAccountId,
 		visible
 	) {
-		var clickToChatChatProviderLearnMessage = document.getElementById(
+		var clickToChatChatProviderLearnMessageElement = document.getElementById(
 			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
 				clickToChatChatProviderAccountId
 		);
 
-		if (clickToChatChatProviderLearnMessage) {
+		if (clickToChatChatProviderLearnMessageElement) {
 			if (visible) {
-				return clickToChatChatProviderLearnMessage.classList.remove('hide');
+				return clickToChatChatProviderLearnMessageElement.classList.remove('hide');
 			}
 
-			clickToChatChatProviderLearnMessage.classList.add('hide');
+			clickToChatChatProviderLearnMessageElement.classList.add('hide');
 		}
 	}
 
-	<portlet:namespace />setVisibleClickToChatChatProviderLearnMessage(
+	<portlet:namespace />toggleClickToChatChatProviderLearnMessage(
 		'<%= clickToChatChatProviderId %>',
 		true
 	);

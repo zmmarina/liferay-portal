@@ -137,17 +137,17 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		clickToChatChatProviderAccountId,
 		visible
 	) {
-		var clickToChatChatProviderLearnMessage = document.getElementById(
+		var clickToChatChatProviderLearnMessageElement = document.getElementById(
 			'<portlet:namespace />clickToChatChatProviderLearnMessage' +
 				clickToChatChatProviderAccountId
 		);
 
-		if (clickToChatChatProviderLearnMessage) {
+		if (clickToChatChatProviderLearnMessageElement) {
 			if (visible) {
-				return clickToChatChatProviderLearnMessage.classList.remove('hide');
+				return clickToChatChatProviderLearnMessageElement.classList.remove('hide');
 			}
 
-			clickToChatChatProviderLearnMessage.classList.add('hide');
+			clickToChatChatProviderLearnMessageElement.classList.add('hide');
 		}
 	}
 
