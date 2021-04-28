@@ -577,7 +577,7 @@ public class GraphQLServletExtender {
 		_graphQLObjectServiceTrackerMap =
 			ServiceTrackerMapFactory.openSingleValueMap(
 				bundleContext, ObjectDefinitionGraphQL.class,
-				"model.class.name",
+				"db.table.name",
 				new ServiceTrackerMapListener
 					<String, ObjectDefinitionGraphQL,
 					 ObjectDefinitionGraphQL>() {

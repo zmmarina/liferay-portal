@@ -182,7 +182,7 @@ public class ObjectDefinitionLocalServiceImpl
 						_objectFieldLocalService.getObjectFields(
 							objectDefinition.getObjectDefinitionId())),
 					HashMapDictionaryBuilder.<String, Object>put(
-						"model.class.name", objectDefinition.getDBTableName()
+						"db.table.name", objectDefinition.getDBTableName()
 					).build()),
 				_bundleContext.registerService(
 					PanelApp.class,
