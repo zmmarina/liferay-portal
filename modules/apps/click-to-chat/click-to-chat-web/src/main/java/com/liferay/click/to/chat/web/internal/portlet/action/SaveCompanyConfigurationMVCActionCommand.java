@@ -70,20 +70,20 @@ public class SaveCompanyConfigurationMVCActionCommand
 		_configurationProvider.saveCompanyConfiguration(
 			ClickToChatConfiguration.class, themeDisplay.getCompanyId(),
 			HashMapDictionaryBuilder.<String, Object>put(
+				"chatProviderAccountId",
+				ParamUtil.getString(
+					actionRequest, "clickToChat--chatProviderAccountId--")
+			).put(
+				"chatProviderId",
+				ParamUtil.getString(
+					actionRequest, "clickToChat--chatProviderId--")
+			).put(
 				"enabled",
 				ParamUtil.getBoolean(actionRequest, "clickToChat--enabled--")
 			).put(
 				"guestUsersAllowed",
 				ParamUtil.getBoolean(
 					actionRequest, "clickToChat--guestUsersAllowed--")
-			).put(
-				"chatProviderId",
-				ParamUtil.getString(
-					actionRequest, "clickToChat--chatProviderId--")
-			).put(
-				"chatProviderAccountId",
-				ParamUtil.getString(
-					actionRequest, "clickToChat--chatProviderAccountId--")
 			).put(
 				"siteSettingsStrategy",
 				ParamUtil.getString(
