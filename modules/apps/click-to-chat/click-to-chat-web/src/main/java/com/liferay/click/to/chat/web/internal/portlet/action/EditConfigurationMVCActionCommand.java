@@ -24,11 +24,9 @@ import com.liferay.portal.kernel.security.permission.PermissionChecker;
 import com.liferay.portal.kernel.security.permission.PermissionThreadLocal;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
-
-import java.util.Dictionary;
-import java.util.Hashtable;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -69,45 +67,34 @@ public class EditConfigurationMVCActionCommand
 			return;
 		}
 
-		_saveClickToChatConfiguration(
-			actionRequest, themeDisplay.getCompanyId());
+		_configurationProvider.saveCompanyConfiguration(
+			ClickToChatConfiguration.class, companyId,
+			HashMapDictionaryBuilder.<String, Object>put(
+				"enabled",
+				ParamUtil.getBoolean(actionRequest, "clickToChat--enabled--")
+			).put(
+				"guestUsersAllowed",
+				ParamUtil.getBoolean(
+					actionRequest, "clickToChat--guestUsersAllowed--")
+			).put(
+				"chatProviderId",
+				ParamUtil.getString(
+					actionRequest, "clickToChat--chatProviderId--")
+			).put(
+				"chatProviderAccountId",
+				ParamUtil.getString(
+					actionRequest, "clickToChat--chatProviderAccountId--")
+			).put(
+				"siteSettingsStrategy",
+				ParamUtil.getString(
+					actionRequest, "clickToChat--siteSettingsStrategy--")
+			).build());
 	}
 
 	@Override
 	protected void doValidateForm(
 			ActionRequest actionRequest, ActionResponse actionResponse)
 		throws Exception {
-	}
-
-	private void _saveClickToChatConfiguration(
-			ActionRequest actionRequest, long companyId)
-		throws Exception {
-
-		Dictionary<String, Object> properties = new Hashtable<>();
-
-		properties.put(
-			"enabled",
-			ParamUtil.getBoolean(
-				actionRequest, "clickToChat--enabled--"));
-		properties.put(
-			"guestUsersAllowed",
-			ParamUtil.getBoolean(
-				actionRequest, "clickToChat--guestUsersAllowed--"));
-		properties.put(
-			"chatProviderId",
-			ParamUtil.getString(
-				actionRequest, "clickToChat--chatProviderId--"));
-		properties.put(
-			"chatProviderAccountId",
-			ParamUtil.getString(
-				actionRequest, "clickToChat--chatProviderAccountId--"));
-		properties.put(
-			"siteSettingsStrategy",
-			ParamUtil.getString(
-				actionRequest, "clickToChat--siteSettingsStrategy--"));
-
-		_configurationProvider.saveCompanyConfiguration(
-			ClickToChatConfiguration.class, companyId, properties);
 	}
 
 	@Reference
