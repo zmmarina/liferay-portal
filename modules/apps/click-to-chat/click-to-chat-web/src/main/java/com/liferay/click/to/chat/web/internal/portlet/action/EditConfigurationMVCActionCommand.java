@@ -88,23 +88,23 @@ public class EditConfigurationMVCActionCommand
 		properties.put(
 			"enabled",
 			ParamUtil.getBoolean(
-				actionRequest, "settings--clickToChatEnabled--"));
+				actionRequest, "clickToChat--enabled--"));
 		properties.put(
 			"guestUsersAllowed",
 			ParamUtil.getBoolean(
-				actionRequest, "settings--clickToChatGuestUsersAllowed--"));
+				actionRequest, "clickToChat--guestUsersAllowed--"));
 		properties.put(
 			"chatProviderId",
 			ParamUtil.getString(
-				actionRequest, "settings--clickToChatChatProviderId--"));
+				actionRequest, "clickToChat--chatProviderId--"));
 		properties.put(
 			"chatProviderAccountId",
 			ParamUtil.getString(
-				actionRequest, "settings--clickToChatChatProviderAccountId--"));
+				actionRequest, "clickToChat--chatProviderAccountId--"));
 		properties.put(
 			"siteSettingsStrategy",
 			ParamUtil.getString(
-				actionRequest, "settings--clickToChatSiteSettingsStrategy--"));
+				actionRequest, "clickToChat--siteSettingsStrategy--"));
 
 		_configurationProvider.saveCompanyConfiguration(
 			ClickToChatConfiguration.class, companyId, properties);

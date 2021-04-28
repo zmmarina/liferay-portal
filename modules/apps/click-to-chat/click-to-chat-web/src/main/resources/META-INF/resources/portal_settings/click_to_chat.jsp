@@ -27,13 +27,13 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		boolean clickToChatEnabled = clickToChatConfiguration.enabled();
 		%>
 
-		<aui:input checked="<%= clickToChatEnabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="settings--clickToChatEnabled--" type="toggle-switch" value="<%= clickToChatEnabled %>" />
+		<aui:input checked="<%= clickToChatEnabled %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "enable-click-to-chat") %>' labelCssClass="simple-toggle-switch" name="clickToChat--enabled--" type="toggle-switch" value="<%= clickToChatEnabled %>" />
 	</div>
 </div>
 
 <div class="form-group row">
 	<div class="col-md-12">
-		<aui:select label="site-settings-strategy" name="settings--clickToChatSiteSettingsStrategy--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatSiteSettingsStrategy(event);" %>' required="<%= true %>" value="<%= clickToChatConfiguration.siteSettingsStrategy() %>">
+		<aui:select label="site-settings-strategy" name="clickToChat--siteSettingsStrategy--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatSiteSettingsStrategy(event);" %>' required="<%= true %>" value="<%= clickToChatConfiguration.siteSettingsStrategy() %>">
 			<aui:option label="" value="" />
 
 			<%
@@ -61,7 +61,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		String clickToChatChatProviderId = clickToChatConfiguration.chatProviderId();
 		%>
 
-		<aui:select label="chat-provider" name="settings--clickToChatChatProviderId--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatChatProviderId(event);" %>' value="<%= clickToChatChatProviderId %>">
+		<aui:select label="chat-provider" name="clickToChat--chatProviderId--" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatChatProviderId(event);" %>' value="<%= clickToChatChatProviderId %>">
 			<aui:option label="" value="" />
 
 			<%
@@ -80,11 +80,11 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		boolean clickToChatGuestUsersAllowed = clickToChatConfiguration.guestUsersAllowed();
 		%>
 
-		<aui:input checked="<%= clickToChatGuestUsersAllowed %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "guest-users-allowed") %>' labelCssClass="simple-toggle-switch" name="settings--clickToChatGuestUsersAllowed--" type="toggle-switch" value="<%= clickToChatGuestUsersAllowed %>" />
+		<aui:input checked="<%= clickToChatGuestUsersAllowed %>" inlineLabel="right" label='<%= LanguageUtil.get(resourceBundle, "guest-users-allowed") %>' labelCssClass="simple-toggle-switch" name="clickToChat--guestUsersAllowed--" type="toggle-switch" value="<%= clickToChatGuestUsersAllowed %>" />
 	</div>
 
 	<div class="col-md-6">
-		<aui:input label="chat-provider-account-id" name="settings--clickToChatChatProviderAccountId--" type="text" value="<%= clickToChatConfiguration.chatProviderAccountId() %>" />
+		<aui:input label="chat-provider-account-id" name="clickToChat--chatProviderAccountId--" type="text" value="<%= clickToChatConfiguration.chatProviderAccountId() %>" />
 
 		<%
 		for (String curClickToChatProviderId : ClickToChatConstants.CLICK_TO_CHAT_CHAT_PROVIDER_IDS) {
