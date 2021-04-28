@@ -18,9 +18,9 @@ import com.liferay.application.list.PanelApp;
 import com.liferay.application.list.constants.PanelCategoryKeys;
 import com.liferay.object.exception.DuplicateObjectDefinitionException;
 import com.liferay.object.exception.ObjectDefinitionNameException;
-import com.liferay.object.graphql.GraphQLObjectDefinition;
+import com.liferay.object.graphql.ObjectDefinitionGraphQL;
 import com.liferay.object.internal.application.list.ObjectDefinitionPanelApp;
-import com.liferay.object.internal.graphql.DefaultGraphQLObjectDefinition;
+import com.liferay.object.internal.graphql.ObjectDefinitionGraphQLImpl;
 import com.liferay.object.internal.petra.sql.dsl.DynamicObjectDefinitionTable;
 import com.liferay.object.internal.portlet.ObjectDefinitionPortlet;
 import com.liferay.object.internal.workflow.ObjectEntryWorkflowHandler;
@@ -176,8 +176,8 @@ public class ObjectDefinitionLocalServiceImpl
 			objectDefinition.getObjectDefinitionId(),
 			new ServiceRegistration<?>[] {
 				_bundleContext.registerService(
-					GraphQLObjectDefinition.class,
-					new DefaultGraphQLObjectDefinition(
+					ObjectDefinitionGraphQL.class,
+					new ObjectDefinitionGraphQLImpl(
 						objectDefinition,
 						_objectFieldLocalService.getObjectFields(
 							objectDefinition.getObjectDefinitionId())),

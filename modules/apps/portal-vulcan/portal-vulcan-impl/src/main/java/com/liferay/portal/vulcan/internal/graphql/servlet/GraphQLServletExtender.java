@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
 import com.liferay.depot.service.DepotEntryLocalService;
-import com.liferay.object.graphql.GraphQLObjectDefinition;
+import com.liferay.object.graphql.ObjectDefinitionGraphQL;
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectEntry;
 import com.liferay.object.service.ObjectEntryLocalService;
@@ -576,28 +576,28 @@ public class GraphQLServletExtender {
 
 		_graphQLObjectServiceTrackerMap =
 			ServiceTrackerMapFactory.openSingleValueMap(
-				bundleContext, GraphQLObjectDefinition.class,
+				bundleContext, ObjectDefinitionGraphQL.class,
 				"model.class.name",
 				new ServiceTrackerMapListener
-					<String, GraphQLObjectDefinition,
-					 GraphQLObjectDefinition>() {
+					<String, ObjectDefinitionGraphQL,
+					 ObjectDefinitionGraphQL>() {
 
 					@Override
 					public void keyEmitted(
-						ServiceTrackerMap<String, GraphQLObjectDefinition>
+						ServiceTrackerMap<String, ObjectDefinitionGraphQL>
 							serviceTrackerMap,
-						String key, GraphQLObjectDefinition service,
-						GraphQLObjectDefinition content) {
+						String key, ObjectDefinitionGraphQL service,
+						ObjectDefinitionGraphQL content) {
 
 						_servlet = null;
 					}
 
 					@Override
 					public void keyRemoved(
-						ServiceTrackerMap<String, GraphQLObjectDefinition>
+						ServiceTrackerMap<String, ObjectDefinitionGraphQL>
 							serviceTrackerMap,
-						String key, GraphQLObjectDefinition service,
-						GraphQLObjectDefinition content) {
+						String key, ObjectDefinitionGraphQL service,
+						ObjectDefinitionGraphQL content) {
 
 						_servlet = null;
 					}
@@ -2040,7 +2040,7 @@ public class GraphQLServletExtender {
 		GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder) {
 
-		for (GraphQLObjectDefinition graphQLObjectDefinition :
+		for (ObjectDefinitionGraphQL graphQLObjectDefinition :
 				_graphQLObjectServiceTrackerMap.values()) {
 
 			ObjectDefinition objectDefinition =
@@ -2400,7 +2400,7 @@ public class GraphQLServletExtender {
 	private ServiceTracker<GraphQLContributor, GraphQLContributor>
 		_graphQLContributorServiceTracker;
 	private GraphQLFieldRetriever _graphQLFieldRetriever;
-	private ServiceTrackerMap<String, GraphQLObjectDefinition>
+	private ServiceTrackerMap<String, ObjectDefinitionGraphQL>
 		_graphQLObjectServiceTrackerMap;
 
 	@Reference

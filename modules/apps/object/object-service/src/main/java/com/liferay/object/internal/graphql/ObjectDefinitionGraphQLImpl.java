@@ -12,8 +12,9 @@
  * details.
  */
 
-package com.liferay.object.graphql;
+package com.liferay.object.internal.graphql;
 
+import com.liferay.object.graphql.ObjectDefinitionGraphQL;
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectField;
 
@@ -22,10 +23,26 @@ import java.util.List;
 /**
  * @author Javier Gamarra
  */
-public interface GraphQLObjectDefinition {
+public class ObjectDefinitionGraphQLImpl implements ObjectDefinitionGraphQL {
 
-	public ObjectDefinition getObjectDefinition();
+	public ObjectDefinitionGraphQLImpl(
+		ObjectDefinition objectDefinition, List<ObjectField> objectFields) {
 
-	public List<ObjectField> getObjectFields();
+		_objectDefinition = objectDefinition;
+		_objectFields = objectFields;
+	}
+
+	@Override
+	public ObjectDefinition getObjectDefinition() {
+		return _objectDefinition;
+	}
+
+	@Override
+	public List<ObjectField> getObjectFields() {
+		return _objectFields;
+	}
+
+	private final ObjectDefinition _objectDefinition;
+	private final List<ObjectField> _objectFields;
 
 }
