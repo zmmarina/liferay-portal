@@ -41,24 +41,24 @@ public class FormDocumentResourceTest extends BaseFormDocumentResourceTestCase {
 	protected FormDocument testDeleteFormDocument_addFormDocument()
 		throws Exception {
 
-		return _addFormStructure(testGroup.getGroupId());
+		return _addFormDocument(testGroup.getGroupId());
 	}
 
 	@Override
 	protected FormDocument testGetFormDocument_addFormDocument()
 		throws Exception {
 
-		return _addFormStructure(testGroup.getGroupId());
+		return _addFormDocument(testGroup.getGroupId());
 	}
 
 	@Override
 	protected FormDocument testGraphQLFormDocument_addFormDocument()
 		throws Exception {
 
-		return _addFormStructure(testGroup.getGroupId());
+		return _addFormDocument(testGroup.getGroupId());
 	}
 
-	private FormDocument _addFormStructure(Long groupId) throws Exception {
+	private FormDocument _addFormDocument(Long groupId) throws Exception {
 		com.liferay.headless.form.dto.v1_0.FormDocument formDocument =
 			FormDocumentUtil.toFormDocument(
 				_dlurlHelper,
