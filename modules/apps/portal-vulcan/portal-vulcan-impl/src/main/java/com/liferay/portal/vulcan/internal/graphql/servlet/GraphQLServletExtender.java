@@ -574,7 +574,7 @@ public class GraphQLServletExtender {
 
 		_graphQLContributorServiceTracker.open();
 
-		_graphQLObjectServiceTrackerMap =
+		_objectDefinitionGraphQLServiceTrackerMap =
 			ServiceTrackerMapFactory.openSingleValueMap(
 				bundleContext, ObjectDefinitionGraphQL.class,
 				"db.table.name",
@@ -2041,7 +2041,7 @@ public class GraphQLServletExtender {
 		GraphQLSchema.Builder schemaBuilder) {
 
 		for (ObjectDefinitionGraphQL graphQLObjectDefinition :
-				_graphQLObjectServiceTrackerMap.values()) {
+				_objectDefinitionGraphQLServiceTrackerMap.values()) {
 
 			ObjectDefinition objectDefinition =
 				graphQLObjectDefinition.getObjectDefinition();
@@ -2401,7 +2401,7 @@ public class GraphQLServletExtender {
 		_graphQLContributorServiceTracker;
 	private GraphQLFieldRetriever _graphQLFieldRetriever;
 	private ServiceTrackerMap<String, ObjectDefinitionGraphQL>
-		_graphQLObjectServiceTrackerMap;
+		_objectDefinitionGraphQLServiceTrackerMap;
 
 	@Reference
 	private GroupLocalService _groupLocalService;
