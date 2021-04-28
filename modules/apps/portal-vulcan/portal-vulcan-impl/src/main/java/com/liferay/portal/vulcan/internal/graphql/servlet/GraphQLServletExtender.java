@@ -697,7 +697,7 @@ public class GraphQLServletExtender {
 	}
 
 	private static GraphQLFieldDefinition _addField(
-		String name, GraphQLOutputType graphQLType,
+		GraphQLOutputType graphQLType, String name,
 		GraphQLArgument... graphQLArguments) {
 
 		GraphQLFieldDefinition.Builder builder =
@@ -809,7 +809,7 @@ public class GraphQLServletExtender {
 
 		mutationBuilder.field(
 			_addField(
-				name, graphQLObjectType,
+				graphQLObjectType, name,
 				_addArgument(
 					graphQLInputObjectType, objectDefinition.getName()),
 				_addArgument(Scalars.GraphQLLong, "siteId")));
@@ -850,7 +850,7 @@ public class GraphQLServletExtender {
 
 		mutationBuilder.field(
 			_addField(
-				name, Scalars.GraphQLBoolean,
+				Scalars.GraphQLBoolean, name,
 				_addArgument(Scalars.GraphQLLong, idName)));
 
 		schemaBuilder.codeRegistry(
@@ -877,7 +877,7 @@ public class GraphQLServletExtender {
 
 		queryBuilder.field(
 			_addField(
-				name, pageType,
+				pageType, name,
 				_addArgument(
 					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
 				_addArgument(Scalars.GraphQLString, "filter"),
@@ -981,7 +981,7 @@ public class GraphQLServletExtender {
 
 		queryBuilder.field(
 			_addField(
-				name, objectType, _addArgument(Scalars.GraphQLLong, idName)));
+				objectType, name, _addArgument(Scalars.GraphQLLong, idName)));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -1084,7 +1084,7 @@ public class GraphQLServletExtender {
 		GraphQLOutputType graphQLOutputType) {
 
 		return _addField(
-			"graphQLNode", graphQLOutputType,
+			graphQLOutputType, "graphQLNode",
 			_addArgument(Scalars.GraphQLString, "dataType"),
 			_addArgument(Scalars.GraphQLLong, "id"));
 	}
@@ -1093,7 +1093,7 @@ public class GraphQLServletExtender {
 		GraphQLInterfaceType.Builder interfaceBuilder =
 			GraphQLInterfaceType.newInterface();
 
-		interfaceBuilder.field(_addField("id", Scalars.GraphQLLong));
+		interfaceBuilder.field(_addField(Scalars.GraphQLLong, "id"));
 		interfaceBuilder.name("GraphQLNode");
 
 		return interfaceBuilder.build();
@@ -1766,12 +1766,12 @@ public class GraphQLServletExtender {
 
 		GraphQLObjectType.Builder builder = new GraphQLObjectType.Builder();
 
-		builder.field(_addField(idName, Scalars.GraphQLLong));
+		builder.field(_addField(Scalars.GraphQLLong, idName));
 		builder.name(objectDefinition.getName());
 
 		for (com.liferay.object.model.ObjectField objectField : objectFields) {
 			builder.field(
-				_addField(objectField.getName(), Scalars.GraphQLString));
+				_addField(Scalars.GraphQLString, objectField.getName()));
 		}
 
 		return builder.build();
@@ -1783,13 +1783,13 @@ public class GraphQLServletExtender {
 
 		GraphQLObjectType.Builder builder = new GraphQLObjectType.Builder();
 
-		builder.field(_addField("actions", _mapGraphQLScalarType));
-		builder.field(_addField("facets", GraphQLList.list(facetGraphQLType)));
-		builder.field(_addField("items", GraphQLList.list(objectGraphQLType)));
-		builder.field(_addField("lastPage", Scalars.GraphQLLong));
-		builder.field(_addField("page", Scalars.GraphQLLong));
-		builder.field(_addField("pageSize", Scalars.GraphQLLong));
-		builder.field(_addField("totalCount", Scalars.GraphQLLong));
+		builder.field(_addField(_mapGraphQLScalarType, "actions"));
+		builder.field(_addField(GraphQLList.list(facetGraphQLType), "facets"));
+		builder.field(_addField(GraphQLList.list(objectGraphQLType), "items"));
+		builder.field(_addField(Scalars.GraphQLLong, "lastPage"));
+		builder.field(_addField(Scalars.GraphQLLong, "page"));
+		builder.field(_addField(Scalars.GraphQLLong, "pageSize"));
+		builder.field(_addField(Scalars.GraphQLLong, "totalCount"));
 		builder.name(name + "Page");
 
 		return builder.build();
@@ -2020,7 +2020,7 @@ public class GraphQLServletExtender {
 			}
 
 			graphQLObjectTypeBuilder.field(
-				_addField(graphQLNamespace, builder.build()));
+				_addField(builder.build(), graphQLNamespace));
 
 			String parentField = "query";
 
@@ -2144,7 +2144,7 @@ public class GraphQLServletExtender {
 			(Map<String, GraphQLFieldDefinition>)field.get(graphQLObjectType);
 
 		graphQLFieldDefinitions.put(
-			"graphQLNode", _addField("graphQLNode", graphQLInterfaceType));
+			"graphQLNode", _addField(graphQLInterfaceType, "graphQLNode"));
 
 		graphQLSchemaBuilder.codeRegistry(
 			builder.dataFetcher(
@@ -2491,7 +2491,7 @@ public class GraphQLServletExtender {
 
 			DataFetcher<?> dataFetcher = graphQLCodeRegistry.getDataFetcher(
 				(GraphQLFieldsContainer)graphQLTypes.get("query"),
-				_addField(fieldName, graphQLFieldDefinition.getType()));
+				_addField(graphQLFieldDefinition.getType(), fieldName));
 
 			DataFetchingEnvironmentImpl.Builder dataFetchingEnvironmentBuilder =
 				DataFetchingEnvironmentImpl.newDataFetchingEnvironment(
@@ -2825,7 +2825,7 @@ public class GraphQLServletExtender {
 			DataFetcher<?> dataFetcher = graphQLCodeRegistry.getDataFetcher(
 				(GraphQLFieldsContainer)dataFetchingEnvironment.getParentType(),
 				_addField(
-					fieldName, graphQLFieldDefinition.getType(),
+					graphQLFieldDefinition.getType(), fieldName,
 					graphQLFieldDefinition.getArgument("id")));
 
 			DataFetchingEnvironmentImpl.Builder dataFetchingEnvironmentBuilder =
