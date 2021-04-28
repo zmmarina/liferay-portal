@@ -91,17 +91,17 @@ public class AssetSearcher extends BaseSearcher {
 
 	/**
 	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
-	 *             #addSearchAllCategories(String, BooleanFilter)}
+	 *             #addSearchAllCategories(BooleanFilter, String)}
 	 */
 	@Deprecated
 	protected void addSearchAllCategories(BooleanFilter queryBooleanFilter)
 		throws Exception {
 
-		addSearchAllCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
+		addSearchAllCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
 	}
 
 	protected void addSearchAllCategories(
-			String fieldName, BooleanFilter queryBooleanFilter)
+			BooleanFilter queryBooleanFilter, String fieldName)
 		throws Exception {
 
 		long[] allCategoryIds = _filterCategoryIdsByVisibilityType(
@@ -204,17 +204,17 @@ public class AssetSearcher extends BaseSearcher {
 
 	/**
 	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
-	 *             #addSearchAnyCategories(String, BooleanFilter)}
+	 *             #addSearchAnyCategories(BooleanFilter, String)}
 	 */
 	@Deprecated
 	protected void addSearchAnyCategories(BooleanFilter queryBooleanFilter)
 		throws Exception {
 
-		addSearchAllCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
+		addSearchAllCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
 	}
 
 	protected void addSearchAnyCategories(
-			String fieldName, BooleanFilter queryBooleanFilter)
+			BooleanFilter queryBooleanFilter, String fieldName)
 		throws Exception {
 
 		long[] anyCategoryIds = _filterCategoryIdsByVisibilityType(
@@ -304,20 +304,20 @@ public class AssetSearcher extends BaseSearcher {
 			BooleanFilter queryBooleanFilter, SearchContext searchContext)
 		throws Exception {
 
-		addSearchAllCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
-		addSearchAnyCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
-		addSearchNotAnyCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
-		addSearchNotAllCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
+		addSearchAllCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
+		addSearchAnyCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
+		addSearchNotAnyCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
+		addSearchNotAllCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
 
 		if (searchContext.isIncludeInternalAssetCategories()) {
 			addSearchAllCategories(
-				Field.ASSET_INTERNAL_CATEGORY_IDS, queryBooleanFilter);
+				queryBooleanFilter, Field.ASSET_INTERNAL_CATEGORY_IDS);
 			addSearchAnyCategories(
-				Field.ASSET_INTERNAL_CATEGORY_IDS, queryBooleanFilter);
+				queryBooleanFilter, Field.ASSET_INTERNAL_CATEGORY_IDS);
 			addSearchNotAnyCategories(
-				Field.ASSET_INTERNAL_CATEGORY_IDS, queryBooleanFilter);
+				queryBooleanFilter, Field.ASSET_INTERNAL_CATEGORY_IDS);
 			addSearchNotAllCategories(
-				Field.ASSET_INTERNAL_CATEGORY_IDS, queryBooleanFilter);
+				queryBooleanFilter, Field.ASSET_INTERNAL_CATEGORY_IDS);
 		}
 	}
 
@@ -371,17 +371,17 @@ public class AssetSearcher extends BaseSearcher {
 
 	/**
 	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
-	 *             #addSearchNotAllCategories(String, BooleanFilter)}
+	 *             #addSearchNotAllCategories(BooleanFilter, String)}
 	 */
 	@Deprecated
 	protected void addSearchNotAllCategories(BooleanFilter queryBooleanFilter)
 		throws Exception {
 
-		addSearchNotAllCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
+		addSearchNotAllCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
 	}
 
 	protected void addSearchNotAllCategories(
-			String fieldName, BooleanFilter queryBooleanFilter)
+			BooleanFilter queryBooleanFilter, String fieldName)
 		throws Exception {
 
 		long[] filteredNotAllCategoryIds = _filterCategoryIdsByVisibilityType(
@@ -475,17 +475,17 @@ public class AssetSearcher extends BaseSearcher {
 
 	/**
 	 * @deprecated As of Cavanaugh (7.4.x), replaced by {@link
-	 *             #addSearchNotAnyCategories(String, BooleanFilter)}
+	 *             #addSearchNotAnyCategories(BooleanFilter, String)}
 	 */
 	@Deprecated
 	protected void addSearchNotAnyCategories(BooleanFilter queryBooleanFilter)
 		throws Exception {
 
-		addSearchNotAnyCategories(Field.ASSET_CATEGORY_IDS, queryBooleanFilter);
+		addSearchNotAnyCategories(queryBooleanFilter, Field.ASSET_CATEGORY_IDS);
 	}
 
 	protected void addSearchNotAnyCategories(
-			String fieldName, BooleanFilter queryBooleanFilter)
+			BooleanFilter queryBooleanFilter, String fieldName)
 		throws Exception {
 
 		long[] filteredNotAnyCategoryIds = _filterCategoryIdsByVisibilityType(
