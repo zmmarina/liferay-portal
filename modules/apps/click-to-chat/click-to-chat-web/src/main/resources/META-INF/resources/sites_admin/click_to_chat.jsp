@@ -172,7 +172,9 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 
 		if (clickToChatChatProviderLearnMessageElement) {
 			if (visible) {
-				return clickToChatChatProviderLearnMessageElement.classList.remove('hide');
+				return clickToChatChatProviderLearnMessageElement.classList.remove(
+					'hide'
+				);
 			}
 
 			clickToChatChatProviderLearnMessageElement.classList.add('hide');
