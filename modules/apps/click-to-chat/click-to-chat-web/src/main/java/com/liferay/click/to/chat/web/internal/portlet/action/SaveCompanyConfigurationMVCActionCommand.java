@@ -71,23 +71,18 @@ public class SaveCompanyConfigurationMVCActionCommand
 			ClickToChatConfiguration.class, themeDisplay.getCompanyId(),
 			HashMapDictionaryBuilder.<String, Object>put(
 				"chatProviderAccountId",
-				ParamUtil.getString(
-					actionRequest, "clickToChat--chatProviderAccountId--")
+				ParamUtil.getString(actionRequest, "chatProviderAccountId")
 			).put(
 				"chatProviderId",
-				ParamUtil.getString(
-					actionRequest, "clickToChat--chatProviderId--")
+				ParamUtil.getString(actionRequest, "chatProviderId")
 			).put(
-				"enabled",
-				ParamUtil.getBoolean(actionRequest, "clickToChat--enabled--")
+				"enabled", ParamUtil.getBoolean(actionRequest, "enabled")
 			).put(
 				"guestUsersAllowed",
-				ParamUtil.getBoolean(
-					actionRequest, "clickToChat--guestUsersAllowed--")
+				ParamUtil.getBoolean(actionRequest, "guestUsersAllowed")
 			).put(
 				"siteSettingsStrategy",
-				ParamUtil.getString(
-					actionRequest, "clickToChat--siteSettingsStrategy--")
+				ParamUtil.getString(actionRequest, "siteSettingsStrategy")
 			).build());
 	}
 
