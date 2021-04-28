@@ -55,11 +55,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.TextFormatter;
-import com.liferay.portal.odata.entity.DateTimeEntityField;
-import com.liferay.portal.odata.entity.EntityField;
 import com.liferay.portal.odata.entity.EntityModel;
-import com.liferay.portal.odata.entity.IntegerEntityField;
-import com.liferay.portal.odata.entity.StringEntityField;
 import com.liferay.portal.odata.filter.ExpressionConvert;
 import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.odata.sort.SortParserProvider;
@@ -867,7 +863,7 @@ public class GraphQLServletExtender {
 
 	private void _addGetListEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder,
-		GraphQLObjectType.Builder queryBuilder,
+		EntityModel entityModel, GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder, ObjectDefinition objectDefinition,
 		String idName, List<com.liferay.object.model.ObjectField> objectFields,
 		GraphQLObjectType pageType) {
@@ -896,9 +892,6 @@ public class GraphQLServletExtender {
 		);
 
 		fieldNames.add(idName);
-
-		EntityModel entityModel = _getEntityModel(
-			objectDefinition, objectFields);
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -1624,74 +1617,6 @@ public class GraphQLServletExtender {
 		return null;
 	}
 
-	private EntityModel _getEntityModel(
-		ObjectDefinition objectDefinition,
-		List<com.liferay.object.model.ObjectField> objectFields) {
-
-		return new EntityModel() {
-
-			@Override
-			public Map<String, EntityField> getEntityFieldsMap() {
-				Map<String, EntityField> entityFieldMap =
-					EntityModel.toEntityFieldsMap(
-						new DateTimeEntityField(
-							"dateCreated",
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									getSortableFieldName(
-										com.liferay.portal.kernel.search.Field.
-											CREATE_DATE),
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									CREATE_DATE),
-						new DateTimeEntityField(
-							"dateModified",
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									getSortableFieldName(
-										com.liferay.portal.kernel.search.Field.
-											MODIFIED_DATE),
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									MODIFIED_DATE),
-						new IntegerEntityField(
-							"objectDefinitionId",
-							locale -> "objectDefinitionId"),
-						new IntegerEntityField(
-							"siteId",
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									GROUP_ID),
-						new IntegerEntityField(
-							"userId",
-							locale ->
-								com.liferay.portal.kernel.search.Field.
-									USER_ID));
-
-				for (com.liferay.object.model.ObjectField objectField :
-						objectFields) {
-
-					String type = objectField.getType();
-
-					if (type.equals(String.class.getSimpleName())) {
-						String name = objectField.getName();
-
-						entityFieldMap.put(
-							name, new StringEntityField(name, locale -> name));
-					}
-				}
-
-				return entityFieldMap;
-			}
-
-			@Override
-			public String getName() {
-				return objectDefinition.getName();
-			}
-
-		};
-	}
-
 	private Field _getFieldDefinitionsByNameField(
 			GraphQLObjectType graphQLObjectType)
 		throws Exception {
@@ -2076,8 +2001,9 @@ public class GraphQLServletExtender {
 				schemaBuilder);
 
 			_addGetListEndpoint(
-				codeRegistryBuilder, queryBuilder, schemaBuilder,
-				objectDefinition, idName, objectFields, pageType);
+				codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
+				queryBuilder, schemaBuilder, objectDefinition, idName,
+				objectFields, pageType);
 
 			_addGetObjectEndpoint(
 				codeRegistryBuilder, idName, objectDefinition, objectType,

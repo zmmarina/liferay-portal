@@ -16,6 +16,14 @@ package com.liferay.object.graphql;
 
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectField;
+import com.liferay.portal.odata.entity.DateTimeEntityField;
+import com.liferay.portal.odata.entity.EntityField;
+import com.liferay.portal.odata.entity.EntityModel;
+import com.liferay.portal.odata.entity.IntegerEntityField;
+import com.liferay.portal.odata.entity.StringEntityField;
+import com.liferay.portal.odata.filter.ExpressionConvert;
+import com.liferay.portal.odata.filter.FilterParserProvider;
+import com.liferay.portal.odata.sort.SortParserProvider;
 
 import java.util.List;
 
@@ -23,6 +31,8 @@ import java.util.List;
  * @author Javier Gamarra
  */
 public interface ObjectDefinitionGraphQL {
+
+	public EntityModel getEntityModel();
 
 	public ObjectDefinition getObjectDefinition();
 
