@@ -43,11 +43,11 @@ import org.osgi.service.component.annotations.Reference;
 	immediate = true,
 	property = {
 		"javax.portlet.name=" + ConfigurationAdminPortletKeys.INSTANCE_SETTINGS,
-		"mvc.command.name=/click_to_chat/edit_company"
+		"mvc.command.name=/click_to_chat/edit_configuration"
 	},
 	service = MVCActionCommand.class
 )
-public class EditCompanyMVCActionCommand extends BaseFormMVCActionCommand {
+public class EditConfigurationMVCActionCommand extends BaseFormMVCActionCommand {
 
 	@Override
 	protected void doProcessAction(
