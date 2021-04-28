@@ -86,7 +86,7 @@ public class ObjectDefinitionLocalServiceImpl
 		objectDefinition.setUserName(user.getFullName());
 		objectDefinition.setName(name);
 
-		ObjectDefinition newObjectDefinition =
+		ObjectDefinition updatedObjectDefinition =
 			objectDefinitionPersistence.update(objectDefinition);
 
 		for (ObjectField objectField : objectFields) {
@@ -98,17 +98,17 @@ public class ObjectDefinitionLocalServiceImpl
 		objectFields = _objectFieldPersistence.findByObjectDefinitionId(
 			objectDefinitionId);
 
-		_createTable(newObjectDefinition, objectFields);
+		_createTable(updatedObjectDefinition, objectFields);
 
 		TransactionCommitCallbackUtil.registerCallback(
 			() -> {
 				objectDefinitionLocalService.registerObjectDefinition(
-					newObjectDefinition);
+					updatedObjectDefinition);
 
 				return null;
 			});
 
-		return newObjectDefinition;
+		return updatedObjectDefinition;
 	}
 
 	@Override
