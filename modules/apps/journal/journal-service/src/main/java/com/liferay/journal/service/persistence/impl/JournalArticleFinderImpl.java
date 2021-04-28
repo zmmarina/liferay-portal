@@ -1951,7 +1951,9 @@ public class JournalArticleFinderImpl
 		return StringUtil.replace(sql, "[$STRUCTURE_TEMPLATE$]", sb.toString());
 	}
 
-	private Predicate _andOr(boolean andOperator, Predicate... predicates) {
+	private Predicate _getAndOrPredicate(
+		boolean andOperator, Predicate... predicates) {
+
 		Predicate resultPredicate = null;
 
 		for (Predicate predicate : predicates) {
@@ -2106,7 +2108,7 @@ public class JournalArticleFinderImpl
 
 		predicate = predicate.and(
 			Predicate.withParentheses(
-				_andOr(
+				_getAndOrPredicate(
 					andOperator,
 					_customSQL.getKeywordsPredicate(
 						JournalArticleTable.INSTANCE.DDMStructureKey,
@@ -2123,7 +2125,7 @@ public class JournalArticleFinderImpl
 			versionPredicate = JournalArticleTable.INSTANCE.version.eq(version);
 		}
 
-		Predicate keywordsPredicate = _andOr(
+		Predicate keywordsPredicate = _getAndOrPredicate(
 			andOperator, versionPredicate,
 			_customSQL.getKeywordsPredicate(
 				JournalArticleTable.INSTANCE.articleId,
@@ -2134,7 +2136,7 @@ public class JournalArticleFinderImpl
 				tempJournalArticleLocalizationTable.articleLocalizationId.
 					isNull());
 
-			keywordsPredicate = _andOr(
+			keywordsPredicate = _getAndOrPredicate(
 				andOperator, keywordsPredicate,
 				_customSQL.getKeywordsPredicate(
 					DSLFunctionFactoryUtil.lower(
@@ -2149,7 +2151,7 @@ public class JournalArticleFinderImpl
 			predicate = predicate.and(
 				tempDDMFieldAttributeTable.fieldAttributeId.isNull());
 
-			keywordsPredicate = _andOr(
+			keywordsPredicate = _getAndOrPredicate(
 				andOperator, keywordsPredicate,
 				Predicate.withParentheses(
 					Predicate.or(
@@ -2164,19 +2166,19 @@ public class JournalArticleFinderImpl
 		}
 
 		if (displayDateGT != null) {
-			keywordsPredicate = _andOr(
+			keywordsPredicate = _getAndOrPredicate(
 				andOperator, keywordsPredicate,
 				JournalArticleTable.INSTANCE.displayDate.gte(displayDateGT));
 		}
 
 		if (displayDateLT != null) {
-			keywordsPredicate = _andOr(
+			keywordsPredicate = _getAndOrPredicate(
 				andOperator, keywordsPredicate,
 				JournalArticleTable.INSTANCE.displayDate.lte(displayDateLT));
 		}
 
 		if (reviewDate != null) {
-			keywordsPredicate = _andOr(
+			keywordsPredicate = _getAndOrPredicate(
 				andOperator, keywordsPredicate,
 				JournalArticleTable.INSTANCE.reviewDate.lte(reviewDate));
 		}
