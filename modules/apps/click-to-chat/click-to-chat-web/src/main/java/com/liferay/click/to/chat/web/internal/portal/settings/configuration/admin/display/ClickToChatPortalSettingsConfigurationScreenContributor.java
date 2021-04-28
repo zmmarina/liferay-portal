@@ -63,7 +63,7 @@ public class ClickToChatPortalSettingsConfigurationScreenContributor
 
 	@Override
 	public String getSaveMVCActionCommandName() {
-		return "/click_to_chat/edit_configuration";
+		return "/click_to_chat/save_company_configuration";
 	}
 
 	@Override
