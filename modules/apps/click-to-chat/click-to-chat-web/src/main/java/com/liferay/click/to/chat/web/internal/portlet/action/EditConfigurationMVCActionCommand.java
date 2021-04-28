@@ -17,7 +17,7 @@ package com.liferay.click.to.chat.web.internal.portlet.action;
 import com.liferay.click.to.chat.web.internal.configuration.ClickToChatConfiguration;
 import com.liferay.configuration.admin.constants.ConfigurationAdminPortletKeys;
 import com.liferay.portal.kernel.module.configuration.ConfigurationProvider;
-import com.liferay.portal.kernel.portlet.bridges.mvc.BaseFormMVCActionCommand;
+import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.security.auth.PrincipalException;
 import com.liferay.portal.kernel.security.permission.PermissionChecker;
@@ -45,8 +45,7 @@ import org.osgi.service.component.annotations.Reference;
 	},
 	service = MVCActionCommand.class
 )
-public class EditConfigurationMVCActionCommand
-	extends BaseFormMVCActionCommand {
+public class EditConfigurationMVCActionCommand extends BaseMVCActionCommand {
 
 	@Override
 	protected void doProcessAction(
@@ -68,7 +67,7 @@ public class EditConfigurationMVCActionCommand
 		}
 
 		_configurationProvider.saveCompanyConfiguration(
-			ClickToChatConfiguration.class, companyId,
+			ClickToChatConfiguration.class, themeDisplay.getCompanyId(),
 			HashMapDictionaryBuilder.<String, Object>put(
 				"enabled",
 				ParamUtil.getBoolean(actionRequest, "clickToChat--enabled--")
@@ -89,12 +88,6 @@ public class EditConfigurationMVCActionCommand
 				ParamUtil.getString(
 					actionRequest, "clickToChat--siteSettingsStrategy--")
 			).build());
-	}
-
-	@Override
-	protected void doValidateForm(
-			ActionRequest actionRequest, ActionResponse actionResponse)
-		throws Exception {
 	}
 
 	@Reference
