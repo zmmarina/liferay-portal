@@ -54,7 +54,7 @@ import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HashMapBuilder;
-import com.liferay.portal.kernel.util.HashMapDictionary;
+import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
 import com.liferay.portal.kernel.util.Portal;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.SetUtil;
@@ -576,8 +576,7 @@ public class GraphQLServletExtender {
 
 		_objectDefinitionGraphQLServiceTrackerMap =
 			ServiceTrackerMapFactory.openSingleValueMap(
-				bundleContext, ObjectDefinitionGraphQL.class,
-				"db.table.name",
+				bundleContext, ObjectDefinitionGraphQL.class, "db.table.name",
 				new ServiceTrackerMapListener
 					<String, ObjectDefinitionGraphQL,
 					 ObjectDefinitionGraphQL>() {
@@ -604,36 +603,27 @@ public class GraphQLServletExtender {
 
 				});
 
-		Dictionary<String, Object> properties = new HashMapDictionary<>();
-
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME, "GraphQL");
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_PATH, "/graphql");
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_SERVLET, "GraphQL");
-
 		_servletContextHelperServiceRegistration =
 			bundleContext.registerService(
 				ServletContextHelper.class,
 				new ServletContextHelper(bundleContext.getBundle()) {
 				},
-				properties);
+				HashMapDictionaryBuilder.<String, Object>put(
+					HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME,
+					"GraphQL"
+				).put(
+					HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_PATH,
+					"/graphql"
+				).put(
+					HttpWhiteboardConstants.HTTP_WHITEBOARD_FILTER_SERVLET,
+					"GraphQL"
+				).build());
 
 		_servletDataServiceTracker = new ServiceTracker<>(
 			bundleContext, ServletData.class,
 			new ServletDataServiceTrackerCustomizer());
 
 		_servletDataServiceTracker.open();
-
-		properties = new HashMapDictionary<>();
-
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT, "GraphQL");
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_NAME, "GraphQL");
-		properties.put(
-			HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN, "/*");
 
 		_servletServiceRegistration = _bundleContext.registerService(
 			Servlet.class,
@@ -686,7 +676,14 @@ public class GraphQLServletExtender {
 					private ServletConfig _servletConfig;
 
 				}),
-			properties);
+			HashMapDictionaryBuilder.<String, Object>put(
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT,
+				"GraphQL"
+			).put(
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_NAME, "GraphQL"
+			).put(
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN, "/*"
+			).build());
 	}
 
 	@Deactivate
@@ -2400,14 +2397,15 @@ public class GraphQLServletExtender {
 	private ServiceTracker<GraphQLContributor, GraphQLContributor>
 		_graphQLContributorServiceTracker;
 	private GraphQLFieldRetriever _graphQLFieldRetriever;
-	private ServiceTrackerMap<String, ObjectDefinitionGraphQL>
-		_objectDefinitionGraphQLServiceTrackerMap;
 
 	@Reference
 	private GroupLocalService _groupLocalService;
 
 	@Reference
 	private Language _language;
+
+	private ServiceTrackerMap<String, ObjectDefinitionGraphQL>
+		_objectDefinitionGraphQLServiceTrackerMap;
 
 	@Reference
 	private ObjectEntryLocalService _objectEntryLocalService;
