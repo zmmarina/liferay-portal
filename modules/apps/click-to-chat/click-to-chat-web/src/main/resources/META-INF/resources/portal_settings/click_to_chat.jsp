@@ -49,7 +49,7 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 	</div>
 </div>
 
-<div class="form-group row" id="<%= liferayPortletResponse.getNamespace() + "clickToChatProviders" %>">
+<div class="form-group row" id="<%= liferayPortletResponse.getNamespace() + "clickToChatChatProviders" %>">
 	<div class="col-md-6">
 		<aui:select label="chat-provider" name="chatProviderId" onchange='<%= liferayPortletResponse.getNamespace() + "onChangeClickToChatChatProviderId(event);" %>' value="<%= clickToChatConfiguration.chatProviderId() %>">
 			<aui:option label="" value="" />
@@ -117,8 +117,8 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 	}
 
 	function <portlet:namespace />onChangeClickToChatSiteSettingsStrategy(event) {
-		var clickToChatProvidersElement = document.getElementById(
-			'<portlet:namespace />clickToChatProviders'
+		var clickToChatChatProvidersElement = document.getElementById(
+			'<portlet:namespace />clickToChatChatProviders'
 		);
 
 		var clickToChatSiteSettingsStrategyElement = document.getElementById(
@@ -126,10 +126,10 @@ ClickToChatConfiguration clickToChatConfiguration = (ClickToChatConfiguration)re
 		);
 
 		if (clickToChatSiteSettingsStrategyElement.value === 'always-override') {
-			clickToChatProvidersElement.classList.add('hide');
+			clickToChatChatProvidersElement.classList.add('hide');
 		}
 		else {
-			clickToChatProvidersElement.classList.remove('hide');
+			clickToChatChatProvidersElement.classList.remove('hide');
 		}
 	}
 
