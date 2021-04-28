@@ -47,7 +47,8 @@ import org.osgi.service.component.annotations.Reference;
 	},
 	service = MVCActionCommand.class
 )
-public class EditConfigurationMVCActionCommand extends BaseFormMVCActionCommand {
+public class EditConfigurationMVCActionCommand
+	extends BaseFormMVCActionCommand {
 
 	@Override
 	protected void doProcessAction(
