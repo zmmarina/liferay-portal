@@ -14,11 +14,6 @@
 
 package com.liferay.portal.vulcan.internal.graphql.servlet;
 
-import static graphql.Scalars.GraphQLBoolean;
-import static graphql.Scalars.GraphQLInt;
-import static graphql.Scalars.GraphQLLong;
-import static graphql.Scalars.GraphQLString;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
@@ -95,6 +90,7 @@ import com.liferay.portal.vulcan.util.SearchUtil;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
+import graphql.Scalars;
 import graphql.TypeResolutionEnvironment;
 
 import graphql.annotations.annotationTypes.GraphQLTypeResolver;
@@ -813,7 +809,7 @@ public class GraphQLServletExtender {
 				name, graphQLObjectType,
 				_addArgument(
 					graphQLInputObjectType, objectDefinition.getName()),
-				_addArgument(GraphQLLong, "siteId")));
+				_addArgument(Scalars.GraphQLLong, "siteId")));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -850,7 +846,9 @@ public class GraphQLServletExtender {
 		String name = "delete" + objectDefinition.getName();
 
 		mutationBuilder.field(
-			_addField(name, GraphQLBoolean, _addArgument(GraphQLLong, idName)));
+			_addField(
+				name, Scalars.GraphQLBoolean,
+				_addArgument(Scalars.GraphQLLong, idName)));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -877,12 +875,13 @@ public class GraphQLServletExtender {
 		queryBuilder.field(
 			_addField(
 				name, pageType,
-				_addArgument(GraphQLList.list(GraphQLString), "aggregation"),
-				_addArgument(GraphQLString, "filter"),
-				_addArgument(GraphQLInt, "page", 1),
-				_addArgument(GraphQLInt, "pageSize", 20),
-				_addArgument(GraphQLString, "search"),
-				_addArgument(GraphQLString, "sort")));
+				_addArgument(
+					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
+				_addArgument(Scalars.GraphQLString, "filter"),
+				_addArgument(Scalars.GraphQLInt, "page", 1),
+				_addArgument(Scalars.GraphQLInt, "pageSize", 20),
+				_addArgument(Scalars.GraphQLString, "search"),
+				_addArgument(Scalars.GraphQLString, "sort")));
 
 		Stream<com.liferay.object.model.ObjectField> fieldsStream =
 			objectFields.stream();
@@ -978,7 +977,8 @@ public class GraphQLServletExtender {
 			objectDefinition.getName());
 
 		queryBuilder.field(
-			_addField(name, objectType, _addArgument(GraphQLLong, idName)));
+			_addField(
+				name, objectType, _addArgument(Scalars.GraphQLLong, idName)));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -1082,15 +1082,15 @@ public class GraphQLServletExtender {
 
 		return _addField(
 			"graphQLNode", graphQLOutputType,
-			_addArgument(GraphQLString, "dataType"),
-			_addArgument(GraphQLLong, "id"));
+			_addArgument(Scalars.GraphQLString, "dataType"),
+			_addArgument(Scalars.GraphQLLong, "id"));
 	}
 
 	private GraphQLInterfaceType _createNodeGraphQLInterfaceType() {
 		GraphQLInterfaceType.Builder interfaceBuilder =
 			GraphQLInterfaceType.newInterface();
 
-		interfaceBuilder.field(_addField("id", GraphQLLong));
+		interfaceBuilder.field(_addField("id", Scalars.GraphQLLong));
 		interfaceBuilder.name("GraphQLNode");
 
 		return interfaceBuilder.build();
@@ -1750,7 +1750,7 @@ public class GraphQLServletExtender {
 				inputBuilder.name(
 					objectField.getName()
 				).type(
-					GraphQLString
+					Scalars.GraphQLString
 				).build());
 		}
 
@@ -1763,11 +1763,12 @@ public class GraphQLServletExtender {
 
 		GraphQLObjectType.Builder builder = new GraphQLObjectType.Builder();
 
-		builder.field(_addField(idName, GraphQLLong));
+		builder.field(_addField(idName, Scalars.GraphQLLong));
 		builder.name(objectDefinition.getName());
 
 		for (com.liferay.object.model.ObjectField objectField : objectFields) {
-			builder.field(_addField(objectField.getName(), GraphQLString));
+			builder.field(
+				_addField(objectField.getName(), Scalars.GraphQLString));
 		}
 
 		return builder.build();
@@ -1782,10 +1783,10 @@ public class GraphQLServletExtender {
 		builder.field(_addField("actions", _mapGraphQLScalarType));
 		builder.field(_addField("facets", GraphQLList.list(facetGraphQLType)));
 		builder.field(_addField("items", GraphQLList.list(objectGraphQLType)));
-		builder.field(_addField("lastPage", GraphQLLong));
-		builder.field(_addField("page", GraphQLLong));
-		builder.field(_addField("pageSize", GraphQLLong));
-		builder.field(_addField("totalCount", GraphQLLong));
+		builder.field(_addField("lastPage", Scalars.GraphQLLong));
+		builder.field(_addField("page", Scalars.GraphQLLong));
+		builder.field(_addField("pageSize", Scalars.GraphQLLong));
+		builder.field(_addField("totalCount", Scalars.GraphQLLong));
 		builder.name(name + "Page");
 
 		return builder.build();
@@ -1940,7 +1941,8 @@ public class GraphQLServletExtender {
 						graphQLObjectType.getFieldDefinition("id");
 
 					if ((graphQLFieldDefinition == null) ||
-						(graphQLFieldDefinition.getType() != GraphQLLong)) {
+						(graphQLFieldDefinition.getType() !=
+							Scalars.GraphQLLong)) {
 
 						continue;
 					}
