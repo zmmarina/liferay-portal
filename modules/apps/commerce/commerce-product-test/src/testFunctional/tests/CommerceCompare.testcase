@@ -27,7 +27,6 @@ definition {
 	}
 
 	@description = "COMMERCE-5912. As a buyer, I want to select an item in Product Details for compare in Product Widget"
-	@ignore = "true"
 	@priority = "3"
 	test AddComparisonItemFromProductDetailsPage {
 		property portal.acceptance = "false";
