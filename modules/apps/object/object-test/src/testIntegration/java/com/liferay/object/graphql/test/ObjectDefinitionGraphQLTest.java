@@ -118,8 +118,7 @@ public class ObjectDefinitionGraphQLTest {
 			new GraphQLField(
 				"delete" + _objectDefinitionName,
 				HashMapBuilder.<String, Object>put(
-					StringUtil.removeSubstring(
-						_objectDefinition.getDBPrimaryKeyColumnName(), "_"),
+					_objectDefinition.getPrimaryKeyColumnName(),
 					_objectEntry.getObjectEntryId()
 				).build()));
 
@@ -171,8 +170,7 @@ public class ObjectDefinitionGraphQLTest {
 				new GraphQLField(
 					fieldName,
 					HashMapBuilder.<String, Object>put(
-						StringUtil.removeSubstring(
-							_objectDefinition.getDBPrimaryKeyColumnName(), "_"),
+						_objectDefinition.getPrimaryKeyColumnName(),
 						_objectEntry.getObjectEntryId()
 					).build(),
 					new GraphQLField(_objectFieldName))));
