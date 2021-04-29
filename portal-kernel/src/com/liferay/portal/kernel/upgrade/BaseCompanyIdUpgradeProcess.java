@@ -90,6 +90,24 @@ public abstract class BaseCompanyIdUpgradeProcess extends UpgradeProcess {
 			_foreignNamesArray = foreignNamesArray;
 		}
 
+		public String getTableName() {
+			return _tableName;
+		}
+
+		public void setCreateCompanyIdColumn(boolean createCompanyIdColumn) {
+			_createCompanyIdColumn = createCompanyIdColumn;
+		}
+
+		public void update(Connection connection)
+			throws IOException, SQLException {
+
+			for (String[] foreignNames : _foreignNamesArray) {
+				runSQL(
+					connection,
+					getUpdateSQL(connection, foreignNames[0], foreignNames[1]));
+			}
+		}
+
 		@Override
 		protected final Void doCall() throws Exception {
 			try (LoggingTimer loggingTimer = new LoggingTimer(_tableName);
@@ -117,24 +135,6 @@ public abstract class BaseCompanyIdUpgradeProcess extends UpgradeProcess {
 			}
 
 			return null;
-		}
-
-		public String getTableName() {
-			return _tableName;
-		}
-
-		public void setCreateCompanyIdColumn(boolean createCompanyIdColumn) {
-			_createCompanyIdColumn = createCompanyIdColumn;
-		}
-
-		public void update(Connection connection)
-			throws IOException, SQLException {
-
-			for (String[] foreignNames : _foreignNamesArray) {
-				runSQL(
-					connection,
-					getUpdateSQL(connection, foreignNames[0], foreignNames[1]));
-			}
 		}
 
 		protected List<Long> getCompanyIds(Connection connection)

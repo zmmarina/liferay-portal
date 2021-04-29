@@ -106,9 +106,10 @@ public class CompanyThreadLocal {
 		}
 
 		try (Connection connection = DataAccess.getConnection()) {
-			try (PreparedStatement preparedStatement = connection.prepareStatement(
-					"select userId, languageId, timeZoneId from User_ " +
-						"where companyId = ? and defaultUser = ?")) {
+			try (PreparedStatement preparedStatement =
+					connection.prepareStatement(
+						"select userId, languageId, timeZoneId from User_ " +
+							"where companyId = ? and defaultUser = ?")) {
 
 				preparedStatement.setLong(1, companyId);
 				preparedStatement.setBoolean(2, true);

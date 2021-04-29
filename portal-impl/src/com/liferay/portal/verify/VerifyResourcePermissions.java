@@ -71,7 +71,8 @@ public class VerifyResourcePermissions extends VerifyProcess {
 						new VerifyResourcedModelUpgradeCallable(
 							role, verifiableResourcedModel);
 
-				verifyResourcedModelUpgradeCallables.add(verifyResourcedModelUpgradeCallable);
+				verifyResourcedModelUpgradeCallables.add(
+					verifyResourcedModelUpgradeCallable);
 			}
 
 			doVerify(verifyResourcedModelUpgradeCallables);
