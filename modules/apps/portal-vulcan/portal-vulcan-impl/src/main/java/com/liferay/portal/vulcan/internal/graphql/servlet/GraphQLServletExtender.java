@@ -1880,7 +1880,7 @@ public class GraphQLServletExtender {
 			Collectors.toList()
 		);
 
-		objectFieldNames.add(objectDefinition.getPrimaryKeyColumnName());
+		objectFieldNames.add(0, objectDefinition.getPrimaryKeyColumnName());
 
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
