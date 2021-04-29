@@ -61,17 +61,17 @@ public class VerifyUUID extends VerifyProcess {
 	protected void doVerify(VerifiableUUIDModel... verifiableUUIDModels)
 		throws Exception {
 
-		List<VerifyUUIDUpgradeCallable> verifyUUIDCallables = new ArrayList<>(
+		List<VerifyUUIDUpgradeCallable> verifyUUIDUpgradeCallables = new ArrayList<>(
 			verifiableUUIDModels.length);
 
 		for (VerifiableUUIDModel verifiableUUIDModel : verifiableUUIDModels) {
-			VerifyUUIDUpgradeCallable verifyUUIDCallable =
+			VerifyUUIDUpgradeCallable verifyUUIDUpgradeCallable =
 				new VerifyUUIDUpgradeCallable(verifiableUUIDModel);
 
-			verifyUUIDCallables.add(verifyUUIDCallable);
+			verifyUUIDUpgradeCallables.add(verifyUUIDUpgradeCallable);
 		}
 
-		doVerify(verifyUUIDCallables);
+		doVerify(verifyUUIDUpgradeCallables);
 	}
 
 	protected void verifyUUID(VerifiableUUIDModel verifiableUUIDModel)

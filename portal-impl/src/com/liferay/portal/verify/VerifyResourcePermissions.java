@@ -60,21 +60,21 @@ public class VerifyResourcePermissions extends VerifyProcess {
 				companyId, RoleConstants.OWNER);
 
 			List<VerifyResourcedModelUpgradeCallable>
-				verifyResourcedModelCallables = new ArrayList<>(
+				verifyResourcedModelUpgradeCallables = new ArrayList<>(
 					verifiableResourcedModels.length);
 
 			for (VerifiableResourcedModel verifiableResourcedModel :
 					verifiableResourcedModels) {
 
 				VerifyResourcedModelUpgradeCallable
-					verifyResourcedModelCallable =
+					verifyResourcedModelUpgradeCallable =
 						new VerifyResourcedModelUpgradeCallable(
 							role, verifiableResourcedModel);
 
-				verifyResourcedModelCallables.add(verifyResourcedModelCallable);
+				verifyResourcedModelUpgradeCallables.add(verifyResourcedModelUpgradeCallable);
 			}
 
-			doVerify(verifyResourcedModelCallables);
+			doVerify(verifyResourcedModelUpgradeCallables);
 		}
 	}
 
