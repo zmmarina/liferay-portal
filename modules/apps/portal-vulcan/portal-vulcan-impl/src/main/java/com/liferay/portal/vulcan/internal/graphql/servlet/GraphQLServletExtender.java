@@ -775,19 +775,19 @@ public class GraphQLServletExtender {
 	private GraphQLArgument _addArgument(
 		Object defaultValue, GraphQLInputType graphQLInputType, String name) {
 
-		GraphQLArgument.Builder argumentBuilder = GraphQLArgument.newArgument();
+		GraphQLArgument.Builder builder = GraphQLArgument.newArgument();
 
 		if (defaultValue != null) {
-			argumentBuilder.defaultValue(defaultValue);
+			builder.defaultValue(defaultValue);
 		}
 
-		argumentBuilder.name(
+		builder.name(
 			name
 		).type(
 			graphQLInputType
 		);
 
-		return argumentBuilder.build();
+		return builder.build();
 	}
 
 	private void _collectObjectFields(
