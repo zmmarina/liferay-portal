@@ -87,7 +87,7 @@ public class ObjectDefinitionGraphQLTest {
 	}
 
 	@Test
-	public void testGraphQLAddObjectEntry() throws Exception {
+	public void testAddObjectEntry() throws Exception {
 		String value = RandomTestUtil.randomString();
 
 		JSONObject jsonObject = _invoke(
@@ -112,7 +112,7 @@ public class ObjectDefinitionGraphQLTest {
 	}
 
 	@Test
-	public void testGraphQLDeleteObjectEntry() throws Exception {
+	public void testDeleteObjectEntry() throws Exception {
 		GraphQLField graphQLField = new GraphQLField(
 			"mutation",
 			new GraphQLField(
@@ -139,7 +139,7 @@ public class ObjectDefinitionGraphQLTest {
 	}
 
 	@Test
-	public void testGraphQLGetListObjectEntry() throws Exception {
+	public void testGetListObjectEntry() throws Exception {
 		String fieldName = TextFormatter.formatPlural(
 			StringUtil.lowerCaseFirstLetter(_name));
 
@@ -162,7 +162,7 @@ public class ObjectDefinitionGraphQLTest {
 	}
 
 	@Test
-	public void testGraphQLGetObjectEntry() throws Exception {
+	public void testGetObjectEntry() throws Exception {
 		String fieldName = StringUtil.lowerCaseFirstLetter(_name);
 
 		JSONObject jsonObject = _invoke(
