@@ -693,7 +693,7 @@ public class GraphQLServletExtender {
 	}
 
 	private static GraphQLFieldDefinition _addField(
-		GraphQLOutputType graphQLType, String name,
+		GraphQLOutputType graphQLOutputType, String name,
 		GraphQLArgument... graphQLArguments) {
 
 		GraphQLFieldDefinition.Builder builder =
@@ -708,7 +708,7 @@ public class GraphQLServletExtender {
 		return builder.name(
 			name
 		).type(
-			graphQLType
+			graphQLOutputType
 		).build();
 	}
 
@@ -788,202 +788,6 @@ public class GraphQLServletExtender {
 		);
 
 		return argumentBuilder.build();
-	}
-
-	private void _addObjectDefinitionCreateEndpoint(
-		GraphQLCodeRegistry.Builder codeRegistryBuilder,
-		GraphQLObjectType graphQLObjectType, String idName,
-		GraphQLObjectType.Builder mutationBuilder,
-		ObjectDefinition objectDefinition,
-		List<com.liferay.object.model.ObjectField> objectFields,
-		GraphQLSchema.Builder schemaBuilder) {
-
-		GraphQLInputObjectType graphQLInputObjectType =
-			_getGraphQLInputObjectType(objectDefinition, objectFields);
-
-		String name = "create" + objectDefinition.getName();
-
-		mutationBuilder.field(
-			_addField(
-				graphQLObjectType, name,
-				_addArgument(
-					graphQLInputObjectType, objectDefinition.getName()),
-				_addArgument(Scalars.GraphQLLong, "siteId")));
-
-		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("mutation", name),
-				(DataFetcher<Object>)environment -> {
-					GraphQLContext graphQLContext =
-						environment.getLocalContext();
-
-					Optional<HttpServletRequest> httpServletRequestOptional =
-						graphQLContext.getHttpServletRequest();
-
-					User user = _portal.getUser(
-						httpServletRequestOptional.orElse(null));
-
-					Map<String, Serializable> values = environment.getArgument(
-						objectDefinition.getName());
-
-					return _toMap(
-						idName,
-						_objectEntryLocalService.addObjectEntry(
-							user.getUserId(), environment.getArgument("siteId"),
-							objectDefinition.getObjectDefinitionId(), values,
-							new ServiceContext()));
-				}
-			).build());
-	}
-
-	private void _addObjectDefinitionDeleteEndpoint(
-		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
-		GraphQLObjectType.Builder mutationBuilder,
-		ObjectDefinition objectDefinition,
-		GraphQLSchema.Builder schemaBuilder) {
-
-		String name = "delete" + objectDefinition.getName();
-
-		mutationBuilder.field(
-			_addField(
-				Scalars.GraphQLBoolean, name,
-				_addArgument(Scalars.GraphQLLong, idName)));
-
-		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("mutation", name),
-				(DataFetcher<Object>)environment -> {
-					_objectEntryLocalService.deleteObjectEntry(
-						environment.<Long>getArgument(idName));
-
-					return true;
-				}
-			).build());
-	}
-
-	private void _addObjectDefinitionGetEndpoint(
-		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
-		ObjectDefinition objectDefinition, GraphQLObjectType objectType,
-		GraphQLObjectType.Builder queryBuilder,
-		GraphQLSchema.Builder schemaBuilder) {
-
-		String name = StringUtil.lowerCaseFirstLetter(
-			objectDefinition.getName());
-
-		queryBuilder.field(
-			_addField(
-				objectType, name, _addArgument(Scalars.GraphQLLong, idName)));
-
-		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("query", name),
-				(DataFetcher<Object>)environment -> _toMap(
-					idName,
-					_objectEntryLocalService.getObjectEntry(
-						environment.getArgument(idName)))
-			).build());
-	}
-
-	private void _addObjectDefinitionListEndpoint(
-		GraphQLCodeRegistry.Builder codeRegistryBuilder,
-		EntityModel entityModel, GraphQLObjectType.Builder queryBuilder,
-		GraphQLSchema.Builder schemaBuilder, ObjectDefinition objectDefinition,
-		String idName, List<com.liferay.object.model.ObjectField> objectFields,
-		GraphQLObjectType pageType) {
-
-		String name = StringUtil.lowerCaseFirstLetter(
-			TextFormatter.formatPlural(objectDefinition.getName()));
-
-		queryBuilder.field(
-			_addField(
-				pageType, name,
-				_addArgument(
-					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
-				_addArgument(Scalars.GraphQLString, "filter"),
-				_addArgument(1, Scalars.GraphQLInt, "page"),
-				_addArgument(20, Scalars.GraphQLInt, "pageSize"),
-				_addArgument(Scalars.GraphQLString, "search"),
-				_addArgument(Scalars.GraphQLString, "sort")));
-
-		Stream<com.liferay.object.model.ObjectField> fieldsStream =
-			objectFields.stream();
-
-		List<String> fieldNames = fieldsStream.map(
-			com.liferay.object.model.ObjectField::getName
-		).collect(
-			Collectors.toList()
-		);
-
-		fieldNames.add(idName);
-
-		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("query", name),
-				(DataFetcher<Object>)environment -> {
-					GraphQLContext graphQLContext =
-						environment.getLocalContext();
-
-					Optional<HttpServletRequest> httpServletRequestOptional =
-						graphQLContext.getHttpServletRequest();
-
-					AcceptLanguage acceptLanguage = new AcceptLanguageImpl(
-						httpServletRequestOptional.orElse(null), _language,
-						_portal);
-
-					Page<Document> page = SearchUtil.search(
-						new HashMap<>(),
-						booleanQuery -> {
-							BooleanFilter booleanFilter =
-								booleanQuery.getPreBooleanFilter();
-
-							booleanFilter.add(
-								new TermFilter(
-									"objectDefinitionId",
-									String.valueOf(
-										objectDefinition.
-											getObjectDefinitionId())),
-								BooleanClauseOccur.MUST);
-						},
-						_getFilter(
-							acceptLanguage, entityModel,
-							environment.getArgument("filter")),
-						ObjectEntry.class, environment.getArgument("search"),
-						Pagination.of(
-							environment.getArgument("page"),
-							environment.getArgument("pageSize")),
-						queryConfig -> queryConfig.setSelectedFieldNames(
-							fieldNames.toArray(new String[0])),
-						searchContext -> {
-							searchContext.addVulcanAggregation(
-								_getAggregation(
-									acceptLanguage,
-									environment.getArgument("aggregation"),
-									entityModel));
-							searchContext.setCompanyId(
-								CompanyThreadLocal.getCompanyId());
-						},
-						_getSorts(
-							acceptLanguage, entityModel,
-							environment.getArgument("sort")),
-						document -> document);
-
-					return HashMapBuilder.<String, Object>put(
-						"actions", page.getActions()
-					).put(
-						"facets", page.getFacets()
-					).put(
-						"items", _getValues(fieldNames, page)
-					).put(
-						"lastPage", page.getLastPage()
-					).put(
-						"page", page.getPage()
-					).put(
-						"pageSize", page.getPageSize()
-					).put(
-						"totalCount", page.getTotalCount()
-					).build();
-				}
-			).build());
 	}
 
 	private void _collectObjectFields(
@@ -1976,31 +1780,194 @@ public class GraphQLServletExtender {
 		List<com.liferay.object.model.ObjectField> objectFields =
 			objectDefinitionGraphQL.getObjectFields();
 
-		GraphQLObjectType objectType = _getObjectGraphQLObjectType(
+		GraphQLObjectType graphQLObjectType = _getObjectGraphQLObjectType(
 			idName, objectDefinition, objectFields);
 
 		Map<String, GraphQLType> typeRegistry =
 			processingElementsContainer.getTypeRegistry();
 
 		GraphQLObjectType pageType = _getPageGraphQLObjectType(
-			typeRegistry.get("Facet"), objectType, objectDefinition.getName());
+			typeRegistry.get("Facet"), graphQLObjectType,
+			objectDefinition.getName());
 
 		GraphQLCodeRegistry.Builder codeRegistryBuilder =
 			processingElementsContainer.getCodeRegistryBuilder();
 
-		_addObjectDefinitionCreateEndpoint(
-			codeRegistryBuilder, objectType, idName, mutationBuilder,
-			objectDefinition, objectFields, schemaBuilder);
-		_addObjectDefinitionDeleteEndpoint(
-			codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
-			schemaBuilder);
-		_addObjectDefinitionGetEndpoint(
-			codeRegistryBuilder, idName, objectDefinition, objectType,
-			queryBuilder, schemaBuilder);
-		_addObjectDefinitionListEndpoint(
-			codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
-			queryBuilder, schemaBuilder, objectDefinition, idName, objectFields,
-			pageType);
+		// Create
+
+		GraphQLInputObjectType graphQLInputObjectType =
+			_getGraphQLInputObjectType(objectDefinition, objectFields);
+
+		String name = "create" + objectDefinition.getName();
+
+		mutationBuilder.field(
+			_addField(
+				graphQLObjectType, name,
+				_addArgument(
+					graphQLInputObjectType, objectDefinition.getName()),
+				_addArgument(Scalars.GraphQLLong, "siteId")));
+
+		schemaBuilder.codeRegistry(
+			codeRegistryBuilder.dataFetcher(
+				FieldCoordinates.coordinates("mutation", name),
+				(DataFetcher<Object>)environment -> {
+					GraphQLContext graphQLContext =
+						environment.getLocalContext();
+
+					Optional<HttpServletRequest> httpServletRequestOptional =
+						graphQLContext.getHttpServletRequest();
+
+					User user = _portal.getUser(
+						httpServletRequestOptional.orElse(null));
+
+					Map<String, Serializable> values = environment.getArgument(
+						objectDefinition.getName());
+
+					return _toMap(
+						idName,
+						_objectEntryLocalService.addObjectEntry(
+							user.getUserId(), environment.getArgument("siteId"),
+							objectDefinition.getObjectDefinitionId(), values,
+							new ServiceContext()));
+				}
+			).build());
+
+		// Delete
+
+		String deleteName = "delete" + objectDefinition.getName();
+
+		mutationBuilder.field(
+			_addField(
+				Scalars.GraphQLBoolean, deleteName,
+				_addArgument(Scalars.GraphQLLong, idName)));
+
+		schemaBuilder.codeRegistry(
+			codeRegistryBuilder.dataFetcher(
+				FieldCoordinates.coordinates("mutation", deleteName),
+				(DataFetcher<Object>)environment -> {
+					_objectEntryLocalService.deleteObjectEntry(
+						environment.<Long>getArgument(idName));
+
+					return true;
+				}
+			).build());
+
+		// Get
+
+		String getName = StringUtil.lowerCaseFirstLetter(
+			objectDefinition.getName());
+
+		queryBuilder.field(
+			_addField(
+				graphQLObjectType, getName,
+				_addArgument(Scalars.GraphQLLong, idName)));
+
+		schemaBuilder.codeRegistry(
+			codeRegistryBuilder.dataFetcher(
+				FieldCoordinates.coordinates("query", getName),
+				(DataFetcher<Object>)environment -> _toMap(
+					idName,
+					_objectEntryLocalService.getObjectEntry(
+						environment.getArgument(idName)))
+			).build());
+
+		// List
+
+		String listName = StringUtil.lowerCaseFirstLetter(
+			TextFormatter.formatPlural(objectDefinition.getName()));
+
+		queryBuilder.field(
+			_addField(
+				pageType, listName,
+				_addArgument(
+					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
+				_addArgument(Scalars.GraphQLString, "filter"),
+				_addArgument(1, Scalars.GraphQLInt, "page"),
+				_addArgument(20, Scalars.GraphQLInt, "pageSize"),
+				_addArgument(Scalars.GraphQLString, "search"),
+				_addArgument(Scalars.GraphQLString, "sort")));
+
+		Stream<com.liferay.object.model.ObjectField> fieldsStream =
+			objectFields.stream();
+
+		List<String> fieldNames = fieldsStream.map(
+			com.liferay.object.model.ObjectField::getName
+		).collect(
+			Collectors.toList()
+		);
+
+		fieldNames.add(idName);
+
+		schemaBuilder.codeRegistry(
+			codeRegistryBuilder.dataFetcher(
+				FieldCoordinates.coordinates("query", listName),
+				(DataFetcher<Object>)environment -> {
+					GraphQLContext graphQLContext =
+						environment.getLocalContext();
+
+					Optional<HttpServletRequest> httpServletRequestOptional =
+						graphQLContext.getHttpServletRequest();
+
+					AcceptLanguage acceptLanguage = new AcceptLanguageImpl(
+						httpServletRequestOptional.orElse(null), _language,
+						_portal);
+
+					Page<Document> page = SearchUtil.search(
+						new HashMap<>(),
+						booleanQuery -> {
+							BooleanFilter booleanFilter =
+								booleanQuery.getPreBooleanFilter();
+
+							booleanFilter.add(
+								new TermFilter(
+									"objectDefinitionId",
+									String.valueOf(
+										objectDefinition.
+											getObjectDefinitionId())),
+								BooleanClauseOccur.MUST);
+						},
+						_getFilter(
+							acceptLanguage,
+							objectDefinitionGraphQL.getEntityModel(),
+							environment.getArgument("filter")),
+						ObjectEntry.class, environment.getArgument("search"),
+						Pagination.of(
+							environment.getArgument("page"),
+							environment.getArgument("pageSize")),
+						queryConfig -> queryConfig.setSelectedFieldNames(
+							fieldNames.toArray(new String[0])),
+						searchContext -> {
+							searchContext.addVulcanAggregation(
+								_getAggregation(
+									acceptLanguage,
+									environment.getArgument("aggregation"),
+									objectDefinitionGraphQL.getEntityModel()));
+							searchContext.setCompanyId(
+								CompanyThreadLocal.getCompanyId());
+						},
+						_getSorts(
+							acceptLanguage,
+							objectDefinitionGraphQL.getEntityModel(),
+							environment.getArgument("sort")),
+						document -> document);
+
+					return HashMapBuilder.<String, Object>put(
+						"actions", page.getActions()
+					).put(
+						"facets", page.getFacets()
+					).put(
+						"items", _getValues(fieldNames, page)
+					).put(
+						"lastPage", page.getLastPage()
+					).put(
+						"page", page.getPage()
+					).put(
+						"pageSize", page.getPageSize()
+					).put(
+						"totalCount", page.getTotalCount()
+					).build();
+				}
+			).build());
 	}
 
 	private void _registerObjectDefinitionGraphQLs(
