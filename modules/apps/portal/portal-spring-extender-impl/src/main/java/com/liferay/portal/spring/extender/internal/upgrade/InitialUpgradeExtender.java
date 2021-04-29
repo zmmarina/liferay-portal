@@ -171,7 +171,7 @@ public class InitialUpgradeExtender
 			_db = dbManager.getDB();
 
 			try {
-				_db.doProcess(
+				_db.process(
 					companyId -> {
 						if (_log.isInfoEnabled() &&
 							Validator.isNotNull(companyId)) {
