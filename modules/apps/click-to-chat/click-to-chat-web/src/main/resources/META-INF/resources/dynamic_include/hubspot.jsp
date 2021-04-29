@@ -62,7 +62,7 @@ if (themeDisplay.isSignedIn() && (parts.length > 1)) {
 		<script>
 			Liferay.Util.openToast({
 				message:
-					'<%= (errorMessage != null) ? errorMessage : LanguageUtil.get(resourceBundle, "an-unexpected-error-occurred") %>',
+					'<%= (errorMessage != null) ? errorMessage : LanguageUtil.get(resourceBundle, "unable-to-connect-to-hubspot") %>',
 				type: 'danger',
 			});
 		</script>
