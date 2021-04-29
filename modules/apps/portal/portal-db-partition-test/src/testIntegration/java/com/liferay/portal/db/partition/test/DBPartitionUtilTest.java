@@ -233,9 +233,11 @@ public class DBPartitionUtilTest extends BaseDBPartitionTestCase {
 			dbPartitionUpgradeProcess.upgrade();
 
 			long[] expectedCompanyIds = PortalInstances.getCompanyIdsBySQL();
-			long[] actualCompanyIds = dbPartitionUpgradeProcess.getCompanyIds();
 
 			Arrays.sort(expectedCompanyIds);
+
+			long[] actualCompanyIds = dbPartitionUpgradeProcess.getCompanyIds();
+
 			Arrays.sort(actualCompanyIds);
 
 			Assert.assertArrayEquals(expectedCompanyIds, actualCompanyIds);
