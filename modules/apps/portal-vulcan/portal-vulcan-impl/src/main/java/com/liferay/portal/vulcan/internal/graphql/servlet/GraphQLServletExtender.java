@@ -1508,6 +1508,19 @@ public class GraphQLServletExtender {
 		return builder.build();
 	}
 
+	private Map<String, Serializable> _getObjectEntryValues(
+		ObjectDefinition objectDefinition, ObjectEntry objectEntry) {
+
+		Map<String, Serializable> values = new HashMap<>(
+			objectEntry.getValues());
+
+		values.put(
+			objectDefinition.getPrimaryKeyColumnName(),
+			objectEntry.getObjectEntryId());
+
+		return values;
+	}
+
 	private GraphQLObjectType _getPageGraphQLObjectType(
 		GraphQLType facetGraphQLType, GraphQLType objectGraphQLType,
 		String name) {
@@ -1799,7 +1812,7 @@ public class GraphQLServletExtender {
 						dataFetchingEnvironment.getArgument(
 							objectDefinition.getName());
 
-					return _toMap(
+					return _getObjectEntryValues(
 						objectDefinition,
 						_objectEntryLocalService.addObjectEntry(
 							user.getUserId(),
@@ -1845,11 +1858,12 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
-				(DataFetcher<Object>)dataFetchingEnvironment -> _toMap(
-					objectDefinition,
-					_objectEntryLocalService.getObjectEntry(
-						dataFetchingEnvironment.getArgument(
-							objectDefinition.getPrimaryKeyColumnName())))
+				(DataFetcher<Object>)
+					dataFetchingEnvironment -> _getObjectEntryValues(
+						objectDefinition,
+						_objectEntryLocalService.getObjectEntry(
+							dataFetchingEnvironment.getArgument(
+								objectDefinition.getPrimaryKeyColumnName())))
 			).build());
 
 		// List
@@ -2082,23 +2096,6 @@ public class GraphQLServletExtender {
 				acceptLanguage, objectDefinitionGraphQL.getEntityModel(),
 				dataFetchingEnvironment.getArgument("sort")),
 			document -> document);
-	}
-
-	private Map<String, Serializable> _toMap(
-		ObjectDefinition objectDefinition, ObjectEntry objectEntry) {
-
-		HashMapBuilder.HashMapWrapper<String, Serializable> hashMapWrapper =
-			HashMapBuilder.<String, Serializable>put(
-				objectDefinition.getPrimaryKeyColumnName(),
-				objectEntry.getObjectEntryId());
-
-		Map<String, Serializable> values = objectEntry.getValues();
-
-		for (Map.Entry<String, Serializable> entry : values.entrySet()) {
-			hashMapWrapper.put(entry.getKey(), entry.getValue());
-		}
-
-		return hashMapWrapper.build();
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
