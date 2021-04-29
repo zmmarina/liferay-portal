@@ -44,7 +44,7 @@ public class ParallelUpgradeSchemaUtil {
 			for (String sqlFileName : sqlFileNames) {
 				futures.add(
 					executorService.submit(
-						new UpgradeCallableSQLExecutor(
+						new SQLExecutorUpgradeCallable(
 							dbProcess, sqlFileName)));
 			}
 
@@ -74,7 +74,7 @@ public class ParallelUpgradeSchemaUtil {
 			PortalExecutorManager.class, ParallelUpgradeSchemaUtil.class,
 			"_portalExecutorManager", true);
 
-	private static class UpgradeCallableSQLExecutor
+	private static class SQLExecutorUpgradeCallable
 		extends BaseUpgradeCallable<Void> {
 
 		@Override
@@ -86,7 +86,7 @@ public class ParallelUpgradeSchemaUtil {
 			return null;
 		}
 
-		private UpgradeCallableSQLExecutor(
+		private SQLExecutorUpgradeCallable(
 			DBProcess dbProcess, String sqlFileName) {
 
 			_dbProcess = dbProcess;
