@@ -113,20 +113,29 @@ public class ObjectDefinitionGraphQLTest {
 
 	@Test
 	public void testGraphQLDeleteObjectEntry() throws Exception {
-		JSONObject jsonObject = _invoke(
+		GraphQLField graphQLField = new GraphQLField(
+			"mutation",
 			new GraphQLField(
-				"mutation",
-				new GraphQLField(
-					"delete" + _name,
-					HashMapBuilder.<String, Object>put(
-						StringUtil.removeSubstring(
-							_objectDefinition.getDBPrimaryKeyColumnName(), "_"),
-						_objectEntry.getObjectEntryId()
-					).build())));
+				"delete" + _name,
+				HashMapBuilder.<String, Object>put(
+					StringUtil.removeSubstring(
+						_objectDefinition.getDBPrimaryKeyColumnName(), "_"),
+					_objectEntry.getObjectEntryId()
+				).build()));
+
+		JSONObject jsonObject = _invoke(graphQLField);
 
 		Assert.assertTrue(
 			JSONUtil.getValueAsBoolean(
-				jsonObject, "JSONObject/data", "Object/delete" + _name));
+				jsonObject, "JSONObject/data",
+				"Object/delete" + _name));
+
+		jsonObject = _invoke(graphQLField);
+
+		Assert.assertFalse(
+			JSONUtil.getValueAsBoolean(
+				jsonObject, "JSONObject/data",
+				"Object/delete" + _name));
 	}
 
 	@Test
