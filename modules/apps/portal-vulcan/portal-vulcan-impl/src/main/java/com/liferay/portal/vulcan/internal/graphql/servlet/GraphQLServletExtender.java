@@ -861,7 +861,7 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
-	private void _addObjectDefinitionGetListEndpoint(
+	private void _addObjectDefinitionListEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder,
 		EntityModel entityModel, GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder, ObjectDefinition objectDefinition,
@@ -963,7 +963,7 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
-	private void _addObjectDefinitionGetObjectEndpoint(
+	private void _addObjectDefinitionGetEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
 		ObjectDefinition objectDefinition, GraphQLObjectType objectType,
 		GraphQLObjectType.Builder queryBuilder,
@@ -2000,12 +2000,12 @@ public class GraphQLServletExtender {
 				codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
 				schemaBuilder);
 
-			_addObjectDefinitionGetListEndpoint(
+			_addObjectDefinitionListEndpoint(
 				codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
 				queryBuilder, schemaBuilder, objectDefinition, idName,
 				objectFields, pageType);
 
-			_addObjectDefinitionGetObjectEndpoint(
+			_addObjectDefinitionGetEndpoint(
 				codeRegistryBuilder, idName, objectDefinition, objectType,
 				queryBuilder, schemaBuilder);
 		}
