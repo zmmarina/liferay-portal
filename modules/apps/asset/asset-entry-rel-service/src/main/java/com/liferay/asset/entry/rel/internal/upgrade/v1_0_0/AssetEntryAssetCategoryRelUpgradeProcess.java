@@ -109,7 +109,7 @@ public class AssetEntryAssetCategoryRelUpgradeProcess extends UpgradeProcess {
 		}
 
 		@Override
-		public Boolean doCall() throws Exception {
+		protected Boolean doCall() throws Exception {
 			try (Connection connection = DataAccess.getConnection()) {
 				StringBundler sb = new StringBundler(9);
 

@@ -34,7 +34,7 @@ public abstract class BaseUpgradeCallable<T> implements Callable<T> {
 		return doCall();
 	}
 
-	public abstract T doCall() throws Exception;
+	protected abstract T doCall() throws Exception;
 
 	private final Long _companyId;
 

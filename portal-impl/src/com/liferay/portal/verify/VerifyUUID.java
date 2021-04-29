@@ -132,7 +132,7 @@ public class VerifyUUID extends VerifyProcess {
 	private class VerifyUUIDUpgradeCallable extends BaseUpgradeCallable<Void> {
 
 		@Override
-		public Void doCall() throws Exception {
+		protected Void doCall() throws Exception {
 			verifyUUID(_verifiableUUIDModel);
 
 			return null;

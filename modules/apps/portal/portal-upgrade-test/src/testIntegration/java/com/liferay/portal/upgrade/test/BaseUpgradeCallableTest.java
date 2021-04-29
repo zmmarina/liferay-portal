@@ -75,7 +75,7 @@ public class BaseUpgradeCallableTest {
 	private class UpgradeCallable extends BaseUpgradeCallable<Long> {
 
 		@Override
-		public Long doCall() throws Exception {
+		protected Long doCall() throws Exception {
 			return CompanyThreadLocal.getCompanyId();
 		}
 

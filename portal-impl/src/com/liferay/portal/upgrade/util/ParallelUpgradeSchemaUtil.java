@@ -78,7 +78,7 @@ public class ParallelUpgradeSchemaUtil {
 		extends BaseUpgradeCallable<Void> {
 
 		@Override
-		public Void doCall() throws Exception {
+		protected Void doCall() throws Exception {
 			try (LoggingTimer loggingTimer = new LoggingTimer(_sqlFileName)) {
 				_dbProcess.runSQLTemplate(_sqlFileName, false);
 			}

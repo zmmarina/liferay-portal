@@ -156,7 +156,7 @@ public class ImageTypeContentUpgradeProcess extends UpgradeProcess {
 		}
 
 		@Override
-		public Boolean doCall() throws Exception {
+		protected Boolean doCall() throws Exception {
 			String fileName = String.valueOf(_articleImageId);
 
 			FileEntry fileEntry = _portletFileRepository.fetchPortletFileEntry(

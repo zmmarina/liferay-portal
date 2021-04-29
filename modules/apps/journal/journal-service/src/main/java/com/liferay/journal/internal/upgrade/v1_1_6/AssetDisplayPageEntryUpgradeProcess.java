@@ -228,7 +228,7 @@ public class AssetDisplayPageEntryUpgradeProcess extends UpgradeProcess {
 		}
 
 		@Override
-		public Boolean doCall() throws Exception {
+		protected Boolean doCall() throws Exception {
 			try {
 				ServiceContext serviceContext = new ServiceContext();
 

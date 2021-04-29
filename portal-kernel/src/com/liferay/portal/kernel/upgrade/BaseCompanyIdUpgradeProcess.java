@@ -91,7 +91,7 @@ public abstract class BaseCompanyIdUpgradeProcess extends UpgradeProcess {
 		}
 
 		@Override
-		public final Void doCall() throws Exception {
+		protected final Void doCall() throws Exception {
 			try (LoggingTimer loggingTimer = new LoggingTimer(_tableName);
 				Connection connection = DataAccess.getConnection()) {
 

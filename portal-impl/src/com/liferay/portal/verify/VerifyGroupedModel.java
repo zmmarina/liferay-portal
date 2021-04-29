@@ -207,7 +207,7 @@ public class VerifyGroupedModel extends VerifyProcess {
 		extends BaseUpgradeCallable<Void> {
 
 		@Override
-		public Void doCall() throws Exception {
+		protected Void doCall() throws Exception {
 			verifyGroupedModel(_verifiableGroupedModel);
 
 			return null;

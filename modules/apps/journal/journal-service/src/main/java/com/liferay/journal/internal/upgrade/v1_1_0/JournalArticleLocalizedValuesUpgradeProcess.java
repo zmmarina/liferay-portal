@@ -291,7 +291,7 @@ public class JournalArticleLocalizedValuesUpgradeProcess
 		}
 
 		@Override
-		public Boolean doCall() throws Exception {
+		protected Boolean doCall() throws Exception {
 			try {
 				StringBundler sb = new StringBundler(4);
 
@@ -336,7 +336,7 @@ public class JournalArticleLocalizedValuesUpgradeProcess
 		}
 
 		@Override
-		public Boolean doCall() throws Exception {
+		protected Boolean doCall() throws Exception {
 			Map<Locale, String> titleMap = _getLocalizationMap(
 				_title, _defaultLanguageId);
 			Map<Locale, String> descriptionMap = _getLocalizationMap(

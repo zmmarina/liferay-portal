@@ -202,7 +202,7 @@ public class VerifyResourcePermissions extends VerifyProcess {
 		extends BaseUpgradeCallable<Void> {
 
 		@Override
-		public Void doCall() throws Exception {
+		protected Void doCall() throws Exception {
 			if (_log.isInfoEnabled() && ((_cur % 100) == 0)) {
 				_log.info(
 					StringBundler.concat(
@@ -263,7 +263,7 @@ public class VerifyResourcePermissions extends VerifyProcess {
 		extends BaseUpgradeCallable<Void> {
 
 		@Override
-		public Void doCall() throws Exception {
+		protected Void doCall() throws Exception {
 			_verifyResourcedModel(_role, _verifiableResourcedModel);
 
 			return null;
