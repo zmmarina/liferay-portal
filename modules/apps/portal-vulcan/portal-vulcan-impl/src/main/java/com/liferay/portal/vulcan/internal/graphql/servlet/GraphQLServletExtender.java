@@ -1791,18 +1791,18 @@ public class GraphQLServletExtender {
 		GraphQLInputObjectType graphQLInputObjectType =
 			_getGraphQLInputObjectType(objectDefinition, objectFields);
 
-		String creaetName = "create" + objectDefinition.getName();
+		String createName = "create" + objectDefinition.getName();
 
 		mutationBuilder.field(
 			_addField(
-				graphQLObjectType, creaetName,
+				graphQLObjectType, createName,
 				_addArgument(
 					graphQLInputObjectType, objectDefinition.getName()),
 				_addArgument(Scalars.GraphQLLong, "siteId")));
 
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("mutation", creaetName),
+				FieldCoordinates.coordinates("mutation", createName),
 				(DataFetcher<Object>)environment -> {
 					GraphQLContext graphQLContext =
 						environment.getLocalContext();
