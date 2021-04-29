@@ -1868,11 +1868,10 @@ public class GraphQLServletExtender {
 
 		// List
 
-		String listName = StringUtil.lowerCaseFirstLetter(
-			TextFormatter.formatPlural(objectDefinition.getName()));
-
 		Map<String, GraphQLType> graphQLTypes =
 			processingElementsContainer.getTypeRegistry();
+		String listName = StringUtil.lowerCaseFirstLetter(
+			TextFormatter.formatPlural(objectDefinition.getName()));
 
 		queryBuilder.field(
 			_addField(
