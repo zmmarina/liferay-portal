@@ -1774,8 +1774,7 @@ public class GraphQLServletExtender {
 		ObjectDefinition objectDefinition =
 			objectDefinitionGraphQL.getObjectDefinition();
 
-		String idName = StringUtil.removeSubstring(
-			objectDefinition.getDBPrimaryKeyColumnName(), "_");
+		String idName = objectDefinition.getPrimaryKeyColumnName();
 
 		List<com.liferay.object.model.ObjectField> objectFields =
 			objectDefinitionGraphQL.getObjectFields();
