@@ -1960,6 +1960,49 @@ public class GraphQLServletExtender {
 		}
 	}
 
+	private void _registerObjectDefinitionGraphQL(
+		GraphQLObjectType.Builder mutationBuilder,
+		ObjectDefinitionGraphQL objectDefinitionGraphQL,
+		ProcessingElementsContainer processingElementsContainer,
+		GraphQLObjectType.Builder queryBuilder,
+		GraphQLSchema.Builder schemaBuilder) {
+
+		ObjectDefinition objectDefinition =
+			objectDefinitionGraphQL.getObjectDefinition();
+
+		String idName = StringUtil.removeSubstring(
+			objectDefinition.getDBPrimaryKeyColumnName(), "_");
+
+		List<com.liferay.object.model.ObjectField> objectFields =
+			objectDefinitionGraphQL.getObjectFields();
+
+		GraphQLObjectType objectType = _getObjectGraphQLObjectType(
+			idName, objectDefinition, objectFields);
+
+		Map<String, GraphQLType> typeRegistry =
+			processingElementsContainer.getTypeRegistry();
+
+		GraphQLObjectType pageType = _getPageGraphQLObjectType(
+			typeRegistry.get("Facet"), objectType, objectDefinition.getName());
+
+		GraphQLCodeRegistry.Builder codeRegistryBuilder =
+			processingElementsContainer.getCodeRegistryBuilder();
+
+		_addObjectDefinitionCreateEndpoint(
+			codeRegistryBuilder, objectType, idName, mutationBuilder,
+			objectDefinition, objectFields, schemaBuilder);
+		_addObjectDefinitionDeleteEndpoint(
+			codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
+			schemaBuilder);
+		_addObjectDefinitionGetEndpoint(
+			codeRegistryBuilder, idName, objectDefinition, objectType,
+			queryBuilder, schemaBuilder);
+		_addObjectDefinitionListEndpoint(
+			codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
+			queryBuilder, schemaBuilder, objectDefinition, idName, objectFields,
+			pageType);
+	}
+
 	private void _registerObjectDefinitionGraphQLs(
 		GraphQLObjectType.Builder mutationBuilder,
 		ProcessingElementsContainer processingElementsContainer,
@@ -1969,41 +2012,9 @@ public class GraphQLServletExtender {
 		for (ObjectDefinitionGraphQL objectDefinitionGraphQL :
 				_objectDefinitionGraphQLServiceTrackerMap.values()) {
 
-			ObjectDefinition objectDefinition =
-				objectDefinitionGraphQL.getObjectDefinition();
-
-			String idName = StringUtil.removeSubstring(
-				objectDefinition.getDBPrimaryKeyColumnName(), "_");
-
-			List<com.liferay.object.model.ObjectField> objectFields =
-				objectDefinitionGraphQL.getObjectFields();
-
-			GraphQLObjectType objectType = _getObjectGraphQLObjectType(
-				idName, objectDefinition, objectFields);
-
-			Map<String, GraphQLType> typeRegistry =
-				processingElementsContainer.getTypeRegistry();
-
-			GraphQLObjectType pageType = _getPageGraphQLObjectType(
-				typeRegistry.get("Facet"), objectType,
-				objectDefinition.getName());
-
-			GraphQLCodeRegistry.Builder codeRegistryBuilder =
-				processingElementsContainer.getCodeRegistryBuilder();
-
-			_addObjectDefinitionCreateEndpoint(
-				codeRegistryBuilder, objectType, idName, mutationBuilder,
-				objectDefinition, objectFields, schemaBuilder);
-			_addObjectDefinitionDeleteEndpoint(
-				codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
-				schemaBuilder);
-			_addObjectDefinitionGetEndpoint(
-				codeRegistryBuilder, idName, objectDefinition, objectType,
-				queryBuilder, schemaBuilder);
-			_addObjectDefinitionListEndpoint(
-				codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
-				queryBuilder, schemaBuilder, objectDefinition, idName,
-				objectFields, pageType);
+			_registerObjectDefinitionGraphQL(
+				mutationBuilder, objectDefinitionGraphQL,
+				processingElementsContainer, queryBuilder, schemaBuilder);
 		}
 	}
 
