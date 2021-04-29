@@ -745,7 +745,7 @@ public class ContentPageEditorDisplayContext {
 		UnicodeProperties unicodeProperties =
 			layout.getTypeSettingsProperties();
 
-		// PTR-2322
+		// LPS-131416
 
 		long segmentsExperienceId = GetterUtil.getLong(
 			unicodeProperties.getProperty("segmentsExperienceId"),
