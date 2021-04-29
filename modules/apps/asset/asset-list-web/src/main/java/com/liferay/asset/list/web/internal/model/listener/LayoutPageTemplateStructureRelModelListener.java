@@ -102,8 +102,8 @@ public class LayoutPageTemplateStructureRelModelListener
 		LayoutStructure layoutStructure) {
 
 		if ((collectionJSONObject == null) ||
-			(!collectionJSONObject.has("key") &&
-			 !collectionJSONObject.has("classPK"))) {
+			(!collectionJSONObject.has("classPK") &&
+			 !collectionJSONObject.has("key"))) {
 
 			return false;
 		}
