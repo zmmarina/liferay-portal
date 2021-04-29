@@ -1746,7 +1746,7 @@ public class GraphQLServletExtender {
 			graphQLSchemaBuilder.codeRegistry(
 				graphQLCodeRegistryBuilder.dataFetcher(
 					FieldCoordinates.coordinates(parentField, graphQLNamespace),
-					(DataFetcher<Object>)dataFetcher -> new Object()
+					(DataFetcher<Object>)dataFetchingEnvironment -> new Object()
 				).build());
 		}
 	}
@@ -1785,9 +1785,9 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", createName),
-				(DataFetcher<Object>)dataFetcher -> {
+				(DataFetcher<Object>)dataFetchingEnvironment -> {
 					GraphQLContext graphQLContext =
-						dataFetcher.getLocalContext();
+						dataFetchingEnvironment.getLocalContext();
 
 					Optional<HttpServletRequest> httpServletRequestOptional =
 						graphQLContext.getHttpServletRequest();
@@ -1795,13 +1795,15 @@ public class GraphQLServletExtender {
 					User user = _portal.getUser(
 						httpServletRequestOptional.orElse(null));
 
-					Map<String, Serializable> values = dataFetcher.getArgument(
-						objectDefinition.getName());
+					Map<String, Serializable> values =
+						dataFetchingEnvironment.getArgument(
+							objectDefinition.getName());
 
 					return _toMap(
 						objectDefinition,
 						_objectEntryLocalService.addObjectEntry(
-							user.getUserId(), dataFetcher.getArgument("siteId"),
+							user.getUserId(),
+							dataFetchingEnvironment.getArgument("siteId"),
 							objectDefinition.getObjectDefinitionId(), values,
 							new ServiceContext()));
 				}
@@ -1820,9 +1822,9 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", deleteName),
-				(DataFetcher<Object>)dataFetcher -> {
+				(DataFetcher<Object>)dataFetchingEnvironment -> {
 					_objectEntryLocalService.deleteObjectEntry(
-						dataFetcher.<Long>getArgument(
+						dataFetchingEnvironment.<Long>getArgument(
 							objectDefinition.getPrimaryKeyColumnName()));
 
 					return true;
@@ -1843,10 +1845,10 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
-				(DataFetcher<Object>)dataFetcher -> _toMap(
+				(DataFetcher<Object>)dataFetchingEnvironment -> _toMap(
 					objectDefinition,
 					_objectEntryLocalService.getObjectEntry(
-						dataFetcher.getArgument(
+						dataFetchingEnvironment.getArgument(
 							objectDefinition.getPrimaryKeyColumnName())))
 			).build());
 
@@ -1885,55 +1887,19 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", listName),
-				(DataFetcher<Object>)dataFetcher -> {
+				(DataFetcher<Object>)dataFetchingEnvironment -> {
 					GraphQLContext graphQLContext =
-						dataFetcher.getLocalContext();
+						dataFetchingEnvironment.getLocalContext();
 
 					Optional<HttpServletRequest> httpServletRequestOptional =
 						graphQLContext.getHttpServletRequest();
 
-					AcceptLanguage acceptLanguage = new AcceptLanguageImpl(
-						httpServletRequestOptional.orElse(null), _language,
-						_portal);
-
-					Page<Document> page = SearchUtil.search(
-						new HashMap<>(),
-						booleanQuery -> {
-							BooleanFilter booleanFilter =
-								booleanQuery.getPreBooleanFilter();
-
-							booleanFilter.add(
-								new TermFilter(
-									"objectDefinitionId",
-									String.valueOf(
-										objectDefinition.
-											getObjectDefinitionId())),
-								BooleanClauseOccur.MUST);
-						},
-						_getFilter(
-							acceptLanguage,
-							objectDefinitionGraphQL.getEntityModel(),
-							dataFetcher.getArgument("filter")),
-						ObjectEntry.class, dataFetcher.getArgument("search"),
-						Pagination.of(
-							dataFetcher.getArgument("page"),
-							dataFetcher.getArgument("pageSize")),
-						queryConfig -> queryConfig.setSelectedFieldNames(
-							objectFieldNames.toArray(new String[0])),
-						searchContext -> {
-							searchContext.addVulcanAggregation(
-								_getAggregation(
-									acceptLanguage,
-									dataFetcher.getArgument("aggregation"),
-									objectDefinitionGraphQL.getEntityModel()));
-							searchContext.setCompanyId(
-								CompanyThreadLocal.getCompanyId());
-						},
-						_getSorts(
-							acceptLanguage,
-							objectDefinitionGraphQL.getEntityModel(),
-							dataFetcher.getArgument("sort")),
-						document -> document);
+					Page<Document> page = _search(
+						new AcceptLanguageImpl(
+							httpServletRequestOptional.orElse(null), _language,
+							_portal),
+						dataFetchingEnvironment, objectDefinitionGraphQL,
+						objectFieldNames);
 
 					return HashMapBuilder.<String, Object>put(
 						"actions", page.getActions()
@@ -2070,6 +2036,52 @@ public class GraphQLServletExtender {
 
 		method.invoke(
 			graphQLObjectType, Collections.singletonList(graphQLInterfaceType));
+	}
+
+	private Page<Document> _search(
+			AcceptLanguage acceptLanguage,
+			DataFetchingEnvironment dataFetchingEnvironment,
+			ObjectDefinitionGraphQL objectDefinitionGraphQL,
+			List<String> objectFieldNames)
+		throws Exception {
+
+		ObjectDefinition objectDefinition =
+			objectDefinitionGraphQL.getObjectDefinition();
+
+		return SearchUtil.search(
+			new HashMap<>(),
+			booleanQuery -> {
+				BooleanFilter booleanFilter =
+					booleanQuery.getPreBooleanFilter();
+
+				booleanFilter.add(
+					new TermFilter(
+						"objectDefinitionId",
+						String.valueOf(
+							objectDefinition.getObjectDefinitionId())),
+					BooleanClauseOccur.MUST);
+			},
+			_getFilter(
+				acceptLanguage, objectDefinitionGraphQL.getEntityModel(),
+				dataFetchingEnvironment.getArgument("filter")),
+			ObjectEntry.class, dataFetchingEnvironment.getArgument("search"),
+			Pagination.of(
+				dataFetchingEnvironment.getArgument("page"),
+				dataFetchingEnvironment.getArgument("pageSize")),
+			queryConfig -> queryConfig.setSelectedFieldNames(
+				objectFieldNames.toArray(new String[0])),
+			searchContext -> {
+				searchContext.addVulcanAggregation(
+					_getAggregation(
+						acceptLanguage,
+						dataFetchingEnvironment.getArgument("aggregation"),
+						objectDefinitionGraphQL.getEntityModel()));
+				searchContext.setCompanyId(CompanyThreadLocal.getCompanyId());
+			},
+			_getSorts(
+				acceptLanguage, objectDefinitionGraphQL.getEntityModel(),
+				dataFetchingEnvironment.getArgument("sort")),
+			document -> document);
 	}
 
 	private Map<String, Serializable> _toMap(
