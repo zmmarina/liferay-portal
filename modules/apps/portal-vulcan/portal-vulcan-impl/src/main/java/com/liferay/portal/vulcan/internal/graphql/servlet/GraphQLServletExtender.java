@@ -1508,7 +1508,6 @@ public class GraphQLServletExtender {
 				configurations, ServletData::getMutation, mutationBuilder,
 				graphQLSchemaBuilder, true, processingElementsContainer,
 				servletDatas);
-
 			_registerObjectDefinitionGraphQLs(
 				mutationBuilder, processingElementsContainer,
 				graphQLObjectTypeBuilder, graphQLSchemaBuilder);
