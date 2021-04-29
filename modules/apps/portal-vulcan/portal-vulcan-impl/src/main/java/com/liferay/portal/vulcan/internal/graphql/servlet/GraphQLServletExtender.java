@@ -1785,9 +1785,9 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", createName),
-				(DataFetcher<Object>)environment -> {
+				(DataFetcher<Object>)dataFetcher -> {
 					GraphQLContext graphQLContext =
-						environment.getLocalContext();
+						dataFetcher.getLocalContext();
 
 					Optional<HttpServletRequest> httpServletRequestOptional =
 						graphQLContext.getHttpServletRequest();
@@ -1795,13 +1795,13 @@ public class GraphQLServletExtender {
 					User user = _portal.getUser(
 						httpServletRequestOptional.orElse(null));
 
-					Map<String, Serializable> values = environment.getArgument(
+					Map<String, Serializable> values = dataFetcher.getArgument(
 						objectDefinition.getName());
 
 					return _toMap(
 						objectDefinition,
 						_objectEntryLocalService.addObjectEntry(
-							user.getUserId(), environment.getArgument("siteId"),
+							user.getUserId(), dataFetcher.getArgument("siteId"),
 							objectDefinition.getObjectDefinitionId(), values,
 							new ServiceContext()));
 				}
@@ -1820,9 +1820,9 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", deleteName),
-				(DataFetcher<Object>)environment -> {
+				(DataFetcher<Object>)dataFetcher -> {
 					_objectEntryLocalService.deleteObjectEntry(
-						environment.<Long>getArgument(
+						dataFetcher.<Long>getArgument(
 							objectDefinition.getPrimaryKeyColumnName()));
 
 					return true;
@@ -1843,10 +1843,10 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
-				(DataFetcher<Object>)environment -> _toMap(
+				(DataFetcher<Object>)dataFetcher -> _toMap(
 					objectDefinition,
 					_objectEntryLocalService.getObjectEntry(
-						environment.getArgument(
+						dataFetcher.getArgument(
 							objectDefinition.getPrimaryKeyColumnName())))
 			).build());
 
@@ -1885,9 +1885,9 @@ public class GraphQLServletExtender {
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", listName),
-				(DataFetcher<Object>)environment -> {
+				(DataFetcher<Object>)dataFetcher -> {
 					GraphQLContext graphQLContext =
-						environment.getLocalContext();
+						dataFetcher.getLocalContext();
 
 					Optional<HttpServletRequest> httpServletRequestOptional =
 						graphQLContext.getHttpServletRequest();
@@ -1913,18 +1913,18 @@ public class GraphQLServletExtender {
 						_getFilter(
 							acceptLanguage,
 							objectDefinitionGraphQL.getEntityModel(),
-							environment.getArgument("filter")),
-						ObjectEntry.class, environment.getArgument("search"),
+							dataFetcher.getArgument("filter")),
+						ObjectEntry.class, dataFetcher.getArgument("search"),
 						Pagination.of(
-							environment.getArgument("page"),
-							environment.getArgument("pageSize")),
+							dataFetcher.getArgument("page"),
+							dataFetcher.getArgument("pageSize")),
 						queryConfig -> queryConfig.setSelectedFieldNames(
 							objectFieldNames.toArray(new String[0])),
 						searchContext -> {
 							searchContext.addVulcanAggregation(
 								_getAggregation(
 									acceptLanguage,
-									environment.getArgument("aggregation"),
+									dataFetcher.getArgument("aggregation"),
 									objectDefinitionGraphQL.getEntityModel()));
 							searchContext.setCompanyId(
 								CompanyThreadLocal.getCompanyId());
@@ -1932,7 +1932,7 @@ public class GraphQLServletExtender {
 						_getSorts(
 							acceptLanguage,
 							objectDefinitionGraphQL.getEntityModel(),
-							environment.getArgument("sort")),
+							dataFetcher.getArgument("sort")),
 						document -> document);
 
 					return HashMapBuilder.<String, Object>put(
