@@ -1776,19 +1776,11 @@ public class GraphQLServletExtender {
 
 		ObjectDefinition objectDefinition =
 			objectDefinitionGraphQL.getObjectDefinition();
-
 		List<com.liferay.object.model.ObjectField> objectFields =
 			objectDefinitionGraphQL.getObjectFields();
 
 		GraphQLObjectType graphQLObjectType = _getObjectGraphQLObjectType(
 			objectDefinition, objectFields);
-
-		Map<String, GraphQLType> graphQLTypes =
-			processingElementsContainer.getTypeRegistry();
-
-		GraphQLObjectType pageType = _getPageGraphQLObjectType(
-			graphQLTypes.get("Facet"), graphQLObjectType,
-			objectDefinition.getName());
 
 		GraphQLCodeRegistry.Builder graphQLCodeRegistryBuilder =
 			processingElementsContainer.getCodeRegistryBuilder();
@@ -1882,9 +1874,15 @@ public class GraphQLServletExtender {
 		String listName = StringUtil.lowerCaseFirstLetter(
 			TextFormatter.formatPlural(objectDefinition.getName()));
 
+		Map<String, GraphQLType> graphQLTypes =
+			processingElementsContainer.getTypeRegistry();
+
 		queryBuilder.field(
 			_addField(
-				pageType, listName,
+				_getPageGraphQLObjectType(
+					graphQLTypes.get("Facet"), graphQLObjectType,
+					objectDefinition.getName()),
+				listName,
 				_addArgument(
 					GraphQLList.list(Scalars.GraphQLString), "aggregation"),
 				_addArgument(Scalars.GraphQLString, "filter"),
