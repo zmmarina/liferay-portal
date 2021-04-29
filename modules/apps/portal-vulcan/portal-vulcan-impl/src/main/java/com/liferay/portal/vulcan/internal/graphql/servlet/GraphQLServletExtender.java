@@ -1774,6 +1774,8 @@ public class GraphQLServletExtender {
 		GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder) {
 
+		// Create
+
 		ObjectDefinition objectDefinition =
 			objectDefinitionGraphQL.getObjectDefinition();
 		List<com.liferay.object.model.ObjectField> objectFields =
@@ -1783,22 +1785,18 @@ public class GraphQLServletExtender {
 			_getObjectDefinitionGraphQLObjectType(
 				objectDefinition, objectFields);
 
-		GraphQLCodeRegistry.Builder graphQLCodeRegistryBuilder =
-			processingElementsContainer.getCodeRegistryBuilder();
-
-		// Create
-
-		GraphQLInputObjectType graphQLInputObjectType =
-			_getGraphQLInputObjectType(objectDefinition, objectFields);
-
 		String createName = "create" + objectDefinition.getName();
 
 		mutationBuilder.field(
 			_addField(
 				graphQLObjectType, createName,
 				_addArgument(
-					graphQLInputObjectType, objectDefinition.getName()),
+					_getGraphQLInputObjectType(objectDefinition, objectFields),
+					objectDefinition.getName()),
 				_addArgument(Scalars.GraphQLLong, "siteId")));
+
+		GraphQLCodeRegistry.Builder graphQLCodeRegistryBuilder =
+			processingElementsContainer.getCodeRegistryBuilder();
 
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
