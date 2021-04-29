@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.object.service.test;
+package com.liferay.object.graphql.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import com.liferay.object.model.ObjectDefinition;
@@ -21,29 +21,28 @@ import com.liferay.object.model.ObjectField;
 import com.liferay.object.service.ObjectDefinitionLocalServiceUtil;
 import com.liferay.object.service.ObjectEntryLocalServiceUtil;
 import com.liferay.object.service.ObjectFieldLocalServiceUtil;
+import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
+import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.test.rule.AggregateTestRule;
 import com.liferay.portal.kernel.test.util.RandomTestUtil;
 import com.liferay.portal.kernel.test.util.ServiceContextTestUtil;
 import com.liferay.portal.kernel.test.util.TestPropsValues;
+import com.liferay.portal.kernel.util.Base64;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.HashMapBuilder;
+import com.liferay.portal.kernel.util.Http;
+import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.TextFormatter;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import java.nio.charset.StandardCharsets;
-
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -186,44 +185,25 @@ public class ObjectDefinitionGraphQLTest {
 		return objectField;
 	}
 
-	private HttpURLConnection _getHttpURLConnection() throws Exception {
-		URL url = new URL("http://localhost:8080/o/graphql");
-
-		HttpURLConnection httpURLConnection =
-			(HttpURLConnection)url.openConnection();
-
-		Base64.Encoder encoder = Base64.getEncoder();
-
-		httpURLConnection.setDoOutput(true);
-		String encoded = encoder.encodeToString(
-			"test@liferay.com:test".getBytes(StandardCharsets.UTF_8));
-
-		httpURLConnection.setRequestProperty(
-			"Authorization", "Basic " + encoded);
-
-		httpURLConnection.setRequestProperty(
-			"Content-Type", "application/json");
-		httpURLConnection.setRequestMethod("POST");
-
-		return httpURLConnection;
-	}
-
 	private JSONObject _invoke(GraphQLField queryGraphQLField)
 		throws Exception {
 
-		HttpURLConnection httpURLConnection = _getHttpURLConnection();
+		Http.Options options = new Http.Options();
 
-		OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-			httpURLConnection.getOutputStream());
+		options.addHeader(
+			HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
+		options.addHeader(
+			"Authorization",
+			"Basic " + Base64.encode("test@liferay.com:test".getBytes()));
+		options.setBody(
+			JSONUtil.put(
+				"query", queryGraphQLField.toString()
+			).toJSONString(),
+			ContentTypes.APPLICATION_JSON, StringPool.UTF8);
+		options.setLocation("http://localhost:8080/o/graphql");
+		options.setPost(true);
 
-		outputStreamWriter.write(
-			String.valueOf(
-				JSONUtil.put("query", queryGraphQLField.toString())));
-
-		outputStreamWriter.flush();
-
-		return JSONFactoryUtil.createJSONObject(
-			StringUtil.read(httpURLConnection.getInputStream()));
+		return JSONFactoryUtil.createJSONObject(HttpUtil.URLtoString(options));
 	}
 
 	private String _columnName;
