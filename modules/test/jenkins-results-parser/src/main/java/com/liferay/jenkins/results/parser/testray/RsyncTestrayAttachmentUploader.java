@@ -105,7 +105,7 @@ public class RsyncTestrayAttachmentUploader
 	}
 
 	protected void rsync() {
-		String[] commands;
+		String[] commands = null;
 
 		if (JenkinsResultsParserUtil.isWindows()) {
 			commands = new String[2];
@@ -114,7 +114,6 @@ public class RsyncTestrayAttachmentUploader
 				"cd ",
 				JenkinsResultsParserUtil.getCanonicalPath(
 					_getSourceTestrayLogsDir()));
-
 			commands[1] = JenkinsResultsParserUtil.combine(
 				"rsync -aqz --chmod=go=rx ./* \"root@", _getMasterHostname(),
 				"::testray-results/production/logs/\"");
