@@ -52,6 +52,7 @@ definition {
 		property portal.acceptance = "false";
 
 		// TODO COMMERCE-5911 AssertComparisonItemsAreVisibleOnMiniCompare pending implementation
+
 	}
 
 	@description = "COMMERCE-5915. As a buyer, I want to see max number of compare items allowed in Compare page"
