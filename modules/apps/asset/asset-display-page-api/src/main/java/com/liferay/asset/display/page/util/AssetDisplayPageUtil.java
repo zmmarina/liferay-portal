@@ -102,20 +102,6 @@ public class AssetDisplayPageUtil {
 			return defaultLayoutPageTemplateEntry;
 		}
 
-		if (assetDisplayPageEntry.getType() ==
-				AssetDisplayPageConstants.TYPE_NONE) {
-
-			return null;
-		}
-
-		if (assetDisplayPageEntry.getType() ==
-				AssetDisplayPageConstants.TYPE_SPECIFIC) {
-
-			return LayoutPageTemplateEntryServiceUtil.
-				fetchLayoutPageTemplateEntry(
-					assetDisplayPageEntry.getLayoutPageTemplateEntryId());
-		}
-
 		if (layoutDisplayPageProvider.inheritable() &&
 			(assetDisplayPageEntry.getType() ==
 				AssetDisplayPageConstants.TYPE_INHERITED)) {
@@ -135,6 +121,20 @@ public class AssetDisplayPageUtil {
 					parentLayoutDisplayPageObjectProvider.getClassPK(),
 					defaultLayoutPageTemplateEntry, layoutDisplayPageProvider);
 			}
+		}
+
+		if (assetDisplayPageEntry.getType() ==
+				AssetDisplayPageConstants.TYPE_NONE) {
+
+			return null;
+		}
+
+		if (assetDisplayPageEntry.getType() ==
+				AssetDisplayPageConstants.TYPE_SPECIFIC) {
+
+			return LayoutPageTemplateEntryServiceUtil.
+				fetchLayoutPageTemplateEntry(
+					assetDisplayPageEntry.getLayoutPageTemplateEntryId());
 		}
 
 		return defaultLayoutPageTemplateEntry;
