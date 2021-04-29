@@ -90,13 +90,15 @@ public class CompanyThreadLocal {
 	}
 
 	private static User _fetchDefaultUser(long companyId) throws Exception {
-		User defaultUser;
+		User defaultUser = null;
 
 		try {
 			defaultUser = UserLocalServiceUtil.fetchDefaultUser(companyId);
 		}
 		catch (Exception exception) {
-			defaultUser = null;
+			if (_log.isDebugEnabled()) {
+				_log.debug(exception, exception);
+			}
 		}
 
 		if (defaultUser == null) {
