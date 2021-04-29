@@ -1783,14 +1783,14 @@ public class GraphQLServletExtender {
 		GraphQLObjectType graphQLObjectType = _getObjectGraphQLObjectType(
 			objectDefinition, objectFields);
 
-		Map<String, GraphQLType> typeRegistry =
+		Map<String, GraphQLType> graphQLTypes =
 			processingElementsContainer.getTypeRegistry();
 
 		GraphQLObjectType pageType = _getPageGraphQLObjectType(
-			typeRegistry.get("Facet"), graphQLObjectType,
+			graphQLTypes.get("Facet"), graphQLObjectType,
 			objectDefinition.getName());
 
-		GraphQLCodeRegistry.Builder codeRegistryBuilder =
+		GraphQLCodeRegistry.Builder graphQLCodeRegistryBuilder =
 			processingElementsContainer.getCodeRegistryBuilder();
 
 		// Create
@@ -1808,7 +1808,7 @@ public class GraphQLServletExtender {
 				_addArgument(Scalars.GraphQLLong, "siteId")));
 
 		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
+			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", name),
 				(DataFetcher<Object>)environment -> {
 					GraphQLContext graphQLContext =
@@ -1844,7 +1844,7 @@ public class GraphQLServletExtender {
 					objectDefinition.getPrimaryKeyColumnName())));
 
 		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
+			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", deleteName),
 				(DataFetcher<Object>)environment -> {
 					_objectEntryLocalService.deleteObjectEntry(
@@ -1868,7 +1868,7 @@ public class GraphQLServletExtender {
 					objectDefinition.getPrimaryKeyColumnName())));
 
 		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
+			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
 				(DataFetcher<Object>)environment -> _toMap(
 					objectDefinition,
@@ -1905,7 +1905,7 @@ public class GraphQLServletExtender {
 		fieldNames.add(objectDefinition.getPrimaryKeyColumnName());
 
 		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
+			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", listName),
 				(DataFetcher<Object>)environment -> {
 					GraphQLContext graphQLContext =
