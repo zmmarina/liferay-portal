@@ -112,7 +112,7 @@ public class DBPartitionUtil {
 			return;
 		}
 
-		for (Long companyId : PortalInstances.getCompanyIdsBySQL()) {
+		for (long companyId : PortalInstances.getCompanyIdsBySQL()) {
 			try (SafeClosable safeClosable =
 					CompanyThreadLocal.setWithSafeClosable(companyId)) {
 
