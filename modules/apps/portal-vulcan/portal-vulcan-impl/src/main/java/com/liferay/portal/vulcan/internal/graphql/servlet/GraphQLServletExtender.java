@@ -1562,22 +1562,6 @@ public class GraphQLServletExtender {
 		}
 	}
 
-	private List<Map<String, Serializable>> _getValues(
-		List<String> fieldNames, Page<Document> page) {
-
-		Collection<Document> items = page.getItems();
-
-		Stream<Document> stream = items.stream();
-
-		return stream.map(
-			document -> HashMapBuilder.<String, Serializable>put(
-				fieldNames, document::get
-			).build()
-		).collect(
-			Collectors.toList()
-		);
-	}
-
 	private Integer _getVersion(Method method) {
 		Class<?> clazz = method.getDeclaringClass();
 
@@ -1887,16 +1871,16 @@ public class GraphQLServletExtender {
 				_addArgument(Scalars.GraphQLString, "search"),
 				_addArgument(Scalars.GraphQLString, "sort")));
 
-		Stream<com.liferay.object.model.ObjectField> fieldsStream =
+		Stream<com.liferay.object.model.ObjectField> objectFieldsStream =
 			objectFields.stream();
 
-		List<String> fieldNames = fieldsStream.map(
+		List<String> objectFieldNames = objectFieldsStream.map(
 			com.liferay.object.model.ObjectField::getName
 		).collect(
 			Collectors.toList()
 		);
 
-		fieldNames.add(objectDefinition.getPrimaryKeyColumnName());
+		objectFieldNames.add(objectDefinition.getPrimaryKeyColumnName());
 
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
@@ -1935,7 +1919,7 @@ public class GraphQLServletExtender {
 							environment.getArgument("page"),
 							environment.getArgument("pageSize")),
 						queryConfig -> queryConfig.setSelectedFieldNames(
-							fieldNames.toArray(new String[0])),
+							objectFieldNames.toArray(new String[0])),
 						searchContext -> {
 							searchContext.addVulcanAggregation(
 								_getAggregation(
@@ -1956,7 +1940,21 @@ public class GraphQLServletExtender {
 					).put(
 						"facets", page.getFacets()
 					).put(
-						"items", _getValues(fieldNames, page)
+						"items",
+						() -> {
+							Collection<Document> items = page.getItems();
+
+							Stream<Document> stream = items.stream();
+
+							return stream.map(
+								document ->
+									HashMapBuilder.<String, Serializable>put(
+										objectFieldNames, document::get
+									).build()
+							).collect(
+								Collectors.toList()
+							);
+						}
 					).put(
 						"lastPage", page.getLastPage()
 					).put(
