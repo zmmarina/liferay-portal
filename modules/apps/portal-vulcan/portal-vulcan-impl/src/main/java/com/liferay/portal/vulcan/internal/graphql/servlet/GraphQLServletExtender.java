@@ -790,7 +790,7 @@ public class GraphQLServletExtender {
 		return argumentBuilder.build();
 	}
 
-	private void _addCreateEndpoint(
+	private void _addObjectDefinitionCreateEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder,
 		GraphQLObjectType graphQLObjectType, String idName,
 		GraphQLObjectType.Builder mutationBuilder,
@@ -836,7 +836,7 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
-	private void _addDeleteEndpoint(
+	private void _addObjectDefinitionDeleteEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
 		GraphQLObjectType.Builder mutationBuilder,
 		ObjectDefinition objectDefinition,
@@ -861,7 +861,7 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
-	private void _addGetListEndpoint(
+	private void _addObjectDefinitionGetListEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder,
 		EntityModel entityModel, GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder, ObjectDefinition objectDefinition,
@@ -963,7 +963,7 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
-	private void _addGetObjectEndpoint(
+	private void _addObjectDefinitionGetObjectEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
 		ObjectDefinition objectDefinition, GraphQLObjectType objectType,
 		GraphQLObjectType.Builder queryBuilder,
@@ -1992,20 +1992,20 @@ public class GraphQLServletExtender {
 			GraphQLCodeRegistry.Builder codeRegistryBuilder =
 				processingElementsContainer.getCodeRegistryBuilder();
 
-			_addCreateEndpoint(
+			_addObjectDefinitionCreateEndpoint(
 				codeRegistryBuilder, objectType, idName, mutationBuilder,
 				objectDefinition, objectFields, schemaBuilder);
 
-			_addDeleteEndpoint(
+			_addObjectDefinitionDeleteEndpoint(
 				codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
 				schemaBuilder);
 
-			_addGetListEndpoint(
+			_addObjectDefinitionGetListEndpoint(
 				codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
 				queryBuilder, schemaBuilder, objectDefinition, idName,
 				objectFields, pageType);
 
-			_addGetObjectEndpoint(
+			_addObjectDefinitionGetObjectEndpoint(
 				codeRegistryBuilder, idName, objectDefinition, objectType,
 				queryBuilder, schemaBuilder);
 		}
