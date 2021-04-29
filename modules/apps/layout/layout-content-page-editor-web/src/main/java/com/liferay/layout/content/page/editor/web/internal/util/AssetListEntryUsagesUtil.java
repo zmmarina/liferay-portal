@@ -66,14 +66,13 @@ public class AssetListEntryUsagesUtil {
 
 		JSONArray mappedContentsJSONArray = JSONFactoryUtil.createJSONArray();
 
+		LayoutStructure layoutStructure = _getLayoutStructure(
+			httpServletRequest, plid);
+		Set<String> uniqueAssetListEntryUsagesKeys = new HashSet<>();
+
 		List<AssetListEntryUsage> assetListEntryUsages =
 			AssetListEntryUsageLocalServiceUtil.getAssetEntryListUsagesByPlid(
 				plid);
-
-		Set<String> uniqueAssetListEntryUsagesKeys = new HashSet<>();
-
-		LayoutStructure layoutStructure = _getLayoutStructure(
-			httpServletRequest, plid);
 
 		for (AssetListEntryUsage assetListEntryUsage : assetListEntryUsages) {
 			if (uniqueAssetListEntryUsagesKeys.contains(
