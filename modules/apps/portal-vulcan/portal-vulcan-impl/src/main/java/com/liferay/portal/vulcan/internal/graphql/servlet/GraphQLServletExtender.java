@@ -861,6 +861,29 @@ public class GraphQLServletExtender {
 			).build());
 	}
 
+	private void _addObjectDefinitionGetEndpoint(
+		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
+		ObjectDefinition objectDefinition, GraphQLObjectType objectType,
+		GraphQLObjectType.Builder queryBuilder,
+		GraphQLSchema.Builder schemaBuilder) {
+
+		String name = StringUtil.lowerCaseFirstLetter(
+			objectDefinition.getName());
+
+		queryBuilder.field(
+			_addField(
+				objectType, name, _addArgument(Scalars.GraphQLLong, idName)));
+
+		schemaBuilder.codeRegistry(
+			codeRegistryBuilder.dataFetcher(
+				FieldCoordinates.coordinates("query", name),
+				(DataFetcher<Object>)environment -> _toMap(
+					idName,
+					_objectEntryLocalService.getObjectEntry(
+						environment.getArgument(idName)))
+			).build());
+	}
+
 	private void _addObjectDefinitionListEndpoint(
 		GraphQLCodeRegistry.Builder codeRegistryBuilder,
 		EntityModel entityModel, GraphQLObjectType.Builder queryBuilder,
@@ -960,29 +983,6 @@ public class GraphQLServletExtender {
 						"totalCount", page.getTotalCount()
 					).build();
 				}
-			).build());
-	}
-
-	private void _addObjectDefinitionGetEndpoint(
-		GraphQLCodeRegistry.Builder codeRegistryBuilder, String idName,
-		ObjectDefinition objectDefinition, GraphQLObjectType objectType,
-		GraphQLObjectType.Builder queryBuilder,
-		GraphQLSchema.Builder schemaBuilder) {
-
-		String name = StringUtil.lowerCaseFirstLetter(
-			objectDefinition.getName());
-
-		queryBuilder.field(
-			_addField(
-				objectType, name, _addArgument(Scalars.GraphQLLong, idName)));
-
-		schemaBuilder.codeRegistry(
-			codeRegistryBuilder.dataFetcher(
-				FieldCoordinates.coordinates("query", name),
-				(DataFetcher<Object>)environment -> _toMap(
-					idName,
-					_objectEntryLocalService.getObjectEntry(
-						environment.getArgument(idName)))
 			).build());
 	}
 
