@@ -98,7 +98,7 @@ public class ObjectDefinitionGraphQLTest {
 					HashMapBuilder.<String, Object>put(
 						_objectDefinitionName,
 						StringBundler.concat(
-							"{", _objectFieldName, ":\"", value, "\"}")
+							"{", _objectFieldName, ": \"", value, "\"}")
 					).put(
 						"siteId", TestPropsValues.getGroupId()
 					).build(),
@@ -107,7 +107,8 @@ public class ObjectDefinitionGraphQLTest {
 		Assert.assertEquals(
 			value,
 			JSONUtil.getValueAsString(
-				jsonObject, "JSONObject/data", "JSONObject/create" + _objectDefinitionName,
+				jsonObject, "JSONObject/data",
+				"JSONObject/create" + _objectDefinitionName,
 				"Object/" + _objectFieldName));
 	}
 
@@ -139,36 +140,37 @@ public class ObjectDefinitionGraphQLTest {
 
 	@Test
 	public void testGetListObjectEntry() throws Exception {
-		String fieldName = TextFormatter.formatPlural(
+		String key = TextFormatter.formatPlural(
 			StringUtil.lowerCaseFirstLetter(_objectDefinitionName));
 
 		JSONObject jsonObject = _invoke(
 			new GraphQLField(
 				"query",
 				new GraphQLField(
-					fieldName,
+					key,
 					HashMapBuilder.<String, Object>put(
 						"filter",
 						"\"userId eq " + TestPropsValues.getUserId() + "\""
 					).build(),
-					new GraphQLField("items", new GraphQLField(_objectFieldName)))));
+					new GraphQLField(
+						"items", new GraphQLField(_objectFieldName)))));
 
 		Assert.assertEquals(
 			"peter@liferay.com",
 			JSONUtil.getValueAsString(
-				jsonObject, "JSONObject/data", "JSONObject/" + fieldName,
+				jsonObject, "JSONObject/data", "JSONObject/" + key,
 				"Object/items", "Object/0", "Object/" + _objectFieldName));
 	}
 
 	@Test
 	public void testGetObjectEntry() throws Exception {
-		String fieldName = StringUtil.lowerCaseFirstLetter(_objectDefinitionName);
+		String key = StringUtil.lowerCaseFirstLetter(_objectDefinitionName);
 
 		JSONObject jsonObject = _invoke(
 			new GraphQLField(
 				"query",
 				new GraphQLField(
-					fieldName,
+					key,
 					HashMapBuilder.<String, Object>put(
 						_objectDefinition.getPrimaryKeyColumnName(),
 						_objectEntry.getObjectEntryId()
@@ -178,7 +180,7 @@ public class ObjectDefinitionGraphQLTest {
 		Assert.assertEquals(
 			"peter@liferay.com",
 			JSONUtil.getValueAsString(
-				jsonObject, "JSONObject/data", "JSONObject/" + fieldName,
+				jsonObject, "JSONObject/data", "JSONObject/" + key,
 				"Object/" + _objectFieldName));
 	}
 
@@ -213,10 +215,10 @@ public class ObjectDefinitionGraphQLTest {
 		return JSONFactoryUtil.createJSONObject(HttpUtil.URLtoString(options));
 	}
 
-	private String _objectFieldName;
-	private String _objectDefinitionName;
 	private ObjectDefinition _objectDefinition;
+	private String _objectDefinitionName;
 	private ObjectEntry _objectEntry;
+	private String _objectFieldName;
 
 	private static class GraphQLField {
 
