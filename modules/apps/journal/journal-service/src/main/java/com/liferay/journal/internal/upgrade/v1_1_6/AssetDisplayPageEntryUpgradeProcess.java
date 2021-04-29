@@ -102,7 +102,7 @@ public class AssetDisplayPageEntryUpgradeProcess extends UpgradeProcess {
 			ps1.setLong(3, journalArticleClassNameId);
 
 			List<SaveAssetDisplayPageEntryUpgradeCallable>
-				saveAssetDisplayPageEntryCallables = new ArrayList<>();
+				saveAssetDisplayPageEntryUpgradeCallables = new ArrayList<>();
 
 			try (ResultSet rs = ps1.executeQuery()) {
 				while (rs.next()) {
@@ -111,22 +111,22 @@ public class AssetDisplayPageEntryUpgradeProcess extends UpgradeProcess {
 					String journalArticleUuid = rs.getString("classUuid");
 
 					SaveAssetDisplayPageEntryUpgradeCallable
-						saveAssetDisplayPageEntryCallable =
+						saveAssetDisplayPageEntryUpgradeCallable =
 							new SaveAssetDisplayPageEntryUpgradeCallable(
 								groupId, user.getUserId(),
 								journalArticleClassNameId, resourcePrimKey,
 								_generateLocalStagingAwareUUID(
 									groupId, journalArticleUuid));
 
-					saveAssetDisplayPageEntryCallables.add(
-						saveAssetDisplayPageEntryCallable);
+					saveAssetDisplayPageEntryUpgradeCallables.add(
+						saveAssetDisplayPageEntryUpgradeCallable);
 				}
 			}
 
 			ExecutorService executorService = Executors.newWorkStealingPool();
 
 			List<Future<Boolean>> futures = executorService.invokeAll(
-				saveAssetDisplayPageEntryCallables);
+				saveAssetDisplayPageEntryUpgradeCallables);
 
 			executorService.shutdown();
 

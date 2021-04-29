@@ -45,25 +45,26 @@ public class AssetEntryAssetCategoryRelUpgradeProcess extends UpgradeProcess {
 			ResultSet rs = ps.executeQuery()) {
 
 			List<InsertAssetEntryAssetCategoryRelUpgradeCallable>
-				insertAssetEntryAssetCategoryRelCallables = new ArrayList<>();
+				insertAssetEntryAssetCategoryRelUpgradeCallables =
+					new ArrayList<>();
 
 			while (rs.next()) {
 				long assetEntryId = rs.getLong("entryId");
 				long assetCategoryId = rs.getLong("categoryId");
 
 				InsertAssetEntryAssetCategoryRelUpgradeCallable
-					insertAssetEntryAssetCategoryRelCallable =
+					insertAssetEntryAssetCategoryRelUpgradeCallable =
 						new InsertAssetEntryAssetCategoryRelUpgradeCallable(
 							assetEntryId, assetCategoryId);
 
-				insertAssetEntryAssetCategoryRelCallables.add(
-					insertAssetEntryAssetCategoryRelCallable);
+				insertAssetEntryAssetCategoryRelUpgradeCallables.add(
+					insertAssetEntryAssetCategoryRelUpgradeCallable);
 			}
 
 			ExecutorService executorService = Executors.newWorkStealingPool();
 
 			List<Future<Boolean>> futures = executorService.invokeAll(
-				insertAssetEntryAssetCategoryRelCallables);
+				insertAssetEntryAssetCategoryRelUpgradeCallables);
 
 			executorService.shutdown();
 

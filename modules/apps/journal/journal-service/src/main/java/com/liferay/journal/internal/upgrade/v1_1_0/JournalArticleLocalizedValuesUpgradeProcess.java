@@ -125,24 +125,24 @@ public class JournalArticleLocalizedValuesUpgradeProcess
 			ResultSet rs = ps.executeQuery()) {
 
 			List<UpdateJournalArticleLocalizedFieldsUpgradeCallable>
-				updateJournalArticleLocalizedFieldsCallables =
+				updateJournalArticleLocalizedFieldsUpgradeCallables =
 					new ArrayList<>();
 
 			while (rs.next()) {
 				UpdateJournalArticleLocalizedFieldsUpgradeCallable
-					updateJournalArticleLocalizedFieldsCallable =
+					updateJournalArticleLocalizedFieldsUpgradeCallable =
 						new UpdateJournalArticleLocalizedFieldsUpgradeCallable(
 							rs.getLong(1), rs.getLong(2), rs.getString(3),
 							rs.getString(4), rs.getString(5), sb.toString());
 
-				updateJournalArticleLocalizedFieldsCallables.add(
-					updateJournalArticleLocalizedFieldsCallable);
+				updateJournalArticleLocalizedFieldsUpgradeCallables.add(
+					updateJournalArticleLocalizedFieldsUpgradeCallable);
 			}
 
 			ExecutorService executorService = Executors.newWorkStealingPool();
 
 			List<Future<Boolean>> futures = executorService.invokeAll(
-				updateJournalArticleLocalizedFieldsCallables);
+				updateJournalArticleLocalizedFieldsUpgradeCallables);
 
 			executorService.shutdown();
 

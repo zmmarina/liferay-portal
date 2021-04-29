@@ -71,8 +71,8 @@ public class ImageTypeContentUpgradeProcess extends UpgradeProcess {
 		sb.append("JournalArticle.articleId = JournalArticleImage.articleId ");
 		sb.append("and JournalArticle.version = JournalArticleImage.version)");
 
-		List<SaveImageFileEntryUpgradeCallable> saveImageFileEntryCallables =
-			new ArrayList<>();
+		List<SaveImageFileEntryUpgradeCallable>
+			saveImageFileEntryUpgradeCallables = new ArrayList<>();
 
 		try (LoggingTimer loggingTimer = new LoggingTimer();
 			Statement statement = connection.createStatement();
@@ -90,18 +90,20 @@ public class ImageTypeContentUpgradeProcess extends UpgradeProcess {
 				long folderId = _journalArticleImageUpgradeHelper.getFolderId(
 					userId, groupId, resourcePrimKey);
 
-				SaveImageFileEntryUpgradeCallable saveImageFileEntryCallable =
-					new SaveImageFileEntryUpgradeCallable(
-						articleImageId, folderId, groupId, resourcePrimKey,
-						userId);
+				SaveImageFileEntryUpgradeCallable
+					saveImageFileEntryUpgradeCallable =
+						new SaveImageFileEntryUpgradeCallable(
+							articleImageId, folderId, groupId, resourcePrimKey,
+							userId);
 
-				saveImageFileEntryCallables.add(saveImageFileEntryCallable);
+				saveImageFileEntryUpgradeCallables.add(
+					saveImageFileEntryUpgradeCallable);
 			}
 
 			ExecutorService executorService = Executors.newWorkStealingPool();
 
 			List<Future<Boolean>> futures = executorService.invokeAll(
-				saveImageFileEntryCallables);
+				saveImageFileEntryUpgradeCallables);
 
 			executorService.shutdown();
 
