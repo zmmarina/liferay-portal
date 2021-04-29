@@ -1833,7 +1833,6 @@ public class GraphQLServletExtender {
 				_addArgument(
 					Scalars.GraphQLLong,
 					objectDefinition.getPrimaryKeyColumnName())));
-
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", deleteName),
@@ -1857,7 +1856,6 @@ public class GraphQLServletExtender {
 				_addArgument(
 					Scalars.GraphQLLong,
 					objectDefinition.getPrimaryKeyColumnName())));
-
 		schemaBuilder.codeRegistry(
 			graphQLCodeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
