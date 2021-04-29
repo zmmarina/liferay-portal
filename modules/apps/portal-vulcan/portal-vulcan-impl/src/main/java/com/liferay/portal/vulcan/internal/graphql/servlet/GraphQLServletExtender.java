@@ -1488,7 +1488,7 @@ public class GraphQLServletExtender {
 		return builder.build();
 	}
 
-	private GraphQLObjectType _getObjectGraphQLObjectType(
+	private GraphQLObjectType _getObjectDefinitionGraphQLObjectType(
 		ObjectDefinition objectDefinition,
 		List<com.liferay.object.model.ObjectField> objectFields) {
 
@@ -1779,8 +1779,9 @@ public class GraphQLServletExtender {
 		List<com.liferay.object.model.ObjectField> objectFields =
 			objectDefinitionGraphQL.getObjectFields();
 
-		GraphQLObjectType graphQLObjectType = _getObjectGraphQLObjectType(
-			objectDefinition, objectFields);
+		GraphQLObjectType graphQLObjectType =
+			_getObjectDefinitionGraphQLObjectType(
+				objectDefinition, objectFields);
 
 		GraphQLCodeRegistry.Builder graphQLCodeRegistryBuilder =
 			processingElementsContainer.getCodeRegistryBuilder();
