@@ -1995,19 +1995,16 @@ public class GraphQLServletExtender {
 			_addObjectDefinitionCreateEndpoint(
 				codeRegistryBuilder, objectType, idName, mutationBuilder,
 				objectDefinition, objectFields, schemaBuilder);
-
 			_addObjectDefinitionDeleteEndpoint(
 				codeRegistryBuilder, idName, mutationBuilder, objectDefinition,
 				schemaBuilder);
-
+			_addObjectDefinitionGetEndpoint(
+				codeRegistryBuilder, idName, objectDefinition, objectType,
+				queryBuilder, schemaBuilder);
 			_addObjectDefinitionListEndpoint(
 				codeRegistryBuilder, objectDefinitionGraphQL.getEntityModel(),
 				queryBuilder, schemaBuilder, objectDefinition, idName,
 				objectFields, pageType);
-
-			_addObjectDefinitionGetEndpoint(
-				codeRegistryBuilder, idName, objectDefinition, objectType,
-				queryBuilder, schemaBuilder);
 		}
 	}
 
