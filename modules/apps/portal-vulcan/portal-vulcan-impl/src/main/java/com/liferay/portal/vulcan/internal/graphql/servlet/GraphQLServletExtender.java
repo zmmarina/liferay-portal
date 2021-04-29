@@ -1489,12 +1489,15 @@ public class GraphQLServletExtender {
 	}
 
 	private GraphQLObjectType _getObjectGraphQLObjectType(
-		String idName, ObjectDefinition objectDefinition,
+		ObjectDefinition objectDefinition,
 		List<com.liferay.object.model.ObjectField> objectFields) {
 
 		GraphQLObjectType.Builder builder = new GraphQLObjectType.Builder();
 
-		builder.field(_addField(Scalars.GraphQLLong, idName));
+		builder.field(
+			_addField(
+				Scalars.GraphQLLong,
+				objectDefinition.getPrimaryKeyColumnName()));
 		builder.name(objectDefinition.getName());
 
 		for (com.liferay.object.model.ObjectField objectField : objectFields) {
@@ -1774,13 +1777,11 @@ public class GraphQLServletExtender {
 		ObjectDefinition objectDefinition =
 			objectDefinitionGraphQL.getObjectDefinition();
 
-		String idName = objectDefinition.getPrimaryKeyColumnName();
-
 		List<com.liferay.object.model.ObjectField> objectFields =
 			objectDefinitionGraphQL.getObjectFields();
 
 		GraphQLObjectType graphQLObjectType = _getObjectGraphQLObjectType(
-			idName, objectDefinition, objectFields);
+			objectDefinition, objectFields);
 
 		Map<String, GraphQLType> typeRegistry =
 			processingElementsContainer.getTypeRegistry();
@@ -1823,7 +1824,7 @@ public class GraphQLServletExtender {
 						objectDefinition.getName());
 
 					return _toMap(
-						idName,
+						objectDefinition,
 						_objectEntryLocalService.addObjectEntry(
 							user.getUserId(), environment.getArgument("siteId"),
 							objectDefinition.getObjectDefinitionId(), values,
@@ -1838,14 +1839,17 @@ public class GraphQLServletExtender {
 		mutationBuilder.field(
 			_addField(
 				Scalars.GraphQLBoolean, deleteName,
-				_addArgument(Scalars.GraphQLLong, idName)));
+				_addArgument(
+					Scalars.GraphQLLong,
+					objectDefinition.getPrimaryKeyColumnName())));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("mutation", deleteName),
 				(DataFetcher<Object>)environment -> {
 					_objectEntryLocalService.deleteObjectEntry(
-						environment.<Long>getArgument(idName));
+						environment.<Long>getArgument(
+							objectDefinition.getPrimaryKeyColumnName()));
 
 					return true;
 				}
@@ -1859,15 +1863,18 @@ public class GraphQLServletExtender {
 		queryBuilder.field(
 			_addField(
 				graphQLObjectType, getName,
-				_addArgument(Scalars.GraphQLLong, idName)));
+				_addArgument(
+					Scalars.GraphQLLong,
+					objectDefinition.getPrimaryKeyColumnName())));
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
 				FieldCoordinates.coordinates("query", getName),
 				(DataFetcher<Object>)environment -> _toMap(
-					idName,
+					objectDefinition,
 					_objectEntryLocalService.getObjectEntry(
-						environment.getArgument(idName)))
+						environment.getArgument(
+							objectDefinition.getPrimaryKeyColumnName())))
 			).build());
 
 		// List
@@ -1895,7 +1902,7 @@ public class GraphQLServletExtender {
 			Collectors.toList()
 		);
 
-		fieldNames.add(idName);
+		fieldNames.add(objectDefinition.getPrimaryKeyColumnName());
 
 		schemaBuilder.codeRegistry(
 			codeRegistryBuilder.dataFetcher(
@@ -2074,11 +2081,12 @@ public class GraphQLServletExtender {
 	}
 
 	private Map<String, Serializable> _toMap(
-		String idName, ObjectEntry objectEntry) {
+		ObjectDefinition objectDefinition, ObjectEntry objectEntry) {
 
 		HashMapBuilder.HashMapWrapper<String, Serializable> hashMapWrapper =
 			HashMapBuilder.<String, Serializable>put(
-				idName, objectEntry.getObjectEntryId());
+				objectDefinition.getPrimaryKeyColumnName(),
+				objectEntry.getObjectEntryId());
 
 		Map<String, Serializable> values = objectEntry.getValues();
 
