@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.batch.planner.model.BatchPlannerLog">
+		<field name="mvccVersion" type="long" />
+		<field name="batchPlannerLogId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="batchPlannerPlanId" type="long" />
+		<field name="size" type="int" />
+		<field name="total" type="int" />
+		<field name="status" type="int" />
+	</model>
+	<model name="com.liferay.batch.planner.model.BatchPlannerMapping">
+		<field name="mvccVersion" type="long" />
+		<field name="batchPlannerMappingId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="batchPlannerPlanId" type="long" />
+	</model>
+	<model name="com.liferay.batch.planner.model.BatchPlannerPlan">
+		<field name="mvccVersion" type="long" />
+		<field name="batchPlannerPlanId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="active" type="boolean" />
+		<field name="name" type="String" />
+		<field name="export" type="boolean" />
+	</model>
+	<model name="com.liferay.batch.planner.model.BatchPlannerPolicy">
+		<field name="mvccVersion" type="long" />
+		<field name="batchPlannerPolicyId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="batchPlannerPlanId" type="long" />
+		<field name="name" type="String" />
+		<field name="value" type="String" />
+	</model>
+</model-hints>
