@@ -63,8 +63,6 @@ public class EditContentSharingMVCActionCommand
 
 		Group liveGroup = _groupLocalService.getGroup(liveGroupId);
 
-		// Settings
-
 		UnicodeProperties typeSettingsUnicodeProperties =
 			liveGroup.getTypeSettingsProperties();
 
@@ -84,8 +82,6 @@ public class EditContentSharingMVCActionCommand
 				actionRequest, "TypeSettingsProperties--");
 
 		typeSettingsUnicodeProperties.putAll(formTypeSettingsUnicodeProperties);
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();

@@ -85,8 +85,6 @@ public class EditGroupMVCActionCommand
 			openGraphEnabled, openGraphImageAltMap, openGraphImageFileEntryId,
 			serviceContext);
 
-		// Settings
-
 		UnicodeProperties typeSettingsUnicodeProperties =
 			liveGroup.getTypeSettingsProperties();
 
@@ -95,8 +93,6 @@ public class EditGroupMVCActionCommand
 				actionRequest, "TypeSettingsProperties--");
 
 		typeSettingsUnicodeProperties.putAll(formTypeSettingsUnicodeProperties);
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();

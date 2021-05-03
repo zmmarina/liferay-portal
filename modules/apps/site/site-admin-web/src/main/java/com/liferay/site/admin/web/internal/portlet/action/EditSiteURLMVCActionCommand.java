@@ -82,8 +82,6 @@ public class EditSiteURLMVCActionCommand
 			liveGroup.getMembershipRestriction(), friendlyURL,
 			liveGroup.isInheritContent(), liveGroup.isActive(), serviceContext);
 
-		// Virtual hosts
-
 		Set<Locale> availableLocales = LanguageUtil.getAvailableLocales(
 			liveGroup.getGroupId());
 
@@ -96,8 +94,6 @@ public class EditSiteURLMVCActionCommand
 			liveGroup.getGroupId(), true,
 			ActionUtil.toTreeMap(
 				actionRequest, "privateVirtualHost", availableLocales));
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();

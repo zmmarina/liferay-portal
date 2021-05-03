@@ -63,8 +63,6 @@ public class EditPagesMVCActionCommand
 
 		Group liveGroup = _groupLocalService.getGroup(liveGroupId);
 
-		// Settings
-
 		UnicodeProperties typeSettingsUnicodeProperties =
 			liveGroup.getTypeSettingsProperties();
 
@@ -81,8 +79,6 @@ public class EditPagesMVCActionCommand
 				actionRequest, "TypeSettingsProperties--");
 
 		typeSettingsUnicodeProperties.putAll(formTypeSettingsUnicodeProperties);
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();

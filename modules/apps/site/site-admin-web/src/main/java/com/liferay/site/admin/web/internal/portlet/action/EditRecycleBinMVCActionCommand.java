@@ -69,8 +69,6 @@ public class EditRecycleBinMVCActionCommand
 
 		Group liveGroup = _groupLocalService.getGroup(liveGroupId);
 
-		// Settings
-
 		UnicodeProperties typeSettingsUnicodeProperties =
 			liveGroup.getTypeSettingsProperties();
 
@@ -109,8 +107,6 @@ public class EditRecycleBinMVCActionCommand
 				actionRequest, "TypeSettingsProperties--");
 
 		typeSettingsUnicodeProperties.putAll(formTypeSettingsUnicodeProperties);
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();

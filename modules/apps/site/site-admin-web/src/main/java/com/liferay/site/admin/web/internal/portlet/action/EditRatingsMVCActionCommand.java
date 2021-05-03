@@ -62,8 +62,6 @@ public class EditRatingsMVCActionCommand
 
 		Group liveGroup = _groupLocalService.getGroup(liveGroupId);
 
-		// Settings
-
 		UnicodeProperties typeSettingsUnicodeProperties =
 			liveGroup.getTypeSettingsProperties();
 
@@ -94,8 +92,6 @@ public class EditRatingsMVCActionCommand
 				typeSettingsUnicodeProperties.remove(propertyKey);
 			}
 		}
-
-		// Staging
 
 		if (liveGroup.hasStagingGroup()) {
 			Group stagingGroup = liveGroup.getStagingGroup();
