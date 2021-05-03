@@ -339,22 +339,24 @@ public class DDMFormFieldSerializerUtil {
 	}
 
 	private static void _trim(List<DDMFormField> ddmFormFields) {
-		if (!ddmFormFields.isEmpty()) {
-			LocalizedValue localizedValue;
+		if (ddmFormFields.isEmpty()) {
+			return;
+		}
 
-			for (DDMFormField ddmFormField : ddmFormFields) {
-				localizedValue = _trim(ddmFormField.getPredefinedValue());
+		LocalizedValue localizedValue;
 
-				ddmFormField.setPredefinedValue(localizedValue);
+		for (DDMFormField ddmFormField : ddmFormFields) {
+			localizedValue = _trim(ddmFormField.getPredefinedValue());
 
-				localizedValue = _trim(ddmFormField.getStyle());
+			ddmFormField.setPredefinedValue(localizedValue);
 
-				ddmFormField.setStyle(localizedValue);
+			localizedValue = _trim(ddmFormField.getStyle());
 
-				localizedValue = _trim(ddmFormField.getTip());
+			ddmFormField.setStyle(localizedValue);
 
-				ddmFormField.setTip(localizedValue);
-			}
+			localizedValue = _trim(ddmFormField.getTip());
+
+			ddmFormField.setTip(localizedValue);
 		}
 	}
 
