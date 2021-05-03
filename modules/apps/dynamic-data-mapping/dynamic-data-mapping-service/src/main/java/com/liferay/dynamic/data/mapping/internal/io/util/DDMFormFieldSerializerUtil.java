@@ -308,6 +308,27 @@ public class DDMFormFieldSerializerUtil {
 		return jsonObject;
 	}
 
+	private static void _trim(List<DDMFormField> ddmFormFields) {
+		if (ddmFormFields.isEmpty()) {
+			return;
+		}
+
+		for (DDMFormField ddmFormField : ddmFormFields) {
+			LocalizedValue localizedValue = _trim(
+				ddmFormField.getPredefinedValue());
+
+			ddmFormField.setPredefinedValue(localizedValue);
+
+			localizedValue = _trim(ddmFormField.getStyle());
+
+			ddmFormField.setStyle(localizedValue);
+
+			localizedValue = _trim(ddmFormField.getTip());
+
+			ddmFormField.setTip(localizedValue);
+		}
+	}
+
 	private static LocalizedValue _trim(LocalizedValue rawLocalizedValue) {
 		if (rawLocalizedValue == null) {
 			return null;
@@ -336,26 +357,6 @@ public class DDMFormFieldSerializerUtil {
 		}
 
 		return localizedValue;
-	}
-
-	private static void _trim(List<DDMFormField> ddmFormFields) {
-		if (ddmFormFields.isEmpty()) {
-			return;
-		}
-
-		for (DDMFormField ddmFormField : ddmFormFields) {
-			LocalizedValue localizedValue = _trim(ddmFormField.getPredefinedValue());
-
-			ddmFormField.setPredefinedValue(localizedValue);
-
-			localizedValue = _trim(ddmFormField.getStyle());
-
-			ddmFormField.setStyle(localizedValue);
-
-			localizedValue = _trim(ddmFormField.getTip());
-
-			ddmFormField.setTip(localizedValue);
-		}
 	}
 
 }
