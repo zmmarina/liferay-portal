@@ -133,7 +133,6 @@ public class DLFileEntryKeywordQueryContributor
 
 		booleanQuery.add(
 			new MatchQuery("fileName", keyword), BooleanClauseOccur.SHOULD);
-
 		booleanQuery.add(
 			_getMatchQuery("fileName", keyword, MatchQuery.Type.PHRASE_PREFIX),
 			BooleanClauseOccur.SHOULD);
