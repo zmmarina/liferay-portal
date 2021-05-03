@@ -2,9 +2,9 @@
 
 <style type="text/css">
 	pre.lfr-ddm-readonly-textarea {
-		font-style: inherit;
 		font-family: inherit;
 		font-size: inherit;
+		font-style: inherit;
 		font-weight: inherit;
 	}
 </style>
