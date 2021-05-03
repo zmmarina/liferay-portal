@@ -146,9 +146,9 @@ public class ResourceTestCaseOpenAPIParser {
 			String itemType = returnType.substring(
 				returnType.indexOf("<") + 1, returnType.indexOf(">"));
 
-			if (itemType.contains(".") && !itemType.startsWith("java.lang") &&
+			if (itemType.contains(".") && !itemType.startsWith("com.liferay.portal.vulcan") &&
+				!itemType.startsWith("java.lang") &&
 				!itemType.startsWith("java.util") &&
-				!itemType.startsWith("com.liferay.portal.vulcan") &&
 				!itemType.startsWith(apiPackage)) {
 
 				return StringBundler.concat(
