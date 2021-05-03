@@ -175,7 +175,7 @@ const Autocomplete = ({
 }) => {
 	const [value, setValue] = useSyncValue(initialValue, syncDelay);
 	const [visible, setVisible] = useState(false);
-	const [selectedOption, setSelectedOption] = useState(false);
+	const [selectedItem, setSelectedItem] = useState(false);
 	const inputRef = useRef(null);
 	const itemListRef = useRef(null);
 
@@ -188,7 +188,7 @@ const Autocomplete = ({
 
 	useEffect(() => {
 		if (
-			selectedOption ||
+			selectedItem ||
 			(filteredItems.length === 1 && filteredItems.includes(value))
 		) {
 			setVisible(false);
@@ -208,7 +208,7 @@ const Autocomplete = ({
 				setVisible(!!value);
 			}
 		}
-	}, [filteredItems, value, selectedOption]);
+	}, [filteredItems, value, selectedItem]);
 
 	const handleFocus = (event, direction) => {
 		const target = event.target;
@@ -251,7 +251,7 @@ const Autocomplete = ({
 				onBlur={onBlur}
 				onChange={(event) => {
 					setValue(event.target.value);
-					setSelectedOption(false);
+					setSelectedItem(false);
 					onChange(event);
 				}}
 				onFocus={onFocus}
@@ -310,7 +310,7 @@ const Autocomplete = ({
 							match={value}
 							onClick={() => {
 								setValue(label);
-								setSelectedOption(true);
+								setSelectedItem(true);
 								onChange({target: {value: label}});
 							}}
 							value={label}
