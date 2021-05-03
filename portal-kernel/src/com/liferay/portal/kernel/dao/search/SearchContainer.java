@@ -66,18 +66,8 @@ public class SearchContainer<R> {
 
 	public static final String DEFAULT_VAR = "searchContainer";
 
-	public static final int MAX_DELTA;
-
-	static {
-		int maxDelta = GetterUtil.getInteger(
-			PropsUtil.get(PropsKeys.SEARCH_CONTAINER_PAGE_MAX_DELTA), 200);
-
-		if (maxDelta <= 0) {
-			maxDelta = 200;
-		}
-
-		MAX_DELTA = maxDelta;
-	}
+	public static final int MAX_DELTA = GetterUtil.getInteger(
+		PropsUtil.get(PropsKeys.SEARCH_CONTAINER_PAGE_MAX_DELTA), 200);
 
 	public SearchContainer() {
 		_curParam = DEFAULT_CUR_PARAM;
