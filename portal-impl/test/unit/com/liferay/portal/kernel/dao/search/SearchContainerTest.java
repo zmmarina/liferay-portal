@@ -118,22 +118,6 @@ public class SearchContainerTest {
 		Assert.assertEquals(40, _searchContainer.getEnd());
 	}
 
-	@SuppressWarnings("static-access")
-	@Test
-	public void testMaxDelta() {
-		buildSearchContainer(1);
-
-		int maxDelta = GetterUtil.getInteger(
-			PropsUtil.get(PropsKeys.SEARCH_CONTAINER_PAGE_MAX_DELTA), 200);
-
-		if (maxDelta <= 0) {
-			Assert.assertEquals(200, _searchContainer.MAX_DELTA);
-		}
-		else {
-			Assert.assertEquals(maxDelta, _searchContainer.MAX_DELTA);
-		}
-	}
-
 	@Test
 	public void testNotCalculateCurWhenNoResultsAndInitialPage() {
 		buildSearchContainer(1);
