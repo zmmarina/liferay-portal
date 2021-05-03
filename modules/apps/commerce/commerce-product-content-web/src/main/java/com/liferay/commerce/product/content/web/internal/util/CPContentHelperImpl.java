@@ -499,7 +499,7 @@ public class CPContentHelperImpl implements CPContentHelper {
 	}
 
 	@Override
-	public boolean hasOptions(long cpDefinitionId) {
+	public boolean hasCPDefinitionOptionRels(long cpDefinitionId) {
 		int cpDefinitionOptionRelsCount =
 			_cpDefinitionOptionRelLocalService.getCPDefinitionOptionRelsCount(
 				cpDefinitionId);
