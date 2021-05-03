@@ -136,10 +136,10 @@ public interface CPContentHelper {
 
 	public boolean hasChildCPDefinitions(long cpDefinitionId);
 
+	public boolean hasCPDefinitionOptionRels(long cpDefinitionId);
+
 	public boolean hasCPDefinitionSpecificationOptionValues(long cpDefinitionId)
 		throws PortalException;
-
-	public boolean hasCPDefinitionOptionRels(long cpDefinitionId);
 
 	public boolean isInWishList(
 			CPSku cpSku, CPCatalogEntry cpCatalogEntry,

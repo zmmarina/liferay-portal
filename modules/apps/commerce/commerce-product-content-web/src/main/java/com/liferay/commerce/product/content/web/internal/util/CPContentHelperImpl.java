@@ -485,6 +485,19 @@ public class CPContentHelperImpl implements CPContentHelper {
 	}
 
 	@Override
+	public boolean hasCPDefinitionOptionRels(long cpDefinitionId) {
+		int cpDefinitionOptionRelsCount =
+			_cpDefinitionOptionRelLocalService.getCPDefinitionOptionRelsCount(
+				cpDefinitionId);
+
+		if (cpDefinitionOptionRelsCount > 0) {
+			return true;
+		}
+
+		return false;
+	}
+
+	@Override
 	public boolean hasCPDefinitionSpecificationOptionValues(long cpDefinitionId)
 		throws PortalException {
 
@@ -496,19 +509,6 @@ public class CPContentHelperImpl implements CPContentHelper {
 						null);
 
 		return !cpDefinitionSpecificationOptionValues.isEmpty();
-	}
-
-	@Override
-	public boolean hasCPDefinitionOptionRels(long cpDefinitionId) {
-		int cpDefinitionOptionRelsCount =
-			_cpDefinitionOptionRelLocalService.getCPDefinitionOptionRelsCount(
-				cpDefinitionId);
-
-		if (cpDefinitionOptionRelsCount > 0) {
-			return true;
-		}
-
-		return false;
 	}
 
 	@Override
