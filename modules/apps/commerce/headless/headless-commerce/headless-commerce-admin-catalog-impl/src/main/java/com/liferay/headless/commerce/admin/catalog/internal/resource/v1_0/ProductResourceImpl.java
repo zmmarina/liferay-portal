@@ -528,7 +528,7 @@ public class ProductResourceImpl
 		return new ProductTaxConfiguration();
 	}
 
-	private String[] _getTags(CPDefinition cpDefinition) {
+	private String[] _getAssetTags(CPDefinition cpDefinition) {
 		List<AssetTag> assetEntryAssetTags = _assetTagService.getTags(
 			cpDefinition.getModelClassName(), cpDefinition.getCPDefinitionId());
 
@@ -784,7 +784,7 @@ public class ProductResourceImpl
 		String[] assetTags = product.getTags();
 
 		if (product.getTags() == null) {
-			assetTags = _getTags(cpDefinition);
+			assetTags = _getAssetTags(cpDefinition);
 		}
 
 		serviceContext.setAssetTagNames(assetTags);
