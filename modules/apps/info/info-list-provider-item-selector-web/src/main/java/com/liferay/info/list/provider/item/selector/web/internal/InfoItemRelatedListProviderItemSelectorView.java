@@ -157,15 +157,13 @@ public class InfoItemRelatedListProviderItemSelectorView
 
 				@Override
 				public String getPayload() {
+					Class<?> relatedItemClass =
+						infoItemRelatedItemsProvider.getRelatedItemClass();
+					Class<?> sourceItemClass =
+						infoItemRelatedItemsProvider.getSourceItemClass();
 					ThemeDisplay themeDisplay =
 						(ThemeDisplay)_httpServletRequest.getAttribute(
 							WebKeys.THEME_DISPLAY);
-
-					Class<?> relatedItemClass =
-						infoItemRelatedItemsProvider.getRelatedItemClass();
-
-					Class<?> sourceItemClass =
-						infoItemRelatedItemsProvider.getSourceItemClass();
 
 					return JSONUtil.put(
 						"key", infoItemRelatedItemsProvider.getKey()
