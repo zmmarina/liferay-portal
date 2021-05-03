@@ -231,7 +231,7 @@ public class I18nServlet extends HttpServlet {
 			}
 		}
 
-		String redirect;
+		String redirect = null;
 
 		if (friendlyURLSeparatorIndex == -1) {
 			redirect = FriendlyURLNormalizerUtil.normalizeWithEncoding(path);
