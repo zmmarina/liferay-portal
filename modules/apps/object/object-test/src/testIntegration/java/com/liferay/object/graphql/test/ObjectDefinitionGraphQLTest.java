@@ -214,7 +214,7 @@ public class ObjectDefinitionGraphQLTest {
 
 		value = RandomTestUtil.randomString();
 
-		Long id = JSONUtil.getValueAsLong(
+		Long objectEntryId = JSONUtil.getValueAsLong(
 			jsonObject, "JSONObject/data",
 			"JSONObject/create" + _objectDefinitionName,
 			"Object/" + _objectDefinition.getPrimaryKeyColumnName());
@@ -228,8 +228,8 @@ public class ObjectDefinitionGraphQLTest {
 						_objectDefinitionName,
 						StringBundler.concat(
 							"{", _objectDefinition.getPrimaryKeyColumnName(),
-							": ", String.valueOf(id), ", ", _objectFieldName,
-							": \"", value, "\"}")
+							": ", String.valueOf(objectEntryId), ", ",
+							_objectFieldName, ": \"", value, "\"}")
 					).build(),
 					new GraphQLField(_objectFieldName))));
 
