@@ -120,7 +120,7 @@ public class DDMFormFieldSerializerUtil {
 		DDMFormFieldTypeServicesTracker ddmFormFieldTypeServicesTracker,
 		JSONFactory jsonFactory) {
 
-		_trimEmptyValues(ddmFormFields);
+		_trim(ddmFormFields);
 
 		JSONArray jsonArray = jsonFactory.createJSONArray();
 
@@ -338,7 +338,7 @@ public class DDMFormFieldSerializerUtil {
 		return localizedValue;
 	}
 
-	private static void _trimEmptyValues(List<DDMFormField> ddmFormFields) {
+	private static void _trim(List<DDMFormField> ddmFormFields) {
 		if (!ddmFormFields.isEmpty()) {
 			LocalizedValue localizedValue;
 
