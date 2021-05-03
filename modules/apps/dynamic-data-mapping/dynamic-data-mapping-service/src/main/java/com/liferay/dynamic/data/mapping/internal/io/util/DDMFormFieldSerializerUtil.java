@@ -313,9 +313,9 @@ public class DDMFormFieldSerializerUtil {
 			return null;
 		}
 
-		Map<Locale, String> predefinedValuesMap = rawLocalizedValue.getValues();
-
 		LocalizedValue localizedValue = new LocalizedValue();
+
+		Map<Locale, String> predefinedValuesMap = rawLocalizedValue.getValues();
 
 		for (Map.Entry<Locale, String> entry : predefinedValuesMap.entrySet()) {
 			String value = entry.getValue();
