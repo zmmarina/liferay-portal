@@ -457,7 +457,7 @@ jdbc.counter.connectionProperties=oracle.jdbc.ReadTimeout=0;oracle.net.CONNECT_T
 					</then>
 				</elseif>
 				<else>
-					<echo> Failed to find either file </echo>
+					<echo>Unable to find X or Y.</echo>
 				</else>
 			</if>
 		</sequential>
