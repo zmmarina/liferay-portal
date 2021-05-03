@@ -63,11 +63,9 @@ public class DispatchOutputUtilTest {
 		Assert.assertEquals(
 			DispatchOutputUtil.truncate(5, 7, null, output),
 			DispatchOutputUtil.truncate(5, 7, StringPool.BLANK, output));
-
 		Assert.assertEquals(
 			"Last line in output",
 			DispatchOutputUtil.truncate(-20, 1, null, output));
-
 		Assert.assertEquals(
 			StringPool.BLANK,
 			DispatchOutputUtil.truncate(-20, -10, null, output));

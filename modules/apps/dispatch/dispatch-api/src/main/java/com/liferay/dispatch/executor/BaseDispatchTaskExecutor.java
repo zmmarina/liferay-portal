@@ -98,8 +98,8 @@ public abstract class BaseDispatchTaskExecutor implements DispatchTaskExecutor {
 	protected String truncateOutput(String output) {
 		return DispatchOutputUtil.truncate(
 			10, 5,
-			"Output was truncated for performance reasons. Check portal log " +
-				"for details.",
+			"Output was truncated for performance reasons. Check the portal " +
+				"log for details.",
 			output);
 	}
 
