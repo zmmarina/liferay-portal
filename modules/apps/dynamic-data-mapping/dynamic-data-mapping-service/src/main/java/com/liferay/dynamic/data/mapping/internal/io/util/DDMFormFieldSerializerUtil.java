@@ -343,10 +343,8 @@ public class DDMFormFieldSerializerUtil {
 			return;
 		}
 
-		LocalizedValue localizedValue;
-
 		for (DDMFormField ddmFormField : ddmFormFields) {
-			localizedValue = _trim(ddmFormField.getPredefinedValue());
+			LocalizedValue localizedValue = _trim(ddmFormField.getPredefinedValue());
 
 			ddmFormField.setPredefinedValue(localizedValue);
 
