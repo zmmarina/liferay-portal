@@ -71,8 +71,8 @@ public class OrganizationCTDisplayRenderer
 			"/users_admin/edit_organization"
 		).setRedirect(
 			_portal.getCurrentURL(httpServletRequest)
-		).setParameter(
-			"backURL", ParamUtil.getString(httpServletRequest, "backURL")
+		).setBackURL(
+			ParamUtil.getString(httpServletRequest, "backURL")
 		).setParameter(
 			"organizationId", organization.getOrganizationId()
 		).buildString();
