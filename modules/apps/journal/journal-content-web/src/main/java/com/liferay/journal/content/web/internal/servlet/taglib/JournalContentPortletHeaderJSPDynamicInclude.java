@@ -55,7 +55,7 @@ public class JournalContentPortletHeaderJSPDynamicInclude
 
 		JournalContentDisplayContext journalContentDisplayContext =
 			(JournalContentDisplayContext)httpServletRequest.getAttribute(
-				JournalContentDisplayContext.getCacheKey(
+				JournalContentDisplayContext.getRequestAttributeName(
 					portletDisplay.getId()));
 
 		try {

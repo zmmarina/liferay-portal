@@ -116,7 +116,7 @@ public class JournalContentDisplayContext {
 
 		JournalContentDisplayContext journalContentDisplayContext =
 			(JournalContentDisplayContext)portletRequest.getAttribute(
-				getCacheKey(portletDisplay.getId()));
+				getRequestAttributeName(portletDisplay.getId()));
 
 		if (journalContentDisplayContext == null) {
 			JournalContentPortletInstanceConfiguration
@@ -130,14 +130,14 @@ public class JournalContentDisplayContext {
 				ddmStructureClassNameId, ddmTemplateModelResourcePermission);
 
 			portletRequest.setAttribute(
-				getCacheKey(portletDisplay.getId()),
+				getRequestAttributeName(portletDisplay.getId()),
 				journalContentDisplayContext);
 		}
 
 		return journalContentDisplayContext;
 	}
 
-	public static String getCacheKey(String portletName) {
+	public static String getRequestAttributeName(String portletName) {
 		return JournalContentWebKeys.JOURNAL_CONTENT_DISPLAY_CONTEXT +
 			StringPool.POUND + portletName;
 	}

@@ -73,7 +73,7 @@ page import="javax.portlet.WindowState" %>
 <portlet:defineObjects />
 
 <%
-JournalContentDisplayContext journalContentDisplayContext = (JournalContentDisplayContext)request.getAttribute(JournalContentDisplayContext.getCacheKey(portletDisplay.getId()));
+JournalContentDisplayContext journalContentDisplayContext = (JournalContentDisplayContext)request.getAttribute(JournalContentDisplayContext.getRequestAttributeName(portletDisplay.getId()));
 
 Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZone);
 %>

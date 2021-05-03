@@ -118,7 +118,7 @@ public class JournalContentPortlet extends MVCPortlet {
 
 		JournalContentDisplayContext journalContentDisplayContext =
 			(JournalContentDisplayContext)renderRequest.getAttribute(
-				JournalContentDisplayContext.getCacheKey(
+				JournalContentDisplayContext.getRequestAttributeName(
 					portletDisplay.getId()));
 
 		if (journalContentDisplayContext != null) {
