@@ -328,8 +328,8 @@ public class JournalTransformer {
 				}
 			}
 			finally {
-				if ((portletRequestModel != null) &&
-					(httpServletRequest != null)) {
+				if ((httpServletRequest != null) &&
+					(portletRequestModel != null)) {
 
 					httpServletRequest.setAttribute(
 						JavaConstants.JAVAX_PORTLET_REQUEST,
