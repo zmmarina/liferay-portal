@@ -71,45 +71,49 @@ public class GroupPagesRenderParametersRenderFilter implements RenderFilter {
 		long selPlid = ParamUtil.getLong(
 			renderRequest, "selPlid", LayoutConstants.DEFAULT_PLID);
 
-		if (selPlid != LayoutConstants.DEFAULT_PLID) {
-			GroupDisplayContextHelper groupDisplayContextHelper =
-				new GroupDisplayContextHelper(
-					_portal.getHttpServletRequest(renderRequest));
+		if (selPlid == LayoutConstants.DEFAULT_PLID) {
+			filterChain.doFilter(renderRequest, renderResponse);
 
-			Group selGroup = groupDisplayContextHelper.getSelGroup();
+			return;
+		}
 
-			Layout selLayout = _layoutLocalService.fetchLayout(selPlid);
+		GroupDisplayContextHelper groupDisplayContextHelper =
+			new GroupDisplayContextHelper(
+				_portal.getHttpServletRequest(renderRequest));
 
-			try {
-				if ((selLayout == null) ||
-					!_layoutLocalService.hasLayout(
-						selLayout.getUuid(), selGroup.getGroupId(),
-						selLayout.isPrivateLayout())) {
+		Group selGroup = groupDisplayContextHelper.getSelGroup();
 
-					clearRenderRequestParameters(
-						_portal.getHttpServletRequest(renderRequest),
-						renderRequest);
+		Layout selLayout = _layoutLocalService.fetchLayout(selPlid);
 
-					HttpServletResponse httpServletResponse =
-						_portal.getHttpServletResponse(renderResponse);
+		try {
+			if ((selLayout == null) ||
+				!_layoutLocalService.hasLayout(
+					selLayout.getUuid(), selGroup.getGroupId(),
+					selLayout.isPrivateLayout())) {
 
-					PortletURL portletURL = PortletURLBuilder.create(
-						_portal.getControlPanelPortletURL(
-							renderRequest, LayoutAdminPortletKeys.GROUP_PAGES,
-							PortletRequest.RENDER_PHASE)
-					).setParameter(
-						"p_v_l_s_g_id", String.valueOf(selGroup.getGroupId())
-					).build();
+				clearRenderRequestParameters(
+					_portal.getHttpServletRequest(renderRequest),
+					renderRequest);
 
-					httpServletResponse.sendRedirect(portletURL.toString());
+				HttpServletResponse httpServletResponse =
+					_portal.getHttpServletResponse(renderResponse);
 
-					return;
-				}
+				PortletURL portletURL = PortletURLBuilder.create(
+					_portal.getControlPanelPortletURL(
+						renderRequest, LayoutAdminPortletKeys.GROUP_PAGES,
+						PortletRequest.RENDER_PHASE)
+				).setParameter(
+					"p_v_l_s_g_id", String.valueOf(selGroup.getGroupId())
+				).build();
+
+				httpServletResponse.sendRedirect(portletURL.toString());
+
+				return;
 			}
-			catch (PortalException portalException) {
-				if (_log.isDebugEnabled()) {
-					_log.debug(portalException, portalException);
-				}
+		}
+		catch (PortalException portalException) {
+			if (_log.isDebugEnabled()) {
+				_log.debug(portalException, portalException);
 			}
 		}
 
