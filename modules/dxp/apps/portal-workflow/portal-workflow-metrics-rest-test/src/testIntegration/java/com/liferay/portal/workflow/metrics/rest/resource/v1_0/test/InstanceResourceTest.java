@@ -148,11 +148,10 @@ public class InstanceResourceTest extends BaseInstanceResourceTestCase {
 		instance.setDateCompletion((Date)null);
 		instance.setProcessId(_process.getId());
 		instance.setProcessVersion(_process.getVersion());
-
 		instance.setSlaResults(
 			new SLAResult[] {
-				_createSLAResult(SLAResult.Status.RUNNING, true),
-				_createSLAResult(SLAResult.Status.RUNNING, false)
+				_toSLAResult(SLAResult.Status.RUNNING, true),
+				_toSLAResult(SLAResult.Status.RUNNING, false)
 			});
 
 		return instance;
@@ -234,7 +233,7 @@ public class InstanceResourceTest extends BaseInstanceResourceTestCase {
 			_process.getId(), instance);
 	}
 
-	private SLAResult _createSLAResult(
+	private SLAResult _toSLAResult(
 		SLAResult.Status slaResultStatus, boolean overdue) {
 
 		return new SLAResult() {
@@ -270,8 +269,8 @@ public class InstanceResourceTest extends BaseInstanceResourceTestCase {
 
 		_workflowMetricsRESTTestHelper.addSLAInstanceResults(
 			testGroup.getCompanyId(), instance1,
-			_createSLAResult(SLAResult.Status.STOPPED, true),
-			_createSLAResult(SLAResult.Status.PAUSED, true));
+			_toSLAResult(SLAResult.Status.STOPPED, true),
+			_toSLAResult(SLAResult.Status.PAUSED, true));
 
 		instance1.setClassPK(_classPK);
 		instance1.setCompleted(true);
