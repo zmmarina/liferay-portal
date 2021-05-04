@@ -84,8 +84,6 @@
 		<!-- Other fields -->
 
 		<column name="active" type="boolean" />
-		<column name="externalContentType" type="String" />
-		<column name="internalClassName" type="String" />
 		<column name="name" type="String" />
 		<column name="channel" type="String" />
 		<column name="export" type="boolean" />
@@ -104,10 +102,6 @@
 		<finder name="C_U" return-type="Collection">
 			<finder-column name="companyId" />
 			<finder-column name="userId" />
-		</finder>
-		<finder name="C_ECT" return-type="Collection">
-			<finder-column name="companyId" />
-			<finder-column name="externalContentType" />
 		</finder>
 		<finder name="C_N" return-type="BatchPlannerPlan" unique="true">
 			<finder-column name="companyId" />
