@@ -54,7 +54,6 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column name="transformationExpression" type="String" />
 
 		<!-- Order -->
 
