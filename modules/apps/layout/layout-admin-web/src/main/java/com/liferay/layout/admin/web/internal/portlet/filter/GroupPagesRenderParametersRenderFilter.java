@@ -56,7 +56,7 @@ import org.osgi.service.component.annotations.Reference;
 	property = "javax.portlet.name=" + LayoutAdminPortletKeys.GROUP_PAGES,
 	service = PortletFilter.class
 )
-public class GroupPagesRenderParametersPortletFilter implements RenderFilter {
+public class GroupPagesRenderParametersRenderFilter implements RenderFilter {
 
 	@Override
 	public void destroy() {
@@ -128,11 +128,11 @@ public class GroupPagesRenderParametersPortletFilter implements RenderFilter {
 
 		RenderParametersPool.clear(
 			httpServletRequest, themeDisplay.getPlid(),
-			"PUBLIC_RENDER_PARAMETERS");
+			WebKeys.PUBLIC_RENDER_PARAMETERS);
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-		GroupPagesRenderParametersPortletFilter.class);
+		GroupPagesRenderParametersRenderFilter.class);
 
 	@Reference
 	private LayoutLocalService _layoutLocalService;
