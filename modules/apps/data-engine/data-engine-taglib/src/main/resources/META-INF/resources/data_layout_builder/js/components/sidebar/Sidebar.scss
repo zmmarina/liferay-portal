@@ -1,10 +1,5 @@
 @import '../../../css/variables';
 
-// exclusive forms
-.portlet-forms .data-layout-builder-sidebar .sidebar .sidebar-body {
-	height: calc(100vh - 272px);
-}
-
 .data-layout-builder-sidebar {
 	.sidebar {
 		box-shadow: none;
@@ -45,4 +40,8 @@
 			}
 		}
 	}
+}
+
+.portlet-forms .data-layout-builder-sidebar .sidebar .sidebar-body {
+	height: calc(100vh - 272px);
 }
