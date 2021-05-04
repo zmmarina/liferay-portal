@@ -21,8 +21,8 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column name="size" type="Integer" />
-		<column name="total" type="Integer" />
+		<column name="size" type="int" />
+		<column name="total" type="int" />
 		<column name="status" type="int" />
 
 		<!-- Order -->
