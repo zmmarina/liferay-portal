@@ -85,7 +85,6 @@
 
 		<column name="active" type="boolean" />
 		<column name="name" type="String" />
-		<column name="channel" type="String" />
 		<column name="export" type="boolean" />
 
 		<!-- Order -->
