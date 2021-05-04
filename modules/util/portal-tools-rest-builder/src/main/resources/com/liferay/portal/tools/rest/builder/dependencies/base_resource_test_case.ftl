@@ -2129,6 +2129,14 @@ public abstract class Base${schemaName}ResourceTestCase {
 		}
 	</#list>
 
+	protected Field[] getDeclaredFields(Class clazz) throws Exception {
+		Stream<Field> stream = Stream.of(ReflectionUtil.getDeclaredFields(clazz));
+
+		return stream.filter(
+			field -> !field.isSynthetic()
+		).toArray(Field[]::new);
+	}
+
 	protected java.util.Collection<EntityField> getEntityFields() throws Exception {
 		if (!(_${schemaVarName}Resource instanceof EntityModelResource)) {
 			throw new UnsupportedOperationException("Resource is not an instance of EntityModelResource");
@@ -2141,14 +2149,6 @@ public abstract class Base${schemaName}ResourceTestCase {
 		Map<String, EntityField> entityFieldsMap = entityModel.getEntityFieldsMap();
 
 		return entityFieldsMap.values();
-	}
-
-	protected Field[] getDeclaredFields(Class clazz) throws Exception {
-		Stream<Field> stream = Stream.of(ReflectionUtil.getDeclaredFields(clazz));
-
-		return stream.filter(
-			field -> !field.isSynthetic()
-		).toArray(Field[]::new);
 	}
 
 	protected List<EntityField> getEntityFields(EntityField.Type type) throws Exception {
