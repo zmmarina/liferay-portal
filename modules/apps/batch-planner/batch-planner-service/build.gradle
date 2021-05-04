@@ -1,5 +1,6 @@
 buildService {
 	apiDir = "../batch-planner-api/src/main/java"
+	testDir = "../batch-planner-test/src/testIntegration/java"
 }
 
 dependencies {
