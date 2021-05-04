@@ -21,11 +21,11 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column convert-null="false" name="batchExternalReferenceCode" type="String" />
-		<column convert-null="false" name="dispatchExternalReferenceCode" type="String" />
+		<column name="batchExternalReferenceCode" type="String" />
+		<column name="dispatchExternalReferenceCode" type="String" />
 		<column name="size" type="Integer" />
 		<column name="total" type="Integer" />
-		<column convert-null="false" name="status" type="String" />
+		<column name="status" type="String" />
 
 		<!-- Order -->
 
@@ -64,11 +64,11 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column convert-null="false" name="externalName" type="String" />
-		<column convert-null="false" name="externalType" type="String" />
-		<column convert-null="false" name="internalName" type="String" />
-		<column convert-null="false" name="internalType" type="String" />
-		<column convert-null="false" name="transformationExpression" type="String" />
+		<column name="externalName" type="String" />
+		<column name="externalType" type="String" />
+		<column name="internalName" type="String" />
+		<column name="internalType" type="String" />
+		<column name="transformationExpression" type="String" />
 
 		<!-- Order -->
 
@@ -103,10 +103,10 @@
 		<!-- Other fields -->
 
 		<column name="active" type="boolean" />
-		<column convert-null="false" name="externalContentType" type="String" />
-		<column convert-null="false" name="internalClassName" type="String" />
-		<column convert-null="false" name="name" type="String" />
-		<column convert-null="false" name="channel" type="String" />
+		<column name="externalContentType" type="String" />
+		<column name="internalClassName" type="String" />
+		<column name="name" type="String" />
+		<column name="channel" type="String" />
 		<column name="export" type="boolean" />
 
 		<!-- Order -->
@@ -150,8 +150,8 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column convert-null="false" name="name" type="String" />
-		<column convert-null="false" name="value" type="String" />
+		<column name="name" type="String" />
+		<column name="value" type="String" />
 
 		<!-- Order -->
 
