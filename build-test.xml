@@ -457,7 +457,7 @@ jdbc.counter.connectionProperties=oracle.jdbc.ReadTimeout=0;oracle.net.CONNECT_T
 					</then>
 				</elseif>
 				<else>
-					<echo>Unable to find X or Y.</echo>
+					<echo>Unable to find commerce license file at ${liferay.home}/deploy/${commerce.license.file} or ${liferay.home}/osgi/modules/${commerce.license.file}.</echo>
 				</else>
 			</if>
 		</sequential>
