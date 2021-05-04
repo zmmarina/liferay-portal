@@ -233,21 +233,6 @@ public class InstanceResourceTest extends BaseInstanceResourceTestCase {
 			_process.getId(), instance);
 	}
 
-	private SLAResult _toSLAResult(
-		boolean overdue, SLAResult.Status slaResultStatus) {
-
-		return new SLAResult() {
-			{
-				dateOverdue = null;
-				id = RandomTestUtil.randomLong();
-				name = null;
-				onTime = !overdue;
-				remainingTime = overdue ? -1L : 1L;
-				status = slaResultStatus;
-			}
-		};
-	}
-
 	private void _deleteInstances() throws Exception {
 		for (Instance instance : _instances) {
 			_workflowMetricsRESTTestHelper.deleteInstance(
@@ -296,6 +281,21 @@ public class InstanceResourceTest extends BaseInstanceResourceTestCase {
 			null, null, Pagination.of(1, 2));
 
 		unsafeTriConsumer.accept(instance1, instance2, page);
+	}
+
+	private SLAResult _toSLAResult(
+		boolean overdue, SLAResult.Status slaResultStatus) {
+
+		return new SLAResult() {
+			{
+				dateOverdue = null;
+				id = RandomTestUtil.randomLong();
+				name = null;
+				onTime = !overdue;
+				remainingTime = overdue ? -1L : 1L;
+				status = slaResultStatus;
+			}
+		};
 	}
 
 	private Long _classPK;
