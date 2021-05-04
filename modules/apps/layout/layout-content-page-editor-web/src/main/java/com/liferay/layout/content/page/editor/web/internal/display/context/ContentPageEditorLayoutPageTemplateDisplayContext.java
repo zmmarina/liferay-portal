@@ -110,7 +110,6 @@ public class ContentPageEditorLayoutPageTemplateDisplayContext
 
 		configContext.put(
 			"infoItemPreviewSelectorURL", _getInfoItemPreviewSelectorURL());
-		configContext.put("selectedMappingTypes", _getSelectedMappingTypes());
 
 		Map<String, Object> stateContext =
 			(Map<String, Object>)editorContext.get("state");
@@ -119,6 +118,8 @@ public class ContentPageEditorLayoutPageTemplateDisplayContext
 			"mappingFields",
 			_addDisplayPageMappingFields(
 				(JSONObject)stateContext.get("mappingFields")));
+
+		configContext.put("selectedMappingTypes", _getSelectedMappingTypes());
 
 		return editorContext;
 	}
