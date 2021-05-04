@@ -20,17 +20,7 @@ import com.liferay.portal.aop.AopService;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * The implementation of the batch planner policy remote service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>com.liferay.batch.planner.service.BatchPlannerPolicyService</code> interface.
- *
- * <p>
- * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
- * </p>
- *
  * @author Igor Beslic
- * @see BatchPlannerPolicyServiceBaseImpl
  */
 @Component(
 	property = {
@@ -41,11 +31,4 @@ import org.osgi.service.component.annotations.Component;
 )
 public class BatchPlannerPolicyServiceImpl
 	extends BatchPlannerPolicyServiceBaseImpl {
-
-	/**
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use <code>com.liferay.batch.planner.service.BatchPlannerPolicyServiceUtil</code> to access the batch planner policy remote service.
-	 */
-
 }
