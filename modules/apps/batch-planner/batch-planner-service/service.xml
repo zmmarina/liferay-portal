@@ -25,7 +25,7 @@
 		<column name="dispatchExternalReferenceCode" type="String" />
 		<column name="size" type="Integer" />
 		<column name="total" type="Integer" />
-		<column name="status" type="String" />
+		<column name="status" type="int" />
 
 		<!-- Order -->
 
