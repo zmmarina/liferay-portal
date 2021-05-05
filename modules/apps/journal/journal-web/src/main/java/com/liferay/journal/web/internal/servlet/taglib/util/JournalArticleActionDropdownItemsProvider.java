@@ -163,7 +163,6 @@ public class JournalArticleActionDropdownItemsProvider {
 							(viewContentArticleAction != null),
 						viewContentArticleAction
 					).build());
-
 				dropdownGroupItem.setSeparator(true);
 			}
 		).addGroup(
@@ -190,7 +189,6 @@ public class JournalArticleActionDropdownItemsProvider {
 					).add(
 						_getViewUsagesArticleActionUnsafeConsumer()
 					).build());
-
 				dropdownGroupItem.setSeparator(true);
 			}
 		).addGroup(
@@ -219,7 +217,6 @@ public class JournalArticleActionDropdownItemsProvider {
 							(availableLanguageIds.length > 1),
 						_getDeleteArticleTranslationsActionUnsafeConsumer()
 					).build());
-
 				dropdownGroupItem.setSeparator(true);
 			}
 		).addGroup(
@@ -231,7 +228,6 @@ public class JournalArticleActionDropdownItemsProvider {
 							ActionKeys.PERMISSIONS),
 						_getPermissionsArticleActionUnsafeConsumer()
 					).build());
-
 				dropdownGroupItem.setSeparator(true);
 			}
 		).addGroup(
@@ -244,7 +240,6 @@ public class JournalArticleActionDropdownItemsProvider {
 						() -> hasDeletePermission && !trashEnabled,
 						_getDeleteArticleAction(_article.getArticleId())
 					).build());
-
 				dropdownGroupItem.setSeparator(true);
 			}
 		).build();
