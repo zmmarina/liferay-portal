@@ -20,10 +20,6 @@ import classNames from 'classnames';
 import React from 'react';
 
 function addSeparators(items) {
-
-	// We need at least two non-empty items to consider adding separators
-	// between them.
-
 	if (items.length < 2) {
 		return items;
 	}
@@ -53,11 +49,6 @@ function addSeparators(items) {
 }
 
 function filterEmptyGroups(items) {
-
-	// We might expect getting empty groups if, for example, some of the
-	// DropdownItems being available depends on permission checking
-	// (`JournalArticleActionDropdownItemsProvider.getActionDropdownItems()`).
-
 	return items
 		.filter(
 			(item) =>
