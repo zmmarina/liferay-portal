@@ -42,7 +42,6 @@ public class DDMFormFieldFactoryHelperTest {
 			ddmFormFieldFactoryHelper.getProperties();
 
 		Assert.assertEquals(properties.toString(), 4, properties.size());
-
 		Assert.assertEquals("true", properties.get("autoFocus"));
 		Assert.assertEquals(
 			"%enter-a-field-label", properties.get("placeholder"));
