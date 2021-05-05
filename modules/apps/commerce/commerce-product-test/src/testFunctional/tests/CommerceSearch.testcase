@@ -37,12 +37,43 @@ definition {
 	}
 
 	@description = "COMMERCE-6326. As a buyer, I want to be able to search an entry in All Content using Global Search and the results should be visible on Search page"
-	@ignore = "true"
 	@priority = "3"
 	test GlobalSearchSearchEntryInAllContent {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6326 GlobalSearchSearchEntryInAllContent pending implementation
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		Click(locator1 = "AppBuilder#SEARCH_BUTTON");
+
+		SelectFrameTop();
+
+		Type(
+			locator1 = "Search#GLOBAL_SEARCH_BAR",
+			value1 = "U-Joint");
+
+		Click(
+			key_suggestionName = "All Content",
+			locator1 = "Search#GLOBAL_SEARCH_SUGGESTIONS");
+
+		AssertElementPresent(
+			key_contentName = "U-Joint",
+			locator1 = "Search#SEARCH_BAR_WIDGET_CONTENT");
+
+		AssertElementPresent(
+			key_contentName = "U-Joint",
+			key_contentType = "Commerce Product",
+			locator1 = "Search#SEARCH_RESULT_WIDGET");
+
+		AssertElementPresent(
+			key_contentName = "Ball Joint",
+			key_contentType = "Commerce Product",
+			locator1 = "Search#SEARCH_RESULT_WIDGET");
+
+
+
+
 	}
 
 	@description = "COMMERCE-6322. As a buyer, I want to be able to search an entry in Catalog using Global Search and I want the results to be visible in Search Results widget"
