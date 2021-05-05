@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Component;
@@ -279,7 +280,7 @@ public class ObjectDefinitionLocalServiceImpl
 		ObjectDefinitionLocalServiceImpl.class);
 
 	private final List<ObjectDefinitionDeployer> _objectDefinitionDeployers =
-		new ArrayList<>();
+		new CopyOnWriteArrayList<>();
 
 	@Reference
 	private ObjectEntryLocalService _objectEntryLocalService;
