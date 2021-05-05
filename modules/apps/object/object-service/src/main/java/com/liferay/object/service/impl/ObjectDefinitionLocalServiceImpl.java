@@ -96,7 +96,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 		TransactionCommitCallbackUtil.registerCallback(
 			() -> {
-				objectDefinitionLocalService.registerObjectDefinition(
+				objectDefinitionLocalService.deployObjectDefinition(
 					updatedObjectDefinition);
 
 				return null;
@@ -138,7 +138,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 		TransactionCommitCallbackUtil.registerCallback(
 			() -> {
-				objectDefinitionLocalService.unregisterObjectDefinition(
+				objectDefinitionLocalService.undeployObjectDefinition(
 					objectDefinitionId);
 
 				return null;
@@ -163,7 +163,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 	@Clusterable
 	@Override
-	public void registerObjectDefinition(ObjectDefinition objectDefinition) {
+	public void deployObjectDefinition(ObjectDefinition objectDefinition) {
 		List<ServiceRegistration<?>> serviceRegistrations = new ArrayList<>();
 
 		for (ObjectDefinitionDeployer objectDefinitionDeployer :
@@ -179,7 +179,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 	@Clusterable
 	@Override
-	public void unregisterObjectDefinition(long objectDefinitionId) {
+	public void undeployObjectDefinition(long objectDefinitionId) {
 		List<ServiceRegistration<?>> serviceRegistrations =
 			_serviceRegistrationsMap.remove(objectDefinitionId);
 
@@ -193,7 +193,7 @@ public class ObjectDefinitionLocalServiceImpl
 	}
 
 	@Override
-	public void unregisterObjectDefinitions() {
+	public void undeployObjectDefinitions() {
 		for (List<ServiceRegistration<?>> serviceRegistrations :
 				_serviceRegistrationsMap.values()) {
 

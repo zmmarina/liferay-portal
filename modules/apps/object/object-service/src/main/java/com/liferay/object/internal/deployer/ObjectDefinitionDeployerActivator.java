@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.object.internal.service;
+package com.liferay.object.internal.deployer;
 
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectField;
@@ -48,7 +48,7 @@ import org.osgi.service.component.annotations.Reference;
  * @author Brian Wing Shun Chan
  */
 @Component(immediate = true, service = {})
-public class ObjectDefinitionRegistrar {
+public class ObjectDefinitionDeployerActivator {
 
 	@Activate
 	protected void activate(BundleContext bundleContext) throws Exception {
@@ -63,12 +63,12 @@ public class ObjectDefinitionRegistrar {
 
 					objectDefinitions.forEach(
 						_objectDefinitionLocalService::
-							registerObjectDefinition);
+							deployObjectDefinition);
 				},
 				null);
 
 			Thread thread = new Thread(
-				futureTask, "Object Definition Registrar");
+				futureTask, "Object Definition Deployer Activator");
 
 			thread.setDaemon(true);
 
@@ -84,7 +84,7 @@ public class ObjectDefinitionRegistrar {
 
 	@Deactivate
 	protected void deactivate() {
-		_objectDefinitionLocalService.unregisterObjectDefinitions();
+		_objectDefinitionLocalService.undeployObjectDefinitions();
 	}
 
 	private void _addSampleObjectDefinition() throws Exception {
