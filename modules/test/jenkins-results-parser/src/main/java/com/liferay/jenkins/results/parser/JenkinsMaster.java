@@ -516,7 +516,7 @@ public class JenkinsMaster implements JenkinsNode<JenkinsMaster> {
 	private final String _masterURL;
 	private int _queueCount;
 	private final Map<String, JSONObject> _queuedBuildURLs =
-		Collections.synchronizedMap(new HashMap<>());
+		Collections.synchronizedMap(new HashMap<String, JSONObject>());
 	private int _reportedAvailableSlavesCount;
 	private final Integer _slaveRAM;
 	private final Integer _slavesPerHost;
