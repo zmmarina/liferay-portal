@@ -70,10 +70,6 @@ definition {
 			key_contentName = "Ball Joint",
 			key_contentType = "Commerce Product",
 			locator1 = "Search#SEARCH_RESULT_WIDGET");
-
-
-
-
 	}
 
 	@description = "COMMERCE-6322. As a buyer, I want to be able to search an entry in Catalog using Global Search and I want the results to be visible in Search Results widget"
