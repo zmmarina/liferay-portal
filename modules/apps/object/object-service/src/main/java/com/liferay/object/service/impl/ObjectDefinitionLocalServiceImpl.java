@@ -14,16 +14,10 @@
 
 package com.liferay.object.service.impl;
 
-import com.liferay.application.list.PanelApp;
-import com.liferay.application.list.constants.PanelCategoryKeys;
+import com.liferay.object.deployer.ObjectDefinitionDeployer;
 import com.liferay.object.exception.DuplicateObjectDefinitionException;
 import com.liferay.object.exception.ObjectDefinitionNameException;
-import com.liferay.object.graphql.ObjectDefinitionGraphQL;
-import com.liferay.object.internal.application.list.ObjectDefinitionPanelApp;
-import com.liferay.object.internal.graphql.ObjectDefinitionGraphQLImpl;
 import com.liferay.object.internal.petra.sql.dsl.DynamicObjectDefinitionTable;
-import com.liferay.object.internal.portlet.ObjectDefinitionPortlet;
-import com.liferay.object.internal.workflow.ObjectEntryWorkflowHandler;
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectEntry;
 import com.liferay.object.model.ObjectField;
@@ -40,22 +34,20 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.transaction.TransactionCommitCallbackUtil;
-import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.kernel.workflow.WorkflowHandler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.portlet.Portlet;
-
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 /**
  * @author Marco Leo
@@ -172,53 +164,23 @@ public class ObjectDefinitionLocalServiceImpl
 	@Clusterable
 	@Override
 	public void registerObjectDefinition(ObjectDefinition objectDefinition) {
+		List<ServiceRegistration<?>> serviceRegistrations = new ArrayList<>();
+
+		for (ObjectDefinitionDeployer objectDefinitionDeployer :
+				_objectDefinitionDeployers) {
+
+			serviceRegistrations.addAll(
+				objectDefinitionDeployer.deploy(objectDefinition));
+		}
+
 		_serviceRegistrationsMap.put(
-			objectDefinition.getObjectDefinitionId(),
-			new ServiceRegistration<?>[] {
-				_bundleContext.registerService(
-					ObjectDefinitionGraphQL.class,
-					new ObjectDefinitionGraphQLImpl(
-						objectDefinition,
-						_objectFieldLocalService.getObjectFields(
-							objectDefinition.getObjectDefinitionId())),
-					HashMapDictionaryBuilder.<String, Object>put(
-						"db.table.name", objectDefinition.getDBTableName()
-					).build()),
-				_bundleContext.registerService(
-					PanelApp.class,
-					new ObjectDefinitionPanelApp(objectDefinition),
-					HashMapDictionaryBuilder.<String, Object>put(
-						"panel.app.order:Integer", "300"
-					).put(
-						"panel.category.key",
-						PanelCategoryKeys.CONTROL_PANEL_USERS
-					).build()),
-				_bundleContext.registerService(
-					Portlet.class, new ObjectDefinitionPortlet(),
-					HashMapDictionaryBuilder.<String, Object>put(
-						"com.liferay.portlet.display-category",
-						"category.hidden"
-					).put(
-						"javax.portlet.display-name", objectDefinition.getName()
-					).put(
-						"javax.portlet.name", objectDefinition.getPortletId()
-					).put(
-						"javax.portlet.init-param.view-template", "/view.jsp"
-					).build()),
-				_bundleContext.registerService(
-					WorkflowHandler.class,
-					new ObjectEntryWorkflowHandler(
-						objectDefinition, _objectEntryLocalService),
-					HashMapDictionaryBuilder.<String, Object>put(
-						"model.class.name", objectDefinition.getClassName()
-					).build())
-			});
+			objectDefinition.getObjectDefinitionId(), serviceRegistrations);
 	}
 
 	@Clusterable
 	@Override
 	public void unregisterObjectDefinition(long objectDefinitionId) {
-		ServiceRegistration<?>[] serviceRegistrations =
+		List<ServiceRegistration<?>> serviceRegistrations =
 			_serviceRegistrationsMap.remove(objectDefinitionId);
 
 		if (serviceRegistrations != null) {
@@ -232,7 +194,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 	@Override
 	public void unregisterObjectDefinitions() {
-		for (ServiceRegistration<?>[] serviceRegistrations :
+		for (List<ServiceRegistration<?>> serviceRegistrations :
 				_serviceRegistrationsMap.values()) {
 
 			for (ServiceRegistration<?> serviceRegistration :
@@ -245,9 +207,21 @@ public class ObjectDefinitionLocalServiceImpl
 		_serviceRegistrationsMap.clear();
 	}
 
-	@Activate
-	protected void activate(BundleContext bundleContext) {
-		_bundleContext = bundleContext;
+	@Reference(
+		cardinality = ReferenceCardinality.MULTIPLE,
+		policy = ReferencePolicy.DYNAMIC,
+		policyOption = ReferencePolicyOption.GREEDY
+	)
+	protected void setObjectDefinitionDeployer(
+		ObjectDefinitionDeployer objectDefinitionDeployer) {
+
+		_objectDefinitionDeployers.add(objectDefinitionDeployer);
+	}
+
+	protected void unsetObjectDefinitionDeployer(
+		ObjectDefinitionDeployer objectDefinitionDeployer) {
+
+		_objectDefinitionDeployers.remove(objectDefinitionDeployer);
 	}
 
 	private void _createTable(
@@ -304,7 +278,8 @@ public class ObjectDefinitionLocalServiceImpl
 	private static final Log _log = LogFactoryUtil.getLog(
 		ObjectDefinitionLocalServiceImpl.class);
 
-	private BundleContext _bundleContext;
+	private final List<ObjectDefinitionDeployer> _objectDefinitionDeployers =
+		new ArrayList<>();
 
 	@Reference
 	private ObjectEntryLocalService _objectEntryLocalService;
@@ -318,8 +293,8 @@ public class ObjectDefinitionLocalServiceImpl
 	@Reference
 	private ObjectFieldPersistence _objectFieldPersistence;
 
-	private final Map<Long, ServiceRegistration<?>[]> _serviceRegistrationsMap =
-		new HashMap<>();
+	private final Map<Long, List<ServiceRegistration<?>>>
+		_serviceRegistrationsMap = new HashMap<>();
 
 	@Reference
 	private UserLocalService _userLocalService;
