@@ -62,8 +62,7 @@ public class ObjectDefinitionDeployerActivator {
 					ClusterInvokeThreadLocal.setEnabled(false);
 
 					objectDefinitions.forEach(
-						_objectDefinitionLocalService::
-							deployObjectDefinition);
+						_objectDefinitionLocalService::deployObjectDefinition);
 				},
 				null);
 

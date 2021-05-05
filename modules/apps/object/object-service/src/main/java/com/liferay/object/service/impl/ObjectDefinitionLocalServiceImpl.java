@@ -147,20 +147,6 @@ public class ObjectDefinitionLocalServiceImpl
 		return objectDefinition;
 	}
 
-	@Override
-	public ObjectDefinition getObjectDefinition(long objectDefinitionId)
-		throws PortalException {
-
-		return objectDefinitionPersistence.findByPrimaryKey(objectDefinitionId);
-	}
-
-	@Override
-	public int getObjectDefinitionsCount(long companyId)
-		throws PortalException {
-
-		return objectDefinitionPersistence.countByCompanyId(companyId);
-	}
-
 	@Clusterable
 	@Override
 	public void deployObjectDefinition(ObjectDefinition objectDefinition) {
@@ -175,6 +161,20 @@ public class ObjectDefinitionLocalServiceImpl
 
 		_serviceRegistrationsMap.put(
 			objectDefinition.getObjectDefinitionId(), serviceRegistrations);
+	}
+
+	@Override
+	public ObjectDefinition getObjectDefinition(long objectDefinitionId)
+		throws PortalException {
+
+		return objectDefinitionPersistence.findByPrimaryKey(objectDefinitionId);
+	}
+
+	@Override
+	public int getObjectDefinitionsCount(long companyId)
+		throws PortalException {
+
+		return objectDefinitionPersistence.countByCompanyId(companyId);
 	}
 
 	@Clusterable
