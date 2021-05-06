@@ -31,12 +31,38 @@ definition {
 	}
 
 	@description = "This is a test for COMMERCE-6066. AddANewProductGroup"
-	@ignore = "true"
 	@priority = "3"
 	test AddANewProductGroup {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6066 AddANewProductGroup
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Products");
+
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
+			productName = "Simple T-Shirt",
+			productType = "Simple");
+
+		CommerceEntry.gotoMenuTab(menuTab = "Product Groups");
+
+		Click(locator1 = "ContentDashboard#SEARCH_FIELD");
+
+		Type(
+			locator1 = "ContentDashboard#SEARCH_FIELD",
+			value1 = "PG2");
+
+		Click(
+			key_text = "Create New",
+			locator1 = "Button#ANY");
+
+		Refresh();
+
+		AssertElementPresent(
+			key_tableEntryName = "PG2",
+			locator1 = "RemoteApps#TABLE_ENTRY_NAME_REMOTE_TABLE");
+
+		Button.clickPublish();
 
 	}
 
