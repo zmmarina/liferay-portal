@@ -155,7 +155,6 @@ definition {
 			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION_FIELDSET");
 
 		Alert.viewSuccessMessage();
-
 	}
 
 }
