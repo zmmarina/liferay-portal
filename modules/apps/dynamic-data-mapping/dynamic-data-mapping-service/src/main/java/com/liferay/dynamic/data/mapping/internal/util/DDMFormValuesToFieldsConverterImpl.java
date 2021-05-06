@@ -53,7 +53,6 @@ public class DDMFormValuesToFieldsConverterImpl
 
 		Map<String, DDMFormField> ddmFormFieldsMap =
 			ddmStructure.getFullHierarchyDDMFormFieldsMap(true);
-
 		Fields ddmFields = createDDMFields(ddmStructure);
 
 		for (DDMFormFieldValue ddmFormFieldValue :
