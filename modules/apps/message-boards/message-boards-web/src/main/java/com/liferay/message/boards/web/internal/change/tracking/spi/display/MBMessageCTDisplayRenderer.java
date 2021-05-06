@@ -43,7 +43,6 @@ import java.util.Locale;
 import javax.portlet.PortletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 
 import org.osgi.service.component.annotations.Component;
@@ -173,8 +172,6 @@ public class MBMessageCTDisplayRenderer
 
 		HttpServletRequest httpServletRequest =
 			displayContext.getHttpServletRequest();
-		HttpServletResponse httpServletResponse =
-			displayContext.getHttpServletResponse();
 
 		ThemeDisplay themeDisplay =
 			(ThemeDisplay)httpServletRequest.getAttribute(
@@ -206,7 +203,8 @@ public class MBMessageCTDisplayRenderer
 			try {
 				sb.append(
 					linkTag.doTagAsString(
-						httpServletRequest, httpServletResponse));
+						httpServletRequest,
+						displayContext.getHttpServletResponse()));
 			}
 			catch (JspException jspException) {
 				ReflectionUtil.throwException(jspException);
