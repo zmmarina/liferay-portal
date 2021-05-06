@@ -59,7 +59,7 @@ public class DDMFormValuesToFieldsConverterImpl
 		for (DDMFormFieldValue ddmFormFieldValue :
 				ddmFormValues.getDDMFormFieldValues()) {
 
-			_addMissingRepeatedFieldValues(
+			_addMissingRepeatedDDMFormFieldValues(
 				ddmFormFieldValue.getDDMFormField(),
 				ddmFormValues.getDefaultLocale(),
 				ddmFormValues.getAvailableLocales(), ddmFormFieldValue, false);
@@ -216,7 +216,7 @@ public class DDMFormValuesToFieldsConverterImpl
 		}
 	}
 
-	private void _addMissingRepeatedFieldValues(
+	private void _addMissingRepeatedDDMFormFieldValues(
 			DDMFormField ddmFormField, Locale locale,
 			Set<Locale> availableLocales, DDMFormFieldValue ddmFormFieldValue,
 			boolean repeatableAncestor)
@@ -245,7 +245,7 @@ public class DDMFormValuesToFieldsConverterImpl
 		for (DDMFormFieldValue nestedDDMFormFieldValue :
 				ddmFormFieldValue.getNestedDDMFormFieldValues()) {
 
-			_addMissingRepeatedFieldValues(
+			_addMissingRepeatedDDMFormFieldValues(
 				nestedDDMFormFieldValue.getDDMFormField(), locale,
 				availableLocales, nestedDDMFormFieldValue,
 				repeatableAncestor || ddmFormField.isRepeatable());
