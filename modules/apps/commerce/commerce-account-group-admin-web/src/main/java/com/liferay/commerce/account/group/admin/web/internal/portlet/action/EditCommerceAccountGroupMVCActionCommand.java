@@ -200,8 +200,6 @@ public class EditCommerceAccountGroupMVCActionCommand
 		ServiceContext serviceContext = new ServiceContext();
 
 		serviceContext.setCompanyId(_portal.getCompanyId(actionRequest));
-		serviceContext.setScopeGroupId(_portal.getScopeGroupId(actionRequest));
-		serviceContext.setUserId(_portal.getUserId(actionRequest));
 
 		Map<String, Serializable> expandoBridgeAttributes =
 			_portal.getExpandoBridgeAttributes(
@@ -211,6 +209,9 @@ public class EditCommerceAccountGroupMVCActionCommand
 				actionRequest);
 
 		serviceContext.setExpandoBridgeAttributes(expandoBridgeAttributes);
+
+		serviceContext.setScopeGroupId(_portal.getScopeGroupId(actionRequest));
+		serviceContext.setUserId(_portal.getUserId(actionRequest));
 
 		return serviceContext;
 	}
