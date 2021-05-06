@@ -50,7 +50,7 @@ import javax.ws.rs.BadRequestException;
  */
 public class DDMFormValuesUtil {
 
-	public static String serializeContent(
+	public static String getContent(
 		DDMFormValuesSerializer jsonDDMFormValuesSerializer, DDMForm ddmForm,
 		List<DDMFormFieldValue> ddmFormFieldValues) {
 

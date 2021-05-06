@@ -855,7 +855,7 @@ public class StructuredContentResourceImpl
 
 		serviceContext.setAttribute(
 			"ddmFormValues",
-			DDMFormValuesUtil.serializeContent(
+			DDMFormValuesUtil.getContent(
 				_jsonDDMFormValuesSerializer, ddmStructure.getDDMForm(),
 				ddmFormValues.getDDMFormFieldValues()));
 

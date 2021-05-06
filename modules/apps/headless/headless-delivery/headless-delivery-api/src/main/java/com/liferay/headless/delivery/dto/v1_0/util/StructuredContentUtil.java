@@ -51,7 +51,7 @@ public class StructuredContentUtil {
 
 			serviceContext.setAttribute(
 				"ddmFormValues",
-				DDMFormValuesUtil.serializeContent(
+				DDMFormValuesUtil.getContent(
 					ddmFormValuesSerializer, ddmStructure.getDDMForm(),
 					ddmFormValues.getDDMFormFieldValues()));
 
