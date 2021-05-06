@@ -249,9 +249,6 @@ public class AccountGroupLocalServiceImpl
 						accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
 
 					if (accountGroup == null) {
-						Indexer<AccountGroup> indexer =
-							IndexerRegistryUtil.getIndexer(AccountGroup.class);
-
 						long companyId = GetterUtil.getLong(
 							document.get(Field.COMPANY_ID));
 
