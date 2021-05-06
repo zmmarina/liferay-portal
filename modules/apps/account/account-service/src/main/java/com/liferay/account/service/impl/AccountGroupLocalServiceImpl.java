@@ -23,7 +23,6 @@ import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.search.BaseModelSearchResult;
-import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.search.Indexable;
@@ -37,8 +36,8 @@ import com.liferay.portal.kernel.search.SortFactoryUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.vulcan.util.TransformUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
@@ -233,32 +232,27 @@ public class AccountGroupLocalServiceImpl
 	private List<AccountGroup> _getAccountGroups(Hits hits)
 		throws PortalException {
 
-		List<Document> documents = hits.toList();
+		return TransformUtil.transform(
+			hits.toList(),
+			document -> {
+				long accountGroupId = GetterUtil.getLong(
+					document.get(Field.ENTRY_CLASS_PK));
 
-		List<AccountGroup> accountGroups = new ArrayList<>(documents.size());
+				AccountGroup accountGroup =
+					accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
 
-		for (Document document : documents) {
-			long accountGroupId = GetterUtil.getLong(
-				document.get(Field.ENTRY_CLASS_PK));
+				if (accountGroup == null) {
+					Indexer<AccountGroup> indexer =
+						IndexerRegistryUtil.getIndexer(AccountGroup.class);
 
-			AccountGroup accountGroup =
-				accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
+					long companyId = GetterUtil.getLong(
+						document.get(Field.COMPANY_ID));
 
-			if (accountGroup == null) {
-				Indexer<AccountGroup> indexer = IndexerRegistryUtil.getIndexer(
-					AccountGroup.class);
+					indexer.delete(companyId, document.getUID());
+				}
 
-				long companyId = GetterUtil.getLong(
-					document.get(Field.COMPANY_ID));
-
-				indexer.delete(companyId, document.getUID());
-			}
-			else if (accountGroup != null) {
-				accountGroups.add(accountGroup);
-			}
-		}
-
-		return accountGroups;
+				return accountGroup;
+			});
 	}
 
 	private BaseModelSearchResult<AccountGroup> _searchAccountGroups(
