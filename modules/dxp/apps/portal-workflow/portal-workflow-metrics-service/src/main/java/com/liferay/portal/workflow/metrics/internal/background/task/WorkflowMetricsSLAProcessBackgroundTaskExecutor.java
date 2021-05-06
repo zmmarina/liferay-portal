@@ -632,8 +632,7 @@ public class WorkflowMetricsSLAProcessBackgroundTaskExecutor
 							workflowMetricsSLATaskResult));
 				}
 
-				ScriptBuilder builder = _scripts.builder();
-
+				ScriptBuilder scriptBuilder = _scripts.builder();
 				WorkflowMetricsSLAStatus workflowMetricsSLAStatus =
 					workflowMetricsSLAInstanceResult.
 						getWorkflowMetricsSLAStatus();
@@ -646,7 +645,7 @@ public class WorkflowMetricsSLAProcessBackgroundTaskExecutor
 							_instanceWorkflowMetricsIndex.getIndexType(),
 							workflowMetricsSLAInstanceResult.getCompanyId(),
 							workflowMetricsSLAInstanceResult.getInstanceId()),
-						builder.idOrCode(
+						scriptBuilder.idOrCode(
 							StringUtil.read(
 								getClass(),
 								"dependencies/workflow-metrics-update-sla-" +
