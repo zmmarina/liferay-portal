@@ -173,12 +173,12 @@ public class AccountGroupLocalServiceImpl
 		OrderByComparator<AccountGroup> orderByComparator) {
 
 		try {
-			SearchContext searchContext = buildSearchContext(
+			SearchContext searchContext = _buildSearchContext(
 				companyId, start, end, orderByComparator);
 
 			searchContext.setKeywords(keywords);
 
-			return searchAccountGroups(searchContext);
+			return _searchAccountGroups(searchContext);
 		}
 		catch (PortalException portalException) {
 			return ReflectionUtil.throwException(portalException);
@@ -200,7 +200,7 @@ public class AccountGroupLocalServiceImpl
 		return accountGroupPersistence.update(accountGroup);
 	}
 
-	protected SearchContext buildSearchContext(
+	private SearchContext _buildSearchContext(
 		long companyId, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
@@ -230,7 +230,7 @@ public class AccountGroupLocalServiceImpl
 		return searchContext;
 	}
 
-	protected List<AccountGroup> getAccountGroups(Hits hits)
+	private List<AccountGroup> _getAccountGroups(Hits hits)
 		throws PortalException {
 
 		List<Document> documents = hits.toList();
@@ -261,7 +261,7 @@ public class AccountGroupLocalServiceImpl
 		return accountGroups;
 	}
 
-	protected BaseModelSearchResult<AccountGroup> searchAccountGroups(
+	private BaseModelSearchResult<AccountGroup> _searchAccountGroups(
 			SearchContext searchContext)
 		throws PortalException {
 
@@ -271,7 +271,7 @@ public class AccountGroupLocalServiceImpl
 		for (int i = 0; i < 10; i++) {
 			Hits hits = indexer.search(searchContext, _SELECTED_FIELD_NAMES);
 
-			List<AccountGroup> accountGroups = getAccountGroups(hits);
+			List<AccountGroup> accountGroups = _getAccountGroups(hits);
 
 			if (accountGroups != null) {
 				return new BaseModelSearchResult<>(
