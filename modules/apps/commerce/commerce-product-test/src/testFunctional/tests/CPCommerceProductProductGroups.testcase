@@ -119,12 +119,43 @@ definition {
 	}
 
 	@description = "This is a test for COMMERCE-6067. RemoveAProductGroup"
-	@ignore = "true"
 	@priority = "3"
 	test RemoveAProductGroup {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6067 RemoveAProductGroup
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Products");
+
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
+			productName = "Simple T-Shirt",
+			productType = "Simple");
+
+		CommerceEntry.gotoMenuTab(menuTab = "Product Groups");
+
+		Click(locator1 = "ContentDashboard#SEARCH_FIELD");
+
+		Type(
+			locator1 = "ContentDashboard#SEARCH_FIELD",
+			value1 = "PG2");
+
+		Click(
+			key_text = "Create New",
+			locator1 = "Button#ANY");
+
+		Refresh();
+
+		Click(
+			key_value = "",
+			locator1 = "CommerceEntry#BODY_VERTICAL_ELLIPSIS");
+
+		Click(
+			key_selectAction = "Remove",
+			locator1 = "FormViewBuilder#FIELD_ELLIPSIS_ACTION_FIELDSET");
+
+		Alert.viewSuccessMessage();
+
 	}
 
 }
