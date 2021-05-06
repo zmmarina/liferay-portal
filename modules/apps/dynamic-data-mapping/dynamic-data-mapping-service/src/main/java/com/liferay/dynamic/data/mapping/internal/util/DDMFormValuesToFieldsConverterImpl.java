@@ -51,8 +51,6 @@ public class DDMFormValuesToFieldsConverterImpl
 			DDMStructure ddmStructure, DDMFormValues ddmFormValues)
 		throws PortalException {
 
-		Set<Locale> availableLocales = ddmFormValues.getAvailableLocales();
-
 		Map<String, DDMFormField> ddmFormFieldsMap =
 			ddmStructure.getFullHierarchyDDMFormFieldsMap(true);
 
@@ -63,8 +61,8 @@ public class DDMFormValuesToFieldsConverterImpl
 
 			_addMissingRepeatedFieldValues(
 				ddmFormFieldValue.getDDMFormField(),
-				ddmFormValues.getDefaultLocale(), availableLocales,
-				ddmFormFieldValue, false);
+				ddmFormValues.getDefaultLocale(),
+				ddmFormValues.getAvailableLocales(), ddmFormFieldValue, false);
 
 			addDDMFields(
 				ddmStructure.getStructureId(), ddmFormFieldsMap,
