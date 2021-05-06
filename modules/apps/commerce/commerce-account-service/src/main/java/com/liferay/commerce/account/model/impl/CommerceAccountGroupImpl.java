@@ -22,6 +22,7 @@ import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 
 /**
@@ -74,36 +75,39 @@ public class CommerceAccountGroupImpl extends CommerceAccountGroupBaseImpl {
 	}
 
 	public static String toAccountGroupType(Integer type) {
-		if (type != null) {
-			if (type == CommerceAccountConstants.ACCOUNT_GROUP_TYPE_GUEST) {
-				return AccountConstants.ACCOUNT_GROUP_TYPE_GUEST;
-			}
-			else if (type ==
-						CommerceAccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC) {
+		if (Objects.equals(
+				type, CommerceAccountConstants.ACCOUNT_GROUP_TYPE_GUEST)) {
 
-				return AccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC;
-			}
-			else if (type ==
-						CommerceAccountConstants.ACCOUNT_GROUP_TYPE_STATIC) {
+			return AccountConstants.ACCOUNT_GROUP_TYPE_GUEST;
+		}
+		else if (Objects.equals(
+					type,
+					CommerceAccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC)) {
 
-				return AccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
-			}
+			return AccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC;
+		}
+		else if (Objects.equals(
+					type, CommerceAccountConstants.ACCOUNT_GROUP_TYPE_STATIC)) {
+
+			return AccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
 		}
 
 		return AccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
 	}
 
 	public static int toCommerceAccountGroupType(String type) {
-		if (type != null) {
-			if (type.equals(AccountConstants.ACCOUNT_GROUP_TYPE_GUEST)) {
-				return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_GUEST;
-			}
-			else if (type.equals(AccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC)) {
-				return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC;
-			}
-			else if (type.equals(AccountConstants.ACCOUNT_GROUP_TYPE_STATIC)) {
-				return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
-			}
+		if (Objects.equals(type, AccountConstants.ACCOUNT_GROUP_TYPE_GUEST)) {
+			return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_GUEST;
+		}
+		else if (Objects.equals(
+					type, AccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC)) {
+
+			return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_DYNAMIC;
+		}
+		else if (Objects.equals(
+					type, AccountConstants.ACCOUNT_GROUP_TYPE_STATIC)) {
+
+			return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
 		}
 
 		return CommerceAccountConstants.ACCOUNT_GROUP_TYPE_STATIC;
