@@ -163,7 +163,8 @@ public class ObjectDefinitionLocalServiceImpl
 
 			serviceRegistrationsMap.computeIfAbsent(
 				objectDefinition.getObjectDefinitionId(),
-				key -> objectDefinitionDeployer.deploy(objectDefinition));
+				objectDefinitionId ->
+					objectDefinitionDeployer.deploy(objectDefinition));
 		}
 	}
 
