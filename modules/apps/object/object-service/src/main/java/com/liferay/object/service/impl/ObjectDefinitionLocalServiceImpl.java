@@ -155,7 +155,7 @@ public class ObjectDefinitionLocalServiceImpl
 		for (Map.Entry
 				<ObjectDefinitionDeployer,
 				 Map<Long, List<ServiceRegistration<?>>>> entry :
-					_serviceRegistrationsMapMap.entrySet()) {
+					_serviceRegistrationsMaps.entrySet()) {
 
 			ObjectDefinitionDeployer objectDefinitionDeployer = entry.getKey();
 			Map<Long, List<ServiceRegistration<?>>> serviceRegistrationsMap =
@@ -185,7 +185,7 @@ public class ObjectDefinitionLocalServiceImpl
 	@Override
 	public void undeployObjectDefinition(long objectDefinitionId) {
 		for (Map<Long, List<ServiceRegistration<?>>> serviceRegistrationsMap :
-				_serviceRegistrationsMapMap.values()) {
+				_serviceRegistrationsMaps.values()) {
 
 			List<ServiceRegistration<?>> serviceRegistrations =
 				serviceRegistrationsMap.remove(objectDefinitionId);
@@ -229,7 +229,7 @@ public class ObjectDefinitionLocalServiceImpl
 							objectDefinitionDeployer.deploy(objectDefinition));
 					}
 
-					_serviceRegistrationsMapMap.put(
+					_serviceRegistrationsMaps.put(
 						objectDefinitionDeployer, serviceRegistrationsMap);
 
 					return objectDefinitionDeployer;
@@ -248,7 +248,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 					Map<Long, List<ServiceRegistration<?>>>
 						serviceRegistrationsMap =
-							_serviceRegistrationsMapMap.remove(
+							_serviceRegistrationsMaps.remove(
 								objectDefinitionDeployer);
 
 					for (List<ServiceRegistration<?>> serviceRegistrations :
@@ -345,7 +345,7 @@ public class ObjectDefinitionLocalServiceImpl
 
 	private final Map
 		<ObjectDefinitionDeployer, Map<Long, List<ServiceRegistration<?>>>>
-			_serviceRegistrationsMapMap = new ConcurrentHashMap<>();
+			_serviceRegistrationsMaps = new ConcurrentHashMap<>();
 
 	@Reference
 	private UserLocalService _userLocalService;
