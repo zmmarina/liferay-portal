@@ -229,32 +229,6 @@ public class AccountGroupLocalServiceImpl
 		return searchContext;
 	}
 
-	private List<AccountGroup> _getAccountGroups(Hits hits)
-		throws PortalException {
-
-		return TransformUtil.transform(
-			hits.toList(),
-			document -> {
-				long accountGroupId = GetterUtil.getLong(
-					document.get(Field.ENTRY_CLASS_PK));
-
-				AccountGroup accountGroup =
-					accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
-
-				if (accountGroup == null) {
-					Indexer<AccountGroup> indexer =
-						IndexerRegistryUtil.getIndexer(AccountGroup.class);
-
-					long companyId = GetterUtil.getLong(
-						document.get(Field.COMPANY_ID));
-
-					indexer.delete(companyId, document.getUID());
-				}
-
-				return accountGroup;
-			});
-	}
-
 	private BaseModelSearchResult<AccountGroup> _searchAccountGroups(
 			SearchContext searchContext)
 		throws PortalException {
@@ -265,7 +239,27 @@ public class AccountGroupLocalServiceImpl
 		for (int i = 0; i < 10; i++) {
 			Hits hits = indexer.search(searchContext, _SELECTED_FIELD_NAMES);
 
-			List<AccountGroup> accountGroups = _getAccountGroups(hits);
+			List<AccountGroup> accountGroups = TransformUtil.transform(
+				hits.toList(),
+				document -> {
+					long accountGroupId = GetterUtil.getLong(
+						document.get(Field.ENTRY_CLASS_PK));
+
+					AccountGroup accountGroup =
+						accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
+
+					if (accountGroup == null) {
+						Indexer<AccountGroup> indexer =
+							IndexerRegistryUtil.getIndexer(AccountGroup.class);
+
+						long companyId = GetterUtil.getLong(
+							document.get(Field.COMPANY_ID));
+
+						indexer.delete(companyId, document.getUID());
+					}
+
+					return accountGroup;
+				});
 
 			if (accountGroups != null) {
 				return new BaseModelSearchResult<>(
