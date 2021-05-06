@@ -1341,7 +1341,10 @@ print AdminControl.invoke(appManager, 'startApplication', 'liferay-portal')
 
 				<delete file="wsadmin.py" />
 
-				<!-- LPS-131764 Temporarily clear logs after Websphere install until osgi/core is migrated into the portal war -->
+				<!--
+				See LPS-131764. Temporarily clear logs after WebSphere install
+				until osgi/core is migrated into the portal WAR.
+				-->
 
 				<delete dir="${liferay.home}/logs" />
 			</then>
