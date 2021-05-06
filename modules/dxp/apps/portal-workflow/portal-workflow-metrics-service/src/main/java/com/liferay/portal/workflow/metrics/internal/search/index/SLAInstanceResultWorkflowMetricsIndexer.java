@@ -135,8 +135,6 @@ public class SLAInstanceResultWorkflowMetricsIndexer
 
 		super.deleteDocuments(companyId, processId, slaDefinitionId);
 
-		ScriptBuilder scriptBuilder = scripts.builder();
-
 		BooleanQuery booleanQuery = queries.booleanQuery();
 
 		BooleanQuery filterBooleanQuery = queries.booleanQuery();
@@ -152,6 +150,8 @@ public class SLAInstanceResultWorkflowMetricsIndexer
 				queries.term("slaResults.slaDefinitionId", slaDefinitionId)));
 
 		booleanQuery.addFilterQueryClauses(filterBooleanQuery);
+
+		ScriptBuilder scriptBuilder = scripts.builder();
 
 		UpdateByQueryDocumentRequest updateByQueryDocumentRequest =
 			new UpdateByQueryDocumentRequest(
