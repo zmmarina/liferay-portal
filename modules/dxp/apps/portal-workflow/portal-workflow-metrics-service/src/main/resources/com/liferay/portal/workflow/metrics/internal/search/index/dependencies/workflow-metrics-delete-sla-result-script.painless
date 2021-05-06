@@ -1,6 +1,5 @@
 if (ctx._source.containsKey("slaResults")) {
-	ctx._source.slaResults.removeIf(
-		slaResult -> slaResult.slaDefinitionId == params.slaDefinitionId);
+	ctx._source.slaResults.removeIf(slaResult -> slaResult.slaDefinitionId == params.slaDefinitionId);
 
 	def slaStatus = "Untracked";
 

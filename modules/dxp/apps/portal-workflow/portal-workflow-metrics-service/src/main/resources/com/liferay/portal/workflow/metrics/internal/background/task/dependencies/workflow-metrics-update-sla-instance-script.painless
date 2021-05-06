@@ -11,11 +11,12 @@ if (!ctx._source.containsKey("slaResults")) {
 	ctx._source["slaResults"] = [params.slaResult];
 }
 else {
-	def slaResult = ctx._source.slaResults.find(item -> item.slaDefinitionId == params.slaResult.slaDefinitionId);
+	def slaResult = ctx._source.slaResults.find(slaResult -> slaResult.slaDefinitionId == params.slaResult.slaDefinitionId);
 
 	if (slaResult == null) {
 		ctx._source.slaResults.add(params.slaResult);
-	} else {
+	}
+	else {
 		slaResult.onTime = params.slaResult.onTime;
 		slaResult.remainingTime = params.slaResult.remainingTime;
 		slaResult.slaStatus = params.slaResult.slaStatus;
