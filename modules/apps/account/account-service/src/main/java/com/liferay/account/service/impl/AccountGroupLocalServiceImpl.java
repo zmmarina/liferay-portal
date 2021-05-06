@@ -18,6 +18,7 @@ import com.liferay.account.constants.AccountConstants;
 import com.liferay.account.model.AccountGroup;
 import com.liferay.account.model.AccountGroupRel;
 import com.liferay.account.service.base.AccountGroupLocalServiceBaseImpl;
+import com.liferay.petra.reflect.ReflectionUtil;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
@@ -180,8 +181,7 @@ public class AccountGroupLocalServiceImpl
 			return searchAccountGroups(searchContext);
 		}
 		catch (PortalException portalException) {
-			throw new RuntimeException(
-				portalException.getMessage(), portalException);
+			return ReflectionUtil.throwException(portalException);
 		}
 	}
 
