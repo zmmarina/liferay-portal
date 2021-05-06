@@ -295,11 +295,10 @@ public class UserIndexerTest {
 
 		addUserWithScreenName(screenName);
 
+		assertNoHits(byQueryString("4lif"));
 		assertScreenNameFieldValue(screenName, byQueryString("open"));
 		assertScreenNameFieldValue(screenName, byQueryString("open4life"));
 		assertScreenNameFieldValue(screenName, byQueryString("OPE"));
-
-		assertNoHits(byQueryString("4lif"));
 	}
 
 	@Test
