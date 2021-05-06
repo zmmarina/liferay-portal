@@ -101,10 +101,10 @@ public class AccountGroupPersistenceImpl
 	private FinderPath _finderPathWithPaginationFindAll;
 	private FinderPath _finderPathWithoutPaginationFindAll;
 	private FinderPath _finderPathCountAll;
-	private FinderPath _finderPathWithPaginationFindByAccountGroupIds;
-	private FinderPath _finderPathWithoutPaginationFindByAccountGroupIds;
-	private FinderPath _finderPathCountByAccountGroupIds;
-	private FinderPath _finderPathWithPaginationCountByAccountGroupIds;
+	private FinderPath _finderPathWithPaginationFindByAccountGroupId;
+	private FinderPath _finderPathWithoutPaginationFindByAccountGroupId;
+	private FinderPath _finderPathCountByAccountGroupId;
+	private FinderPath _finderPathWithPaginationCountByAccountGroupId;
 
 	/**
 	 * Returns all the account groups where accountGroupId = &#63;.
@@ -113,8 +113,8 @@ public class AccountGroupPersistenceImpl
 	 * @return the matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(long accountGroupId) {
-		return findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(long accountGroupId) {
+		return findByAccountGroupId(
 			accountGroupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -131,10 +131,10 @@ public class AccountGroupPersistenceImpl
 	 * @return the range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end) {
 
-		return findByAccountGroupIds(accountGroupId, start, end, null);
+		return findByAccountGroupId(accountGroupId, start, end, null);
 	}
 
 	/**
@@ -151,11 +151,11 @@ public class AccountGroupPersistenceImpl
 	 * @return the ordered range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return findByAccountGroupIds(
+		return findByAccountGroupId(
 			accountGroupId, start, end, orderByComparator, true);
 	}
 
@@ -174,7 +174,7 @@ public class AccountGroupPersistenceImpl
 	 * @return the ordered range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator,
 		boolean useFinderCache) {
@@ -186,12 +186,12 @@ public class AccountGroupPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByAccountGroupIds;
+				finderPath = _finderPathWithoutPaginationFindByAccountGroupId;
 				finderArgs = new Object[] {accountGroupId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByAccountGroupIds;
+			finderPath = _finderPathWithPaginationFindByAccountGroupId;
 			finderArgs = new Object[] {
 				accountGroupId, start, end, orderByComparator
 			};
@@ -227,7 +227,7 @@ public class AccountGroupPersistenceImpl
 
 			sb.append(_SQL_SELECT_ACCOUNTGROUP_WHERE);
 
-			sb.append(_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_2);
+			sb.append(_FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(
@@ -279,12 +279,12 @@ public class AccountGroupPersistenceImpl
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
 	@Override
-	public AccountGroup findByAccountGroupIds_First(
+	public AccountGroup findByAccountGroupId_First(
 			long accountGroupId,
 			OrderByComparator<AccountGroup> orderByComparator)
 		throws NoSuchGroupException {
 
-		AccountGroup accountGroup = fetchByAccountGroupIds_First(
+		AccountGroup accountGroup = fetchByAccountGroupId_First(
 			accountGroupId, orderByComparator);
 
 		if (accountGroup != null) {
@@ -311,11 +311,11 @@ public class AccountGroupPersistenceImpl
 	 * @return the first matching account group, or <code>null</code> if a matching account group could not be found
 	 */
 	@Override
-	public AccountGroup fetchByAccountGroupIds_First(
+	public AccountGroup fetchByAccountGroupId_First(
 		long accountGroupId,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		List<AccountGroup> list = findByAccountGroupIds(
+		List<AccountGroup> list = findByAccountGroupId(
 			accountGroupId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -334,12 +334,12 @@ public class AccountGroupPersistenceImpl
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
 	@Override
-	public AccountGroup findByAccountGroupIds_Last(
+	public AccountGroup findByAccountGroupId_Last(
 			long accountGroupId,
 			OrderByComparator<AccountGroup> orderByComparator)
 		throws NoSuchGroupException {
 
-		AccountGroup accountGroup = fetchByAccountGroupIds_Last(
+		AccountGroup accountGroup = fetchByAccountGroupId_Last(
 			accountGroupId, orderByComparator);
 
 		if (accountGroup != null) {
@@ -366,17 +366,17 @@ public class AccountGroupPersistenceImpl
 	 * @return the last matching account group, or <code>null</code> if a matching account group could not be found
 	 */
 	@Override
-	public AccountGroup fetchByAccountGroupIds_Last(
+	public AccountGroup fetchByAccountGroupId_Last(
 		long accountGroupId,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		int count = countByAccountGroupIds(accountGroupId);
+		int count = countByAccountGroupId(accountGroupId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<AccountGroup> list = findByAccountGroupIds(
+		List<AccountGroup> list = findByAccountGroupId(
 			accountGroupId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -397,8 +397,8 @@ public class AccountGroupPersistenceImpl
 	 * @return the matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(long[] accountGroupIds) {
-		return findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(long[] accountGroupIds) {
+		return findByAccountGroupId(
 			accountGroupIds, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -415,10 +415,10 @@ public class AccountGroupPersistenceImpl
 	 * @return the range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end) {
 
-		return findByAccountGroupIds(accountGroupIds, start, end, null);
+		return findByAccountGroupId(accountGroupIds, start, end, null);
 	}
 
 	/**
@@ -435,11 +435,11 @@ public class AccountGroupPersistenceImpl
 	 * @return the ordered range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return findByAccountGroupIds(
+		return findByAccountGroupId(
 			accountGroupIds, start, end, orderByComparator, true);
 	}
 
@@ -458,7 +458,7 @@ public class AccountGroupPersistenceImpl
 	 * @return the ordered range of matching account groups
 	 */
 	@Override
-	public List<AccountGroup> findByAccountGroupIds(
+	public List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator,
 		boolean useFinderCache) {
@@ -471,7 +471,7 @@ public class AccountGroupPersistenceImpl
 		}
 
 		if (accountGroupIds.length == 1) {
-			return findByAccountGroupIds(
+			return findByAccountGroupId(
 				accountGroupIds[0], start, end, orderByComparator);
 		}
 
@@ -494,7 +494,7 @@ public class AccountGroupPersistenceImpl
 
 		if (useFinderCache) {
 			list = (List<AccountGroup>)finderCache.getResult(
-				_finderPathWithPaginationFindByAccountGroupIds, finderArgs);
+				_finderPathWithPaginationFindByAccountGroupId, finderArgs);
 
 			if ((list != null) && !list.isEmpty()) {
 				for (AccountGroup accountGroup : list) {
@@ -518,7 +518,7 @@ public class AccountGroupPersistenceImpl
 			if (accountGroupIds.length > 0) {
 				sb.append("(");
 
-				sb.append(_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_7);
+				sb.append(_FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_7);
 
 				sb.append(StringUtil.merge(accountGroupIds));
 
@@ -554,7 +554,7 @@ public class AccountGroupPersistenceImpl
 
 				if (useFinderCache) {
 					finderCache.putResult(
-						_finderPathWithPaginationFindByAccountGroupIds,
+						_finderPathWithPaginationFindByAccountGroupId,
 						finderArgs, list);
 				}
 			}
@@ -575,9 +575,9 @@ public class AccountGroupPersistenceImpl
 	 * @param accountGroupId the account group ID
 	 */
 	@Override
-	public void removeByAccountGroupIds(long accountGroupId) {
+	public void removeByAccountGroupId(long accountGroupId) {
 		for (AccountGroup accountGroup :
-				findByAccountGroupIds(
+				findByAccountGroupId(
 					accountGroupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
 					null)) {
 
@@ -592,8 +592,8 @@ public class AccountGroupPersistenceImpl
 	 * @return the number of matching account groups
 	 */
 	@Override
-	public int countByAccountGroupIds(long accountGroupId) {
-		FinderPath finderPath = _finderPathCountByAccountGroupIds;
+	public int countByAccountGroupId(long accountGroupId) {
+		FinderPath finderPath = _finderPathCountByAccountGroupId;
 
 		Object[] finderArgs = new Object[] {accountGroupId};
 
@@ -604,7 +604,7 @@ public class AccountGroupPersistenceImpl
 
 			sb.append(_SQL_COUNT_ACCOUNTGROUP_WHERE);
 
-			sb.append(_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_2);
+			sb.append(_FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_2);
 
 			String sql = sb.toString();
 
@@ -641,7 +641,7 @@ public class AccountGroupPersistenceImpl
 	 * @return the number of matching account groups
 	 */
 	@Override
-	public int countByAccountGroupIds(long[] accountGroupIds) {
+	public int countByAccountGroupId(long[] accountGroupIds) {
 		if (accountGroupIds == null) {
 			accountGroupIds = new long[0];
 		}
@@ -652,7 +652,7 @@ public class AccountGroupPersistenceImpl
 		Object[] finderArgs = new Object[] {StringUtil.merge(accountGroupIds)};
 
 		Long count = (Long)finderCache.getResult(
-			_finderPathWithPaginationCountByAccountGroupIds, finderArgs);
+			_finderPathWithPaginationCountByAccountGroupId, finderArgs);
 
 		if (count == null) {
 			StringBundler sb = new StringBundler();
@@ -662,7 +662,7 @@ public class AccountGroupPersistenceImpl
 			if (accountGroupIds.length > 0) {
 				sb.append("(");
 
-				sb.append(_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_7);
+				sb.append(_FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_7);
 
 				sb.append(StringUtil.merge(accountGroupIds));
 
@@ -686,7 +686,7 @@ public class AccountGroupPersistenceImpl
 				count = (Long)query.uniqueResult();
 
 				finderCache.putResult(
-					_finderPathWithPaginationCountByAccountGroupIds, finderArgs,
+					_finderPathWithPaginationCountByAccountGroupId, finderArgs,
 					count);
 			}
 			catch (Exception exception) {
@@ -700,13 +700,11 @@ public class AccountGroupPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String
-		_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_2 =
-			"accountGroup.accountGroupId = ?";
+	private static final String _FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_2 =
+		"accountGroup.accountGroupId = ?";
 
-	private static final String
-		_FINDER_COLUMN_ACCOUNTGROUPIDS_ACCOUNTGROUPID_7 =
-			"accountGroup.accountGroupId IN (";
+	private static final String _FINDER_COLUMN_ACCOUNTGROUPID_ACCOUNTGROUPID_7 =
+		"accountGroup.accountGroupId IN (";
 
 	private FinderPath _finderPathWithPaginationFindByCompanyId;
 	private FinderPath _finderPathWithoutPaginationFindByCompanyId;
@@ -3167,26 +3165,26 @@ public class AccountGroupPersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll",
 			new String[0], new String[0], false);
 
-		_finderPathWithPaginationFindByAccountGroupIds = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByAccountGroupIds",
+		_finderPathWithPaginationFindByAccountGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByAccountGroupId",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				Integer.class.getName(), OrderByComparator.class.getName()
 			},
 			new String[] {"accountGroupId"}, true);
 
-		_finderPathWithoutPaginationFindByAccountGroupIds = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByAccountGroupIds",
+		_finderPathWithoutPaginationFindByAccountGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByAccountGroupId",
 			new String[] {Long.class.getName()},
 			new String[] {"accountGroupId"}, true);
 
-		_finderPathCountByAccountGroupIds = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByAccountGroupIds",
+		_finderPathCountByAccountGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByAccountGroupId",
 			new String[] {Long.class.getName()},
 			new String[] {"accountGroupId"}, false);
 
-		_finderPathWithPaginationCountByAccountGroupIds = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "countByAccountGroupIds",
+		_finderPathWithPaginationCountByAccountGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "countByAccountGroupId",
 			new String[] {Long.class.getName()},
 			new String[] {"accountGroupId"}, false);
 

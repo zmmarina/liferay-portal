@@ -295,10 +295,10 @@ public class AccountGroupLocalServiceUtil {
 			companyId, start, end, orderByComparator);
 	}
 
-	public static List<AccountGroup> getAccountGroupsByAccountGroupIds(
+	public static List<AccountGroup> getAccountGroupsByAccountGroupId(
 		long[] accountGroupIds) {
 
-		return getService().getAccountGroupsByAccountGroupIds(accountGroupIds);
+		return getService().getAccountGroupsByAccountGroupId(accountGroupIds);
 	}
 
 	/**

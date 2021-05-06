@@ -46,7 +46,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param accountGroupId the account group ID
 	 * @return the matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long accountGroupId);
 
 	/**
@@ -61,7 +61,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param end the upper bound of the range of account groups (not inclusive)
 	 * @return the range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end);
 
 	/**
@@ -77,7 +77,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator);
@@ -96,7 +96,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator,
@@ -110,7 +110,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @return the first matching account group
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
-	public AccountGroup findByAccountGroupIds_First(
+	public AccountGroup findByAccountGroupId_First(
 			long accountGroupId,
 			com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 				orderByComparator)
@@ -123,7 +123,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching account group, or <code>null</code> if a matching account group could not be found
 	 */
-	public AccountGroup fetchByAccountGroupIds_First(
+	public AccountGroup fetchByAccountGroupId_First(
 		long accountGroupId,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator);
@@ -136,7 +136,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @return the last matching account group
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
-	public AccountGroup findByAccountGroupIds_Last(
+	public AccountGroup findByAccountGroupId_Last(
 			long accountGroupId,
 			com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 				orderByComparator)
@@ -149,7 +149,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching account group, or <code>null</code> if a matching account group could not be found
 	 */
-	public AccountGroup fetchByAccountGroupIds_Last(
+	public AccountGroup fetchByAccountGroupId_Last(
 		long accountGroupId,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator);
@@ -164,7 +164,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param accountGroupIds the account group IDs
 	 * @return the matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds);
 
 	/**
@@ -179,7 +179,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param end the upper bound of the range of account groups (not inclusive)
 	 * @return the range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end);
 
 	/**
@@ -195,7 +195,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator);
@@ -214,7 +214,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching account groups
 	 */
-	public java.util.List<AccountGroup> findByAccountGroupIds(
+	public java.util.List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<AccountGroup>
 			orderByComparator,
@@ -225,7 +225,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 *
 	 * @param accountGroupId the account group ID
 	 */
-	public void removeByAccountGroupIds(long accountGroupId);
+	public void removeByAccountGroupId(long accountGroupId);
 
 	/**
 	 * Returns the number of account groups where accountGroupId = &#63;.
@@ -233,7 +233,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param accountGroupId the account group ID
 	 * @return the number of matching account groups
 	 */
-	public int countByAccountGroupIds(long accountGroupId);
+	public int countByAccountGroupId(long accountGroupId);
 
 	/**
 	 * Returns the number of account groups where accountGroupId = any &#63;.
@@ -241,7 +241,7 @@ public interface AccountGroupPersistence extends BasePersistence<AccountGroup> {
 	 * @param accountGroupIds the account group IDs
 	 * @return the number of matching account groups
 	 */
-	public int countByAccountGroupIds(long[] accountGroupIds);
+	public int countByAccountGroupId(long[] accountGroupIds);
 
 	/**
 	 * Returns all the account groups where companyId = &#63;.

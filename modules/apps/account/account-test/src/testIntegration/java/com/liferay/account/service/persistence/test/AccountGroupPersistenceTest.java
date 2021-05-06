@@ -186,15 +186,15 @@ public class AccountGroupPersistenceTest {
 	}
 
 	@Test
-	public void testCountByAccountGroupIds() throws Exception {
-		_persistence.countByAccountGroupIds(RandomTestUtil.nextLong());
+	public void testCountByAccountGroupId() throws Exception {
+		_persistence.countByAccountGroupId(RandomTestUtil.nextLong());
 
-		_persistence.countByAccountGroupIds(0L);
+		_persistence.countByAccountGroupId(0L);
 	}
 
 	@Test
-	public void testCountByAccountGroupIdsArrayable() throws Exception {
-		_persistence.countByAccountGroupIds(
+	public void testCountByAccountGroupIdArrayable() throws Exception {
+		_persistence.countByAccountGroupId(
 			new long[] {RandomTestUtil.nextLong(), 0L});
 	}
 

@@ -269,7 +269,7 @@ public interface AccountGroupLocalService
 		OrderByComparator<AccountGroup> orderByComparator);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<AccountGroup> getAccountGroupsByAccountGroupIds(
+	public List<AccountGroup> getAccountGroupsByAccountGroupId(
 		long[] accountGroupIds);
 
 	/**

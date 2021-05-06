@@ -334,9 +334,9 @@ public class AccountGroupLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.liferay.account.model.AccountGroup>
-		getAccountGroupsByAccountGroupIds(long[] accountGroupIds) {
+		getAccountGroupsByAccountGroupId(long[] accountGroupIds) {
 
-		return _accountGroupLocalService.getAccountGroupsByAccountGroupIds(
+		return _accountGroupLocalService.getAccountGroupsByAccountGroupId(
 			accountGroupIds);
 	}
 

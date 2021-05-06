@@ -129,10 +129,8 @@ public class AccountGroupUtil {
 	 * @param accountGroupId the account group ID
 	 * @return the matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
-		long accountGroupId) {
-
-		return getPersistence().findByAccountGroupIds(accountGroupId);
+	public static List<AccountGroup> findByAccountGroupId(long accountGroupId) {
+		return getPersistence().findByAccountGroupId(accountGroupId);
 	}
 
 	/**
@@ -147,10 +145,10 @@ public class AccountGroupUtil {
 	 * @param end the upper bound of the range of account groups (not inclusive)
 	 * @return the range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupId, start, end);
 	}
 
@@ -167,11 +165,11 @@ public class AccountGroupUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupId, start, end, orderByComparator);
 	}
 
@@ -189,12 +187,12 @@ public class AccountGroupUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long accountGroupId, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupId, start, end, orderByComparator, useFinderCache);
 	}
 
@@ -206,12 +204,12 @@ public class AccountGroupUtil {
 	 * @return the first matching account group
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
-	public static AccountGroup findByAccountGroupIds_First(
+	public static AccountGroup findByAccountGroupId_First(
 			long accountGroupId,
 			OrderByComparator<AccountGroup> orderByComparator)
 		throws com.liferay.account.exception.NoSuchGroupException {
 
-		return getPersistence().findByAccountGroupIds_First(
+		return getPersistence().findByAccountGroupId_First(
 			accountGroupId, orderByComparator);
 	}
 
@@ -222,11 +220,11 @@ public class AccountGroupUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching account group, or <code>null</code> if a matching account group could not be found
 	 */
-	public static AccountGroup fetchByAccountGroupIds_First(
+	public static AccountGroup fetchByAccountGroupId_First(
 		long accountGroupId,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return getPersistence().fetchByAccountGroupIds_First(
+		return getPersistence().fetchByAccountGroupId_First(
 			accountGroupId, orderByComparator);
 	}
 
@@ -238,12 +236,12 @@ public class AccountGroupUtil {
 	 * @return the last matching account group
 	 * @throws NoSuchGroupException if a matching account group could not be found
 	 */
-	public static AccountGroup findByAccountGroupIds_Last(
+	public static AccountGroup findByAccountGroupId_Last(
 			long accountGroupId,
 			OrderByComparator<AccountGroup> orderByComparator)
 		throws com.liferay.account.exception.NoSuchGroupException {
 
-		return getPersistence().findByAccountGroupIds_Last(
+		return getPersistence().findByAccountGroupId_Last(
 			accountGroupId, orderByComparator);
 	}
 
@@ -254,11 +252,11 @@ public class AccountGroupUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching account group, or <code>null</code> if a matching account group could not be found
 	 */
-	public static AccountGroup fetchByAccountGroupIds_Last(
+	public static AccountGroup fetchByAccountGroupId_Last(
 		long accountGroupId,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return getPersistence().fetchByAccountGroupIds_Last(
+		return getPersistence().fetchByAccountGroupId_Last(
 			accountGroupId, orderByComparator);
 	}
 
@@ -272,10 +270,10 @@ public class AccountGroupUtil {
 	 * @param accountGroupIds the account group IDs
 	 * @return the matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds) {
 
-		return getPersistence().findByAccountGroupIds(accountGroupIds);
+		return getPersistence().findByAccountGroupId(accountGroupIds);
 	}
 
 	/**
@@ -290,10 +288,10 @@ public class AccountGroupUtil {
 	 * @param end the upper bound of the range of account groups (not inclusive)
 	 * @return the range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupIds, start, end);
 	}
 
@@ -310,11 +308,11 @@ public class AccountGroupUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupIds, start, end, orderByComparator);
 	}
 
@@ -332,12 +330,12 @@ public class AccountGroupUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching account groups
 	 */
-	public static List<AccountGroup> findByAccountGroupIds(
+	public static List<AccountGroup> findByAccountGroupId(
 		long[] accountGroupIds, int start, int end,
 		OrderByComparator<AccountGroup> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByAccountGroupIds(
+		return getPersistence().findByAccountGroupId(
 			accountGroupIds, start, end, orderByComparator, useFinderCache);
 	}
 
@@ -346,8 +344,8 @@ public class AccountGroupUtil {
 	 *
 	 * @param accountGroupId the account group ID
 	 */
-	public static void removeByAccountGroupIds(long accountGroupId) {
-		getPersistence().removeByAccountGroupIds(accountGroupId);
+	public static void removeByAccountGroupId(long accountGroupId) {
+		getPersistence().removeByAccountGroupId(accountGroupId);
 	}
 
 	/**
@@ -356,8 +354,8 @@ public class AccountGroupUtil {
 	 * @param accountGroupId the account group ID
 	 * @return the number of matching account groups
 	 */
-	public static int countByAccountGroupIds(long accountGroupId) {
-		return getPersistence().countByAccountGroupIds(accountGroupId);
+	public static int countByAccountGroupId(long accountGroupId) {
+		return getPersistence().countByAccountGroupId(accountGroupId);
 	}
 
 	/**
@@ -366,8 +364,8 @@ public class AccountGroupUtil {
 	 * @param accountGroupIds the account group IDs
 	 * @return the number of matching account groups
 	 */
-	public static int countByAccountGroupIds(long[] accountGroupIds) {
-		return getPersistence().countByAccountGroupIds(accountGroupIds);
+	public static int countByAccountGroupId(long[] accountGroupIds) {
+		return getPersistence().countByAccountGroupId(accountGroupIds);
 	}
 
 	/**
