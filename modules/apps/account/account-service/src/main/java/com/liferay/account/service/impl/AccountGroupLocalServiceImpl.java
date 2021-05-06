@@ -139,10 +139,10 @@ public class AccountGroupLocalServiceImpl
 	}
 
 	@Override
-	public List<AccountGroup> getAccountGroupsByAccountGroupIds(
+	public List<AccountGroup> getAccountGroupsByAccountGroupId(
 		long[] accountGroupIds) {
 
-		return accountGroupPersistence.findByAccountGroupIds(accountGroupIds);
+		return accountGroupPersistence.findByAccountGroupId(accountGroupIds);
 	}
 
 	@Override

@@ -246,7 +246,7 @@ public class CommerceAccountGroupLocalServiceImpl
 		).toArray();
 
 		return TransformUtil.transform(
-			accountGroupLocalService.getAccountGroupsByAccountGroupIds(
+			accountGroupLocalService.getAccountGroupsByAccountGroupId(
 				commerceAccountGroupIds),
 			CommerceAccountGroupImpl::fromAccountGroup);
 	}
