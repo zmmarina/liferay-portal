@@ -63,7 +63,6 @@ definition {
 			locator1 = "RemoteApps#TABLE_ENTRY_NAME_REMOTE_TABLE");
 
 		Button.clickPublish();
-
 	}
 
 	@description = "This is a test for COMMERCE-6065. AddAPreExistingProductGroup"
@@ -116,6 +115,7 @@ definition {
 		property portal.acceptance = "false";
 
 		// TODO COMMERCE-6068 EditAProductGroup
+
 	}
 
 	@description = "This is a test for COMMERCE-6067. RemoveAProductGroup"
