@@ -246,7 +246,8 @@ public class AccountGroupLocalServiceImpl
 						document.get(Field.ENTRY_CLASS_PK));
 
 					AccountGroup accountGroup =
-						accountGroupPersistence.fetchByPrimaryKey(accountGroupId);
+						accountGroupPersistence.fetchByPrimaryKey(
+							accountGroupId);
 
 					if (accountGroup == null) {
 						long companyId = GetterUtil.getLong(
