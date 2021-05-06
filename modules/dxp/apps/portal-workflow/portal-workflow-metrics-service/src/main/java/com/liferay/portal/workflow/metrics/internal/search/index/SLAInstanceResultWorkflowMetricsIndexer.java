@@ -135,7 +135,7 @@ public class SLAInstanceResultWorkflowMetricsIndexer
 
 		super.deleteDocuments(companyId, processId, slaDefinitionId);
 
-		ScriptBuilder builder = scripts.builder();
+		ScriptBuilder scriptBuilder = scripts.builder();
 
 		BooleanQuery booleanQuery = queries.booleanQuery();
 
@@ -156,7 +156,7 @@ public class SLAInstanceResultWorkflowMetricsIndexer
 		UpdateByQueryDocumentRequest updateByQueryDocumentRequest =
 			new UpdateByQueryDocumentRequest(
 				booleanQuery,
-				builder.idOrCode(
+				scriptBuilder.idOrCode(
 					StringUtil.read(
 						getClass(),
 						"dependencies/workflow-metrics-delete-sla-result-" +
