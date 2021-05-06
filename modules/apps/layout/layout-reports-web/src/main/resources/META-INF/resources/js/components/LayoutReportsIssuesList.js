@@ -28,7 +28,7 @@ export default function LayoutReportsIssuesList() {
 		return layoutReportsIssues.some(({total}) => total > 0);
 	}, [layoutReportsIssues]);
 
-	const successIllustration = `${assetsPath}/issues-success.gif`;
+	const successIllustration = `${assetsPath}/issues_success.gif`;
 
 	return (
 		<div className="c-my-4">
