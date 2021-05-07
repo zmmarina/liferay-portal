@@ -524,8 +524,6 @@ definition {
 		AssertElementPresent(
 			key_productName = "Brake Pads",
 			locator1 = "CommerceFrontStore#FS_PRODUCT_VALUE_INACTIVE_PRICE");
-
-			
 	}
 
 	@description = "COMMERCE-5862. As a buyer, I want to view the product SKU, if set(single SKU)"
