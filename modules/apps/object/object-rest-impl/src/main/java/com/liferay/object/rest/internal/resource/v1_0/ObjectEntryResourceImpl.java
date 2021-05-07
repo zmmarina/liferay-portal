@@ -21,9 +21,6 @@ import com.liferay.object.rest.internal.odata.entity.ObjectEntryEntityModel;
 import com.liferay.object.rest.resource.v1_0.ObjectEntryResource;
 import com.liferay.object.service.ObjectEntryLocalService;
 import com.liferay.object.service.ObjectFieldLocalService;
-import com.liferay.object.service.persistence.ObjectDefinitionPersistence;
-import com.liferay.portal.kernel.model.Company;
-import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Sort;
@@ -32,9 +29,7 @@ import com.liferay.portal.kernel.search.filter.Filter;
 import com.liferay.portal.kernel.search.filter.TermFilter;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.odata.entity.EntityModel;
-import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.aggregation.Aggregation;
 import com.liferay.portal.vulcan.dto.converter.DefaultDTOConverterContext;
 import com.liferay.portal.vulcan.pagination.Page;
@@ -44,13 +39,9 @@ import com.liferay.portal.vulcan.util.SearchUtil;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -108,7 +99,7 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 				Field.ENTRY_CLASS_PK),
 			searchContext -> {
 				searchContext.addVulcanAggregation(aggregation);
-				searchContext.setCompanyId(_contextCompany.getCompanyId());
+				searchContext.setCompanyId(contextCompany.getCompanyId());
 			},
 			sorts,
 			document -> _toObjectEntry(
@@ -128,7 +119,7 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 
 		return _toObjectEntry(
 			_objectEntryLocalService.addObjectEntry(
-				_contextUser.getUserId(), siteId,
+				contextUser.getUserId(), siteId,
 				_objectDefinition.getObjectDefinitionId(),
 				(Map)objectEntry.getProperties(), new ServiceContext()));
 	}
@@ -140,39 +131,8 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 
 		return _toObjectEntry(
 			_objectEntryLocalService.updateObjectEntry(
-				_contextUser.getUserId(), objectEntryId,
+				contextUser.getUserId(), objectEntryId,
 				(Map)objectEntry.getProperties(), new ServiceContext()));
-	}
-
-	@Override
-	public void setContextCompany(Company contextCompany) {
-		_contextCompany = contextCompany;
-	}
-
-	public void setContextUser(User contextUser) {
-		_contextUser = contextUser;
-	}
-
-	@Override
-	public void setLanguageId(String languageId) {
-		_contextAcceptLanguage = new AcceptLanguage() {
-
-			@Override
-			public List<Locale> getLocales() {
-				return null;
-			}
-
-			@Override
-			public String getPreferredLanguageId() {
-				return languageId;
-			}
-
-			@Override
-			public Locale getPreferredLocale() {
-				return LocaleUtil.fromLanguageId(languageId);
-			}
-
-		};
 	}
 
 	private ObjectEntry _toObjectEntry(
@@ -180,36 +140,18 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 
 		return _objectEntryDTOConverter.toDTO(
 			new DefaultDTOConverterContext(
-				_contextAcceptLanguage.isAcceptAllLanguages(),
-				Collections.emptyMap(), null, _contextHttpServletRequest,
+				contextAcceptLanguage.isAcceptAllLanguages(),
+				Collections.emptyMap(), null, contextHttpServletRequest,
 				objectEntry.getObjectEntryId(),
-				_contextAcceptLanguage.getPreferredLocale(), _contextUriInfo,
-				_contextUser),
+				contextAcceptLanguage.getPreferredLocale(), contextUriInfo,
+				contextUser),
 			objectEntry);
 	}
 
-	@Context
-	private AcceptLanguage _contextAcceptLanguage;
-
-	@Context
-	private Company _contextCompany;
-
-	@Context
-	private HttpServletRequest _contextHttpServletRequest;
-
-	@Context
-	private UriInfo _contextUriInfo;
-
-	@Context
-	private User _contextUser;
-
-	private ObjectEntryEntityModel _entityModel;
+	private EntityModel _entityModel;
 
 	@Context
 	private ObjectDefinition _objectDefinition;
-
-	@Reference
-	private ObjectDefinitionPersistence _objectDefinitionPersistence;
 
 	@Reference
 	private ObjectEntryDTOConverter _objectEntryDTOConverter;
