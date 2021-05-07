@@ -20,8 +20,6 @@ import com.liferay.object.rest.graphql.ObjectDefinitionGraphQL;
 import com.liferay.object.rest.internal.graphql.ObjectDefinitionGraphQLImpl;
 import com.liferay.object.service.ObjectFieldLocalService;
 import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
-import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.TextFormatter;
 
 import java.util.Collections;
 import java.util.List;
@@ -42,14 +40,12 @@ public class ObjectDefinitionDeployerImpl implements ObjectDefinitionDeployer {
 	public List<ServiceRegistration<?>> deploy(
 		ObjectDefinition objectDefinition) {
 
-		String contextPath = TextFormatter.formatPlural(
-			StringUtil.toLowerCase(objectDefinition.getName()));
-
 		_componentFactory.newInstance(
 			HashMapDictionaryBuilder.<String, Object>put(
 				"liferay.jackson", false
 			).put(
-				"osgi.jaxrs.application.base", "/" + contextPath
+				"osgi.jaxrs.application.base",
+				"/" + objectDefinition.getRESTContextPath()
 			).put(
 				"osgi.jaxrs.extension.select",
 				"(osgi.jaxrs.name=Liferay.Vulcan)"
