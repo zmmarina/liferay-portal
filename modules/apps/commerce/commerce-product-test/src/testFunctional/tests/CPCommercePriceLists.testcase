@@ -447,7 +447,6 @@ definition {
 			ApplicationsMenu.gotoSite(site = "Minium");
 		}
 
-
 		CommerceNavigator.gotoPortlet(
 			category = "Pricing",
 			portlet = "Price Lists");
