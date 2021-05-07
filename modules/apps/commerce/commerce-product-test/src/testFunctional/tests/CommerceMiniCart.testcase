@@ -127,12 +127,69 @@ definition {
 	}
 
 	@description = "COMMERCE-6332. As a buyer, I want to view cart item details in the mini-cart(Name, SKU, Quantity, Options(if present), List Price, Image) and I want to be able to view the number of different products I have in my cart"
-	@ignore = "true"
 	@priority = "3"
 	test ViewMiniCartItemDetails {
 		property portal.acceptance = "false";
 
-		// TODO COMMERCE-6332 ViewMiniCartItemDetails pending implementation
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		CommerceNavigator.gotoMiniumSidebarItem(menuItem = "Account Management");
+
+		CommerceAcceleratorsInitializer.createNewAccountViaFront(
+			accountName = "Commerce Account",
+			adminEmailAddress = "test@liferay.com");
+
+		CommerceNavigator.gotoMiniumSidebarItem(menuItem = "Catalog");
+
+		Type(
+			locator1 = "AppBuilder#SEARCH_BAR_INPUT",
+			value1 = "U-Joint");
+
+		Click(locator1 = "Button#SUBMIT");
+
+		FrontStore.addInitializerProductToCart(
+			productName = "U-Joint",
+			productQuantity = "3");
+
+		Type(
+			locator1 = "AppBuilder#SEARCH_BAR_INPUT",
+			value1 = "Hoses");
+
+		Click(locator1 = "Button#SUBMIT");
+
+		CommerceAcceleratorsInitializer.gotoMiniumProductDetailsPage(productName = "Hoses");
+
+		Click(locator1 = "CommerceFrontStore#PRODUCT_DETAILS_PACKAGE_QUANTITY");
+
+		Click(
+			key_selectValue = "24",
+			locator1 = "CommerceEntry#OPTIONS_SELECT_LIST");
+
+		Click(locator1="CommerceAccelerators#ADD_TO_CART_BUTTON_PRODUCT_DETAILS_PAGE");
+
+		Notifications.viewBadgeCount(notificationCount = "2");
+
+		Click(locator1= "CommerceAccelerators#MINI_CART_BUTTON");
+
+		AssertTextEquals(
+			value1 = "2 Products",
+			locator1 = "CommerceAccelerators#MINI_CART_RESUME");
+
+		FrontStore.viewMiniCart(
+			cartItemNames = "Hoses",
+			cartItemPriceValues = "120",
+			cartItemQuantities = "1",
+			cartItemSKUs = "MIN93022B",
+			cartItemOption = "24");
+
+		FrontStore.viewMiniCart(
+			cartItemNames = "U-Joint",
+			cartItemPriceValues = "24",
+			cartItemQuantities = "3",
+			cartItemSKUs = "MIN55861");
+
 	}
 
 	@description = "COMMERCE-6338. As a buyer, I want to see the barred list price, the discount percentage and the discounted price of an item in the mini-cart, if a discount is set"

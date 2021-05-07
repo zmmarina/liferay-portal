@@ -49,6 +49,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ADD_TO_CART_BUTTON_PRODUCT_DETAILS_PAGE</td>
+	<td>//h2[@class='product-header-title']//../..//button[contains(@class,'add-to-cart')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ADD_TO_CART_BUTTON_DISABLED</td>
 	<td>//a[contains(.,'${key_productName}')]//../../..//button[contains(@class,'add-to-cart') and @disabled]</td>
 	<td></td>
@@ -289,6 +294,21 @@
 <tr>
 	<td>MINI_CART_ITEM_PRICE_VALUE</td>
 	<td>//p[@class='item-sku' and contains(.,'${key_cartItemSKU}')]/../../..//span[@class='price-value']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MINI_CART_ITEM_THUMBNAIL</td>
+	<td>//p[@class='item-sku' and contains(.,'${key_cartItemSKU}')]/../../../div[@class='mini-cart-item-thumbnail']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MINI_CART_ITEM_INFO_EXTRA</td>
+	<td>//p[@class='item-sku' and contains(.,'${key_cartItemSKU}')]/../../div[@class='item-info-extra mt-3']/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MINI_CART_RESUME</td>
+	<td>//div[@class='mini-cart-header-resume']</td>
 	<td></td>
 </tr>
 <tr>

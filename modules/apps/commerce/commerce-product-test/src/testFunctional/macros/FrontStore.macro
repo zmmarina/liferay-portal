@@ -24,7 +24,8 @@ definition {
 			cartItemNames = "${cartItemNames}",
 			cartItemPriceValues = "${cartItemPriceValues}",
 			cartItemQuantities = "${cartItemQuantities}",
-			cartItemSKUs = "${cartItemSKUs}");
+			cartItemSKUs = "${cartItemSKUs}",
+			cartItemOption = "${cartItemOptions}");
 
 		if (isSet(cartSummaryQuantity)) {
 			AssertTextEquals(
@@ -74,6 +75,17 @@ definition {
 			key_cartItemSKU = "${cartItemSKU}",
 			locator1 = "CommerceAccelerators#MINI_CART_ITEM_PRICE_VALUE",
 			value1 = "$ ${cartItemPriceValue}");
+
+		AssertElementPresent(
+			key_cartItemSKU = "${cartItemSKU}",
+			locator1 = "CommerceAccelerators#MINI_CART_ITEM_THUMBNAIL");
+		
+		if (isSet(cartItemOption)) {
+			AssertTextEquals(
+				key_cartItemSKU = "${cartItemSKU}",
+				locator1 = "CommerceAccelerators#MINI_CART_ITEM_INFO_EXTRA",
+				value1 = "${cartItemOption}");
+		}
 	}
 
 	macro viewMiniCartItems {
