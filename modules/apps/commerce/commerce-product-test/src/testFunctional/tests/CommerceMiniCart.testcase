@@ -167,29 +167,28 @@ definition {
 			key_selectValue = "24",
 			locator1 = "CommerceEntry#OPTIONS_SELECT_LIST");
 
-		Click(locator1="CommerceAccelerators#ADD_TO_CART_BUTTON_PRODUCT_DETAILS_PAGE");
+		Click(locator1 = "CommerceAccelerators#ADD_TO_CART_BUTTON_PRODUCT_DETAILS_PAGE");
 
 		Notifications.viewBadgeCount(notificationCount = "2");
 
-		Click(locator1= "CommerceAccelerators#MINI_CART_BUTTON");
+		Click(locator1 = "CommerceAccelerators#MINI_CART_BUTTON");
 
 		AssertTextEquals(
-			value1 = "2 Products",
-			locator1 = "CommerceAccelerators#MINI_CART_RESUME");
+			locator1 = "CommerceAccelerators#MINI_CART_RESUME",
+			value1 = "2 Products");
 
 		FrontStore.viewMiniCart(
 			cartItemNames = "Hoses",
+			cartItemOption = "24",
 			cartItemPriceValues = "120",
 			cartItemQuantities = "1",
-			cartItemSKUs = "MIN93022B",
-			cartItemOption = "24");
+			cartItemSKUs = "MIN93022B");
 
 		FrontStore.viewMiniCart(
 			cartItemNames = "U-Joint",
 			cartItemPriceValues = "24",
 			cartItemQuantities = "3",
 			cartItemSKUs = "MIN55861");
-
 	}
 
 	@description = "COMMERCE-6338. As a buyer, I want to see the barred list price, the discount percentage and the discounted price of an item in the mini-cart, if a discount is set"

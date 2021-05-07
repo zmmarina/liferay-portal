@@ -22,10 +22,10 @@ definition {
 	macro viewMiniCart {
 		FrontStore.viewMiniCartItems(
 			cartItemNames = "${cartItemNames}",
+			cartItemOption = "${cartItemOptions}",
 			cartItemPriceValues = "${cartItemPriceValues}",
 			cartItemQuantities = "${cartItemQuantities}",
-			cartItemSKUs = "${cartItemSKUs}",
-			cartItemOption = "${cartItemOptions}");
+			cartItemSKUs = "${cartItemSKUs}");
 
 		if (isSet(cartSummaryQuantity)) {
 			AssertTextEquals(
@@ -79,7 +79,7 @@ definition {
 		AssertElementPresent(
 			key_cartItemSKU = "${cartItemSKU}",
 			locator1 = "CommerceAccelerators#MINI_CART_ITEM_THUMBNAIL");
-		
+
 		if (isSet(cartItemOption)) {
 			AssertTextEquals(
 				key_cartItemSKU = "${cartItemSKU}",
