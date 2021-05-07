@@ -40,7 +40,7 @@ public class ObjectEntryApplication extends Application {
 
 	@Override
 	public Set<Object> getSingletons() {
-		HashSet<Object> objects = new HashSet<>();
+		Set<Object> objects = new HashSet<>();
 
 		objects.add(_objectEntryResource);
 		objects.add(_openAPIResourceImpl);
