@@ -33,7 +33,7 @@ import org.osgi.service.component.annotations.Reference;
  * @author Javier de Arcos
  */
 @Component(
-	factory = "com.liferay.object.internal.jaxrs.application.ObjectEntryApplicationFactory",
+	factory = "com.liferay.object.internal.jaxrs.application.ObjectEntryApplication",
 	service = Application.class
 )
 public class ObjectEntryApplication extends Application {

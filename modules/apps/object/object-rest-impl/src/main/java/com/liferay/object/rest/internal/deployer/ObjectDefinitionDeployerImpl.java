@@ -79,7 +79,7 @@ public class ObjectDefinitionDeployerImpl implements ObjectDefinitionDeployer {
 	private BundleContext _bundleContext;
 
 	@Reference(
-		target = "(component.factory=com.liferay.object.internal.jaxrs.application.ObjectEntryApplicationFactory)"
+		target = "(component.factory=com.liferay.object.internal.jaxrs.application.ObjectEntryApplication)"
 	)
 	private ComponentFactory _componentFactory;
 
