@@ -221,7 +221,7 @@ public abstract class BaseObjectEntryResourceImpl
 	@Consumes({"application/json", "application/xml"})
 	@Override
 	@Parameters(value = {@Parameter(in = ParameterIn.PATH, name = "siteId")})
-	@Path("/sites/object-entries/{siteId}")
+	@Path("/sites/{siteId}/object-entries")
 	@POST
 	@Produces({"application/json", "application/xml"})
 	@Tags(value = {@Tag(name = "ObjectEntry")})
@@ -233,12 +233,51 @@ public abstract class BaseObjectEntryResourceImpl
 		return new ObjectEntry();
 	}
 
+	@Consumes("application/json")
+	@Override
+	@Parameters(
+		value = {
+			@Parameter(in = ParameterIn.PATH, name = "siteId"),
+			@Parameter(in = ParameterIn.QUERY, name = "callbackURL")
+		}
+	)
+	@Path("/sites/{siteId}/object-entries/batch")
+	@POST
+	@Produces("application/json")
+	@Tags(value = {@Tag(name = "ObjectEntry")})
+	public Response postSiteObjectEntryBatch(
+			@NotNull @Parameter(hidden = true) @PathParam("siteId") Long siteId,
+			@Parameter(hidden = true) @QueryParam("callbackURL") String
+				callbackURL,
+			Object object)
+		throws Exception {
+
+		vulcanBatchEngineImportTaskResource.setContextAcceptLanguage(
+			contextAcceptLanguage);
+		vulcanBatchEngineImportTaskResource.setContextCompany(contextCompany);
+		vulcanBatchEngineImportTaskResource.setContextHttpServletRequest(
+			contextHttpServletRequest);
+		vulcanBatchEngineImportTaskResource.setContextUriInfo(contextUriInfo);
+		vulcanBatchEngineImportTaskResource.setContextUser(contextUser);
+
+		Response.ResponseBuilder responseBuilder = Response.accepted();
+
+		return responseBuilder.entity(
+			vulcanBatchEngineImportTaskResource.postImportTask(
+				ObjectEntry.class.getName(), callbackURL, null, object)
+		).build();
+	}
+
 	@Override
 	@SuppressWarnings("PMD.UnusedLocalVariable")
 	public void create(
 			java.util.Collection<ObjectEntry> objectEntries,
 			Map<String, Serializable> parameters)
 		throws Exception {
+
+		for (ObjectEntry objectEntry : objectEntries) {
+			postSiteObjectEntry((Long)parameters.get("siteId"), objectEntry);
+		}
 	}
 
 	@Override

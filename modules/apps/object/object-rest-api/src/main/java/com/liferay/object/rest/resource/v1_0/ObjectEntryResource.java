@@ -70,6 +70,10 @@ public interface ObjectEntryResource {
 	public ObjectEntry postSiteObjectEntry(Long siteId, ObjectEntry objectEntry)
 		throws Exception;
 
+	public Response postSiteObjectEntryBatch(
+			Long siteId, String callbackURL, Object object)
+		throws Exception;
+
 	public default void setContextAcceptLanguage(
 		AcceptLanguage contextAcceptLanguage) {
 	}
