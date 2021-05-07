@@ -217,8 +217,6 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 	@Reference
 	private ObjectEntryLocalService _objectEntryLocalService;
 
-	// Should be the remote service to check permissions
-
 	@Reference
 	private ObjectFieldLocalService _objectFieldLocalService;
 
