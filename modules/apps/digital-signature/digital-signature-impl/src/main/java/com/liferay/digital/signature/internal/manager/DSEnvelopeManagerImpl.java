@@ -14,11 +14,15 @@
 
 package com.liferay.digital.signature.internal.manager;
 
+import com.liferay.digital.signature.internal.http.DSHttp;
 import com.liferay.digital.signature.manager.DSEnvelopeManager;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Brian Wing Shun Chan
@@ -26,13 +30,25 @@ import org.osgi.service.component.annotations.Component;
 @Component(immediate = true, service = DSEnvelopeManager.class)
 public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
+	@Override
 	public void addDSEnvelope() {
+		JSONObject jsonObject = _dsHttp.invoke(
+			0, "envelopes",
+			JSONUtil.put(
+				"emailSubject",
+				"Test New Envelope " + System.currentTimeMillis()));
+
 		if (_log.isDebugEnabled()) {
-			_log.debug("Invoking #addDSEnvelope");
+			String envelopeId = (String)jsonObject.get("envelopeId");
+
+			_log.debug("Envelope ID " + envelopeId);
 		}
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		DSEnvelopeManagerImpl.class);
+
+	@Reference
+	private DSHttp _dsHttp;
 
 }
