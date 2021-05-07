@@ -28,6 +28,7 @@ import com.liferay.object.service.persistence.ObjectEntryPersistence;
 import com.liferay.object.service.persistence.ObjectFieldPersistence;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.cluster.Clusterable;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -220,7 +221,8 @@ public class ObjectDefinitionLocalServiceImpl
 						serviceRegistrationsMap = new ConcurrentHashMap<>();
 
 					List<ObjectDefinition> objectDefinitions =
-						objectDefinitionPersistence.findAll();
+						objectDefinitionLocalService.getObjectDefinitions(
+							QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
 					for (ObjectDefinition objectDefinition :
 							objectDefinitions) {
