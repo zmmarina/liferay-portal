@@ -211,6 +211,9 @@ public class ${schemaName} <#if dtoParentClassName?has_content>extends ${dtoPare
 				description = "${propertySchema.description?j_string}"
 			</#if>
 		)
+		<#if propertySchema.jsonMap>
+			@JsonAnySetter
+		</#if>
 		@JsonProperty(
 			<#if propertySchema.readOnly>
 				access = JsonProperty.Access.READ_ONLY
@@ -227,12 +230,7 @@ public class ${schemaName} <#if dtoParentClassName?has_content>extends ${dtoPare
 				@NotNull
 			</#if>
 		</#if>
-		<#if propertySchema.jsonMap>
-			@JsonAnySetter
-			protected ${propertyType} ${propertyName} = new HashMap();
-		<#else>
-			protected ${propertyType} ${propertyName};
-		</#if>
+		protected ${propertyType} ${propertyName}<#if propertySchema.jsonMap> = new HashMap()</#if>;
 	</#list>
 
 	@Override
