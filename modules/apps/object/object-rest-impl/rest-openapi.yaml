@@ -82,7 +82,7 @@ paths:
                                 type: array
                     description:
                         ""
-            tags: [ "ObjectEntry" ]
+            tags: ["ObjectEntry"]
     "/object-entries/sites/{siteId}":
         post:
             operationId: postObjectEntrySite
@@ -112,7 +112,7 @@ paths:
                                 $ref: "#/components/schemas/ObjectEntry"
                     description:
                         ""
-            tags: [ "ObjectEntry" ]
+            tags: ["ObjectEntry"]
     "/object-entries/{objectEntryId}":
         delete:
             operationId: deleteObjectEntry
@@ -130,7 +130,7 @@ paths:
                         application/xml: { }
                     description:
                         ""
-            tags: [ "ObjectEntry" ]
+            tags: ["ObjectEntry"]
         get:
             operationId: getObjectEntry
             parameters:
@@ -151,7 +151,7 @@ paths:
                                 $ref: "#/components/schemas/ObjectEntry"
                     description:
                         ""
-            tags: [ "ObjectEntry" ]
+            tags: ["ObjectEntry"]
         put:
             operationId: putObjectEntry
             parameters:
@@ -180,4 +180,4 @@ paths:
                                 $ref: "#/components/schemas/ObjectEntry"
                     description:
                         ""
-            tags: [ "ObjectEntry" ]
+            tags: ["ObjectEntry"]
