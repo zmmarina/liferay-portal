@@ -219,9 +219,12 @@ public class OpenAPIParserUtil {
 			externalReferencesMap.putAll(
 				OpenAPIUtil.getAllSchemas(openAPIYAML));
 
-			for (String reference : getExternalReferences(openAPIYAML)) {
+			for (String externalReference :
+					getExternalReferences(openAPIYAML)) {
+
 				queue.add(
-					path.substring(0, path.lastIndexOf("/") + 1) + reference);
+					path.substring(0, path.lastIndexOf("/") + 1) +
+						externalReference);
 			}
 		}
 
