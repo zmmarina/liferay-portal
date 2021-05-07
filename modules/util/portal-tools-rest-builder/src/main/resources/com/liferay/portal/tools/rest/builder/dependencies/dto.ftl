@@ -230,7 +230,7 @@ public class ${schemaName} <#if dtoParentClassName?has_content>extends ${dtoPare
 				@NotNull
 			</#if>
 		</#if>
-		protected ${propertyType} ${propertyName}<#if propertySchema.jsonMap> = new HashMap()</#if>;
+		protected ${propertyType} ${propertyName}<#if propertySchema.jsonMap> = new HashMap<>()</#if>;
 	</#list>
 
 	@Override
