@@ -114,7 +114,7 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 	}
 
 	@Override
-	public ObjectEntry postObjectEntrySite(Long siteId, ObjectEntry objectEntry)
+	public ObjectEntry postSiteObjectEntry(Long siteId, ObjectEntry objectEntry)
 		throws Exception {
 
 		return _toObjectEntry(

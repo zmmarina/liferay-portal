@@ -83,9 +83,9 @@ paths:
                     description:
                         ""
             tags: ["ObjectEntry"]
-    "/object-entries/sites/{siteId}":
+    "/sites/object-entries/{siteId}":
         post:
-            operationId: postObjectEntrySite
+            operationId: postSiteObjectEntry
             parameters:
                 - in: path
                   name: siteId
