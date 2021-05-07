@@ -120,7 +120,6 @@ public class JournalArticleExpandoGeolocationSearchTest {
 						geoBuilders.geoDistance(1000))
 				).build()),
 			"[Software Engineer]");
-
 		assertSearch(
 			searchRequestBuilder -> searchRequestBuilder.addComplexQueryPart(
 				complexQueryPartBuilderFactory.builder(
@@ -255,12 +254,10 @@ public class JournalArticleExpandoGeolocationSearchTest {
 
 		Assert.assertFalse(
 			requestString.contains(_EXPANDO_COLUMN_GEOLOCATION_FULL_NAME));
-
 		Assert.assertFalse(
 			requestString.contains(
 				"expando__keyword__custom_fields__" +
 					_EXPANDO_COLUMN_GEOLOCATION));
-
 		Assert.assertFalse(
 			requestString.contains(
 				"expando__custom_fields__" + _EXPANDO_COLUMN_GEOLOCATION));
