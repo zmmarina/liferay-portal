@@ -192,12 +192,58 @@ definition {
 	}
 
 	@description = "COMMERCE-6338. As a buyer, I want to see the barred list price, the discount percentage and the discounted price of an item in the mini-cart, if a discount is set"
-	@ignore = "true"
 	@priority = "3"
 	test ViewMiniCartItemWithDiscount {
 		property portal.acceptance = "false";
+		property test.name.skip.portal.instance = "CommerceMiniCart#ViewMiniCartItemWithDiscount";
 
-		// TODO COMMERCE-6338 ViewMiniCartItemWithDiscount pending implementation
+		CommerceAccelerators.initializeNewSiteViaAccelerator(siteName = "Minium");
+
+
+		CommerceNavigator.gotoPortlet(
+            category = "Pricing",
+            portlet = "Discounts");
+		
+		Click(locator1 = "Button#PLUS");
+
+		CommerceEntry.addNewDiscountsEntry(
+			channelsEligibility = "Minium Portal",
+			discountAmount = "20",
+			discountName = "Test Discount",
+			discountTarget = "Products",
+			discountType = "Percentage");
+
+		CommerceRelations.assignSingleRelationToProductsEntry(
+			entryName = "ABS Sensor",
+			title = "Add Products");
+
+		Button.clickPublish();
+
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		CommerceNavigator.gotoMiniumSidebarItem(menuItem = "Account Management");
+
+		CommerceAcceleratorsInitializer.createNewAccountViaFront(
+			accountName = "Commerce Account",
+			adminEmailAddress = "test@liferay.com");
+		
+		ApplicationsMenu.gotoSite(site = "Minium");
+
+		CommerceAcceleratorsInitializer.changeProductsSorting(sortingType = "Name Ascending");
+	
+		FrontStore.addInitializerProductToCart(
+			productName = "ABS Sensor",
+			productQuantity = "1");
+
+		CommerceNavigator.gotoMiniCart();
+		
+		AssertElementPresent(locator1 = "CommerceAccelerators#PRODUCT_DETAILS_LIST_PRICE_INACTIVE");
+
+		AssertElementPresent(locator1 = "CommerceAccelerators#PRODUCT_DETAILS_DISCOUNT");
+		
+		AssertElementPresent(locator1 = "CommerceAccelerators#PRODUCT_DETAILS_NET_PRICE");
+		
+	
 	}
 
 	@description = "COMMERCE-6339. As a buyer, I want to see the barred list price, the discount levels and the discounted price of an item in the mini-cart, if discount levels are set and visible"
