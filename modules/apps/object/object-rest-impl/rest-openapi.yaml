@@ -5,8 +5,6 @@ components:
                 creator:
                     allOf:
                         - $ref: "../../headless/headless-delivery/headless-delivery-impl/rest-openapi.yaml#Creator"
-                    description:
-                        The Object Entry's creator.
                     readOnly: true
                 dateCreated:
                     format: date
