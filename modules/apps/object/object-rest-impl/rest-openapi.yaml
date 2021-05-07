@@ -151,7 +151,7 @@ paths:
                     description:
                         ""
             tags: ["ObjectEntry"]
-    "/sites/object-entries/{siteId}":
+    "/sites/{siteId}/object-entries":
         post:
             operationId: postSiteObjectEntry
             parameters:
