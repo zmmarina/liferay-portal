@@ -29,6 +29,15 @@ public class UpgradeDLFileEntry extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
+		if (!hasColumn(DLFileEntryTable.TABLE_NAME, "externalReferenceCode")) {
+			alter(
+				DLFileEntryTable.class,
+				new AlterTableAddColumn(
+					"externalReferenceCode", "VARCHAR(75)"));
+
+			_populateExternalReferenceCode();
+		}
+
 		if (!hasColumn(DLFileEntryTable.TABLE_NAME, "expirationDate")) {
 			alter(
 				DLFileEntryTable.class,
@@ -39,15 +48,6 @@ public class UpgradeDLFileEntry extends UpgradeProcess {
 			alter(
 				DLFileEntryTable.class,
 				new AlterTableAddColumn("reviewDate", "DATE null"));
-		}
-
-		if (!hasColumn(DLFileEntryTable.TABLE_NAME, "externalReferenceCode")) {
-			alter(
-				DLFileEntryTable.class,
-				new AlterTableAddColumn(
-					"externalReferenceCode", "VARCHAR(75)"));
-
-			_populateExternalReferenceCode();
 		}
 	}
 
