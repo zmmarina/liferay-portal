@@ -269,7 +269,7 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 * sourceFileName</code> will be used.
 	 * </p>
 	 *
-	 * @param  externalReferenceCode the file's external reference code
+	 * @param  externalReferenceCode the file entry's external reference code
 	 * @param  repositoryId the primary key of the repository
 	 * @param  folderId the primary key of the file entry's parent folder
 	 * @param  sourceFileName the original file's name
@@ -287,7 +287,6 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 *         custom file entry type </li> </ul>
 	 * @return the file entry
 	 * @throws PortalException if a portal exception occurred
-	 * @review
 	 */
 	@Override
 	public FileEntry addFileEntry(
@@ -330,7 +329,7 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 * sourceFileName</code> will be used.
 	 * </p>
 	 *
-	 * @param  externalReferenceCode the file's external reference code.
+	 * @param  externalReferenceCode the file entry's external reference code.
 	 * @param  repositoryId the primary key of the repository
 	 * @param  folderId the primary key of the file entry's parent folder
 	 * @param  sourceFileName the original file's name
@@ -348,7 +347,6 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 *         custom file entry type </li> </ul>
 	 * @return the file entry
 	 * @throws PortalException if a portal exception occurred
-	 * @review
 	 */
 	@Override
 	public FileEntry addFileEntry(
@@ -387,7 +385,7 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 * sourceFileName</code> will be used.
 	 * </p>
 	 *
-	 * @param  externalReferenceCode the file's external reference code.
+	 * @param  externalReferenceCode the file entry's external reference code.
 	 * @param  repositoryId the primary key of the repository
 	 * @param  folderId the primary key of the file entry's parent folder
 	 * @param  sourceFileName the original file's name
@@ -406,7 +404,6 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 	 *         custom file entry type </li> </ul>
 	 * @return the file entry
 	 * @throws PortalException if a portal exception occurred
-	 * @review
 	 */
 	@Override
 	public FileEntry addFileEntry(
