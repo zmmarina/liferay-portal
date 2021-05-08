@@ -2452,7 +2452,11 @@ public abstract class Base${schemaName}ResourceTestCase {
 </#macro>
 
 <#macro selectPermissionParameter
-	javaMethodParameter javaMethodSignature properties roleName schemaVarName schemaVarNameId
+	javaMethodParameter
+	javaMethodSignature
+	properties roleName
+	schemaVarName
+	schemaVarNameId
 >
 	<#if freeMarkerTool.isPathParameter(javaMethodParameter, javaMethodSignature.operation) && stringUtil.equals(javaMethodParameter.parameterName, schemaVarName + "Id")>
 		 ${schemaVarNameId}

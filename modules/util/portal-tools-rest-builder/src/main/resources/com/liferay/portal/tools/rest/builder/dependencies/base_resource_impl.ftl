@@ -584,7 +584,9 @@ public abstract class Base${schemaName}ResourceImpl
 </#macro>
 
 <#macro updatePermissions
-	groupId resourceId resourceName
+	groupId
+	resourceId
+	resourceName
 >
 	PermissionUtil.checkPermission(ActionKeys.PERMISSIONS, groupLocalService, ${resourceName}, ${resourceId}, ${groupId});
 
