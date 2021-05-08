@@ -1141,7 +1141,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 					200,
 					${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
 						<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
-							<@selectPermissionParameter
+							<@getPermissionParameter
 								javaMethodParameter=javaMethodParameter
 								javaMethodSignature=javaMethodSignature
 								properties=properties
@@ -1154,7 +1154,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 								<#else>
 									"VIEW"
 								</#if>
-							</@selectPermissionParameter>
+							</@getPermissionParameter>
 							<#sep>, </#sep>
 						</#list>
 						));
@@ -1163,7 +1163,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 						404,
 						${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
 							<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
-								<@selectPermissionParameter
+								<@getPermissionParameter
 									javaMethodParameter=javaMethodParameter
 									javaMethodSignature=javaMethodSignature
 									properties=properties
@@ -1172,7 +1172,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 									schemaVarNameId="0L"
 								>
 									"-"
-								</@selectPermissionParameter>
+								</@getPermissionParameter>
 								<#sep>, </#sep>
 							</#list>
 				));
@@ -2449,7 +2449,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 	</#if>
 </#macro>
 
-<#macro selectPermissionParameter
+<#macro getPermissionParameter
 	javaMethodParameter
 	javaMethodSignature
 	properties roleName
