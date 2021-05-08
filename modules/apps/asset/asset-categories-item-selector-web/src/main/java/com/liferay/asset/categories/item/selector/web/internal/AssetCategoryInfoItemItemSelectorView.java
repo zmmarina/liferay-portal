@@ -91,6 +91,11 @@ public class AssetCategoryInfoItemItemSelectorView
 			PortletURL portletURL, String itemSelectedEventName, boolean search)
 		throws IOException, ServletException {
 
+		ServletContext servletContext = getServletContext();
+
+		RequestDispatcher requestDispatcher =
+			servletContext.getRequestDispatcher("/select_asset_vocabulary.jsp");
+
 		SelectAssetCategoryTreeNodeDisplayContext
 			selectAssetCategoryLevelDisplayContext =
 				new SelectAssetCategoryTreeNodeDisplayContext(
@@ -112,11 +117,6 @@ public class AssetCategoryInfoItemItemSelectorView
 			AssetCategoryTreeNodeItemSelectorWebKeys.
 				SELECT_ASSET_VOCABULARY_DISPLAY_CONTEXT,
 			selectAssetVocabularyDisplayContext);
-
-		ServletContext servletContext = getServletContext();
-
-		RequestDispatcher requestDispatcher =
-			servletContext.getRequestDispatcher("/select_asset_vocabulary.jsp");
 
 		requestDispatcher.include(servletRequest, servletResponse);
 	}
