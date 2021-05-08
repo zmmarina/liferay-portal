@@ -216,7 +216,7 @@ public abstract class Base${schemaName}ResourceImpl
 					String resourceName = getPermissionCheckerResourceName(${schemaVarName}Id);
 					Long resourceId = getPermissionCheckerResourceId(${schemaVarName}Id);
 
-					<@updatePermissions
+					<@updateResourcePermissions
 						groupId="getPermissionCheckerGroupId(${schemaVarName}Id)"
 						resourceId="resourceId"
 						resourceName="resourceName"
@@ -229,7 +229,7 @@ public abstract class Base${schemaName}ResourceImpl
 
 				String portletName = getPermissionCheckerPortletName(assetLibraryId);
 
-				<@updatePermissions
+				<@updateResourcePermissions
 					groupId="assetLibraryId"
 					resourceId="assetLibraryId"
 					resourceName="portletName"
@@ -239,7 +239,7 @@ public abstract class Base${schemaName}ResourceImpl
 
 				String portletName = getPermissionCheckerPortletName(siteId);
 
-				<@updatePermissions
+				<@updateResourcePermissions
 					groupId="siteId"
 					resourceId="siteId"
 					resourceName="portletName"
@@ -583,7 +583,7 @@ public abstract class Base${schemaName}ResourceImpl
 	)
 </#macro>
 
-<#macro updatePermissions
+<#macro updateResourcePermissions
 	groupId
 	resourceId
 	resourceName
