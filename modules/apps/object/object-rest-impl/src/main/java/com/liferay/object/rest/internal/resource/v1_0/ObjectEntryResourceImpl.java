@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.search.filter.Filter;
 import com.liferay.portal.kernel.search.filter.TermFilter;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.odata.entity.EntityModel;
 import com.liferay.portal.vulcan.aggregation.Aggregation;
 import com.liferay.portal.vulcan.dto.converter.DefaultDTOConverterContext;
@@ -176,21 +177,22 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 	private void _loadObjectDefinition(Map<String, Serializable> parameters)
 		throws Exception {
 
-		String parameterString = (String)parameters.get("objectDefinitionId");
+		String parameterValue = (String)parameters.get("objectDefinitionId");
 
-		String parameterArray = parameterString.substring(
-			1, parameterString.length() - 1);
+		if ((parameterValue != null) && (parameterValue.length() > 2)) {
+			String[] objectDefinitionIds = StringUtil.split(
+				parameterValue.substring(1, parameterValue.length() - 1), ",");
 
-		String[] objectDefinitions = parameterArray.split(",");
+			if (objectDefinitionIds.length > 0) {
+				_objectDefinition =
+					_objectDefinitionLocalService.getObjectDefinition(
+						GetterUtil.getLong(objectDefinitionIds[0]));
 
-		if (objectDefinitions.length > 0) {
-			_objectDefinition =
-				_objectDefinitionLocalService.getObjectDefinition(
-					GetterUtil.getLong(objectDefinitions[0]));
+				return;
+			}
 		}
-		else {
-			throw new NotFoundException("Missing objectDefinitionId");
-		}
+
+		throw new NotFoundException("Missing parameter \"objectDefinitionId\"");
 	}
 
 	private ObjectEntry _toObjectEntry(
