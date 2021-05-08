@@ -1132,51 +1132,49 @@ public abstract class Base${schemaName}ResourceTestCase {
 		<#elseif freeMarkerTool.hasHTTPMethod(javaMethodSignature, "put") && javaMethodSignature.methodName?contains("Permission")>
 			@Test
 			public void test${javaMethodSignature.methodName?cap_first}() throws Exception {
-
 				@SuppressWarnings("PMD.UnusedLocalVariable")
 				${schemaName} ${schemaVarName} = test${javaMethodSignature.methodName?cap_first}_add${schemaName}();
 
 				com.liferay.portal.kernel.model.Role role = RoleTestUtil.addRole(RoleConstants.TYPE_REGULAR);
 
 				assertHttpResponseStatusCode(
-				200,
-				${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
-					<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
-
-						<@selectPermissionParameter
-							javaMethodParameter=javaMethodParameter
-							javaMethodSignature=javaMethodSignature
-							properties=properties
-							roleName="role.getName()"
-							schemaVarName=schemaVarName
-							schemaVarNameId="${schemaVarName}.getId()"
-						>
-							<#if javaMethodSignature.methodName?contains("AssetLibrary") || javaMethodSignature.methodName?contains("Site")>
-								"PERMISSIONS"
-							<#else>
-								"VIEW"
-							</#if>
-						</@selectPermissionParameter>
-						<#sep>, </#sep>
-					</#list>
-					));
+					200,
+					${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
+						<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
+							<@selectPermissionParameter
+								javaMethodParameter=javaMethodParameter
+								javaMethodSignature=javaMethodSignature
+								properties=properties
+								roleName="role.getName()"
+								schemaVarName=schemaVarName
+								schemaVarNameId="${schemaVarName}.getId()"
+							>
+								<#if javaMethodSignature.methodName?contains("AssetLibrary") || javaMethodSignature.methodName?contains("Site")>
+									"PERMISSIONS"
+								<#else>
+									"VIEW"
+								</#if>
+							</@selectPermissionParameter>
+							<#sep>, </#sep>
+						</#list>
+						));
 
 					assertHttpResponseStatusCode(
-					404,
-					${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
-					<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
-						<@selectPermissionParameter
-							javaMethodParameter=javaMethodParameter
-							javaMethodSignature=javaMethodSignature
-							properties=properties
-							roleName="\"-\""
-							schemaVarName=schemaVarName
-							schemaVarNameId="0L"
-						>
-							"-"
-						</@selectPermissionParameter>
-						<#sep>, </#sep>
-					</#list>
+						404,
+						${schemaVarName}Resource.${javaMethodSignature.methodName}HttpResponse(
+							<#list javaMethodSignature.javaMethodParameters as javaMethodParameter>
+								<@selectPermissionParameter
+									javaMethodParameter=javaMethodParameter
+									javaMethodSignature=javaMethodSignature
+									properties=properties
+									roleName="\"-\""
+									schemaVarName=schemaVarName
+									schemaVarNameId="0L"
+								>
+									"-"
+								</@selectPermissionParameter>
+								<#sep>, </#sep>
+							</#list>
 				));
 			}
 
