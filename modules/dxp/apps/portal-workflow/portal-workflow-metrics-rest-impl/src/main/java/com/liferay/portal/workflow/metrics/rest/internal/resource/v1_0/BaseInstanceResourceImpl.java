@@ -300,7 +300,8 @@ public abstract class BaseInstanceResourceImpl
 		throws Exception {
 
 		for (Instance instance : instances) {
-			postProcessInstance((Long)parameters.get("processId"), instance);
+			postProcessInstance(
+				Long.parseLong((String)parameters.get("processId")), instance);
 		}
 	}
 
@@ -333,11 +334,11 @@ public abstract class BaseInstanceResourceImpl
 		throws Exception {
 
 		return getProcessInstancesPage(
-			(Long)parameters.get("processId"),
+			Long.parseLong((String)parameters.get("processId")),
 			(Long[])parameters.get("assigneeIds"),
 			(Long[])parameters.get("classPKs"),
-			(java.util.Date)parameters.get("dateEnd"),
-			(java.util.Date)parameters.get("dateStart"),
+			new java.util.Date((String)parameters.get("dateEnd")),
+			new java.util.Date((String)parameters.get("dateStart")),
 			(String[])parameters.get("processStatuses"),
 			(String[])parameters.get("slaStatuses"),
 			(String[])parameters.get("taskNames"), pagination, sorts);
