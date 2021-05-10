@@ -73,14 +73,14 @@ public class OptionsDDMFormFieldContextHelperTest {
 		Map<String, String> defaultOption =
 			(Map<String, String>)defaultOptions.get(0);
 
-		Assert.assertEquals(_DEFAULT_OPTION_LABEL, defaultOption.get("label"));
+		Assert.assertEquals("Option", defaultOption.get("label"));
 
-		Matcher matcher = _defaultOptionValuePattern.matcher(
+		Matcher matcher = _pattern.matcher(
 			defaultOption.get("reference"));
 
 		Assert.assertTrue(matcher.matches());
 
-		matcher = _defaultOptionValuePattern.matcher(
+		matcher = _pattern.matcher(
 			defaultOption.get("value"));
 
 		Assert.assertTrue(matcher.matches());
@@ -102,7 +102,7 @@ public class OptionsDDMFormFieldContextHelperTest {
 			language.get(
 				Matchers.any(ResourceBundle.class), Matchers.eq("option"))
 		).thenReturn(
-			_DEFAULT_OPTION_LABEL
+			"Option"
 		);
 
 		return language;
@@ -126,9 +126,7 @@ public class OptionsDDMFormFieldContextHelperTest {
 		);
 	}
 
-	private static final String _DEFAULT_OPTION_LABEL = "Option";
-
-	private static final Pattern _defaultOptionValuePattern = Pattern.compile(
+	private static final Pattern _pattern = Pattern.compile(
 		"^Option[\\d]{8}$");
 
 	private final Locale _defaultLocale = LocaleUtil.US;
