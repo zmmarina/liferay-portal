@@ -1475,11 +1475,11 @@ public class GraphQLServletExtender {
 		builder.name("Input" + objectDefinition.getName());
 
 		for (com.liferay.object.model.ObjectField objectField : objectFields) {
-			GraphQLInputObjectField.Builder inputBuilder =
+			GraphQLInputObjectField.Builder graphQLInputObjectFieldBuilder =
 				GraphQLInputObjectField.newInputObjectField();
 
 			builder.field(
-				inputBuilder.name(
+				graphQLInputObjectFieldBuilder.name(
 					objectField.getName()
 				).type(
 					Scalars.GraphQLString
