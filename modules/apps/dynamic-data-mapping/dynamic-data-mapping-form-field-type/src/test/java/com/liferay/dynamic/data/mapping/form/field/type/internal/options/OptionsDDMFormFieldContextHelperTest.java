@@ -75,13 +75,11 @@ public class OptionsDDMFormFieldContextHelperTest {
 
 		Assert.assertEquals("Option", defaultOption.get("label"));
 
-		Matcher matcher = _pattern.matcher(
-			defaultOption.get("reference"));
+		Matcher matcher = _pattern.matcher(defaultOption.get("reference"));
 
 		Assert.assertTrue(matcher.matches());
 
-		matcher = _pattern.matcher(
-			defaultOption.get("value"));
+		matcher = _pattern.matcher(defaultOption.get("value"));
 
 		Assert.assertTrue(matcher.matches());
 	}
@@ -126,8 +124,7 @@ public class OptionsDDMFormFieldContextHelperTest {
 		);
 	}
 
-	private static final Pattern _pattern = Pattern.compile(
-		"^Option[\\d]{8}$");
+	private static final Pattern _pattern = Pattern.compile("^Option[\\d]{8}$");
 
 	private final Locale _defaultLocale = LocaleUtil.US;
 
