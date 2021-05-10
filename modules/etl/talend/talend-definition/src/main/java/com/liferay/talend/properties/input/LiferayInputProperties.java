@@ -84,7 +84,6 @@ public class LiferayInputProperties extends FixedConnectorsComponentProperties {
 
 		mainForm.addRow(resource.connection.getForm(Form.REFERENCE));
 		mainForm.addRow(resource.getForm(Form.MAIN));
-
 		mainForm.setRefreshUI(true);
 
 		Form advancedForm = new Form(this, Form.ADVANCED);
@@ -99,7 +98,6 @@ public class LiferayInputProperties extends FixedConnectorsComponentProperties {
 			_createDesignTimeProperty(
 				PropertyFactory.newProperty(String.class, "version"),
 				_getVersion()));
-
 		advancedForm.setRefreshUI(true);
 	}
 
@@ -141,7 +139,6 @@ public class LiferayInputProperties extends FixedConnectorsComponentProperties {
 		widget.setWidgetType(Widget.DEFAULT_WIDGET_TYPE);
 
 		property.addFlag(Property.Flags.DESIGN_TIME_ONLY);
-
 		property.setTaggedValue("ADD_QUOTES", false);
 		property.setValue(value);
 
