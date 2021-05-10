@@ -131,16 +131,16 @@ public class LiferayInputProperties extends FixedConnectorsComponentProperties {
 	private Widget _createDesignTimeProperty(
 		Property<String> property, String value) {
 
+		property.addFlag(Property.Flags.DESIGN_TIME_ONLY);
+		property.setTaggedValue("ADD_QUOTES", false);
+		property.setValue(value);
+
 		Widget widget = Widget.widget(property);
 
 		widget.setLongRunning(false);
 		widget.setReadonly(true);
 
 		widget.setWidgetType(Widget.DEFAULT_WIDGET_TYPE);
-
-		property.addFlag(Property.Flags.DESIGN_TIME_ONLY);
-		property.setTaggedValue("ADD_QUOTES", false);
-		property.setValue(value);
 
 		return widget;
 	}
