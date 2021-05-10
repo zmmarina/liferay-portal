@@ -147,8 +147,8 @@ public class MercanetServlet extends HttpServlet {
 			}
 
 			if (Objects.equals("automatic", type)) {
-				long groupId = ParamUtil.getLong(httpServletRequest, "groupId");
 				String uuid = ParamUtil.getString(httpServletRequest, "uuid");
+				long groupId = ParamUtil.getLong(httpServletRequest, "groupId");
 
 				CommerceOrder commerceOrder =
 					_commerceOrderLocalService.getCommerceOrderByUuidAndGroupId(
