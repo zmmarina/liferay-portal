@@ -859,31 +859,31 @@ public class DynamicDataMappingUpgradeProcessTest extends PowerMockito {
 
 	protected void setUpDDMFormValuesJSONDeserializer() throws Exception {
 		field(
+			DDMFormValuesJSONDeserializer.class, "_jsonFactory"
+		).set(
+			_ddmFormValuesDeserializer, new JSONFactoryImpl()
+		);
+
+		field(
 			DDMFormValuesJSONDeserializer.class, "_serviceTrackerMap"
 		).set(
 			_ddmFormValuesDeserializer,
 			ProxyFactory.newDummyInstance(ServiceTrackerMap.class)
 		);
-
-		field(
-			DDMFormValuesJSONDeserializer.class, "_jsonFactory"
-		).set(
-			_ddmFormValuesDeserializer, new JSONFactoryImpl()
-		);
 	}
 
 	protected void setUpDDMFormValuesJSONSerializer() throws Exception {
+		field(
+			DDMFormValuesJSONSerializer.class, "_jsonFactory"
+		).set(
+			_ddmFormValuesSerializer, new JSONFactoryImpl()
+		);
+
 		field(
 			DDMFormValuesJSONSerializer.class, "_serviceTrackerMap"
 		).set(
 			_ddmFormValuesSerializer,
 			ProxyFactory.newDummyInstance(ServiceTrackerMap.class)
-		);
-
-		field(
-			DDMFormValuesJSONSerializer.class, "_jsonFactory"
-		).set(
-			_ddmFormValuesSerializer, new JSONFactoryImpl()
 		);
 	}
 

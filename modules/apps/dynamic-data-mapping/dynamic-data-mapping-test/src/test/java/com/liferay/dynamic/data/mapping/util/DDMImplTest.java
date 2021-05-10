@@ -750,30 +750,30 @@ public class DDMImplTest extends BaseDDMTestCase {
 
 	protected void setUpDDMFormValuesJSONDeserializer() throws Exception {
 		java.lang.reflect.Field field = ReflectionUtil.getDeclaredField(
+			DDMFormValuesJSONDeserializer.class, "_jsonFactory");
+
+		field.set(_ddmFormValuesDeserializer, new JSONFactoryImpl());
+
+		field = ReflectionUtil.getDeclaredField(
 			DDMFormValuesJSONDeserializer.class, "_serviceTrackerMap");
 
 		field.set(
 			_ddmFormValuesDeserializer,
 			ProxyFactory.newDummyInstance(ServiceTrackerMap.class));
-
-		field = ReflectionUtil.getDeclaredField(
-			DDMFormValuesJSONDeserializer.class, "_jsonFactory");
-
-		field.set(_ddmFormValuesDeserializer, new JSONFactoryImpl());
 	}
 
 	protected void setUpDDMFormValuesJSONSerializer() throws Exception {
 		java.lang.reflect.Field field = ReflectionUtil.getDeclaredField(
+			DDMFormValuesJSONSerializer.class, "_jsonFactory");
+
+		field.set(_ddmFormValuesSerializer, new JSONFactoryImpl());
+
+		field = ReflectionUtil.getDeclaredField(
 			DDMFormValuesJSONSerializer.class, "_serviceTrackerMap");
 
 		field.set(
 			_ddmFormValuesSerializer,
 			ProxyFactory.newDummyInstance(ServiceTrackerMap.class));
-
-		field = ReflectionUtil.getDeclaredField(
-			DDMFormValuesJSONSerializer.class, "_jsonFactory");
-
-		field.set(_ddmFormValuesSerializer, new JSONFactoryImpl());
 	}
 
 	protected void setUpPortalUtil() {

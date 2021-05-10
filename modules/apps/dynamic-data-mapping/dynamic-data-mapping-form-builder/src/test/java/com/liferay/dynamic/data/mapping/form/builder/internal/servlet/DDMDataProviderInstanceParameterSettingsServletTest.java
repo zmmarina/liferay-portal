@@ -165,16 +165,16 @@ public class DDMDataProviderInstanceParameterSettingsServletTest
 
 	protected void setUpDDMFormValuesJSONDeserializer() throws Exception {
 		PowerMockito.field(
+			DDMFormValuesJSONDeserializer.class, "_jsonFactory"
+		).set(
+			_ddmFormValuesJSONDeserializer, _jsonFactory
+		);
+
+		PowerMockito.field(
 			DDMFormValuesJSONDeserializer.class, "_serviceTrackerMap"
 		).set(
 			_ddmFormValuesJSONDeserializer,
 			ProxyFactory.newDummyInstance(ServiceTrackerMap.class)
-		);
-
-		PowerMockito.field(
-			DDMFormValuesJSONDeserializer.class, "_jsonFactory"
-		).set(
-			_ddmFormValuesJSONDeserializer, _jsonFactory
 		);
 	}
 
