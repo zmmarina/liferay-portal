@@ -210,25 +210,24 @@ public class DDMFormEvaluatorHelper {
 			return;
 		}
 
-		if (_ddmFormLayout.getNextPage() != _ddmFormLayout.getPreviousPage()) {
-			DDMFormPageChange ddmFormPageChange =
-				_ddmFormPageChangeTracker.
-					getDDMFormPageChangeByDDMFormInstanceId(
-						String.valueOf(
-							_ddmFormEvaluatorEvaluateRequest.
-								getDDMFormInstanceId()));
-
-			if (ddmFormPageChange == null) {
-				return;
-			}
-
-			DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-				ddmFormPageChange.evaluate(_ddmFormEvaluatorEvaluateRequest);
-
-			_ddmFormFieldsPropertyChanges.putAll(
-				ddmFormEvaluatorEvaluateResponse.
-					getDDMFormFieldsPropertyChanges());
+		if (_ddmFormLayout.getNextPage() == _ddmFormLayout.getPreviousPage()) {
+			return;
 		}
+
+		DDMFormPageChange ddmFormPageChange =
+			_ddmFormPageChangeTracker.getDDMFormPageChangeByDDMFormInstanceId(
+				String.valueOf(
+					_ddmFormEvaluatorEvaluateRequest.getDDMFormInstanceId()));
+
+		if (ddmFormPageChange == null) {
+			return;
+		}
+
+		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
+			ddmFormPageChange.evaluate(_ddmFormEvaluatorEvaluateRequest);
+
+		_ddmFormFieldsPropertyChanges.putAll(
+			ddmFormEvaluatorEvaluateResponse.getDDMFormFieldsPropertyChanges());
 	}
 
 	protected void evaluateDDMFormRule(DDMFormRule ddmFormRule) {
