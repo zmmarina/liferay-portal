@@ -21,8 +21,9 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column convert-null="false" name="batchEngineTaskERC" type="String" />
-		<column convert-null="false" name="dispatchTriggerERC" type="String" />
+		<column name="batchEngineExportTaskERC" type="String" />
+		<column name="batchEngineImportTaskERC" type="String" />
+		<column name="dispatchTriggerERC" type="String" />
 		<column name="size" type="int" />
 		<column name="total" type="int" />
 		<column name="status" type="int" />
@@ -38,9 +39,13 @@
 		<finder name="BatchPlannerPlanId" return-type="Collection">
 			<finder-column name="batchPlannerPlanId" />
 		</finder>
-		<finder name="BPPI_BETERC" return-type="BatchPlannerLog" unique="true">
+		<finder name="BPPI_BEETERC" return-type="BatchPlannerLog" unique="true">
 			<finder-column name="batchPlannerPlanId" />
-			<finder-column name="batchEngineTaskERC" />
+			<finder-column name="batchEngineExportTaskERC" />
+		</finder>
+		<finder name="BPPI_BEITERC" return-type="BatchPlannerLog" unique="true">
+			<finder-column name="batchPlannerPlanId" />
+			<finder-column name="batchEngineImportTaskERC" />
 		</finder>
 		<finder name="BPPI_DTERC" return-type="BatchPlannerLog" unique="true">
 			<finder-column name="batchPlannerPlanId" />
@@ -64,11 +69,11 @@
 		<!-- Other fields -->
 
 		<column name="batchPlannerPlanId" type="long" />
-		<column name="contentFieldName" type="String" />
-		<column name="contentFieldType" type="String" />
-		<column name="openAPIFieldName" type="String" />
-		<column name="openAPIFieldType" type="String" />
-		<column convert-null="false" name="transformationJavaCode" type="String" />
+		<column name="externalFieldName" type="String" />
+		<column name="externalFieldType" type="String" />
+		<column name="internalFieldName" type="String" />
+		<column name="internalFieldType" type="String" />
+		<column name="transformationJavaCode" type="String" />
 
 		<!-- Order -->
 
@@ -81,10 +86,10 @@
 		<finder name="BatchPlannerPlanId" return-type="Collection">
 			<finder-column name="batchPlannerPlanId" />
 		</finder>
-		<finder name="BPPI_CFN_OAPIFN" return-type="BatchPlannerMapping" unique="true">
+		<finder name="BPPI_EFN_IFN" return-type="BatchPlannerMapping" unique="true">
 			<finder-column name="batchPlannerPlanId" />
-			<finder-column name="contentFieldName" />
-			<finder-column name="openAPIFieldName" />
+			<finder-column name="externalFieldName" />
+			<finder-column name="internalFieldName" />
 		</finder>
 	</entity>
 	<entity local-service="true" name="BatchPlannerPlan" remote-service="true">
@@ -104,9 +109,9 @@
 		<!-- Other fields -->
 
 		<column name="active" type="boolean" />
-		<column name="contentType" type="String" />
-		<column name="contentUrl" type="String" />
-		<column name="openAPISchemaClassName" type="String" />
+		<column name="externalType" type="String" />
+		<column name="externalURL" type="String" />
+		<column name="internalClassName" type="String" />
 		<column name="name" type="String" />
 		<column name="export" type="boolean" />
 
