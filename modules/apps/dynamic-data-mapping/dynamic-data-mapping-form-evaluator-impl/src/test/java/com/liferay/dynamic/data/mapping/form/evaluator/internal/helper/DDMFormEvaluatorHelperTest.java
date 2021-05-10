@@ -180,7 +180,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_2", "field1", new UnlocalizedValue("10")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -242,7 +242,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		);
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -288,7 +288,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_instanceId", "field1", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormLayout, ddmFormValues, LocaleUtil.US);
+			evaluate(ddmForm, ddmFormLayout, ddmFormValues, LocaleUtil.US);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -338,7 +338,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		ddmFormValues.addDDMFormFieldValue(ddmFormFieldValue);
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -374,7 +374,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("2")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Set<Integer> disabledPagesIndexes =
 			ddmFormEvaluatorEvaluateResponse.getDisabledPagesIndexes();
@@ -416,7 +416,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_1", "field1", new UnlocalizedValue("5")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -464,7 +464,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		);
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -504,7 +504,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("1")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Set<Integer> disabledPagesIndexes =
 			ddmFormEvaluatorEvaluateResponse.getDisabledPagesIndexes();
@@ -532,7 +532,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0",
 				new UnlocalizedValue("field0 value")));
 
-		doEvaluate(ddmForm, ddmFormValues);
+		evaluate(ddmForm, ddmFormValues);
 	}
 
 	@Test
@@ -554,7 +554,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("false")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -602,7 +602,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_instanceId", "field1", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -650,7 +650,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_instanceId", "field1", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -691,7 +691,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("\n")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -738,7 +738,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_instanceId", "field1", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -785,7 +785,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field2_instanceId", "field2", new UnlocalizedValue("10")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -866,7 +866,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_2", "field1", new UnlocalizedValue("2")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -913,7 +913,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field2_instanceId", "field2", new UnlocalizedValue("0")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1012,7 +1012,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 			DDMFormValuesTestUtil.createDDMFormFieldValue(
 				"field2_instanceId", "field2", value2));
 
-		doEvaluate(ddmForm, ddmFormValues, LocaleUtil.BRAZIL);
+		evaluate(ddmForm, ddmFormValues, LocaleUtil.BRAZIL);
 
 		List<DDMFormFieldValue> evaluatedDDMFormFieldValues =
 			ddmFormValues.getDDMFormFieldValues();
@@ -1069,7 +1069,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("1")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1128,7 +1128,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1172,7 +1172,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("1")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1229,7 +1229,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("0")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1286,7 +1286,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_1", "field0", new UnlocalizedValue("1")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1337,7 +1337,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field0_instanceId", "field0", new UnlocalizedValue("5")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1378,7 +1378,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		ddmFormValues.addDDMFormFieldValue(ddmFormFieldValue);
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1416,7 +1416,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 				"field1_instanceId", "field1", new UnlocalizedValue("")));
 
 		DDMFormEvaluatorEvaluateResponse ddmFormEvaluatorEvaluateResponse =
-			doEvaluate(ddmForm, ddmFormValues);
+			evaluate(ddmForm, ddmFormValues);
 
 		Map<DDMFormEvaluatorFieldContextKey, Map<String, Object>>
 			ddmFormFieldsPropertyChanges =
@@ -1550,7 +1550,7 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		return ddmFormField;
 	}
 
-	protected DDMFormEvaluatorEvaluateResponse doEvaluate(
+	protected DDMFormEvaluatorEvaluateResponse evaluate(
 			DDMForm ddmForm, DDMFormLayout ddmFormLayout,
 			DDMFormValues ddmFormValues, Locale locale)
 		throws Exception {
@@ -1580,18 +1580,18 @@ public class DDMFormEvaluatorHelperTest extends PowerMockito {
 		return ddmFormEvaluatorHelper.evaluate();
 	}
 
-	protected DDMFormEvaluatorEvaluateResponse doEvaluate(
+	protected DDMFormEvaluatorEvaluateResponse evaluate(
 			DDMForm ddmForm, DDMFormValues ddmFormValues)
 		throws Exception {
 
-		return doEvaluate(ddmForm, ddmFormValues, LocaleUtil.US);
+		return evaluate(ddmForm, ddmFormValues, LocaleUtil.US);
 	}
 
-	protected DDMFormEvaluatorEvaluateResponse doEvaluate(
+	protected DDMFormEvaluatorEvaluateResponse evaluate(
 			DDMForm ddmForm, DDMFormValues ddmFormValues, Locale locale)
 		throws Exception {
 
-		return doEvaluate(ddmForm, null, ddmFormValues, locale);
+		return evaluate(ddmForm, null, ddmFormValues, locale);
 	}
 
 	protected void mockDDMExpressionFunctionTracker(
