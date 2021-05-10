@@ -283,8 +283,8 @@ public class DTOOpenAPIParser {
 		Items items = schema.getItems();
 
 		if (_isObject(schema, schema.getType()) ||
-			(schema.getReference() != null) ||
 			(schema.getAllOfSchemas() != null) ||
+			(schema.getReference() != null) ||
 			((items != null) &&
 			 (_isObject(schema, items.getType()) ||
 			  (items.getReference() != null)))) {
