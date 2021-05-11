@@ -88,7 +88,7 @@ public class SLAResultResourceImpl extends BaseSLAResultResourceImpl {
 					fetchWorkflowMetricsSLADefinition)
 		).orElseThrow(
 			() -> new NoSuchSLAResultException(
-				"No sla result exists with process ID " + processId)
+				"No SLA result exists with process ID " + processId)
 		);
 	}
 
