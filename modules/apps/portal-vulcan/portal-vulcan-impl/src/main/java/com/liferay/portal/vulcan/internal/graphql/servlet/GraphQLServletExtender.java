@@ -55,6 +55,7 @@ import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.aggregation.Aggregation;
 import com.liferay.portal.vulcan.dto.converter.DTOConverterRegistry;
 import com.liferay.portal.vulcan.dto.converter.DefaultDTOConverterContext;
+import com.liferay.portal.vulcan.dto.converter.DTOConverterContext;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLTypeExtension;
@@ -1395,7 +1396,7 @@ public class GraphQLServletExtender {
 		return null;
 	}
 
-	private DefaultDTOConverterContext _getDTOConverterContext(
+	private DTOConverterContext _getDTOConverterContext(
 			DataFetchingEnvironment dataFetchingEnvironment,
 			Map<String, Serializable> attributes)
 		throws PortalException {
@@ -1714,8 +1715,8 @@ public class GraphQLServletExtender {
 				FieldCoordinates.coordinates("query", getName),
 				(DataFetcher<Object>)
 					dataFetchingEnvironment -> graphQLDTOContributor.getDTO(
-						dataFetchingEnvironment.getArgument(idName),
-						_getDTOConverterContext(dataFetchingEnvironment, null))
+						_getDTOConverterContext(dataFetchingEnvironment, null),
+						dataFetchingEnvironment.getArgument(idName))
 			).build());
 
 		// List
@@ -1766,6 +1767,11 @@ public class GraphQLServletExtender {
 
 					return graphQLDTOContributor.getDTOs(
 						aggregation,
+						_getDTOConverterContext(
+							dataFetchingEnvironment,
+							HashMapBuilder.<String, Serializable>put(
+								"companyId", CompanyThreadLocal.getCompanyId()
+							).build()),
 						_getFilter(
 							acceptLanguage,
 							graphQLDTOContributor.getEntityModel(),
@@ -1777,12 +1783,7 @@ public class GraphQLServletExtender {
 						_getSorts(
 							acceptLanguage,
 							graphQLDTOContributor.getEntityModel(),
-							dataFetchingEnvironment.getArgument("sort")),
-						_getDTOConverterContext(
-							dataFetchingEnvironment,
-							HashMapBuilder.<String, Serializable>put(
-								"companyId", CompanyThreadLocal.getCompanyId()
-							).build()));
+							dataFetchingEnvironment.getArgument("sort")));
 				}
 			).build());
 
@@ -1801,11 +1802,11 @@ public class GraphQLServletExtender {
 				FieldCoordinates.coordinates("mutation", updateName),
 				(DataFetcher<Object>)
 					dataFetchingEnvironment -> graphQLDTOContributor.updateDTO(
-						dataFetchingEnvironment.getArgument(idName),
 						dataFetchingEnvironment.
 							<Map<String, Serializable>>getArgument(
 								resourceName),
-						_getDTOConverterContext(dataFetchingEnvironment, null))
+						_getDTOConverterContext(dataFetchingEnvironment, null),
+						dataFetchingEnvironment.getArgument(idName))
 			).build());
 	}
 
