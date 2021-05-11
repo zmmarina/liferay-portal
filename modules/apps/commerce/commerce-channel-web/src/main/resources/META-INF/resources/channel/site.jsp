@@ -17,26 +17,26 @@
 <%@ include file="/init.jsp" %>
 
 <%
+List<Group> groups = new ArrayList<>();
+
 SiteCommerceChannelTypeDisplayContext siteCommerceChannelTypeDisplayContext = (SiteCommerceChannelTypeDisplayContext)request.getAttribute("site.jsp-portletDisplayContext");
 
-Group site = siteCommerceChannelTypeDisplayContext.getChannelSite();
+Group channelSiteGroup = siteCommerceChannelTypeDisplayContext.getChannelSite();
 
-List<Group> siteAsList = new ArrayList<>();
-
-if (site != null) {
-	siteAsList = Arrays.asList(site);
+if (channelSiteGroup != null) {
+	groups = Arrays.asList(channelSiteGroup);
 }
 
 CommerceChannel commerceChannel = siteCommerceChannelTypeDisplayContext.getCommerceChannel();
 long commerceChannelId = siteCommerceChannelTypeDisplayContext.getCommerceChannelId();
 
-boolean isViewOnly = false;
+String searchContainerId = "CommerceChannelSitesSearchContainer";
+
+boolean viewOnly = false;
 
 if (commerceChannel != null) {
-	isViewOnly = !siteCommerceChannelTypeDisplayContext.hasPermission(commerceChannel.getCommerceChannelId(), ActionKeys.UPDATE);
+	viewOnly = !siteCommerceChannelTypeDisplayContext.hasPermission(commerceChannel.getCommerceChannelId(), ActionKeys.UPDATE);
 }
-
-String searchContainerId = "CommerceChannelSitesSearchContainer";
 %>
 
 <liferay-util:buffer
@@ -76,10 +76,10 @@ String searchContainerId = "CommerceChannelSitesSearchContainer";
 					headerNames="null,null"
 					id="<%= searchContainerId %>"
 					iteratorURL="<%= currentURLObj %>"
-					total="<%= siteAsList.size() %>"
+					total="<%= groups.size() %>"
 				>
 					<liferay-ui:search-container-results
-						results="<%= siteAsList %>"
+						results="<%= groups %>"
 					/>
 
 					<liferay-ui:search-container-row
@@ -92,7 +92,7 @@ String searchContainerId = "CommerceChannelSitesSearchContainer";
 							value="<%= HtmlUtil.escape(group.getName(locale)) %>"
 						/>
 
-						<c:if test="<%= !isViewOnly %>">
+						<c:if test="<%= !viewOnly %>">
 							<liferay-ui:search-container-column-text>
 								<a class="float-right modify-link" data-rowId="<%= group.getGroupId() %>" href="javascript:;"><%= removeCommerceChannelSiteIcon %></a>
 							</liferay-ui:search-container-column-text>
@@ -104,7 +104,7 @@ String searchContainerId = "CommerceChannelSitesSearchContainer";
 					/>
 				</liferay-ui:search-container>
 
-				<c:if test="<%= !isViewOnly %>">
+				<c:if test="<%= !viewOnly %>">
 					<aui:button cssClass="mb-4" name="selectSite" value='<%= LanguageUtil.format(locale, "select-x", "site") %>' />
 				</c:if>
 			</commerce-ui:panel>
