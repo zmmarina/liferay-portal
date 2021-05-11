@@ -1291,6 +1291,9 @@ public class GraphQLServletExtender {
 				graphQLObjectTypeBuilder, configurations, ServletData::getQuery,
 				processingElementsContainer, servletDatas);
 
+			_registerGraphQLDTOContributors(
+				mutationBuilder, processingElementsContainer,
+				graphQLObjectTypeBuilder, graphQLSchemaBuilder);
 			_registerInterfaces(
 				processingElementsContainer, graphQLObjectTypeBuilder,
 				graphQLSchemaBuilder);
@@ -1302,9 +1305,6 @@ public class GraphQLServletExtender {
 				configurations, ServletData::getMutation, mutationBuilder,
 				graphQLSchemaBuilder, true, processingElementsContainer,
 				servletDatas);
-			_registerGraphQLDTOContributors(
-				mutationBuilder, processingElementsContainer,
-				graphQLObjectTypeBuilder, graphQLSchemaBuilder);
 
 			graphQLSchemaBuilder.mutation(mutationBuilder.build());
 			graphQLSchemaBuilder.query(graphQLObjectTypeBuilder.build());
