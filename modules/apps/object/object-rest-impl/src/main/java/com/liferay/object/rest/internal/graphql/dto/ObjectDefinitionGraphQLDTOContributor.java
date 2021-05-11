@@ -139,7 +139,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 	}
 
 	@Override
-	public List<GraphQLDTOProperty> getProperties() {
+	public List<GraphQLDTOProperty> getGraphQLDTOProperties() {
 		return _graphQLDTOProperties;
 	}
 
@@ -219,6 +219,6 @@ public class ObjectDefinitionGraphQLDTOContributor
 	private final long _objectDefinitionId;
 	private final ObjectEntryManager _objectEntryManager;
 	private final String _primaryKeyPropertyName;
-	private final List<GraphQLDTOProperty> _properties;
+	private final List<GraphQLDTOProperty> _graphQLDTOProperties;
 
 }

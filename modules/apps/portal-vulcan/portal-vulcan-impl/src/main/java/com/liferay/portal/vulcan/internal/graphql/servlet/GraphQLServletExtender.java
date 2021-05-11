@@ -1494,7 +1494,7 @@ public class GraphQLServletExtender {
 		builder.name("Input" + graphQLDTOContributor.getResourceName());
 
 		for (GraphQLDTOProperty graphQLDTOProperty :
-				graphQLDTOContributor.getProperties()) {
+				graphQLDTOContributor.getGraphQLDTOProperties()) {
 
 			GraphQLInputObjectField.Builder graphQLInputObjectFieldBuilder =
 				GraphQLInputObjectField.newInputObjectField();
@@ -1503,7 +1503,7 @@ public class GraphQLServletExtender {
 				graphQLInputObjectFieldBuilder.name(
 					graphQLDTOProperty.getName()
 				).type(
-					_toScalar(graphQLDTOProperty.getType())
+					_toGraphQLScalarType(graphQLDTOProperty.getType())
 				).build());
 		}
 
@@ -1517,11 +1517,11 @@ public class GraphQLServletExtender {
 
 		builder.name(graphQLDTOContributor.getResourceName());
 
-		for (GraphQLDTOProperty property :
-				graphQLDTOContributor.getProperties()) {
+		for (GraphQLDTOProperty graphQLDTOProperty :
+				graphQLDTOContributor.getGraphQLDTOProperties()) {
 
 			builder.field(
-				_addField(_toScalar(property.getType()), property.getName()));
+				_addField(_toGraphQLScalarType(graphQLDTOProperty.getType()), graphQLDTOProperty.getName()));
 		}
 
 		return builder.build();
@@ -2044,7 +2044,7 @@ public class GraphQLServletExtender {
 			graphQLObjectType, Collections.singletonList(graphQLInterfaceType));
 	}
 
-	private GraphQLScalarType _toScalar(Class<?> type) {
+	private GraphQLScalarType _toGraphQLScalarType(Class<?> type) {
 		if (String.class.equals(type)) {
 			return Scalars.GraphQLString;
 		}

@@ -47,7 +47,7 @@ public interface GraphQLDTOContributor<D, R> {
 
 	public String getIdName();
 
-	public List<GraphQLDTOProperty> getProperties();
+	public List<GraphQLDTOProperty> getGraphQLDTOProperties();
 
 	public String getResourceName();
 
