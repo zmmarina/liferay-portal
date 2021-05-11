@@ -1521,7 +1521,9 @@ public class GraphQLServletExtender {
 				graphQLDTOContributor.getGraphQLDTOProperties()) {
 
 			builder.field(
-				_addField(_toGraphQLScalarType(graphQLDTOProperty.getTypeClass()), graphQLDTOProperty.getName()));
+				_addField(
+					_toGraphQLScalarType(graphQLDTOProperty.getTypeClass()),
+					graphQLDTOProperty.getName()));
 		}
 
 		return builder.build();

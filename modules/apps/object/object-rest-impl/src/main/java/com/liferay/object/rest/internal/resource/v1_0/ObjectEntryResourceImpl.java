@@ -103,8 +103,8 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 
 		return _objectEntryManager.getObjectEntries(
 			contextCompany.getCompanyId(),
-			_objectDefinition.getObjectDefinitionId(), aggregation, _getDTOConverterContext(null), filter,
-			pagination, search, sorts);
+			_objectDefinition.getObjectDefinitionId(), aggregation,
+			_getDTOConverterContext(null), filter, pagination, search, sorts);
 	}
 
 	@Override

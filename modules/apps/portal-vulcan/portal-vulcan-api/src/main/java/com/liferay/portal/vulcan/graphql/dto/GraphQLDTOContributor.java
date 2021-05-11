@@ -39,15 +39,14 @@ public interface GraphQLDTOContributor<D, R> {
 
 	public Page<R> getDTOs(
 			Aggregation aggregation, DTOConverterContext dtoConverterContext,
-			Filter filter, Pagination pagination,
-			String search, Sort[] sorts)
+			Filter filter, Pagination pagination, String search, Sort[] sorts)
 		throws Exception;
 
 	public EntityModel getEntityModel();
 
-	public String getIdName();
-
 	public List<GraphQLDTOProperty> getGraphQLDTOProperties();
+
+	public String getIdName();
 
 	public String getResourceName();
 
