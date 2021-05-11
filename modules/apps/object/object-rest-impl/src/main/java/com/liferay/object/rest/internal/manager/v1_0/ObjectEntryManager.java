@@ -12,10 +12,10 @@
  * details.
  */
 
-package com.liferay.object.rest.internal.manager;
+package com.liferay.object.rest.internal.manager.v1_0;
 
 import com.liferay.object.rest.dto.v1_0.ObjectEntry;
-import com.liferay.object.rest.internal.dto.converter.ObjectEntryDTOConverter;
+import com.liferay.object.rest.internal.dto.v1_0.converter.ObjectEntryDTOConverter;
 import com.liferay.object.service.ObjectEntryLocalService;
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
 import com.liferay.portal.kernel.search.Field;

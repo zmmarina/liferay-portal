@@ -12,9 +12,10 @@
  * details.
  */
 
-package com.liferay.object.rest.internal.dto.converter;
+package com.liferay.object.rest.internal.dto.v1_0.converter;
 
 import com.liferay.object.rest.dto.v1_0.ObjectEntry;
+import com.liferay.object.rest.internal.dto.v1_0.util.CreatorUtil;
 import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.util.Portal;
 import com.liferay.portal.vulcan.dto.converter.DTOConverter;

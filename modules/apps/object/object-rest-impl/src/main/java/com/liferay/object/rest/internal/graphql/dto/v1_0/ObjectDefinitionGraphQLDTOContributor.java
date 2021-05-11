@@ -12,13 +12,13 @@
  * details.
  */
 
-package com.liferay.object.rest.internal.graphql.dto;
+package com.liferay.object.rest.internal.graphql.dto.v1_0;
 
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectField;
 import com.liferay.object.rest.dto.v1_0.ObjectEntry;
-import com.liferay.object.rest.internal.manager.ObjectEntryManager;
-import com.liferay.object.rest.internal.odata.entity.ObjectEntryEntityModel;
+import com.liferay.object.rest.internal.manager.v1_0.ObjectEntryManager;
+import com.liferay.object.rest.internal.odata.entity.v1_0.ObjectEntryEntityModel;
 import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.search.filter.Filter;
 import com.liferay.portal.kernel.util.HashMapBuilder;

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.object.rest.internal.odata.entity;
+package com.liferay.object.rest.internal.odata.entity.v1_0;
 
 import com.liferay.object.model.ObjectField;
 import com.liferay.portal.kernel.search.Field;
