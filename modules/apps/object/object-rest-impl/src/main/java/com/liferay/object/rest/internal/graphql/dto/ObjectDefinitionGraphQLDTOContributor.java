@@ -62,7 +62,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 			graphQLDTOProperties.add(
 				GraphQLDTOProperty.of(
 					objectField.getName(),
-					_mappedTypeToClass.getOrDefault(
+					_typedClasses.getOrDefault(
 						objectField.getType(), Object.class)));
 		}
 
@@ -192,7 +192,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		return properties;
 	}
 
-	private static final Map<String, Class<?>> _mappedTypeToClass =
+	private static final Map<String, Class<?>> _typedClasses =
 		HashMapBuilder.<String, Class<?>>put(
 			"BigDecimal", BigDecimal.class
 		).put(
