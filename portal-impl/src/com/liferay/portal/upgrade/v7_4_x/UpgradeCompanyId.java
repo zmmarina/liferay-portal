@@ -54,7 +54,7 @@ public class UpgradeCompanyId extends BaseCompanyIdUpgradeProcess {
 		};
 	}
 
-	protected class PortalPreferencesTableUpdater extends TableUpdater {
+	private class PortalPreferencesTableUpdater extends TableUpdater {
 
 		public PortalPreferencesTableUpdater(String tableName) {
 			super(tableName, "", "");
