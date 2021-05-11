@@ -276,22 +276,17 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 		if (shippingDiscountAmount != null) {
 			order.setShippingDiscountAmount(
 				shippingDiscountAmount.doubleValue());
-
 			order.setShippingDiscountAmountFormatted(
 				_formatPrice(shippingDiscountAmount, commerceCurrency, locale));
-
 			order.setShippingDiscountPercentageLevel1(
 				_getDoubleValue(
 					commerceOrder.getShippingDiscountPercentageLevel1()));
-
 			order.setShippingDiscountPercentageLevel2(
 				_getDoubleValue(
 					commerceOrder.getShippingDiscountPercentageLevel2()));
-
 			order.setShippingDiscountPercentageLevel3(
 				_getDoubleValue(
 					commerceOrder.getShippingDiscountPercentageLevel3()));
-
 			order.setShippingDiscountPercentageLevel4(
 				_getDoubleValue(
 					commerceOrder.getShippingDiscountPercentageLevel4()));
@@ -303,26 +298,21 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 		if (shippingDiscountWithTaxAmount != null) {
 			order.setShippingDiscountWithTaxAmount(
 				shippingDiscountWithTaxAmount.doubleValue());
-
 			order.setShippingDiscountWithTaxAmountFormatted(
 				_formatPrice(
 					shippingDiscountWithTaxAmount, commerceCurrency, locale));
-
 			order.setShippingDiscountPercentageLevel1WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getShippingDiscountPercentageLevel1WithTaxAmount()));
-
 			order.setShippingDiscountPercentageLevel2WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getShippingDiscountPercentageLevel2WithTaxAmount()));
-
 			order.setShippingDiscountPercentageLevel3WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getShippingDiscountPercentageLevel3WithTaxAmount()));
-
 			order.setShippingDiscountPercentageLevel4WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
@@ -373,22 +363,17 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 		if (subtotalDiscountAmount != null) {
 			order.setSubtotalDiscountAmount(
 				subtotalDiscountAmount.doubleValue());
-
 			order.setSubtotalDiscountAmountFormatted(
 				_formatPrice(subtotalDiscountAmount, commerceCurrency, locale));
-
 			order.setSubtotalDiscountPercentageLevel1(
 				_getDoubleValue(
 					commerceOrder.getSubtotalDiscountPercentageLevel1()));
-
 			order.setSubtotalDiscountPercentageLevel2(
 				_getDoubleValue(
 					commerceOrder.getSubtotalDiscountPercentageLevel2()));
-
 			order.setSubtotalDiscountPercentageLevel3(
 				_getDoubleValue(
 					commerceOrder.getSubtotalDiscountPercentageLevel3()));
-
 			order.setSubtotalDiscountPercentageLevel4(
 				_getDoubleValue(
 					commerceOrder.getSubtotalDiscountPercentageLevel4()));
@@ -400,26 +385,21 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 		if (subtotalDiscountWithTaxAmount != null) {
 			order.setSubtotalDiscountWithTaxAmount(
 				subtotalDiscountWithTaxAmount.doubleValue());
-
 			order.setSubtotalDiscountWithTaxAmountFormatted(
 				_formatPrice(
 					subtotalDiscountWithTaxAmount, commerceCurrency, locale));
-
 			order.setSubtotalDiscountPercentageLevel1WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getSubtotalDiscountPercentageLevel1WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel2WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getSubtotalDiscountPercentageLevel2WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel3WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getSubtotalDiscountPercentageLevel3WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel4WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
@@ -467,22 +447,17 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 
 		if (totalDiscountAmount != null) {
 			order.setTotalDiscountAmount(totalDiscountAmount.doubleValue());
-
 			order.setTotalDiscountAmountFormatted(
 				_formatPrice(totalDiscountAmount, commerceCurrency, locale));
-
 			order.setTotalDiscountPercentageLevel1(
 				_getDoubleValue(
 					commerceOrder.getTotalDiscountPercentageLevel1()));
-
 			order.setTotalDiscountPercentageLevel2(
 				_getDoubleValue(
 					commerceOrder.getTotalDiscountPercentageLevel2()));
-
 			order.setTotalDiscountPercentageLevel3(
 				_getDoubleValue(
 					commerceOrder.getTotalDiscountPercentageLevel3()));
-
 			order.setTotalDiscountPercentageLevel4(
 				_getDoubleValue(
 					commerceOrder.getTotalDiscountPercentageLevel4()));
@@ -494,26 +469,21 @@ public class OrderDTOConverter implements DTOConverter<CommerceOrder, Order> {
 		if (totalDiscountWithTaxAmount != null) {
 			order.setTotalDiscountWithTaxAmount(
 				totalDiscountWithTaxAmount.doubleValue());
-
 			order.setTotalDiscountWithTaxAmountFormatted(
 				_formatPrice(
 					totalDiscountWithTaxAmount, commerceCurrency, locale));
-
 			order.setSubtotalDiscountPercentageLevel1WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getTotalDiscountPercentageLevel1WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel2WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getTotalDiscountPercentageLevel2WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel3WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
 						getTotalDiscountPercentageLevel3WithTaxAmount()));
-
 			order.setSubtotalDiscountPercentageLevel4WithTaxAmount(
 				_getDoubleValue(
 					commerceOrder.
