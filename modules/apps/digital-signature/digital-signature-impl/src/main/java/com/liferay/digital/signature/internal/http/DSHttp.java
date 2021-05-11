@@ -32,6 +32,7 @@ import com.liferay.portal.kernel.util.Time;
 import java.io.StringReader;
 
 import java.security.KeyPair;
+import java.security.PrivateKey;
 import java.security.Signature;
 
 import java.util.Base64;
@@ -73,56 +74,11 @@ public class DSHttp {
 			_log.debug("Get DocuSign access token for group " + groupId);
 		}
 
-		String headerJSON = JSONUtil.put(
-			"alg", "RS256"
-		).put(
-			"typ", "JWT"
-		).toString();
-
-		long unixTime = System.currentTimeMillis() / Time.SECOND;
-
-		String bodyJSON = JSONUtil.put(
-			"aud", "account-d.docusign.com"
-		).put(
-			"exp", unixTime + 3600
-		).put(
-			"iat", unixTime
-		).put(
-			"iss", _getDocuSignIntegrationKey(groupId)
-		).put(
-			"scope", "signature"
-		).put(
-			"sub", _getDocuSignAPIUsername(groupId)
-		).toString();
-
-		Signature signature = Signature.getInstance("SHA256withRSA");
-
-		PEMParser pemParser = new PEMParser(
-			new StringReader(
-				StringUtil.read(getClass(), "dependencies/private_key.txt")));
-
-		JcaPEMKeyConverter jcaPEMKeyConverter = new JcaPEMKeyConverter();
-
-		PEMKeyPair pemKeyPair = (PEMKeyPair)pemParser.readObject();
-
-		KeyPair keyPair = jcaPEMKeyConverter.getKeyPair(pemKeyPair);
-
-		signature.initSign(keyPair.getPrivate());
-
-		String token =
-			_encode(headerJSON.getBytes()) + "." + _encode(bodyJSON.getBytes());
-
-		signature.update(token.getBytes());
-
-		String assertion = token + "." + _encode(signature.sign());
-
-		assertion = assertion.replaceAll("=", "");
-
 		Http.Options options = new Http.Options();
 
 		options.setParts(
 			HashMapBuilder.put(
-				"assertion", assertion
+				"assertion", _getJWT(groupId)
 			).put(
 				"grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer"
 			).build());
@@ -159,6 +115,42 @@ public class DSHttp {
 		return "4ac993f9-a4d6-4086-8c59-";
 	}
 
+	private String _getJWT(long groupId) throws Exception {
+		Signature signature = Signature.getInstance("SHA256withRSA");
+
+		signature.initSign(_readPrivateKey());
+
+		String headerJSON = JSONUtil.put(
+			"alg", "RS256"
+		).put(
+			"typ", "JWT"
+		).toString();
+
+		long unixTime = System.currentTimeMillis() / Time.SECOND;
+
+		String bodyJSON = JSONUtil.put(
+			"aud", "account-d.docusign.com"
+		).put(
+			"exp", unixTime + 3600
+		).put(
+			"iat", unixTime
+		).put(
+			"iss", _getDocuSignIntegrationKey(groupId)
+		).put(
+			"scope", "signature"
+		).put(
+			"sub", _getDocuSignAPIUsername(groupId)
+		).toString();
+
+		String token =
+			_encode(headerJSON.getBytes()) + "." + _encode(bodyJSON.getBytes());
+
+		signature.update(token.getBytes());
+
+		return StringUtil.removeSubstring(
+			token + "." + _encode(signature.sign()), "=");
+	}
+
 	private JSONObject _invoke(
 			long groupId, String location, JSONObject bodyJSONObject)
 		throws Exception {
@@ -179,6 +171,23 @@ public class DSHttp {
 		options.setPost(true);
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));
+	}
+
+	private PrivateKey _readPrivateKey() throws Exception {
+
+		// TODO Replace with native Java
+
+		JcaPEMKeyConverter jcaPEMKeyConverter = new JcaPEMKeyConverter();
+
+		PEMParser pemParser = new PEMParser(
+			new StringReader(
+				StringUtil.read(getClass(), "dependencies/private_key.txt")));
+
+		PEMKeyPair pemKeyPair = (PEMKeyPair)pemParser.readObject();
+
+		KeyPair keyPair = jcaPEMKeyConverter.getKeyPair(pemKeyPair);
+
+		return keyPair.getPrivate();
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(DSHttp.class);
