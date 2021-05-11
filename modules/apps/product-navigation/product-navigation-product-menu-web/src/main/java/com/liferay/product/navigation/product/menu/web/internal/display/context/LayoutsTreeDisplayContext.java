@@ -272,12 +272,12 @@ public class LayoutsTreeDisplayContext {
 	public Map<String, Object> getPageTypeSelectorData() throws Exception {
 		return HashMapBuilder.<String, Object>put(
 			"addCollectionLayoutURL",
-			_addDefaultSelPlidParam(getAddCollectionLayoutURL())
+			_setPlid(getAddCollectionLayoutURL())
 		).put(
-			"addLayoutURL", _addDefaultSelPlidParam(getAddLayoutURL())
+			"addLayoutURL", _setPlid(getAddLayoutURL())
 		).put(
 			"configureLayoutSetURL",
-			_addDefaultSelPlidParam(getConfigureLayoutSetURL())
+			_setPlid(getConfigureLayoutSetURL())
 		).put(
 			"namespace", getNamespace()
 		).put(
@@ -371,7 +371,7 @@ public class LayoutsTreeDisplayContext {
 			layout.isPrivateLayout());
 	}
 
-	private String _addDefaultSelPlidParam(PortletURL portletURL) {
+	private String _setPlid(PortletURL portletURL) {
 		if (portletURL == null) {
 			return StringPool.BLANK;
 		}
