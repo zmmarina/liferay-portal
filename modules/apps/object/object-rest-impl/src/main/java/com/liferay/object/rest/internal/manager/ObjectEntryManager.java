@@ -44,14 +44,14 @@ import org.osgi.service.component.annotations.Reference;
 public class ObjectEntryManager {
 
 	public ObjectEntry addObjectEntry(
-			long userId, long siteId, long objectDefinitionId,
+			long userId, long groupId, long objectDefinitionId,
 			ObjectEntry objectEntry, DTOConverterContext dtoConverterContext)
 		throws Exception {
 
 		return _objectEntryDTOConverter.toDTO(
 			dtoConverterContext,
 			_objectEntryLocalService.addObjectEntry(
-				userId, siteId, objectDefinitionId,
+				userId, groupId, objectDefinitionId,
 				(Map)objectEntry.getProperties(), new ServiceContext()));
 	}
 
