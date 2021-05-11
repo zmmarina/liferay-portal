@@ -118,9 +118,8 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 		throws Exception {
 
 		return _objectEntryManager.addObjectEntry(
-			contextUser.getUserId(), siteId,
-			_objectDefinition.getObjectDefinitionId(), objectEntry,
-			_getDTOConverterContext(null));
+			_getDTOConverterContext(null), contextUser.getUserId(), siteId,
+			_objectDefinition.getObjectDefinitionId(), objectEntry);
 	}
 
 	@Override
@@ -129,8 +128,8 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 		throws Exception {
 
 		return _objectEntryManager.updateObjectEntry(
-			contextUser.getUserId(), objectEntryId, objectEntry,
-			_getDTOConverterContext(objectEntryId));
+			_getDTOConverterContext(objectEntryId), contextUser.getUserId(),
+			objectEntryId, objectEntry);
 	}
 
 	@Override

@@ -80,9 +80,9 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 		return _toMap(
 			_objectEntryManager.addObjectEntry(
-				dtoConverterContext.getUserId(),
+				dtoConverterContext, dtoConverterContext.getUserId(),
 				(Long)dtoConverterContext.getAttribute("siteId"),
-				_objectDefinitionId, _toObjectEntry(dto), dtoConverterContext));
+				_objectDefinitionId, _toObjectEntry(dto)));
 	}
 
 	@Override
@@ -154,8 +154,8 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 		return _toMap(
 			_objectEntryManager.updateObjectEntry(
-				dtoConverterContext.getUserId(), id, _toObjectEntry(dto),
-				dtoConverterContext));
+				dtoConverterContext, dtoConverterContext.getUserId(), id,
+				_toObjectEntry(dto)));
 	}
 
 	private ObjectDefinitionGraphQLDTOContributor(

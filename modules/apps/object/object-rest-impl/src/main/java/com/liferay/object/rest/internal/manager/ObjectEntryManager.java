@@ -44,8 +44,8 @@ import org.osgi.service.component.annotations.Reference;
 public class ObjectEntryManager {
 
 	public ObjectEntry addObjectEntry(
-			long userId, long groupId, long objectDefinitionId,
-			ObjectEntry objectEntry, DTOConverterContext dtoConverterContext)
+			DTOConverterContext dtoConverterContext, long userId, long groupId,
+			long objectDefinitionId, ObjectEntry objectEntry)
 		throws Exception {
 
 		return _objectEntryDTOConverter.toDTO(
@@ -101,8 +101,8 @@ public class ObjectEntryManager {
 	}
 
 	public ObjectEntry updateObjectEntry(
-			long userId, long objectEntryId, ObjectEntry objectEntry,
-			DTOConverterContext dtoConverterContext)
+			DTOConverterContext dtoConverterContext, long userId,
+			long objectEntryId, ObjectEntry objectEntry)
 		throws Exception {
 
 		return _objectEntryDTOConverter.toDTO(
