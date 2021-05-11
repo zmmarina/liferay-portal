@@ -110,8 +110,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 		Page<ObjectEntry> page = _objectEntryManager.getObjectEntries(
 			(Long)dtoConverterContext.getAttribute("companyId"),
-			_objectDefinitionId, aggregation, filter, pagination, search, sorts,
-			dtoConverterContext);
+			_objectDefinitionId, aggregation, dtoConverterContext, filter, pagination, search, sorts);
 
 		Collection<ObjectEntry> items = page.getItems();
 

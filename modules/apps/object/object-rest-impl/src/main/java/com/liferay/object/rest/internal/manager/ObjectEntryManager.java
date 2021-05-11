@@ -61,8 +61,7 @@ public class ObjectEntryManager {
 
 	public Page<ObjectEntry> getObjectEntries(
 			long companyId, long objectDefinitionId, Aggregation aggregation,
-			Filter filter, Pagination pagination, String search, Sort[] sorts,
-			DTOConverterContext dtoConverterContext)
+			DTOConverterContext dtoConverterContext, Filter filter, Pagination pagination, String search, Sort[] sorts)
 		throws Exception {
 
 		return SearchUtil.search(
