@@ -52,14 +52,14 @@ public class ObjectDefinitionGraphQLDTOContributor
 		ObjectDefinition objectDefinition,
 		ObjectEntryManager objectEntryManager, List<ObjectField> objectFields) {
 
-		List<GraphQLDTOProperty> properties = new ArrayList<>();
+		List<GraphQLDTOProperty> graphQLDTOProperties = new ArrayList<>();
 
-		properties.add(
+		graphQLDTOProperties.add(
 			GraphQLDTOProperty.of(
 				objectDefinition.getPrimaryKeyColumnName(), Long.class));
 
 		for (ObjectField objectField : objectFields) {
-			properties.add(
+			graphQLDTOProperties.add(
 				GraphQLDTOProperty.of(
 					objectField.getName(),
 					_mappedTypeToClass.getOrDefault(
@@ -70,7 +70,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 			new ObjectEntryEntityModel(objectFields),
 			objectDefinition.getName(),
 			objectDefinition.getObjectDefinitionId(), objectEntryManager,
-			objectDefinition.getPrimaryKeyColumnName(), properties);
+			objectDefinition.getPrimaryKeyColumnName(), graphQLDTOProperties);
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public List<GraphQLDTOProperty> getProperties() {
-		return _properties;
+		return _graphQLDTOProperties;
 	}
 
 	@Override
@@ -163,14 +163,14 @@ public class ObjectDefinitionGraphQLDTOContributor
 	private ObjectDefinitionGraphQLDTOContributor(
 		EntityModel entityModel, String name, long objectDefinitionId,
 		ObjectEntryManager objectEntryManager, String primaryKeyPropertyName,
-		List<GraphQLDTOProperty> properties) {
+		List<GraphQLDTOProperty> graphQLDTOProperties) {
 
 		_entityModel = entityModel;
 		_name = name;
 		_objectDefinitionId = objectDefinitionId;
 		_objectEntryManager = objectEntryManager;
 		_primaryKeyPropertyName = primaryKeyPropertyName;
-		_properties = properties;
+		_graphQLDTOProperties = graphQLDTOProperties;
 	}
 
 	private ObjectEntry _mapToObjectEntry(Map<String, Object> map) {
