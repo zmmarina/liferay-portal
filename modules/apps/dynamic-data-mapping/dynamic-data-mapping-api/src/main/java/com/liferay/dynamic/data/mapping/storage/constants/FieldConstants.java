@@ -105,13 +105,14 @@ public class FieldConstants {
 
 			decimalFormat.setGroupingUsed(false);
 			decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
-			decimalFormat.setParseBigDecimal(true);
 
 			if (type.equals(FieldConstants.DOUBLE) ||
 				type.equals(FieldConstants.FLOAT)) {
 
 				decimalFormat.setMinimumFractionDigits(1);
 			}
+
+			decimalFormat.setParseBigDecimal(true);
 
 			value = GetterUtil.getString(value);
 
