@@ -1647,12 +1647,12 @@ public class GraphQLServletExtender {
 		GraphQLObjectType.Builder queryBuilder,
 		GraphQLSchema.Builder schemaBuilder) {
 
-		String resourceName = graphQLDTOContributor.getResourceName();
-
 		// Create
 
 		GraphQLObjectType graphQLObjectType = _getGraphQLObjectType(
 			graphQLDTOContributor);
+
+		String resourceName = graphQLDTOContributor.getResourceName();
 
 		String createName = "create" + resourceName;
 
