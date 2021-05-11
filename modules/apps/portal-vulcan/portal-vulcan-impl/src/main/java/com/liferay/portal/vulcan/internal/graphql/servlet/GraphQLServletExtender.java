@@ -1503,7 +1503,7 @@ public class GraphQLServletExtender {
 				graphQLInputObjectFieldBuilder.name(
 					graphQLDTOProperty.getName()
 				).type(
-					_toGraphQLScalarType(graphQLDTOProperty.getType())
+					_toGraphQLScalarType(graphQLDTOProperty.getTypeClass())
 				).build());
 		}
 
@@ -1521,7 +1521,7 @@ public class GraphQLServletExtender {
 				graphQLDTOContributor.getGraphQLDTOProperties()) {
 
 			builder.field(
-				_addField(_toGraphQLScalarType(graphQLDTOProperty.getType()), graphQLDTOProperty.getName()));
+				_addField(_toGraphQLScalarType(graphQLDTOProperty.getTypeClass()), graphQLDTOProperty.getName()));
 		}
 
 		return builder.build();
