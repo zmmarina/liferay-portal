@@ -15,15 +15,13 @@
 package com.liferay.oauth2.provider.internal.upgrade.v3_2_0;
 
 import com.liferay.portal.kernel.upgrade.UpgradeProcess;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.LoggingTimer;
 import com.liferay.portal.kernel.util.StringUtil;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author Marta Medio
@@ -42,10 +40,10 @@ public class OAuth2ApplicationFeatureUpgradeProcess extends UpgradeProcess {
 			ResultSet resultSet = preparedStatement.executeQuery()) {
 
 			while (resultSet.next()) {
-				List<String> features = Arrays.asList(
-					StringUtil.split(resultSet.getString("features")));
+				String[] features = StringUtil.split(
+					resultSet.getString("features"));
 
-				if (features.contains("token_introspection")) {
+				if (ArrayUtil.contains(features, "token_introspection")) {
 					long oAuth2ApplicationId = resultSet.getLong(
 						"oAuth2ApplicationId");
 
@@ -57,7 +55,7 @@ public class OAuth2ApplicationFeatureUpgradeProcess extends UpgradeProcess {
 	}
 
 	private void _updateTokenIntrospectionFeature(
-			long oAuth2ApplicationId, List<String> features)
+			long oAuth2ApplicationId, String[] features)
 		throws SQLException {
 
 		String sql =
@@ -67,14 +65,11 @@ public class OAuth2ApplicationFeatureUpgradeProcess extends UpgradeProcess {
 		try (PreparedStatement preparedStatement = connection.prepareStatement(
 				sql)) {
 
-			features.replaceAll(
-				feature -> {
-					if (feature.equals("token_introspection")) {
-						return "token.introspection";
-					}
-
-					return feature;
-				});
+			for (int i = 0; i < features.length; i++) {
+				if (features[i].equals("token_introspection")) {
+					features[i] = "token.introspection";
+				}
+			}
 
 			preparedStatement.setString(1, StringUtil.merge(features));
 
