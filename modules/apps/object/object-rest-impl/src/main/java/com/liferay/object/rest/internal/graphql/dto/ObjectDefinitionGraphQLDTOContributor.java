@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.object.rest.internal.graphql;
+package com.liferay.object.rest.internal.graphql.dto;
 
 import com.liferay.object.model.ObjectDefinition;
 import com.liferay.object.model.ObjectField;

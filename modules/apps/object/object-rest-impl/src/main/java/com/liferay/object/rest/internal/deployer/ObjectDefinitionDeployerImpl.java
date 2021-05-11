@@ -16,7 +16,7 @@ package com.liferay.object.rest.internal.deployer;
 
 import com.liferay.object.deployer.ObjectDefinitionDeployer;
 import com.liferay.object.model.ObjectDefinition;
-import com.liferay.object.rest.internal.graphql.ObjectDefinitionGraphQLDTOContributor;
+import com.liferay.object.rest.internal.graphql.dto.ObjectDefinitionGraphQLDTOContributor;
 import com.liferay.object.rest.internal.manager.ObjectEntryManager;
 import com.liferay.object.service.ObjectFieldLocalService;
 import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
