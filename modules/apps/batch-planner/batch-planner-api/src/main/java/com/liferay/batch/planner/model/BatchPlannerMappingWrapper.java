@@ -50,11 +50,11 @@ public class BatchPlannerMappingWrapper
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("batchPlannerPlanId", getBatchPlannerPlanId());
-		attributes.put("contentFieldName", getContentFieldName());
-		attributes.put("contentFieldType", getContentFieldType());
-		attributes.put("openAPIFieldName", getOpenAPIFieldName());
-		attributes.put("openAPIFieldType", getOpenAPIFieldType());
-		attributes.put("transformationJavaCode", getTransformationJavaCode());
+		attributes.put("externalFieldName", getExternalFieldName());
+		attributes.put("externalFieldType", getExternalFieldType());
+		attributes.put("internalFieldName", getInternalFieldName());
+		attributes.put("internalFieldType", getInternalFieldType());
+		attributes.put("script", getScript());
 
 		return attributes;
 	}
@@ -110,35 +110,34 @@ public class BatchPlannerMappingWrapper
 			setBatchPlannerPlanId(batchPlannerPlanId);
 		}
 
-		String contentFieldName = (String)attributes.get("contentFieldName");
+		String externalFieldName = (String)attributes.get("externalFieldName");
 
-		if (contentFieldName != null) {
-			setContentFieldName(contentFieldName);
+		if (externalFieldName != null) {
+			setExternalFieldName(externalFieldName);
 		}
 
-		String contentFieldType = (String)attributes.get("contentFieldType");
+		String externalFieldType = (String)attributes.get("externalFieldType");
 
-		if (contentFieldType != null) {
-			setContentFieldType(contentFieldType);
+		if (externalFieldType != null) {
+			setExternalFieldType(externalFieldType);
 		}
 
-		String openAPIFieldName = (String)attributes.get("openAPIFieldName");
+		String internalFieldName = (String)attributes.get("internalFieldName");
 
-		if (openAPIFieldName != null) {
-			setOpenAPIFieldName(openAPIFieldName);
+		if (internalFieldName != null) {
+			setInternalFieldName(internalFieldName);
 		}
 
-		String openAPIFieldType = (String)attributes.get("openAPIFieldType");
+		String internalFieldType = (String)attributes.get("internalFieldType");
 
-		if (openAPIFieldType != null) {
-			setOpenAPIFieldType(openAPIFieldType);
+		if (internalFieldType != null) {
+			setInternalFieldType(internalFieldType);
 		}
 
-		String transformationJavaCode = (String)attributes.get(
-			"transformationJavaCode");
+		String script = (String)attributes.get("script");
 
-		if (transformationJavaCode != null) {
-			setTransformationJavaCode(transformationJavaCode);
+		if (script != null) {
+			setScript(script);
 		}
 	}
 
@@ -173,26 +172,6 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Returns the content field name of this batch planner mapping.
-	 *
-	 * @return the content field name of this batch planner mapping
-	 */
-	@Override
-	public String getContentFieldName() {
-		return model.getContentFieldName();
-	}
-
-	/**
-	 * Returns the content field type of this batch planner mapping.
-	 *
-	 * @return the content field type of this batch planner mapping
-	 */
-	@Override
-	public String getContentFieldType() {
-		return model.getContentFieldType();
-	}
-
-	/**
 	 * Returns the create date of this batch planner mapping.
 	 *
 	 * @return the create date of this batch planner mapping
@@ -200,6 +179,46 @@ public class BatchPlannerMappingWrapper
 	@Override
 	public Date getCreateDate() {
 		return model.getCreateDate();
+	}
+
+	/**
+	 * Returns the external field name of this batch planner mapping.
+	 *
+	 * @return the external field name of this batch planner mapping
+	 */
+	@Override
+	public String getExternalFieldName() {
+		return model.getExternalFieldName();
+	}
+
+	/**
+	 * Returns the external field type of this batch planner mapping.
+	 *
+	 * @return the external field type of this batch planner mapping
+	 */
+	@Override
+	public String getExternalFieldType() {
+		return model.getExternalFieldType();
+	}
+
+	/**
+	 * Returns the internal field name of this batch planner mapping.
+	 *
+	 * @return the internal field name of this batch planner mapping
+	 */
+	@Override
+	public String getInternalFieldName() {
+		return model.getInternalFieldName();
+	}
+
+	/**
+	 * Returns the internal field type of this batch planner mapping.
+	 *
+	 * @return the internal field type of this batch planner mapping
+	 */
+	@Override
+	public String getInternalFieldType() {
+		return model.getInternalFieldType();
 	}
 
 	/**
@@ -223,26 +242,6 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Returns the open api field name of this batch planner mapping.
-	 *
-	 * @return the open api field name of this batch planner mapping
-	 */
-	@Override
-	public String getOpenAPIFieldName() {
-		return model.getOpenAPIFieldName();
-	}
-
-	/**
-	 * Returns the open api field type of this batch planner mapping.
-	 *
-	 * @return the open api field type of this batch planner mapping
-	 */
-	@Override
-	public String getOpenAPIFieldType() {
-		return model.getOpenAPIFieldType();
-	}
-
-	/**
 	 * Returns the primary key of this batch planner mapping.
 	 *
 	 * @return the primary key of this batch planner mapping
@@ -253,13 +252,13 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Returns the transformation java code of this batch planner mapping.
+	 * Returns the script of this batch planner mapping.
 	 *
-	 * @return the transformation java code of this batch planner mapping
+	 * @return the script of this batch planner mapping
 	 */
 	@Override
-	public String getTransformationJavaCode() {
-		return model.getTransformationJavaCode();
+	public String getScript() {
+		return model.getScript();
 	}
 
 	/**
@@ -328,26 +327,6 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Sets the content field name of this batch planner mapping.
-	 *
-	 * @param contentFieldName the content field name of this batch planner mapping
-	 */
-	@Override
-	public void setContentFieldName(String contentFieldName) {
-		model.setContentFieldName(contentFieldName);
-	}
-
-	/**
-	 * Sets the content field type of this batch planner mapping.
-	 *
-	 * @param contentFieldType the content field type of this batch planner mapping
-	 */
-	@Override
-	public void setContentFieldType(String contentFieldType) {
-		model.setContentFieldType(contentFieldType);
-	}
-
-	/**
 	 * Sets the create date of this batch planner mapping.
 	 *
 	 * @param createDate the create date of this batch planner mapping
@@ -355,6 +334,46 @@ public class BatchPlannerMappingWrapper
 	@Override
 	public void setCreateDate(Date createDate) {
 		model.setCreateDate(createDate);
+	}
+
+	/**
+	 * Sets the external field name of this batch planner mapping.
+	 *
+	 * @param externalFieldName the external field name of this batch planner mapping
+	 */
+	@Override
+	public void setExternalFieldName(String externalFieldName) {
+		model.setExternalFieldName(externalFieldName);
+	}
+
+	/**
+	 * Sets the external field type of this batch planner mapping.
+	 *
+	 * @param externalFieldType the external field type of this batch planner mapping
+	 */
+	@Override
+	public void setExternalFieldType(String externalFieldType) {
+		model.setExternalFieldType(externalFieldType);
+	}
+
+	/**
+	 * Sets the internal field name of this batch planner mapping.
+	 *
+	 * @param internalFieldName the internal field name of this batch planner mapping
+	 */
+	@Override
+	public void setInternalFieldName(String internalFieldName) {
+		model.setInternalFieldName(internalFieldName);
+	}
+
+	/**
+	 * Sets the internal field type of this batch planner mapping.
+	 *
+	 * @param internalFieldType the internal field type of this batch planner mapping
+	 */
+	@Override
+	public void setInternalFieldType(String internalFieldType) {
+		model.setInternalFieldType(internalFieldType);
 	}
 
 	/**
@@ -378,26 +397,6 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Sets the open api field name of this batch planner mapping.
-	 *
-	 * @param openAPIFieldName the open api field name of this batch planner mapping
-	 */
-	@Override
-	public void setOpenAPIFieldName(String openAPIFieldName) {
-		model.setOpenAPIFieldName(openAPIFieldName);
-	}
-
-	/**
-	 * Sets the open api field type of this batch planner mapping.
-	 *
-	 * @param openAPIFieldType the open api field type of this batch planner mapping
-	 */
-	@Override
-	public void setOpenAPIFieldType(String openAPIFieldType) {
-		model.setOpenAPIFieldType(openAPIFieldType);
-	}
-
-	/**
 	 * Sets the primary key of this batch planner mapping.
 	 *
 	 * @param primaryKey the primary key of this batch planner mapping
@@ -408,13 +407,13 @@ public class BatchPlannerMappingWrapper
 	}
 
 	/**
-	 * Sets the transformation java code of this batch planner mapping.
+	 * Sets the script of this batch planner mapping.
 	 *
-	 * @param transformationJavaCode the transformation java code of this batch planner mapping
+	 * @param script the script of this batch planner mapping
 	 */
 	@Override
-	public void setTransformationJavaCode(String transformationJavaCode) {
-		model.setTransformationJavaCode(transformationJavaCode);
+	public void setScript(String script) {
+		model.setScript(script);
 	}
 
 	/**

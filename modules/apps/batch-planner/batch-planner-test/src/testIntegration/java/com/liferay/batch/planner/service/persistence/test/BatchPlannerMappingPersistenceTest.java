@@ -140,20 +140,19 @@ public class BatchPlannerMappingPersistenceTest {
 
 		newBatchPlannerMapping.setBatchPlannerPlanId(RandomTestUtil.nextLong());
 
-		newBatchPlannerMapping.setContentFieldName(
+		newBatchPlannerMapping.setExternalFieldName(
 			RandomTestUtil.randomString());
 
-		newBatchPlannerMapping.setContentFieldType(
+		newBatchPlannerMapping.setExternalFieldType(
 			RandomTestUtil.randomString());
 
-		newBatchPlannerMapping.setOpenAPIFieldName(
+		newBatchPlannerMapping.setInternalFieldName(
 			RandomTestUtil.randomString());
 
-		newBatchPlannerMapping.setOpenAPIFieldType(
+		newBatchPlannerMapping.setInternalFieldType(
 			RandomTestUtil.randomString());
 
-		newBatchPlannerMapping.setTransformationJavaCode(
-			RandomTestUtil.randomString());
+		newBatchPlannerMapping.setScript(RandomTestUtil.randomString());
 
 		_batchPlannerMappings.add(_persistence.update(newBatchPlannerMapping));
 
@@ -187,20 +186,20 @@ public class BatchPlannerMappingPersistenceTest {
 			existingBatchPlannerMapping.getBatchPlannerPlanId(),
 			newBatchPlannerMapping.getBatchPlannerPlanId());
 		Assert.assertEquals(
-			existingBatchPlannerMapping.getContentFieldName(),
-			newBatchPlannerMapping.getContentFieldName());
+			existingBatchPlannerMapping.getExternalFieldName(),
+			newBatchPlannerMapping.getExternalFieldName());
 		Assert.assertEquals(
-			existingBatchPlannerMapping.getContentFieldType(),
-			newBatchPlannerMapping.getContentFieldType());
+			existingBatchPlannerMapping.getExternalFieldType(),
+			newBatchPlannerMapping.getExternalFieldType());
 		Assert.assertEquals(
-			existingBatchPlannerMapping.getOpenAPIFieldName(),
-			newBatchPlannerMapping.getOpenAPIFieldName());
+			existingBatchPlannerMapping.getInternalFieldName(),
+			newBatchPlannerMapping.getInternalFieldName());
 		Assert.assertEquals(
-			existingBatchPlannerMapping.getOpenAPIFieldType(),
-			newBatchPlannerMapping.getOpenAPIFieldType());
+			existingBatchPlannerMapping.getInternalFieldType(),
+			newBatchPlannerMapping.getInternalFieldType());
 		Assert.assertEquals(
-			existingBatchPlannerMapping.getTransformationJavaCode(),
-			newBatchPlannerMapping.getTransformationJavaCode());
+			existingBatchPlannerMapping.getScript(),
+			newBatchPlannerMapping.getScript());
 	}
 
 	@Test
@@ -211,12 +210,12 @@ public class BatchPlannerMappingPersistenceTest {
 	}
 
 	@Test
-	public void testCountByBPPI_CFN_OAPIFN() throws Exception {
-		_persistence.countByBPPI_CFN_OAPIFN(RandomTestUtil.nextLong(), "", "");
+	public void testCountByBPPI_EFN_IFN() throws Exception {
+		_persistence.countByBPPI_EFN_IFN(RandomTestUtil.nextLong(), "", "");
 
-		_persistence.countByBPPI_CFN_OAPIFN(0L, "null", "null");
+		_persistence.countByBPPI_EFN_IFN(0L, "null", "null");
 
-		_persistence.countByBPPI_CFN_OAPIFN(0L, (String)null, (String)null);
+		_persistence.countByBPPI_EFN_IFN(0L, (String)null, (String)null);
 	}
 
 	@Test
@@ -249,8 +248,9 @@ public class BatchPlannerMappingPersistenceTest {
 			"BatchPlannerMapping", "mvccVersion", true, "batchPlannerMappingId",
 			true, "companyId", true, "userId", true, "userName", true,
 			"createDate", true, "modifiedDate", true, "batchPlannerPlanId",
-			true, "contentFieldName", true, "contentFieldType", true,
-			"openAPIFieldName", true, "openAPIFieldType", true);
+			true, "externalFieldName", true, "externalFieldType", true,
+			"internalFieldName", true, "internalFieldType", true, "script",
+			true);
 	}
 
 	@Test
@@ -539,15 +539,15 @@ public class BatchPlannerMappingPersistenceTest {
 				batchPlannerMapping, "getColumnOriginalValue",
 				new Class<?>[] {String.class}, "batchPlannerPlanId"));
 		Assert.assertEquals(
-			batchPlannerMapping.getContentFieldName(),
+			batchPlannerMapping.getExternalFieldName(),
 			ReflectionTestUtil.invoke(
 				batchPlannerMapping, "getColumnOriginalValue",
-				new Class<?>[] {String.class}, "contentFieldName"));
+				new Class<?>[] {String.class}, "externalFieldName"));
 		Assert.assertEquals(
-			batchPlannerMapping.getOpenAPIFieldName(),
+			batchPlannerMapping.getInternalFieldName(),
 			ReflectionTestUtil.invoke(
 				batchPlannerMapping, "getColumnOriginalValue",
-				new Class<?>[] {String.class}, "openAPIFieldName"));
+				new Class<?>[] {String.class}, "internalFieldName"));
 	}
 
 	protected BatchPlannerMapping addBatchPlannerMapping() throws Exception {
@@ -569,16 +569,15 @@ public class BatchPlannerMappingPersistenceTest {
 
 		batchPlannerMapping.setBatchPlannerPlanId(RandomTestUtil.nextLong());
 
-		batchPlannerMapping.setContentFieldName(RandomTestUtil.randomString());
+		batchPlannerMapping.setExternalFieldName(RandomTestUtil.randomString());
 
-		batchPlannerMapping.setContentFieldType(RandomTestUtil.randomString());
+		batchPlannerMapping.setExternalFieldType(RandomTestUtil.randomString());
 
-		batchPlannerMapping.setOpenAPIFieldName(RandomTestUtil.randomString());
+		batchPlannerMapping.setInternalFieldName(RandomTestUtil.randomString());
 
-		batchPlannerMapping.setOpenAPIFieldType(RandomTestUtil.randomString());
+		batchPlannerMapping.setInternalFieldType(RandomTestUtil.randomString());
 
-		batchPlannerMapping.setTransformationJavaCode(
-			RandomTestUtil.randomString());
+		batchPlannerMapping.setScript(RandomTestUtil.randomString());
 
 		_batchPlannerMappings.add(_persistence.update(batchPlannerMapping));
 

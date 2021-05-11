@@ -202,78 +202,78 @@ public interface BatchPlannerMappingModel
 	public void setBatchPlannerPlanId(long batchPlannerPlanId);
 
 	/**
-	 * Returns the content field name of this batch planner mapping.
+	 * Returns the external field name of this batch planner mapping.
 	 *
-	 * @return the content field name of this batch planner mapping
+	 * @return the external field name of this batch planner mapping
 	 */
 	@AutoEscape
-	public String getContentFieldName();
+	public String getExternalFieldName();
 
 	/**
-	 * Sets the content field name of this batch planner mapping.
+	 * Sets the external field name of this batch planner mapping.
 	 *
-	 * @param contentFieldName the content field name of this batch planner mapping
+	 * @param externalFieldName the external field name of this batch planner mapping
 	 */
-	public void setContentFieldName(String contentFieldName);
+	public void setExternalFieldName(String externalFieldName);
 
 	/**
-	 * Returns the content field type of this batch planner mapping.
+	 * Returns the external field type of this batch planner mapping.
 	 *
-	 * @return the content field type of this batch planner mapping
-	 */
-	@AutoEscape
-	public String getContentFieldType();
-
-	/**
-	 * Sets the content field type of this batch planner mapping.
-	 *
-	 * @param contentFieldType the content field type of this batch planner mapping
-	 */
-	public void setContentFieldType(String contentFieldType);
-
-	/**
-	 * Returns the open api field name of this batch planner mapping.
-	 *
-	 * @return the open api field name of this batch planner mapping
+	 * @return the external field type of this batch planner mapping
 	 */
 	@AutoEscape
-	public String getOpenAPIFieldName();
+	public String getExternalFieldType();
 
 	/**
-	 * Sets the open api field name of this batch planner mapping.
+	 * Sets the external field type of this batch planner mapping.
 	 *
-	 * @param openAPIFieldName the open api field name of this batch planner mapping
+	 * @param externalFieldType the external field type of this batch planner mapping
 	 */
-	public void setOpenAPIFieldName(String openAPIFieldName);
+	public void setExternalFieldType(String externalFieldType);
 
 	/**
-	 * Returns the open api field type of this batch planner mapping.
+	 * Returns the internal field name of this batch planner mapping.
 	 *
-	 * @return the open api field type of this batch planner mapping
-	 */
-	@AutoEscape
-	public String getOpenAPIFieldType();
-
-	/**
-	 * Sets the open api field type of this batch planner mapping.
-	 *
-	 * @param openAPIFieldType the open api field type of this batch planner mapping
-	 */
-	public void setOpenAPIFieldType(String openAPIFieldType);
-
-	/**
-	 * Returns the transformation java code of this batch planner mapping.
-	 *
-	 * @return the transformation java code of this batch planner mapping
+	 * @return the internal field name of this batch planner mapping
 	 */
 	@AutoEscape
-	public String getTransformationJavaCode();
+	public String getInternalFieldName();
 
 	/**
-	 * Sets the transformation java code of this batch planner mapping.
+	 * Sets the internal field name of this batch planner mapping.
 	 *
-	 * @param transformationJavaCode the transformation java code of this batch planner mapping
+	 * @param internalFieldName the internal field name of this batch planner mapping
 	 */
-	public void setTransformationJavaCode(String transformationJavaCode);
+	public void setInternalFieldName(String internalFieldName);
+
+	/**
+	 * Returns the internal field type of this batch planner mapping.
+	 *
+	 * @return the internal field type of this batch planner mapping
+	 */
+	@AutoEscape
+	public String getInternalFieldType();
+
+	/**
+	 * Sets the internal field type of this batch planner mapping.
+	 *
+	 * @param internalFieldType the internal field type of this batch planner mapping
+	 */
+	public void setInternalFieldType(String internalFieldType);
+
+	/**
+	 * Returns the script of this batch planner mapping.
+	 *
+	 * @return the script of this batch planner mapping
+	 */
+	@AutoEscape
+	public String getScript();
+
+	/**
+	 * Sets the script of this batch planner mapping.
+	 *
+	 * @param script the script of this batch planner mapping
+	 */
+	public void setScript(String script);
 
 }

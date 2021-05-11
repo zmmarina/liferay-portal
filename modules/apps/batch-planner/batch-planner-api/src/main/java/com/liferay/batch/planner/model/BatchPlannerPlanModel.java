@@ -208,49 +208,49 @@ public interface BatchPlannerPlanModel
 	public void setActive(boolean active);
 
 	/**
-	 * Returns the content type of this batch planner plan.
+	 * Returns the external type of this batch planner plan.
 	 *
-	 * @return the content type of this batch planner plan
+	 * @return the external type of this batch planner plan
 	 */
 	@AutoEscape
-	public String getContentType();
+	public String getExternalType();
 
 	/**
-	 * Sets the content type of this batch planner plan.
+	 * Sets the external type of this batch planner plan.
 	 *
-	 * @param contentType the content type of this batch planner plan
+	 * @param externalType the external type of this batch planner plan
 	 */
-	public void setContentType(String contentType);
+	public void setExternalType(String externalType);
 
 	/**
-	 * Returns the content url of this batch planner plan.
+	 * Returns the external url of this batch planner plan.
 	 *
-	 * @return the content url of this batch planner plan
-	 */
-	@AutoEscape
-	public String getContentUrl();
-
-	/**
-	 * Sets the content url of this batch planner plan.
-	 *
-	 * @param contentUrl the content url of this batch planner plan
-	 */
-	public void setContentUrl(String contentUrl);
-
-	/**
-	 * Returns the open api schema class name of this batch planner plan.
-	 *
-	 * @return the open api schema class name of this batch planner plan
+	 * @return the external url of this batch planner plan
 	 */
 	@AutoEscape
-	public String getOpenAPISchemaClassName();
+	public String getExternalURL();
 
 	/**
-	 * Sets the open api schema class name of this batch planner plan.
+	 * Sets the external url of this batch planner plan.
 	 *
-	 * @param openAPISchemaClassName the open api schema class name of this batch planner plan
+	 * @param externalURL the external url of this batch planner plan
 	 */
-	public void setOpenAPISchemaClassName(String openAPISchemaClassName);
+	public void setExternalURL(String externalURL);
+
+	/**
+	 * Returns the internal class name of this batch planner plan.
+	 *
+	 * @return the internal class name of this batch planner plan
+	 */
+	@AutoEscape
+	public String getInternalClassName();
+
+	/**
+	 * Sets the internal class name of this batch planner plan.
+	 *
+	 * @param internalClassName the internal class name of this batch planner plan
+	 */
+	public void setInternalClassName(String internalClassName);
 
 	/**
 	 * Returns the name of this batch planner plan.

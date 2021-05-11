@@ -50,9 +50,9 @@ public class BatchPlannerPlanWrapper
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("active", isActive());
-		attributes.put("contentType", getContentType());
-		attributes.put("contentUrl", getContentUrl());
-		attributes.put("openAPISchemaClassName", getOpenAPISchemaClassName());
+		attributes.put("externalType", getExternalType());
+		attributes.put("externalURL", getExternalURL());
+		attributes.put("internalClassName", getInternalClassName());
 		attributes.put("name", getName());
 		attributes.put("export", isExport());
 
@@ -109,23 +109,22 @@ public class BatchPlannerPlanWrapper
 			setActive(active);
 		}
 
-		String contentType = (String)attributes.get("contentType");
+		String externalType = (String)attributes.get("externalType");
 
-		if (contentType != null) {
-			setContentType(contentType);
+		if (externalType != null) {
+			setExternalType(externalType);
 		}
 
-		String contentUrl = (String)attributes.get("contentUrl");
+		String externalURL = (String)attributes.get("externalURL");
 
-		if (contentUrl != null) {
-			setContentUrl(contentUrl);
+		if (externalURL != null) {
+			setExternalURL(externalURL);
 		}
 
-		String openAPISchemaClassName = (String)attributes.get(
-			"openAPISchemaClassName");
+		String internalClassName = (String)attributes.get("internalClassName");
 
-		if (openAPISchemaClassName != null) {
-			setOpenAPISchemaClassName(openAPISchemaClassName);
+		if (internalClassName != null) {
+			setInternalClassName(internalClassName);
 		}
 
 		String name = (String)attributes.get("name");
@@ -172,26 +171,6 @@ public class BatchPlannerPlanWrapper
 	}
 
 	/**
-	 * Returns the content type of this batch planner plan.
-	 *
-	 * @return the content type of this batch planner plan
-	 */
-	@Override
-	public String getContentType() {
-		return model.getContentType();
-	}
-
-	/**
-	 * Returns the content url of this batch planner plan.
-	 *
-	 * @return the content url of this batch planner plan
-	 */
-	@Override
-	public String getContentUrl() {
-		return model.getContentUrl();
-	}
-
-	/**
 	 * Returns the create date of this batch planner plan.
 	 *
 	 * @return the create date of this batch planner plan
@@ -209,6 +188,36 @@ public class BatchPlannerPlanWrapper
 	@Override
 	public boolean getExport() {
 		return model.getExport();
+	}
+
+	/**
+	 * Returns the external type of this batch planner plan.
+	 *
+	 * @return the external type of this batch planner plan
+	 */
+	@Override
+	public String getExternalType() {
+		return model.getExternalType();
+	}
+
+	/**
+	 * Returns the external url of this batch planner plan.
+	 *
+	 * @return the external url of this batch planner plan
+	 */
+	@Override
+	public String getExternalURL() {
+		return model.getExternalURL();
+	}
+
+	/**
+	 * Returns the internal class name of this batch planner plan.
+	 *
+	 * @return the internal class name of this batch planner plan
+	 */
+	@Override
+	public String getInternalClassName() {
+		return model.getInternalClassName();
 	}
 
 	/**
@@ -239,16 +248,6 @@ public class BatchPlannerPlanWrapper
 	@Override
 	public String getName() {
 		return model.getName();
-	}
-
-	/**
-	 * Returns the open api schema class name of this batch planner plan.
-	 *
-	 * @return the open api schema class name of this batch planner plan
-	 */
-	@Override
-	public String getOpenAPISchemaClassName() {
-		return model.getOpenAPISchemaClassName();
 	}
 
 	/**
@@ -347,26 +346,6 @@ public class BatchPlannerPlanWrapper
 	}
 
 	/**
-	 * Sets the content type of this batch planner plan.
-	 *
-	 * @param contentType the content type of this batch planner plan
-	 */
-	@Override
-	public void setContentType(String contentType) {
-		model.setContentType(contentType);
-	}
-
-	/**
-	 * Sets the content url of this batch planner plan.
-	 *
-	 * @param contentUrl the content url of this batch planner plan
-	 */
-	@Override
-	public void setContentUrl(String contentUrl) {
-		model.setContentUrl(contentUrl);
-	}
-
-	/**
 	 * Sets the create date of this batch planner plan.
 	 *
 	 * @param createDate the create date of this batch planner plan
@@ -384,6 +363,36 @@ public class BatchPlannerPlanWrapper
 	@Override
 	public void setExport(boolean export) {
 		model.setExport(export);
+	}
+
+	/**
+	 * Sets the external type of this batch planner plan.
+	 *
+	 * @param externalType the external type of this batch planner plan
+	 */
+	@Override
+	public void setExternalType(String externalType) {
+		model.setExternalType(externalType);
+	}
+
+	/**
+	 * Sets the external url of this batch planner plan.
+	 *
+	 * @param externalURL the external url of this batch planner plan
+	 */
+	@Override
+	public void setExternalURL(String externalURL) {
+		model.setExternalURL(externalURL);
+	}
+
+	/**
+	 * Sets the internal class name of this batch planner plan.
+	 *
+	 * @param internalClassName the internal class name of this batch planner plan
+	 */
+	@Override
+	public void setInternalClassName(String internalClassName) {
+		model.setInternalClassName(internalClassName);
 	}
 
 	/**
@@ -414,16 +423,6 @@ public class BatchPlannerPlanWrapper
 	@Override
 	public void setName(String name) {
 		model.setName(name);
-	}
-
-	/**
-	 * Sets the open api schema class name of this batch planner plan.
-	 *
-	 * @param openAPISchemaClassName the open api schema class name of this batch planner plan
-	 */
-	@Override
-	public void setOpenAPISchemaClassName(String openAPISchemaClassName) {
-		model.setOpenAPISchemaClassName(openAPISchemaClassName);
 	}
 
 	/**

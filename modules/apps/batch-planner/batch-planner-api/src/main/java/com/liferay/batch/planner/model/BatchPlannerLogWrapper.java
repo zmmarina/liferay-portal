@@ -50,7 +50,10 @@ public class BatchPlannerLogWrapper
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("batchPlannerPlanId", getBatchPlannerPlanId());
-		attributes.put("batchEngineTaskERC", getBatchEngineTaskERC());
+		attributes.put(
+			"batchEngineExportTaskERC", getBatchEngineExportTaskERC());
+		attributes.put(
+			"batchEngineImportTaskERC", getBatchEngineImportTaskERC());
 		attributes.put("dispatchTriggerERC", getDispatchTriggerERC());
 		attributes.put("size", getSize());
 		attributes.put("total", getTotal());
@@ -109,11 +112,18 @@ public class BatchPlannerLogWrapper
 			setBatchPlannerPlanId(batchPlannerPlanId);
 		}
 
-		String batchEngineTaskERC = (String)attributes.get(
-			"batchEngineTaskERC");
+		String batchEngineExportTaskERC = (String)attributes.get(
+			"batchEngineExportTaskERC");
 
-		if (batchEngineTaskERC != null) {
-			setBatchEngineTaskERC(batchEngineTaskERC);
+		if (batchEngineExportTaskERC != null) {
+			setBatchEngineExportTaskERC(batchEngineExportTaskERC);
+		}
+
+		String batchEngineImportTaskERC = (String)attributes.get(
+			"batchEngineImportTaskERC");
+
+		if (batchEngineImportTaskERC != null) {
+			setBatchEngineImportTaskERC(batchEngineImportTaskERC);
 		}
 
 		String dispatchTriggerERC = (String)attributes.get(
@@ -143,13 +153,23 @@ public class BatchPlannerLogWrapper
 	}
 
 	/**
-	 * Returns the batch engine task erc of this batch planner log.
+	 * Returns the batch engine export task erc of this batch planner log.
 	 *
-	 * @return the batch engine task erc of this batch planner log
+	 * @return the batch engine export task erc of this batch planner log
 	 */
 	@Override
-	public String getBatchEngineTaskERC() {
-		return model.getBatchEngineTaskERC();
+	public String getBatchEngineExportTaskERC() {
+		return model.getBatchEngineExportTaskERC();
+	}
+
+	/**
+	 * Returns the batch engine import task erc of this batch planner log.
+	 *
+	 * @return the batch engine import task erc of this batch planner log
+	 */
+	@Override
+	public String getBatchEngineImportTaskERC() {
+		return model.getBatchEngineImportTaskERC();
 	}
 
 	/**
@@ -298,13 +318,23 @@ public class BatchPlannerLogWrapper
 	}
 
 	/**
-	 * Sets the batch engine task erc of this batch planner log.
+	 * Sets the batch engine export task erc of this batch planner log.
 	 *
-	 * @param batchEngineTaskERC the batch engine task erc of this batch planner log
+	 * @param batchEngineExportTaskERC the batch engine export task erc of this batch planner log
 	 */
 	@Override
-	public void setBatchEngineTaskERC(String batchEngineTaskERC) {
-		model.setBatchEngineTaskERC(batchEngineTaskERC);
+	public void setBatchEngineExportTaskERC(String batchEngineExportTaskERC) {
+		model.setBatchEngineExportTaskERC(batchEngineExportTaskERC);
+	}
+
+	/**
+	 * Sets the batch engine import task erc of this batch planner log.
+	 *
+	 * @param batchEngineImportTaskERC the batch engine import task erc of this batch planner log
+	 */
+	@Override
+	public void setBatchEngineImportTaskERC(String batchEngineImportTaskERC) {
+		model.setBatchEngineImportTaskERC(batchEngineImportTaskERC);
 	}
 
 	/**

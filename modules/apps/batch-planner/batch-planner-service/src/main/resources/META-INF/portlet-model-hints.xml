@@ -10,7 +10,8 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="batchPlannerPlanId" type="long" />
-		<field name="batchEngineTaskERC" type="String" />
+		<field name="batchEngineExportTaskERC" type="String" />
+		<field name="batchEngineImportTaskERC" type="String" />
 		<field name="dispatchTriggerERC" type="String" />
 		<field name="size" type="int" />
 		<field name="total" type="int" />
@@ -25,21 +26,11 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="batchPlannerPlanId" type="long" />
-		<field name="contentFieldName" type="String">
-			<validator name="required" />
-		</field>
-		<field name="contentFieldType" type="String">
-			<validator name="required" />
-		</field>
-		<field name="openAPIFieldName" type="String">
-			<validator name="required" />
-		</field>
-		<field name="openAPIFieldType" type="String">
-			<validator name="required" />
-		</field>
-		<field name="transformationJavaCode" type="String">
-			<hint-collection name="CLOB" />
-		</field>
+		<field name="externalFieldName" type="String" />
+		<field name="externalFieldType" type="String" />
+		<field name="internalFieldName" type="String" />
+		<field name="internalFieldType" type="String" />
+		<field name="script" type="String" />
 	</model>
 	<model name="com.liferay.batch.planner.model.BatchPlannerPlan">
 		<field name="mvccVersion" type="long" />
@@ -50,15 +41,9 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="active" type="boolean" />
-		<field name="contentType" type="String">
-			<validator name="required" />
-		</field>
-		<field name="contentUrl" type="String">
-			<validator name="required" />
-		</field>
-		<field name="openAPISchemaClassName" type="String">
-			<validator name="required" />
-		</field>
+		<field name="externalType" type="String" />
+		<field name="externalURL" type="String" />
+		<field name="internalClassName" type="String" />
 		<field name="name" type="String">
 			<validator name="required" />
 		</field>

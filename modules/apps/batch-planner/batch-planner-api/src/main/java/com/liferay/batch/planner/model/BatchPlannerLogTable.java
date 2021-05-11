@@ -52,9 +52,13 @@ public class BatchPlannerLogTable extends BaseTable<BatchPlannerLogTable> {
 		createColumn(
 			"batchPlannerPlanId", Long.class, Types.BIGINT,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerLogTable, String> batchEngineTaskERC =
+	public final Column<BatchPlannerLogTable, String> batchEngineExportTaskERC =
 		createColumn(
-			"batchEngineTaskERC", String.class, Types.VARCHAR,
+			"batchEngineExportTaskERC", String.class, Types.VARCHAR,
+			Column.FLAG_DEFAULT);
+	public final Column<BatchPlannerLogTable, String> batchEngineImportTaskERC =
+		createColumn(
+			"batchEngineImportTaskERC", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
 	public final Column<BatchPlannerLogTable, String> dispatchTriggerERC =
 		createColumn(

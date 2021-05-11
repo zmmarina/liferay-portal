@@ -41,9 +41,9 @@ public class BatchPlannerPlanSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setActive(model.isActive());
-		soapModel.setContentType(model.getContentType());
-		soapModel.setContentUrl(model.getContentUrl());
-		soapModel.setOpenAPISchemaClassName(model.getOpenAPISchemaClassName());
+		soapModel.setExternalType(model.getExternalType());
+		soapModel.setExternalURL(model.getExternalURL());
+		soapModel.setInternalClassName(model.getInternalClassName());
 		soapModel.setName(model.getName());
 		soapModel.setExport(model.isExport());
 
@@ -175,28 +175,28 @@ public class BatchPlannerPlanSoap implements Serializable {
 		_active = active;
 	}
 
-	public String getContentType() {
-		return _contentType;
+	public String getExternalType() {
+		return _externalType;
 	}
 
-	public void setContentType(String contentType) {
-		_contentType = contentType;
+	public void setExternalType(String externalType) {
+		_externalType = externalType;
 	}
 
-	public String getContentUrl() {
-		return _contentUrl;
+	public String getExternalURL() {
+		return _externalURL;
 	}
 
-	public void setContentUrl(String contentUrl) {
-		_contentUrl = contentUrl;
+	public void setExternalURL(String externalURL) {
+		_externalURL = externalURL;
 	}
 
-	public String getOpenAPISchemaClassName() {
-		return _openAPISchemaClassName;
+	public String getInternalClassName() {
+		return _internalClassName;
 	}
 
-	public void setOpenAPISchemaClassName(String openAPISchemaClassName) {
-		_openAPISchemaClassName = openAPISchemaClassName;
+	public void setInternalClassName(String internalClassName) {
+		_internalClassName = internalClassName;
 	}
 
 	public String getName() {
@@ -227,9 +227,9 @@ public class BatchPlannerPlanSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _active;
-	private String _contentType;
-	private String _contentUrl;
-	private String _openAPISchemaClassName;
+	private String _externalType;
+	private String _externalURL;
+	private String _internalClassName;
 	private String _name;
 	private boolean _export;
 

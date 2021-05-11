@@ -186,59 +186,114 @@ public interface BatchPlannerLogPersistence
 	public int countByBatchPlannerPlanId(long batchPlannerPlanId);
 
 	/**
-	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineTaskERC = &#63; or throws a <code>NoSuchLogException</code> if it could not be found.
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineExportTaskERC = &#63; or throws a <code>NoSuchLogException</code> if it could not be found.
 	 *
 	 * @param batchPlannerPlanId the batch planner plan ID
-	 * @param batchEngineTaskERC the batch engine task erc
+	 * @param batchEngineExportTaskERC the batch engine export task erc
 	 * @return the matching batch planner log
 	 * @throws NoSuchLogException if a matching batch planner log could not be found
 	 */
-	public BatchPlannerLog findByBPPI_BETERC(
-			long batchPlannerPlanId, String batchEngineTaskERC)
+	public BatchPlannerLog findByBPPI_BEETERC(
+			long batchPlannerPlanId, String batchEngineExportTaskERC)
 		throws NoSuchLogException;
 
 	/**
-	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineTaskERC = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineExportTaskERC = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param batchPlannerPlanId the batch planner plan ID
-	 * @param batchEngineTaskERC the batch engine task erc
+	 * @param batchEngineExportTaskERC the batch engine export task erc
 	 * @return the matching batch planner log, or <code>null</code> if a matching batch planner log could not be found
 	 */
-	public BatchPlannerLog fetchByBPPI_BETERC(
-		long batchPlannerPlanId, String batchEngineTaskERC);
+	public BatchPlannerLog fetchByBPPI_BEETERC(
+		long batchPlannerPlanId, String batchEngineExportTaskERC);
 
 	/**
-	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineTaskERC = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineExportTaskERC = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param batchPlannerPlanId the batch planner plan ID
-	 * @param batchEngineTaskERC the batch engine task erc
+	 * @param batchEngineExportTaskERC the batch engine export task erc
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching batch planner log, or <code>null</code> if a matching batch planner log could not be found
 	 */
-	public BatchPlannerLog fetchByBPPI_BETERC(
-		long batchPlannerPlanId, String batchEngineTaskERC,
+	public BatchPlannerLog fetchByBPPI_BEETERC(
+		long batchPlannerPlanId, String batchEngineExportTaskERC,
 		boolean useFinderCache);
 
 	/**
-	 * Removes the batch planner log where batchPlannerPlanId = &#63; and batchEngineTaskERC = &#63; from the database.
+	 * Removes the batch planner log where batchPlannerPlanId = &#63; and batchEngineExportTaskERC = &#63; from the database.
 	 *
 	 * @param batchPlannerPlanId the batch planner plan ID
-	 * @param batchEngineTaskERC the batch engine task erc
+	 * @param batchEngineExportTaskERC the batch engine export task erc
 	 * @return the batch planner log that was removed
 	 */
-	public BatchPlannerLog removeByBPPI_BETERC(
-			long batchPlannerPlanId, String batchEngineTaskERC)
+	public BatchPlannerLog removeByBPPI_BEETERC(
+			long batchPlannerPlanId, String batchEngineExportTaskERC)
 		throws NoSuchLogException;
 
 	/**
-	 * Returns the number of batch planner logs where batchPlannerPlanId = &#63; and batchEngineTaskERC = &#63;.
+	 * Returns the number of batch planner logs where batchPlannerPlanId = &#63; and batchEngineExportTaskERC = &#63;.
 	 *
 	 * @param batchPlannerPlanId the batch planner plan ID
-	 * @param batchEngineTaskERC the batch engine task erc
+	 * @param batchEngineExportTaskERC the batch engine export task erc
 	 * @return the number of matching batch planner logs
 	 */
-	public int countByBPPI_BETERC(
-		long batchPlannerPlanId, String batchEngineTaskERC);
+	public int countByBPPI_BEETERC(
+		long batchPlannerPlanId, String batchEngineExportTaskERC);
+
+	/**
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineImportTaskERC = &#63; or throws a <code>NoSuchLogException</code> if it could not be found.
+	 *
+	 * @param batchPlannerPlanId the batch planner plan ID
+	 * @param batchEngineImportTaskERC the batch engine import task erc
+	 * @return the matching batch planner log
+	 * @throws NoSuchLogException if a matching batch planner log could not be found
+	 */
+	public BatchPlannerLog findByBPPI_BEITERC(
+			long batchPlannerPlanId, String batchEngineImportTaskERC)
+		throws NoSuchLogException;
+
+	/**
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineImportTaskERC = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param batchPlannerPlanId the batch planner plan ID
+	 * @param batchEngineImportTaskERC the batch engine import task erc
+	 * @return the matching batch planner log, or <code>null</code> if a matching batch planner log could not be found
+	 */
+	public BatchPlannerLog fetchByBPPI_BEITERC(
+		long batchPlannerPlanId, String batchEngineImportTaskERC);
+
+	/**
+	 * Returns the batch planner log where batchPlannerPlanId = &#63; and batchEngineImportTaskERC = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param batchPlannerPlanId the batch planner plan ID
+	 * @param batchEngineImportTaskERC the batch engine import task erc
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching batch planner log, or <code>null</code> if a matching batch planner log could not be found
+	 */
+	public BatchPlannerLog fetchByBPPI_BEITERC(
+		long batchPlannerPlanId, String batchEngineImportTaskERC,
+		boolean useFinderCache);
+
+	/**
+	 * Removes the batch planner log where batchPlannerPlanId = &#63; and batchEngineImportTaskERC = &#63; from the database.
+	 *
+	 * @param batchPlannerPlanId the batch planner plan ID
+	 * @param batchEngineImportTaskERC the batch engine import task erc
+	 * @return the batch planner log that was removed
+	 */
+	public BatchPlannerLog removeByBPPI_BEITERC(
+			long batchPlannerPlanId, String batchEngineImportTaskERC)
+		throws NoSuchLogException;
+
+	/**
+	 * Returns the number of batch planner logs where batchPlannerPlanId = &#63; and batchEngineImportTaskERC = &#63;.
+	 *
+	 * @param batchPlannerPlanId the batch planner plan ID
+	 * @param batchEngineImportTaskERC the batch engine import task erc
+	 * @return the number of matching batch planner logs
+	 */
+	public int countByBPPI_BEITERC(
+		long batchPlannerPlanId, String batchEngineImportTaskERC);
 
 	/**
 	 * Returns the batch planner log where batchPlannerPlanId = &#63; and dispatchTriggerERC = &#63; or throws a <code>NoSuchLogException</code> if it could not be found.

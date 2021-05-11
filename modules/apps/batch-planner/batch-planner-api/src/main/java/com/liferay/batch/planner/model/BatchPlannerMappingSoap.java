@@ -43,11 +43,11 @@ public class BatchPlannerMappingSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setBatchPlannerPlanId(model.getBatchPlannerPlanId());
-		soapModel.setContentFieldName(model.getContentFieldName());
-		soapModel.setContentFieldType(model.getContentFieldType());
-		soapModel.setOpenAPIFieldName(model.getOpenAPIFieldName());
-		soapModel.setOpenAPIFieldType(model.getOpenAPIFieldType());
-		soapModel.setTransformationJavaCode(model.getTransformationJavaCode());
+		soapModel.setExternalFieldName(model.getExternalFieldName());
+		soapModel.setExternalFieldType(model.getExternalFieldType());
+		soapModel.setInternalFieldName(model.getInternalFieldName());
+		soapModel.setInternalFieldType(model.getInternalFieldType());
+		soapModel.setScript(model.getScript());
 
 		return soapModel;
 	}
@@ -174,44 +174,44 @@ public class BatchPlannerMappingSoap implements Serializable {
 		_batchPlannerPlanId = batchPlannerPlanId;
 	}
 
-	public String getContentFieldName() {
-		return _contentFieldName;
+	public String getExternalFieldName() {
+		return _externalFieldName;
 	}
 
-	public void setContentFieldName(String contentFieldName) {
-		_contentFieldName = contentFieldName;
+	public void setExternalFieldName(String externalFieldName) {
+		_externalFieldName = externalFieldName;
 	}
 
-	public String getContentFieldType() {
-		return _contentFieldType;
+	public String getExternalFieldType() {
+		return _externalFieldType;
 	}
 
-	public void setContentFieldType(String contentFieldType) {
-		_contentFieldType = contentFieldType;
+	public void setExternalFieldType(String externalFieldType) {
+		_externalFieldType = externalFieldType;
 	}
 
-	public String getOpenAPIFieldName() {
-		return _openAPIFieldName;
+	public String getInternalFieldName() {
+		return _internalFieldName;
 	}
 
-	public void setOpenAPIFieldName(String openAPIFieldName) {
-		_openAPIFieldName = openAPIFieldName;
+	public void setInternalFieldName(String internalFieldName) {
+		_internalFieldName = internalFieldName;
 	}
 
-	public String getOpenAPIFieldType() {
-		return _openAPIFieldType;
+	public String getInternalFieldType() {
+		return _internalFieldType;
 	}
 
-	public void setOpenAPIFieldType(String openAPIFieldType) {
-		_openAPIFieldType = openAPIFieldType;
+	public void setInternalFieldType(String internalFieldType) {
+		_internalFieldType = internalFieldType;
 	}
 
-	public String getTransformationJavaCode() {
-		return _transformationJavaCode;
+	public String getScript() {
+		return _script;
 	}
 
-	public void setTransformationJavaCode(String transformationJavaCode) {
-		_transformationJavaCode = transformationJavaCode;
+	public void setScript(String script) {
+		_script = script;
 	}
 
 	private long _mvccVersion;
@@ -222,10 +222,10 @@ public class BatchPlannerMappingSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _batchPlannerPlanId;
-	private String _contentFieldName;
-	private String _contentFieldType;
-	private String _openAPIFieldName;
-	private String _openAPIFieldType;
-	private String _transformationJavaCode;
+	private String _externalFieldName;
+	private String _externalFieldType;
+	private String _internalFieldName;
+	private String _internalFieldType;
+	private String _script;
 
 }

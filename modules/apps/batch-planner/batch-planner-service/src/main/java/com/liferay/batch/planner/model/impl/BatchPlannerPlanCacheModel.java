@@ -96,12 +96,12 @@ public class BatchPlannerPlanCacheModel
 		sb.append(modifiedDate);
 		sb.append(", active=");
 		sb.append(active);
-		sb.append(", contentType=");
-		sb.append(contentType);
-		sb.append(", contentUrl=");
-		sb.append(contentUrl);
-		sb.append(", openAPISchemaClassName=");
-		sb.append(openAPISchemaClassName);
+		sb.append(", externalType=");
+		sb.append(externalType);
+		sb.append(", externalURL=");
+		sb.append(externalURL);
+		sb.append(", internalClassName=");
+		sb.append(internalClassName);
 		sb.append(", name=");
 		sb.append(name);
 		sb.append(", export=");
@@ -143,26 +143,25 @@ public class BatchPlannerPlanCacheModel
 
 		batchPlannerPlanImpl.setActive(active);
 
-		if (contentType == null) {
-			batchPlannerPlanImpl.setContentType("");
+		if (externalType == null) {
+			batchPlannerPlanImpl.setExternalType("");
 		}
 		else {
-			batchPlannerPlanImpl.setContentType(contentType);
+			batchPlannerPlanImpl.setExternalType(externalType);
 		}
 
-		if (contentUrl == null) {
-			batchPlannerPlanImpl.setContentUrl("");
+		if (externalURL == null) {
+			batchPlannerPlanImpl.setExternalURL("");
 		}
 		else {
-			batchPlannerPlanImpl.setContentUrl(contentUrl);
+			batchPlannerPlanImpl.setExternalURL(externalURL);
 		}
 
-		if (openAPISchemaClassName == null) {
-			batchPlannerPlanImpl.setOpenAPISchemaClassName("");
+		if (internalClassName == null) {
+			batchPlannerPlanImpl.setInternalClassName("");
 		}
 		else {
-			batchPlannerPlanImpl.setOpenAPISchemaClassName(
-				openAPISchemaClassName);
+			batchPlannerPlanImpl.setInternalClassName(internalClassName);
 		}
 
 		if (name == null) {
@@ -193,9 +192,9 @@ public class BatchPlannerPlanCacheModel
 		modifiedDate = objectInput.readLong();
 
 		active = objectInput.readBoolean();
-		contentType = objectInput.readUTF();
-		contentUrl = objectInput.readUTF();
-		openAPISchemaClassName = objectInput.readUTF();
+		externalType = objectInput.readUTF();
+		externalURL = objectInput.readUTF();
+		internalClassName = objectInput.readUTF();
 		name = objectInput.readUTF();
 
 		export = objectInput.readBoolean();
@@ -223,25 +222,25 @@ public class BatchPlannerPlanCacheModel
 
 		objectOutput.writeBoolean(active);
 
-		if (contentType == null) {
+		if (externalType == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(contentType);
+			objectOutput.writeUTF(externalType);
 		}
 
-		if (contentUrl == null) {
+		if (externalURL == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(contentUrl);
+			objectOutput.writeUTF(externalURL);
 		}
 
-		if (openAPISchemaClassName == null) {
+		if (internalClassName == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(openAPISchemaClassName);
+			objectOutput.writeUTF(internalClassName);
 		}
 
 		if (name == null) {
@@ -262,9 +261,9 @@ public class BatchPlannerPlanCacheModel
 	public long createDate;
 	public long modifiedDate;
 	public boolean active;
-	public String contentType;
-	public String contentUrl;
-	public String openAPISchemaClassName;
+	public String externalType;
+	public String externalURL;
+	public String internalClassName;
 	public String name;
 	public boolean export;
 

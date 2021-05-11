@@ -78,8 +78,8 @@ public class BatchPlannerPlanModelImpl
 		{"companyId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"userName", Types.VARCHAR}, {"createDate", Types.TIMESTAMP},
 		{"modifiedDate", Types.TIMESTAMP}, {"active_", Types.BOOLEAN},
-		{"contentType", Types.VARCHAR}, {"contentUrl", Types.VARCHAR},
-		{"openAPISchemaClassName", Types.VARCHAR}, {"name", Types.VARCHAR},
+		{"externalType", Types.VARCHAR}, {"externalURL", Types.VARCHAR},
+		{"internalClassName", Types.VARCHAR}, {"name", Types.VARCHAR},
 		{"export", Types.BOOLEAN}
 	};
 
@@ -95,15 +95,15 @@ public class BatchPlannerPlanModelImpl
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("active_", Types.BOOLEAN);
-		TABLE_COLUMNS_MAP.put("contentType", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("contentUrl", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("openAPISchemaClassName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("externalType", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("externalURL", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("internalClassName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("export", Types.BOOLEAN);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table BatchPlannerPlan (mvccVersion LONG default 0 not null,batchPlannerPlanId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,active_ BOOLEAN,contentType VARCHAR(75) null,contentUrl VARCHAR(75) null,openAPISchemaClassName VARCHAR(75) null,name VARCHAR(75) null,export BOOLEAN)";
+		"create table BatchPlannerPlan (mvccVersion LONG default 0 not null,batchPlannerPlanId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,active_ BOOLEAN,externalType VARCHAR(75) null,externalURL VARCHAR(75) null,internalClassName VARCHAR(75) null,name VARCHAR(75) null,export BOOLEAN)";
 
 	public static final String TABLE_SQL_DROP = "drop table BatchPlannerPlan";
 
@@ -181,9 +181,9 @@ public class BatchPlannerPlanModelImpl
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setActive(soapModel.isActive());
-		model.setContentType(soapModel.getContentType());
-		model.setContentUrl(soapModel.getContentUrl());
-		model.setOpenAPISchemaClassName(soapModel.getOpenAPISchemaClassName());
+		model.setExternalType(soapModel.getExternalType());
+		model.setExternalURL(soapModel.getExternalURL());
+		model.setInternalClassName(soapModel.getInternalClassName());
 		model.setName(soapModel.getName());
 		model.setExport(soapModel.isExport());
 
@@ -384,24 +384,23 @@ public class BatchPlannerPlanModelImpl
 			"active",
 			(BiConsumer<BatchPlannerPlan, Boolean>)BatchPlannerPlan::setActive);
 		attributeGetterFunctions.put(
-			"contentType", BatchPlannerPlan::getContentType);
+			"externalType", BatchPlannerPlan::getExternalType);
 		attributeSetterBiConsumers.put(
-			"contentType",
+			"externalType",
 			(BiConsumer<BatchPlannerPlan, String>)
-				BatchPlannerPlan::setContentType);
+				BatchPlannerPlan::setExternalType);
 		attributeGetterFunctions.put(
-			"contentUrl", BatchPlannerPlan::getContentUrl);
+			"externalURL", BatchPlannerPlan::getExternalURL);
 		attributeSetterBiConsumers.put(
-			"contentUrl",
+			"externalURL",
 			(BiConsumer<BatchPlannerPlan, String>)
-				BatchPlannerPlan::setContentUrl);
+				BatchPlannerPlan::setExternalURL);
 		attributeGetterFunctions.put(
-			"openAPISchemaClassName",
-			BatchPlannerPlan::getOpenAPISchemaClassName);
+			"internalClassName", BatchPlannerPlan::getInternalClassName);
 		attributeSetterBiConsumers.put(
-			"openAPISchemaClassName",
+			"internalClassName",
 			(BiConsumer<BatchPlannerPlan, String>)
-				BatchPlannerPlan::setOpenAPISchemaClassName);
+				BatchPlannerPlan::setInternalClassName);
 		attributeGetterFunctions.put("name", BatchPlannerPlan::getName);
 		attributeSetterBiConsumers.put(
 			"name",
@@ -591,62 +590,62 @@ public class BatchPlannerPlanModelImpl
 
 	@JSON
 	@Override
-	public String getContentType() {
-		if (_contentType == null) {
+	public String getExternalType() {
+		if (_externalType == null) {
 			return "";
 		}
 		else {
-			return _contentType;
+			return _externalType;
 		}
 	}
 
 	@Override
-	public void setContentType(String contentType) {
+	public void setExternalType(String externalType) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_contentType = contentType;
+		_externalType = externalType;
 	}
 
 	@JSON
 	@Override
-	public String getContentUrl() {
-		if (_contentUrl == null) {
+	public String getExternalURL() {
+		if (_externalURL == null) {
 			return "";
 		}
 		else {
-			return _contentUrl;
+			return _externalURL;
 		}
 	}
 
 	@Override
-	public void setContentUrl(String contentUrl) {
+	public void setExternalURL(String externalURL) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_contentUrl = contentUrl;
+		_externalURL = externalURL;
 	}
 
 	@JSON
 	@Override
-	public String getOpenAPISchemaClassName() {
-		if (_openAPISchemaClassName == null) {
+	public String getInternalClassName() {
+		if (_internalClassName == null) {
 			return "";
 		}
 		else {
-			return _openAPISchemaClassName;
+			return _internalClassName;
 		}
 	}
 
 	@Override
-	public void setOpenAPISchemaClassName(String openAPISchemaClassName) {
+	public void setInternalClassName(String internalClassName) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_openAPISchemaClassName = openAPISchemaClassName;
+		_internalClassName = internalClassName;
 	}
 
 	@JSON
@@ -763,10 +762,9 @@ public class BatchPlannerPlanModelImpl
 		batchPlannerPlanImpl.setCreateDate(getCreateDate());
 		batchPlannerPlanImpl.setModifiedDate(getModifiedDate());
 		batchPlannerPlanImpl.setActive(isActive());
-		batchPlannerPlanImpl.setContentType(getContentType());
-		batchPlannerPlanImpl.setContentUrl(getContentUrl());
-		batchPlannerPlanImpl.setOpenAPISchemaClassName(
-			getOpenAPISchemaClassName());
+		batchPlannerPlanImpl.setExternalType(getExternalType());
+		batchPlannerPlanImpl.setExternalURL(getExternalURL());
+		batchPlannerPlanImpl.setInternalClassName(getInternalClassName());
 		batchPlannerPlanImpl.setName(getName());
 		batchPlannerPlanImpl.setExport(isExport());
 
@@ -886,32 +884,28 @@ public class BatchPlannerPlanModelImpl
 
 		batchPlannerPlanCacheModel.active = isActive();
 
-		batchPlannerPlanCacheModel.contentType = getContentType();
+		batchPlannerPlanCacheModel.externalType = getExternalType();
 
-		String contentType = batchPlannerPlanCacheModel.contentType;
+		String externalType = batchPlannerPlanCacheModel.externalType;
 
-		if ((contentType != null) && (contentType.length() == 0)) {
-			batchPlannerPlanCacheModel.contentType = null;
+		if ((externalType != null) && (externalType.length() == 0)) {
+			batchPlannerPlanCacheModel.externalType = null;
 		}
 
-		batchPlannerPlanCacheModel.contentUrl = getContentUrl();
+		batchPlannerPlanCacheModel.externalURL = getExternalURL();
 
-		String contentUrl = batchPlannerPlanCacheModel.contentUrl;
+		String externalURL = batchPlannerPlanCacheModel.externalURL;
 
-		if ((contentUrl != null) && (contentUrl.length() == 0)) {
-			batchPlannerPlanCacheModel.contentUrl = null;
+		if ((externalURL != null) && (externalURL.length() == 0)) {
+			batchPlannerPlanCacheModel.externalURL = null;
 		}
 
-		batchPlannerPlanCacheModel.openAPISchemaClassName =
-			getOpenAPISchemaClassName();
+		batchPlannerPlanCacheModel.internalClassName = getInternalClassName();
 
-		String openAPISchemaClassName =
-			batchPlannerPlanCacheModel.openAPISchemaClassName;
+		String internalClassName = batchPlannerPlanCacheModel.internalClassName;
 
-		if ((openAPISchemaClassName != null) &&
-			(openAPISchemaClassName.length() == 0)) {
-
-			batchPlannerPlanCacheModel.openAPISchemaClassName = null;
+		if ((internalClassName != null) && (internalClassName.length() == 0)) {
+			batchPlannerPlanCacheModel.internalClassName = null;
 		}
 
 		batchPlannerPlanCacheModel.name = getName();
@@ -1006,9 +1000,9 @@ public class BatchPlannerPlanModelImpl
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
 	private boolean _active;
-	private String _contentType;
-	private String _contentUrl;
-	private String _openAPISchemaClassName;
+	private String _externalType;
+	private String _externalURL;
+	private String _internalClassName;
 	private String _name;
 	private boolean _export;
 
@@ -1049,10 +1043,9 @@ public class BatchPlannerPlanModelImpl
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
 		_columnOriginalValues.put("active_", _active);
-		_columnOriginalValues.put("contentType", _contentType);
-		_columnOriginalValues.put("contentUrl", _contentUrl);
-		_columnOriginalValues.put(
-			"openAPISchemaClassName", _openAPISchemaClassName);
+		_columnOriginalValues.put("externalType", _externalType);
+		_columnOriginalValues.put("externalURL", _externalURL);
+		_columnOriginalValues.put("internalClassName", _internalClassName);
 		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("export", _export);
 	}
@@ -1094,11 +1087,11 @@ public class BatchPlannerPlanModelImpl
 
 		columnBitmasks.put("active_", 128L);
 
-		columnBitmasks.put("contentType", 256L);
+		columnBitmasks.put("externalType", 256L);
 
-		columnBitmasks.put("contentUrl", 512L);
+		columnBitmasks.put("externalURL", 512L);
 
-		columnBitmasks.put("openAPISchemaClassName", 1024L);
+		columnBitmasks.put("internalClassName", 1024L);
 
 		columnBitmasks.put("name", 2048L);
 

@@ -52,15 +52,15 @@ public class BatchPlannerPlanTable extends BaseTable<BatchPlannerPlanTable> {
 			"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<BatchPlannerPlanTable, Boolean> active = createColumn(
 		"active_", Boolean.class, Types.BOOLEAN, Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerPlanTable, String> contentType =
+	public final Column<BatchPlannerPlanTable, String> externalType =
 		createColumn(
-			"contentType", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerPlanTable, String> contentUrl =
+			"externalType", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<BatchPlannerPlanTable, String> externalURL =
 		createColumn(
-			"contentUrl", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerPlanTable, String> openAPISchemaClassName =
+			"externalURL", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<BatchPlannerPlanTable, String> internalClassName =
 		createColumn(
-			"openAPISchemaClassName", String.class, Types.VARCHAR,
+			"internalClassName", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
 	public final Column<BatchPlannerPlanTable, String> name = createColumn(
 		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);

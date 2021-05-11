@@ -41,7 +41,10 @@ public class BatchPlannerLogSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setBatchPlannerPlanId(model.getBatchPlannerPlanId());
-		soapModel.setBatchEngineTaskERC(model.getBatchEngineTaskERC());
+		soapModel.setBatchEngineExportTaskERC(
+			model.getBatchEngineExportTaskERC());
+		soapModel.setBatchEngineImportTaskERC(
+			model.getBatchEngineImportTaskERC());
 		soapModel.setDispatchTriggerERC(model.getDispatchTriggerERC());
 		soapModel.setSize(model.getSize());
 		soapModel.setTotal(model.getTotal());
@@ -169,12 +172,20 @@ public class BatchPlannerLogSoap implements Serializable {
 		_batchPlannerPlanId = batchPlannerPlanId;
 	}
 
-	public String getBatchEngineTaskERC() {
-		return _batchEngineTaskERC;
+	public String getBatchEngineExportTaskERC() {
+		return _batchEngineExportTaskERC;
 	}
 
-	public void setBatchEngineTaskERC(String batchEngineTaskERC) {
-		_batchEngineTaskERC = batchEngineTaskERC;
+	public void setBatchEngineExportTaskERC(String batchEngineExportTaskERC) {
+		_batchEngineExportTaskERC = batchEngineExportTaskERC;
+	}
+
+	public String getBatchEngineImportTaskERC() {
+		return _batchEngineImportTaskERC;
+	}
+
+	public void setBatchEngineImportTaskERC(String batchEngineImportTaskERC) {
+		_batchEngineImportTaskERC = batchEngineImportTaskERC;
 	}
 
 	public String getDispatchTriggerERC() {
@@ -217,7 +228,8 @@ public class BatchPlannerLogSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _batchPlannerPlanId;
-	private String _batchEngineTaskERC;
+	private String _batchEngineExportTaskERC;
+	private String _batchEngineImportTaskERC;
 	private String _dispatchTriggerERC;
 	private int _size;
 	private int _total;

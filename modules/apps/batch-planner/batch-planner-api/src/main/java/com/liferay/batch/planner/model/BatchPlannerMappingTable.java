@@ -17,7 +17,6 @@ package com.liferay.batch.planner.model;
 import com.liferay.petra.sql.dsl.Column;
 import com.liferay.petra.sql.dsl.base.BaseTable;
 
-import java.sql.Clob;
 import java.sql.Types;
 
 import java.util.Date;
@@ -60,26 +59,24 @@ public class BatchPlannerMappingTable
 		createColumn(
 			"batchPlannerPlanId", Long.class, Types.BIGINT,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerMappingTable, String> contentFieldName =
+	public final Column<BatchPlannerMappingTable, String> externalFieldName =
 		createColumn(
-			"contentFieldName", String.class, Types.VARCHAR,
+			"externalFieldName", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerMappingTable, String> contentFieldType =
+	public final Column<BatchPlannerMappingTable, String> externalFieldType =
 		createColumn(
-			"contentFieldType", String.class, Types.VARCHAR,
+			"externalFieldType", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerMappingTable, String> openAPIFieldName =
+	public final Column<BatchPlannerMappingTable, String> internalFieldName =
 		createColumn(
-			"openAPIFieldName", String.class, Types.VARCHAR,
+			"internalFieldName", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerMappingTable, String> openAPIFieldType =
+	public final Column<BatchPlannerMappingTable, String> internalFieldType =
 		createColumn(
-			"openAPIFieldType", String.class, Types.VARCHAR,
+			"internalFieldType", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
-	public final Column<BatchPlannerMappingTable, Clob> transformationJavaCode =
-		createColumn(
-			"transformationJavaCode", Clob.class, Types.CLOB,
-			Column.FLAG_DEFAULT);
+	public final Column<BatchPlannerMappingTable, String> script = createColumn(
+		"script", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 
 	private BatchPlannerMappingTable() {
 		super("BatchPlannerMapping", BatchPlannerMappingTable::new);

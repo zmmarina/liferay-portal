@@ -96,16 +96,16 @@ public class BatchPlannerMappingCacheModel
 		sb.append(modifiedDate);
 		sb.append(", batchPlannerPlanId=");
 		sb.append(batchPlannerPlanId);
-		sb.append(", contentFieldName=");
-		sb.append(contentFieldName);
-		sb.append(", contentFieldType=");
-		sb.append(contentFieldType);
-		sb.append(", openAPIFieldName=");
-		sb.append(openAPIFieldName);
-		sb.append(", openAPIFieldType=");
-		sb.append(openAPIFieldType);
-		sb.append(", transformationJavaCode=");
-		sb.append(transformationJavaCode);
+		sb.append(", externalFieldName=");
+		sb.append(externalFieldName);
+		sb.append(", externalFieldType=");
+		sb.append(externalFieldType);
+		sb.append(", internalFieldName=");
+		sb.append(internalFieldName);
+		sb.append(", internalFieldType=");
+		sb.append(internalFieldType);
+		sb.append(", script=");
+		sb.append(script);
 		sb.append("}");
 
 		return sb.toString();
@@ -144,36 +144,40 @@ public class BatchPlannerMappingCacheModel
 
 		batchPlannerMappingImpl.setBatchPlannerPlanId(batchPlannerPlanId);
 
-		if (contentFieldName == null) {
-			batchPlannerMappingImpl.setContentFieldName("");
+		if (externalFieldName == null) {
+			batchPlannerMappingImpl.setExternalFieldName("");
 		}
 		else {
-			batchPlannerMappingImpl.setContentFieldName(contentFieldName);
+			batchPlannerMappingImpl.setExternalFieldName(externalFieldName);
 		}
 
-		if (contentFieldType == null) {
-			batchPlannerMappingImpl.setContentFieldType("");
+		if (externalFieldType == null) {
+			batchPlannerMappingImpl.setExternalFieldType("");
 		}
 		else {
-			batchPlannerMappingImpl.setContentFieldType(contentFieldType);
+			batchPlannerMappingImpl.setExternalFieldType(externalFieldType);
 		}
 
-		if (openAPIFieldName == null) {
-			batchPlannerMappingImpl.setOpenAPIFieldName("");
+		if (internalFieldName == null) {
+			batchPlannerMappingImpl.setInternalFieldName("");
 		}
 		else {
-			batchPlannerMappingImpl.setOpenAPIFieldName(openAPIFieldName);
+			batchPlannerMappingImpl.setInternalFieldName(internalFieldName);
 		}
 
-		if (openAPIFieldType == null) {
-			batchPlannerMappingImpl.setOpenAPIFieldType("");
+		if (internalFieldType == null) {
+			batchPlannerMappingImpl.setInternalFieldType("");
 		}
 		else {
-			batchPlannerMappingImpl.setOpenAPIFieldType(openAPIFieldType);
+			batchPlannerMappingImpl.setInternalFieldType(internalFieldType);
 		}
 
-		batchPlannerMappingImpl.setTransformationJavaCode(
-			transformationJavaCode);
+		if (script == null) {
+			batchPlannerMappingImpl.setScript("");
+		}
+		else {
+			batchPlannerMappingImpl.setScript(script);
+		}
 
 		batchPlannerMappingImpl.resetOriginalValues();
 
@@ -181,9 +185,7 @@ public class BatchPlannerMappingCacheModel
 	}
 
 	@Override
-	public void readExternal(ObjectInput objectInput)
-		throws ClassNotFoundException, IOException {
-
+	public void readExternal(ObjectInput objectInput) throws IOException {
 		mvccVersion = objectInput.readLong();
 
 		batchPlannerMappingId = objectInput.readLong();
@@ -196,11 +198,11 @@ public class BatchPlannerMappingCacheModel
 		modifiedDate = objectInput.readLong();
 
 		batchPlannerPlanId = objectInput.readLong();
-		contentFieldName = objectInput.readUTF();
-		contentFieldType = objectInput.readUTF();
-		openAPIFieldName = objectInput.readUTF();
-		openAPIFieldType = objectInput.readUTF();
-		transformationJavaCode = (String)objectInput.readObject();
+		externalFieldName = objectInput.readUTF();
+		externalFieldType = objectInput.readUTF();
+		internalFieldName = objectInput.readUTF();
+		internalFieldType = objectInput.readUTF();
+		script = objectInput.readUTF();
 	}
 
 	@Override
@@ -225,39 +227,39 @@ public class BatchPlannerMappingCacheModel
 
 		objectOutput.writeLong(batchPlannerPlanId);
 
-		if (contentFieldName == null) {
+		if (externalFieldName == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(contentFieldName);
+			objectOutput.writeUTF(externalFieldName);
 		}
 
-		if (contentFieldType == null) {
+		if (externalFieldType == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(contentFieldType);
+			objectOutput.writeUTF(externalFieldType);
 		}
 
-		if (openAPIFieldName == null) {
+		if (internalFieldName == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(openAPIFieldName);
+			objectOutput.writeUTF(internalFieldName);
 		}
 
-		if (openAPIFieldType == null) {
+		if (internalFieldType == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(openAPIFieldType);
+			objectOutput.writeUTF(internalFieldType);
 		}
 
-		if (transformationJavaCode == null) {
-			objectOutput.writeObject("");
+		if (script == null) {
+			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeObject(transformationJavaCode);
+			objectOutput.writeUTF(script);
 		}
 	}
 
@@ -269,10 +271,10 @@ public class BatchPlannerMappingCacheModel
 	public long createDate;
 	public long modifiedDate;
 	public long batchPlannerPlanId;
-	public String contentFieldName;
-	public String contentFieldType;
-	public String openAPIFieldName;
-	public String openAPIFieldType;
-	public String transformationJavaCode;
+	public String externalFieldName;
+	public String externalFieldType;
+	public String internalFieldName;
+	public String internalFieldType;
+	public String script;
 
 }
