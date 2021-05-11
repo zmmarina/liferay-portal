@@ -1178,7 +1178,7 @@ public abstract class Base${schemaName}ResourceTestCase {
 							</@getPermissionParameter>
 							<#sep>, </#sep>
 						</#list>
-						));
+					));
 			}
 
 			protected ${schemaName} test${javaMethodSignature.methodName?cap_first}_add${schemaName}() throws Exception {
