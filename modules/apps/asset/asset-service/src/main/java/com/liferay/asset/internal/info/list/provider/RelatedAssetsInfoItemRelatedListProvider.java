@@ -97,18 +97,12 @@ public class RelatedAssetsInfoItemRelatedListProvider
 			assetEntryQuery.setEnd(pagination.getEnd());
 		}
 
-		String orderByCol = Field.MODIFIED_DATE;
-		String orderByType = "DESC";
-
-		if (sort != null) {
-			orderByCol = sort.getFieldName();
-			orderByType = _getOrderByType(sort);
-		}
-
 		assetEntryQuery.setGroupIds(new long[] {groupId});
-		assetEntryQuery.setOrderByCol1(orderByCol);
+		assetEntryQuery.setOrderByCol1(
+			(sort != null) ? sort.getFieldName() : Field.MODIFIED_DATE);
 		assetEntryQuery.setOrderByCol2(Field.CREATE_DATE);
-		assetEntryQuery.setOrderByType1(orderByType);
+		assetEntryQuery.setOrderByType1(
+			(sort != null) ? _getOrderByType(sort) : "DESC");
 		assetEntryQuery.setOrderByType2("DESC");
 
 		if (pagination != null) {
