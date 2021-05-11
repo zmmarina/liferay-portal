@@ -48,7 +48,7 @@ public class ObjectEntryManager {
 			ObjectEntry objectEntry, DTOConverterContext dtoConverterContext)
 		throws Exception {
 
-		return _toObjectEntry(
+		return _objectEntryDTOConverter.toDTO(
 			dtoConverterContext,
 			_objectEntryLocalService.addObjectEntry(
 				userId, siteId, objectDefinitionId,
@@ -95,7 +95,7 @@ public class ObjectEntryManager {
 			long objectEntryId, DTOConverterContext dtoConverterContext)
 		throws Exception {
 
-		return _toObjectEntry(
+		return _objectEntryDTOConverter.toDTO(
 			dtoConverterContext,
 			_objectEntryLocalService.getObjectEntry(objectEntryId));
 	}
@@ -105,18 +105,11 @@ public class ObjectEntryManager {
 			DTOConverterContext dtoConverterContext)
 		throws Exception {
 
-		return _toObjectEntry(
+		return _objectEntryDTOConverter.toDTO(
 			dtoConverterContext,
 			_objectEntryLocalService.updateObjectEntry(
 				userId, objectEntryId, (Map)objectEntry.getProperties(),
 				new ServiceContext()));
-	}
-
-	private ObjectEntry _toObjectEntry(
-		DTOConverterContext dtoConverterContext,
-		com.liferay.object.model.ObjectEntry objectEntry) {
-
-		return _objectEntryDTOConverter.toDTO(dtoConverterContext, objectEntry);
 	}
 
 	@Reference
