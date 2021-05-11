@@ -693,11 +693,10 @@ public class ContentPageEditorDisplayContext {
 		InfoListItemSelectorCriterion infoListItemSelectorCriterion =
 			new InfoListItemSelectorCriterion();
 
-		infoListItemSelectorCriterion.setItemTypes(
-			_getInfoItemFormProviderClassNames());
-
 		infoListItemSelectorCriterion.setDesiredItemSelectorReturnTypes(
 			new InfoListItemSelectorReturnType());
+		infoListItemSelectorCriterion.setItemTypes(
+			_getInfoItemFormProviderClassNames());
 
 		InfoListProviderItemSelectorCriterion
 			infoListProviderItemSelectorCriterion =
