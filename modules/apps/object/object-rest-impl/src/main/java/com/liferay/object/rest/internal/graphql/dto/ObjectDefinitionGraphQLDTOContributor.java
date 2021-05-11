@@ -69,9 +69,9 @@ public class ObjectDefinitionGraphQLDTOContributor
 		return new ObjectDefinitionGraphQLDTOContributor(
 			new ObjectEntryEntityModel(objectFields),
 			graphQLDTOProperties,
-			objectDefinition.getName(),
 			objectDefinition.getPrimaryKeyColumnName(),
-			objectDefinition.getObjectDefinitionId(), objectEntryManager);
+			objectDefinition.getObjectDefinitionId(), objectEntryManager,
+			objectDefinition.getName());
 	}
 
 	@Override
@@ -159,8 +159,8 @@ public class ObjectDefinitionGraphQLDTOContributor
 	}
 
 	private ObjectDefinitionGraphQLDTOContributor(
-		EntityModel entityModel, List<GraphQLDTOProperty> graphQLDTOProperties, String idName, String resourceName, long objectDefinitionId,
-		ObjectEntryManager objectEntryManager) {
+		EntityModel entityModel, List<GraphQLDTOProperty> graphQLDTOProperties, String idName, long objectDefinitionId,
+		ObjectEntryManager objectEntryManager, String resourceName) {
 
 		_entityModel = entityModel;
 		_graphQLDTOProperties = graphQLDTOProperties;
