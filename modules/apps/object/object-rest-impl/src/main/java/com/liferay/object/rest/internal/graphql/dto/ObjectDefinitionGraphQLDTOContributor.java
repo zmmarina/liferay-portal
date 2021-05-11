@@ -99,7 +99,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		throws Exception {
 
 		return _objectEntryToMap(
-			_objectEntryManager.getObjectEntry(id, dtoConverterContext));
+			_objectEntryManager.getObjectEntry(dtoConverterContext, id));
 	}
 
 	@Override

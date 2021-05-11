@@ -86,12 +86,12 @@ public class ObjectEntryManager {
 			},
 			sorts,
 			document -> getObjectEntry(
-				GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK)),
-				dtoConverterContext));
+				dtoConverterContext,
+				GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK))));
 	}
 
 	public ObjectEntry getObjectEntry(
-			long objectEntryId, DTOConverterContext dtoConverterContext)
+			DTOConverterContext dtoConverterContext, long objectEntryId)
 		throws Exception {
 
 		return _objectEntryDTOConverter.toDTO(

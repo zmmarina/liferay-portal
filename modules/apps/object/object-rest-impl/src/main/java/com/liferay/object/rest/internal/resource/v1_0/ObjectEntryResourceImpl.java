@@ -110,7 +110,7 @@ public class ObjectEntryResourceImpl extends BaseObjectEntryResourceImpl {
 	@Override
 	public ObjectEntry getObjectEntry(Long objectEntryId) throws Exception {
 		return _objectEntryManager.getObjectEntry(
-			objectEntryId, _getDTOConverterContext(objectEntryId));
+			_getDTOConverterContext(objectEntryId), objectEntryId);
 	}
 
 	@Override
