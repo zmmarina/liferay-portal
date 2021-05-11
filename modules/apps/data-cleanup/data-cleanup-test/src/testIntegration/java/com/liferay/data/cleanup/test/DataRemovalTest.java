@@ -83,11 +83,9 @@ public class DataRemovalTest {
 			Assert.assertNull(
 				_journalArticleLocalService.fetchArticle(
 					expiredJournalArticle1.getId()));
-
 			Assert.assertNull(
 				_journalArticleLocalService.fetchArticle(
 					expiredJournalArticle2.getId()));
-
 			Assert.assertNotNull(
 				_journalArticleLocalService.fetchArticle(
 					unexpiredJournalArticle.getId()));
