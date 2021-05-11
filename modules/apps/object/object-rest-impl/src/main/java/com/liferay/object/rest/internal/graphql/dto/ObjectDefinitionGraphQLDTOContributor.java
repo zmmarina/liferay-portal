@@ -68,9 +68,10 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 		return new ObjectDefinitionGraphQLDTOContributor(
 			new ObjectEntryEntityModel(objectFields),
+			graphQLDTOProperties,
 			objectDefinition.getName(),
 			objectDefinition.getObjectDefinitionId(), objectEntryManager,
-			objectDefinition.getPrimaryKeyColumnName(), graphQLDTOProperties);
+			objectDefinition.getPrimaryKeyColumnName());
 	}
 
 	@Override
@@ -133,7 +134,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public String getIdName() {
-		return _primaryKeyPropertyName;
+		return _idName;
 	}
 
 	@Override
@@ -158,16 +159,15 @@ public class ObjectDefinitionGraphQLDTOContributor
 	}
 
 	private ObjectDefinitionGraphQLDTOContributor(
-		EntityModel entityModel, String name, long objectDefinitionId,
-		ObjectEntryManager objectEntryManager, String primaryKeyPropertyName,
-		List<GraphQLDTOProperty> graphQLDTOProperties) {
+		EntityModel entityModel, List<GraphQLDTOProperty> graphQLDTOProperties, String name, long objectDefinitionId,
+		ObjectEntryManager objectEntryManager, String idName) {
 
 		_entityModel = entityModel;
+		_graphQLDTOProperties = graphQLDTOProperties;
 		_name = name;
 		_objectDefinitionId = objectDefinitionId;
 		_objectEntryManager = objectEntryManager;
-		_primaryKeyPropertyName = primaryKeyPropertyName;
-		_graphQLDTOProperties = graphQLDTOProperties;
+		_idName = idName;
 	}
 
 	private ObjectEntry _toObjectEntry(Map<String, Object> map) {
@@ -215,7 +215,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 	private final String _name;
 	private final long _objectDefinitionId;
 	private final ObjectEntryManager _objectEntryManager;
-	private final String _primaryKeyPropertyName;
+	private final String _idName;
 	private final List<GraphQLDTOProperty> _graphQLDTOProperties;
 
 }
