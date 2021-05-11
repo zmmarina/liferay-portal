@@ -78,11 +78,11 @@ public class ObjectDefinitionGraphQLDTOContributor
 			Map<String, Object> dto, DTOConverterContext dtoConverterContext)
 		throws Exception {
 
-		return _objectEntryToMap(
+		return _toMap(
 			_objectEntryManager.addObjectEntry(
 				dtoConverterContext.getUserId(),
 				(Long)dtoConverterContext.getAttribute("siteId"),
-				_objectDefinitionId, _mapToObjectEntry(dto),
+				_objectDefinitionId, _toObjectEntry(dto),
 				dtoConverterContext));
 	}
 
@@ -98,7 +98,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 			DTOConverterContext dtoConverterContext, long id)
 		throws Exception {
 
-		return _objectEntryToMap(
+		return _toMap(
 			_objectEntryManager.getObjectEntry(dtoConverterContext, id));
 	}
 
@@ -119,7 +119,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		return Page.of(
 			page.getActions(), page.getFacets(),
 			stream.map(
-				this::_objectEntryToMap
+				this::_toMap
 			).collect(
 				Collectors.toList()
 			),
@@ -151,9 +151,9 @@ public class ObjectDefinitionGraphQLDTOContributor
 			Map<String, Object> dto, DTOConverterContext dtoConverterContext, long id)
 		throws Exception {
 
-		return _objectEntryToMap(
+		return _toMap(
 			_objectEntryManager.updateObjectEntry(
-				dtoConverterContext.getUserId(), id, _mapToObjectEntry(dto),
+				dtoConverterContext.getUserId(), id, _toObjectEntry(dto),
 				dtoConverterContext));
 	}
 
@@ -170,7 +170,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		_graphQLDTOProperties = graphQLDTOProperties;
 	}
 
-	private ObjectEntry _mapToObjectEntry(Map<String, Object> map) {
+	private ObjectEntry _toObjectEntry(Map<String, Object> map) {
 		ObjectEntry objectEntry = new ObjectEntry();
 
 		objectEntry.setId((Long)map.get(getIdName()));
@@ -184,7 +184,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		return objectEntry;
 	}
 
-	private Map<String, Object> _objectEntryToMap(ObjectEntry objectEntry) {
+	private Map<String, Object> _toMap(ObjectEntry objectEntry) {
 		Map<String, Object> properties = objectEntry.getProperties();
 
 		properties.put(getIdName(), objectEntry.getId());
