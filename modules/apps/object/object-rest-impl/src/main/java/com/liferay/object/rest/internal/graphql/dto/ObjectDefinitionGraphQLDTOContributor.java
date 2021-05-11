@@ -75,14 +75,14 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public Map<String, Object> createDTO(
-			Map<String, Object> map, DTOConverterContext dtoConverterContext)
+			Map<String, Object> dto, DTOConverterContext dtoConverterContext)
 		throws Exception {
 
 		return _objectEntryToMap(
 			_objectEntryManager.addObjectEntry(
 				dtoConverterContext.getUserId(),
 				(Long)dtoConverterContext.getAttribute("siteId"),
-				_objectDefinitionId, _mapToObjectEntry(map),
+				_objectDefinitionId, _mapToObjectEntry(dto),
 				dtoConverterContext));
 	}
 
@@ -95,7 +95,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public Map<String, Object> getDTO(
-			long id, DTOConverterContext dtoConverterContext)
+			DTOConverterContext dtoConverterContext, long id)
 		throws Exception {
 
 		return _objectEntryToMap(
@@ -104,9 +104,8 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public Page<Map<String, Object>> getDTOs(
-			Aggregation aggregation, Filter filter, Pagination pagination,
-			String search, Sort[] sorts,
-			DTOConverterContext dtoConverterContext)
+			Aggregation aggregation, DTOConverterContext dtoConverterContext,
+			Filter filter, Pagination pagination, String search, Sort[] sorts)
 		throws Exception {
 
 		Page<ObjectEntry> page = _objectEntryManager.getObjectEntries(
@@ -150,13 +149,12 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public Map<String, Object> updateDTO(
-			long id, Map<String, Object> map,
-			DTOConverterContext dtoConverterContext)
+			Map<String, Object> dto, DTOConverterContext dtoConverterContext, long id)
 		throws Exception {
 
 		return _objectEntryToMap(
 			_objectEntryManager.updateObjectEntry(
-				dtoConverterContext.getUserId(), id, _mapToObjectEntry(map),
+				dtoConverterContext.getUserId(), id, _mapToObjectEntry(dto),
 				dtoConverterContext));
 	}
 

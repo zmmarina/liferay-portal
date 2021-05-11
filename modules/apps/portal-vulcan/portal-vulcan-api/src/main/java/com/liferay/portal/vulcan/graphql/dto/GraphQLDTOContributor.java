@@ -34,13 +34,13 @@ public interface GraphQLDTOContributor<D, R> {
 
 	public boolean deleteDTO(long id) throws Exception;
 
-	public R getDTO(long id, DTOConverterContext dtoConverterContext)
+	public R getDTO(DTOConverterContext dtoConverterContext, long id)
 		throws Exception;
 
 	public Page<R> getDTOs(
-			Aggregation aggregation, Filter filter, Pagination pagination,
-			String search, Sort[] sorts,
-			DTOConverterContext dtoConverterContext)
+			Aggregation aggregation, DTOConverterContext dtoConverterContext,
+			Filter filter, Pagination pagination,
+			String search, Sort[] sorts)
 		throws Exception;
 
 	public EntityModel getEntityModel();
@@ -51,7 +51,7 @@ public interface GraphQLDTOContributor<D, R> {
 
 	public String getResourceName();
 
-	public R updateDTO(long id, D dto, DTOConverterContext dtoConverterContext)
+	public R updateDTO(D dto, DTOConverterContext dtoConverterContext, long id)
 		throws Exception;
 
 }
