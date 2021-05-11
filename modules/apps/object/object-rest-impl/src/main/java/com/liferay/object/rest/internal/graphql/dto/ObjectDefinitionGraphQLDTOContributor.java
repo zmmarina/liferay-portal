@@ -144,7 +144,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 
 	@Override
 	public String getResourceName() {
-		return _name;
+		return _resourceName;
 	}
 
 	@Override
@@ -159,12 +159,12 @@ public class ObjectDefinitionGraphQLDTOContributor
 	}
 
 	private ObjectDefinitionGraphQLDTOContributor(
-		EntityModel entityModel, List<GraphQLDTOProperty> graphQLDTOProperties, String idName, String name, long objectDefinitionId,
+		EntityModel entityModel, List<GraphQLDTOProperty> graphQLDTOProperties, String idName, String resourceName, long objectDefinitionId,
 		ObjectEntryManager objectEntryManager) {
 
 		_entityModel = entityModel;
 		_graphQLDTOProperties = graphQLDTOProperties;
-		_name = name;
+		_resourceName = resourceName;
 		_objectDefinitionId = objectDefinitionId;
 		_objectEntryManager = objectEntryManager;
 		_idName = idName;
@@ -212,7 +212,7 @@ public class ObjectDefinitionGraphQLDTOContributor
 		).build();
 
 	private final EntityModel _entityModel;
-	private final String _name;
+	private final String _resourceName;
 	private final long _objectDefinitionId;
 	private final ObjectEntryManager _objectEntryManager;
 	private final String _idName;
