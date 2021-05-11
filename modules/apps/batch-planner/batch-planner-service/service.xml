@@ -73,7 +73,7 @@
 		<column name="externalFieldType" type="String" />
 		<column name="internalFieldName" type="String" />
 		<column name="internalFieldType" type="String" />
-		<column name="transformationJavaCode" type="String" />
+		<column name="script" type="String" />
 
 		<!-- Order -->
 
