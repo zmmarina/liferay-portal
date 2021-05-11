@@ -14,11 +14,8 @@
 
 package com.liferay.digital.signature.model;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * @author Brian Wing Shun Chan
  */
-@ProviderType
-public interface DSDocument {
+public class DSDocument {
 }

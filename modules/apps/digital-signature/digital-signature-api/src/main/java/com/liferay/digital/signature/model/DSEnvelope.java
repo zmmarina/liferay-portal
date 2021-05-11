@@ -14,11 +14,38 @@
 
 package com.liferay.digital.signature.model;
 
-import org.osgi.annotation.versioning.ProviderType;
-
 /**
  * @author Brian Wing Shun Chan
+ * @author José Abelenda
  */
-@ProviderType
-public interface DSEnvelope {
+public class DSEnvelope {
+
+	public String getDSEnvelopeId() {
+		return dsEnvelopeId;
+	}
+
+	public String getEmailSubject() {
+		return emailSubject;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setDSEnvelopeId(String dsEnvelopeId) {
+		this.dsEnvelopeId = dsEnvelopeId;
+	}
+
+	public void setEmailSubject(String emailSubject) {
+		this.emailSubject = emailSubject;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	protected String dsEnvelopeId;
+	protected String emailSubject;
+	protected String status;
+
 }

@@ -16,6 +16,7 @@ package com.liferay.digital.signature.internal.manager;
 
 import com.liferay.digital.signature.internal.http.DSHttp;
 import com.liferay.digital.signature.manager.DSEnvelopeManager;
+import com.liferay.digital.signature.model.DSEnvelope;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
@@ -31,18 +32,55 @@ import org.osgi.service.component.annotations.Reference;
 public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 	@Override
-	public void addDSEnvelope() {
-		JSONObject jsonObject = _dsHttp.invoke(
-			0, "envelopes",
-			JSONUtil.put(
-				"emailSubject",
-				"Test New Envelope " + System.currentTimeMillis()));
+	public DSEnvelope addDSEnvelope(long groupId, DSEnvelope dsEnvelope) {
+		dsEnvelope = _toDSEnvelope(
+			_dsHttp.post(groupId, "envelopes", _toJSONObject(dsEnvelope)));
 
 		if (_log.isDebugEnabled()) {
-			String envelopeId = (String)jsonObject.get("envelopeId");
-
-			_log.debug("Envelope ID " + envelopeId);
+			_log.debug(
+				"Added digital signature envelope ID " +
+					dsEnvelope.getDSEnvelopeId());
 		}
+
+		return dsEnvelope;
+	}
+
+	@Override
+	public DSEnvelope getDSEnvelope(long groupId, String dsEnvelopeId) {
+		DSEnvelope dsEnvelope = _toDSEnvelope(
+			_dsHttp.get(groupId, "envelopes/" + dsEnvelopeId));
+
+		if (_log.isDebugEnabled()) {
+			_log.debug(
+				"Retrieved digital signature envelope ID " +
+					dsEnvelope.getDSEnvelopeId());
+		}
+
+		return dsEnvelope;
+	}
+
+	private DSEnvelope _toDSEnvelope(JSONObject jsonObject) {
+		if (jsonObject == null) {
+			return new DSEnvelope();
+		}
+
+		return new DSEnvelope() {
+			{
+				dsEnvelopeId = jsonObject.getString("envelopeId");
+				emailSubject = jsonObject.getString("emailSubject");
+				status = jsonObject.getString("status");
+			}
+		};
+	}
+
+	private JSONObject _toJSONObject(DSEnvelope dsEnvelope) {
+		return JSONUtil.put(
+			"emailSubject", dsEnvelope.getEmailSubject()
+		).put(
+			"envelopeId", dsEnvelope.getDSEnvelopeId()
+		).put(
+			"status", dsEnvelope.getStatus()
+		);
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(

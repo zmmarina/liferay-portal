@@ -16,10 +16,14 @@ package com.liferay.digital.signature.manager.test;
 
 import com.liferay.arquillian.extension.junit.bridge.junit.Arquillian;
 import com.liferay.digital.signature.manager.DSEnvelopeManager;
+import com.liferay.digital.signature.model.DSEnvelope;
 import com.liferay.portal.kernel.test.rule.AggregateTestRule;
+import com.liferay.portal.kernel.test.util.TestPropsValues;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.test.rule.Inject;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 
+import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -38,7 +42,35 @@ public class DSEnvelopeManagerTest {
 
 	@Test
 	public void testAddDSEnvelope() throws Exception {
-		_dsEnvelopeManager.addDSEnvelope();
+		DSEnvelope dsEnvelope = _dsEnvelopeManager.addDSEnvelope(
+			TestPropsValues.getGroupId(),
+			new DSEnvelope() {
+				{
+					emailSubject = "New " + System.currentTimeMillis();
+					status = "created";
+				}
+			});
+
+		Assert.assertTrue(Validator.isNotNull(dsEnvelope.getDSEnvelopeId()));
+	}
+
+	@Test
+	public void testGetDSEnvelope() throws Exception {
+		String expectedEmailSubject = "New " + System.currentTimeMillis();
+
+		DSEnvelope dsEnvelope = _dsEnvelopeManager.addDSEnvelope(
+			TestPropsValues.getGroupId(),
+			new DSEnvelope() {
+				{
+					emailSubject = expectedEmailSubject;
+					status = "created";
+				}
+			});
+
+		dsEnvelope = _dsEnvelopeManager.getDSEnvelope(
+			TestPropsValues.getGroupId(), dsEnvelope.getDSEnvelopeId());
+
+		Assert.assertEquals(expectedEmailSubject, dsEnvelope.getEmailSubject());
 	}
 
 	@Inject

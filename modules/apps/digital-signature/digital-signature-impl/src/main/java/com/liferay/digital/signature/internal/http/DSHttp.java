@@ -50,11 +50,20 @@ import org.osgi.service.component.annotations.Reference;
 @Component(immediate = true, service = DSHttp.class)
 public class DSHttp {
 
-	public JSONObject invoke(
+	public JSONObject get(long groupId, String location) {
+		try {
+			return _invoke(groupId, location, Http.Method.GET, null);
+		}
+		catch (Exception exception) {
+			return ReflectionUtil.throwException(exception);
+		}
+	}
+
+	public JSONObject post(
 		long groupId, String location, JSONObject bodyJSONObject) {
 
 		try {
-			return _invoke(groupId, location, bodyJSONObject);
+			return _invoke(groupId, location, Http.Method.POST, bodyJSONObject);
 		}
 		catch (Exception exception) {
 			return ReflectionUtil.throwException(exception);
@@ -152,23 +161,31 @@ public class DSHttp {
 	}
 
 	private JSONObject _invoke(
-			long groupId, String location, JSONObject bodyJSONObject)
+			long groupId, String location, Http.Method method,
+			JSONObject bodyJSONObject)
 		throws Exception {
 
 		Http.Options options = new Http.Options();
 
-		options.addHeader(
-			HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
+		if (bodyJSONObject != null) {
+			options.addHeader(
+				HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
+		}
+
 		options.addHeader(
 			"Authorization", "Bearer " + _getDocuSignAccessToken(groupId));
-		options.setBody(
-			bodyJSONObject.toString(), ContentTypes.APPLICATION_JSON,
-			StringPool.UTF8);
+
+		if (bodyJSONObject != null) {
+			options.setBody(
+				bodyJSONObject.toString(), ContentTypes.APPLICATION_JSON,
+				StringPool.UTF8);
+		}
+
 		options.setLocation(
 			StringBundler.concat(
 				"https://demo.docusign.net/restapi/v2.1/accounts/",
 				_getDocuSignAPIAccountId(groupId), "/", location));
-		options.setPost(true);
+		options.setMethod(method);
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));
 	}
