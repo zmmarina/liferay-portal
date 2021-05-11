@@ -271,13 +271,11 @@ public class LayoutsTreeDisplayContext {
 
 	public Map<String, Object> getPageTypeSelectorData() throws Exception {
 		return HashMapBuilder.<String, Object>put(
-			"addCollectionLayoutURL",
-			_setPlid(getAddCollectionLayoutURL())
+			"addCollectionLayoutURL", _setPlid(getAddCollectionLayoutURL())
 		).put(
 			"addLayoutURL", _setPlid(getAddLayoutURL())
 		).put(
-			"configureLayoutSetURL",
-			_setPlid(getConfigureLayoutSetURL())
+			"configureLayoutSetURL", _setPlid(getConfigureLayoutSetURL())
 		).put(
 			"namespace", getNamespace()
 		).put(
