@@ -30,13 +30,10 @@ public class OAuth2ApplicationFeatureUpgradeProcess extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
-		String sql =
-			"select oAuth2ApplicationId, features from OAuth2Application " +
-				"where features is not NULL";
-
 		try (LoggingTimer loggingTimer = new LoggingTimer();
 			PreparedStatement preparedStatement = connection.prepareStatement(
-				sql);
+				"select oAuth2ApplicationId, features from OAuth2Application " +
+					"where features is not NULL");
 			ResultSet resultSet = preparedStatement.executeQuery()) {
 
 			while (resultSet.next()) {
@@ -58,12 +55,9 @@ public class OAuth2ApplicationFeatureUpgradeProcess extends UpgradeProcess {
 			long oAuth2ApplicationId, String[] features)
 		throws SQLException {
 
-		String sql =
-			"update OAuth2Application set features = ? where " +
-				"oAuth2ApplicationId = ?";
-
 		try (PreparedStatement preparedStatement = connection.prepareStatement(
-				sql)) {
+				"update OAuth2Application set features = ? where " +
+					"oAuth2ApplicationId = ?")) {
 
 			for (int i = 0; i < features.length; i++) {
 				if (features[i].equals("token_introspection")) {
