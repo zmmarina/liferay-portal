@@ -3166,7 +3166,6 @@ public class DataFactory {
 			newDDMFieldAttributeModel(
 				ddmFieldModels.get(0), ddmStorageLinkModel.getClassPK(),
 				"availableLanguageIds", StringPool.BLANK, "en_US"));
-
 		ddmFieldAttributeModels.add(
 			newDDMFieldAttributeModel(
 				ddmFieldModels.get(0), ddmStorageLinkModel.getClassPK(),
@@ -3195,7 +3194,6 @@ public class DataFactory {
 			newDDMFieldAttributeModel(
 				ddmFieldModels.get(0), journalArticleModel.getId(),
 				"availableLanguageIds", StringPool.BLANK, "en_US"));
-
 		ddmFieldAttributeModels.add(
 			newDDMFieldAttributeModel(
 				ddmFieldModels.get(0), journalArticleModel.getId(),
