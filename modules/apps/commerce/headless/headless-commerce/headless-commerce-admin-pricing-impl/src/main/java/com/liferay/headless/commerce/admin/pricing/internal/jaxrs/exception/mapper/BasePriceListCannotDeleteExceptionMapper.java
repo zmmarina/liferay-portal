@@ -41,7 +41,7 @@ public class BasePriceListCannotDeleteExceptionMapper
 
 	@Override
 	public String getErrorDescription() {
-		return "Cannot delete commerce base price list";
+		return "Unable to delete base price list";
 	}
 
 	@Override
