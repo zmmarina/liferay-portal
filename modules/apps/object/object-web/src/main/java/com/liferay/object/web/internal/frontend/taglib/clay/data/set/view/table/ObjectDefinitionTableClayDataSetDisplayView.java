@@ -39,11 +39,11 @@ public class ObjectDefinitionTableClayDataSetDisplayView
 		ClayTableSchemaBuilder clayTableSchemaBuilder =
 			clayTableSchemaBuilderFactory.create();
 
-		ClayTableSchemaField clayTableSchemaField =
-			clayTableSchemaBuilder.addClayTableSchemaField("id", "id");
+		clayTableSchemaBuilder.addClayTableSchemaField("id", "id");
 
 		for (ObjectField objectField : objectFields) {
-			clayTableSchemaField = new ClayTableSchemaField();
+			ClayTableSchemaField clayTableSchemaField =
+				new ClayTableSchemaField();
 
 			if (Objects.equals("Boolean", objectField.getType())) {
 				clayTableSchemaField.setContentRenderer("boolean");
