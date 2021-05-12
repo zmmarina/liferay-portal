@@ -65,11 +65,6 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 		return dsEnvelope;
 	}
 
-	@Override
-	public byte[] getDSEnvelopeDocumentsAsZip(long envelopeId) {
-		return null;
-	}
-
 	private DSEnvelope _toDSEnvelope(JSONObject jsonObject) {
 		if (jsonObject == null) {
 			return new DSEnvelope();
@@ -77,7 +72,7 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 		return new DSEnvelope() {
 			{
-				dsEnvelopeId = jsonObject.getString("envelopeId");
+				dsEnvelopeId = jsonObject.getString("dsEnvelopeId");
 				emailSubject = jsonObject.getString("emailSubject");
 				status = jsonObject.getString("status");
 			}
@@ -97,11 +92,11 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 					"name", dsDocument.getName()
 				))
 		).put(
+			"dsEnvelopeId", dsEnvelope.getDSEnvelopeId()
+		).put(
 			"emailBlurb", dsEnvelope.getEmailBlurb()
 		).put(
 			"emailSubject", dsEnvelope.getEmailSubject()
-		).put(
-			"envelopeId", dsEnvelope.getDSEnvelopeId()
 		).put(
 			"recipients",
 			JSONUtil.put(

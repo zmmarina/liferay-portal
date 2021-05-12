@@ -23,4 +23,15 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(immediate = true, service = DSDocumentManager.class)
 public class DSDocumentManagerImpl implements DSDocumentManager {
+
+	@Override
+	public byte[] getDSDocumentsAsBytes(long dsEnvelopeId) {
+
+		// LPS-132123
+
+		// envelopes/{dsEnvelopeId}/documents/archive
+
+		return null;
+	}
+
 }
