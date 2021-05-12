@@ -31,13 +31,13 @@ public class ObjectDefinitionDisplayContext {
 	public ObjectDefinitionDisplayContext(
 		HttpServletRequest httpServletRequest, String restContextPath) {
 
-		_apiUrl = "/o/" + restContextPath + "/v1.0/object-entries";
+		_apiURL = "/o/" + restContextPath + "/v1.0/object-entries";
 		_objectDefinitionRequestHelper = new ObjectDefinitionRequestHelper(
 			httpServletRequest);
 	}
 
 	public String getAPIURL() {
-		return _apiUrl;
+		return _apiURL;
 	}
 
 	public List<ClayDataSetActionDropdownItem>
@@ -45,17 +45,17 @@ public class ObjectDefinitionDisplayContext {
 
 		return Collections.singletonList(
 			new ClayDataSetActionDropdownItem(
-				_apiUrl + "/{id}", "trash", "delete",
+				_apiURL + "/{id}", "trash", "delete",
 				LanguageUtil.get(
 					_objectDefinitionRequestHelper.getRequest(), "delete"),
 				"delete", "delete", "async"));
 	}
 
-	public String getDataSetDisplaykey() {
+	public String getClayHeadlessDataSetDisplayId() {
 		return _objectDefinitionRequestHelper.getPortletId();
 	}
 
-	private final String _apiUrl;
+	private final String _apiURL;
 	private final ObjectDefinitionRequestHelper _objectDefinitionRequestHelper;
 
 }

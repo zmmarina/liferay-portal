@@ -24,7 +24,7 @@ ObjectDefinitionDisplayContext objectDefinitionDisplayContext = (ObjectDefinitio
 	apiURL="<%= objectDefinitionDisplayContext.getAPIURL() %>"
 	clayDataSetActionDropdownItems="<%= objectDefinitionDisplayContext.getClayDataSetActionDropdownItems() %>"
 	formId="fm"
-	id="<%= objectDefinitionDisplayContext.getDataSetDisplaykey() %>"
+	id="<%= objectDefinitionDisplayContext.getClayHeadlessDataSetDisplayId() %>"
 	itemsPerPage="<%= 20 %>"
 	namespace="<%= liferayPortletResponse.getNamespace() %>"
 	pageNumber="<%= 1 %>"
