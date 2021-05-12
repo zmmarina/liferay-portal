@@ -21,7 +21,7 @@ ObjectDefinitionDisplayContext objectDefinitionDisplayContext = (ObjectDefinitio
 %>
 
 <clay:headless-data-set-display
-	apiURL="<%= objectDefinitionDisplayContext.getApiUrl() %>"
+	apiURL="<%= objectDefinitionDisplayContext.getAPIURL() %>"
 	clayDataSetActionDropdownItems="<%= objectDefinitionDisplayContext.getClayDataSetActionDropdownItems() %>"
 	formId="fm"
 	id="<%= objectDefinitionDisplayContext.getDataSetDisplaykey() %>"

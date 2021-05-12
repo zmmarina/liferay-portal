@@ -36,7 +36,7 @@ public class ObjectDefinitionDisplayContext {
 			httpServletRequest);
 	}
 
-	public String getApiUrl() {
+	public String getAPIURL() {
 		return _apiUrl;
 	}
 
