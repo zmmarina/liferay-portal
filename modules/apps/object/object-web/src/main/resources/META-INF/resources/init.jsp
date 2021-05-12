@@ -16,15 +16,9 @@
 
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
-<%@ taglib uri="http://liferay.com/tld/clay" prefix="clay" %><%@
-taglib uri="http://liferay.com/tld/frontend" prefix="liferay-frontend" %><%@
-taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
+<%@ taglib uri="http://liferay.com/tld/clay" prefix="clay" %>
 
 <%@ page import="com.liferay.object.web.internal.display.context.ObjectDefinitionDisplayContext" %><%@
 page import="com.liferay.portal.kernel.util.WebKeys" %>
-
-<liferay-frontend:defineObjects />
-
-<liferay-theme:defineObjects />
 
 <portlet:defineObjects />
