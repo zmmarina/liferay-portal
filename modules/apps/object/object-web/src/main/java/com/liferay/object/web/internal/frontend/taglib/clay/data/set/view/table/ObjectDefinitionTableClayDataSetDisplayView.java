@@ -45,14 +45,14 @@ public class ObjectDefinitionTableClayDataSetDisplayView
 			ClayTableSchemaField clayTableSchemaField =
 				new ClayTableSchemaField();
 
-			if (Objects.equals("Boolean", objectField.getType())) {
+			if (Objects.equals(objectField.getType(), "Boolean")) {
 				clayTableSchemaField.setContentRenderer("boolean");
 			}
 
 			clayTableSchemaField.setFieldName(objectField.getName());
 			clayTableSchemaField.setLabel(objectField.getName());
 
-			if (!Objects.equals("Boolean", objectField.getType())) {
+			if (!Objects.equals(objectField.getType(), "Boolean")) {
 				clayTableSchemaField.setSortable(true);
 			}
 
