@@ -32,7 +32,7 @@ public class LayoutReportsIssue {
 
 	public LayoutReportsIssue(List<Detail> details, Key key) {
 		if (key == null) {
-			throw new IllegalArgumentException("Key should not be null");
+			throw new IllegalArgumentException("Key is null");
 		}
 
 		if (details == null) {
@@ -117,7 +117,7 @@ public class LayoutReportsIssue {
 
 		public Detail(Detail.Key key, long total) {
 			if (key == null) {
-				throw new IllegalArgumentException("Key should not be null");
+				throw new IllegalArgumentException("Key is null");
 			}
 
 			_key = key;
