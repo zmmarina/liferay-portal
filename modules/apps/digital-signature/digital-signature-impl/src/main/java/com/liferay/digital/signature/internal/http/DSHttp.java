@@ -190,10 +190,10 @@ public class DSHttp {
 
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
-		String privateKey =
+		String privateKeyString =
 			digitalSignatureConfiguration.digitalSignatureRSAPrivateKey();
 
-		PEMReader pemReader = new PEMReader(privateKey.getBytes());
+		PEMReader pemReader = new PEMReader(privateKeyString.getBytes());
 
 		PKCS1EncodedKeySpec pkcs1EncodedKeySpec = new PKCS1EncodedKeySpec(
 			pemReader.getDerBytes());
