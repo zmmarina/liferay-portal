@@ -151,10 +151,10 @@ public class CryptoHashTrackerRegistrator {
 
 		Map<String, Object> map = new HashMap<>();
 
-		Enumeration<String> keyEnumeration = properties.keys();
+		Enumeration<String> enumeration = properties.keys();
 
-		while (keyEnumeration.hasMoreElements()) {
-			String key = keyEnumeration.nextElement();
+		while (enumeration.hasMoreElements()) {
+			String key = enumeration.nextElement();
 
 			map.put(key, properties.get(key));
 		}
