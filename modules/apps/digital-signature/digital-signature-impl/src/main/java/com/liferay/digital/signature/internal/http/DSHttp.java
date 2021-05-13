@@ -217,7 +217,7 @@ public class DSHttp {
 		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		String privateKey = digitalSignatureConfiguration.digitalSignaturePrivateKey();
+		String privateKey = digitalSignatureConfiguration.digitalSignatureRSAPrivateKey();
 
 		PEMReader pemReader = new PEMReader(privateKey.getBytes());
 

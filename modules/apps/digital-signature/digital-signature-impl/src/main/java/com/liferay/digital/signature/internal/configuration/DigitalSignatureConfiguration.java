@@ -46,7 +46,7 @@ public interface DigitalSignatureConfiguration {
 	@Meta.AD(name = "digital-signature-integration-key")
 	public String digitalSignatureIntegrationKey();
 
-	@Meta.AD(name = "digital-signature-private-key")
-	public String digitalSignaturePrivateKey();
+	@Meta.AD(name = "digital-signature-rsa-private-key")
+	public String digitalSignatureRSAPrivateKey();
 
 }
