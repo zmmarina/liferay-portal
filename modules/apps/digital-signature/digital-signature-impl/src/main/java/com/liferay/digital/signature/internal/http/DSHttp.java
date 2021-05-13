@@ -60,9 +60,9 @@ public class DSHttp {
 		throws Exception {
 
 		JSONObject jsonObject = DSAccessTokenWebCacheItem.get(
-			digitalSignatureConfiguration.digitalSignatureAPIUsername(),
-			digitalSignatureConfiguration.digitalSignatureIntegrationKey(),
-			digitalSignatureConfiguration.digitalSignatureRSAPrivateKey());
+			digitalSignatureConfiguration.apiUsername(),
+			digitalSignatureConfiguration.integrationKey(),
+			digitalSignatureConfiguration.rsaPrivateKey());
 
 		return jsonObject.getString("access_token");
 	}
@@ -95,10 +95,9 @@ public class DSHttp {
 
 		options.setLocation(
 			StringBundler.concat(
-				digitalSignatureConfiguration.digitalSignatureAccountBaseURI(),
+				digitalSignatureConfiguration.accountBaseURI(),
 				"/restapi/v2.1/accounts/",
-				digitalSignatureConfiguration.digitalSignatureAPIAccountId(),
-				"/", location));
+				digitalSignatureConfiguration.apiAccountId(), "/", location));
 		options.setMethod(method);
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));

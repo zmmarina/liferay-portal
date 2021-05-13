@@ -44,35 +44,28 @@ import net.oauth.signature.pem.PKCS1EncodedKeySpec;
 public class DSAccessTokenWebCacheItem implements WebCacheItem {
 
 	public static JSONObject get(
-		String digitalSignatureAPIUsername,
-		String digitalSignatureIntegrationKey,
-		String digitalSignatureRSAPrivateKey) {
+		String apiUsername, String integrationKey, String rsaPrivateKey) {
 
 		return (JSONObject)WebCachePoolUtil.get(
 			StringBundler.concat(
 				DSAccessTokenWebCacheItem.class.getName(), StringPool.POUND,
-				digitalSignatureAPIUsername, StringPool.POUND,
-				digitalSignatureIntegrationKey, StringPool.POUND,
-				digitalSignatureRSAPrivateKey),
+				apiUsername, StringPool.POUND, integrationKey, StringPool.POUND,
+				rsaPrivateKey),
 			new DSAccessTokenWebCacheItem(
-				digitalSignatureAPIUsername, digitalSignatureIntegrationKey,
-				digitalSignatureRSAPrivateKey));
+				apiUsername, integrationKey, rsaPrivateKey));
 	}
 
 	public DSAccessTokenWebCacheItem(
-		String digitalSignatureAPIUsername,
-		String digitalSignatureIntegrationKey,
-		String digitalSignatureRSAPrivateKey) {
+		String apiUsername, String integrationKey, String rsaPrivateKey) {
 
-		_digitalSignatureAPIUsername = digitalSignatureAPIUsername;
-		_digitalSignatureIntegrationKey = digitalSignatureIntegrationKey;
+		_apiUsername = apiUsername;
+		_integrationKey = integrationKey;
 
-		if (digitalSignatureRSAPrivateKey != null) {
-			_digitalSignatureRSAPrivateKeyBytes =
-				digitalSignatureRSAPrivateKey.getBytes();
+		if (rsaPrivateKey != null) {
+			_rsaPrivateKeyBytes = rsaPrivateKey.getBytes();
 		}
 		else {
-			_digitalSignatureRSAPrivateKeyBytes = new byte[0];
+			_rsaPrivateKeyBytes = new byte[0];
 		}
 	}
 
@@ -82,7 +75,7 @@ public class DSAccessTokenWebCacheItem implements WebCacheItem {
 			if (_log.isDebugEnabled()) {
 				_log.debug(
 					"Get DocuSign access token for integration key " +
-						_digitalSignatureIntegrationKey);
+						_integrationKey);
 			}
 
 			Http.Options options = new Http.Options();
@@ -141,11 +134,11 @@ public class DSAccessTokenWebCacheItem implements WebCacheItem {
 		).put(
 			"iat", unixTime
 		).put(
-			"iss", _digitalSignatureIntegrationKey
+			"iss", _integrationKey
 		).put(
 			"scope", "signature"
 		).put(
-			"sub", _digitalSignatureAPIUsername
+			"sub", _apiUsername
 		).toString();
 
 		String token =
@@ -160,8 +153,7 @@ public class DSAccessTokenWebCacheItem implements WebCacheItem {
 	private PrivateKey _readPrivateKey() throws Exception {
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
-		PEMReader pemReader = new PEMReader(
-			_digitalSignatureRSAPrivateKeyBytes);
+		PEMReader pemReader = new PEMReader(_rsaPrivateKeyBytes);
 
 		PKCS1EncodedKeySpec pkcs1EncodedKeySpec = new PKCS1EncodedKeySpec(
 			pemReader.getDerBytes());
@@ -174,8 +166,8 @@ public class DSAccessTokenWebCacheItem implements WebCacheItem {
 	private static final Log _log = LogFactoryUtil.getLog(
 		DSAccessTokenWebCacheItem.class);
 
-	private final String _digitalSignatureAPIUsername;
-	private final String _digitalSignatureIntegrationKey;
-	private final byte[] _digitalSignatureRSAPrivateKeyBytes;
+	private final String _apiUsername;
+	private final String _integrationKey;
+	private final byte[] _rsaPrivateKeyBytes;
 
 }
