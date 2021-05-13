@@ -77,7 +77,7 @@ public class DSHttp {
 		return encoder.encodeToString(bytes);
 	}
 
-	private DigitalSignatureConfiguration _getConfiguration(long groupId)
+	private DigitalSignatureConfiguration _getDigitalSignatureConfiguration(long groupId)
 		throws Exception {
 
 		return ConfigurationProviderUtil.getGroupConfiguration(
@@ -111,10 +111,10 @@ public class DSHttp {
 			_log.debug("Get DocuSign API account ID for group " + groupId);
 		}
 
-		DigitalSignatureConfiguration configuration = _getConfiguration(
+		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		return configuration.digitalSignatureAPIAccountId();
+		return digitalSignatureConfiguration.digitalSignatureAPIAccountId();
 	}
 
 	private String _getDocuSignAPIUsername(long groupId) throws Exception {
@@ -122,10 +122,10 @@ public class DSHttp {
 			_log.debug("Get DocuSign API username for group " + groupId);
 		}
 
-		DigitalSignatureConfiguration configuration = _getConfiguration(
+		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		return configuration.digitalSignatureAPIUsername();
+		return digitalSignatureConfiguration.digitalSignatureAPIUsername();
 	}
 
 	private String _getDocuSignIntegrationKey(long groupId) throws Exception {
@@ -133,10 +133,10 @@ public class DSHttp {
 			_log.debug("Get DocuSign integration key for group " + groupId);
 		}
 
-		DigitalSignatureConfiguration configuration = _getConfiguration(
+		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		return configuration.digitalSignatureIntegrationKey();
+		return digitalSignatureConfiguration.digitalSignatureIntegrationKey();
 	}
 
 	private String _getJWT(long groupId) throws Exception {
@@ -196,10 +196,10 @@ public class DSHttp {
 				StringPool.UTF8);
 		}
 
-		DigitalSignatureConfiguration configuration = _getConfiguration(
+		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		String accountBaseURI = configuration.digitalSignatureAccountBaseURI();
+		String accountBaseURI = digitalSignatureConfiguration.digitalSignatureAccountBaseURI();
 
 		options.setLocation(
 			StringBundler.concat(
@@ -214,10 +214,10 @@ public class DSHttp {
 	private PrivateKey _readPrivateKey(long groupId) throws Exception {
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
-		DigitalSignatureConfiguration configuration = _getConfiguration(
+		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
 			groupId);
 
-		String privateKey = configuration.digitalSignaturePrivateKey();
+		String privateKey = digitalSignatureConfiguration.digitalSignaturePrivateKey();
 
 		PEMReader pemReader = new PEMReader(privateKey.getBytes());
 
