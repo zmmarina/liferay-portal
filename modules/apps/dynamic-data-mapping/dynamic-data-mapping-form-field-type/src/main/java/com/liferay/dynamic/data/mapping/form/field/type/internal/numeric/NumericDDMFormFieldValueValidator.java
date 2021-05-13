@@ -24,7 +24,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.Validator;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import java.util.Locale;
@@ -62,10 +62,10 @@ public class NumericDDMFormFieldValueValidator
 
 	protected boolean isNumber(String valueString, Locale locale) {
 		try {
-			NumberFormat numberFormat =
+			DecimalFormat decimalFormat =
 				NumericDDMFormFieldUtil.getDecimalFormat(locale);
 
-			numberFormat.parse(valueString);
+			decimalFormat.parse(valueString);
 		}
 		catch (ParseException parseException) {
 			if (_log.isDebugEnabled()) {

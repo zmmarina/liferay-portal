@@ -24,7 +24,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.Validator;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import java.util.Locale;
@@ -47,10 +47,10 @@ public class NumericDDMFormFieldValueRenderer
 		Number number = getNumber(ddmFormFieldValue);
 
 		if (number != null) {
-			NumberFormat numberFormat =
+			DecimalFormat decimalFormat =
 				NumericDDMFormFieldUtil.getDecimalFormat(locale);
 
-			return numberFormat.format(number);
+			return decimalFormat.format(number);
 		}
 
 		return StringPool.BLANK;
@@ -65,10 +65,10 @@ public class NumericDDMFormFieldValueRenderer
 
 		if (Validator.isNotNull(valueString)) {
 			try {
-				NumberFormat formatter =
+				DecimalFormat decimalFormat =
 					NumericDDMFormFieldUtil.getDecimalFormat(locale);
 
-				return formatter.parse(valueString);
+				return decimalFormat.parse(valueString);
 			}
 			catch (ParseException parseException) {
 				if (_log.isDebugEnabled()) {
