@@ -489,10 +489,6 @@ definition {
 		property portal.acceptance = "true";
 		property test.name.skip.portal.instance = "RemoteStaging#StagingRemoteLiveWebContentViaPortletCP";
 
-		Staging.remoteStagingSetUpViaJson(
-			groupName = "Site Name",
-			remotePort = "9080");
-
 		WebContentNavigator.openWebContentAdmin(siteURLKey = "site-name");
 
 		WebContentNavigator.gotoAddCP();
