@@ -15,30 +15,16 @@
 package com.liferay.digital.signature.internal.http;
 
 import com.liferay.digital.signature.internal.configuration.DigitalSignatureConfiguration;
+import com.liferay.digital.signature.internal.web.cache.DSAccessTokenWebCacheItem;
 import com.liferay.petra.reflect.ReflectionUtil;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.json.JSONFactory;
 import com.liferay.portal.kernel.json.JSONObject;
-import com.liferay.portal.kernel.json.JSONUtil;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.module.configuration.ConfigurationProviderUtil;
 import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.util.ContentTypes;
-import com.liferay.portal.kernel.util.HashMapBuilder;
 import com.liferay.portal.kernel.util.Http;
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.Time;
-
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.Signature;
-
-import java.util.Base64;
-
-import net.oauth.signature.pem.PEMReader;
-import net.oauth.signature.pem.PKCS1EncodedKeySpec;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -69,82 +55,16 @@ public class DSHttp {
 		}
 	}
 
-	private String _encode(byte[] bytes) {
-		//com.liferay.portal.kernel.util.Base64.encode(bytes);
-
-		Base64.Encoder encoder = Base64.getUrlEncoder();
-
-		return encoder.encodeToString(bytes);
-	}
-
 	private String _getDocuSignAccessToken(
 			DigitalSignatureConfiguration digitalSignatureConfiguration)
 		throws Exception {
 
-		if (_log.isDebugEnabled()) {
-			String digitalSignatureIntegrationKey =
-				digitalSignatureConfiguration.digitalSignatureIntegrationKey();
-
-			_log.debug(
-				"Get DocuSign access token for integration key " +
-					digitalSignatureIntegrationKey);
-		}
-
-		Http.Options options = new Http.Options();
-
-		options.setParts(
-			HashMapBuilder.put(
-				"assertion", _getJWT(digitalSignatureConfiguration)
-			).put(
-				"grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer"
-			).build());
-		options.setLocation("https://account-d.docusign.com/oauth/token");
-		options.setPost(true);
-
-		JSONObject jsonObject = _jsonFactory.createJSONObject(
-			_http.URLtoString(options));
+		JSONObject jsonObject = DSAccessTokenWebCacheItem.get(
+			digitalSignatureConfiguration.digitalSignatureAPIUsername(),
+			digitalSignatureConfiguration.digitalSignatureIntegrationKey(),
+			digitalSignatureConfiguration.digitalSignatureRSAPrivateKey());
 
 		return jsonObject.getString("access_token");
-	}
-
-	private String _getJWT(
-			DigitalSignatureConfiguration digitalSignatureConfiguration)
-		throws Exception {
-
-		Signature signature = Signature.getInstance("SHA256withRSA");
-
-		signature.initSign(_readPrivateKey(digitalSignatureConfiguration));
-
-		String headerJSON = JSONUtil.put(
-			"alg", "RS256"
-		).put(
-			"typ", "JWT"
-		).toString();
-
-		long unixTime = System.currentTimeMillis() / Time.SECOND;
-
-		String bodyJSON = JSONUtil.put(
-			"aud", "account-d.docusign.com"
-		).put(
-			"exp", unixTime + 3600
-		).put(
-			"iat", unixTime
-		).put(
-			"iss",
-			digitalSignatureConfiguration.digitalSignatureIntegrationKey()
-		).put(
-			"scope", "signature"
-		).put(
-			"sub", digitalSignatureConfiguration.digitalSignatureAPIUsername()
-		).toString();
-
-		String token =
-			_encode(headerJSON.getBytes()) + "." + _encode(bodyJSON.getBytes());
-
-		signature.update(token.getBytes());
-
-		return StringUtil.removeSubstring(
-			token + "." + _encode(signature.sign()), "=");
 	}
 
 	private JSONObject _invoke(
@@ -183,25 +103,6 @@ public class DSHttp {
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));
 	}
-
-	private PrivateKey _readPrivateKey(
-			DigitalSignatureConfiguration digitalSignatureConfiguration)
-		throws Exception {
-
-		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-
-		String privateKeyString =
-			digitalSignatureConfiguration.digitalSignatureRSAPrivateKey();
-
-		PEMReader pemReader = new PEMReader(privateKeyString.getBytes());
-
-		PKCS1EncodedKeySpec pkcs1EncodedKeySpec = new PKCS1EncodedKeySpec(
-			pemReader.getDerBytes());
-
-		return keyFactory.generatePrivate(pkcs1EncodedKeySpec.getKeySpec());
-	}
-
-	private static final Log _log = LogFactoryUtil.getLog(DSHttp.class);
 
 	@Reference
 	private Http _http;

@@ -2,6 +2,6 @@
 
 <suppressions>
 	<checkstyle>
-		<suppress checks="CamelCaseNameCheck" files="digital-signature-impl/src/main/java/com/liferay/digital/signature/internal/http/DSHttp\.java" />
+		<suppress checks="CamelCaseNameCheck" files="digital-signature-impl/src/main/java/com/liferay/digital/signature/internal/web/cache/DSAccessTokenWebCacheItem\.java" />
 	</checkstyle>
 </suppressions>
