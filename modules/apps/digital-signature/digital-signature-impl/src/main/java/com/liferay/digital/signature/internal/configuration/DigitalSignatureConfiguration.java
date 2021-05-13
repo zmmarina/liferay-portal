@@ -31,22 +31,22 @@ import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClass
 )
 public interface DigitalSignatureConfiguration {
 
-	@Meta.AD(name = "digital-signature-enable")
+	@Meta.AD(name = "enable")
 	public boolean enable();
 
-	@Meta.AD(name = "digital-signature-api-username")
+	@Meta.AD(name = "api-username")
 	public String apiUsername();
 
-	@Meta.AD(name = "digital-signature-api-account-id")
+	@Meta.AD(name = "api-account-id")
 	public String apiAccountId();
 
-	@Meta.AD(name = "digital-signature-base-uri")
+	@Meta.AD(name = "account's-base-uri")
 	public String accountBaseURI();
 
-	@Meta.AD(name = "digital-signature-integration-key")
+	@Meta.AD(name = "integration-key")
 	public String integrationKey();
 
-	@Meta.AD(name = "digital-signature-rsa-private-key")
+	@Meta.AD(name = "rsa-private-key")
 	public String rsaPrivateKey();
 
 }
