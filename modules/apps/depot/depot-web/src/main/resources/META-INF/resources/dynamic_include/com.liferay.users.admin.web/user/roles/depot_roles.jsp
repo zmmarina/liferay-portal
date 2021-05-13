@@ -18,8 +18,6 @@
 
 <%
 DepotAdminRolesDisplayContext depotAdminRolesDisplayContext = (DepotAdminRolesDisplayContext)request.getAttribute(DepotAdminRolesDisplayContext.class.getName());
-
-String searchContainerId = "depotRolesSearchContainer";
 %>
 
 <aui:input name="<%= ActionRequest.ACTION_NAME %>" type="hidden" value="/depot/update_roles" />
@@ -72,7 +70,7 @@ String searchContainerId = "depotRolesSearchContainer";
 	curParam="depotRolesCur"
 	emptyResultsMessage="this-user-is-not-assigned-any-asset-library-roles"
 	headerNames="title,asset-library,null"
-	id="<%= searchContainerId %>"
+	id="depotRolesSearchContainer"
 	iteratorURL="<%= currentURLObj %>"
 	total="<%= depotAdminRolesDisplayContext.getUserGroupRolesCount() %>"
 >
@@ -126,7 +124,7 @@ String searchContainerId = "depotRolesSearchContainer";
 			).put(
 				"removeDepotRoleIcon", removeDepotRoleIcon
 			).put(
-				"searchContainerId", searchContainerId
+				"searchContainerId", "depotRolesSearchContainer"
 			).put(
 				"selectDepotRolesURL", depotAdminRolesDisplayContext.getSelectDepotRolesURL()
 			).put(
