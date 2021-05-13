@@ -25,8 +25,8 @@ import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
@@ -81,7 +81,7 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 		return Collections.emptyList();
 	}
-	
+
 	public List<DSEnvelope> getDSEnvelopes(long groupId, String fromDate) {
 		JSONObject jsonObject = _dsHttp.get(
 			groupId,

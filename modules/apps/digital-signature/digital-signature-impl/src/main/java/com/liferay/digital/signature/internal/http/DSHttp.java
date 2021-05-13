@@ -77,23 +77,24 @@ public class DSHttp {
 		return encoder.encodeToString(bytes);
 	}
 
-	private DigitalSignatureConfiguration _getDigitalSignatureConfiguration(long groupId)
+	private String _getDocuSignAccessToken(
+			DigitalSignatureConfiguration digitalSignatureConfiguration)
 		throws Exception {
 
-		return ConfigurationProviderUtil.getGroupConfiguration(
-			DigitalSignatureConfiguration.class, groupId);
-	}
-
-	private String _getDocuSignAccessToken(long groupId) throws Exception {
 		if (_log.isDebugEnabled()) {
-			_log.debug("Get DocuSign access token for group " + groupId);
+			String digitalSignatureIntegrationKey =
+				digitalSignatureConfiguration.digitalSignatureIntegrationKey();
+
+			_log.debug(
+				"Get DocuSign access token for integration key " +
+					digitalSignatureIntegrationKey);
 		}
 
 		Http.Options options = new Http.Options();
 
 		options.setParts(
 			HashMapBuilder.put(
-				"assertion", _getJWT(groupId)
+				"assertion", _getJWT(digitalSignatureConfiguration)
 			).put(
 				"grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer"
 			).build());
@@ -106,43 +107,13 @@ public class DSHttp {
 		return jsonObject.getString("access_token");
 	}
 
-	private String _getDocuSignAPIAccountId(long groupId) throws Exception {
-		if (_log.isDebugEnabled()) {
-			_log.debug("Get DocuSign API account ID for group " + groupId);
-		}
+	private String _getJWT(
+			DigitalSignatureConfiguration digitalSignatureConfiguration)
+		throws Exception {
 
-		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
-			groupId);
-
-		return digitalSignatureConfiguration.digitalSignatureAPIAccountId();
-	}
-
-	private String _getDocuSignAPIUsername(long groupId) throws Exception {
-		if (_log.isDebugEnabled()) {
-			_log.debug("Get DocuSign API username for group " + groupId);
-		}
-
-		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
-			groupId);
-
-		return digitalSignatureConfiguration.digitalSignatureAPIUsername();
-	}
-
-	private String _getDocuSignIntegrationKey(long groupId) throws Exception {
-		if (_log.isDebugEnabled()) {
-			_log.debug("Get DocuSign integration key for group " + groupId);
-		}
-
-		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
-			groupId);
-
-		return digitalSignatureConfiguration.digitalSignatureIntegrationKey();
-	}
-
-	private String _getJWT(long groupId) throws Exception {
 		Signature signature = Signature.getInstance("SHA256withRSA");
 
-		signature.initSign(_readPrivateKey(groupId));
+		signature.initSign(_readPrivateKey(digitalSignatureConfiguration));
 
 		String headerJSON = JSONUtil.put(
 			"alg", "RS256"
@@ -159,11 +130,12 @@ public class DSHttp {
 		).put(
 			"iat", unixTime
 		).put(
-			"iss", _getDocuSignIntegrationKey(groupId)
+			"iss",
+			digitalSignatureConfiguration.digitalSignatureIntegrationKey()
 		).put(
 			"scope", "signature"
 		).put(
-			"sub", _getDocuSignAPIUsername(groupId)
+			"sub", digitalSignatureConfiguration.digitalSignatureAPIUsername()
 		).toString();
 
 		String token =
@@ -187,8 +159,13 @@ public class DSHttp {
 				HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
 		}
 
+		DigitalSignatureConfiguration digitalSignatureConfiguration =
+			ConfigurationProviderUtil.getGroupConfiguration(
+				DigitalSignatureConfiguration.class, groupId);
+
 		options.addHeader(
-			"Authorization", "Bearer " + _getDocuSignAccessToken(groupId));
+			"Authorization",
+			"Bearer " + _getDocuSignAccessToken(digitalSignatureConfiguration));
 
 		if (bodyJSONObject != null) {
 			options.setBody(
@@ -196,28 +173,28 @@ public class DSHttp {
 				StringPool.UTF8);
 		}
 
-		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
-			groupId);
-
-		String accountBaseURI = digitalSignatureConfiguration.digitalSignatureAccountBaseURI();
+		String accountBaseURI =
+			digitalSignatureConfiguration.digitalSignatureAccountBaseURI();
 
 		options.setLocation(
 			StringBundler.concat(
 				accountBaseURI, "/restapi/v2.1/accounts/",
-				_getDocuSignAPIAccountId(groupId), "/", location));
+				digitalSignatureConfiguration.digitalSignatureAPIAccountId(),
+				"/", location));
 
 		options.setMethod(method);
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));
 	}
 
-	private PrivateKey _readPrivateKey(long groupId) throws Exception {
+	private PrivateKey _readPrivateKey(
+			DigitalSignatureConfiguration digitalSignatureConfiguration)
+		throws Exception {
+
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
-		DigitalSignatureConfiguration digitalSignatureConfiguration = _getDigitalSignatureConfiguration(
-			groupId);
-
-		String privateKey = digitalSignatureConfiguration.digitalSignatureRSAPrivateKey();
+		String privateKey =
+			digitalSignatureConfiguration.digitalSignatureRSAPrivateKey();
 
 		PEMReader pemReader = new PEMReader(privateKey.getBytes());
 
