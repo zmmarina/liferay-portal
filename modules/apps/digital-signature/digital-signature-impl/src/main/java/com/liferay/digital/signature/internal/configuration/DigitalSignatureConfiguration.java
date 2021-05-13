@@ -34,17 +34,17 @@ public interface DigitalSignatureConfiguration {
 	@Meta.AD(name = "digital-signature-enable")
 	public boolean enable();
 
-	@Meta.AD(name = "digital-signature-api-account-id")
-	public String digitalSignatureAPIAccountId();
-
 	@Meta.AD(name = "digital-signature-api-username")
 	public String digitalSignatureAPIUsername();
 
-	@Meta.AD(name = "digital-signature-integration-key")
-	public String digitalSignatureIntegrationKey();
+	@Meta.AD(name = "digital-signature-api-account-id")
+	public String digitalSignatureAPIAccountId();
 
 	@Meta.AD(name = "digital-signature-base-uri")
 	public String digitalSignatureAccountBaseURI();
+
+	@Meta.AD(name = "digital-signature-integration-key")
+	public String digitalSignatureIntegrationKey();
 
 	@Meta.AD(name = "digital-signature-private-key")
 	public String digitalSignaturePrivateKey();
