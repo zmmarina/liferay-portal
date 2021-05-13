@@ -819,11 +819,11 @@ public class WorkflowMetricsRESTTestHelper {
 		).setValue(
 			"instanceId", instance.getId()
 		).setValue(
-			"modifiedDate", _getDate(slaResult.getDateModified())
+			"modifiedDate", _getDateString(slaResult.getDateModified())
 		).setValue(
 			"onTime", slaResult.getOnTime()
 		).setValue(
-			"overdueDate", _getDate(slaResult.getDateOverdue())
+			"overdueDate", _getDateString(slaResult.getDateOverdue())
 		).setValue(
 			"processId", instance.getProcessId()
 		).setValue(
@@ -871,7 +871,7 @@ public class WorkflowMetricsRESTTestHelper {
 
 		if (Objects.equals(status, "COMPLETED")) {
 			documentBuilder.setDate(
-				"completionDate", _getDate(new Date())
+				"completionDate", _getDateString(new Date())
 			).setValue(
 				"completionUserId", assigneeId
 			);
@@ -984,7 +984,7 @@ public class WorkflowMetricsRESTTestHelper {
 		return indexNamePrefix + DigestUtils.sha256Hex(sb.toString());
 	}
 
-	private String _getDate(Date date) {
+	private String _getDateString(Date date) {
 		try {
 			return DateUtil.getDate(
 				date, "yyyyMMddHHmmss", LocaleUtil.getDefault());
@@ -1095,7 +1095,7 @@ public class WorkflowMetricsRESTTestHelper {
 				slaResult -> HashMapBuilder.put(
 					"onTime", String.valueOf(slaResult.getOnTime())
 				).put(
-					"overdueDate", _getDate(slaResult.getDateOverdue())
+					"overdueDate", _getDateString(slaResult.getDateOverdue())
 				).put(
 					"remainingTime",
 					String.valueOf(slaResult.getRemainingTime())
@@ -1126,7 +1126,8 @@ public class WorkflowMetricsRESTTestHelper {
 								"slaResults",
 								_queries.term(
 									"slaResults.overdueDate",
-									_getDate(slaResult.getDateOverdue())))),
+									_getDateString(
+										slaResult.getDateOverdue())))),
 						1,
 						_instanceWorkflowMetricsIndexNameBuilder.getIndexName(
 							companyId),
