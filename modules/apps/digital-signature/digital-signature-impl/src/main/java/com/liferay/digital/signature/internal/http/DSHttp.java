@@ -173,15 +173,12 @@ public class DSHttp {
 				StringPool.UTF8);
 		}
 
-		String accountBaseURI =
-			digitalSignatureConfiguration.digitalSignatureAccountBaseURI();
-
 		options.setLocation(
 			StringBundler.concat(
-				accountBaseURI, "/restapi/v2.1/accounts/",
+				digitalSignatureConfiguration.digitalSignatureAccountBaseURI(),
+				"/restapi/v2.1/accounts/",
 				digitalSignatureConfiguration.digitalSignatureAPIAccountId(),
 				"/", location));
-
 		options.setMethod(method);
 
 		return _jsonFactory.createJSONObject(_http.URLtoString(options));
