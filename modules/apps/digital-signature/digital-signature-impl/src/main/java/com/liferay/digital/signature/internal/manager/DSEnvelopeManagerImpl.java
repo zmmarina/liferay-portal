@@ -82,7 +82,7 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 		return Collections.emptyList();
 	}
 	
-	public List<DSEnvelope> getDSEnvelopeList(long groupId, String fromDate) {
+	public List<DSEnvelope> getDSEnvelopes(long groupId, String fromDate) {
 		JSONObject jsonObject = _dsHttp.get(
 			groupId,
 			StringBundler.concat(

@@ -105,8 +105,8 @@ public class DSEnvelopeManagerTest {
 	}
 
 	@Test
-	public void testGetDSEnvelopeList() throws Exception {
-		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopeList(
+	public void testGetDSEnvelopes() throws Exception {
+		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
 			TestPropsValues.getGroupId(), "2021-01-01");
 
 		Assert.assertTrue(ListUtil.isNotNull(dsEnvelopes));
