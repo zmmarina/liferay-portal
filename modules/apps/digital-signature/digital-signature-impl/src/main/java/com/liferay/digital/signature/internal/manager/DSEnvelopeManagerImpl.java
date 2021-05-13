@@ -74,7 +74,7 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 		// LPS-132126
 
-		// accounts/{accountId}/envelopes?envelopeIds=...
+		// envelopes?envelopeIds=
 
 		return Collections.emptyList();
 	}
