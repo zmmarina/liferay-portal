@@ -19,13 +19,11 @@ import com.liferay.digital.signature.manager.DSEnvelopeManager;
 import com.liferay.digital.signature.model.DSEnvelope;
 import com.liferay.petra.reflect.ReflectionUtil;
 import com.liferay.petra.string.StringBundler;
-import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -82,22 +80,24 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 		return Collections.emptyList();
 	}
 
-	public List<DSEnvelope> getDSEnvelopes(long groupId, String fromDate) {
-		JSONObject jsonObject = _dsHttp.get(
-			groupId,
-			StringBundler.concat(
-				"envelopes?from_date=", fromDate,
-				"&include=recipients,documents&order=desc"));
+	@Override
+	public List<DSEnvelope> getDSEnvelopes(
+		long groupId, String fromDateString) {
 
-		List<DSEnvelope> dsEnvelopes = new ArrayList<>();
+		try {
+			JSONObject jsonObject = _dsHttp.get(
+				groupId,
+				StringBundler.concat(
+					"envelopes?from_date=", fromDateString,
+					"&include=recipients,documents&order=desc"));
 
-		JSONArray envelopesJSONArray = jsonObject.getJSONArray("envelopes");
-
-		envelopesJSONArray.forEach(
-			dsEnvelopeJSONObject -> dsEnvelopes.add(
-				_toDSEnvelope((JSONObject)dsEnvelopeJSONObject)));
-
-		return dsEnvelopes;
+			return JSONUtil.toList(
+				jsonObject.getJSONArray("envelopes"),
+				evenlopeJSONObject -> _toDSEnvelope(evenlopeJSONObject));
+		}
+		catch (Exception exception) {
+			return ReflectionUtil.throwException(exception);
+		}
 	}
 
 	private DSEnvelope _toDSEnvelope(JSONObject jsonObject) {

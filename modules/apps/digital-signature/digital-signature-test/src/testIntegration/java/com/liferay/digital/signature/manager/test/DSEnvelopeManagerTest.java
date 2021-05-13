@@ -83,6 +83,9 @@ public class DSEnvelopeManagerTest {
 			});
 
 		Assert.assertTrue(Validator.isNotNull(dsEnvelope.getDSEnvelopeId()));
+
+		// TODO Clean up
+
 	}
 
 	@Test
@@ -102,14 +105,23 @@ public class DSEnvelopeManagerTest {
 			TestPropsValues.getGroupId(), dsEnvelope.getDSEnvelopeId());
 
 		Assert.assertEquals(expectedEmailSubject, dsEnvelope.getEmailSubject());
+
+		// TODO Clean up
+
 	}
 
 	@Test
 	public void testGetDSEnvelopes() throws Exception {
+
+		// TODO Set up
+
 		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
 			TestPropsValues.getGroupId(), "2021-01-01");
 
 		Assert.assertTrue(ListUtil.isNotNull(dsEnvelopes));
+
+		// TODO Clean up
+
 	}
 
 	@Inject
