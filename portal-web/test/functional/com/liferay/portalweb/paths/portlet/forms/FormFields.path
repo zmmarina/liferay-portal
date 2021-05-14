@@ -49,6 +49,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>FIELD_REQUIRED</td>
+	<td>//label[text()='${key_fieldFieldLabel}']/span[contains(@class,'required')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PROPERTIES</td>
 	<td>//div[contains(@class,'nav-item')]</td>
 	<td></td>

@@ -96,12 +96,69 @@ definition {
 	}
 
 	@description = "Verify that a Form cannot be saved or published without adding anything in the Body Text"
-	@ignore = "true"
 	@priority = "5"
 	test CannotBeSavedOrPublishedWithoutBodyText {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
-		// TODO LPS-131228 CannotBeSavedOrPublishedWithoutBodyText pending implementation
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			portlet = "Forms");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Form.editName(formName = "Form 1");
+
+		Form.gotoAddField(
+			fieldPositionNumber = "0",
+			fieldType = "Paragraph");
+
+		AssertElementPresent(
+			key_fieldFieldLabel = "Body Text",
+			locator1 = "FormFields#FIELD_REQUIRED");
+
+		Click(locator1 = "Button#SAVE");
+
+		Alert.viewErrorMessage(
+			errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
+
+		Click(locator1 = "Icon#BACK");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Form.editName(formName = "Form 1");
+
+		Form.gotoAddField(
+			fieldPositionNumber = "0",
+			fieldType = "Paragraph");
+
+		Button.clickPublish();
+
+		Alert.viewErrorMessage(
+			errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
+
+		Click(locator1 = "Icon#BACK");
+
+		FormsAdminNavigator.gotoAddForm();
+
+		Form.editName(formName = "Form 1");
+
+		Form.gotoAddField(
+			fieldPositionNumber = "0",
+			fieldType = "Paragraph");
+
+		FormFields.editParagraphBody(content = "Test");
+
+		Click(locator1 = "Button#SAVE");
+
+		Alert.viewSuccessMessageText(successMessage = "Your request completed successfully.");
+
+		Refresh();
+
+		Button.clickPublish();
+
+		Alert.viewSuccessMessageText(successMessage = "The form was published successfully.");
+
 	}
 
 	@description = "Verify that a link to an Anchor in The Text can be added to the Body Text"
