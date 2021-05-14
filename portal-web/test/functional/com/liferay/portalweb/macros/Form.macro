@@ -4,7 +4,7 @@ definition {
 	var formName = "Created Form Name";
 	var rowNumber = "1";
 
-	macro _addField {
+	macro openSidebar {
 		if (IsElementNotPresent(locator1 = "Form#ACTIVE_BUILDER_SIDEBAR_PANEL")) {
 			MouseOver.mouseOverNotVisible(locator1 = "Form#BUILDER_SIDEBAR_PANEL");
 
@@ -348,7 +348,7 @@ definition {
 	}
 
 	macro gotoAddElementSet {
-		Form._addField();
+		Form.openSidebar();
 
 		Form.gotoElementSetsTab();
 
@@ -376,7 +376,7 @@ definition {
 
 	@description = "Add the ${key_fieldType} field inside page ${formPageNumber} in position ${fieldPositionNumber}."
 	macro gotoAddField {
-		Form._addField();
+		Form.openSidebar();
 
 		if (isSet(fieldPositionNumber)) {
 			var key_fieldPositionNumber = "${fieldPositionNumber}";
