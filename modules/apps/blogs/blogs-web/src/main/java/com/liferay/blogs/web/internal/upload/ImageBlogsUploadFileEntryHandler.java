@@ -72,14 +72,14 @@ public class ImageBlogsUploadFileEntryHandler
 			ActionKeys.ADD_ENTRY);
 
 		String fileName = uploadPortletRequest.getFileName(
-			_IMAGE_SELECTOR_PARAMETER_NAME);
+			"imageSelectorFileName");
 
 		if (Validator.isNotNull(fileName)) {
 			try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-					_IMAGE_SELECTOR_PARAMETER_NAME)) {
+					"imageSelectorFileName")) {
 
 				return _addFileEntry(
-					fileName, inputStream, _IMAGE_SELECTOR_PARAMETER_NAME,
+					fileName, inputStream, "imageSelectorFileName",
 					uploadPortletRequest, themeDisplay);
 			}
 		}
@@ -147,11 +147,11 @@ public class ImageBlogsUploadFileEntryHandler
 			fileEntryId);
 
 		try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-				_IMAGE_EDITOR_PARAMETER_NAME)) {
+				"imageBlob")) {
 
 			return _addFileEntry(
 				fileEntry.getFileName(), inputStream,
-				_IMAGE_EDITOR_PARAMETER_NAME, uploadPortletRequest,
+				"imageBlob", uploadPortletRequest,
 				themeDisplay);
 		}
 	}
@@ -180,11 +180,6 @@ public class ImageBlogsUploadFileEntryHandler
 				"Invalid image for file name " + fileName);
 		}
 	}
-
-	private static final String _IMAGE_EDITOR_PARAMETER_NAME = "imageBlob";
-
-	private static final String _IMAGE_SELECTOR_PARAMETER_NAME =
-		"imageSelectorFileName";
 
 	private volatile BlogsFileUploadsConfiguration
 		_blogsFileUploadsConfiguration;

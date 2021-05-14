@@ -92,14 +92,14 @@ public class ImageJournalUploadFileEntryHandler
 		}
 
 		String fileName = uploadPortletRequest.getFileName(
-			_IMAGE_SELECTOR_PARAMETER_NAME);
+			"imageSelectorFileName");
 
 		if (Validator.isNotNull(fileName)) {
 			try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-					_IMAGE_SELECTOR_PARAMETER_NAME)) {
+					"imageSelectorFileName")) {
 
 				return _addTempFileEntry(
-					fileName, inputStream, _IMAGE_SELECTOR_PARAMETER_NAME,
+					fileName, inputStream, "imageSelectorFileName",
 					uploadPortletRequest, themeDisplay);
 			}
 		}
@@ -158,7 +158,7 @@ public class ImageJournalUploadFileEntryHandler
 		throws IOException, PortalException {
 
 		try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-				_IMAGE_EDITOR_PARAMETER_NAME)) {
+				"imageBlob")) {
 
 			long fileEntryId = ParamUtil.getLong(
 				uploadPortletRequest, "fileEntryId");
@@ -167,7 +167,7 @@ public class ImageJournalUploadFileEntryHandler
 
 			return _addTempFileEntry(
 				fileEntry.getFileName(), inputStream,
-				_IMAGE_EDITOR_PARAMETER_NAME, uploadPortletRequest,
+				"imageBlob", uploadPortletRequest,
 				themeDisplay);
 		}
 	}
@@ -213,11 +213,6 @@ public class ImageJournalUploadFileEntryHandler
 		throw new ImageTypeException(
 			"Invalid image type for file name " + fileName);
 	}
-
-	private static final String _IMAGE_EDITOR_PARAMETER_NAME = "imageBlob";
-
-	private static final String _IMAGE_SELECTOR_PARAMETER_NAME =
-		"imageSelectorFileName";
 
 	private static final String _TEMP_FOLDER_NAME =
 		ImageJournalUploadFileEntryHandler.class.getName();

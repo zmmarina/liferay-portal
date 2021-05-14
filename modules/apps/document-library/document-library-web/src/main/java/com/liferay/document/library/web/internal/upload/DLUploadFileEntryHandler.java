@@ -69,15 +69,15 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 			themeDisplay.getScopeGroupId(), folderId, ActionKeys.ADD_DOCUMENT);
 
 		String fileName = uploadPortletRequest.getFileName(
-			_IMAGE_SELECTOR_PARAMETER_NAME);
+			"imageSelectorFileName");
 
 		if (Validator.isNotNull(fileName)) {
 			try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-					_IMAGE_SELECTOR_PARAMETER_NAME)) {
+					"imageSelectorFileName")) {
 
 				return _addFileEntry(
 					fileName, folderId, inputStream,
-					_IMAGE_SELECTOR_PARAMETER_NAME, uploadPortletRequest,
+					"imageSelectorFileName", uploadPortletRequest,
 					themeDisplay);
 			}
 		}
@@ -104,8 +104,8 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 			null, themeDisplay.getScopeGroupId(), folderId, uniqueFileName,
 			uploadPortletRequest.getContentType(parameterName), uniqueFileName,
 			_getDescription(uploadPortletRequest), StringPool.BLANK,
-			inputStream, uploadPortletRequest.getSize(parameterName),
-			null, null, _getServiceContext(uploadPortletRequest));
+			inputStream, uploadPortletRequest.getSize(parameterName), null,
+			null, _getServiceContext(uploadPortletRequest));
 	}
 
 	private FileEntry _editImageFileEntry(
@@ -114,7 +114,7 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 		throws IOException, PortalException {
 
 		try (InputStream inputStream = uploadPortletRequest.getFileAsStream(
-				_IMAGE_EDITOR_PARAMETER_NAME)) {
+				"imageBlob")) {
 
 			long fileEntryId = ParamUtil.getLong(
 				uploadPortletRequest, "fileEntryId");
@@ -123,7 +123,7 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 
 			return _addFileEntry(
 				fileEntry.getFileName(), folderId, inputStream,
-				_IMAGE_EDITOR_PARAMETER_NAME, uploadPortletRequest,
+				"imageBlob", uploadPortletRequest,
 				themeDisplay);
 		}
 	}
@@ -204,11 +204,6 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 
 		return serviceContext;
 	}
-
-	private static final String _IMAGE_EDITOR_PARAMETER_NAME = "imageBlob";
-
-	private static final String _IMAGE_SELECTOR_PARAMETER_NAME =
-		"imageSelectorFileName";
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		DLUploadFileEntryHandler.class);

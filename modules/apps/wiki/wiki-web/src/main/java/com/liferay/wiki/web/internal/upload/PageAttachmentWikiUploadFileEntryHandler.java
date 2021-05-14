@@ -71,14 +71,14 @@ public class PageAttachmentWikiUploadFileEntryHandler
 
 		if (Validator.isNotNull(
 				uploadPortletRequest.getFileName(
-					_IMAGE_SELECTOR_PARAMETER_NAME))) {
+					"imageSelectorFileName"))) {
 
 			String fileName = uploadPortletRequest.getFileName(
-				_IMAGE_SELECTOR_PARAMETER_NAME);
+				"imageSelectorFileName");
 
 			return _addPageAttachment(
 				uploadPortletRequest, themeDisplay, fileName,
-				_IMAGE_SELECTOR_PARAMETER_NAME);
+				"imageSelectorFileName");
 		}
 
 		return _editImageFileEntry(uploadPortletRequest, themeDisplay);
@@ -141,7 +141,7 @@ public class PageAttachmentWikiUploadFileEntryHandler
 
 		return _addPageAttachment(
 			uploadPortletRequest, themeDisplay, fileEntry.getFileName(),
-			_IMAGE_EDITOR_PARAMETER_NAME);
+			"imageBlob");
 	}
 
 	private String[] _getValidMimeTypes(
@@ -195,11 +195,6 @@ public class PageAttachmentWikiUploadFileEntryHandler
 				"Invalid MIME type ", contentType, " for file name ",
 				fileName));
 	}
-
-	private static final String _IMAGE_EDITOR_PARAMETER_NAME = "imageBlob";
-
-	private static final String _IMAGE_SELECTOR_PARAMETER_NAME =
-		"imageSelectorFileName";
 
 	@Reference
 	private DLAppService _dlAppService;
