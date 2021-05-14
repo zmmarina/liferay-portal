@@ -665,9 +665,10 @@ definition {
 	}
 
 	@description = "Verify that a Form can be created"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeCreated {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130500 CanBeCreated pending implementation
@@ -675,54 +676,60 @@ definition {
 	}
 
 	@description = "Verify that a Form can be published from an autosaved draft"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeCreatedFromAutosavedDraft {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130511 CanBeCreatedFromAutosavedDraft pending implementation
 	}
 
 	@description = "Verify that a Form can be created with more than one page"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeCreatedWithMultiplePages {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130996 CanBeCreatedWithMultiplePages pending implementation
 	}
 
 	@description = "Verify that a Form can be deleted"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeDeleted {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130509 CanBeDeleted pending implementation
 	}
 
 	@description = "Verify that a Form can be duplicated"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeDuplicated {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130508 CanBeDuplicated pending implementation
 	}
 
 	@description = "Verify that a Form can be edited"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeEdited {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130501 CanBeEdited pending implementation
 	}
 
 	@description = "Verify that a Form can be unpublished"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test CanBeUnpublished {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130507 CanBeUnpublished pending implementation
@@ -2145,9 +2152,10 @@ definition {
 	}
 
 	@description = "Verify that multiple Forms can be deleted"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test MultipleFormsCanBeDeleted {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-131744 MultipleFormsCanBeDeleted pending implementation
@@ -2245,18 +2253,20 @@ definition {
 	}
 
 	@description = "Verify that Form Pages can be reordered"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test PagesCanBeReordered {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130999 PagesCanBeReordered pending implementation
 	}
 
 	@description = "Verify that Form Pages can be reset"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test PagesCanBeReset {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-131000 PagesCanBeReset pending implementation
@@ -2612,9 +2622,10 @@ definition {
 	}
 
 	@description = "Verify that a Form cannot be created without at least 1 field"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test ShouldHaveAtLeastOneField {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130503 ShouldHaveAtLeastOneField pending implementation
@@ -5521,9 +5532,10 @@ definition {
 	}
 
 	@description = "Verify that a Form autosaves after 1 minute by default"
-	@ignore = "true"
+	@ignore = "Test Stub"
 	@priority = "5"
 	test WillAutosaveAfterOneMinute {
+		property forms.functional = "true";
 		property portal.acceptance = "false";
 
 		// TODO LPS-130510 WillAutosaveAfterOneMinute pending implementation
