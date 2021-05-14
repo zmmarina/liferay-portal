@@ -53,7 +53,7 @@ public class GoogleCloudTranslatorConfigurationModelListener
 				ResourceBundleUtil.getString(
 					_resourceBundleLoader.loadResourceBundle(
 						LocaleThreadLocal.getThemeDisplayLocale()),
-					"service-account-private-key-must-be-in-json-format"),
+					"the-service-account-private-key-must-be-in-json-format"),
 				GoogleCloudTranslatorConfiguration.class, getClass(),
 				properties);
 		}
