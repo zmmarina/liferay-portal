@@ -119,8 +119,7 @@ definition {
 
 		Click(locator1 = "Button#SAVE");
 
-		Alert.viewErrorMessage(
-			errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
+		Alert.viewErrorMessage(errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
 
 		Click(locator1 = "Icon#BACK");
 
@@ -134,8 +133,7 @@ definition {
 
 		Button.clickPublish();
 
-		Alert.viewErrorMessage(
-			errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
+		Alert.viewErrorMessage(errorMessage = "Setting (Body Text) of field Paragraph is invalid.");
 
 		Click(locator1 = "Icon#BACK");
 
@@ -158,7 +156,6 @@ definition {
 		Button.clickPublish();
 
 		Alert.viewSuccessMessageText(successMessage = "The form was published successfully.");
-
 	}
 
 	@description = "Verify that a link to an Anchor in The Text can be added to the Body Text"
