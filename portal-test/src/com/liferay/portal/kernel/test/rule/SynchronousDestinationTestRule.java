@@ -183,12 +183,12 @@ public class SynchronousDestinationTestRule
 			_forceSyncSafeCloseable = ProxyModeThreadLocal.setWithSafeCloseable(
 				true);
 
-			replaceDestination(
-				DestinationNames.DOCUMENT_LIBRARY_AUDIO_PROCESSOR);
 			replaceDestination(DestinationNames.AUDIT);
 			replaceDestination(DestinationNames.ASYNC_SERVICE);
 			replaceDestination(DestinationNames.BACKGROUND_TASK);
 			replaceDestination(DestinationNames.BACKGROUND_TASK_STATUS);
+			replaceDestination(
+				DestinationNames.DOCUMENT_LIBRARY_AUDIO_PROCESSOR);
 			replaceDestination(DestinationNames.DOCUMENT_LIBRARY_PDF_PROCESSOR);
 			replaceDestination(
 				DestinationNames.DOCUMENT_LIBRARY_RAW_METADATA_PROCESSOR);
