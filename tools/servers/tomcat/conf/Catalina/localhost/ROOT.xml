@@ -9,5 +9,4 @@
 		userClassNames="com.liferay.portal.kernel.security.jaas.PortalPrincipal"
 		roleClassNames="com.liferay.portal.kernel.security.jaas.PortalRole"
 	/>-->
-
 </Context>
