@@ -16,8 +16,6 @@
 
 <%@ include file="/init.jsp" %>
 
-<aui:model-context model="<%= User.class %>" />
-
 <%
 AccountEntryDisplay accountEntryDisplay = (AccountEntryDisplay)request.getAttribute(AccountWebKeys.ACCOUNT_ENTRY_DISPLAY);
 
@@ -83,6 +81,8 @@ renderResponse.setTitle(LanguageUtil.format(request, "add-new-user-to-x", accoun
 
 						<liferay-ui:message key="<%= usne.screenNameValidator.getDescription(locale) %>" />
 					</liferay-ui:error>
+
+					<aui:model-context model="<%= User.class %>" />
 
 					<aui:input name="screenName">
 
