@@ -261,10 +261,10 @@ public class UserGroupRoleLocalServiceImpl
 	public boolean hasUserGroupRole(
 		long userId, long groupId, long roleId, boolean inherit) {
 
-		Number count = userGroupRolePersistence.countByU_G_R(
+		int count = userGroupRolePersistence.countByU_G_R(
 			userId, groupId, roleId);
 
-		if (count.intValue() > 0) {
+		if (count > 0) {
 			return true;
 		}
 
@@ -291,7 +291,7 @@ public class UserGroupRoleLocalServiceImpl
 					)
 				));
 
-			if (count.intValue() > 0) {
+			if (count > 0) {
 				return true;
 			}
 		}
