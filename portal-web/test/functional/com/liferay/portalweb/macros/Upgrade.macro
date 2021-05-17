@@ -1865,26 +1865,13 @@ definition {
 	}
 
 	macro viewAssetPublisher {
-		Navigator.gotoPage(pageName = "Asset Publisher");
+		task ("Configure the Asset Publisher to show full content") {
+			Navigator.gotoPage(pageName = "Asset Publisher");
 
-		AssetPublisherPortlet.configureAssetLinkBehaviorPG(assetLinkBehavior = "Show Full Content");
-
-		AssertTextEquals(
-			key_portletName = "Asset Publisher",
-			locator1 = "Portlet#TITLE",
-			value1 = "Asset Publisher");
-
-		AssetPublisherPortlet.viewAssetPG(
-			assetContent = "Web Content Content",
-			assetTitle = "Web Content Title");
-
-		if (isSet(categoryName)) {
-			AssetPublisherPortlet.viewAssetMetadataPG(categoryName = "${categoryName}");
+			AssetPublisherPortlet.configureAssetLinkBehaviorPG(assetLinkBehavior = "Show Full Content");
 		}
 
-		if (IsElementPresent(locator1 = "Home#PAGE_4")) {
-			Click(locator1 = "Home#PAGE_4");
-
+		task ("View the dynamic selection asset in Asset Publisher") {
 			AssertTextEquals(
 				key_portletName = "Asset Publisher",
 				locator1 = "Portlet#TITLE",
@@ -1893,6 +1880,27 @@ definition {
 			AssetPublisherPortlet.viewAssetPG(
 				assetContent = "Web Content Content",
 				assetTitle = "Web Content Title");
+		}
+
+		task ("View category shown in Asset Publisher") {
+			if (isSet(categoryName)) {
+				AssetPublisherPortlet.viewAssetMetadataPG(categoryName = "${categoryName}");
+			}
+		}
+
+		task ("View the manual selection asset in Asset Publisher") {
+			if (IsElementPresent(key_pageName = "Asset Publisher Test 2", locator1 = "Home#PAGE")) {
+				Navigator.gotoPage(pageName = "Asset Publisher Test 2");
+
+				AssertTextEquals(
+					key_portletName = "Asset Publisher",
+					locator1 = "Portlet#TITLE",
+					value1 = "Asset Publisher");
+
+				AssetPublisherPortlet.viewAssetPG(
+					assetContent = "Web Content Content",
+					assetTitle = "Web Content Title");
+			}
 		}
 	}
 
