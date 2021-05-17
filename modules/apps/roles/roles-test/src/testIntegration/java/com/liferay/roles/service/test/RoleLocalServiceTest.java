@@ -369,7 +369,7 @@ public class RoleLocalServiceTest {
 			_arbitraryResourceAction.getActionId());
 
 		Assert.assertTrue(
-			"The method findByC_N_S_P_A should have returned the role " +
+			"The method getResourceActionRoles should have returned the role " +
 				_arbitraryRole.getRoleId(),
 			roles.contains(_arbitraryRole));
 	}
