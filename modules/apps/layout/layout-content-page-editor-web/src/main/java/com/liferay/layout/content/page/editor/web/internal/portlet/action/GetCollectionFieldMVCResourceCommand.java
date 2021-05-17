@@ -154,15 +154,15 @@ public class GetCollectionFieldMVCResourceCommand
 					defaultLayoutListRetrieverContext =
 						new DefaultLayoutListRetrieverContext();
 
-				defaultLayoutListRetrieverContext.setPagination(
-					Pagination.of(size, 0));
-
 				Object infoItem = _getInfoItem(httpServletRequest);
 
 				if (infoItem != null) {
 					defaultLayoutListRetrieverContext.setContextObject(
 						infoItem);
 				}
+
+				defaultLayoutListRetrieverContext.setPagination(
+					Pagination.of(size, 0));
 
 				ListObjectReference listObjectReference =
 					listObjectReferenceFactory.getListObjectReference(
