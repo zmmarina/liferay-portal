@@ -135,8 +135,9 @@ public class NestedFieldsSupportMapToDDMFormValuesConverterStrategy
 				continue;
 			}
 
-			DDMFormField ddmFormField = entry.getValue();
 			Object value = StringPool.BLANK;
+
+			DDMFormField ddmFormField = entry.getValue();
 
 			if (ddmFormField.isLocalizable()) {
 				value = HashMapBuilder.<String, Object>put(
