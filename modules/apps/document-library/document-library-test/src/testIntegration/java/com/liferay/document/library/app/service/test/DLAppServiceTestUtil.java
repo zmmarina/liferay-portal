@@ -197,14 +197,14 @@ public class DLAppServiceTestUtil {
 
 	protected static FileEntry updateFileEntry(
 			long groupId, long fileEntryId, String fileName,
-			boolean majorVersion)
+			Date expirationDate, Date reviewDate, boolean majorVersion)
 		throws Exception {
 
 		return DLAppServiceUtil.updateFileEntry(
 			fileEntryId, fileName, ContentTypes.TEXT_PLAIN, fileName,
 			StringPool.BLANK, StringPool.BLANK,
 			DLVersionNumberIncrease.fromMajorVersion(majorVersion),
-			TestDataConstants.TEST_BYTE_ARRAY, null, null,
+			TestDataConstants.TEST_BYTE_ARRAY, expirationDate, reviewDate,
 			ServiceContextTestUtil.getServiceContext(groupId));
 	}
 
