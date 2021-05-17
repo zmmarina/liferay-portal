@@ -177,9 +177,8 @@ public class DLAppServiceWhenAddingAFileEntryTest extends BaseDLAppTestCase {
 			RandomTestUtil.randomString(), RandomTestUtil.randomString(), null,
 			reviewDate, null);
 
-		Assert.assertEquals(reviewDate, fileEntry.getReviewDate());
-
 		Assert.assertNull(fileEntry.getExpirationDate());
+		Assert.assertEquals(reviewDate, fileEntry.getReviewDate());
 	}
 
 	@Test
