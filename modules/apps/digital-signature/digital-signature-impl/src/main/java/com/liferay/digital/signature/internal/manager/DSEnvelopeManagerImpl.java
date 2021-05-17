@@ -136,7 +136,7 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 		return new DSEnvelope() {
 			{
-				createdDateTime = _parseLocalDateTime(
+				createdLocalDateTime = _parseLocalDateTime(
 					jsonObject.getString("createdDateTime"));
 				dsEnvelopeId = jsonObject.getString("envelopeId");
 				emailBlurb = jsonObject.getString("emailBlurb");

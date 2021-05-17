@@ -25,7 +25,7 @@ import java.util.List;
 public class DSEnvelope {
 
 	public LocalDateTime getCreatedLocalDateTime() {
-		return createdDateTime;
+		return createdLocalDateTime;
 	}
 
 	public List<DSDocument> getDSDocuments() {
@@ -52,8 +52,8 @@ public class DSEnvelope {
 		return status;
 	}
 
-	public void setCreatedLocalDateTime(LocalDateTime createdDateTime) {
-		this.createdDateTime = createdDateTime;
+	public void setCreatedLocalDateTime(LocalDateTime createdLocalDateTime) {
+		this.createdLocalDateTime = createdLocalDateTime;
 	}
 
 	public void setDSDocuments(List<DSDocument> dsDocuments) {
@@ -80,7 +80,7 @@ public class DSEnvelope {
 		this.status = status;
 	}
 
-	protected LocalDateTime createdDateTime;
+	protected LocalDateTime createdLocalDateTime;
 	protected List<DSDocument> dsDocuments;
 	protected String dsEnvelopeId;
 	protected List<DSRecipient> dsRecipients;
