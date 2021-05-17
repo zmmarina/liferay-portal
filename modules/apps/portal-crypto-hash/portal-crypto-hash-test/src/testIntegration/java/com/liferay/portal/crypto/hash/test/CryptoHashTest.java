@@ -120,7 +120,7 @@ public class CryptoHashTest {
 				"salt.size", "32"
 			).build());
 
-		byte[] randomBytes = randomBytes();
+		byte[] randomBytes = RandomTestUtil.randomBytes();
 
 		CryptoHashResponse cryptoHashResponse = callService(
 			bundleContext, CryptoHashGenerator.class,
@@ -163,7 +163,7 @@ public class CryptoHashTest {
 				"test-message-digest-2"
 			).build());
 
-		byte[] randomBytes = randomBytes();
+		byte[] randomBytes = RandomTestUtil.randomBytes();
 
 		CryptoHashResponse cryptoHashResponse1 = callService(
 			bundleContext, CryptoHashGenerator.class,
@@ -234,7 +234,7 @@ public class CryptoHashTest {
 		AutoCloseable autoCloseable2 = autoCloseables.remove(
 			autoCloseables.size() - 1);
 
-		byte[] randomBytes = randomBytes();
+		byte[] randomBytes = RandomTestUtil.randomBytes();
 
 		CryptoHashResponse cryptoHashResponse1 = callService(
 			bundleContext, CryptoHashGenerator.class,
@@ -528,12 +528,6 @@ public class CryptoHashTest {
 		}
 
 		return true;
-	}
-
-	protected byte[] randomBytes() {
-		String string = RandomTestUtil.randomString();
-
-		return string.getBytes();
 	}
 
 	protected static BundleContext bundleContext;
