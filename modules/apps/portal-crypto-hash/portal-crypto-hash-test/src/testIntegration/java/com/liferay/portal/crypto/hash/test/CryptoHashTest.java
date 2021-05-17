@@ -251,6 +251,7 @@ public class CryptoHashTest {
 			});
 
 		autoCloseable2.close();
+
 		autoCloseable1.close();
 
 		Assert.assertTrue(
