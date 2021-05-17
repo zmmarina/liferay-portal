@@ -64,6 +64,8 @@ public class SamlSpIdpConnectionWrapper
 		attributes.put(
 			"unknownUsersAreStrangers", isUnknownUsersAreStrangers());
 		attributes.put("userAttributeMappings", getUserAttributeMappings());
+		attributes.put(
+			"userIdentifierExpression", getUserIdentifierExpression());
 
 		return attributes;
 	}
@@ -193,6 +195,13 @@ public class SamlSpIdpConnectionWrapper
 
 		if (userAttributeMappings != null) {
 			setUserAttributeMappings(userAttributeMappings);
+		}
+
+		String userIdentifierExpression = (String)attributes.get(
+			"userIdentifierExpression");
+
+		if (userIdentifierExpression != null) {
+			setUserIdentifierExpression(userIdentifierExpression);
 		}
 	}
 
@@ -394,6 +403,16 @@ public class SamlSpIdpConnectionWrapper
 	@Override
 	public long getUserId() {
 		return model.getUserId();
+	}
+
+	/**
+	 * Returns the user identifier expression of this saml sp idp connection.
+	 *
+	 * @return the user identifier expression of this saml sp idp connection
+	 */
+	@Override
+	public String getUserIdentifierExpression() {
+		return model.getUserIdentifierExpression();
 	}
 
 	/**
@@ -681,6 +700,16 @@ public class SamlSpIdpConnectionWrapper
 	@Override
 	public void setUserId(long userId) {
 		model.setUserId(userId);
+	}
+
+	/**
+	 * Sets the user identifier expression of this saml sp idp connection.
+	 *
+	 * @param userIdentifierExpression the user identifier expression of this saml sp idp connection
+	 */
+	@Override
+	public void setUserIdentifierExpression(String userIdentifierExpression) {
+		model.setUserIdentifierExpression(userIdentifierExpression);
 	}
 
 	/**

@@ -414,4 +414,19 @@ public interface SamlSpIdpConnectionModel
 	 */
 	public void setUserAttributeMappings(String userAttributeMappings);
 
+	/**
+	 * Returns the user identifier expression of this saml sp idp connection.
+	 *
+	 * @return the user identifier expression of this saml sp idp connection
+	 */
+	@AutoEscape
+	public String getUserIdentifierExpression();
+
+	/**
+	 * Sets the user identifier expression of this saml sp idp connection.
+	 *
+	 * @param userIdentifierExpression the user identifier expression of this saml sp idp connection
+	 */
+	public void setUserIdentifierExpression(String userIdentifierExpression);
+
 }

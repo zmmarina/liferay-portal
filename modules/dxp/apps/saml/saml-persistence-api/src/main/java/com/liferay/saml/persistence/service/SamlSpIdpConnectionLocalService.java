@@ -78,6 +78,13 @@ public interface SamlSpIdpConnectionLocalService
 	public SamlSpIdpConnection addSamlSpIdpConnection(
 		SamlSpIdpConnection samlSpIdpConnection);
 
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 #addSamlSpIdpConnection(String, boolean, long, boolean,
+	 boolean, boolean, String, InputStream, String, String,
+	 boolean, boolean, String, String, boolean, ServiceContext)}
+	 */
+	@Deprecated
 	public SamlSpIdpConnection addSamlSpIdpConnection(
 			String samlIdpEntityId, boolean assertionSignatureRequired,
 			long clockSkew, boolean enabled, boolean forceAuthn,
@@ -86,6 +93,16 @@ public interface SamlSpIdpConnectionLocalService
 			String nameIdFormat, boolean signAuthnRequest,
 			boolean unknownUsersAreStrangers, String userAttributeMappings,
 			ServiceContext serviceContext)
+		throws PortalException;
+
+	public SamlSpIdpConnection addSamlSpIdpConnection(
+			String samlIdpEntityId, boolean assertionSignatureRequired,
+			long clockSkew, boolean enabled, boolean forceAuthn,
+			boolean ldapImportEnabled, String metadataUrl,
+			InputStream metadataXmlInputStream, String name,
+			String nameIdFormat, boolean signAuthnRequest,
+			boolean unknownUsersAreStrangers, String userAttributeMappings,
+			String userIdentifierExpression, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
@@ -309,6 +326,13 @@ public interface SamlSpIdpConnectionLocalService
 	public void updateMetadata(long samlSpIdpConnectionId)
 		throws PortalException;
 
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 #updateSamlSpIdpConnection(long, String, boolean, long,
+	 boolean, boolean, boolean, String, InputStream, String,
+	 String, boolean, boolean, String, String, boolean, ServiceContext)}
+	 */
+	@Deprecated
 	public SamlSpIdpConnection updateSamlSpIdpConnection(
 			long samlSpIdpConnectionId, String samlIdpEntityId,
 			boolean assertionSignatureRequired, long clockSkew, boolean enabled,
@@ -317,6 +341,16 @@ public interface SamlSpIdpConnectionLocalService
 			String nameIdFormat, boolean signAuthnRequest,
 			boolean unknownUsersAreStrangers, String userAttributeMappings,
 			ServiceContext serviceContext)
+		throws PortalException;
+
+	public SamlSpIdpConnection updateSamlSpIdpConnection(
+			long samlSpIdpConnectionId, String samlIdpEntityId,
+			boolean assertionSignatureRequired, long clockSkew, boolean enabled,
+			boolean forceAuthn, boolean ldapImportEnabled, String metadataUrl,
+			InputStream metadataXmlInputStream, String name,
+			String nameIdFormat, boolean signAuthnRequest,
+			boolean unknownUsersAreStrangers, String userAttributeMappings,
+			String userIdentifierExpression, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**

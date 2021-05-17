@@ -101,6 +101,10 @@ public class SamlSpIdpConnectionTable
 		userAttributeMappings = createColumn(
 			"userAttributeMappings", String.class, Types.VARCHAR,
 			Column.FLAG_DEFAULT);
+	public final Column<SamlSpIdpConnectionTable, String>
+		userIdentifierExpression = createColumn(
+			"userIdentifierExpression", String.class, Types.VARCHAR,
+			Column.FLAG_DEFAULT);
 
 	private SamlSpIdpConnectionTable() {
 		super("SamlSpIdpConnection", SamlSpIdpConnectionTable::new);

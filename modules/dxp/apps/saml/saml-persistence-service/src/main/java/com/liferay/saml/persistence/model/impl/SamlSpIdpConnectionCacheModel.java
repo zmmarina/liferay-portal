@@ -64,7 +64,7 @@ public class SamlSpIdpConnectionCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("{samlSpIdpConnectionId=");
 		sb.append(samlSpIdpConnectionId);
@@ -106,6 +106,8 @@ public class SamlSpIdpConnectionCacheModel
 		sb.append(unknownUsersAreStrangers);
 		sb.append(", userAttributeMappings=");
 		sb.append(userAttributeMappings);
+		sb.append(", userIdentifierExpression=");
+		sb.append(userIdentifierExpression);
 		sb.append("}");
 
 		return sb.toString();
@@ -203,6 +205,14 @@ public class SamlSpIdpConnectionCacheModel
 				userAttributeMappings);
 		}
 
+		if (userIdentifierExpression == null) {
+			samlSpIdpConnectionImpl.setUserIdentifierExpression("");
+		}
+		else {
+			samlSpIdpConnectionImpl.setUserIdentifierExpression(
+				userIdentifierExpression);
+		}
+
 		samlSpIdpConnectionImpl.resetOriginalValues();
 
 		return samlSpIdpConnectionImpl;
@@ -241,6 +251,7 @@ public class SamlSpIdpConnectionCacheModel
 
 		unknownUsersAreStrangers = objectInput.readBoolean();
 		userAttributeMappings = objectInput.readUTF();
+		userIdentifierExpression = objectInput.readUTF();
 	}
 
 	@Override
@@ -317,6 +328,13 @@ public class SamlSpIdpConnectionCacheModel
 		else {
 			objectOutput.writeUTF(userAttributeMappings);
 		}
+
+		if (userIdentifierExpression == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(userIdentifierExpression);
+		}
 	}
 
 	public long samlSpIdpConnectionId;
@@ -339,5 +357,6 @@ public class SamlSpIdpConnectionCacheModel
 	public boolean signAuthnRequest;
 	public boolean unknownUsersAreStrangers;
 	public String userAttributeMappings;
+	public String userIdentifierExpression;
 
 }
