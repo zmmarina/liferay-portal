@@ -584,7 +584,9 @@ public class FileEntryStagedModelDataHandler
 									fileEntry.getMimeType(), fileEntryTitle,
 									fileEntry.getDescription(), null,
 									DLVersionNumberIncrease.MINOR, inputStream,
-									fileEntry.getSize(), serviceContext);
+									fileEntry.getSize(),
+									fileEntry.getExpirationDate(),
+									fileEntry.getReviewDate(), serviceContext);
 						}
 						else {
 							_dlAppLocalService.updateAsset(

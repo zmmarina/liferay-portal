@@ -287,7 +287,7 @@ public class FileEntryAtomCollectionAdapter
 		_dlAppService.updateFileEntry(
 			fileEntry.getFileEntryId(), title, mimeType, title, summary, null,
 			DLVersionNumberIncrease.MAJOR, contentByteArrayInputStream,
-			contentDecoded.length, serviceContext);
+			contentDecoded.length, null, null, serviceContext);
 	}
 
 	@Override
@@ -314,7 +314,7 @@ public class FileEntryAtomCollectionAdapter
 		_dlAppService.updateFileEntry(
 			fileEntry.getFileEntryId(), slug, mimeType, title, description,
 			null, DLVersionNumberIncrease.MAJOR, contentByteArrayInputStream,
-			content.length, serviceContext);
+			content.length, null, null, serviceContext);
 	}
 
 	@Reference(unbind = "-")
