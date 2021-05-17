@@ -42,6 +42,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
@@ -49,7 +50,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -83,11 +83,6 @@ public class CryptoHashTest {
 		Bundle bundle = FrameworkUtil.getBundle(CryptoHashTest.class);
 
 		bundleContext = bundle.getBundleContext();
-	}
-
-	@Before
-	public void setUp() {
-		autoCloseables = new ArrayList<>();
 	}
 
 	@After
@@ -532,7 +527,7 @@ public class CryptoHashTest {
 
 	protected static BundleContext bundleContext;
 
-	protected ArrayList<AutoCloseable> autoCloseables;
+	protected List<AutoCloseable> autoCloseables = new ArrayList<>();
 
 	private static final Log _log = LogFactoryUtil.getLog(CryptoHashTest.class);
 
