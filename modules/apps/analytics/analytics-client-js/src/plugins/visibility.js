@@ -60,13 +60,16 @@ function handleVisibilityChange(analytics) {
  */
 function visibility(analytics) {
 	const {visibilityChange} = getHiddenKey();
-	const onVisibilityChange = handleVisibilityChange.bind(null, analytics);
 
-	document.addEventListener(visibilityChange, onVisibilityChange);
+	if (visibilityChange) {
+		const onVisibilityChange = handleVisibilityChange.bind(null, analytics);
 
-	return () => {
-		window.removeEventListener(visibilityChange, onVisibilityChange);
-	};
+		document.addEventListener(visibilityChange, onVisibilityChange);
+
+		return () => {
+			window.removeEventListener(visibilityChange, onVisibilityChange);
+		};
+	}
 }
 
 export {visibility};
