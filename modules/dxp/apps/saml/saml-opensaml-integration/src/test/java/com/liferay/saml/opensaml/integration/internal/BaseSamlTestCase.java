@@ -425,7 +425,7 @@ public abstract class BaseSamlTestCase extends PowerMockito {
 	protected void setupIdentifiers() {
 		SamlIdentifierGeneratorStrategyFactory
 			samlIdentifierGeneratorStrategyFactory =
-			new SamlIdentifierGeneratorStrategyFactory();
+				new SamlIdentifierGeneratorStrategyFactory();
 
 		samlIdentifierGenerator = samlIdentifierGeneratorStrategyFactory.create(
 			16);
@@ -498,7 +498,7 @@ public abstract class BaseSamlTestCase extends PowerMockito {
 			HashMapBuilder.<String, Object>put(
 				"saml.keystore.path",
 				"classpath:/com/liferay/saml/opensaml/integration/internal" +
-				"/credential/dependencies/keystore.jks"
+					"/credential/dependencies/keystore.jks"
 			).build());
 
 		credentialResolver = new KeyStoreCredentialResolver();
@@ -753,7 +753,7 @@ public abstract class BaseSamlTestCase extends PowerMockito {
 					idpSSODescriptor.getSingleLogoutServices();
 
 				for (SingleLogoutService singleLogoutService :
-					singleLogoutServices) {
+						singleLogoutServices) {
 
 					String binding = singleLogoutService.getBinding();
 
@@ -768,7 +768,7 @@ public abstract class BaseSamlTestCase extends PowerMockito {
 					idpSSODescriptor.getSingleSignOnServices();
 
 				for (SingleSignOnService singleSignOnService :
-					singleSignOnServices) {
+						singleSignOnServices) {
 
 					String binding = singleSignOnService.getBinding();
 
