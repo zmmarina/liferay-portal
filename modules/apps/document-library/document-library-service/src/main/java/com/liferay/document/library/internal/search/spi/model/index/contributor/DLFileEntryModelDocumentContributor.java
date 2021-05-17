@@ -155,9 +155,9 @@ public class DLFileEntryModelDocumentContributor
 			document.addKeyword("extension", dlFileEntry.getExtension());
 			document.addKeyword(
 				"fileEntryTypeId", dlFileEntry.getFileEntryTypeId());
-			document.addText("fileName", dlFileEntry.getFileName());
 			document.addTextSortable(
 				"fileExtension", dlFileEntry.getExtension());
+			document.addText("fileName", dlFileEntry.getFileName());
 			document.addTextSortable(
 				"mimeType",
 				StringUtil.replace(
