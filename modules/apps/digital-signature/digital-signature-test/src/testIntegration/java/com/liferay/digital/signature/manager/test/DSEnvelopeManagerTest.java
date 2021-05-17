@@ -24,7 +24,6 @@ import com.liferay.portal.kernel.test.util.RandomTestUtil;
 import com.liferay.portal.kernel.test.util.TestPropsValues;
 import com.liferay.portal.kernel.util.Base64;
 import com.liferay.portal.kernel.util.FileUtil;
-import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.test.rule.Inject;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
@@ -113,23 +112,6 @@ public class DSEnvelopeManagerTest {
 
 	@Test
 	public void testGetDSEnvelopes() throws Exception {
-
-		// TODO Set up
-
-		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
-			TestPropsValues.getGroupId(), "2021-01-01");
-
-		Assert.assertTrue(ListUtil.isNotNull(dsEnvelopes));
-
-		// TODO Clean up
-
-	}
-
-	@Test
-	public void testGetDSEnvelopesByIds() throws Exception {
-
-		// TODO Set up
-
 		DSEnvelope dsEnvelope1 = _dsEnvelopeManager.addDSEnvelope(
 			TestPropsValues.getGroupId(),
 			new DSEnvelope() {
@@ -138,7 +120,6 @@ public class DSEnvelopeManagerTest {
 					status = "created";
 				}
 			});
-
 		DSEnvelope dsEnvelope2 = _dsEnvelopeManager.addDSEnvelope(
 			TestPropsValues.getGroupId(),
 			new DSEnvelope() {
@@ -148,12 +129,17 @@ public class DSEnvelopeManagerTest {
 				}
 			});
 
+		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
+			TestPropsValues.getGroupId(), "2021-01-01");
+
+		Assert.assertTrue(dsEnvelopes.size() >= 2);
+
 		List<String> dsEnvelopeIds = new ArrayList<>();
 
 		dsEnvelopeIds.add(dsEnvelope1.getDSEnvelopeId());
 		dsEnvelopeIds.add(dsEnvelope2.getDSEnvelopeId());
 
-		List<DSEnvelope> dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
+		dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
 			TestPropsValues.getGroupId(), dsEnvelopeIds);
 
 		Assert.assertTrue(dsEnvelopes.size() == 2);
