@@ -771,7 +771,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	public Map<String, List<String>> getResourceRoles(
 		long companyId, String name, int scope, String primKey) {
 
-		Map<String, List<String>> roleMap = new HashMap<>();
+		Map<String, List<String>> rolesMap = new HashMap<>();
 
 		for (Object[] array :
 				rolePersistence.<List<Object[]>>dslQuery(
@@ -809,13 +809,13 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 			String roleName = (String)array[0];
 			String actionId = (String)array[1];
 
-			List<String> roleList = roleMap.computeIfAbsent(
+			List<String> roles = rolesMap.computeIfAbsent(
 				roleName, key -> new ArrayList<>());
 
-			roleList.add(actionId);
+			roles.add(actionId);
 		}
 
-		return roleMap;
+		return rolesMap;
 	}
 
 	/**
