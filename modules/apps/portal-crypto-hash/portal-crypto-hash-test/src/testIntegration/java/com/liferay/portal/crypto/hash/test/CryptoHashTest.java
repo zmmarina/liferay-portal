@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.test.util.RandomTestUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.Base64;
 import com.liferay.portal.kernel.util.HashMapBuilder;
-import com.liferay.portal.kernel.util.HashMapDictionary;
 import com.liferay.portal.kernel.util.HashMapDictionaryBuilder;
 import com.liferay.portal.test.rule.Inject;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
@@ -113,15 +112,13 @@ public class CryptoHashTest {
 		createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.message.digest.internal." +
 				"configuration.MessageDigestCryptoHashProviderConfiguration",
-			new HashMapDictionary<>(
-				HashMapBuilder.<String, Object>put(
-					"crypto.hash.provider.configuration.name",
-					"test-message-digest"
-				).put(
-					"message.digest.algorithm", "SHA-256"
-				).put(
-					"salt.size", "32"
-				).build()));
+			HashMapDictionaryBuilder.<String, Object>put(
+				"crypto.hash.provider.configuration.name", "test-message-digest"
+			).put(
+				"message.digest.algorithm", "SHA-256"
+			).put(
+				"salt.size", "32"
+			).build());
 
 		byte[] randomBytes = randomBytes();
 
@@ -147,26 +144,24 @@ public class CryptoHashTest {
 		createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.message.digest.internal." +
 				"configuration.MessageDigestCryptoHashProviderConfiguration",
-			new HashMapDictionary<>(
-				HashMapBuilder.<String, Object>put(
-					"crypto.hash.provider.configuration.name",
-					"test-message-digest-1"
-				).put(
-					"message.digest.algorithm", "SHA-256"
-				).put(
-					"message.digest.salt.size", "32"
-				).build()));
+			HashMapDictionaryBuilder.<String, Object>put(
+				"crypto.hash.provider.configuration.name",
+				"test-message-digest-1"
+			).put(
+				"message.digest.algorithm", "SHA-256"
+			).put(
+				"message.digest.salt.size", "32"
+			).build());
 
 		createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.bcrypt.internal." +
 				"configuration.BCryptCryptoHashProviderConfiguration",
-			new HashMapDictionary<>(
-				HashMapBuilder.<String, Object>put(
-					"bcrypt.rounds", "5"
-				).put(
-					"crypto.hash.provider.configuration.name",
-					"test-message-digest-2"
-				).build()));
+			HashMapDictionaryBuilder.<String, Object>put(
+				"bcrypt.rounds", "5"
+			).put(
+				"crypto.hash.provider.configuration.name",
+				"test-message-digest-2"
+			).build());
 
 		byte[] randomBytes = randomBytes();
 
@@ -214,15 +209,14 @@ public class CryptoHashTest {
 		createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.message.digest.internal." +
 				"configuration.MessageDigestCryptoHashProviderConfiguration",
-			new HashMapDictionary<>(
-				HashMapBuilder.<String, Object>put(
-					"crypto.hash.provider.configuration.name",
-					"test-message-digest-1"
-				).put(
-					"message.digest.algorithm", "SHA-256"
-				).put(
-					"message.digest.salt.size", "32"
-				).build()));
+			HashMapDictionaryBuilder.<String, Object>put(
+				"crypto.hash.provider.configuration.name",
+				"test-message-digest-1"
+			).put(
+				"message.digest.algorithm", "SHA-256"
+			).put(
+				"message.digest.salt.size", "32"
+			).build());
 
 		AutoCloseable autoCloseable1 = autoCloseables.remove(
 			autoCloseables.size() - 1);
@@ -230,13 +224,12 @@ public class CryptoHashTest {
 		createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.bcrypt.internal." +
 				"configuration.BCryptCryptoHashProviderConfiguration",
-			new HashMapDictionary<>(
-				HashMapBuilder.<String, Object>put(
-					"bcrypt.rounds", "5"
-				).put(
-					"crypto.hash.provider.configuration.name",
-					"test-message-digest-2"
-				).build()));
+			HashMapDictionaryBuilder.<String, Object>put(
+				"bcrypt.rounds", "5"
+			).put(
+				"crypto.hash.provider.configuration.name",
+				"test-message-digest-2"
+			).build());
 
 		AutoCloseable autoCloseable2 = autoCloseables.remove(
 			autoCloseables.size() - 1);
