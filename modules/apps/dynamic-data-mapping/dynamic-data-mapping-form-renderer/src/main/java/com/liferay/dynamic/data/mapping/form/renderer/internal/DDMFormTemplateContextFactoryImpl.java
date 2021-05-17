@@ -55,7 +55,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -154,9 +153,8 @@ public class DDMFormTemplateContextFactoryImpl
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
-		_ddmValidationsServiceTrackerMap =
-			ServiceTrackerMapFactory.openMultiValueMap(
-				bundleContext, DDMValidation.class, "ddm.validation.data.type");
+		_serviceTrackerMap = ServiceTrackerMapFactory.openMultiValueMap(
+			bundleContext, DDMValidation.class, "ddm.validation.data.type");
 	}
 
 	protected void collectResourceBundles(
@@ -176,7 +174,7 @@ public class DDMFormTemplateContextFactoryImpl
 
 	@Deactivate
 	protected void deactivate() {
-		_ddmValidationsServiceTrackerMap.close();
+		_serviceTrackerMap.close();
 	}
 
 	protected Map<String, Object> doCreate(
@@ -427,11 +425,9 @@ public class DDMFormTemplateContextFactoryImpl
 	private HashMap<String, Object> _getValidations(Locale locale) {
 		HashMap<String, Object> map = new HashMap<>();
 
-		Set<String> keySet = _ddmValidationsServiceTrackerMap.keySet();
-
-		for (String key : keySet) {
-			List<DDMValidation> ddmValidations =
-				_ddmValidationsServiceTrackerMap.getService(key);
+		for (String key : _serviceTrackerMap.keySet()) {
+			List<DDMValidation> ddmValidations = _serviceTrackerMap.getService(
+				key);
 
 			Stream<DDMValidation> stream = ddmValidations.stream();
 
@@ -483,13 +479,12 @@ public class DDMFormTemplateContextFactoryImpl
 	@Reference
 	private DDMStructureLocalService _ddmStructureLocalService;
 
-	private ServiceTrackerMap<String, List<DDMValidation>>
-		_ddmValidationsServiceTrackerMap;
-
 	@Reference
 	private JSONFactory _jsonFactory;
 
 	@Reference
 	private Portal _portal;
+
+	private ServiceTrackerMap<String, List<DDMValidation>> _serviceTrackerMap;
 
 }
