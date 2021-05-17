@@ -1123,27 +1123,26 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 
 	@Override
 	public int getUserGroupGroupRolesCount(long userId, long groupId) {
-		Long count = rolePersistence.dslQuery(
-			DSLQueryFactoryUtil.count(
-			).from(
-				RoleTable.INSTANCE
-			).innerJoinON(
-				UserGroupGroupRoleTable.INSTANCE,
-				UserGroupGroupRoleTable.INSTANCE.roleId.eq(
-					RoleTable.INSTANCE.roleId)
-			).innerJoinON(
-				Users_UserGroupsTable.INSTANCE,
-				Users_UserGroupsTable.INSTANCE.userGroupId.eq(
-					UserGroupGroupRoleTable.INSTANCE.userGroupId)
-			).where(
-				Users_UserGroupsTable.INSTANCE.userId.eq(
-					userId
-				).and(
-					UserGroupGroupRoleTable.INSTANCE.groupId.eq(groupId)
-				)
-			));
-
-		return count.intValue();
+		return GetterUtil.getInteger(
+			(Long)rolePersistence.dslQuery(
+				DSLQueryFactoryUtil.count(
+				).from(
+					RoleTable.INSTANCE
+				).innerJoinON(
+					UserGroupGroupRoleTable.INSTANCE,
+					UserGroupGroupRoleTable.INSTANCE.roleId.eq(
+						RoleTable.INSTANCE.roleId)
+				).innerJoinON(
+					Users_UserGroupsTable.INSTANCE,
+					Users_UserGroupsTable.INSTANCE.userGroupId.eq(
+						UserGroupGroupRoleTable.INSTANCE.userGroupId)
+				).where(
+					Users_UserGroupsTable.INSTANCE.userId.eq(
+						userId
+					).and(
+						UserGroupGroupRoleTable.INSTANCE.groupId.eq(groupId)
+					)
+				)));
 	}
 
 	/**
