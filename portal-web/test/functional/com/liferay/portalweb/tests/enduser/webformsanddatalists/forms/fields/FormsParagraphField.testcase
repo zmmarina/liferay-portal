@@ -99,8 +99,6 @@ definition {
 			key_fieldName = "Paragraph",
 			locator1 = "FormFields#PARAGRAPH_BODY_TEXT_CONTENT",
 			value1 = "Paragraph body text.");
-
-
 	}
 
 	@description = "Verify that a Form can be submitted with the Paragraph Field"
