@@ -91,10 +91,10 @@ public class CryptoHashTest {
 			autoCloseables.size());
 
 		while (listIterator.hasPrevious()) {
-			AutoCloseable previousAutoCloseable = listIterator.previous();
+			AutoCloseable autoCloseable = listIterator.previous();
 
 			try {
-				previousAutoCloseable.close();
+				autoCloseable.close();
 			}
 			catch (Exception exception) {
 				_log.error(exception, exception);
