@@ -81,35 +81,14 @@ public class DSHttp {
 			JSONObject bodyJSONObject)
 		throws Exception {
 
-		Http.Options options = new Http.Options();
+		byte[] bytes = _invokeAsBytes(
+			groupId, location, method, bodyJSONObject);
 
-		if (bodyJSONObject != null) {
-			options.addHeader(
-				HttpHeaders.CONTENT_TYPE, ContentTypes.APPLICATION_JSON);
+		if (bytes == null) {
+			return _jsonFactory.createJSONObject();
 		}
 
-		DigitalSignatureConfiguration digitalSignatureConfiguration =
-			ConfigurationProviderUtil.getGroupConfiguration(
-				DigitalSignatureConfiguration.class, groupId);
-
-		options.addHeader(
-			"Authorization",
-			"Bearer " + _getDocuSignAccessToken(digitalSignatureConfiguration));
-
-		if (bodyJSONObject != null) {
-			options.setBody(
-				bodyJSONObject.toString(), ContentTypes.APPLICATION_JSON,
-				StringPool.UTF8);
-		}
-
-		options.setLocation(
-			StringBundler.concat(
-				digitalSignatureConfiguration.accountBaseURI(),
-				"/restapi/v2.1/accounts/",
-				digitalSignatureConfiguration.apiAccountId(), "/", location));
-		options.setMethod(method);
-
-		return _jsonFactory.createJSONObject(_http.URLtoString(options));
+		return _jsonFactory.createJSONObject(new String(bytes));
 	}
 
 	private byte[] _invokeAsBytes(

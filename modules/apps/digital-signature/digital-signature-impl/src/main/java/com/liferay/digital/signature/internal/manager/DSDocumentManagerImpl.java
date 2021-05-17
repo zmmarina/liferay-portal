@@ -16,7 +16,6 @@ package com.liferay.digital.signature.internal.manager;
 
 import com.liferay.digital.signature.internal.http.DSHttp;
 import com.liferay.digital.signature.manager.DSDocumentManager;
-import com.liferay.petra.reflect.ReflectionUtil;
 import com.liferay.petra.string.StringBundler;
 
 import org.osgi.service.component.annotations.Component;
