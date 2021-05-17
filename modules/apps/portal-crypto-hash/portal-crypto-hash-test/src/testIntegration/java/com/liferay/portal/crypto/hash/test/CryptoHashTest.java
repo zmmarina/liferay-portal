@@ -394,7 +394,7 @@ public class CryptoHashTest {
 							return;
 						}
 
-						if (isIncluded(properties, updatedProperties)) {
+						if (_isIncluded(properties, updatedProperties)) {
 							countDownLatch.countDown();
 						}
 					}
@@ -503,7 +503,11 @@ public class CryptoHashTest {
 		return configuration;
 	}
 
-	protected boolean isIncluded(
+	protected static BundleContext bundleContext;
+
+	protected List<AutoCloseable> autoCloseables = new ArrayList<>();
+
+	private boolean _isIncluded(
 		Dictionary<String, ?> properties1, Dictionary<String, ?> properties2) {
 
 		if (properties1.size() > properties2.size()) {
@@ -524,10 +528,6 @@ public class CryptoHashTest {
 
 		return true;
 	}
-
-	protected static BundleContext bundleContext;
-
-	protected List<AutoCloseable> autoCloseables = new ArrayList<>();
 
 	private static final Log _log = LogFactoryUtil.getLog(CryptoHashTest.class);
 
