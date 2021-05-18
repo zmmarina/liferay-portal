@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 
@@ -75,13 +76,13 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 
 	@Override
 	public List<DSEnvelope> getDSEnvelopes(
-		long groupId, List<String> dsEnvelopeIds) {
+		long groupId, String... dsEnvelopeIds) {
 
 		JSONObject jsonObject = _dsHttp.get(
 			groupId,
 			StringBundler.concat(
 				"envelopes/?envelope_ids=",
-				ListUtil.toString(dsEnvelopeIds, StringPool.BLANK),
+				ArrayUtil.toString(dsEnvelopeIds, StringPool.BLANK),
 				"&include=documents,recipients"));
 
 		return JSONUtil.toList(

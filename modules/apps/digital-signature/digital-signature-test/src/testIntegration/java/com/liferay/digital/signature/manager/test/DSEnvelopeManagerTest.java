@@ -28,7 +28,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.test.rule.Inject;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -85,8 +84,7 @@ public class DSEnvelopeManagerTest {
 		Assert.assertTrue(Validator.isNotNull(dsEnvelope.getDSEnvelopeId()));
 
 		_dsEnvelopeManager.deleteDSEnvelopes(
-			TestPropsValues.getGroupId(),
-			Collections.singletonList(dsEnvelope.getDSEnvelopeId()));
+			TestPropsValues.getGroupId(), dsEnvelope.getDSEnvelopeId());
 	}
 
 	@Test
@@ -108,8 +106,7 @@ public class DSEnvelopeManagerTest {
 		Assert.assertEquals(expectedEmailSubject, dsEnvelope.getEmailSubject());
 
 		_dsEnvelopeManager.deleteDSEnvelopes(
-			TestPropsValues.getGroupId(),
-			Collections.singletonList(dsEnvelope.getDSEnvelopeId()));
+			TestPropsValues.getGroupId(), dsEnvelope.getDSEnvelopeId());
 	}
 
 	@Test
@@ -136,10 +133,9 @@ public class DSEnvelopeManagerTest {
 
 		Assert.assertTrue(dsEnvelopes.size() >= 2);
 
-		List<String> dsEnvelopeIds = new ArrayList<>();
-
-		dsEnvelopeIds.add(dsEnvelope1.getDSEnvelopeId());
-		dsEnvelopeIds.add(dsEnvelope2.getDSEnvelopeId());
+		String[] dsEnvelopeIds = {
+			dsEnvelope1.getDSEnvelopeId(), dsEnvelope2.getDSEnvelopeId()
+		};
 
 		dsEnvelopes = _dsEnvelopeManager.getDSEnvelopes(
 			TestPropsValues.getGroupId(), dsEnvelopeIds);

@@ -87,8 +87,7 @@ public class DSDocumentManagerTest {
 		Assert.assertTrue(ArrayUtil.isNotEmpty(dsDocumentsAsBytes));
 
 		_dsEnvelopeManager.deleteDSEnvelopes(
-			TestPropsValues.getGroupId(),
-			Collections.singletonList(dsEnvelope.getDSEnvelopeId()));
+			TestPropsValues.getGroupId(), dsEnvelope.getDSEnvelopeId());
 	}
 
 	@Inject
