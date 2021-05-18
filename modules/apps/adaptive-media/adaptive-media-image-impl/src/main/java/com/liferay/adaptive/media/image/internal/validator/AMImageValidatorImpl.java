@@ -103,44 +103,43 @@ public class AMImageValidatorImpl implements AMImageValidator {
 					ddmStructure.getStructureId(),
 					fileVersion.getFileVersionId());
 
-			if (fileEntryMetadata != null) {
-				try {
-					DDMFormValues ddmFormValues =
-						_storageEngine.getDDMFormValues(
-							fileEntryMetadata.getDDMStorageId());
+			if (fileEntryMetadata == null) {
+				continue;
+			}
 
-					Map<String, List<DDMFormFieldValue>> ddmFormFieldValuesMap =
-						ddmFormValues.getDDMFormFieldValuesMap(true);
+			try {
+				DDMFormValues ddmFormValues = _storageEngine.getDDMFormValues(
+					fileEntryMetadata.getDDMStorageId());
 
-					for (Map.Entry<String, List<DDMFormFieldValue>> entry :
-							ddmFormFieldValuesMap.entrySet()) {
+				Map<String, List<DDMFormFieldValue>> ddmFormFieldValuesMap =
+					ddmFormValues.getDDMFormFieldValuesMap(true);
 
-						if (Objects.equals(
-								entry.getKey(), "TIFF_IMAGE_LENGTH")) {
+				for (Map.Entry<String, List<DDMFormFieldValue>> entry :
+						ddmFormFieldValuesMap.entrySet()) {
 
-							return _isValidDimension(
-								entry.getValue(),
-								PropsValues.IMAGE_TOOL_IMAGE_MAX_HEIGHT);
-						}
-						else if (Objects.equals(
-									entry.getKey(), "TIFF_IMAGE_WIDTH")) {
+					if (Objects.equals(entry.getKey(), "TIFF_IMAGE_LENGTH")) {
+						return _isValidDimension(
+							entry.getValue(),
+							PropsValues.IMAGE_TOOL_IMAGE_MAX_HEIGHT);
+					}
+					else if (Objects.equals(
+								entry.getKey(), "TIFF_IMAGE_WIDTH")) {
 
-							return _isValidDimension(
-								entry.getValue(),
-								PropsValues.IMAGE_TOOL_IMAGE_MAX_WIDTH);
-						}
+						return _isValidDimension(
+							entry.getValue(),
+							PropsValues.IMAGE_TOOL_IMAGE_MAX_WIDTH);
 					}
 				}
-				catch (PortalException portalException) {
-					if (_log.isDebugEnabled()) {
-						_log.debug(
-							StringBundler.concat(
-								"DDMFormValues not found for ",
-								String.valueOf(fileVersion.getFileVersionId()),
-								" in the structure ",
-								ddmStructure.getStructureKey()),
-							portalException);
-					}
+			}
+			catch (PortalException portalException) {
+				if (_log.isDebugEnabled()) {
+					_log.debug(
+						StringBundler.concat(
+							"DDMFormValues not found for ",
+							String.valueOf(fileVersion.getFileVersionId()),
+							" in the structure ",
+							ddmStructure.getStructureKey()),
+						portalException);
 				}
 			}
 		}
