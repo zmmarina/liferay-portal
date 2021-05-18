@@ -116,8 +116,6 @@ definition {
 			key_fieldName = "",
 			key_fieldValue = "${reff}",
 			locator1 = "Translation#TARGET_LANGUAGE_FIELD");
-
-			
 	}
 
 	@description = "Verify that a Paragraph Field can be edited"
