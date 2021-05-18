@@ -54,8 +54,13 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 	}
 
 	@Override
-	public void deleteDSEnvelopes(long groupId, List<String> dsEnvelopeIds) {
-		moveDSEnvelopes(groupId, dsEnvelopeIds, "recyclebin");
+	public void deleteDSEnvelopes(long groupId, String... dsEnvelopeIds) {
+		_dsHttp.put(
+			groupId, "folders/recyclebin",
+			JSONUtil.put(
+				"envelopeIds",
+				JSONUtil.toJSONArray(
+					dsEnvelopeIds, dsEnvelopeId -> dsEnvelopeId, _log)));
 	}
 
 	@Override
@@ -97,18 +102,6 @@ public class DSEnvelopeManagerImpl implements DSEnvelopeManager {
 		return JSONUtil.toList(
 			jsonObject.getJSONArray("envelopes"),
 			evenlopeJSONObject -> _toDSEnvelope(evenlopeJSONObject), _log);
-	}
-
-	@Override
-	public void moveDSEnvelopes(
-		long groupId, List<String> dsEnvelopeIds, String folderId) {
-
-		_dsHttp.put(
-			groupId, "folders/" + folderId,
-			JSONUtil.put(
-				"envelopeIds",
-				JSONUtil.toJSONArray(
-					dsEnvelopeIds, dsEnvelopeId -> dsEnvelopeId, _log)));
 	}
 
 	private DSEnvelope _toDSEnvelope(JSONObject jsonObject) {

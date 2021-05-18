@@ -28,7 +28,7 @@ public interface DSEnvelopeManager {
 
 	public DSEnvelope addDSEnvelope(long groupId, DSEnvelope dsEnvelope);
 
-	public void deleteDSEnvelopes(long groupId, List<String> dsEnvelopeIds);
+	public void deleteDSEnvelopes(long groupId, String... dsEnvelopeIds);
 
 	public DSEnvelope getDSEnvelope(long groupId, String dsEnvelopeId);
 
@@ -36,8 +36,5 @@ public interface DSEnvelopeManager {
 		long groupId, List<String> dsEnvelopeIds);
 
 	public List<DSEnvelope> getDSEnvelopes(long groupId, String fromDateString);
-
-	public void moveDSEnvelopes(
-		long groupId, List<String> dsEnvelopeIds, String dsFolderId);
 
 }
