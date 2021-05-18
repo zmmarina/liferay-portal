@@ -232,8 +232,8 @@ public class DefaultSearchResultPermissionFilter
 			if (resourcePermissionLocalService == null) {
 				if (_log.isInfoEnabled()) {
 					_log.info(
-						"The ResourcePermission service is not available. " +
-							"Skipping company resource check.");
+						"Skipping company resource check because resource " +
+							"permission service is not available");
 				}
 
 				return false;
@@ -253,8 +253,8 @@ public class DefaultSearchResultPermissionFilter
 		catch (NoSuchResourceActionException noSuchResourceActionException) {
 			if (_log.isInfoEnabled()) {
 				_log.info(
-					"No company-scoped resource permissions found for " +
-						"className: " + className,
+					"No company scoped resource permissions found for class " +
+						"name " + className,
 					noSuchResourceActionException);
 			}
 		}
