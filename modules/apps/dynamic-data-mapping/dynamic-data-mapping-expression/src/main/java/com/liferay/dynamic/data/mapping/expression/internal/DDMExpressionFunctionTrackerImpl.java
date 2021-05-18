@@ -103,9 +103,8 @@ public class DDMExpressionFunctionTrackerImpl
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
-		_serviceTrackerMap =
-			ServiceTrackerMapFactory.openSingleValueMap(
-				bundleContext, DDMExpressionFunctionFactory.class, "name");
+		_serviceTrackerMap = ServiceTrackerMapFactory.openSingleValueMap(
+			bundleContext, DDMExpressionFunctionFactory.class, "name");
 	}
 
 	@Deactivate
