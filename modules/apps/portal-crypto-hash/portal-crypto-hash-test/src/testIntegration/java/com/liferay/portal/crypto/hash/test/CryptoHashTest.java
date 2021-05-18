@@ -325,10 +325,6 @@ public class CryptoHashTest {
 						"JDJhJDEwJHVxZVh5YjF1dUdHZjZ2UWtvalljU08="))));
 	}
 
-	private static BundleContext _bundleContext;
-
-	private List<AutoCloseable> _autoCloseables = new ArrayList<>();
-
 	private <S, R, E extends Throwable> R _callService(
 		Class<S> serviceClass, String filterString,
 		UnsafeFunction<S, R, E> unsafeFunction) {
@@ -478,6 +474,10 @@ public class CryptoHashTest {
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(CryptoHashTest.class);
+
+	private static BundleContext _bundleContext;
+
+	private final List<AutoCloseable> _autoCloseables = new ArrayList<>();
 
 	@Inject
 	private CryptoHashVerifier _cryptoHashVerifier;
