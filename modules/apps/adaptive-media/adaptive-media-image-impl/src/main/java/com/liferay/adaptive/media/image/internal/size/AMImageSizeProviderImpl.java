@@ -53,7 +53,6 @@ public class AMImageSizeProviderImpl implements AMImageSizeProvider {
 	protected void activate(Map<String, Object> properties) {
 		_amImageConfiguration = ConfigurableUtil.createConfigurable(
 			AMImageConfiguration.class, properties);
-
 		_dlFileEntryConfiguration = ConfigurableUtil.createConfigurable(
 			DLFileEntryConfiguration.class, properties);
 	}

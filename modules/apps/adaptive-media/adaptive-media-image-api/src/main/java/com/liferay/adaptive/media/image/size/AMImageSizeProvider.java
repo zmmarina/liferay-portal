@@ -15,17 +15,10 @@
 package com.liferay.adaptive.media.image.size;
 
 /**
- * Provides max image size for Adaptive Media.
- *
  * @author Roberto Díaz
  */
 public interface AMImageSizeProvider {
 
-	/**
-	 * Returns the max image size that generate Adaptive Media images.
-	 *
-	 * @return the max image size that generate Adaptive Media images
-	 */
 	public long getImageMaxSize();
 
 }
