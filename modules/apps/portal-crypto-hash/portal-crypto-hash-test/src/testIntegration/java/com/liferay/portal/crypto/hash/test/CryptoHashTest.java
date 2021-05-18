@@ -147,7 +147,6 @@ public class CryptoHashTest {
 			).put(
 				"message.digest.salt.size", "32"
 			).build());
-
 		_createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.bcrypt.internal." +
 				"configuration.BCryptCryptoHashProviderConfiguration",
@@ -188,7 +187,7 @@ public class CryptoHashTest {
 	}
 
 	@Test
-	public void testCryptoHashGeneratorWithNoConfiguration() throws Exception {
+	public void testCryptoHashGeneratorWithNoConfigurations() throws Exception {
 		_callService(
 			CryptoHashGenerator.class,
 			"(crypto.hash.provider.configuration.name=test-message-digest)",
