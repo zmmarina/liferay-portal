@@ -76,9 +76,8 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 					"imageSelectorFileName")) {
 
 				return _addFileEntry(
-					fileName, folderId, inputStream,
-					"imageSelectorFileName", uploadPortletRequest,
-					themeDisplay);
+					fileName, folderId, inputStream, "imageSelectorFileName",
+					uploadPortletRequest, themeDisplay);
 			}
 		}
 
@@ -122,9 +121,8 @@ public class DLUploadFileEntryHandler implements UploadFileEntryHandler {
 			FileEntry fileEntry = _dlAppService.getFileEntry(fileEntryId);
 
 			return _addFileEntry(
-				fileEntry.getFileName(), folderId, inputStream,
-				"imageBlob", uploadPortletRequest,
-				themeDisplay);
+				fileEntry.getFileName(), folderId, inputStream, "imageBlob",
+				uploadPortletRequest, themeDisplay);
 		}
 	}
 

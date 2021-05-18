@@ -70,8 +70,7 @@ public class PageAttachmentWikiUploadFileEntryHandler
 				WebKeys.THEME_DISPLAY);
 
 		if (Validator.isNotNull(
-				uploadPortletRequest.getFileName(
-					"imageSelectorFileName"))) {
+				uploadPortletRequest.getFileName("imageSelectorFileName"))) {
 
 			String fileName = uploadPortletRequest.getFileName(
 				"imageSelectorFileName");

@@ -166,9 +166,8 @@ public class ImageJournalUploadFileEntryHandler
 			FileEntry fileEntry = _dlAppService.getFileEntry(fileEntryId);
 
 			return _addTempFileEntry(
-				fileEntry.getFileName(), inputStream,
-				"imageBlob", uploadPortletRequest,
-				themeDisplay);
+				fileEntry.getFileName(), inputStream, "imageBlob",
+				uploadPortletRequest, themeDisplay);
 		}
 	}
 

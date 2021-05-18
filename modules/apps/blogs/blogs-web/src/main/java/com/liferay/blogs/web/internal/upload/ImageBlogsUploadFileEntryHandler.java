@@ -150,9 +150,8 @@ public class ImageBlogsUploadFileEntryHandler
 				"imageBlob")) {
 
 			return _addFileEntry(
-				fileEntry.getFileName(), inputStream,
-				"imageBlob", uploadPortletRequest,
-				themeDisplay);
+				fileEntry.getFileName(), inputStream, "imageBlob",
+				uploadPortletRequest, themeDisplay);
 		}
 	}
 
