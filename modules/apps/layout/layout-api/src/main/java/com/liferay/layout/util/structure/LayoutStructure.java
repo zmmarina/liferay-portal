@@ -511,7 +511,7 @@ public class LayoutStructure {
 
 			if (layoutStructureItem == null) {
 				throw new RuntimeException(
-					"Invalid layoutStructureItem with key: " + entry.getKey());
+					"Invalid layout structure item for key " + entry.getKey());
 			}
 
 			layoutStructureItemsJSONObject.put(
