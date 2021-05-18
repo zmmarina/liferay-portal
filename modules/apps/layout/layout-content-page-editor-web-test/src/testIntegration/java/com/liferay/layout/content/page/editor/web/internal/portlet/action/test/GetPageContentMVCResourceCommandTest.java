@@ -109,12 +109,9 @@ public class GetPageContentMVCResourceCommandTest {
 
 	@Test
 	public void testCollectionMapping() throws Exception {
-		String pid =
-			"com.liferay.layout.content.page.editor.web.internal." +
-				"configuration.FFLayoutContentPageEditorConfiguration";
-
 		ConfigurationTestUtil.saveConfiguration(
-			pid,
+			"com.liferay.layout.content.page.editor.web.internal." +
+				"configuration.FFLayoutContentPageEditorConfiguration",
 			HashMapDictionaryBuilder.<String, Object>put(
 				"contentBrowsingEnabled", true
 			).build());
