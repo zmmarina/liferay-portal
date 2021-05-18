@@ -50,7 +50,7 @@
 	</c:when>
 	<c:when test='<%= displayStyle.equals("icon") %>'>
 		<liferay-util:buffer
-			var="organizationLogoHtml"
+			var="organizationLogoHTML"
 		>
 			<div class="user-card">
 				<div class="aspect-ratio-item-center-middle aspect-ratio-item-fluid card-type-asset-icon">
@@ -67,7 +67,7 @@
 			<liferay-frontend:html-vertical-card
 				actionJsp="/organization_action.jsp"
 				actionJspServletContext="<%= application %>"
-				html="<%= organizationLogoHtml %>"
+				html="<%= organizationLogoHTML %>"
 				resultRow="<%= row %>"
 				rowChecker="<%= organizationSearchContainer.getRowChecker() %>"
 				subtitle="<%= LanguageUtil.get(request, organization.getType()) %>"
