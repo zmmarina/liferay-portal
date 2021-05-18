@@ -154,7 +154,7 @@ public class DDMExpressionImplTest extends PowerMockito {
 
 				@Override
 				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
+					getCustomDDMExpressionFunctions() {
 
 					return Collections.emptyMap();
 				}
@@ -196,7 +196,7 @@ public class DDMExpressionImplTest extends PowerMockito {
 
 				@Override
 				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
+					getCustomDDMExpressionFunctions() {
 
 					return Collections.emptyMap();
 				}
@@ -241,7 +241,7 @@ public class DDMExpressionImplTest extends PowerMockito {
 
 				@Override
 				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
+					getCustomDDMExpressionFunctions() {
 
 					return Collections.emptyMap();
 				}
@@ -285,7 +285,7 @@ public class DDMExpressionImplTest extends PowerMockito {
 
 				@Override
 				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
+					getCustomDDMExpressionFunctions() {
 
 					return Collections.emptyMap();
 				}
@@ -446,7 +446,7 @@ public class DDMExpressionImplTest extends PowerMockito {
 
 				@Override
 				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
+					getCustomDDMExpressionFunctions() {
 
 					return Collections.emptyMap();
 				}

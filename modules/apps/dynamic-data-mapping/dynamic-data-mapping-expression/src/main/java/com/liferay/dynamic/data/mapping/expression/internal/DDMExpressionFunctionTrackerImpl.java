@@ -39,7 +39,7 @@ public class DDMExpressionFunctionTrackerImpl
 
 	@Override
 	public Map<String, DDMExpressionFunction>
-		getCustomDDMExpressionFunctionMap() {
+		getCustomDDMExpressionFunctions() {
 
 		Map<String, DDMExpressionFunction> customDDMExpressionFunctionMap =
 			new HashMap<>();
