@@ -125,7 +125,7 @@ public class DefaultSearchResultPermissionFilter
 	}
 
 	protected void filterHits(Hits hits, SearchContext searchContext) {
-		Map<String, Boolean> companyScopeViewPermissionsMap = new HashMap<>();
+		Map<String, Boolean> companyScopeViewPermissions = new HashMap<>();
 		List<Document> docs = new ArrayList<>();
 		List<Document> excludeDocs = new ArrayList<>();
 		List<Float> scores = new ArrayList<>();
@@ -141,7 +141,7 @@ public class DefaultSearchResultPermissionFilter
 		for (int i = 0; i < documents.length; i++) {
 			if (_isIncludeDocument(
 					documents[i], _permissionChecker.getCompanyId(),
-					companyAdmin, status, companyScopeViewPermissionsMap)) {
+					companyAdmin, status, companyScopeViewPermissions)) {
 
 				docs.add(documents[i]);
 				scores.add(hits.score(i));
@@ -267,7 +267,7 @@ public class DefaultSearchResultPermissionFilter
 
 	private boolean _isIncludeDocument(
 		Document document, long companyId, boolean companyAdmin, int status,
-		Map<String, Boolean> companyScopeViewPermissionsMap) {
+		Map<String, Boolean> companyScopeViewPermissions) {
 
 		long entryCompanyId = GetterUtil.getLong(
 			document.get(Field.COMPANY_ID));
@@ -283,7 +283,7 @@ public class DefaultSearchResultPermissionFilter
 		String entryClassName = document.get(Field.ENTRY_CLASS_NAME);
 
 		boolean hasCompanyScopeViewPermission =
-			companyScopeViewPermissionsMap.computeIfAbsent(
+			companyScopeViewPermissions.computeIfAbsent(
 				entryClassName, this::_hasCompanyScopeViewPermission);
 
 		if (hasCompanyScopeViewPermission) {
