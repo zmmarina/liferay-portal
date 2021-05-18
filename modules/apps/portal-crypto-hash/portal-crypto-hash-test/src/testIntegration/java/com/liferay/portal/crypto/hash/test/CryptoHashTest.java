@@ -82,13 +82,13 @@ public class CryptoHashTest {
 	public static void setUpClass() throws Exception {
 		Bundle bundle = FrameworkUtil.getBundle(CryptoHashTest.class);
 
-		bundleContext = bundle.getBundleContext();
+		_bundleContext = bundle.getBundleContext();
 	}
 
 	@After
 	public void tearDown() {
-		ListIterator<AutoCloseable> listIterator = autoCloseables.listIterator(
-			autoCloseables.size());
+		ListIterator<AutoCloseable> listIterator = _autoCloseables.listIterator(
+			_autoCloseables.size());
 
 		while (listIterator.hasPrevious()) {
 			AutoCloseable autoCloseable = listIterator.previous();
@@ -213,8 +213,8 @@ public class CryptoHashTest {
 				"message.digest.salt.size", "32"
 			).build());
 
-		AutoCloseable autoCloseable1 = autoCloseables.remove(
-			autoCloseables.size() - 1);
+		AutoCloseable autoCloseable1 = _autoCloseables.remove(
+			_autoCloseables.size() - 1);
 
 		_createFactoryConfiguration(
 			"com.liferay.portal.crypto.hash.provider.bcrypt.internal." +
@@ -226,8 +226,8 @@ public class CryptoHashTest {
 				"test-message-digest-2"
 			).build());
 
-		AutoCloseable autoCloseable2 = autoCloseables.remove(
-			autoCloseables.size() - 1);
+		AutoCloseable autoCloseable2 = _autoCloseables.remove(
+			_autoCloseables.size() - 1);
 
 		byte[] randomBytes = RandomTestUtil.randomBytes();
 
@@ -325,9 +325,9 @@ public class CryptoHashTest {
 						"JDJhJDEwJHVxZVh5YjF1dUdHZjZ2UWtvalljU08="))));
 	}
 
-	protected static BundleContext bundleContext;
+	private static BundleContext _bundleContext;
 
-	protected List<AutoCloseable> autoCloseables = new ArrayList<>();
+	private List<AutoCloseable> _autoCloseables = new ArrayList<>();
 
 	private <S, R, E extends Throwable> R _callService(
 		Class<S> serviceClass, String filterString,
@@ -337,7 +337,7 @@ public class CryptoHashTest {
 
 		try {
 			serviceReferences =
-				(ServiceReference<S>[])bundleContext.getAllServiceReferences(
+				(ServiceReference<S>[])_bundleContext.getAllServiceReferences(
 					serviceClass.getName(), filterString);
 		}
 		catch (InvalidSyntaxException invalidSyntaxException) {
@@ -361,13 +361,13 @@ public class CryptoHashTest {
 
 		try {
 			return unsafeFunction.apply(
-				bundleContext.getService(serviceReference));
+				_bundleContext.getService(serviceReference));
 		}
 		catch (Throwable throwable) {
 			ReflectionUtil.throwException(throwable);
 		}
 		finally {
-			bundleContext.ungetService(serviceReference);
+			_bundleContext.ungetService(serviceReference);
 		}
 
 		return null;
@@ -384,7 +384,7 @@ public class CryptoHashTest {
 			).build();
 
 		ServiceRegistration<ManagedServiceFactory> serviceRegistration =
-			bundleContext.registerService(
+			_bundleContext.registerService(
 				ManagedServiceFactory.class,
 				new ManagedServiceFactory() {
 
@@ -416,9 +416,9 @@ public class CryptoHashTest {
 
 		try {
 			ServiceReference<ConfigurationAdmin> serviceReference =
-				bundleContext.getServiceReference(ConfigurationAdmin.class);
+				_bundleContext.getServiceReference(ConfigurationAdmin.class);
 
-			ConfigurationAdmin configurationAdmin = bundleContext.getService(
+			ConfigurationAdmin configurationAdmin = _bundleContext.getService(
 				serviceReference);
 
 			Configuration configuration = null;
@@ -447,7 +447,7 @@ public class CryptoHashTest {
 				throw new RuntimeException(interruptedException);
 			}
 			finally {
-				bundleContext.ungetService(serviceReference);
+				_bundleContext.ungetService(serviceReference);
 			}
 		}
 		finally {
