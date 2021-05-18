@@ -80,8 +80,8 @@ const fragmentEntryLinks = {
 const renderPageContent = ({
 	fragmentEntryLinks = {},
 	pageContents = [],
-	segmentsExperienceId = '0',
 	languageId = 'en_US',
+	segmentsExperienceId = '0',
 }) =>
 	render(
 		<StoreContextProvider
