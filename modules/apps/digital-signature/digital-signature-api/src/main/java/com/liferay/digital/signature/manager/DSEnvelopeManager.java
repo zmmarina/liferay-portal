@@ -38,6 +38,6 @@ public interface DSEnvelopeManager {
 	public List<DSEnvelope> getDSEnvelopes(long groupId, String fromDateString);
 
 	public void moveDSEnvelopes(
-		long groupId, List<String> dsEnvelopeIds, String folderId);
+		long groupId, List<String> dsEnvelopeIds, String dsFolderId);
 
 }
