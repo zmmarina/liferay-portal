@@ -20,28 +20,11 @@ import com.liferay.portal.aop.AopService;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * The implementation of the fvs entry local service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>com.liferay.frontend.view.state.service.FVSEntryLocalService</code> interface.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
- *
  * @author Brian Wing Shun Chan
- * @see FVSEntryLocalServiceBaseImpl
  */
 @Component(
 	property = "model.class.name=com.liferay.frontend.view.state.model.FVSEntry",
 	service = AopService.class
 )
 public class FVSEntryLocalServiceImpl extends FVSEntryLocalServiceBaseImpl {
-
-	/**
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Use <code>com.liferay.frontend.view.state.service.FVSEntryLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.frontend.view.state.service.FVSEntryLocalServiceUtil</code>.
-	 */
-
 }
