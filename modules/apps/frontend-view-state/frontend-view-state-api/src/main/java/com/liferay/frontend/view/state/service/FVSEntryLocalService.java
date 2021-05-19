@@ -77,6 +77,9 @@ public interface FVSEntryLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public FVSEntry addFVSEntry(FVSEntry fvsEntry);
 
+	public FVSEntry addFVSEntry(long userId, String viewState)
+		throws PortalException;
+
 	/**
 	 * Creates a new fvs entry with the primary key. Does not add the fvs entry to the database.
 	 *

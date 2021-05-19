@@ -52,6 +52,17 @@ public class FVSActiveEntryLocalServiceWrapper
 		return _fvsActiveEntryLocalService.addFVSActiveEntry(fvsActiveEntry);
 	}
 
+	@Override
+	public com.liferay.frontend.view.state.model.FVSActiveEntry
+			addFVSActiveEntry(
+				long userId, long fvsEntryId, String clayDataSetDisplayId,
+				long plid, String portletId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _fvsActiveEntryLocalService.addFVSActiveEntry(
+			userId, fvsEntryId, clayDataSetDisplayId, plid, portletId);
+	}
+
 	/**
 	 * Creates a new fvs active entry with the primary key. Does not add the fvs active entry to the database.
 	 *
@@ -229,6 +240,16 @@ public class FVSActiveEntryLocalServiceWrapper
 
 		return _fvsActiveEntryLocalService.fetchFVSActiveEntry(
 			fvsActiveEntryId);
+	}
+
+	@Override
+	public com.liferay.frontend.view.state.model.FVSActiveEntry
+		fetchFVSActiveEntry(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId) {
+
+		return _fvsActiveEntryLocalService.fetchFVSActiveEntry(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**

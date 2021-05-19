@@ -61,6 +61,15 @@ public class FVSActiveEntryLocalServiceUtil {
 		return getService().addFVSActiveEntry(fvsActiveEntry);
 	}
 
+	public static FVSActiveEntry addFVSActiveEntry(
+			long userId, long fvsEntryId, String clayDataSetDisplayId,
+			long plid, String portletId)
+		throws PortalException {
+
+		return getService().addFVSActiveEntry(
+			userId, fvsEntryId, clayDataSetDisplayId, plid, portletId);
+	}
+
 	/**
 	 * Creates a new fvs active entry with the primary key. Does not add the fvs active entry to the database.
 	 *
@@ -207,6 +216,13 @@ public class FVSActiveEntryLocalServiceUtil {
 
 	public static FVSActiveEntry fetchFVSActiveEntry(long fvsActiveEntryId) {
 		return getService().fetchFVSActiveEntry(fvsActiveEntryId);
+	}
+
+	public static FVSActiveEntry fetchFVSActiveEntry(
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
+
+		return getService().fetchFVSActiveEntry(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**

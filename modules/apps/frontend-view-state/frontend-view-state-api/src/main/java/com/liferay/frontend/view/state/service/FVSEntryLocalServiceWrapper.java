@@ -49,6 +49,14 @@ public class FVSEntryLocalServiceWrapper
 		return _fvsEntryLocalService.addFVSEntry(fvsEntry);
 	}
 
+	@Override
+	public com.liferay.frontend.view.state.model.FVSEntry addFVSEntry(
+			long userId, String viewState)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _fvsEntryLocalService.addFVSEntry(userId, viewState);
+	}
+
 	/**
 	 * Creates a new fvs entry with the primary key. Does not add the fvs entry to the database.
 	 *

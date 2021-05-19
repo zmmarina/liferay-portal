@@ -77,6 +77,11 @@ public interface FVSActiveEntryLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public FVSActiveEntry addFVSActiveEntry(FVSActiveEntry fvsActiveEntry);
 
+	public FVSActiveEntry addFVSActiveEntry(
+			long userId, long fvsEntryId, String clayDataSetDisplayId,
+			long plid, String portletId)
+		throws PortalException;
+
 	/**
 	 * Creates a new fvs active entry with the primary key. Does not add the fvs active entry to the database.
 	 *
@@ -198,6 +203,10 @@ public interface FVSActiveEntryLocalService
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public FVSActiveEntry fetchFVSActiveEntry(long fvsActiveEntryId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public FVSActiveEntry fetchFVSActiveEntry(
+		long userId, String clayDataSetDisplayId, long plid, String portletId);
 
 	/**
 	 * Returns the fvs active entry with the matching UUID and company.

@@ -59,6 +59,12 @@ public class FVSEntryLocalServiceUtil {
 		return getService().addFVSEntry(fvsEntry);
 	}
 
+	public static FVSEntry addFVSEntry(long userId, String viewState)
+		throws PortalException {
+
+		return getService().addFVSEntry(userId, viewState);
+	}
+
 	/**
 	 * Creates a new fvs entry with the primary key. Does not add the fvs entry to the database.
 	 *
