@@ -55,13 +55,6 @@
 		<!-- Other fields -->
 
 		<column name="viewState" type="String" />
-
-		<!-- Order -->
-
-		<!-- Finder methods -->
-
-		<!-- References -->
-
 	</entity>
 	<exceptions>
 	</exceptions>
