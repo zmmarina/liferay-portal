@@ -21,14 +21,12 @@ const ColorPicker = ({color, label, name}) => {
 	const [colorValue, setColorValue] = useState(color);
 	const [customColors, setCustomColors] = useState([]);
 
-	const isHex = HEX_COLOR_REGEX.test(colorValue);
-
 	return (
 		<div className="form-group">
 			<input
 				name={name}
 				type="hidden"
-				value={colorValue ? `${isHex ? '#' : ''}${colorValue}` : ''}
+				value={colorValue ? `${HEX_COLOR_REGEX.test(colorValue) ? '#' : ''}${colorValue}` : ''}
 			/>
 
 			<ClayColorPicker
