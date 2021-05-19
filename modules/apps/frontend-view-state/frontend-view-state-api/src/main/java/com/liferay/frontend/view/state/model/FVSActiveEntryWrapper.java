@@ -51,8 +51,8 @@ public class FVSActiveEntryWrapper
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("datasetDisplayId", getDatasetDisplayId());
 		attributes.put("fvsEntryId", getFvsEntryId());
+		attributes.put("clayDataSetDisplayId", getClayDataSetDisplayId());
 		attributes.put("plid", getPlid());
 		attributes.put("portletId", getPortletId());
 
@@ -109,16 +109,17 @@ public class FVSActiveEntryWrapper
 			setModifiedDate(modifiedDate);
 		}
 
-		String datasetDisplayId = (String)attributes.get("datasetDisplayId");
-
-		if (datasetDisplayId != null) {
-			setDatasetDisplayId(datasetDisplayId);
-		}
-
 		Long fvsEntryId = (Long)attributes.get("fvsEntryId");
 
 		if (fvsEntryId != null) {
 			setFvsEntryId(fvsEntryId);
+		}
+
+		String clayDataSetDisplayId = (String)attributes.get(
+			"clayDataSetDisplayId");
+
+		if (clayDataSetDisplayId != null) {
+			setClayDataSetDisplayId(clayDataSetDisplayId);
 		}
 
 		Long plid = (Long)attributes.get("plid");
@@ -132,6 +133,16 @@ public class FVSActiveEntryWrapper
 		if (portletId != null) {
 			setPortletId(portletId);
 		}
+	}
+
+	/**
+	 * Returns the clay data set display ID of this fvs active entry.
+	 *
+	 * @return the clay data set display ID of this fvs active entry
+	 */
+	@Override
+	public String getClayDataSetDisplayId() {
+		return model.getClayDataSetDisplayId();
 	}
 
 	/**
@@ -172,16 +183,6 @@ public class FVSActiveEntryWrapper
 	@Override
 	public Date getCreateDate() {
 		return model.getCreateDate();
-	}
-
-	/**
-	 * Returns the dataset display ID of this fvs active entry.
-	 *
-	 * @return the dataset display ID of this fvs active entry
-	 */
-	@Override
-	public String getDatasetDisplayId() {
-		return model.getDatasetDisplayId();
 	}
 
 	/**
@@ -310,6 +311,16 @@ public class FVSActiveEntryWrapper
 	}
 
 	/**
+	 * Sets the clay data set display ID of this fvs active entry.
+	 *
+	 * @param clayDataSetDisplayId the clay data set display ID of this fvs active entry
+	 */
+	@Override
+	public void setClayDataSetDisplayId(String clayDataSetDisplayId) {
+		model.setClayDataSetDisplayId(clayDataSetDisplayId);
+	}
+
+	/**
 	 * Sets the company ID of this fvs active entry.
 	 *
 	 * @param companyId the company ID of this fvs active entry
@@ -337,16 +348,6 @@ public class FVSActiveEntryWrapper
 	@Override
 	public void setCreateDate(Date createDate) {
 		model.setCreateDate(createDate);
-	}
-
-	/**
-	 * Sets the dataset display ID of this fvs active entry.
-	 *
-	 * @param datasetDisplayId the dataset display ID of this fvs active entry
-	 */
-	@Override
-	public void setDatasetDisplayId(String datasetDisplayId) {
-		model.setDatasetDisplayId(datasetDisplayId);
 	}
 
 	/**

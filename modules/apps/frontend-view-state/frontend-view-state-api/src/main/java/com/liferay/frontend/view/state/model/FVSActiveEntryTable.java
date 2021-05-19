@@ -50,12 +50,12 @@ public class FVSActiveEntryTable extends BaseTable<FVSActiveEntryTable> {
 		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<FVSActiveEntryTable, Date> modifiedDate = createColumn(
 		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<FVSActiveEntryTable, String> datasetDisplayId =
-		createColumn(
-			"datasetDisplayId", String.class, Types.VARCHAR,
-			Column.FLAG_DEFAULT);
 	public final Column<FVSActiveEntryTable, Long> fvsEntryId = createColumn(
 		"fvsEntryId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<FVSActiveEntryTable, String> clayDataSetDisplayId =
+		createColumn(
+			"clayDataSetDisplayId", String.class, Types.VARCHAR,
+			Column.FLAG_DEFAULT);
 	public final Column<FVSActiveEntryTable, Long> plid = createColumn(
 		"plid", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<FVSActiveEntryTable, String> portletId = createColumn(

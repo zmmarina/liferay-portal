@@ -480,90 +480,92 @@ public class FVSActiveEntryUtil {
 	}
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry
 	 * @throws NoSuchActiveEntryException if a matching fvs active entry could not be found
 	 */
-	public static FVSActiveEntry findByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public static FVSActiveEntry findByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws com.liferay.frontend.view.state.exception.
 			NoSuchActiveEntryException {
 
-		return getPersistence().findByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		return getPersistence().findByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
-	public static FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId) {
+	public static FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
 
-		return getPersistence().fetchByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		return getPersistence().fetchByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
-	public static FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId,
+	public static FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId,
 		boolean useFinderCache) {
 
-		return getPersistence().fetchByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId, useFinderCache);
+		return getPersistence().fetchByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId, useFinderCache);
 	}
 
 	/**
-	 * Removes the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
+	 * Removes the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the fvs active entry that was removed
 	 */
-	public static FVSActiveEntry removeByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public static FVSActiveEntry removeByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws com.liferay.frontend.view.state.exception.
 			NoSuchActiveEntryException {
 
-		return getPersistence().removeByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		return getPersistence().removeByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**
-	 * Returns the number of fvs active entries where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
+	 * Returns the number of fvs active entries where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the number of matching fvs active entries
 	 */
-	public static int countByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId) {
+	public static int countByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
 
-		return getPersistence().countByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		return getPersistence().countByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 	/**

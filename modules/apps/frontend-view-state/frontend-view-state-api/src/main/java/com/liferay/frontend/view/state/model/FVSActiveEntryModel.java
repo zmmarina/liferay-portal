@@ -206,21 +206,6 @@ public interface FVSActiveEntryModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
-	 * Returns the dataset display ID of this fvs active entry.
-	 *
-	 * @return the dataset display ID of this fvs active entry
-	 */
-	@AutoEscape
-	public String getDatasetDisplayId();
-
-	/**
-	 * Sets the dataset display ID of this fvs active entry.
-	 *
-	 * @param datasetDisplayId the dataset display ID of this fvs active entry
-	 */
-	public void setDatasetDisplayId(String datasetDisplayId);
-
-	/**
 	 * Returns the fvs entry ID of this fvs active entry.
 	 *
 	 * @return the fvs entry ID of this fvs active entry
@@ -233,6 +218,21 @@ public interface FVSActiveEntryModel
 	 * @param fvsEntryId the fvs entry ID of this fvs active entry
 	 */
 	public void setFvsEntryId(long fvsEntryId);
+
+	/**
+	 * Returns the clay data set display ID of this fvs active entry.
+	 *
+	 * @return the clay data set display ID of this fvs active entry
+	 */
+	@AutoEscape
+	public String getClayDataSetDisplayId();
+
+	/**
+	 * Sets the clay data set display ID of this fvs active entry.
+	 *
+	 * @param clayDataSetDisplayId the clay data set display ID of this fvs active entry
+	 */
+	public void setClayDataSetDisplayId(String clayDataSetDisplayId);
 
 	/**
 	 * Returns the plid of this fvs active entry.

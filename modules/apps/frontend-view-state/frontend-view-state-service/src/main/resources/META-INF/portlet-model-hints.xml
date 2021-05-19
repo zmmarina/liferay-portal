@@ -10,8 +10,8 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="datasetDisplayId" type="String" />
 		<field name="fvsEntryId" type="long" />
+		<field name="clayDataSetDisplayId" type="String" />
 		<field name="plid" type="long" />
 		<field name="portletId" type="String">
 			<hint name="max-length">200</hint>

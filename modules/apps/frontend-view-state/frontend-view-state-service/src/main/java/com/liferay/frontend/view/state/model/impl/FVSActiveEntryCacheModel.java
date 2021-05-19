@@ -95,10 +95,10 @@ public class FVSActiveEntryCacheModel
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", datasetDisplayId=");
-		sb.append(datasetDisplayId);
 		sb.append(", fvsEntryId=");
 		sb.append(fvsEntryId);
+		sb.append(", clayDataSetDisplayId=");
+		sb.append(clayDataSetDisplayId);
 		sb.append(", plid=");
 		sb.append(plid);
 		sb.append(", portletId=");
@@ -146,14 +146,15 @@ public class FVSActiveEntryCacheModel
 			fvsActiveEntryImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		if (datasetDisplayId == null) {
-			fvsActiveEntryImpl.setDatasetDisplayId("");
+		fvsActiveEntryImpl.setFvsEntryId(fvsEntryId);
+
+		if (clayDataSetDisplayId == null) {
+			fvsActiveEntryImpl.setClayDataSetDisplayId("");
 		}
 		else {
-			fvsActiveEntryImpl.setDatasetDisplayId(datasetDisplayId);
+			fvsActiveEntryImpl.setClayDataSetDisplayId(clayDataSetDisplayId);
 		}
 
-		fvsActiveEntryImpl.setFvsEntryId(fvsEntryId);
 		fvsActiveEntryImpl.setPlid(plid);
 
 		if (portletId == null) {
@@ -181,9 +182,9 @@ public class FVSActiveEntryCacheModel
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		datasetDisplayId = objectInput.readUTF();
 
 		fvsEntryId = objectInput.readLong();
+		clayDataSetDisplayId = objectInput.readUTF();
 
 		plid = objectInput.readLong();
 		portletId = objectInput.readUTF();
@@ -216,14 +217,14 @@ public class FVSActiveEntryCacheModel
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
-		if (datasetDisplayId == null) {
+		objectOutput.writeLong(fvsEntryId);
+
+		if (clayDataSetDisplayId == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(datasetDisplayId);
+			objectOutput.writeUTF(clayDataSetDisplayId);
 		}
-
-		objectOutput.writeLong(fvsEntryId);
 
 		objectOutput.writeLong(plid);
 
@@ -243,8 +244,8 @@ public class FVSActiveEntryCacheModel
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
-	public String datasetDisplayId;
 	public long fvsEntryId;
+	public String clayDataSetDisplayId;
 	public long plid;
 	public String portletId;
 

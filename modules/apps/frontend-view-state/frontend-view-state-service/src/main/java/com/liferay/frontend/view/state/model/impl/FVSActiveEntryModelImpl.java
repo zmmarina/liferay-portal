@@ -74,7 +74,7 @@ public class FVSActiveEntryModelImpl
 		{"fvsActiveEntryId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
-		{"datasetDisplayId", Types.VARCHAR}, {"fvsEntryId", Types.BIGINT},
+		{"fvsEntryId", Types.BIGINT}, {"clayDataSetDisplayId", Types.VARCHAR},
 		{"plid", Types.BIGINT}, {"portletId", Types.VARCHAR}
 	};
 
@@ -90,14 +90,14 @@ public class FVSActiveEntryModelImpl
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("datasetDisplayId", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("fvsEntryId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("clayDataSetDisplayId", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("plid", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("portletId", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table FVSActiveEntry (mvccVersion LONG default 0 not null,uuid_ VARCHAR(75) null,fvsActiveEntryId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,datasetDisplayId VARCHAR(75) null,fvsEntryId LONG,plid LONG,portletId VARCHAR(200) null)";
+		"create table FVSActiveEntry (mvccVersion LONG default 0 not null,uuid_ VARCHAR(75) null,fvsActiveEntryId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,fvsEntryId LONG,clayDataSetDisplayId VARCHAR(75) null,plid LONG,portletId VARCHAR(200) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table FVSActiveEntry";
 
@@ -117,13 +117,13 @@ public class FVSActiveEntryModelImpl
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long COMPANYID_COLUMN_BITMASK = 1L;
+	public static final long CLAYDATASETDISPLAYID_COLUMN_BITMASK = 1L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long DATASETDISPLAYID_COLUMN_BITMASK = 2L;
+	public static final long COMPANYID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
@@ -332,16 +332,16 @@ public class FVSActiveEntryModelImpl
 			"modifiedDate",
 			(BiConsumer<FVSActiveEntry, Date>)FVSActiveEntry::setModifiedDate);
 		attributeGetterFunctions.put(
-			"datasetDisplayId", FVSActiveEntry::getDatasetDisplayId);
-		attributeSetterBiConsumers.put(
-			"datasetDisplayId",
-			(BiConsumer<FVSActiveEntry, String>)
-				FVSActiveEntry::setDatasetDisplayId);
-		attributeGetterFunctions.put(
 			"fvsEntryId", FVSActiveEntry::getFvsEntryId);
 		attributeSetterBiConsumers.put(
 			"fvsEntryId",
 			(BiConsumer<FVSActiveEntry, Long>)FVSActiveEntry::setFvsEntryId);
+		attributeGetterFunctions.put(
+			"clayDataSetDisplayId", FVSActiveEntry::getClayDataSetDisplayId);
+		attributeSetterBiConsumers.put(
+			"clayDataSetDisplayId",
+			(BiConsumer<FVSActiveEntry, String>)
+				FVSActiveEntry::setClayDataSetDisplayId);
 		attributeGetterFunctions.put("plid", FVSActiveEntry::getPlid);
 		attributeSetterBiConsumers.put(
 			"plid", (BiConsumer<FVSActiveEntry, Long>)FVSActiveEntry::setPlid);
@@ -529,34 +529,6 @@ public class FVSActiveEntryModelImpl
 	}
 
 	@Override
-	public String getDatasetDisplayId() {
-		if (_datasetDisplayId == null) {
-			return "";
-		}
-		else {
-			return _datasetDisplayId;
-		}
-	}
-
-	@Override
-	public void setDatasetDisplayId(String datasetDisplayId) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_datasetDisplayId = datasetDisplayId;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public String getOriginalDatasetDisplayId() {
-		return getColumnOriginalValue("datasetDisplayId");
-	}
-
-	@Override
 	public long getFvsEntryId() {
 		return _fvsEntryId;
 	}
@@ -568,6 +540,34 @@ public class FVSActiveEntryModelImpl
 		}
 
 		_fvsEntryId = fvsEntryId;
+	}
+
+	@Override
+	public String getClayDataSetDisplayId() {
+		if (_clayDataSetDisplayId == null) {
+			return "";
+		}
+		else {
+			return _clayDataSetDisplayId;
+		}
+	}
+
+	@Override
+	public void setClayDataSetDisplayId(String clayDataSetDisplayId) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_clayDataSetDisplayId = clayDataSetDisplayId;
+	}
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 *             #getColumnOriginalValue(String)}
+	 */
+	@Deprecated
+	public String getOriginalClayDataSetDisplayId() {
+		return getColumnOriginalValue("clayDataSetDisplayId");
 	}
 
 	@Override
@@ -715,8 +715,8 @@ public class FVSActiveEntryModelImpl
 		fvsActiveEntryImpl.setUserName(getUserName());
 		fvsActiveEntryImpl.setCreateDate(getCreateDate());
 		fvsActiveEntryImpl.setModifiedDate(getModifiedDate());
-		fvsActiveEntryImpl.setDatasetDisplayId(getDatasetDisplayId());
 		fvsActiveEntryImpl.setFvsEntryId(getFvsEntryId());
+		fvsActiveEntryImpl.setClayDataSetDisplayId(getClayDataSetDisplayId());
 		fvsActiveEntryImpl.setPlid(getPlid());
 		fvsActiveEntryImpl.setPortletId(getPortletId());
 
@@ -841,15 +841,19 @@ public class FVSActiveEntryModelImpl
 			fvsActiveEntryCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		fvsActiveEntryCacheModel.datasetDisplayId = getDatasetDisplayId();
-
-		String datasetDisplayId = fvsActiveEntryCacheModel.datasetDisplayId;
-
-		if ((datasetDisplayId != null) && (datasetDisplayId.length() == 0)) {
-			fvsActiveEntryCacheModel.datasetDisplayId = null;
-		}
-
 		fvsActiveEntryCacheModel.fvsEntryId = getFvsEntryId();
+
+		fvsActiveEntryCacheModel.clayDataSetDisplayId =
+			getClayDataSetDisplayId();
+
+		String clayDataSetDisplayId =
+			fvsActiveEntryCacheModel.clayDataSetDisplayId;
+
+		if ((clayDataSetDisplayId != null) &&
+			(clayDataSetDisplayId.length() == 0)) {
+
+			fvsActiveEntryCacheModel.clayDataSetDisplayId = null;
+		}
 
 		fvsActiveEntryCacheModel.plid = getPlid();
 
@@ -943,8 +947,8 @@ public class FVSActiveEntryModelImpl
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
-	private String _datasetDisplayId;
 	private long _fvsEntryId;
+	private String _clayDataSetDisplayId;
 	private long _plid;
 	private String _portletId;
 
@@ -985,8 +989,9 @@ public class FVSActiveEntryModelImpl
 		_columnOriginalValues.put("userName", _userName);
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
-		_columnOriginalValues.put("datasetDisplayId", _datasetDisplayId);
 		_columnOriginalValues.put("fvsEntryId", _fvsEntryId);
+		_columnOriginalValues.put(
+			"clayDataSetDisplayId", _clayDataSetDisplayId);
 		_columnOriginalValues.put("plid", _plid);
 		_columnOriginalValues.put("portletId", _portletId);
 	}
@@ -1028,9 +1033,9 @@ public class FVSActiveEntryModelImpl
 
 		columnBitmasks.put("modifiedDate", 128L);
 
-		columnBitmasks.put("datasetDisplayId", 256L);
+		columnBitmasks.put("fvsEntryId", 256L);
 
-		columnBitmasks.put("fvsEntryId", 512L);
+		columnBitmasks.put("clayDataSetDisplayId", 512L);
 
 		columnBitmasks.put("plid", 1024L);
 

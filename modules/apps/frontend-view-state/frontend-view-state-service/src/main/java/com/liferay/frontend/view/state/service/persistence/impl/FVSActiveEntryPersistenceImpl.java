@@ -1214,26 +1214,27 @@ public class FVSActiveEntryPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"fvsActiveEntry.companyId = ?";
 
-	private FinderPath _finderPathFetchByU_D_P_P;
-	private FinderPath _finderPathCountByU_D_P_P;
+	private FinderPath _finderPathFetchByU_CDSDI_P_P;
+	private FinderPath _finderPathCountByU_CDSDI_P_P;
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry
 	 * @throws NoSuchActiveEntryException if a matching fvs active entry could not be found
 	 */
 	@Override
-	public FVSActiveEntry findByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public FVSActiveEntry findByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws NoSuchActiveEntryException {
 
-		FVSActiveEntry fvsActiveEntry = fetchByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		FVSActiveEntry fvsActiveEntry = fetchByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 
 		if (fvsActiveEntry == null) {
 			StringBundler sb = new StringBundler(10);
@@ -1243,8 +1244,8 @@ public class FVSActiveEntryPersistenceImpl
 			sb.append("userId=");
 			sb.append(userId);
 
-			sb.append(", datasetDisplayId=");
-			sb.append(datasetDisplayId);
+			sb.append(", clayDataSetDisplayId=");
+			sb.append(clayDataSetDisplayId);
 
 			sb.append(", plid=");
 			sb.append(plid);
@@ -1265,44 +1266,45 @@ public class FVSActiveEntryPersistenceImpl
 	}
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
 	@Override
-	public FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId) {
+	public FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
 
-		return fetchByU_D_P_P(userId, datasetDisplayId, plid, portletId, true);
+		return fetchByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId, true);
 	}
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
 	@Override
-	public FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId,
+	public FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId,
 		boolean useFinderCache) {
 
-		datasetDisplayId = Objects.toString(datasetDisplayId, "");
+		clayDataSetDisplayId = Objects.toString(clayDataSetDisplayId, "");
 		portletId = Objects.toString(portletId, "");
 
 		Object[] finderArgs = null;
 
 		if (useFinderCache) {
 			finderArgs = new Object[] {
-				userId, datasetDisplayId, plid, portletId
+				userId, clayDataSetDisplayId, plid, portletId
 			};
 		}
 
@@ -1310,7 +1312,7 @@ public class FVSActiveEntryPersistenceImpl
 
 		if (useFinderCache) {
 			result = finderCache.getResult(
-				_finderPathFetchByU_D_P_P, finderArgs);
+				_finderPathFetchByU_CDSDI_P_P, finderArgs);
 		}
 
 		if (result instanceof FVSActiveEntry) {
@@ -1318,7 +1320,8 @@ public class FVSActiveEntryPersistenceImpl
 
 			if ((userId != fvsActiveEntry.getUserId()) ||
 				!Objects.equals(
-					datasetDisplayId, fvsActiveEntry.getDatasetDisplayId()) ||
+					clayDataSetDisplayId,
+					fvsActiveEntry.getClayDataSetDisplayId()) ||
 				(plid != fvsActiveEntry.getPlid()) ||
 				!Objects.equals(portletId, fvsActiveEntry.getPortletId())) {
 
@@ -1331,30 +1334,30 @@ public class FVSActiveEntryPersistenceImpl
 
 			sb.append(_SQL_SELECT_FVSACTIVEENTRY_WHERE);
 
-			sb.append(_FINDER_COLUMN_U_D_P_P_USERID_2);
+			sb.append(_FINDER_COLUMN_U_CDSDI_P_P_USERID_2);
 
-			boolean bindDatasetDisplayId = false;
+			boolean bindClayDataSetDisplayId = false;
 
-			if (datasetDisplayId.isEmpty()) {
-				sb.append(_FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_3);
+			if (clayDataSetDisplayId.isEmpty()) {
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_3);
 			}
 			else {
-				bindDatasetDisplayId = true;
+				bindClayDataSetDisplayId = true;
 
-				sb.append(_FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_2);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_2);
 			}
 
-			sb.append(_FINDER_COLUMN_U_D_P_P_PLID_2);
+			sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PLID_2);
 
 			boolean bindPortletId = false;
 
 			if (portletId.isEmpty()) {
-				sb.append(_FINDER_COLUMN_U_D_P_P_PORTLETID_3);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_3);
 			}
 			else {
 				bindPortletId = true;
 
-				sb.append(_FINDER_COLUMN_U_D_P_P_PORTLETID_2);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_2);
 			}
 
 			String sql = sb.toString();
@@ -1370,8 +1373,8 @@ public class FVSActiveEntryPersistenceImpl
 
 				queryPos.add(userId);
 
-				if (bindDatasetDisplayId) {
-					queryPos.add(datasetDisplayId);
+				if (bindClayDataSetDisplayId) {
+					queryPos.add(clayDataSetDisplayId);
 				}
 
 				queryPos.add(plid);
@@ -1385,7 +1388,7 @@ public class FVSActiveEntryPersistenceImpl
 				if (list.isEmpty()) {
 					if (useFinderCache) {
 						finderCache.putResult(
-							_finderPathFetchByU_D_P_P, finderArgs, list);
+							_finderPathFetchByU_CDSDI_P_P, finderArgs, list);
 					}
 				}
 				else {
@@ -1413,45 +1416,46 @@ public class FVSActiveEntryPersistenceImpl
 	}
 
 	/**
-	 * Removes the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
+	 * Removes the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the fvs active entry that was removed
 	 */
 	@Override
-	public FVSActiveEntry removeByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public FVSActiveEntry removeByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws NoSuchActiveEntryException {
 
-		FVSActiveEntry fvsActiveEntry = findByU_D_P_P(
-			userId, datasetDisplayId, plid, portletId);
+		FVSActiveEntry fvsActiveEntry = findByU_CDSDI_P_P(
+			userId, clayDataSetDisplayId, plid, portletId);
 
 		return remove(fvsActiveEntry);
 	}
 
 	/**
-	 * Returns the number of fvs active entries where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
+	 * Returns the number of fvs active entries where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the number of matching fvs active entries
 	 */
 	@Override
-	public int countByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId) {
+	public int countByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
 
-		datasetDisplayId = Objects.toString(datasetDisplayId, "");
+		clayDataSetDisplayId = Objects.toString(clayDataSetDisplayId, "");
 		portletId = Objects.toString(portletId, "");
 
-		FinderPath finderPath = _finderPathCountByU_D_P_P;
+		FinderPath finderPath = _finderPathCountByU_CDSDI_P_P;
 
 		Object[] finderArgs = new Object[] {
-			userId, datasetDisplayId, plid, portletId
+			userId, clayDataSetDisplayId, plid, portletId
 		};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs);
@@ -1461,30 +1465,30 @@ public class FVSActiveEntryPersistenceImpl
 
 			sb.append(_SQL_COUNT_FVSACTIVEENTRY_WHERE);
 
-			sb.append(_FINDER_COLUMN_U_D_P_P_USERID_2);
+			sb.append(_FINDER_COLUMN_U_CDSDI_P_P_USERID_2);
 
-			boolean bindDatasetDisplayId = false;
+			boolean bindClayDataSetDisplayId = false;
 
-			if (datasetDisplayId.isEmpty()) {
-				sb.append(_FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_3);
+			if (clayDataSetDisplayId.isEmpty()) {
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_3);
 			}
 			else {
-				bindDatasetDisplayId = true;
+				bindClayDataSetDisplayId = true;
 
-				sb.append(_FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_2);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_2);
 			}
 
-			sb.append(_FINDER_COLUMN_U_D_P_P_PLID_2);
+			sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PLID_2);
 
 			boolean bindPortletId = false;
 
 			if (portletId.isEmpty()) {
-				sb.append(_FINDER_COLUMN_U_D_P_P_PORTLETID_3);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_3);
 			}
 			else {
 				bindPortletId = true;
 
-				sb.append(_FINDER_COLUMN_U_D_P_P_PORTLETID_2);
+				sb.append(_FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_2);
 			}
 
 			String sql = sb.toString();
@@ -1500,8 +1504,8 @@ public class FVSActiveEntryPersistenceImpl
 
 				queryPos.add(userId);
 
-				if (bindDatasetDisplayId) {
-					queryPos.add(datasetDisplayId);
+				if (bindClayDataSetDisplayId) {
+					queryPos.add(clayDataSetDisplayId);
 				}
 
 				queryPos.add(plid);
@@ -1525,22 +1529,24 @@ public class FVSActiveEntryPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_U_D_P_P_USERID_2 =
+	private static final String _FINDER_COLUMN_U_CDSDI_P_P_USERID_2 =
 		"fvsActiveEntry.userId = ? AND ";
 
-	private static final String _FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_2 =
-		"fvsActiveEntry.datasetDisplayId = ? AND ";
+	private static final String
+		_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_2 =
+			"fvsActiveEntry.clayDataSetDisplayId = ? AND ";
 
-	private static final String _FINDER_COLUMN_U_D_P_P_DATASETDISPLAYID_3 =
-		"(fvsActiveEntry.datasetDisplayId IS NULL OR fvsActiveEntry.datasetDisplayId = '') AND ";
+	private static final String
+		_FINDER_COLUMN_U_CDSDI_P_P_CLAYDATASETDISPLAYID_3 =
+			"(fvsActiveEntry.clayDataSetDisplayId IS NULL OR fvsActiveEntry.clayDataSetDisplayId = '') AND ";
 
-	private static final String _FINDER_COLUMN_U_D_P_P_PLID_2 =
+	private static final String _FINDER_COLUMN_U_CDSDI_P_P_PLID_2 =
 		"fvsActiveEntry.plid = ? AND ";
 
-	private static final String _FINDER_COLUMN_U_D_P_P_PORTLETID_2 =
+	private static final String _FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_2 =
 		"fvsActiveEntry.portletId = ?";
 
-	private static final String _FINDER_COLUMN_U_D_P_P_PORTLETID_3 =
+	private static final String _FINDER_COLUMN_U_CDSDI_P_P_PORTLETID_3 =
 		"(fvsActiveEntry.portletId IS NULL OR fvsActiveEntry.portletId = '')";
 
 	public FVSActiveEntryPersistenceImpl() {
@@ -1570,11 +1576,11 @@ public class FVSActiveEntryPersistenceImpl
 			fvsActiveEntry);
 
 		finderCache.putResult(
-			_finderPathFetchByU_D_P_P,
+			_finderPathFetchByU_CDSDI_P_P,
 			new Object[] {
 				fvsActiveEntry.getUserId(),
-				fvsActiveEntry.getDatasetDisplayId(), fvsActiveEntry.getPlid(),
-				fvsActiveEntry.getPortletId()
+				fvsActiveEntry.getClayDataSetDisplayId(),
+				fvsActiveEntry.getPlid(), fvsActiveEntry.getPortletId()
 			},
 			fvsActiveEntry);
 	}
@@ -1643,14 +1649,15 @@ public class FVSActiveEntryPersistenceImpl
 
 		Object[] args = new Object[] {
 			fvsActiveEntryModelImpl.getUserId(),
-			fvsActiveEntryModelImpl.getDatasetDisplayId(),
+			fvsActiveEntryModelImpl.getClayDataSetDisplayId(),
 			fvsActiveEntryModelImpl.getPlid(),
 			fvsActiveEntryModelImpl.getPortletId()
 		};
 
-		finderCache.putResult(_finderPathCountByU_D_P_P, args, Long.valueOf(1));
 		finderCache.putResult(
-			_finderPathFetchByU_D_P_P, args, fvsActiveEntryModelImpl);
+			_finderPathCountByU_CDSDI_P_P, args, Long.valueOf(1));
+		finderCache.putResult(
+			_finderPathFetchByU_CDSDI_P_P, args, fvsActiveEntryModelImpl);
 	}
 
 	/**
@@ -2163,22 +2170,26 @@ public class FVSActiveEntryPersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
 
-		_finderPathFetchByU_D_P_P = new FinderPath(
-			FINDER_CLASS_NAME_ENTITY, "fetchByU_D_P_P",
+		_finderPathFetchByU_CDSDI_P_P = new FinderPath(
+			FINDER_CLASS_NAME_ENTITY, "fetchByU_CDSDI_P_P",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
 				Long.class.getName(), String.class.getName()
 			},
-			new String[] {"userId", "datasetDisplayId", "plid", "portletId"},
+			new String[] {
+				"userId", "clayDataSetDisplayId", "plid", "portletId"
+			},
 			true);
 
-		_finderPathCountByU_D_P_P = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByU_D_P_P",
+		_finderPathCountByU_CDSDI_P_P = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByU_CDSDI_P_P",
 			new String[] {
 				Long.class.getName(), String.class.getName(),
 				Long.class.getName(), String.class.getName()
 			},
-			new String[] {"userId", "datasetDisplayId", "plid", "portletId"},
+			new String[] {
+				"userId", "clayDataSetDisplayId", "plid", "portletId"
+			},
 			false);
 	}
 

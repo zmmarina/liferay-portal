@@ -340,69 +340,71 @@ public interface FVSActiveEntryPersistence
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or throws a <code>NoSuchActiveEntryException</code> if it could not be found.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry
 	 * @throws NoSuchActiveEntryException if a matching fvs active entry could not be found
 	 */
-	public FVSActiveEntry findByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public FVSActiveEntry findByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws NoSuchActiveEntryException;
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
-	public FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId);
+	public FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId);
 
 	/**
-	 * Returns the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 * Returns the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the matching fvs active entry, or <code>null</code> if a matching fvs active entry could not be found
 	 */
-	public FVSActiveEntry fetchByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId,
+	public FVSActiveEntry fetchByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId,
 		boolean useFinderCache);
 
 	/**
-	 * Removes the fvs active entry where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
+	 * Removes the fvs active entry where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63; from the database.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the fvs active entry that was removed
 	 */
-	public FVSActiveEntry removeByU_D_P_P(
-			long userId, String datasetDisplayId, long plid, String portletId)
+	public FVSActiveEntry removeByU_CDSDI_P_P(
+			long userId, String clayDataSetDisplayId, long plid,
+			String portletId)
 		throws NoSuchActiveEntryException;
 
 	/**
-	 * Returns the number of fvs active entries where userId = &#63; and datasetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
+	 * Returns the number of fvs active entries where userId = &#63; and clayDataSetDisplayId = &#63; and plid = &#63; and portletId = &#63;.
 	 *
 	 * @param userId the user ID
-	 * @param datasetDisplayId the dataset display ID
+	 * @param clayDataSetDisplayId the clay data set display ID
 	 * @param plid the plid
 	 * @param portletId the portlet ID
 	 * @return the number of matching fvs active entries
 	 */
-	public int countByU_D_P_P(
-		long userId, String datasetDisplayId, long plid, String portletId);
+	public int countByU_CDSDI_P_P(
+		long userId, String clayDataSetDisplayId, long plid, String portletId);
 
 	/**
 	 * Caches the fvs active entry in the entity cache if it is enabled.

@@ -41,8 +41,8 @@ public class FVSActiveEntrySoap implements Serializable {
 		soapModel.setUserName(model.getUserName());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setDatasetDisplayId(model.getDatasetDisplayId());
 		soapModel.setFvsEntryId(model.getFvsEntryId());
+		soapModel.setClayDataSetDisplayId(model.getClayDataSetDisplayId());
 		soapModel.setPlid(model.getPlid());
 		soapModel.setPortletId(model.getPortletId());
 
@@ -167,20 +167,20 @@ public class FVSActiveEntrySoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public String getDatasetDisplayId() {
-		return _datasetDisplayId;
-	}
-
-	public void setDatasetDisplayId(String datasetDisplayId) {
-		_datasetDisplayId = datasetDisplayId;
-	}
-
 	public long getFvsEntryId() {
 		return _fvsEntryId;
 	}
 
 	public void setFvsEntryId(long fvsEntryId) {
 		_fvsEntryId = fvsEntryId;
+	}
+
+	public String getClayDataSetDisplayId() {
+		return _clayDataSetDisplayId;
+	}
+
+	public void setClayDataSetDisplayId(String clayDataSetDisplayId) {
+		_clayDataSetDisplayId = clayDataSetDisplayId;
 	}
 
 	public long getPlid() {
@@ -207,8 +207,8 @@ public class FVSActiveEntrySoap implements Serializable {
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _datasetDisplayId;
 	private long _fvsEntryId;
+	private String _clayDataSetDisplayId;
 	private long _plid;
 	private String _portletId;
 

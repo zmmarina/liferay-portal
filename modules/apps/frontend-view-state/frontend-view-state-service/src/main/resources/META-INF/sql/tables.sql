@@ -7,8 +7,8 @@ create table FVSActiveEntry (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
-	datasetDisplayId VARCHAR(75) null,
 	fvsEntryId LONG,
+	clayDataSetDisplayId VARCHAR(75) null,
 	plid LONG,
 	portletId VARCHAR(200) null
 );

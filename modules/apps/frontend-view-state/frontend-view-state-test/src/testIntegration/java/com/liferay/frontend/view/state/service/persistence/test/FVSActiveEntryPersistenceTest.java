@@ -139,9 +139,10 @@ public class FVSActiveEntryPersistenceTest {
 
 		newFVSActiveEntry.setModifiedDate(RandomTestUtil.nextDate());
 
-		newFVSActiveEntry.setDatasetDisplayId(RandomTestUtil.randomString());
-
 		newFVSActiveEntry.setFvsEntryId(RandomTestUtil.nextLong());
+
+		newFVSActiveEntry.setClayDataSetDisplayId(
+			RandomTestUtil.randomString());
 
 		newFVSActiveEntry.setPlid(RandomTestUtil.nextLong());
 
@@ -175,11 +176,11 @@ public class FVSActiveEntryPersistenceTest {
 			Time.getShortTimestamp(existingFVSActiveEntry.getModifiedDate()),
 			Time.getShortTimestamp(newFVSActiveEntry.getModifiedDate()));
 		Assert.assertEquals(
-			existingFVSActiveEntry.getDatasetDisplayId(),
-			newFVSActiveEntry.getDatasetDisplayId());
-		Assert.assertEquals(
 			existingFVSActiveEntry.getFvsEntryId(),
 			newFVSActiveEntry.getFvsEntryId());
+		Assert.assertEquals(
+			existingFVSActiveEntry.getClayDataSetDisplayId(),
+			newFVSActiveEntry.getClayDataSetDisplayId());
 		Assert.assertEquals(
 			existingFVSActiveEntry.getPlid(), newFVSActiveEntry.getPlid());
 		Assert.assertEquals(
@@ -206,13 +207,13 @@ public class FVSActiveEntryPersistenceTest {
 	}
 
 	@Test
-	public void testCountByU_D_P_P() throws Exception {
-		_persistence.countByU_D_P_P(
+	public void testCountByU_CDSDI_P_P() throws Exception {
+		_persistence.countByU_CDSDI_P_P(
 			RandomTestUtil.nextLong(), "", RandomTestUtil.nextLong(), "");
 
-		_persistence.countByU_D_P_P(0L, "null", 0L, "null");
+		_persistence.countByU_CDSDI_P_P(0L, "null", 0L, "null");
 
-		_persistence.countByU_D_P_P(0L, (String)null, 0L, (String)null);
+		_persistence.countByU_CDSDI_P_P(0L, (String)null, 0L, (String)null);
 	}
 
 	@Test
@@ -243,7 +244,7 @@ public class FVSActiveEntryPersistenceTest {
 			"FVSActiveEntry", "mvccVersion", true, "uuid", true,
 			"fvsActiveEntryId", true, "companyId", true, "userId", true,
 			"userName", true, "createDate", true, "modifiedDate", true,
-			"datasetDisplayId", true, "fvsEntryId", true, "plid", true,
+			"fvsEntryId", true, "clayDataSetDisplayId", true, "plid", true,
 			"portletId", true);
 	}
 
@@ -518,10 +519,10 @@ public class FVSActiveEntryPersistenceTest {
 				fvsActiveEntry, "getColumnOriginalValue",
 				new Class<?>[] {String.class}, "userId"));
 		Assert.assertEquals(
-			fvsActiveEntry.getDatasetDisplayId(),
+			fvsActiveEntry.getClayDataSetDisplayId(),
 			ReflectionTestUtil.invoke(
 				fvsActiveEntry, "getColumnOriginalValue",
-				new Class<?>[] {String.class}, "datasetDisplayId"));
+				new Class<?>[] {String.class}, "clayDataSetDisplayId"));
 		Assert.assertEquals(
 			Long.valueOf(fvsActiveEntry.getPlid()),
 			ReflectionTestUtil.<Long>invoke(
@@ -553,9 +554,9 @@ public class FVSActiveEntryPersistenceTest {
 
 		fvsActiveEntry.setModifiedDate(RandomTestUtil.nextDate());
 
-		fvsActiveEntry.setDatasetDisplayId(RandomTestUtil.randomString());
-
 		fvsActiveEntry.setFvsEntryId(RandomTestUtil.nextLong());
+
+		fvsActiveEntry.setClayDataSetDisplayId(RandomTestUtil.randomString());
 
 		fvsActiveEntry.setPlid(RandomTestUtil.nextLong());
 
