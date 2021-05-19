@@ -62,13 +62,13 @@ public class DDMExpressionFunctionMetadataHelper {
 	public static class DDMExpressionFunctionMetadata {
 
 		public DDMExpressionFunctionMetadata(
-			String name, String label, String returnType,
-			String[] parameterTypes) {
+			String name, String label, String returnClassName,
+			String[] parameterClassNames) {
 
 			_name = name;
 			_label = label;
-			_returnType = returnType;
-			_parameterTypes = parameterTypes;
+			_returnClassName = returnClassName;
+			_parameterClassNames = parameterClassNames;
 		}
 
 		public String getLabel() {
@@ -79,18 +79,18 @@ public class DDMExpressionFunctionMetadataHelper {
 			return _name;
 		}
 
-		public String[] getParameterTypes() {
-			return _parameterTypes;
+		public String[] getParameterClassNames() {
+			return _parameterClassNames;
 		}
 
-		public String getReturnType() {
-			return _returnType;
+		public String getReturnClassName() {
+			return _returnClassName;
 		}
 
 		private final String _label;
 		private final String _name;
-		private final String[] _parameterTypes;
-		private final String _returnType;
+		private final String[] _parameterClassNames;
+		private final String _returnClassName;
 
 	}
 
@@ -99,17 +99,17 @@ public class DDMExpressionFunctionMetadataHelper {
 			ddmExpressionFunctionsMetadata,
 		DDMExpressionFunctionMetadata expressionFunctionMetadata) {
 
-		String firstParameterType =
-			expressionFunctionMetadata.getParameterTypes()[0];
+		String firstParameterClassName =
+			expressionFunctionMetadata.getParameterClassNames()[0];
 
 		List<DDMExpressionFunctionMetadata> expressionFunctionMetadataList =
-			ddmExpressionFunctionsMetadata.get(firstParameterType);
+			ddmExpressionFunctionsMetadata.get(firstParameterClassName);
 
 		if (expressionFunctionMetadataList == null) {
 			expressionFunctionMetadataList = new ArrayList<>();
 
 			ddmExpressionFunctionsMetadata.put(
-				firstParameterType, expressionFunctionMetadataList);
+				firstParameterClassName, expressionFunctionMetadataList);
 		}
 
 		expressionFunctionMetadataList.add(expressionFunctionMetadata);
@@ -157,13 +157,13 @@ public class DDMExpressionFunctionMetadataHelper {
 				ddmExpressionFunctionsMetadata,
 				new DDMExpressionFunctionMetadata(
 					entry.getKey(), entry.getKey(), _TYPE_BOOLEAN,
-					_getParameterTypes(
+					_getParameterClassNames(
 						method.getParameterCount(), _TYPE_NUMBER)));
 			addDDMExpressionFunctionMetadata(
 				ddmExpressionFunctionsMetadata,
 				new DDMExpressionFunctionMetadata(
 					entry.getKey(), entry.getKey(), _TYPE_BOOLEAN,
-					_getParameterTypes(
+					_getParameterClassNames(
 						method.getParameterCount(), _TYPE_TEXT)));
 		}
 	}
@@ -272,14 +272,14 @@ public class DDMExpressionFunctionMetadataHelper {
 				new String[] {_TYPE_TEXT}));
 	}
 
-	private String[] _getParameterTypes(
-		int parameterCount, String parameterType) {
+	private String[] _getParameterClassNames(
+		int parameterCount, String parameterClassName) {
 
-		String[] parameterTypes = new String[parameterCount];
+		String[] parameterClassNames = new String[parameterCount];
 
-		Arrays.fill(parameterTypes, parameterType);
+		Arrays.fill(parameterClassNames, parameterClassName);
 
-		return parameterTypes;
+		return parameterClassNames;
 	}
 
 	private static final String _TYPE_BOOLEAN = "boolean";
