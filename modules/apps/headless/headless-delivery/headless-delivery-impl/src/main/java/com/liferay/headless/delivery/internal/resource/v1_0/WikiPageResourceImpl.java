@@ -88,7 +88,7 @@ public class WikiPageResourceImpl
 		throws Exception {
 
 		com.liferay.wiki.model.WikiPage wikiPage =
-			_getWikiPageByExternalReferenceCode(externalReferenceCode, siteId);
+			_getWikiPageByExternalReferenceCode(siteId, externalReferenceCode);
 
 		_wikiPageService.deletePage(wikiPage.getNodeId(), wikiPage.getTitle());
 	}
@@ -117,7 +117,7 @@ public class WikiPageResourceImpl
 		throws Exception {
 
 		return _toWikiPage(
-			_getWikiPageByExternalReferenceCode(externalReferenceCode, siteId));
+			_getWikiPageByExternalReferenceCode(siteId, externalReferenceCode));
 	}
 
 	@Override
@@ -362,7 +362,7 @@ public class WikiPageResourceImpl
 	}
 
 	private com.liferay.wiki.model.WikiPage _getWikiPageByExternalReferenceCode(
-			String externalReferenceCode, long siteId)
+			long siteId, String externalReferenceCode)
 		throws Exception {
 
 		com.liferay.wiki.model.WikiPage wikiPage =

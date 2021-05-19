@@ -63,7 +63,7 @@ public class WikiNodeResourceImpl
 		throws Exception {
 
 		com.liferay.wiki.model.WikiNode wikiNode =
-			_getWikiNodeByExternalReferenceCode(externalReferenceCode, siteId);
+			_getWikiNodeByExternalReferenceCode(siteId, externalReferenceCode);
 
 		_wikiNodeService.deleteNode(wikiNode.getNodeId());
 	}
@@ -84,7 +84,7 @@ public class WikiNodeResourceImpl
 		throws Exception {
 
 		com.liferay.wiki.model.WikiNode wikiNode =
-			_getWikiNodeByExternalReferenceCode(externalReferenceCode, siteId);
+			_getWikiNodeByExternalReferenceCode(siteId, externalReferenceCode);
 
 		return _toWikiNode(wikiNode);
 	}
@@ -200,7 +200,7 @@ public class WikiNodeResourceImpl
 	}
 
 	private com.liferay.wiki.model.WikiNode _getWikiNodeByExternalReferenceCode(
-			String externalReferenceCode, long siteId)
+			long siteId, String externalReferenceCode)
 		throws Exception {
 
 		com.liferay.wiki.model.WikiNode wikiNode =
