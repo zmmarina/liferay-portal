@@ -41,7 +41,7 @@ public class DDMExpressionFunctionTrackerImpl
 	public Map<String, DDMExpressionFunction>
 		getCustomDDMExpressionFunctions() {
 
-		Map<String, DDMExpressionFunction> customDDMExpressionFunctions =
+		Map<String, DDMExpressionFunction> customDDMExpressionFunctionMap =
 			new HashMap<>();
 
 		for (DDMExpressionFunctionFactory ddmExpressionFunctionFactory :
@@ -54,11 +54,11 @@ public class DDMExpressionFunctionTrackerImpl
 				continue;
 			}
 
-			customDDMExpressionFunctions.put(
+			customDDMExpressionFunctionMap.put(
 				ddmExpressionFunction.getName(), ddmExpressionFunction);
 		}
 
-		return customDDMExpressionFunctions;
+		return customDDMExpressionFunctionMap;
 	}
 
 	@Override
