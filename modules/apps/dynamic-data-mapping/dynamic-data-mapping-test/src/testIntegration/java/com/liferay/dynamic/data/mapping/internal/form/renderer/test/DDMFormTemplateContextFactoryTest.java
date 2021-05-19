@@ -281,11 +281,12 @@ public class DDMFormTemplateContextFactoryTest {
 
 	@Test
 	public void testTemplateNamespace() throws Exception {
+
+		// Settings form
+
 		DDMFormTemplateContext.Builder builder =
 			DDMFormTemplateContext.Builder.newBuilder(
 				_ddmFormTemplateContextFactory);
-
-		// Settings form
 
 		Map<String, Object> ddmFormTemplateContext =
 			builder.withHttpServletRequest(
