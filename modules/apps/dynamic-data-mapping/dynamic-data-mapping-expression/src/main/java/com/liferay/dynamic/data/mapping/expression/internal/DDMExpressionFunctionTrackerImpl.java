@@ -45,7 +45,7 @@ public class DDMExpressionFunctionTrackerImpl
 			new HashMap<>();
 
 		for (DDMExpressionFunctionFactory ddmExpressionFunctionFactory :
-				_serviceTrackerMap.values()) {
+				_ddmExpressionFunctionFactories.values()) {
 
 			DDMExpressionFunction ddmExpressionFunction =
 				ddmExpressionFunctionFactory.create();
@@ -70,7 +70,7 @@ public class DDMExpressionFunctionTrackerImpl
 
 		for (String functionName : functionNames) {
 			DDMExpressionFunctionFactory ddmExpressionFunctionFactory =
-				_serviceTrackerMap.getService(functionName);
+				_ddmExpressionFunctionFactories.getService(functionName);
 
 			if (ddmExpressionFunctionFactory != null) {
 				ddmExpressionFunctionFactories.put(
@@ -103,17 +103,17 @@ public class DDMExpressionFunctionTrackerImpl
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
-		_serviceTrackerMap =
+		_ddmExpressionFunctionFactories =
 			ServiceTrackerMapFactory.openSingleValueMap(
 				bundleContext, DDMExpressionFunctionFactory.class, "name");
 	}
 
 	@Deactivate
 	protected void deactivate() {
-		_serviceTrackerMap.close();
+		_ddmExpressionFunctionFactories.close();
 	}
 
 	private ServiceTrackerMap<String, DDMExpressionFunctionFactory>
-		_serviceTrackerMap;
+		_ddmExpressionFunctionFactories;
 
 }
