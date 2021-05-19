@@ -38,30 +38,6 @@ public class DDMExpressionFunctionTrackerImpl
 	implements DDMExpressionFunctionTracker {
 
 	@Override
-	public Map<String, DDMExpressionFunction>
-		getCustomDDMExpressionFunctionMap() {
-
-		Map<String, DDMExpressionFunction> customDDMExpressionFunctionMap =
-			new HashMap<>();
-
-		for (DDMExpressionFunctionFactory ddmExpressionFunctionFactory :
-				_ddmExpressionFunctionFactoryMap.values()) {
-
-			DDMExpressionFunction ddmExpressionFunction =
-				ddmExpressionFunctionFactory.create();
-
-			if (!ddmExpressionFunction.isCustomDDMExpressionFunction()) {
-				continue;
-			}
-
-			customDDMExpressionFunctionMap.put(
-				ddmExpressionFunction.getName(), ddmExpressionFunction);
-		}
-
-		return customDDMExpressionFunctionMap;
-	}
-
-	@Override
 	public Map<String, DDMExpressionFunctionFactory>
 		getDDMExpressionFunctionFactories(Set<String> functionNames) {
 
@@ -110,10 +86,6 @@ public class DDMExpressionFunctionTrackerImpl
 	@Activate
 	protected void activate(BundleContext bundleContext) {
 		_bundleContext = bundleContext;
-
-		_ddmExpressionFunctionFactoryMap =
-			ServiceTrackerMapFactory.openSingleValueMap(
-				_bundleContext, DDMExpressionFunctionFactory.class, "name");
 	}
 
 	@Deactivate
