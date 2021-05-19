@@ -30,7 +30,7 @@ public class DispatchLogTestUtil {
 	public static DispatchLog randomDispatchLog(
 		User user, DispatchTaskStatus dispatchTaskStatus) {
 
-		final Date startDate = RandomTestUtil.nextDate();
+		Date startDate = RandomTestUtil.nextDate();
 
 		return _randomDispatchLog(
 			user.getCompanyId(),
