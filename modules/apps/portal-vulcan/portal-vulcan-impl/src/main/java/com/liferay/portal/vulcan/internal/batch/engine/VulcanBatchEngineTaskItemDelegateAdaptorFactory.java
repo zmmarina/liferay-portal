@@ -86,13 +86,13 @@ public class VulcanBatchEngineTaskItemDelegateAdaptorFactory {
 						_depotEntryLocalService, _groupLocalService,
 						vulcanBatchEngineTaskItemDelegate);
 
-			String delegateName = "batch.engine.task.item.delegate.name";
-
 			return _bundleContext.registerService(
 				BatchEngineTaskItemDelegate.class,
 				vulcanBatchEngineTaskItemDelegateAdaptor,
 				HashMapDictionaryBuilder.put(
-					delegateName, serviceReference.getProperty(delegateName)
+					"batch.engine.task.item.delegate.name",
+					serviceReference.getProperty(
+						"batch.engine.task.item.delegate.name")
 				).build());
 		}
 
