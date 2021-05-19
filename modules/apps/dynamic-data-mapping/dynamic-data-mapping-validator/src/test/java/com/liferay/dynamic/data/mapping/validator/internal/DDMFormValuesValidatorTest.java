@@ -813,13 +813,6 @@ public class DDMFormValuesValidatorTest {
 			new DDMExpressionFunctionTracker() {
 
 				@Override
-				public Map<String, DDMExpressionFunction>
-					getCustomDDMExpressionFunctionMap() {
-
-					return Collections.emptyMap();
-				}
-
-				@Override
 				public Map<String, DDMExpressionFunctionFactory>
 					getDDMExpressionFunctionFactories(
 						Set<String> functionNames) {
