@@ -19,7 +19,7 @@
 
 		<!-- Other fields -->
 
-		<column name="datasetDisplayId" type="String" />
+		<column name="clayDataSetDisplayId" type="String" />
 		<column name="fvsEntryId" type="long" />
 		<column name="plid" type="long" />
 		<column name="portletId" type="String" />
