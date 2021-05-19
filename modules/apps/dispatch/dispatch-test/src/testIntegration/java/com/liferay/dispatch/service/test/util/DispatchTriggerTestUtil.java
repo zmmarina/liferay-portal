@@ -16,7 +16,6 @@ package com.liferay.dispatch.service.test.util;
 
 import com.liferay.dispatch.executor.DispatchTaskClusterMode;
 import com.liferay.dispatch.model.DispatchTrigger;
-import com.liferay.dispatch.service.persistence.DispatchTriggerPersistence;
 import com.liferay.dispatch.service.persistence.DispatchTriggerUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.test.util.RandomTestUtil;
@@ -64,10 +63,7 @@ public class DispatchTriggerTestUtil {
 		UnicodeProperties unicodeProperties, String name, boolean system,
 		long userId) {
 
-		DispatchTriggerPersistence dispatchTriggerPersistence =
-			DispatchTriggerUtil.getPersistence();
-
-		DispatchTrigger dispatchTrigger = dispatchTriggerPersistence.create(
+		DispatchTrigger dispatchTrigger = DispatchTriggerUtil.create(
 			RandomTestUtil.nextLong());
 
 		dispatchTrigger.setCompanyId(companyId);

@@ -16,7 +16,6 @@ package com.liferay.dispatch.service.test.util;
 
 import com.liferay.dispatch.executor.DispatchTaskStatus;
 import com.liferay.dispatch.model.DispatchLog;
-import com.liferay.dispatch.service.persistence.DispatchLogPersistence;
 import com.liferay.dispatch.service.persistence.DispatchLogUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.test.util.RandomTestUtil;
@@ -46,10 +45,7 @@ public class DispatchLogTestUtil {
 		long companyId, Date endDate, String error, String output,
 		Date startDate, int status, long userId) {
 
-		DispatchLogPersistence dispatchLogPersistence =
-			DispatchLogUtil.getPersistence();
-
-		DispatchLog dispatchLog = dispatchLogPersistence.create(
+		DispatchLog dispatchLog = DispatchLogUtil.create(
 			RandomTestUtil.nextLong());
 
 		dispatchLog.setCompanyId(companyId);
