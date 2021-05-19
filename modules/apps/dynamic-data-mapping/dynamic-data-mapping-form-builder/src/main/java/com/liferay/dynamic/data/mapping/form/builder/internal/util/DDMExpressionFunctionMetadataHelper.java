@@ -49,14 +49,14 @@ public class DDMExpressionFunctionMetadataHelper {
 		getDDMExpressionFunctionsMetadata(Locale locale) {
 
 		Map<String, List<DDMExpressionFunctionMetadata>>
-			ddmExpressionFunctionsMetadata = new HashMap<>();
+			ddmExpressionFunctionMetadatasMap = new HashMap<>();
 
 		populateCustomDDMExpressionFunctionsMetadata(
-			ddmExpressionFunctionsMetadata);
+			ddmExpressionFunctionMetadatasMap);
 		populateDDMExpressionFunctionsMetadata(
-			ddmExpressionFunctionsMetadata, getResourceBundle(locale));
+			ddmExpressionFunctionMetadatasMap, getResourceBundle(locale));
 
-		return ddmExpressionFunctionsMetadata;
+		return ddmExpressionFunctionMetadatasMap;
 	}
 
 	public static class DDMExpressionFunctionMetadata {
@@ -96,23 +96,23 @@ public class DDMExpressionFunctionMetadataHelper {
 
 	protected void addDDMExpressionFunctionMetadata(
 		Map<String, List<DDMExpressionFunctionMetadata>>
-			ddmExpressionFunctionsMetadata,
-		DDMExpressionFunctionMetadata expressionFunctionMetadata) {
+			ddmExpressionFunctionMetadatasMap,
+		DDMExpressionFunctionMetadata ddmExpressionFunctionMetadata) {
 
 		String firstParameterClassName =
-			expressionFunctionMetadata.getParameterClassNames()[0];
+			ddmExpressionFunctionMetadata.getParameterClassNames()[0];
 
-		List<DDMExpressionFunctionMetadata> expressionFunctionMetadataList =
-			ddmExpressionFunctionsMetadata.get(firstParameterClassName);
+		List<DDMExpressionFunctionMetadata> ddmExpressionFunctionMetadatas =
+			ddmExpressionFunctionMetadatasMap.get(firstParameterClassName);
 
-		if (expressionFunctionMetadataList == null) {
-			expressionFunctionMetadataList = new ArrayList<>();
+		if (ddmExpressionFunctionMetadatas == null) {
+			ddmExpressionFunctionMetadatas = new ArrayList<>();
 
-			ddmExpressionFunctionsMetadata.put(
-				firstParameterClassName, expressionFunctionMetadataList);
+			ddmExpressionFunctionMetadatasMap.put(
+				firstParameterClassName, ddmExpressionFunctionMetadatas);
 		}
 
-		expressionFunctionMetadataList.add(expressionFunctionMetadata);
+		ddmExpressionFunctionMetadatas.add(ddmExpressionFunctionMetadata);
 	}
 
 	protected ResourceBundle getResourceBundle(Locale locale) {
@@ -127,7 +127,7 @@ public class DDMExpressionFunctionMetadataHelper {
 
 	protected void populateCustomDDMExpressionFunctionsMetadata(
 		Map<String, List<DDMExpressionFunctionMetadata>>
-			ddmExpressionFunctionsMetadata) {
+			ddmExpressionFunctionMetadatasMap) {
 
 		Map<String, DDMExpressionFunction> customDDMExpressionFunctions =
 			_ddmExpressionFunctionTracker.getCustomDDMExpressionFunctions();
@@ -154,13 +154,13 @@ public class DDMExpressionFunctionMetadataHelper {
 			Method method = optional.get();
 
 			addDDMExpressionFunctionMetadata(
-				ddmExpressionFunctionsMetadata,
+				ddmExpressionFunctionMetadatasMap,
 				new DDMExpressionFunctionMetadata(
 					entry.getKey(), entry.getKey(), _TYPE_BOOLEAN,
 					_getParameterClassNames(
 						method.getParameterCount(), _TYPE_NUMBER)));
 			addDDMExpressionFunctionMetadata(
-				ddmExpressionFunctionsMetadata,
+				ddmExpressionFunctionMetadatasMap,
 				new DDMExpressionFunctionMetadata(
 					entry.getKey(), entry.getKey(), _TYPE_BOOLEAN,
 					_getParameterClassNames(
@@ -170,102 +170,102 @@ public class DDMExpressionFunctionMetadataHelper {
 
 	protected void populateDDMExpressionFunctionsMetadata(
 		Map<String, List<DDMExpressionFunctionMetadata>>
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 		ResourceBundle resourceBundle) {
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"belongs-to", LanguageUtil.get(resourceBundle, "belongs-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_USER, _TYPE_LIST}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"greater-than",
 				LanguageUtil.get(resourceBundle, "is-greater-than"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"greater-than-equals",
 				LanguageUtil.get(resourceBundle, "is-greater-than-or-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"less-than", LanguageUtil.get(resourceBundle, "is-less-than"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"less-than-equals",
 				LanguageUtil.get(resourceBundle, "is-less-than-or-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"equals-to", LanguageUtil.get(resourceBundle, "is-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"equals-to", LanguageUtil.get(resourceBundle, "is-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_TEXT, _TYPE_TEXT}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"not-equals-to",
 				LanguageUtil.get(resourceBundle, "is-not-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER, _TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"not-equals-to",
 				LanguageUtil.get(resourceBundle, "is-not-equal-to"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_TEXT, _TYPE_TEXT}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"contains", LanguageUtil.get(resourceBundle, "contains"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_TEXT, _TYPE_TEXT}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"not-contains",
 				LanguageUtil.get(resourceBundle, "does-not-contain"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_TEXT, _TYPE_TEXT}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"is-empty", LanguageUtil.get(resourceBundle, "is-empty"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"is-empty", LanguageUtil.get(resourceBundle, "is-empty"),
 				_TYPE_BOOLEAN, new String[] {_TYPE_TEXT}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"not-is-empty",
 				LanguageUtil.get(resourceBundle, "is-not-empty"), _TYPE_BOOLEAN,
 				new String[] {_TYPE_NUMBER}));
 
 		addDDMExpressionFunctionMetadata(
-			ddmExpressionFunctionsMetadata,
+			ddmExpressionFunctionMetadatasMap,
 			new DDMExpressionFunctionMetadata(
 				"not-is-empty",
 				LanguageUtil.get(resourceBundle, "is-not-empty"), _TYPE_BOOLEAN,
