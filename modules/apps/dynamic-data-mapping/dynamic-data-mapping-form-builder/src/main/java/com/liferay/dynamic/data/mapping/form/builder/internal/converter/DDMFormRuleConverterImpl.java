@@ -96,17 +96,17 @@ public class DDMFormRuleConverterImpl implements SPIDDMFormRuleConverter {
 		List<SPIDDMFormRuleCondition.Operand> operands =
 			spiDDMFormRuleCondition.getOperands();
 
-		if (_operators.containsKey(operator)) {
+		if (_operatorMap.containsKey(operator)) {
 			if (operands.size() < 2) {
 				return StringPool.BLANK;
 			}
 
 			return String.format(
 				_COMPARISON_EXPRESSION_FORMAT, convertOperand(operands.get(0)),
-				_operators.get(operator), convertOperand(operands.get(1)));
+				_operatorMap.get(operator), convertOperand(operands.get(1)));
 		}
 
-		String functionName = _operatorFunctionNames.getOrDefault(
+		String functionName = _operatorFunctionNameMap.getOrDefault(
 			operator, operator);
 
 		String condition = createCondition(functionName, operands);
@@ -359,7 +359,7 @@ public class DDMFormRuleConverterImpl implements SPIDDMFormRuleConverter {
 
 	private static final String _NOT_EXPRESSION_FORMAT = "not(%s)";
 
-	private static final Map<String, String> _operatorFunctionNames =
+	private static final Map<String, String> _operatorFunctionNameMap =
 		HashMapBuilder.put(
 			"belongs-to", "belongsTo"
 		).put(
@@ -375,7 +375,7 @@ public class DDMFormRuleConverterImpl implements SPIDDMFormRuleConverter {
 		).put(
 			"not-is-empty", "isEmpty"
 		).build();
-	private static final Map<String, String> _operators = HashMapBuilder.put(
+	private static final Map<String, String> _operatorMap = HashMapBuilder.put(
 		"greater-than", ">"
 	).put(
 		"greater-than-equals", ">="
