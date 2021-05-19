@@ -19,8 +19,8 @@
 
 		<!-- Other fields -->
 
-		<column name="clayDataSetDisplayId" type="String" />
 		<column name="fvsEntryId" type="long" />
+		<column name="clayDataSetDisplayId" type="String" />
 		<column name="plid" type="long" />
 		<column name="portletId" type="String" />
 
