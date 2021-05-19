@@ -1140,6 +1140,8 @@ public class JournalDisplayContext {
 		SearchContext searchContext = new SearchContext();
 
 		searchContext.setAndSearch(false);
+		searchContext.setAttribute("head", !showVersions);
+		searchContext.setAttribute("latest", !showVersions);
 
 		LinkedHashMap<String, Object> params =
 			LinkedHashMapBuilder.<String, Object>put(
@@ -1148,6 +1150,7 @@ public class JournalDisplayContext {
 				"keywords", getKeywords()
 			).build();
 
+		searchContext.setAttribute("params", params);
 		searchContext.setAttributes(
 			HashMapBuilder.<String, Serializable>put(
 				Field.ARTICLE_ID, getKeywords()
@@ -1168,9 +1171,6 @@ public class JournalDisplayContext {
 				"params", params
 			).build());
 
-		searchContext.setAttribute("head", !showVersions);
-		searchContext.setAttribute("latest", !showVersions);
-		searchContext.setAttribute("params", params);
 		searchContext.setCompanyId(_themeDisplay.getCompanyId());
 		searchContext.setEnd(end);
 		searchContext.setFolderIds(_getFolderIds());
