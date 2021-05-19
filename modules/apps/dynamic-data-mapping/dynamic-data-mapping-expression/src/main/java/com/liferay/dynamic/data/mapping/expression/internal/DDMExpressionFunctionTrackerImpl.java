@@ -66,19 +66,19 @@ public class DDMExpressionFunctionTrackerImpl
 		getDDMExpressionFunctionFactories(Set<String> functionNames) {
 
 		Map<String, DDMExpressionFunctionFactory>
-			ddmExpressionFunctionFactories = new HashMap<>();
+			ddmExpressionFunctionFactoriesMap = new HashMap<>();
 
 		for (String functionName : functionNames) {
 			DDMExpressionFunctionFactory ddmExpressionFunctionFactory =
 				_ddmExpressionFunctionFactoryMap.getService(functionName);
 
 			if (ddmExpressionFunctionFactory != null) {
-				ddmExpressionFunctionFactories.put(
+				ddmExpressionFunctionFactoriesMap.put(
 					functionName, ddmExpressionFunctionFactory);
 			}
 		}
 
-		return ddmExpressionFunctionFactories;
+		return ddmExpressionFunctionFactoriesMap;
 	}
 
 	/**
