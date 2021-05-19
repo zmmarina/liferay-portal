@@ -179,9 +179,10 @@ public class ContentPageEditorLayoutPageTemplateDisplayContext
 
 		sourceItemTypes.add(className);
 
-		// LPS-111037
-
 		if (Objects.equals(className, FileEntry.class.getName())) {
+
+			// LPS-111037
+
 			className = DLFileEntry.class.getName();
 		}
 

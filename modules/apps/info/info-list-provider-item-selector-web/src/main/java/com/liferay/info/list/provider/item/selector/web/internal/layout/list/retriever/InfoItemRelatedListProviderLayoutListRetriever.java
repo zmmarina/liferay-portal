@@ -110,9 +110,10 @@ public class InfoItemRelatedListProviderLayoutListRetriever
 
 		String className = infoItemReference.getClassName();
 
-		// LPS-111037
-
 		if (Objects.equals(className, FileEntry.class.getName())) {
+
+			// LPS-111037
+
 			className = DLFileEntry.class.getName();
 		}
 
