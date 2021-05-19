@@ -21,10 +21,6 @@ public interface DDMExpressionFunction {
 
 	public String getName();
 
-	public default boolean isCustomDDMExpressionFunction() {
-		return false;
-	}
-
 	public interface Function0<R> extends DDMExpressionFunction {
 
 		public R apply();
