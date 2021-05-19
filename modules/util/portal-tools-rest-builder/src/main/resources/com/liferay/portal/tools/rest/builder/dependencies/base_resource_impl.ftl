@@ -575,6 +575,7 @@ public abstract class Base${schemaName}ResourceImpl
 >
 	<#if stringUtil.startsWith(type, "[L")>
 		(
+
 		<#if type?contains("java.lang.Boolean")>
 			Boolean[]
 		<#elseif type?contains("java.util.Date")>
@@ -588,6 +589,7 @@ public abstract class Base${schemaName}ResourceImpl
 		<#else>
 			String[]
 		</#if>
+
 		)parameters.get("${value}")
 	<#else>
 		<#if type?contains("java.lang.Boolean")>
