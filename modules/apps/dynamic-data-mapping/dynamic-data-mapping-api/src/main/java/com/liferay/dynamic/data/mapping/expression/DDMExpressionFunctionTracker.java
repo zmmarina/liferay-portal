@@ -26,7 +26,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface DDMExpressionFunctionTracker {
 
 	public Map<String, DDMExpressionFunction>
-		getCustomDDMExpressionFunctions();
+		getCustomDDMExpressionFunctionMap();
 
 	public Map<String, DDMExpressionFunctionFactory>
 		getDDMExpressionFunctionFactories(Set<String> functionNames);
