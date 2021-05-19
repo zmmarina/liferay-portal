@@ -65,6 +65,12 @@ public class DDMExpressionFunctionTrackerImpl
 	public Map<String, DDMExpressionFunctionFactory>
 		getDDMExpressionFunctionFactories(Set<String> functionNames) {
 
+		if (_ddmExpressionFunctionFactoryMap == null) {
+			_ddmExpressionFunctionFactoryMap =
+				ServiceTrackerMapFactory.openSingleValueMap(
+					_bundleContext, DDMExpressionFunctionFactory.class, "name");
+		}
+
 		Map<String, DDMExpressionFunctionFactory>
 			ddmExpressionFunctionFactoriesMap = new HashMap<>();
 
@@ -103,16 +109,21 @@ public class DDMExpressionFunctionTrackerImpl
 
 	@Activate
 	protected void activate(BundleContext bundleContext) {
+		_bundleContext = bundleContext;
+
 		_ddmExpressionFunctionFactoryMap =
 			ServiceTrackerMapFactory.openSingleValueMap(
-				bundleContext, DDMExpressionFunctionFactory.class, "name");
+				_bundleContext, DDMExpressionFunctionFactory.class, "name");
 	}
 
 	@Deactivate
 	protected void deactivate() {
-		_ddmExpressionFunctionFactoryMap.close();
+		if (_ddmExpressionFunctionFactoryMap != null) {
+			_ddmExpressionFunctionFactoryMap.close();
+		}
 	}
 
+	private BundleContext _bundleContext;
 	private ServiceTrackerMap<String, DDMExpressionFunctionFactory>
 		_ddmExpressionFunctionFactoryMap;
 
