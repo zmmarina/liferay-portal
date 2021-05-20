@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Iván Zaera Avellón
@@ -36,7 +37,8 @@ import org.osgi.service.component.annotations.Reference;
 public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 
 	public FVSActiveSettings getFVSActiveSettings(
-		String clayDataSetDisplayId, HttpServletRequest httpServletRequest) {
+			String clayDataSetDisplayId, HttpServletRequest httpServletRequest)
+		throws PortalException {
 
 		ThemeDisplay themeDisplay =
 			(ThemeDisplay)httpServletRequest.getAttribute(
@@ -49,19 +51,16 @@ public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 				themeDisplay.getUserId(), clayDataSetDisplayId,
 				themeDisplay.getPlid(), portletDisplay.getId());
 
-		FVSEntry fvsEntry;
+		FVSEntry fvsEntry = null;
 
 		if (fvsActiveEntry == null) {
-			fvsEntry = _fvsEntryLocalService.createFVSEntry("{}");
+			fvsEntry = _fvsEntryLocalService.addFVSEntry(
+				themeDisplay.getUserId(), "{}");
 
-			_fvsEntryLocalService.updateFVSEntry(fvsEntry);
-
-			fvsActiveEntry = _fvsActiveEntryLocalService.createFVSActiveEntry(
+			fvsActiveEntry = _fvsActiveEntryLocalService.addFVSActiveEntry(
 				themeDisplay.getUserId(), fvsEntry.getFvsEntryId(),
 				clayDataSetDisplayId, themeDisplay.getPlid(),
 				portletDisplay.getId());
-
-			_fvsActiveEntryLocalService.updateFVSActiveEntry(fvsActiveEntry);
 		}
 		else {
 			fvsEntry = _fvsEntryLocalService.fetchFVSEntry(
@@ -69,14 +68,6 @@ public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 		}
 
 		return new FVSActiveSettingsImpl(fvsEntry);
-	}
-
-	public void storeFVSActiveSettings(FVSActiveSettings fvsActiveSettings) {
-		FVSActiveSettingsImpl fvsActiveSettingsImpl =
-			(FVSActiveSettingsImpl)fvsActiveSettings;
-
-		_fvsEntryLocalService.updateFVSEntry(
-			fvsActiveSettingsImpl.getFVSEntry());
 	}
 
 	@Reference

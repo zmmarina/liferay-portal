@@ -16,14 +16,15 @@ package com.liferay.frontend.view.state.active;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.liferay.portal.kernel.exception.PortalException;
+
 /**
  * @author Iván Zaera Avellón
  */
 public interface FVSActiveSettingsFactory {
 
 	public FVSActiveSettings getFVSActiveSettings(
-		String clayDataSetDisplayId, HttpServletRequest httpServletRequest);
-
-	public void storeFVSActiveSettings(FVSActiveSettings fvsActiveSettings);
+			String clayDataSetDisplayId, HttpServletRequest httpServletRequest)
+		throws PortalException;
 
 }
