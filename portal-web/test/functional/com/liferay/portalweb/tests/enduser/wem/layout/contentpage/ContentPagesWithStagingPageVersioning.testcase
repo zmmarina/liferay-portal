@@ -17,11 +17,10 @@ definition {
 		}
 
 		task ("Activate local live staging with page versioning enabled") {
-			Staging.openStagingAdmin(siteURLKey = "test-site-name");
-
-			Staging.activateStagingCP(
-				pageVersioningEnabled = "true",
-				siteName = "Test Site Name");
+			JSONStaging.enableLocalStaging(
+				branchingPrivate = "true",
+				branchingPublic = "true",
+				groupName = "Test Site Name");
 		}
 	}
 
@@ -225,7 +224,7 @@ definition {
 
 	@description = "This is a test for LPS-125755. The Site Pages Variation is enabled on content page in view mode when enable page versioning."
 	@priority = "5"
-	test PublishContentPage {
+	test PublishContentPageWithPageVariationToLive {
 		property portal.acceptance = "true";
 
 		task ("Add a public content page") {
@@ -399,7 +398,7 @@ definition {
 
 	@description = "This is a test for LPS-125755. The Site Pages Variation is not shown on content page in edit mode when enable page versioning."
 	@priority = "4"
-	test SitePagesVariationOnlyShownInViewMode {
+	test ViewSitePagesVariationOnlyShownInViewMode {
 		task ("Add a public content page") {
 			SitePages.openPagesAdmin(siteURLKey = "test-site-name-staging");
 
