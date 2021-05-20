@@ -36,7 +36,7 @@ import org.osgi.service.component.annotations.Reference;
 public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 
 	public FVSActiveSettings getFVSActiveSettings(
-		HttpServletRequest httpServletRequest, String clayDataSetDisplayId) {
+		String clayDataSetDisplayId, HttpServletRequest httpServletRequest) {
 
 		ThemeDisplay themeDisplay =
 			(ThemeDisplay)httpServletRequest.getAttribute(
