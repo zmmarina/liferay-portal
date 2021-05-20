@@ -17,8 +17,12 @@ package com.liferay.frontend.view.state.service.impl;
 import com.liferay.frontend.view.state.model.FVSActiveEntry;
 import com.liferay.frontend.view.state.service.base.FVSActiveEntryLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.UserLocalService;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Brian Wing Shun Chan
@@ -31,14 +35,20 @@ public class FVSActiveEntryLocalServiceImpl
 	extends FVSActiveEntryLocalServiceBaseImpl {
 
 	public FVSActiveEntry createFVSActiveEntry(
-		long userId, long fvsEntryId, String clayDataSetDisplayId, long plid,
-		String portletId) {
+			long userId, long fvsEntryId, String clayDataSetDisplayId, long plid,
+			String portletId)
+		throws PortalException {
 
 		FVSActiveEntry fvsActiveEntry =
 			fvsActiveEntryLocalService.createFVSActiveEntry(
 				counterLocalService.increment());
 
-		fvsActiveEntry.setUserId(userId);
+		User user = _userLocalService.getUserById(userId);
+
+		fvsActiveEntry.setCompanyId(user.getCompanyId());
+		fvsActiveEntry.setUserId(user.getUserId());
+		fvsActiveEntry.setUserName(user.getFullName());
+
 		fvsActiveEntry.setFvsEntryId(fvsEntryId);
 		fvsActiveEntry.setClayDataSetDisplayId(clayDataSetDisplayId);
 		fvsActiveEntry.setPlid(plid);
@@ -53,5 +63,8 @@ public class FVSActiveEntryLocalServiceImpl
 		return fvsActiveEntryPersistence.fetchByU_CDSDI_P_P(
 			userId, clayDataSetDisplayId, plid, portletId);
 	}
+
+	@Reference
+	private UserLocalService _userLocalService;
 
 }
