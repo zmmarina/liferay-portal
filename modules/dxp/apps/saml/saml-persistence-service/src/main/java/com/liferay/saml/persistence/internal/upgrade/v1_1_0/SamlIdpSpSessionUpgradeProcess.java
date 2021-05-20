@@ -28,11 +28,9 @@ public class SamlIdpSpSessionUpgradeProcess extends UpgradeProcess {
 		alter(
 			SamlIdpSpSessionTable.class,
 			new AlterColumnType("nameIdFormat", "VARCHAR(1024) null"));
-
 		alter(
 			SamlIdpSpSessionTable.class,
 			new AlterColumnType("nameIdValue", "VARCHAR(1024) null"));
-
 		alter(
 			SamlIdpSpSessionTable.class,
 			new AlterColumnType("samlSpEntityId", "VARCHAR(1024) null"));

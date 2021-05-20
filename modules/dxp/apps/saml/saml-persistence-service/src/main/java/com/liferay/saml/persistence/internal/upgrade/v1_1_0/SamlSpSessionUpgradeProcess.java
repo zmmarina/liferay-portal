@@ -28,7 +28,6 @@ public class SamlSpSessionUpgradeProcess extends UpgradeProcess {
 		alter(
 			SamlSpSessionTable.class,
 			new AlterColumnType("nameIdFormat", "VARCHAR(1024) null"));
-
 		alter(
 			SamlSpSessionTable.class,
 			new AlterColumnType("nameIdValue", "VARCHAR(1024) null"));
