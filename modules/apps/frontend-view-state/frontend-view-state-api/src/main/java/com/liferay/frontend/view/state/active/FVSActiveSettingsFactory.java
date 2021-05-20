@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface FVSActiveSettingsFactory {
 
 	public FVSActiveSettings getFVSActiveSettings(
-		HttpServletRequest httpServletRequest, String clayDatasetDisplayId);
+		HttpServletRequest httpServletRequest, String clayDataSetDisplayId);
 
 	public void storeFVSActiveSettings(FVSActiveSettings fvsActiveSettings);
 

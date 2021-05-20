@@ -48,10 +48,10 @@ public class FVSActiveEntryLocalServiceImpl
 	}
 
 	public FVSActiveEntry fetchFVSActiveEntry(
-		long userId, String clayDatasetDisplayId, long plid, String portletId) {
+		long userId, String clayDataSetDisplayId, long plid, String portletId) {
 
 		return fvsActiveEntryPersistence.fetchByU_CDSDI_P_P(
-			userId, clayDatasetDisplayId, plid, portletId);
+			userId, clayDataSetDisplayId, plid, portletId);
 	}
 
 }

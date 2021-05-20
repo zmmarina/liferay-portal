@@ -36,7 +36,7 @@ import org.osgi.service.component.annotations.Reference;
 public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 
 	public FVSActiveSettings getFVSActiveSettings(
-		HttpServletRequest httpServletRequest, String clayDatasetDisplayId) {
+		HttpServletRequest httpServletRequest, String clayDataSetDisplayId) {
 
 		ThemeDisplay themeDisplay =
 			(ThemeDisplay)httpServletRequest.getAttribute(
@@ -46,7 +46,7 @@ public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 
 		FVSActiveEntry fvsActiveEntry =
 			_fvsActiveEntryLocalService.fetchFVSActiveEntry(
-				themeDisplay.getUserId(), clayDatasetDisplayId,
+				themeDisplay.getUserId(), clayDataSetDisplayId,
 				themeDisplay.getPlid(), portletDisplay.getId());
 
 		FVSEntry fvsEntry;
@@ -58,7 +58,7 @@ public class FVSActiveSettingsFactoryImpl implements FVSActiveSettingsFactory {
 
 			fvsActiveEntry = _fvsActiveEntryLocalService.createFVSActiveEntry(
 				themeDisplay.getUserId(), fvsEntry.getFvsEntryId(),
-				clayDatasetDisplayId, themeDisplay.getPlid(),
+				clayDataSetDisplayId, themeDisplay.getPlid(),
 				portletDisplay.getId());
 
 			_fvsActiveEntryLocalService.updateFVSActiveEntry(fvsActiveEntry);
