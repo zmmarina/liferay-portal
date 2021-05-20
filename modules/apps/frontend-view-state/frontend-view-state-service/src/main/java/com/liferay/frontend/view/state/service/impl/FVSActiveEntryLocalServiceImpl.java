@@ -39,9 +39,8 @@ public class FVSActiveEntryLocalServiceImpl
 			String portletId)
 		throws PortalException {
 
-		FVSActiveEntry fvsActiveEntry =
-			fvsActiveEntryLocalService.createFVSActiveEntry(
-				counterLocalService.increment());
+		FVSActiveEntry fvsActiveEntry = fvsActiveEntryPersistence.create(
+			counterLocalService.increment());
 
 		User user = _userLocalService.getUserById(userId);
 
