@@ -14,9 +14,9 @@
 
 package com.liferay.frontend.view.state.active;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.liferay.portal.kernel.exception.PortalException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Iván Zaera Avellón

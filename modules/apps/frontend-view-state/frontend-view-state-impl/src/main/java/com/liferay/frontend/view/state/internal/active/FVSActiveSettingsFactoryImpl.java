@@ -20,6 +20,7 @@ import com.liferay.frontend.view.state.model.FVSActiveEntry;
 import com.liferay.frontend.view.state.model.FVSEntry;
 import com.liferay.frontend.view.state.service.FVSActiveEntryLocalService;
 import com.liferay.frontend.view.state.service.FVSEntryLocalService;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.theme.PortletDisplay;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -28,7 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Iván Zaera Avellón
