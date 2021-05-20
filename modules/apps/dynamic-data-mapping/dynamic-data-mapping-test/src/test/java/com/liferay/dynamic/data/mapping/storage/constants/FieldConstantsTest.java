@@ -39,8 +39,6 @@ public class FieldConstantsTest {
 		Serializable serializable = FieldConstants.getSerializable(
 			LocaleUtil.BRAZIL, LocaleUtil.BRAZIL, FieldConstants.DOUBLE, "3,0");
 
-		Assert.assertTrue(serializable instanceof Double);
-
 		Assert.assertEquals(Double.valueOf(3.0), (Double)serializable);
 	}
 
@@ -48,8 +46,6 @@ public class FieldConstantsTest {
 	public void testGetSerializableReturnDoubleWithLocaleUS() {
 		Serializable serializable = FieldConstants.getSerializable(
 			LocaleUtil.US, LocaleUtil.US, FieldConstants.DOUBLE, "3.0");
-
-		Assert.assertTrue(serializable instanceof Double);
 
 		Assert.assertEquals(Double.valueOf(3.0), (Double)serializable);
 	}
@@ -59,8 +55,6 @@ public class FieldConstantsTest {
 		Serializable serializable = FieldConstants.getSerializable(
 			LocaleUtil.BRAZIL, LocaleUtil.BRAZIL, FieldConstants.INTEGER, "3");
 
-		Assert.assertTrue(serializable instanceof Integer);
-
 		Assert.assertEquals(Integer.valueOf(3), (Integer)serializable);
 	}
 
@@ -68,8 +62,6 @@ public class FieldConstantsTest {
 	public void testGetSerializableReturnIntegerWithLocaleUS() {
 		Serializable serializable = FieldConstants.getSerializable(
 			LocaleUtil.US, LocaleUtil.US, FieldConstants.INTEGER, "3");
-
-		Assert.assertTrue(serializable instanceof Integer);
 
 		Assert.assertEquals(Integer.valueOf(3), (Integer)serializable);
 	}

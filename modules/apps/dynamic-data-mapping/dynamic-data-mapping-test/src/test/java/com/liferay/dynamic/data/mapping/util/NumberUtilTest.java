@@ -32,23 +32,11 @@ public class NumberUtilTest {
 		LiferayUnitTestRule.INSTANCE;
 
 	@Test
-	public void testGetDecimalSeparatorIndexUsingValueWithComma() {
-		Assert.assertEquals(1, NumberUtil.getDecimalSeparatorIndex("2,0"));
-	}
-
-	@Test
-	public void testGetDecimalSeparatorIndexUsingValueWithDot() {
-		Assert.assertEquals(1, NumberUtil.getDecimalSeparatorIndex("2.0"));
-	}
-
-	@Test
-	public void testGetDecimalSeparatorIndexUsingValueWithNoSeparator() {
-		Assert.assertEquals(-1, NumberUtil.getDecimalSeparatorIndex("2"));
-	}
-
-	@Test
-	public void testGetDecimalSeparatorIndexWithEmptyValue() {
+	public void testGetDecimalSeparatorIndex() {
 		Assert.assertEquals(-1, NumberUtil.getDecimalSeparatorIndex(""));
+		Assert.assertEquals(-1, NumberUtil.getDecimalSeparatorIndex("2"));
+		Assert.assertEquals(1, NumberUtil.getDecimalSeparatorIndex("2,0"));
+		Assert.assertEquals(1, NumberUtil.getDecimalSeparatorIndex("2.0"));
 	}
 
 }
