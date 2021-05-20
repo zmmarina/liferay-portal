@@ -30,10 +30,12 @@ public class FVSActiveSettingsImpl implements FVSActiveSettings {
 		return _fvsEntry;
 	}
 
+	@Override
 	public String getViewState() {
 		return _fvsEntry.getViewState();
 	}
 
+	@Override
 	public void setViewState(String viewState) {
 		_fvsEntry.setViewState(viewState);
 	}
