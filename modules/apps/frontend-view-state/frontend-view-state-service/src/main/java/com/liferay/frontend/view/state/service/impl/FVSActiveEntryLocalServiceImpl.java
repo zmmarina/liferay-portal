@@ -34,7 +34,8 @@ import org.osgi.service.component.annotations.Reference;
 public class FVSActiveEntryLocalServiceImpl
 	extends FVSActiveEntryLocalServiceBaseImpl {
 
-	public FVSActiveEntry createFVSActiveEntry(
+	@Override
+	public FVSActiveEntry addFVSActiveEntry(
 			long userId, long fvsEntryId, String clayDataSetDisplayId, long plid,
 			String portletId)
 		throws PortalException {
@@ -53,7 +54,7 @@ public class FVSActiveEntryLocalServiceImpl
 		fvsActiveEntry.setPlid(plid);
 		fvsActiveEntry.setPortletId(portletId);
 
-		return fvsActiveEntry;
+		return fvsActiveEntryPersistence.update(fvsActiveEntry);
 	}
 
 	public FVSActiveEntry fetchFVSActiveEntry(

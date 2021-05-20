@@ -17,8 +17,12 @@ package com.liferay.frontend.view.state.service.impl;
 import com.liferay.frontend.view.state.model.FVSEntry;
 import com.liferay.frontend.view.state.service.base.FVSEntryLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.UserLocalService;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Brian Wing Shun Chan
@@ -29,13 +33,25 @@ import org.osgi.service.component.annotations.Component;
 )
 public class FVSEntryLocalServiceImpl extends FVSEntryLocalServiceBaseImpl {
 
-	public FVSEntry createFVSEntry(String viewState) {
-		FVSEntry fvsEntry = fvsEntryLocalService.createFVSEntry(
+	@Override
+	public FVSEntry addFVSEntry(long userId, String viewState)
+		throws PortalException {
+
+		FVSEntry fvsEntry = fvsEntryPersistence.create(
 			counterLocalService.increment());
+
+		User user = _userLocalService.getUserById(userId);
+
+		fvsEntry.setCompanyId(user.getCompanyId());
+		fvsEntry.setUserId(user.getUserId());
+		fvsEntry.setUserName(user.getFullName());
 
 		fvsEntry.setViewState(viewState);
 
-		return fvsEntry;
+		return fvsEntryPersistence.update(fvsEntry);
 	}
+
+	@Reference
+	private UserLocalService _userLocalService;
 
 }
